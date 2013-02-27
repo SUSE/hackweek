@@ -1,6 +1,13 @@
 $(function () {
 
-    $("#what-is-link").click(function () {
+
+    $("#start-link").click(function () {
+        $('html, body').animate({
+            scrollTop: $("#start").offset().top
+        }, 1000);
+    })
+
+    $("#what-is-link, #arrow-start").click(function () {
         $('html, body').animate({
             scrollTop: $("#what-is").offset().top
         }, 1000);
@@ -33,13 +40,14 @@ $(function () {
 
     $(window).scroll(function () {
 
+        /* hide - unhide navigation */
         if (!$('#navigation').is(":visible") && $(window).scrollTop() >= $('#what-is').height()/2) {
             $('#navigation').fadeIn()
         }
-
         if ($('#navigation').is(":visible") && $(window).scrollTop() < $('#what-is').height()/2) {
             $('#navigation').fadeOut()
         }
+
 
     })
 

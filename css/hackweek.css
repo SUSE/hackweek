@@ -35,7 +35,7 @@ li {
     font-size: 15px;
     text-transform: uppercase;
 }
-#suse-logo{
+#start-link{
     height: 80px;
 }
 .logo-color{
@@ -108,4 +108,5 @@ li {
 }
 #terminal{
     background-color: #454545;
+    display: none;
 }
