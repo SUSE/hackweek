@@ -55,8 +55,11 @@ $(function () {
         if ($(window).scrollTop() <= $('#start').height()) {
             var percent_scrolled_out = $(window).scrollTop() / $('#start').height()
             $("#claim-line1").css({ top: $(window).scrollTop() - (percent_scrolled_out * $("#claim-line1").position().top) / 6 });
+            $("#claim-line1").css({ 'opacity' : 1-percent_scrolled_out });
             $("#claim-line2").css({ top: $(window).scrollTop() - (percent_scrolled_out * $("#claim-line2").position().top) / 6 });
+            $("#claim-line2").css({ 'opacity' : 1-percent_scrolled_out });
             $("#claim-line3").css({ top: $(window).scrollTop() - (percent_scrolled_out * $("#claim-line3").position().top) / 6 });
+            $("#claim-line3").css({ 'opacity' : 1-percent_scrolled_out });
 
         }
     })
