@@ -12,6 +12,7 @@ body {
 
 li {
     list-style: none;
+    line-height: 25px;
 }
 .page-size {
     width: 100%;
@@ -30,6 +31,27 @@ li {
     position: fixed;
     z-index: 100;
     display: none;
+    color: #000;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+#suse-logo{
+    height: 80px;
+}
+.logo-color{
+    background: url('../images/suse-logo-color.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+.logo-black{
+    background: url('../images/suse-logo-black.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+.logo-white{
+    background: url('../images/suse-logo-white.png');
+    background-repeat: no-repeat;
+    background-position: left top;
 }
 #arrow-start {
     background: url('../images/arrow-start.png');
@@ -78,9 +100,12 @@ li {
     background-color: #d8ff33;
 }
 #where{
-    background-color: #f606ff;
+    background-color: #FFF;
+    background: url('../images/world-map.png');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
-
 #terminal{
     background-color: #454545;
 }
