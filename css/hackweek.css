@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic|Droid+Sans:400,700);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,300,400italic,500,500italic,700,700italic,900,900italic|Droid+Sans:400,700);
 html {
     margin: 0px;
     width: 100%;
@@ -62,15 +62,15 @@ li {
     background-position: left top;
 }
 #arrow-start {
-    background: url('../images/arrow-start.png');
-    width: 51px;
-    height: 47px;
-    background-repeat: no-repeat;
-    position: absolute;
-    bottom: 0;
-    left: 49%;
-    cursor: pointer;
-}
+     background: url('../images/arrow-start.png');
+     width: 51px;
+     height: 47px;
+     background-repeat: no-repeat;
+     position: absolute;
+     bottom: 0;
+     left: 49%;
+     cursor: pointer;
+ }
 #start{
     background: url('../images/start-background.jpg');
     background-size: 100% auto;
@@ -114,6 +114,7 @@ li {
     background-size: 90% auto;
     background-repeat: no-repeat;
     background-position: center center;
+    position: relative;
 }
 #where-title{
     position: absolute;
@@ -137,6 +138,15 @@ li {
     -webkit-transform:rotate(-10deg); /* Safari and Chrome */
     -o-transform:rotate(-10deg); /* Opera */
 
+}
+#map-info{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 7px;
+    font-size: 13px;
 }
 #terminal{
     background-color: #454545;
