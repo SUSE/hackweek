@@ -34,6 +34,13 @@ li {
     color: #000;
     font-size: 15px;
     text-transform: uppercase;
+    cursor: pointer;
+}
+.active{
+    font-weight: bold;
+}
+.inactive{
+    font-weight: normal;
 }
 #start-link{
     height: 80px;
@@ -61,6 +68,7 @@ li {
     position: absolute;
     bottom: 0;
     left: 49%;
+    cursor: pointer;
 }
 #start{
     background: url('../images/start-background.jpg');
