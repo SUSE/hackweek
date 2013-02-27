@@ -48,7 +48,14 @@ $(function () {
             $('#navigation').fadeOut()
         }
 
+        /* start page text animation */
+        if ($(window).scrollTop() <= $('#start').height()) {
+            var percent_scrolled_out = $(window).scrollTop() / $('#start').height()
+            $("#claim-line1").css({ top: $(window).scrollTop() - percent_scrolled_out * $("#claim-line1").position().top });
+            $("#claim-line2").css({ top: $(window).scrollTop() - percent_scrolled_out * $("#claim-line2").position().top });
+            $("#claim-line3").css({ top: $(window).scrollTop() - percent_scrolled_out * $("#claim-line3").position().top });
 
+        }
     })
 
 
