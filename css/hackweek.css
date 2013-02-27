@@ -29,6 +29,7 @@ li {
     text-align: left;
     position: fixed;
     z-index: 100;
+    display: none;
 }
 #arrow-start {
     background: url('../images/arrow-start.png');
