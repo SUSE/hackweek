@@ -66,19 +66,19 @@ $(function () {
 
 
     if ($(window).scrollTop() == 0) {
-        $("#claim-line1").css({ right: $(window).width() })
+        $("#claim-line1").css({ top: -600 })
         $("#claim-line1").animate({
-            left: 0
+            top: 0
         }, 1000);
 
-        $("#claim-line2").css({ right: $(window).width() })
+        $("#claim-line2").css({ left: $(window).width() })
         $("#claim-line2").animate({
-            left: 0
+            left: 0, top: 0
         }, 1000);
 
         $("#claim-line3").css({ right: $(window).width() })
         $("#claim-line3").animate({
-            left: 0
+            left: 0, top: 0
         }, 1000);
     }
 
