@@ -13,7 +13,10 @@ body {
 li {
     list-style: none;
 }
-
+.page-size {
+    width: 100%;
+    height: 100%;
+}
 #content {
     margin: 0 auto;
     width: 100%;
@@ -24,7 +27,7 @@ li {
     margin-left: 20px;
     margin-top: 20px;
     text-align: left;
-    position: absolute;
+    position: fixed;
     z-index: 100;
 }
 #arrow-start {
@@ -47,7 +50,19 @@ li {
     background-repeat: no-repeat;
     position: relative;
 }
-.page-size {
-    width: 100%;
-    height: 100%;
+#projects{
+    background-color: #ff0000;
+}
+#agenda{
+    background-color: #0122ff;
+}
+#join{
+    background-color: #d8ff33;
+}
+#where{
+    background-color: #f606ff;
+}
+
+#terminal{
+    background-color: #454545;
 }
