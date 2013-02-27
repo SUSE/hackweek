@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,300,400italic,500,500italic,700,700italic,900,900italic|Droid+Sans:400,700);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,300,400italic,500,500italic,700,700italic,900,900italic|Droid+Sans:400,700|Cutive+Mono|Abril+Fatface);
 html {
     margin: 0px;
     width: 100%;
@@ -18,6 +18,9 @@ li {
 .page-size {
     width: 100%;
     height: 100%;
+}
+.bolder{
+    font-weight: 900;
 }
 #content {
     margin: 0 auto;
@@ -88,11 +91,12 @@ li {
     z-index: 3;
 }
 .claim{
+    font-family: 'Abril Fatface', cursive;
     margin: 5px;
     font-size: 50px;
-    text-transform: uppercase;
+/*    text-transform: uppercase;
     font-weight: bold;
-    background: rgba(0, 0 ,0 ,0.5);
+    background: rgba(0, 0 ,0 ,0.5);*/
     display: inline-block;
     color: #FFF;
     top: 50%;
@@ -107,9 +111,46 @@ li {
     position: relative;
 }
 #projects{
-    background-color: #ff0000;
+    background-color: #000;
+    background: url('../images/projects-thumbs.jpg');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
     z-index: 20;
     position: relative;
+}
+#projects #terminal-btn {
+    color: #FFF;
+}
+#projects .terminal-dot {
+    background-color: #FFF;
+}
+.project-instructions{
+    background-color: #000000;
+    position: absolute;
+    width: 320px;
+    height: 160px;
+    left: 50%;
+    margin-left: -160px;
+    top: 50%;
+    margin-top: -80px;
+    text-align: center;
+}
+.text-project-box {
+   color: #d4df4c;
+   font-size: 30px;
+   padding-top: 10px;
+}
+.cut-text {
+    color: #373731;
+    font-style: italic;
+}
+#project-info{
+    color: #FFF;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 7px;
+    font-size: 13px;
+    padding-top: 10px;
 }
 #agenda{
     background-color: #0122ff;
@@ -166,4 +207,21 @@ li {
 #terminal{
     background-color: #454545;
     display: none;
+}
+#terminal-btn{
+    font-family: 'Cutive Mono', sans-serif;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 13px;
+    font-weight: 100;
+    text-transform: uppercase;
+}
+.terminal-dot{
+    float: right;
+    height: 10px;
+    margin-left: 3px;
+    margin-top: 2px;
+    width: 4px;
+    background-color: #000;
 }
