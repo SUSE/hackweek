@@ -39,19 +39,32 @@ li {
     bottom: 0;
     left: 49%;
 }
-#pay-off{
-    position: relative;
-    bottom: 0;
-    left: 49%;
-}
 #start{
     background: url('../images/start-background.jpg');
     background-size: 100% auto;
     background-repeat: no-repeat;
     position: relative;
 }
+#pay-off{
+    position: relative;
+    margin: 0 auto;
+    max-width: 960px;
+    padding-top: 15%;
+}
+.claim{
+    margin: 5px;
+    font-size: 50px;
+    text-transform: uppercase;
+    font-weight: bold;
+    background: rgba(0, 0 ,0 ,0.5);
+    display: inline-block;
+    color: #FFF;
+    top: 50%;
+    position: relative;
+    padding: 4px 12px 4px 15px;
+}
 
-#pwhat-is{
+#what-is{
     background-color: #ff0000;
 }
 #projects{
