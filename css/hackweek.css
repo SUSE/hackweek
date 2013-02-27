@@ -61,18 +61,21 @@ li {
     position: absolute;
     bottom: 0;
     left: 49%;
+    z-index: 2;
 }
 #start{
     background: url('../images/start-background.jpg');
     background-size: 100% auto;
     background-repeat: no-repeat;
     position: relative;
+    z-index: 1;
 }
 #pay-off{
     position: relative;
     margin: 0 auto;
     max-width: 960px;
     padding-top: 15%;
+    z-index: 3;
 }
 .claim{
     margin: 5px;
@@ -85,19 +88,28 @@ li {
     top: 50%;
     position: relative;
     padding: 4px 12px 4px 15px;
+    z-index: 3;
 }
 
 #what-is{
     background-color: #ff0000;
+    z-index: 10;
+    position: relative;
 }
 #projects{
     background-color: #ff0000;
+    z-index: 20;
+    position: relative;
 }
 #agenda{
     background-color: #0122ff;
+    z-index: 30;
+    position: relative;
 }
 #join{
     background-color: #d8ff33;
+    z-index: 40;
+    position: relative;
 }
 #where{
     background-color: #FFF;
@@ -105,6 +117,8 @@ li {
     background-size: 100% auto;
     background-repeat: no-repeat;
     background-position: center center;
+    z-index: 50;
+    position: relative;
 }
 #terminal{
     background-color: #454545;
