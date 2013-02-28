@@ -182,12 +182,16 @@ li {
     padding-top: 10px;
 }
 #agenda{
-    background-color: #0122ff;
+    background: rgb(215, 215, 215);
+    background: -o-radial-gradient(rgb(240, 240, 240), rgb(220, 220, 220));
+    background: -moz-radial-gradient(rgb(240, 240, 240), rgb(220, 220, 220));
+    background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(220, 220, 220));
+    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(220, 220, 220)));
     z-index: 30;
     position: relative;
 }
 #join{
-    background-color: #d8ff33;
+    background-color: #d4df4c;
     z-index: 40;
     position: relative;
 }
