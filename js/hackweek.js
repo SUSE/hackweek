@@ -105,8 +105,9 @@ $(function () {
 
   // Setup terminal
   $('#wterm').wterm({
-      WELCOME_MESSAGE: "Welcome to Hackweek 9!",
-      PS1:             "hackweek $"
+      WELCOME_MESSAGE: "Welcome to Hackweek 9! Use this terminal to discover more about our git repo",
+      PS1:             "SUSEterm $",
+      NOT_FOUND:       "Sorry me and my chameleon friends have never heard about CMD before :-("
   });
 });
 
