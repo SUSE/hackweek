@@ -245,7 +245,7 @@ li {
 }
 #join-title{
     margin: 0 auto;
-	padding-top: 20px;
+	padding-top: 110px;
     font-family: 'Droid Sans', sans-serif;
 	color: #201f1f;
 	font-size: 35px;
@@ -270,7 +270,7 @@ li {
 #join-unlock{
     margin: 0 auto;
 	text-align: center;
-	padding-top: 5%;
+	padding-top: 80px;
 }
 #where{
     background-color: #FFF;
