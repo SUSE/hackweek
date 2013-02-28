@@ -30,6 +30,7 @@
 }
 
 #terminal-bottom-bar { 
+  padding: 4px 10px; 
   height:20px; 
   width: 80%; 
   background: #4b4a4a; 
