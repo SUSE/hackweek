@@ -36,7 +36,7 @@ $(function () {
         }, 1000);
     })
 
-    $(".terminal-btn").click(function () {
+    $("#terminal-btn").click(function () {
         toggle_terminal()
     })
 
@@ -53,6 +53,7 @@ $(function () {
         } else {
             $('#terminal').slideDown('fast');
         }
+        $('#wterm').find('div:last form input').focus()
     }
 
     $(window).scroll(function () {
@@ -107,7 +108,10 @@ $(function () {
 
 
   // Setup terminal
-  $('#wterm').wterm();
+  $('#wterm').wterm({
+      WELCOME_MESSAGE: "Welcome to Hackweek 9!",
+      PS1:             "hackweek $"
+  });
 });
 
 
