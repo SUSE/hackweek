@@ -223,14 +223,6 @@ li {
     font-size: 13px;
 }
 
-#terminal{
-    background-color: #454545;
-    display: none;
-    z-index: 9999;
-    position: fixed;
-    width: 100%;
-    height: 300px;
-}
 #terminal-btn{
     font-family: 'Cutive Mono', sans-serif;
     position: fixed;
