@@ -112,7 +112,7 @@ $(function () {
       WELCOME_MESSAGE: "Welcome to Hackweek 9! Use this terminal to discover more about our git repo",
       PS1:             "SUSEterm $",
       NOT_FOUND:       "Sorry me and my chameleon friends have never heard about CMD before :-(",
-      WIDTH:           "100%",
+      WIDTH:           "70%",
       HEIGHT:          "100%"
   });
 });
