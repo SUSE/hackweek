@@ -118,7 +118,7 @@ li {
     z-index: 20;
     position: relative;
 }
-#projects #terminal-btn {
+#projects .terminal-btn {
     color: #FFF;
 }
 #projects .terminal-dot {
@@ -207,8 +207,9 @@ li {
 #terminal{
     background-color: #454545;
     display: none;
+    z-index: 9999;
 }
-#terminal-btn{
+.terminal-btn{
     font-family: 'Cutive Mono', sans-serif;
     position: absolute;
     bottom: 20px;
@@ -216,6 +217,7 @@ li {
     font-size: 13px;
     font-weight: 100;
     text-transform: uppercase;
+    cursor: pointer;
 }
 .terminal-dot{
     float: right;

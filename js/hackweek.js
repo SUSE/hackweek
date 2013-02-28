@@ -37,6 +37,9 @@ $(function () {
         }, 1000);
     })
 
+    $(".terminal-btn").click(function () {
+        $('#terminal').show();
+    });
 
     $(window).scroll(function () {
 
@@ -83,6 +86,9 @@ $(function () {
     }
 
 
+
+  // Setup terminal
+  $('#wterm').wterm();
 
 });
 
