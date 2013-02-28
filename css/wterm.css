@@ -10,17 +10,36 @@
   overflow-y: auto; 
   margin-left: auto; 
   margin-right: auto; 
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);}
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);}
 
 /* TODO: Input Box Width is faulty */
-.wterm_terminal input { background: transparent; border: 0; color: #fff; width: 100%; font-size: 1em; font-family: monospace; outline: none;   }
+.wterm_terminal input { 
+  background: transparent; 
+  border: 0; 
+  color: #fff; 
+  width: 100%; 
+  font-size: 1em; 
+  font-family: monospace; 
+  outline: none;   
+}
 .wterm_terminal div:first { margin-bottom: 1em; }
 .wterm_terminal .wterm_prompt { float: left; clear: left;  }
 .wterm_terminal  form { float: left; margin: 0px; width: 75%; }
 
 /* Themes */
-.wterm_theme_green_on_black { background: rgba(0,0,0,0.90); background-image: url('../images/term-bg.png'); background-repeat: no-repeat; background-position: center; color: #00a54f; border: 0px 1px 1px 1px solid #000; }
-.wterm_theme_green_on_black input { background: transparent; border: 0; color: #0f0; }
+.wterm_theme_green_on_black { 
+  background: rgba(0,0,0,0.90); 
+  background-image: url('../images/term-bg.png'); 
+  background-repeat: no-repeat; 
+  background-position: center; 
+  color: #00a54f; 
+  border: 0px 1px 1px 1px solid #000; 
+}
+.wterm_theme_green_on_black input { 
+  background: transparent; 
+  border: 0; 
+  color: #0f0; 
+}
 
 #terminal{
     display: none;
@@ -41,7 +60,7 @@
   margin-right: auto;
   border-top: 1px solid #3d3c3c; 
   border-radius: 0px 0px 4px 4px;  
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
   overflow: visible; 
 }
 #terminal-bottom-tabbar {
@@ -55,17 +74,19 @@
   margin-left: auto; 
   margin-right: auto;  
   border-bottom: 1px solid #212121;
+  box-shadow: 3px 0px 5px rgba(0, 0, 0, 0.7);}
 }
 
 #terminal-bottom-bar-tab {
   width: 20%;
   height: 18px;
+  position: relative;
+  top: -2px;
   background-color: #4b4a4a;
-  color: #000;
+  color: #fff;
   padding-top: 3px;
   border-bottom: 1px solid #212121;
-  border-radius: 0px 0px 3px 3px;
+  border-radius: 0px 0px 4px 4px;
   text-align: center;
-  top: -2px;
-  position: relative;
+  font-size: 12px;
 }
