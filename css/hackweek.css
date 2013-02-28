@@ -127,7 +127,9 @@ li {
     padding-left: 117px;
 }
 #what-is{
-    background-color: #ff0000;
+    background-color: #ffffff;
+    background: url('../images/cloud-pattern.png');
+    background-repeat: repeat;
     z-index: 10;
     position: relative;
 }
