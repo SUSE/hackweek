@@ -41,7 +41,8 @@
   margin-right: auto;
   border-top: 1px solid #3d3c3c; 
   border-radius: 0px 0px 4px 4px;  
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7); 
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+  overflow: visible; 
 }
 #terminal-bottom-tabbar {
   padding: 0px 10px; 
@@ -59,4 +60,12 @@
 #terminal-bottom-bar-tab {
   width: 20%;
   height: 18px;
+  background-color: #4b4a4a;
+  color: #000;
+  padding-top: 3px;
+  border-bottom: 1px solid #212121;
+  border-radius: 0px 0px 3px 3px;
+  text-align: center;
+  top: -2px;
+  position: relative;
 }
