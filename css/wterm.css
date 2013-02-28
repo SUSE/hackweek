@@ -12,7 +12,6 @@
 .wterm_theme_green_on_black input { background: transparent; border: 0; color: #0f0; }
 
 #terminal{
-    background-color: #4b4a4a;
     display: none;
     z-index: 9999;
     position: fixed;
