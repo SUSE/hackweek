@@ -28,7 +28,7 @@ li {
     height: 100%;
     z-index: 0;
 }
-#navigation{
+#navigation {
     margin-left: 20px;
     margin-top: 20px;
     text-align: left;
@@ -40,7 +40,7 @@ li {
     text-transform: uppercase;
     cursor: pointer;
 }
-.active{
+#navigation .active{
     font-weight: bold;
 }
 .inactive{
