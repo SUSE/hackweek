@@ -16,7 +16,6 @@
     z-index: 9999;
     position: fixed;
     width: 100%;
-    height: 50%;
 }
 
 #terminal-bottom-bar { padding: 4px 10px; height:20px; width: 80%; background: #4b4a4a; display: block; overflow-x: none; overflow-y: auto; margin-left: auto; margin-right: auto; }
