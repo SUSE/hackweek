@@ -104,7 +104,10 @@ $(function () {
 
 
   // Setup terminal
-  $('#wterm').wterm();
+  $('#wterm').wterm({
+      WELCOME_MESSAGE: "Welcome to Hackweek 9!",
+      PS1:             "hackweek $"
+  });
 });
 
 
