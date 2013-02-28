@@ -36,7 +36,7 @@ $(function () {
         }, 1000);
     })
 
-    $(".terminal-btn").click(function () {
+    $("#terminal-btn").click(function () {
         toggle_terminal()
     })
 
