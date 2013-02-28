@@ -103,9 +103,7 @@
   float: left;
   width: 16px;
   height: 16px;
-  margin: auto;
-  background-color: #ccc;
   background-image: url('../images/utilities-terminal.png'); 
   background-repeat: no-repeat; 
-  background-position: left center;
+  background-position: 4px 4px;
 }
