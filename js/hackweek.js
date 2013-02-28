@@ -41,7 +41,7 @@ $(function () {
     })
 
     $(document).keydown(function(e){
-        if (e.keyCode == 0) {
+        if (e.keyCode == 0 || e.keyCode == 94 || e.keyCode == 176) {
             toggle_terminal()
         }
     })
@@ -72,13 +72,12 @@ $(function () {
         /* start page text scroll animation */
         if ($(window).scrollTop() <= $('#start').height()) {
             var percent_scrolled_out = $(window).scrollTop() / $('#start').height()
-            $("#claim-line1").css({ top: $(window).scrollTop() - (percent_scrolled_out * $("#claim-line1").position().top) / 6 });
-            $("#claim-line1").css({ 'opacity' : 1-percent_scrolled_out });
-            $("#claim-line2").css({ top: $(window).scrollTop() - (percent_scrolled_out * $("#claim-line2").position().top) / 6 });
-            $("#claim-line2").css({ 'opacity' : 1-percent_scrolled_out });
-            $("#claim-line3").css({ top: $(window).scrollTop() - (percent_scrolled_out * $("#claim-line3").position().top) / 6 });
-            $("#claim-line3").css({ 'opacity' : 1-percent_scrolled_out });
-
+            var lines = ["1", "2", "3", "4"]
+            lines.forEach(function (entry) {
+                var element = $("#claim-line" + entry)
+                element.css({ top: $(window).scrollTop() + percent_scrolled_out * ($('#start').height() / 2 - element.position().top),
+                    'opacity': 1 - percent_scrolled_out });
+            });
         }
     })
 
@@ -98,6 +97,11 @@ $(function () {
         $("#claim-line3").css({ right: $(window).width() })
         $("#claim-line3").animate({
             left: 0, top: 0
+        }, 1000);
+
+        $("#claim-line4").css({ bottom: -600 })
+        $("#claim-line4").animate({
+            top: 0
         }, 1000);
     }
 
