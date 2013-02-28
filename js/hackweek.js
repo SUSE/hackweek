@@ -142,7 +142,7 @@ $(function () {
       PS1:             "SUSEterm $",
       NOT_FOUND:       "Sorry me and my chameleon friends have never heard about CMD before :-(",
       WIDTH:           "80%",
-      HEIGHT:          "100%"
+      HEIGHT:          "500px"
   });
 });
 
