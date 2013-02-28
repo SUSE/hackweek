@@ -182,16 +182,58 @@ li {
     padding-top: 10px;
 }
 #agenda{
+    background-color: #d4df4c;
+    z-index: 30;
+    position: relative;
+}
+#monday{
+    margin-left: 190px;
+}
+#monday-content{
+    height: 100%;
+    background: #00843e;
+    width: 400px;
+    margin-left: 445px;
+}
+#tuesday{
+    margin-left: 855px;
+}
+#wednesday{
+    margin-left: 1100px;
+}
+#thursday{
+    margin-left: 1345px;
+}
+#friday{
+    margin-left: 1565px;
+}
+.agenda-details{
+    color: #FFF;
+    position: absolute;
+    font-family: 'Droid Sans', sans-serif;
+    text-align: left;
+    padding: 20px;
+}
+.agenda-item{
+    top: 50%;
+    position: absolute;
+    font-family: 'Droid Sans', sans-serif;
+    text-align: center;
+    margin-top: -150px;
+}
+.day-name{
+    font-size: 36px;
+}
+.day-number{
+    font-size: 230px;
+    margin-top: -35px;
+ }
+#join{
     background: rgb(215, 215, 215);
     background: -o-radial-gradient(rgb(240, 240, 240), rgb(220, 220, 220));
     background: -moz-radial-gradient(rgb(240, 240, 240), rgb(220, 220, 220));
     background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(220, 220, 220));
     background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(220, 220, 220)));
-    z-index: 30;
-    position: relative;
-}
-#join{
-    background-color: #d4df4c;
     z-index: 40;
     position: relative;
 }
