@@ -61,12 +61,12 @@ $(function () {
     $(window).scroll(function () {
 
         /* hide - unhide navigation */
-        if (!$('#navigation').is(":visible") && $(window).scrollTop() >= $('#what-is').height()/2) {
+        if (!$('#navigation').is(":visible") && $(window).scrollTop() >= $('#what-is').height()/1.5) {
             $('#navigation').fadeIn()
             $('#arrow-start').fadeOut()
 
         }
-        if ($('#navigation').is(":visible") && $(window).scrollTop() < $('#what-is').height()/2) {
+        if ($('#navigation').is(":visible") && $(window).scrollTop() < $('#what-is').height()/1.5) {
             $('#navigation').fadeOut()
             $('#arrow-start').fadeIn()
         }
@@ -85,7 +85,7 @@ $(function () {
         /* where page text scroll animation */
         if ($(window).scrollTop() > $('#join').position().top) {
             var percent_scrolled_out = -($(window).scrollTop() - $('#where').position().top) / $('#where').height()
-            $('#where-title').css({'opacity': 1 - percent_scrolled_out,
+            $('#where-title').css({'opacity': 1 - percent_scrolled_out/2,
                 right: percent_scrolled_out * -500})
         }
 
@@ -106,6 +106,15 @@ $(function () {
             $('#navigation li').removeClass('active')
             $('#what-is-link').addClass('active')
         }
+
+        /* invert navigation color */
+        $('#navigation li').each(function( index ) {
+            $(this).removeClass('invert')
+            if (($(this).position().top + $(this).height() > $("#projects").position().top - $(window).scrollTop()) &&
+                ($(this).position().top + $(this).height() < $("#agenda").position().top - $(window).scrollTop())) {
+               $(this).addClass('invert')
+            }
+        });
 
 
     })
