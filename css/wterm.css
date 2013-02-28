@@ -80,11 +80,11 @@
 
 #terminal-bottom-bar-tab {
   width: 20%;
-  height: 21px;
+  height: 20px;
   position: relative;
   top: -3px;
   background-color: #454444;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #454444), color-stop(0.3, #454444), color-start(1, #616060)); /* Chrome,Safari4+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #454444), color-stop(0.3, #454444), color-start(1, #616060)); /* Chrome,Safari4+ */
   background: -webkit-linear-gradient(top, #454444 0%, #454444 30%, #616060 100%); /* Chrome10+,Safari5.1+ */
   background: -ms-linear-gradient(top, #454444, #616060); /* IE10+ */
   background: -moz-linear-gradient(center top, #454444 0%, #454444 30%, #616060 100%); /* FF3.6+ */
@@ -92,7 +92,7 @@
   background: -o-linear-gradient(top, #454444 0%, #454444 30%, #616060 100%); /* Opera 11.10+ */
   background: linear-gradient(top, #454444 0%, #454444 30%, #616060 100%); /* W3C */
   color: #ebebeb;
-  padding-top: 4px;
+  padding-top: 3px;
   border-bottom: 1px solid #212121;
   border-left: 1px solid #454444; 
   border-right: 1px solid #454444;
@@ -108,5 +108,5 @@
   height: 16px;
   background-image: url('../images/utilities-terminal.png'); 
   background-repeat: no-repeat; 
-  background-position: 6px center;
+  background-position: 7px center;
 }
