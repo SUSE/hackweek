@@ -243,6 +243,35 @@ li {
     z-index: 40;
     position: relative;
 }
+#join-title{
+    margin: 0 auto;
+	padding-top: 20px;
+    font-family: 'Droid Sans', sans-serif;
+	color: #201f1f;
+	font-size: 35px;
+    text-align: center;
+}
+#join-call-to-action{
+    position: absolute;
+	background-color: #9cdaf0;
+	height: 25%;
+	width: 350px;
+	bottom: 0;
+	left: 50%;
+	margin-left: -175px;
+    font-family: 'Droid Sans', sans-serif;
+	color: #201f1f;
+	font-size: 30px;
+    text-align: center;
+	text-transform: uppercase;
+	font-weight: bold;
+	padding-top: 20px;
+}
+#join-unlock{
+    margin: 0 auto;
+	text-align: center;
+	padding-top: 4%;
+}
 #where{
     background-color: #FFF;
     background: url('../images/world-map.png');
