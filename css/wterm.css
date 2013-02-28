@@ -1,6 +1,6 @@
 /* Basic Terminal CSS */
 .wterm_terminal {  
-  background: #000; 
+  background: rgba(0,0,0,0.5); 
   color: #fff; 
   font-size: 1em; 
   font-family: monospace; 
