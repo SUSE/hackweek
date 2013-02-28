@@ -84,27 +84,48 @@ li {
     z-index: 1;
 }
 #pay-off{
-    position: relative;
+    position: absolute;
     margin: 0 auto;
-    max-width: 960px;
-    padding-top: 15%;
+    width: 90%;
+    padding-top: 4%;
     z-index: 3;
+    left:50%;
+    margin-left: -25%;
 }
 .claim{
     font-family: 'Abril Fatface', cursive;
     margin: 5px;
     font-size: 50px;
-/*    text-transform: uppercase;
-    font-weight: bold;
-    background: rgba(0, 0 ,0 ,0.5);*/
-    display: inline-block;
-    color: #FFF;
+    color: rgba(255, 255, 255, 1);
     top: 50%;
     position: relative;
     padding: 4px 12px 4px 15px;
     z-index: 3;
+    clear: left;
+    text-shadow: 1px -1px 2px black;
 }
 
+.word-1{
+    font-size: 116px;
+}
+.word-2{
+    font-size: 163px;
+    margin-top: -80px;
+    padding-left: 205px;
+}
+.word-3{
+    font-size: 163px;
+    margin-top: -105px;
+    margin-left: -90px;
+}
+.word-half-size{
+    font-size: 78px;
+}
+.word-4{
+    font-size: 222px;
+    margin-top: -90px;
+    padding-left: 117px;
+}
 #what-is{
     background-color: #ff0000;
     z-index: 10;
