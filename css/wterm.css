@@ -46,7 +46,7 @@
 #terminal-bottom-tabbar {
   padding: 1px 10px; 
   height: 2px;
-  width: 100%; 
+  width: 80%; 
   background: #4b4a4a; 
   display: block; 
   overflow-x: none; 
