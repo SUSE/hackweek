@@ -139,12 +139,6 @@ li {
     z-index: 20;
     position: relative;
 }
-#projects .terminal-btn {
-    color: #FFF;
-}
-#projects .terminal-dot {
-    background-color: #FFF;
-}
 .project-instructions{
     background-color: #000000;
     position: absolute;
@@ -233,15 +227,17 @@ li {
     width: 100%;
     height: 300px;
 }
-.terminal-btn{
+#terminal-btn{
     font-family: 'Cutive Mono', sans-serif;
-    position: absolute;
+    position: fixed;
     bottom: 20px;
     right: 20px;
     font-size: 13px;
     font-weight: 100;
     text-transform: uppercase;
     cursor: pointer;
+    z-index: 100;
+    display: block;
 }
 .terminal-dot{
     float: right;
