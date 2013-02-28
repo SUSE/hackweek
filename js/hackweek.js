@@ -81,6 +81,15 @@ $(function () {
                     'opacity': 1 - percent_scrolled_out });
             });
         }
+
+        /* where page text scroll animation */
+        if ($(window).scrollTop() > $('#join').position().top) {
+            var percent_scrolled_out = -($(window).scrollTop() - $('#where').position().top) / $('#where').height()
+            $('#where-title').css({'opacity': 1 - percent_scrolled_out,
+                right: percent_scrolled_out * -500})
+        }
+
+
     })
 
 
@@ -89,22 +98,22 @@ $(function () {
         $("#claim-line1").css({ top: -600 })
         $("#claim-line1").animate({
             top: 0
-        }, 1000);
+        }, 800);
 
         $("#claim-line2").css({ left: $(window).width() })
         $("#claim-line2").animate({
             left: 0, top: 0
-        }, 1000);
+        }, 800);
 
         $("#claim-line3").css({ right: $(window).width() })
         $("#claim-line3").animate({
             left: 0, top: 0
-        }, 1000);
+        }, 800);
 
         $("#claim-line4").css({ bottom: -600 })
         $("#claim-line4").animate({
             top: 0
-        }, 1000);
+        }, 800);
     }
 
 
