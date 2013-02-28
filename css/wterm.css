@@ -94,6 +94,8 @@
   color: #ebebeb;
   padding-top: 4px;
   border-bottom: 1px solid #212121;
+  border-left: 1px solid #454444; 
+  border-right: 1px solid #454444;
   border-radius: 0px 0px 4px 4px;
   text-align: center;
   font-size: 11px;
