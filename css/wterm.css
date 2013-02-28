@@ -42,8 +42,16 @@
   border-radius: 0px 0px 4px 4px;  
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7); 
 }
-#terminal-bottom-tabbar { 
+#terminal-bottom-tabbar {
+  padding: 4px 10px; 
   height: 4px;
+  width: 80%; 
+  background: #4b4a4a; 
+  display: block; 
+  overflow-x: none; 
+  overflow-y: auto; 
+  margin-left: auto; 
+  margin-right: auto; 
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);  
   border-bottom: 1px solid #212121;
-  width: 100%;
 }
