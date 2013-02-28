@@ -193,19 +193,19 @@ li {
     height: 100%;
     background: #00843e;
     width: 400px;
-    margin-left: 445px;
+    margin-left: 470px;
 }
 #tuesday{
-    margin-left: 855px;
+    margin-left: 900px;
 }
 #wednesday{
-    margin-left: 1100px;
+    margin-left: 1170px;
 }
 #thursday{
-    margin-left: 1345px;
+    margin-left: 1440px;
 }
 #friday{
-    margin-left: 1565px;
+    margin-left: 1685px;
 }
 .agenda-details{
     color: #FFF;
@@ -228,6 +228,16 @@ li {
     font-size: 230px;
     margin-top: -35px;
  }
+#agenda-year{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 30px;
+    color: #00843e;
+}
 #join{
     background: rgb(215, 215, 215);
     background: -o-radial-gradient(rgb(240, 240, 240), rgb(220, 220, 220));
