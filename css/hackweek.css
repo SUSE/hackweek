@@ -125,6 +125,8 @@ li {
     font-size: 222px;
     margin-top: -90px;
     padding-left: 117px;
+    z-index: 3;
+    position: relative;
 }
 #what-is{
     background-color: #ffffff;
