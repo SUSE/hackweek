@@ -1,5 +1,5 @@
 /* Basic Terminal CSS */
-.wterm_terminal {  background: #000; color: #fff; font-size: 1em; font-family: monospace; padding: 10px; display: block; overflow-x: none; overflow-y: auto; margin-left: auto; margin-right: auto; margin-bottom: 10px;  }
+.wterm_terminal {  background: #000; color: #fff; font-size: 1em; font-family: monospace; padding: 10px 10px 0px; display: block; overflow-x: none; overflow-y: auto; margin-left: auto; margin-right: auto; }
 
 /* TODO: Input Box Width is faulty */
 .wterm_terminal input { background: transparent; border: 0; color: #fff; width: 100%; font-size: 1em; font-family: monospace; outline: none;   }
@@ -12,7 +12,7 @@
 .wterm_theme_green_on_black input { background: transparent; border: 0; color: #0f0; }
 
 #terminal{
-    background: #4b4a4a;
+    background-color: #4b4a4a;
     display: none;
     z-index: 9999;
     position: fixed;
