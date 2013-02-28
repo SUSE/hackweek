@@ -44,7 +44,7 @@
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7); 
 }
 #terminal-bottom-tabbar {
-  padding: 1px 10px; 
+  padding: 0px 10px; 
   height: 2px;
   width: 80%; 
   background: #4b4a4a; 
