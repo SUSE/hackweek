@@ -41,7 +41,7 @@ $(function () {
     })
 
     $(document).keydown(function(e){
-        if (e.keyCode == 0 || e.keyCode == 94 || e.keyCode == 176) {
+        if (e.keyCode == 0 || e.keyCode == 94 || e.keyCode == 176 || e.keyCode == 160) {
             toggle_terminal()
         }
     })
@@ -50,10 +50,12 @@ $(function () {
     function toggle_terminal() {
         if ($('#terminal').is(":visible")) {
             $('#terminal').slideUp('fast');
+            $('#wterm').find('div:last form input').blur()
         } else {
             $('#terminal').slideDown('fast');
+            $('#wterm').find('div:last form input').focus()
         }
-        $('#wterm').find('div:last form input').focus()
+
     }
 
     $(window).scroll(function () {
