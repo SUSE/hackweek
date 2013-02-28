@@ -135,6 +135,15 @@ li {
     z-index: 10;
     position: relative;
 }
+#what-is-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 1193px;
+    height: 732px;
+    margin-left: -597px;
+    margin-top: -366px;
+}
 #projects{
     background-color: #000;
     background: url('../images/projects-thumbs.jpg');
