@@ -83,7 +83,7 @@
   height: 21px;
   position: relative;
   top: -3px;
-  background-color: #4b4a4a;
+  background-color: #454444;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0.3, #454444), color-start(1, #616060)); /* Chrome,Safari4+ */
   background: -webkit-linear-gradient(top, #454444 30%, #616060 100%); /* Chrome10+,Safari5.1+ */
   background: -ms-linear-gradient(top, #454444, #616060); /* IE10+ */
