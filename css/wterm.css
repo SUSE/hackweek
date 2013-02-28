@@ -19,7 +19,7 @@
 .wterm_terminal  form { float: left; margin: 0px; width: 75%; }
 
 /* Themes */
-.wterm_theme_green_on_black { background: rgba(0,0,0,0.8); background-image: url('../images/term-bg.png'); background-repeat: no-repeat; background-position: center; color: #00a54f; }
+.wterm_theme_green_on_black { background: rgba(0,0,0,0.95); background-image: url('../images/term-bg.png'); background-repeat: no-repeat; background-position: center; color: #00a54f; }
 .wterm_theme_green_on_black input { background: transparent; border: 0; color: #0f0; }
 
 #terminal{
