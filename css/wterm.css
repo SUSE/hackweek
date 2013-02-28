@@ -50,7 +50,7 @@
 
 #terminal-bottom-bar { 
   padding: 0px 10px; 
-  height:28px; 
+  height:26px; 
   width: 80%; 
   background: #4b4a4a; 
   display: block; 
@@ -79,7 +79,7 @@
 
 #terminal-bottom-bar-tab {
   width: 20%;
-  height: 19px;
+  height: 17px;
   position: relative;
   top: -3px;
   background-color: #4b4a4a;
