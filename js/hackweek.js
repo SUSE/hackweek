@@ -53,6 +53,7 @@ $(function () {
         } else {
             $('#terminal').slideDown('fast');
         }
+        $('#wterm').find('div:last form input').focus()
     }
 
     $(window).scroll(function () {
