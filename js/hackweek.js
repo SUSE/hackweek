@@ -60,14 +60,16 @@ $(function () {
 
     $(window).scroll(function () {
 
-        /* hide - unhide navigation */
+        /* hide - unhide navigation, arrow, terminal button on first page */
         if (!$('#navigation').is(":visible") && $(window).scrollTop() >= $('#what-is').height()/1.5) {
             $('#navigation').fadeIn()
+            $('#terminal-btn').fadeIn()
             $('#arrow-start').fadeOut()
 
         }
         if ($('#navigation').is(":visible") && $(window).scrollTop() < $('#what-is').height()/1.5) {
             $('#navigation').fadeOut()
+            $('#terminal-btn').fadeOut()
             $('#arrow-start').fadeIn()
         }
 

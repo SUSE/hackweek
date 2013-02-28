@@ -247,7 +247,7 @@ li {
     text-transform: uppercase;
     cursor: pointer;
     z-index: 100;
-    display: block;
+    display: none;
 }
 .terminal-dot{
     float: right;
