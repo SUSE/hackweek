@@ -138,12 +138,8 @@ li {
 }
 #what-is-content {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 1193px;
-    height: 732px;
-    margin-left: -597px;
-    margin-top: -366px;
+    top: 20px;
+    margin-left: 250px;
 }
 #projects{
     background-color: #000;
