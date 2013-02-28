@@ -104,7 +104,6 @@ $(function () {
 
   // Setup terminal
   $('#wterm').wterm();
-
 });
 
 
