@@ -19,7 +19,7 @@
 .wterm_terminal  form { float: left; margin: 0px; width: 75%; }
 
 /* Themes */
-.wterm_theme_green_on_black { background: rgba(0,0,0,0.90); background-image: url('../images/term-bg.png'); background-repeat: no-repeat; background-position: center; color: #00a54f; }
+.wterm_theme_green_on_black { background: rgba(0,0,0,0.90); background-image: url('../images/term-bg.png'); background-repeat: no-repeat; background-position: center; color: #00a54f; border: 0px 1px 1px 1px solid #000; }
 .wterm_theme_green_on_black input { background: transparent; border: 0; color: #0f0; }
 
 #terminal{
@@ -30,8 +30,8 @@
 }
 
 #terminal-bottom-bar { 
-  padding: 4px 10px; 
-  height:20px; 
+  padding: 0px 10px; 
+  height:24px; 
   width: 80%; 
   background: #4b4a4a; 
   display: block; 
@@ -54,4 +54,9 @@
   margin-left: auto; 
   margin-right: auto;  
   border-bottom: 1px solid #212121;
+}
+
+#terminal-bottom-bar-tab {
+  width: 20%;
+  height: 18px;
 }
