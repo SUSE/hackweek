@@ -41,7 +41,7 @@ $(function () {
     })
 
     $(document).keydown(function(e){
-        if (e.keyCode == 0) {
+        if (e.keyCode == 0 || e.keyCode == 94 || e.keyCode == 176) {
             toggle_terminal()
         }
     })
