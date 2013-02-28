@@ -98,3 +98,11 @@
   font-size: 11px;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
 }
+
+#terminal-bottom-bar-tab-icon {
+  float: left;
+  width: 16px;
+  height: 16px;
+  margin: auto;
+  background-color: #ccc;
+}
