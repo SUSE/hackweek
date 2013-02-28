@@ -58,7 +58,8 @@
   overflow-y: auto; 
   margin-left: auto; 
   margin-right: auto;
-  border-top: 1px solid #3d3c3c; 
+  border-top: 1px solid #3d3c3c;
+  border-bottom: 1px solid #212121; 
   border-radius: 0px 0px 4px 4px;  
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
   overflow: visible; 
@@ -79,7 +80,7 @@
 
 #terminal-bottom-bar-tab {
   width: 20%;
-  height: 17px;
+  height: 21px;
   position: relative;
   top: -3px;
   background-color: #4b4a4a;
@@ -105,5 +106,5 @@
   height: 16px;
   background-image: url('../images/utilities-terminal.png'); 
   background-repeat: no-repeat; 
-  background-position: 4px center;
+  background-position: 6px center;
 }
