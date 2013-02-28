@@ -1,6 +1,5 @@
 $(function () {
 
-
     $("#start-link").click(function () {
         $('html, body').animate({
             scrollTop: $("#start").offset().top
@@ -38,8 +37,23 @@ $(function () {
     })
 
     $(".terminal-btn").click(function () {
-        $('#terminal').show();
-    });
+        toggle_terminal()
+    })
+
+    $(document).keydown(function(e){
+        if (e.keyCode == 0) {
+            toggle_terminal()
+        }
+    })
+
+
+    function toggle_terminal() {
+        if ($('#terminal').is(":visible")) {
+            $('#terminal').slideUp('fast');
+        } else {
+            $('#terminal').slideDown('fast');
+        }
+    }
 
     $(window).scroll(function () {
 
@@ -54,7 +68,7 @@ $(function () {
             $('#arrow-start').fadeIn()
         }
 
-        /* start page text animation */
+        /* start page text scroll animation */
         if ($(window).scrollTop() <= $('#start').height()) {
             var percent_scrolled_out = $(window).scrollTop() / $('#start').height()
             $("#claim-line1").css({ top: $(window).scrollTop() - (percent_scrolled_out * $("#claim-line1").position().top) / 6 });
@@ -68,6 +82,7 @@ $(function () {
     })
 
 
+    /* start page text initial animation */
     if ($(window).scrollTop() == 0) {
         $("#claim-line1").css({ top: -600 })
         $("#claim-line1").animate({
