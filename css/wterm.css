@@ -117,5 +117,14 @@
   height: 16px;
   background-image: url('../images/close.png'); 
   background-repeat: no-repeat; 
-  background-position: 0px 0px;
+  background-position: 0px 2px;
+}
+
+#terminal-bottom-bar-tab-close:hover {
+  float: right;
+  width: 22px;
+  height: 16px;
+  background-image: url('../images/close-hover.png'); 
+  background-repeat: no-repeat; 
+  background-position: 0px 2px;
 }
