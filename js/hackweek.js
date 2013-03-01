@@ -120,6 +120,10 @@ $(function () {
                 ($(this).position().top + $(this).height() < $("#agenda").position().top - $(window).scrollTop())) {
                $(this).addClass('invert')
             }
+            if (($(this).position().top + $(this).height() > $("#what-is").position().top - $(window).scrollTop()) &&
+                ($(this).position().top + $(this).height() < $("#agenda").position().top - $(window).scrollTop())) {
+                $(this).addClass('invert')
+            }
         });
 
 
