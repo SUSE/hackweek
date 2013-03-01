@@ -40,6 +40,10 @@ $(function () {
         toggle_terminal()
     })
 
+    $("#terminal-bottom-bar-tab-close").click(function () {
+        toggle_terminal()
+    })
+
     $(document).keydown(function(e){
         if (e.keyCode == 0 || e.keyCode == 94 || e.keyCode == 176 || e.keyCode == 160) {
             toggle_terminal()
