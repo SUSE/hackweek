@@ -2,7 +2,8 @@
 .wterm_terminal {  
   background: #000; 
   color: #fff; 
-  font-size: 1em; 
+  font-size: 1em;
+  line-height: 1.5em; 
   font-family: monospace; 
   padding: 10px 10px 0px; 
   display: block; 
@@ -10,7 +11,8 @@
   overflow-y: auto; 
   margin-left: auto; 
   margin-right: auto; 
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);}
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+}
 
 /* TODO: Input Box Width is faulty */
 .wterm_terminal input { 
@@ -38,7 +40,8 @@
 .wterm_theme_green_on_black input { 
   background: transparent; 
   border: 0; 
-  color: #0f0; 
+  color: #0f0;
+  padding-top: 2px;
 }
 
 #terminal{
@@ -46,6 +49,10 @@
     z-index: 9999;
     position: fixed;
     width: 100%;
+}
+
+.welcome-message {
+  color: #eee;
 }
 
 #terminal-bottom-bar { 

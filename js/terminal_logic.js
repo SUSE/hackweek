@@ -1,10 +1,10 @@
 $(function () {
   var projects = [
     {
-      title: "Make a nifty hackweek website"
+      title: "<span class='welcome-message'>Make a nifty hackweek website<span>"
     },
     {
-      title: "Do something great"
+      title: "<span class='welcome-message'>Do something great<span>"
     }
   ];
 
