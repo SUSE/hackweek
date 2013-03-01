@@ -137,9 +137,54 @@ li {
     position: relative;
 }
 #what-is-content {
-    position: absolute;
-    top: 20px;
-    margin-left: 250px;
+    margin: 0 auto;
+    width: 1150px;
+}
+#what-is-title{
+    margin: 0 auto;
+    padding-top: 110px;
+    font-family: 'Droid Sans', sans-serif;
+    color: #3c403e;
+    font-size: 33px;
+    text-align: center;
+}
+#what-is-cta{
+    background-color: #00843e;
+    height: 100%;
+    width: 350px;
+    margin-top: 0px;
+    margin-left: 50px;
+    font-family: 'Droid Sans', sans-serif;
+    color: #FFF;
+    font-size: 18px;
+    text-align: left;
+    font-weight: normal;
+    padding-left: 20px;
+    padding-right: 20px;
+    float: left;
+    margin-top: 110px;
+}
+#what-is-cta h3{
+    font-size: 24px;
+}
+#hackweek-prizes{
+    margin-top: 110px;
+    margin-left: 50px;
+    float: left;
+    color: #00843e;
+    font-size: 20px;
+}
+#hackweek-logos{
+    width: 350px;
+    font-family: 'Droid Sans', sans-serif;
+    color: #00843e;
+    font-size: 20px;
+    text-align: left;
+    font-weight: normal;
+    padding-left: 20px;
+    padding-right: 20px;
+    float: left;
+    margin-top: 110px;
 }
 #projects{
     background-color: #000;
