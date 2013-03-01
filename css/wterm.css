@@ -110,3 +110,12 @@
   background-repeat: no-repeat; 
   background-position: 6px 1px;
 }
+
+#terminal-bottom-bar-tab-close {
+  float: right;
+  width: 22px;
+  height: 16px;
+  background-image: url('../images/utilities-terminal.png'); 
+  background-repeat: no-repeat; 
+  background-position: -6px 1px;
+}
