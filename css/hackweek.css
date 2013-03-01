@@ -130,8 +130,8 @@ li {
     position: relative;
 }
 #what-is{
-    background-color: #ffffff;
-    background: url('../images/cloud-pattern.png');
+    background-color: #222222;
+    /*background: url('../images/cloud-pattern.png');*/
     background-repeat: repeat;
     z-index: 10;
     position: relative;
@@ -144,18 +144,18 @@ li {
     margin: 0 auto;
     padding-top: 110px;
     font-family: 'Droid Sans', sans-serif;
-    color: #3c403e;
+    color: #d4df4c;
     font-size: 33px;
     text-align: center;
 }
 #what-is-cta{
-    background-color: #00843e;
+    background-color: #d4df4c;
     height: 100%;
     width: 350px;
     margin-top: 0px;
     margin-left: 50px;
     font-family: 'Droid Sans', sans-serif;
-    color: #FFF;
+    color: #222222;
     font-size: 18px;
     text-align: left;
     font-weight: normal;
@@ -167,17 +167,14 @@ li {
 #what-is-cta h3{
     font-size: 24px;
 }
-#hackweek-prizes{
-    margin-top: 110px;
-    margin-left: 50px;
-    float: left;
-    color: #00843e;
-    font-size: 20px;
+#what-is-2row{
+    margin: 0 auto;
+    width: 830px;
 }
 #hackweek-logos{
     width: 350px;
     font-family: 'Droid Sans', sans-serif;
-    color: #00843e;
+    color: #7ac142;
     font-size: 20px;
     text-align: left;
     font-weight: normal;
