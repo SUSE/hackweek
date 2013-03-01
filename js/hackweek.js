@@ -157,8 +157,8 @@ $(function () {
 
   // Setup terminal
   $('#wterm').wterm({
-      WELCOME_MESSAGE: "Welcome to Hackweek 9! Use this terminal to discover more about our git repo",
-      PS1:             "SUSEterm $",
+      WELCOME_MESSAGE: "Welcome to Hackweek 9! Have a lot of fun...",
+      PS1:             "geeko@hackweek:~ >",
       NOT_FOUND:       "Sorry me and my chameleon friends have never heard about CMD before :-(",
       WIDTH:           "80%",
       HEIGHT:          "500px"
