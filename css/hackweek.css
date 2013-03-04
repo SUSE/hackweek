@@ -183,7 +183,7 @@ li {
     float: left;
     margin-top: 110px;
 }
-#projects{
+#people{
     background-color: #000;
     background: url('../images/projects-thumbs.jpg');
     background-size: 100% auto;
@@ -276,7 +276,7 @@ li {
     font-size: 30px;
     color: #00843e;
 }
-#join{
+#projects{
     background: rgb(215, 215, 215);
     background: -o-radial-gradient(rgb(240, 240, 240), rgb(220, 220, 220));
     background: -moz-radial-gradient(rgb(240, 240, 240), rgb(220, 220, 220));
@@ -285,7 +285,7 @@ li {
     z-index: 40;
     position: relative;
 }
-#join-title{
+#projects-title{
     margin: 0 auto;
 	padding-top: 110px;
     font-family: 'Droid Sans', sans-serif;
@@ -293,7 +293,7 @@ li {
 	font-size: 35px;
     text-align: center;
 }
-#join-call-to-action{
+#projects-call-to-action{
     position: absolute;
 	background-color: #9cdaf0;
 	height: 25%;
@@ -309,7 +309,7 @@ li {
 	font-weight: bold;
 	padding-top: 20px;
 }
-#join-unlock{
+#projects-unlock{
     margin: 0 auto;
 	text-align: center;
 	padding-top: 80px;

@@ -12,9 +12,9 @@ $(function () {
         }, 1000);
     })
 
-    $("#projects-link").click(function () {
+    $("#people-link").click(function () {
         $('html, body').animate({
-            scrollTop: $("#projects").offset().top
+            scrollTop: $("#people").offset().top
         }, 1000);
     })
 
@@ -24,9 +24,9 @@ $(function () {
         }, 1000);
     })
 
-    $("#join-link").click(function () {
+    $("#projects-link").click(function () {
         $('html, body').animate({
-            scrollTop: $("#join").offset().top
+            scrollTop: $("#projects").offset().top
         }, 1000);
     })
 
@@ -89,26 +89,26 @@ $(function () {
         }
 
         /* where page text scroll animation */
-        if ($(window).scrollTop() > $('#join').position().top) {
+        if ($(window).scrollTop() > $('#projects').position().top) {
             var percent_scrolled_out = -($(window).scrollTop() - $('#where').position().top) / $('#where').height()
             $('#where-title').css({'opacity': 1 - percent_scrolled_out/2,
                 right: percent_scrolled_out * -500})
         }
 
         /* set active page in navigation menu */
-        if ($(window).scrollTop() > $('#join').position().top + $('#join').height() / 2) {
+        if ($(window).scrollTop() > $('#where').position().top - $('#where').height() / 2) {
             $('#navigation li').removeClass('active')
             $('#where-link').addClass('active')
-        } else if ($(window).scrollTop() > $('#agenda').position().top + $('#agenda').height() / 2) {
+        } else if ($(window).scrollTop() > $('#people').position().top - $('#people').height() / 2) {
             $('#navigation li').removeClass('active')
-            $('#join-link').addClass('active')
-        } else if ($(window).scrollTop() > $('#projects').position().top + $('#projects').height() / 2) {
-            $('#navigation li').removeClass('active')
-            $('#agenda-link').addClass('active')
-        } else if ($(window).scrollTop() > $('#what-is').position().top + $('#what-is').height() / 2) {
+            $('#people-link').addClass('active')
+        } else if ($(window).scrollTop() > $('#projects').position().top - $('#projects').height() / 2) {
             $('#navigation li').removeClass('active')
             $('#projects-link').addClass('active')
-        } else if ($(window).scrollTop() > $('#start').position().top + $('#start').height() / 2) {
+        } else if ($(window).scrollTop() > $('#agenda').position().top - $('#agenda').height() / 2) {
+            $('#navigation li').removeClass('active')
+            $('#agenda-link').addClass('active')
+        } else if ($(window).scrollTop() > $('#what-is-link').position().top - $('#what-is-link').height() / 2) {
             $('#navigation li').removeClass('active')
             $('#what-is-link').addClass('active')
         }
@@ -116,12 +116,12 @@ $(function () {
         /* invert navigation color */
         $('#navigation li').each(function( index ) {
             $(this).removeClass('invert')
-            if (($(this).position().top + $(this).height() > $("#projects").position().top - $(window).scrollTop()) &&
-                ($(this).position().top + $(this).height() < $("#agenda").position().top - $(window).scrollTop())) {
+            if (($(this).position().top + $(this).height() > $("#people").position().top - $(window).scrollTop()) &&
+                ($(this).position().top + $(this).height() < $("#people").position().top - $(window).scrollTop() + $('#people').height())) {
                $(this).addClass('invert')
             }
             if (($(this).position().top + $(this).height() > $("#what-is").position().top - $(window).scrollTop()) &&
-                ($(this).position().top + $(this).height() < $("#agenda").position().top - $(window).scrollTop())) {
+                ($(this).position().top + $(this).height() < $("#what-is").position().top - $(window).scrollTop() + $('#what-is').height())) {
                 $(this).addClass('invert')
             }
         });
