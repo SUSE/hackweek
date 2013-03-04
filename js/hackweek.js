@@ -88,9 +88,16 @@ $(function () {
             });
         }
 
+        /* people page text scroll animation */
+        if ($(window).scrollTop() > $('#people').position().top - $('#people').height() &&
+            $(window).scrollTop() < $('#people').position().top + 2 * $('#people').height()) {
+            var percent_scrolled_out = Math.abs(($(window).scrollTop() - $('#people').position().top) / $('#people').height())
+            $('.project-instructions').css({'opacity': 1 - percent_scrolled_out * 3})
+        }
+
         /* where page text scroll animation */
-        if ($(window).scrollTop() > $('#projects').position().top) {
-            var percent_scrolled_out = -($(window).scrollTop() - $('#where').position().top) / $('#where').height()
+        if ($(window).scrollTop() > $('#where').position().top - $('#where').height()) {
+            var percent_scrolled_out = Math.abs(($(window).scrollTop() - $('#where').position().top) / $('#where').height())
             $('#where-title').css({'opacity': 1 - percent_scrolled_out/2,
                 right: percent_scrolled_out * -500})
         }
