@@ -78,10 +78,10 @@ li {
  }
 
 #start{
-    /*background: url('../images/start-background.jpg');*/
+    background: url('../images/start-background.jpg');
     background-color: #000;
     background-size: 100% auto;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     position: relative;
     z-index: 1;
 }
