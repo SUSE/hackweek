@@ -78,10 +78,10 @@ li {
  }
 
 #start{
-    background: url('../images/start-background.jpg');
+    background: url('../images/geeko-tile.png');
     background-color: #000;
-    background-size: 100% auto;
-    background-repeat: repeat;
+    /*background-size: 100% auto;*/
+    background-repeat: repeat-x;
     position: relative;
     z-index: 1;
 }
