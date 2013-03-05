@@ -330,13 +330,14 @@ li {
 	text-transform: uppercase;
 	font-weight: bold;
 	padding-top: 20px;
+	display: none;
 }
 #projects-unlock{
     text-align: center;
     left: 50%;
     top: 50%;
     position: absolute;
-    margin: -200px auto 0 -92px;
+    margin: -300px auto 0 -505px;
 }
 #where{
     background-color: #FFF;
