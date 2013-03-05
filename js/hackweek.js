@@ -99,7 +99,7 @@ $(function () {
         if ($(window).scrollTop() > $('#where').position().top - $('#where').height()) {
             var percent_scrolled_out = Math.abs(($(window).scrollTop() - $('#where').position().top) / $('#where').height())
             $('#where-title').css({'opacity': 1 - percent_scrolled_out/2,
-                right: percent_scrolled_out * -500})
+                right: (percent_scrolled_out * -500) - 40})
         }
 
         /* set active page in navigation menu */
