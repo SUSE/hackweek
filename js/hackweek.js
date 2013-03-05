@@ -133,6 +133,16 @@ $(function () {
             }
         });
 
+        /* invert terminal link color */
+        $('#terminal-btn').removeClass('invert')
+        if (($('#terminal-btn').position().top + $('#terminal-btn').height()/2 > $("#people").position().top - $(window).scrollTop()) &&
+                ($('#terminal-btn').position().top + $('#terminal-btn').height()/2 < $("#people").position().top - $(window).scrollTop() + $('#people').height())) {
+            $('#terminal-btn').addClass('invert')
+        }
+        if (($('#terminal-btn').position().top + $('#terminal-btn').height()/2 > $("#what-is").position().top - $(window).scrollTop()) &&
+            ($('#terminal-btn').position().top + $('#terminal-btn').height()/2 < $("#what-is").position().top - $(window).scrollTop() + $('#what-is').height())) {
+            $('#terminal-btn').addClass('invert')
+        }
 
     })
 

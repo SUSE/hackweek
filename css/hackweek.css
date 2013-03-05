@@ -368,6 +368,9 @@ li {
     z-index: 100;
     display: none;
 }
+#terminal-btn.invert{
+    color: #fff;
+}
 .terminal-dot{
     float: right;
     height: 10px;
