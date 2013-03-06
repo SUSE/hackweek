@@ -224,41 +224,59 @@ li {
     background-color: #d4df4c;
     z-index: 30;
     position: relative;
+    min-height: 700px;
+    max-height: 100%;
 }
-#monday{
-    margin-left: 190px;
+
+#agenda-content{
+    position: absolute;
+    left: 220px;
+    width: 2500px;
 }
-#monday-content{
+
+.agenda-day-content{
     height: 100%;
     background: #00843e;
-    width: 400px;
-    margin-left: 470px;
+    width: 0px;
+    height: 1200px;
+    display: none;
+    float: left;
+}
+
+.agenda-day {
+    float: left;
+    margin-top: 300px;
+    margin-left: 30px;
+}
+
+#monday{
+}
+#monday-content{
 }
 #tuesday{
-    margin-left: 900px;
+}
+#tuesday-content{
 }
 #wednesday{
-    margin-left: 1170px;
 }
 #thursday{
-    margin-left: 1440px;
 }
 #friday{
-    margin-left: 1685px;
 }
+
 .agenda-details{
     color: #FFF;
-    position: absolute;
     font-family: 'Droid Sans', sans-serif;
     text-align: left;
     padding: 20px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .agenda-details h1 {
     margin-top: 0;
 }
 .agenda-item{
     top: 50%;
-    position: absolute;
     font-family: 'Droid Sans', sans-serif;
     text-align: center;
     margin-top: -150px;

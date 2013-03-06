@@ -50,6 +50,27 @@ $(function () {
         }
     })
 
+    /* agenda */
+    $("#monday").mouseover(function () {
+        slidein_agenda_day($('#monday-content'))
+    })
+    $("#tuesday").mouseover(function () {
+        slidein_agenda_day($('#tuesday-content'))
+    })
+
+    function slidein_agenda_day(element) {
+        if (element.css('width') != "400px") {
+            $(".agenda-day-content").stop().animate({
+                'width': '0px', 'opacity': 0
+            }, 800);
+            element.css({ width: 0, 'opacity': 0 })
+                .show()
+                .stop().animate({
+                    'width': '400px', 'opacity': 1
+                }, 800);
+        }
+    }
+
 
     function toggle_terminal() {
         if ($('#terminal').is(":visible")) {
