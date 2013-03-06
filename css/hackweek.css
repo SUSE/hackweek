@@ -78,9 +78,10 @@ li {
  }
 
 #start{
-    background: url('../images/start-background.jpg');
-    background-size: 100% auto;
-    background-repeat: no-repeat;
+    background: url('../images/geeko-tile.png');
+    background-color: #000;
+    /*background-size: 100% auto;*/
+    background-repeat: repeat-x;
     position: relative;
     z-index: 1;
 }
@@ -142,10 +143,10 @@ li {
 }
 #what-is-title{
     margin: 0 auto;
-    padding-top: 110px;
+    padding-top: 20px;
     font-family: 'Droid Sans', sans-serif;
     color: #d4df4c;
-    font-size: 33px;
+    font-size: 25px;
     text-align: center;
 }
 #what-is-cta{
@@ -252,6 +253,9 @@ li {
     text-align: left;
     padding: 20px;
 }
+.agenda-details h1 {
+    margin-top: 0;
+}
 .agenda-item{
     top: 50%;
     position: absolute;
@@ -268,13 +272,31 @@ li {
  }
 #agenda-year{
     position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 15px;
+    color: #000;
+}
+#agenda-offices{
+    position: absolute;
     top: 20px;
     right: 20px;
     font-weight: 100;
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: 30px;
-    color: #00843e;
+    font-size: 15px;
+    color: #FFF;
+}
+#agenda-offices span{
+    display: inline-block;
+    background: #000;
+    padding: 3px;
+}
+#agenda-offices .current{
+    background: #00843E;
 }
 #projects{
     background: rgb(215, 215, 215);
@@ -287,10 +309,10 @@ li {
 }
 #projects-title{
     margin: 0 auto;
-	padding-top: 110px;
+	padding-top: 20px;
     font-family: 'Droid Sans', sans-serif;
 	color: #201f1f;
-	font-size: 35px;
+	font-size: 25px;
     text-align: center;
 }
 #projects-call-to-action{
@@ -308,16 +330,19 @@ li {
 	text-transform: uppercase;
 	font-weight: bold;
 	padding-top: 20px;
+	display: none;
 }
 #projects-unlock{
-    margin: 0 auto;
-	text-align: center;
-	padding-top: 80px;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    margin: -300px auto 0 -505px;
 }
 #where{
     background-color: #FFF;
-    background: url('../images/world-map.png');
-    background-size: 90% auto;
+    background: url('../images/map.svg');
+    background-size: 70% auto;
     background-repeat: no-repeat;
     background-position: center center;
     z-index: 50;
