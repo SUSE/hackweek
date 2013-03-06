@@ -186,11 +186,12 @@ li {
 }
 #people{
     background-color: #000;
-    background: url('../images/projects-thumbs.jpg');
+    /*background: url('../images/projects-thumbs.jpg');*/
     background-size: 100% auto;
     background-repeat: no-repeat;
     z-index: 20;
     position: relative;
+    padding: 5px;
 }
 .project-instructions{
     background-color: #000000;
@@ -202,6 +203,7 @@ li {
     top: 50%;
     margin-top: -80px;
     text-align: center;
+    z-index: 22;
 }
 .text-project-box {
    color: #d4df4c;
@@ -211,6 +213,11 @@ li {
 .cut-text {
     color: #373731;
     font-style: italic;
+}
+.people-thumb{
+    float: left;
+    opacity:0.1;
+    padding: 1px;
 }
 #project-info{
     color: #FFF;
