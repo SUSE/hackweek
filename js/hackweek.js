@@ -51,20 +51,20 @@ $(function () {
     })
 
     /* agenda */
-    $("#monday").mouseover(function () {
-        slidein_agenda_day($('#monday-content'))
+    $("#monday, #monday-content").mouseover(function () {
+        slidein_agenda_day($('#monday-content'), 0 * 200)
     })
-    $("#tuesday").mouseover(function () {
-        slidein_agenda_day($('#tuesday-content'))
+    $("#tuesday, #tuesday-content").mouseover(function () {
+        slidein_agenda_day($('#tuesday-content'), 1 * 200)
     })
-    $("#wednesday").mouseover(function () {
-        slidein_agenda_day($('#wednesday-content'))
+    $("#wednesday, #wednesday-content").mouseover(function () {
+        slidein_agenda_day($('#wednesday-content'), 2 * 200)
     })
-    $("#thursday").mouseover(function () {
-        slidein_agenda_day($('#thursday-content'))
+    $("#thursday, #thursday-content").mouseover(function () {
+        slidein_agenda_day($('#thursday-content'), 3 * 200)
     })
-    $("#friday").mouseover(function () {
-        slidein_agenda_day($('#friday-content'))
+    $("#friday, #friday-content").mouseover(function () {
+        slidein_agenda_day($('#friday-content'), 4 * 200)
     })
 
     /* auto open current agenda day */
@@ -78,8 +78,11 @@ $(function () {
     }
 
 
-    function slidein_agenda_day(element) {
-        if (element.css('width') != "400px") {
+    function slidein_agenda_day(element, offset) {
+        if (element.css('width') == "0px") {
+            $("#agenda-content").stop().animate({
+                'left': (220 - offset) + 'px'
+            }, 800);
             $(".agenda-day-content").stop().animate({
                 'width': '0px', 'opacity': 0
             }, 800);
