@@ -67,6 +67,16 @@ $(function () {
         slidein_agenda_day($('#friday-content'))
     })
 
+    /* auto open current agenda day */
+    var today = new Date();
+    if( today.getMonth()+1 == 4 && today.getYear() == 113) {
+        if (today.getDate() == 8) slidein_agenda_day($('#monday-content'))
+        if (today.getDate() == 9) slidein_agenda_day($('#tuesday-content'))
+        if (today.getDate() == 10) slidein_agenda_day($('#wednesday-content'))
+        if (today.getDate() == 11) slidein_agenda_day($('#thursday-content'))
+        if (today.getDate() == 12) slidein_agenda_day($('#friday-content'))
+    }
+
 
     function slidein_agenda_day(element) {
         if (element.css('width') != "400px") {
