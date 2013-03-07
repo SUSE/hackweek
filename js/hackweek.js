@@ -57,6 +57,16 @@ $(function () {
     $("#tuesday").mouseover(function () {
         slidein_agenda_day($('#tuesday-content'))
     })
+    $("#wednesday").mouseover(function () {
+        slidein_agenda_day($('#wednesday-content'))
+    })
+    $("#thursday").mouseover(function () {
+        slidein_agenda_day($('#thursday-content'))
+    })
+    $("#friday").mouseover(function () {
+        slidein_agenda_day($('#friday-content'))
+    })
+
 
     function slidein_agenda_day(element) {
         if (element.css('width') != "400px") {
