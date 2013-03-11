@@ -359,13 +359,130 @@ li {
 	padding-top: 20px;
 	display: none;
 }
-#projects-unlock{
+/***** PROJECT IMAGES **/
+
+#projects-unlock-container{
     text-align: center;
     left: 50%;
     top: 50%;
     position: absolute;
-    margin: -300px auto 0 -505px;
+    margin: -235px auto 0 -235px;
+    width: 472px;
 }
+
+#wheel_01{
+    background: url('../images/projects/wheel_01.png');
+    background-repeat: no-repeat;
+    width: 472px;
+    height: 469px;
+    float: left;
+    position: inherit;
+}
+#wheel_02{
+    background: url('../images/projects/wheel_02.png');
+    background-repeat: no-repeat;
+    width: 354px;
+    left: 50%;
+    margin-left: -177px;
+    height: 354px;
+    position: inherit;
+    margin-top: 57px;
+}
+#wheel_03{
+    background: url('../images/projects/wheel_03.png');
+    background-repeat: no-repeat;
+    width: 334px;
+    left: 50%;
+    margin-left: -167px;
+    height: 334px;
+    position: inherit;
+    margin-top: 67px;
+}
+#lock{
+    background: url('../images/projects/lock.png');
+    background-repeat: no-repeat;
+    width: 110px;
+    left: 50%;
+    margin-left: -55px;
+    height: 195px;
+    margin-top: 130px;
+    position: inherit;
+}
+#arch_01{
+    background: url('../images/projects/arch_01.png');
+    background-repeat: no-repeat;
+    height: 148px;
+    margin-left: -55px;
+    margin-top: 299px;
+    position: inherit;
+    right: 33px;
+    width: 181px;
+}
+#arch_02{
+    background: url('../images/projects/arch_02.png');
+    background-repeat: no-repeat;
+    height: 22px;
+    left: 50%;
+    margin-left: -42px;
+    margin-top: 40px;
+    position: inherit;
+    width: 112px;
+}
+#line_01{
+    background: url('../images/projects/line_01.png');
+    background-repeat: no-repeat;
+    height: 51px;
+    margin-left: -140px;
+    margin-top: 160px;
+    position: inherit;
+    width: 223px;
+}
+#line_02{
+    background: url('../images/projects/line_02.png');
+    background-repeat: no-repeat;
+    height: 166px;
+    margin-left: 190px;
+    margin-top: 42px;
+    position: inherit;
+    width: 377px;
+}
+#line_03{
+    background: url('../images/projects/line_03.png');
+    background-repeat: no-repeat;
+    height: 106px;
+    margin-left: 314px;
+    margin-top: 302px;
+    position: inherit;
+    width: 206px;
+}
+#create{
+    background: url('../images/projects/create.png');
+    background-repeat: no-repeat;
+    height: 110px;
+    margin-left: -210px;
+    margin-top: 88px;
+    position: inherit;
+    width: 130px;
+}
+#current{
+    background: url('../images/projects/current.png');
+    background-repeat: no-repeat;
+    height: 110px;
+    margin-left: 538px;
+    margin-top: -37px;
+    position: inherit;
+    width: 130px;
+}
+#more_info{
+    background: url('../images/projects/more_info.png');
+    background-repeat: no-repeat;
+    height: 110px;
+    margin-left: 496px;
+    margin-top: 349px;
+    position: inherit;
+    width: 130px;
+}
+/**  ******/
 #where{
     background-color: #FFF;
     background: url('../images/map.svg');
