@@ -51,19 +51,25 @@ $(function () {
     })
 
     /* agenda */
-    $("#monday, #monday-content").mouseover(function () {
+
+    $("#monday, #monday-content").on('mouseover click', function(event) {
+        event.stopPropagation()
         slidein_agenda_day($('#monday-content'), 0 * 200)
     })
-    $("#tuesday, #tuesday-content").mouseover(function () {
+    $("#tuesday, #tuesday-content").on('mouseover click', function(event) {
+        event.stopPropagation()
         slidein_agenda_day($('#tuesday-content'), 1 * 200)
     })
-    $("#wednesday, #wednesday-content").mouseover(function () {
+    $("#wednesday, #wednesday-content").on('mouseover click', function(event) {
+        event.stopPropagation()
         slidein_agenda_day($('#wednesday-content'), 2 * 200)
     })
-    $("#thursday, #thursday-content").mouseover(function () {
+    $("#thursday, #thursday-content").on('mouseover click', function(event) {
+        event.stopPropagation()
         slidein_agenda_day($('#thursday-content'), 3 * 200)
     })
-    $("#friday, #friday-content").mouseover(function () {
+    $("#friday, #friday-content").on('mouseover click', function(event) {
+        event.stopPropagation()
         slidein_agenda_day($('#friday-content'), 4 * 200)
     })
 
@@ -84,27 +90,35 @@ $(function () {
         }, 800);
     }
 
-    $("#agenda-de-link").click(function () {
-        set_agenda_location('de')
-    })
-    $("#agenda-us-link").click(function () {
-        set_agenda_location('us')
-    })
-    $("#agenda-cz-link").click(function () {
-        set_agenda_location('cz')
-    })
-    $("#agenda-chn-link").click(function () {
-        set_agenda_location('chn')
+
+    $("#agenda").click(function () {
+        $(".agenda-day-content").stop().animate({
+            'width': '0px', 'opacity': 0
+        }, 800);
     })
 
+    $("#agenda-de-link").click(function (event) {
+        event.stopPropagation()
+        set_agenda_location('de')
+    })
+    $("#agenda-us-link").click(function (event) {
+        event.stopPropagation()
+        set_agenda_location('us')
+    })
+    $("#agenda-cz-link").click(function (event) {
+        event.stopPropagation()
+        set_agenda_location('cz')
+    })
+    $("#agenda-chn-link").click(function (event) {
+        event.stopPropagation()
+        set_agenda_location('chn')
+    })
 
     if ($.cookie("agenda-location")) {
         set_agenda_location($.cookie("agenda-location"))
     } else {
         set_agenda_location('de')
     }
-
-
 
     /* auto open current agenda day */
     var today = new Date();
