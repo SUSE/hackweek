@@ -81,7 +81,7 @@ $(function () {
     function slidein_agenda_day(element, offset) {
         if (element.css('width') == "0px") {
             $("#agenda-content").stop().animate({
-                'left': (220 - offset) + 'px'
+                'left': (0 - offset) + 'px'
             }, 800);
             $(".agenda-day-content").stop().animate({
                 'width': '0px', 'opacity': 0
@@ -89,7 +89,7 @@ $(function () {
             element.css({ width: 0, 'opacity': 0 })
                 .show()
                 .stop().animate({
-                    'width': '400px', 'opacity': 1
+                    'width': '400px', 'opacity': 1, 'margin-left': '30px'
                 }, 800);
         }
     }

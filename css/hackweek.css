@@ -231,29 +231,30 @@ li {
     background-color: #d4df4c;
     z-index: 30;
     position: relative;
-    min-height: 700px;
-    max-height: 100%;
+    min-height: 100%;
 }
 
 #agenda-content{
     position: absolute;
-    left: 220px;
+    /*left: 220px;*/
     width: 2500px;
+    /*top: 50%;*/
 }
 
 .agenda-day-content{
     height: 100%;
     background: #00843e;
     width: 0px;
-    height: 1000px;
+    height: 1050px;
     display: none;
     float: left;
 }
 
 .agenda-day {
     float: left;
-    margin-top: 300px;
+    /*margin-top: 450px;*/
     margin-left: 30px;
+    padding-top: 17%;
 }
 
 #monday{
