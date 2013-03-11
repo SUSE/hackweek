@@ -315,6 +315,7 @@ li {
     letter-spacing: 2px;
     font-size: 15px;
     color: #FFF;
+    z-index: 35;
 }
 #agenda-offices span{
     display: inline-block;

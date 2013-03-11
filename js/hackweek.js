@@ -67,6 +67,45 @@ $(function () {
         slidein_agenda_day($('#friday-content'), 4 * 200)
     })
 
+
+    function set_agenda_location(loc) {
+        var converter = new Showdown.converter();
+        $('#monday-content .agenda-details').html(converter.makeHtml(agenda_content[loc].monday))
+        $('#tuesday-content .agenda-details').html(converter.makeHtml(agenda_content[loc].tuesday))
+        $('#wednesday-content .agenda-details').html(converter.makeHtml(agenda_content[loc].wednesday))
+        $('#thursday-content .agenda-details').html(converter.makeHtml(agenda_content[loc].thursday))
+        $('#friday-content .agenda-details').html(converter.makeHtml(agenda_content[loc].friday))
+        $("#agenda-offices span").removeClass('current')
+        $("#agenda-" + loc + "-link").addClass('current')
+        $.cookie("agenda-location", loc)
+        $('.agenda-details').stop().css('opacity', '0')
+        $('.agenda-details').stop().animate({
+            'opacity': 1
+        }, 800);
+    }
+
+    $("#agenda-de-link").click(function () {
+        set_agenda_location('de')
+    })
+    $("#agenda-us-link").click(function () {
+        set_agenda_location('us')
+    })
+    $("#agenda-cz-link").click(function () {
+        set_agenda_location('cz')
+    })
+    $("#agenda-chn-link").click(function () {
+        set_agenda_location('chn')
+    })
+
+
+    if ($.cookie("agenda-location")) {
+        set_agenda_location($.cookie("agenda-location"))
+    } else {
+        set_agenda_location('de')
+    }
+
+
+
     /* auto open current agenda day */
     var today = new Date();
     if( today.getMonth()+1 == 4 && today.getYear() == 113) {
