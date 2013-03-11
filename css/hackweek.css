@@ -342,22 +342,14 @@ li {
 	font-size: 25px;
     text-align: center;
 }
-#projects-call-to-action{
+#break_apart{
     position: absolute;
-	background-color: #9cdaf0;
-	height: 25%;
-	width: 350px;
-	bottom: 0;
-	left: 50%;
-	margin-left: -175px;
-    font-family: 'Droid Sans', sans-serif;
-	color: #201f1f;
-	font-size: 30px;
-    text-align: center;
-	text-transform: uppercase;
-	font-weight: bold;
-	padding-top: 20px;
-	display: none;
+    bottom: 20px;
+    left: 20px;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 7px;
+    font-size: 13px;
 }
 /***** PROJECT IMAGES **/
 
