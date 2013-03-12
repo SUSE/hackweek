@@ -230,12 +230,12 @@ $(function () {
         }
 
         /* invert navigation color */
-        $('#navigation li').each(function( index ) {
+        $('#navigation li').each(function (index) {
             $(this).removeClass('invert')
-          //  if (($(this).position().top + $(this).height() > $("#people").position().top - $(window).scrollTop()) &&
-          //      ($(this).position().top + $(this).height() < $("#people").position().top - $(window).scrollTop() + $('#people').height())) {
-          //     $(this).addClass('invert')
-          //  }
+            if (($(this).position().top + $(this).height() > $("#people").position().top - $(window).scrollTop()) &&
+                ($(this).position().top + $(this).height() < $("#people").position().top - $(window).scrollTop() + $('#people').height())) {
+                $(this).addClass('invert')
+            }
             if (($(this).position().top + $(this).height() > $("#what-is").position().top - $(window).scrollTop()) &&
                 ($(this).position().top + $(this).height() < $("#what-is").position().top - $(window).scrollTop() + $('#what-is').height())) {
                 $(this).addClass('invert')

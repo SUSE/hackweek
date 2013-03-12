@@ -192,6 +192,9 @@ li {
     z-index: 20;
     position: relative;
     padding: 5px;
+    /* Hiding people page for now */
+    height: 0px;
+    padding: 0px;
 }
 .project-instructions{
     background-color: #000000;
