@@ -52,23 +52,23 @@ $(function () {
 
     /* agenda */
 
-    $("#monday, #monday-content").on('mouseover click', function(event) {
+    $("#monday .agenda-item .day-number").on('mouseover click', function(event) {
         event.stopPropagation()
         slidein_agenda_day($('#monday-content'), 0 * 200)
     })
-    $("#tuesday, #tuesday-content").on('mouseover click', function(event) {
+    $("#tuesday .agenda-item .day-number").on('mouseover click', function(event) {
         event.stopPropagation()
         slidein_agenda_day($('#tuesday-content'), 1 * 200)
     })
-    $("#wednesday, #wednesday-content").on('mouseover click', function(event) {
+    $("#wednesday .agenda-item .day-number").on('mouseover click', function(event) {
         event.stopPropagation()
         slidein_agenda_day($('#wednesday-content'), 2 * 200)
     })
-    $("#thursday, #thursday-content").on('mouseover click', function(event) {
+    $("#thursday .agenda-item .day-number").on('mouseover click', function(event) {
         event.stopPropagation()
         slidein_agenda_day($('#thursday-content'), 3 * 200)
     })
-    $("#friday, #friday-content").on('mouseover click', function(event) {
+    $("#friday .agenda-item .day-number").on('mouseover click', function(event) {
         event.stopPropagation()
         slidein_agenda_day($('#friday-content'), 4 * 200)
     })
