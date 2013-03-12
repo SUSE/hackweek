@@ -204,6 +204,7 @@
       **/
       var update_content = function( p, cmd, data ) {
         content.append( '<div><span>' + p + ' ' + cmd + '</span><div>' + ( ( data ) ? data : '' ) + '</div></div>' );
+        $('#wterm')[0].scrollTop = $('#wterm')[0].scrollHeight
       }; 
 
       /**
