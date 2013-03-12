@@ -148,6 +148,18 @@ $(function () {
     }
 
 
+    /* where page actions */
+    $(".location").on('mouseover click', function(event) {
+        $(".location-zoom").hide("scale")
+        $("#" + $(this).attr('id') + "-zoom").show("scale")
+    })
+
+    $(".location-zoom").on('mouseleave', function(event) {
+        $(this).hide("scale")
+    })
+
+
+
     window.toggle_terminal = function() {
         if ($('#terminal').is(":visible")) {
             $('#terminal').slideUp('fast');
