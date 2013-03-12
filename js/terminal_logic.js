@@ -43,6 +43,14 @@ $(function () {
     return " ";
   });
 
+  $.register_command('cat', function(args){
+    if(directory_stack[0] == "agenda") {
+      if($.inArray(args[1], Object.keys(agenda_content.de)) >= 0) {
+        return agenda_content.de[args[1]].replace(/\n/g, "<br>");
+      }
+    }
+  });
+
   $.register_command('exit', function(){
     toggle_terminal();
   });
