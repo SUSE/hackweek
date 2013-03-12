@@ -477,8 +477,8 @@ li {
 /**  ******/
 #where{
     background-color: #FFF;
-    background: url('../images/map.svg');
-    background-size: 70% auto;
+    background: url('../images/world-map.png');
+    /*background-size: 70% auto;*/
     background-repeat: no-repeat;
     background-position: center center;
     z-index: 50;
