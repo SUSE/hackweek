@@ -490,7 +490,7 @@ li {
     margin-left: -600px;
     position: absolute;
     width: 1200px;
-    height: 548px;
+    height: 578px;
     top: 50%;
     margin-top: -274px;
 }
@@ -500,14 +500,14 @@ li {
     height: 38px;
     position: inherit;
     margin-left: 196px;
-    margin-top: 189px;
+    margin-top: 209px;
 }
 #nuremberg{
     background: url('../images/pin.png');
     height: 38px;
     left: 50%;
     margin-left: -19px;
-    margin-top: 157px;
+    margin-top: 177px;
     position: inherit;
     width: 33px;
 }
@@ -516,7 +516,7 @@ li {
     height: 38px;
     left: 50%;
     margin-left: 10px;
-    margin-top: 160px;
+    margin-top: 180px;
     position: inherit;
     width: 33px;
 }
@@ -524,7 +524,7 @@ li {
     background: url('../images/pin.png');
     height: 38px;
     margin-right: 250px;
-    margin-top: 185px;
+    margin-top: 205px;
     position: inherit;
     right: 0;
     width: 33px;
