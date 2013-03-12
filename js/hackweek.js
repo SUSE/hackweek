@@ -148,7 +148,7 @@ $(function () {
     }
 
 
-    function toggle_terminal() {
+    window.toggle_terminal = function() {
         if ($('#terminal').is(":visible")) {
             $('#terminal').slideUp('fast');
             $('#wterm').find('div:last form input').blur()

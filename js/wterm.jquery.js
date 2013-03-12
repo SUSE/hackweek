@@ -119,6 +119,7 @@
   **/
   var dispatch = { 
   };
+  var settings;
 
 
   /**
@@ -133,7 +134,7 @@
 
 
     // Merge defaults with options
-    var settings = get_defaults();
+    settings = get_defaults();
     $.extend( true, settings, options );
 
     // JQ Plugin surprised??
@@ -203,6 +204,7 @@
       **/
       var update_content = function( p, cmd, data ) {
         content.append( '<div><span>' + p + ' ' + cmd + '</span><div>' + ( ( data ) ? data : '' ) + '</div></div>' );
+        $('#wterm')[0].scrollTop = $('#wterm')[0].scrollHeight
       }; 
 
       /**
@@ -261,10 +263,11 @@
         }
 
         var _dispatch = function( key, tokens ) {
+          var ps1 = settings.PS1;
 
           if( typeof key === 'function' ) {
               data = key( tokens );
-              if( data ) { update_content( get_current_prompt(), value, data ) }
+              if( data ) { update_content( ps1, value, data ) }
           } else if( typeof key === 'string' ) {
             var to_send = { };
             to_send[ settings.AJAX_PARAM ] = tokens.join( ' ' );
@@ -409,5 +412,10 @@
       // Error Handling here
     }
   };
+
+  $.set_prompt = function(ps1) {
+    $( '.' + settings.PROMPT_CLASS).html( ps1 + '&nbsp;' );
+    settings.PS1 = ps1;
+  }
 
 })( jQuery );

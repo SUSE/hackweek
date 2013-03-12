@@ -1,4 +1,13 @@
 $(function () {
+
+  var set_directory_prompt = function(dirs) {
+    if(dirs.length === 0) {
+      $.set_prompt("geeko@hackweek:~ >");
+    } else {
+      $.set_prompt("geeko@hackweek:~/" + dirs.join("/") + " >");
+    }
+  };
+
   var projects = [
     {
       title: "<span class='welcome-message'>Make a nifty hackweek website</span>"
@@ -8,11 +17,52 @@ $(function () {
     }
   ];
 
+  var directory_stack = [];
+
   $.register_command('ls', function(){
-    titles = $.map(projects, function(project, i){
-      return project.title;
-    });
-    return titles.join('<br>');
+    if(directory_stack.length == 0) {
+      return ["agenda", "projects"].join("<br>");
+    } else if(directory_stack[0] == "agenda") {
+      if(directory_stack.length == 1) {
+        return Object.keys(agenda_content).join("<br>");
+      } else {
+        return Object.keys(agenda_content[directory_stack[1]]).join("<br>");
+      }
+    } else if(directory_stack[0] == "projects") {
+      titles = $.map(projects, function(project, i){
+        return project.title;
+      });
+    }
+  });
+
+  $.register_command('cd', function(args){
+    if(directory_stack.length === 0 && (args[1] === "agenda" || args[1] === "projects")) {
+      directory_stack.push(args[1]);
+    } else if(directory_stack.length === 1 &&
+        directory_stack[0] === "agenda" &&
+        $.inArray(args[1], Object.keys(agenda_content)) >= 0) {
+      directory_stack.push(args[1]);
+    } else if(args[1] === "..") {
+      directory_stack.pop();
+    } else {
+      return "No such file or directory."
+    }
+    set_directory_prompt(directory_stack);
+    return " ";
+  });
+
+  $.register_command('cat', function(args){
+    if(directory_stack.length == 2 &&
+        directory_stack[0] == "agenda" &&
+        $.inArray(args[1], Object.keys(agenda_content[directory_stack[1]])) >= 0) {
+      return agenda_content[directory_stack[1]][args[1]].replace(/\n/g, "<br>");
+    } else {
+      return "No such file or directory."
+    }
+  });
+
+  $.register_command('exit', function(){
+    toggle_terminal();
   });
 
   $.register_command( 'help', function() {
