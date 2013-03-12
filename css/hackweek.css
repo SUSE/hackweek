@@ -477,12 +477,57 @@ li {
 /**  ******/
 #where{
     background-color: #FFF;
+    z-index: 50;
+    position: relative;
+}
+#world-map{
+    background-color: #FFF;
     background: url('../images/world-map.png');
     /*background-size: 70% auto;*/
     background-repeat: no-repeat;
     background-position: center center;
-    z-index: 50;
-    position: relative;
+    left: 50%;
+    margin-left: -600px;
+    position: absolute;
+    width: 1200px;
+    height: 548px;
+    top: 50%;
+    margin-top: -274px;
+}
+#provo{
+    background: url('../images/pin.png');
+    width: 33px;
+    height: 38px;
+    position: inherit;
+    margin-left: 196px;
+    margin-top: 189px;
+}
+#nuremberg{
+    background: url('../images/pin.png');
+    height: 38px;
+    left: 50%;
+    margin-left: -19px;
+    margin-top: 157px;
+    position: inherit;
+    width: 33px;
+}
+#prague{
+    background: url('../images/pin.png');
+    height: 38px;
+    left: 50%;
+    margin-left: 10px;
+    margin-top: 160px;
+    position: inherit;
+    width: 33px;
+}
+#beijing{
+    background: url('../images/pin.png');
+    height: 38px;
+    margin-right: 250px;
+    margin-top: 185px;
+    position: inherit;
+    right: 0;
+    width: 33px;
 }
 #where-title{
     position: absolute;
