@@ -52,10 +52,12 @@ $(function () {
   });
 
   $.register_command('cat', function(args){
-    if(directory_stack[0] == "agenda") {
-      if($.inArray(args[1], Object.keys(agenda_content.de)) >= 0) {
-        return agenda_content.de[args[1]].replace(/\n/g, "<br>");
-      }
+    if(directory_stack.length == 2 &&
+        directory_stack[0] == "agenda" &&
+        $.inArray(args[1], Object.keys(agenda_content[directory_stack[1]])) >= 0) {
+      return agenda_content[directory_stack[1]][args[1]].replace(/\n/g, "<br>");
+    } else {
+      return "No such file or directory."
     }
   });
 
