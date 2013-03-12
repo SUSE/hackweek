@@ -502,6 +502,15 @@ li {
     margin-left: 196px;
     margin-top: 209px;
 }
+#provo-zoom{
+    background: url('../images/provo.png');
+    width: 232px;
+    height: 232px;
+    position: inherit;
+    margin-left: 96px;
+    margin-top: 129px;
+    display: none;
+}
 #nuremberg{
     background: url('../images/pin.png');
     height: 38px;
@@ -510,6 +519,16 @@ li {
     margin-top: 177px;
     position: inherit;
     width: 33px;
+}
+#nuremberg-zoom{
+    background: url('../images/nuremberg.png');
+    left: 50%;
+    margin-left: -139px;
+    margin-top: 47px;
+    position: inherit;
+    width: 232px;
+    height: 232px;
+    display: none;
 }
 #prague{
     background: url('../images/pin.png');
@@ -520,6 +539,16 @@ li {
     position: inherit;
     width: 33px;
 }
+#prague-zoom{
+    background: url('../images/prague.png');
+    left: 50%;
+    margin-left: -50px;
+    margin-top: 80px;
+    position: inherit;
+    width: 232px;
+    height: 232px;
+    display: none;
+}
 #beijing{
     background: url('../images/pin.png');
     height: 38px;
@@ -528,6 +557,52 @@ li {
     position: inherit;
     right: 0;
     width: 33px;
+}
+#beijing-zoom{
+    background: url('../images/beijing.png');
+    margin-right: 150px;
+    margin-top: 175px;
+    position: inherit;
+    right: 0;
+    width: 232px;
+    height: 232px;
+    display: none;
+}
+.office-location {
+    color: #7C817F;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 90px;
+    position: inherit;
+    text-align: center;
+    width: 232px;
+}
+.office-address {
+    color: #7C817F;
+    font-size: 15px;
+    font-weight: normal;
+    margin-top: 122px;
+    position: inherit;
+    text-align: center;
+    width: 232px;
+}
+.office-phone {
+    color: #7C817F;
+    font-size: 15px;
+    font-weight: normal;
+    margin-top: 145px;
+    position: inherit;
+    text-align: center;
+    width: 232px;
+}
+.office-map {
+    color: #7C817F;
+    font-size: 15px;
+    font-weight: normal;
+    margin-top: 172px;
+    position: inherit;
+    text-align: center;
+    width: 232px;
 }
 #where-title{
     position: absolute;
