@@ -737,6 +737,7 @@ transition:.2s;
     max-width: 960px;
     right: -40px;
     text-align: right;
+    z-index: 55;
 }
 .claim-where{
     margin: 5px;
