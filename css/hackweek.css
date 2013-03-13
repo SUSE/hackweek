@@ -46,7 +46,15 @@ li {
 #navigation .invert{
     color: #fff;
 }
-
+#navigation li:hover{
+    color: #7ac142;
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    transition:.2s;
+    font-weight: bold;
+}
 #start-link{
     height: 80px;
 }
@@ -66,7 +74,7 @@ li {
     background-position: left top;
 }
 #arrow-start {
-     background: url('../images/arrow-start.png');
+     background: url('../images/arrow-start-white.png');
      width: 51px;
      height: 47px;
      background-repeat: no-repeat;
@@ -75,8 +83,23 @@ li {
      left: 49%;
      cursor: pointer;
      z-index: 2;
- }
-
+}
+#arrow-start:hover {
+    background: url('../images/arrow-start.png');
+    width: 51px;
+    height: 47px;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0;
+    left: 49%;
+    cursor: pointer;
+    z-index: 2;
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    transition:.2s;
+}
 #start{
     background: url('../images/geeko-tile.png');
     background-color: #222222;
@@ -109,7 +132,7 @@ li {
     height: 31px;
     margin-left: 4px;
     margin-right: 4px;
-    color: #7ac142;
+    color: #FFF;
     text-transform: uppercase;
     font-weight: bold;
     padding-left: 4px;
@@ -119,6 +142,14 @@ li {
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 6px;
+}
+.start-menu-item:hover{
+    color: #7ac142;
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    transition:.2s;
 }
 #hackweek9{
     left: 50%;
