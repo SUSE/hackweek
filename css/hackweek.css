@@ -91,10 +91,10 @@ li {
     height:100%;
 }
 #start-menu{
-    margin-left: 5%;
+    position: inherit;
+    right: 50%;
 }
 .menu-border{
-    position: inherit;
     margin-top: 0;
     margin-right: 4px;
     height:35px;
@@ -102,6 +102,7 @@ li {
     border-bottom: 1px solid rgba(255,255,255, 0.3);
     border-right: 1px solid rgba(255,255,255, 0.3);
     float: left;
+    cursor: pointer;
 }
 .menu-black-bg{
     background-color: #000;
@@ -111,6 +112,8 @@ li {
     color: #7ac142;
     text-transform: uppercase;
     font-weight: bold;
+    padding-left: 4px;
+    padding-right: 4px;
 }
 .start-menu-item{
     padding-left: 10px;
@@ -157,6 +160,12 @@ li {
     top: 50%;
     margin-top: 38px;
     padding-top: 3px;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    #pay-off {
+        font-size: 18px;
+        padding-right: 3px;
+    }
 }
 .claim{
     font-family: 'Abril Fatface', cursive;

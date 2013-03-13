@@ -6,7 +6,7 @@ $(function () {
         }, 1000);
     })
 
-    $("#what-is-link, #arrow-start").click(function () {
+    $("#what-is-link, #arrow-start, #what-is-start").click(function () {
         $('html, body').animate({
             scrollTop: $("#what-is").offset().top
         }, 1000);
@@ -18,19 +18,19 @@ $(function () {
         }, 1000);
     })
 
-    $("#agenda-link").click(function () {
+    $("#agenda-link, #agenda-start").click(function () {
         $('html, body').animate({
             scrollTop: $("#agenda").offset().top
         }, 1000);
     })
 
-    $("#projects-link").click(function () {
+    $("#projects-link, #projects-start").click(function () {
         $('html, body').animate({
             scrollTop: $("#projects").offset().top
         }, 1000);
     })
 
-    $("#where-link").click(function () {
+    $("#where-link, #where-start").click(function () {
         $('html, body').animate({
             scrollTop: $("#where").offset().top
         }, 1000);
