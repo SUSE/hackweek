@@ -205,9 +205,9 @@ li {
     position: relative;
 }
 #what-is{
+    background: url('../images/what-tile.png');
     background-color: #222222;
-    /*background: url('../images/cloud-pattern.png');*/
-    background-repeat: repeat;
+    background-repeat: repeat-x;
     z-index: 10;
     position: relative;
 }
@@ -736,4 +736,7 @@ li {
     margin-top: 2px;
     width: 4px;
     background-color: #000;
+}
+.invert .terminal-dot{
+    background-color: #fff;
 }
