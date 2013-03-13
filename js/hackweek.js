@@ -6,7 +6,7 @@ $(function () {
         }, 1000);
     })
 
-    $("#what-is-link, #arrow-start, #what-is-start").click(function () {
+    $("#what-is-link, #arrow-start, #what-is-start, #hackweek9").click(function () {
         $('html, body').animate({
             scrollTop: $("#what-is").offset().top
         }, 1000);

@@ -128,6 +128,7 @@ li {
     width: 1053px;
     height: 377px;
     position: inherit;
+    cursor: pointer;
 }
 #hackweek9-text{
     background: url('../images/hackweek9-text.png');
