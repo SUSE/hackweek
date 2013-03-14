@@ -147,6 +147,13 @@ $(function () {
         }
     }
 
+    /* project page actions */
+    $("#break_apart").on('click', function(event) {
+        // make stuff fall down:
+        //http://blog.themeforest.net/tutorials/simulate-gravity-with-jquery/
+    })
+
+
 
     /* where page actions */
     $(".location").on('mouseover click', function(event) {
@@ -257,25 +264,23 @@ $(function () {
 
     /* start page text initial animation */
     if ($(window).scrollTop() == 0) {
-        $("#claim-line1").css({ top: -600 })
-        $("#claim-line1").animate({
+        $("#hackweek9-text").css({ top: -600 })
+        $("#hackweek9-text").animate({
             top: 0
         }, 800);
 
-        $("#claim-line2").css({ left: $(window).width() })
-        $("#claim-line2").animate({
+        $("#hackweek9-img").css({ left: $(window).width() })
+        $("#hackweek9-img").delay(300).animate({
             left: 0, top: 0
         }, 800);
 
-        $("#claim-line3").css({ right: $(window).width() })
-        $("#claim-line3").animate({
-            left: 0, top: 0
+        $("#pay-off").css({ right: $(window).width() })
+        $("#pay-off").delay(600).animate({
+            right: '50%'
         }, 800);
 
-        $("#claim-line4").css({ bottom: -600 })
-        $("#claim-line4").animate({
-            top: 0
-        }, 800);
+        $("#start-menu").delay(1200).fadeIn()
+
     }
 
 
