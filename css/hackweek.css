@@ -17,10 +17,10 @@ li {
 }
 span:hover{
     -o-transition:.2s;
--ms-transition:.2s;
--moz-transition:.2s;
--webkit-transition:.2s;
-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    transition:.2s;
 }
 .page-size {
     width: 100%;
@@ -627,6 +627,23 @@ transition:.2s;
     top: 50%;
     margin-top: -274px;
 }
+#world-map a{
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    transition:.2s;
+    color: #7AC142;
+    font-weight: bold;
+    text-decoration: none;
+}
+#world-map a:hover{
+    color: #7AC142;
+    text-decoration: underline;
+}
+#world-map a:visited{
+    color: #7AC142;
+}
 #provo{
     background: url('../images/pin.png');
     width: 33px;
@@ -634,6 +651,7 @@ transition:.2s;
     position: inherit;
     margin-left: 196px;
     margin-top: 209px;
+    cursor: pointer;
 }
 #provo-zoom{
     background: url('../images/provo.png');
@@ -652,6 +670,7 @@ transition:.2s;
     margin-top: 177px;
     position: inherit;
     width: 33px;
+    cursor: pointer;
 }
 #nuremberg-zoom{
     background: url('../images/nuremberg.png');
@@ -671,6 +690,7 @@ transition:.2s;
     margin-top: 180px;
     position: inherit;
     width: 33px;
+    cursor: pointer;
 }
 #prague-zoom{
     background: url('../images/prague.png');
@@ -690,6 +710,7 @@ transition:.2s;
     position: inherit;
     right: 0;
     width: 33px;
+    cursor: pointer;
 }
 #beijing-zoom{
     background: url('../images/beijing.png');
