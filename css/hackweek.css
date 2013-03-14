@@ -631,6 +631,7 @@ transition:.2s;
     position: inherit;
     margin-left: 196px;
     margin-top: 209px;
+    cursor: pointer;
 }
 #provo-zoom{
     background: url('../images/provo.png');
@@ -649,6 +650,7 @@ transition:.2s;
     margin-top: 177px;
     position: inherit;
     width: 33px;
+    cursor: pointer;
 }
 #nuremberg-zoom{
     background: url('../images/nuremberg.png');
@@ -668,6 +670,7 @@ transition:.2s;
     margin-top: 180px;
     position: inherit;
     width: 33px;
+    cursor: pointer;
 }
 #prague-zoom{
     background: url('../images/prague.png');
@@ -687,6 +690,7 @@ transition:.2s;
     position: inherit;
     right: 0;
     width: 33px;
+    cursor: pointer;
 }
 #beijing-zoom{
     background: url('../images/beijing.png');
