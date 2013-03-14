@@ -71,7 +71,9 @@ $(function () {
       "<span class='welcome-message'>eval - Usage eval &lt;any javascript exression&gt;</span><br>" +
       "<span class='welcome-message'>date - Returns Current Date</span><br>" +
       "<span class='welcome-message'>cap - Usage cap &lt;string&gt; - Turns the string to upcase</span><br>" +
-      "<span class='welcome-message'>go - Usage go &lt;url&gt; - Sets the browser location to URL</span><br>"
+      "<span class='welcome-message'>go - Usage go &lt;url&gt; - Sets the browser location to URL</span><br>" +
+      "<span class='welcome-message'>cat &lt;FILE&gt; - Concatenate FILE, or standard input, to standard output.</span><br>" +
+      "<span class='welcome-message'>exit - Close Terminal shell.</span><br>"
   });
 
 // COPY AND PASTED FUNCTIONS, REMOVE ON PRODUCTION
