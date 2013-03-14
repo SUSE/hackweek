@@ -264,22 +264,22 @@ $(function () {
 
     /* start page text initial animation */
     if ($(window).scrollTop() == 0) {
-        $("#hackweek9-text").css({ top: -600 })
+        $("#hackweek9-text").css({ top: - 600 })
         $("#hackweek9-text").animate({
             top: 0
         }, 800);
 
         $("#hackweek9-img").css({ left: $(window).width() })
-        $("#hackweek9-img").delay(300).animate({
+        $("#hackweek9-img").delay(200).animate({
             left: 0, top: 0
-        }, 800);
+        }, 600);
 
         $("#pay-off").css({ right: $(window).width() })
-        $("#pay-off").delay(600).animate({
+        $("#pay-off").delay(1200).animate({
             right: '50%'
         }, 800);
 
-        $("#start-menu").delay(1200).fadeIn()
+        $("#start-menu").delay(1000).fadeIn()
 
     }
 
