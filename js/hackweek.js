@@ -182,7 +182,7 @@ $(function () {
         }
         if ($('#navigation').is(":visible") && $(window).scrollTop() < $('#what-is').height()/1.5) {
             $('#navigation').fadeOut()
-            $('#terminal-btn').fadeOut()
+            //$('#terminal-btn').fadeOut()
             $('#arrow-start').fadeIn()
         }
 
@@ -252,7 +252,6 @@ $(function () {
             ($('#terminal-btn').position().top + $('#terminal-btn').height()/2 < $("#what-is").position().top - $(window).scrollTop() + $('#what-is').height())) {
             $('#terminal-btn').addClass('invert')
         }
-
     })
 
 

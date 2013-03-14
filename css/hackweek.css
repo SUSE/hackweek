@@ -778,7 +778,7 @@ transition:.2s;
     text-transform: uppercase;
     cursor: pointer;
     z-index: 100;
-    display: none;
+    /*display: none;*/
 }
 #terminal-btn.invert{
     color: #fff;
