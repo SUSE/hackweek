@@ -2,12 +2,8 @@ General
 
 * Improve the CSS for different screen resolutions.
 * Extend on transitions from one section to another
-* Set 'min-width' for the webpage
-
-0- Start Page
-
-* Decide the content
-* When we have a logo we will try to use that as main content
+* Content
+* Disclaimer and SUSE webpage logo
 
 1- What is Hackweek
 
@@ -15,29 +11,10 @@ General
 * Logos
 * Animations
 
-2 - Agenda
-
-* Agenda Effects
-* Different Agendas for different office
-* Fix Height and Width
-
 3- Projects
 
-* Animate graphics
-	* Check how to drag and rotate elements
-* Finish the design
-
-4- People
-
-* Pending
-
-5- Where?
-
-* Map
-* Office Locations
-* Remote Locations
+* Animation
 
 6- Terminal
 
-* Make the terminal read the website content via json file
-	* Json for Agenda, What is, Project (external links), Where (4 offices Locations)
+* What is, Project (external links), Where (4 offices Locations)
