@@ -150,12 +150,12 @@ $(function () {
 
     /* where page actions */
     $(".location").on('mouseover click', function(event) {
-        $(".location-zoom").hide("scale")
-        $("#" + $(this).attr('id') + "-zoom").show("scale")
+        $(".location-zoom").fadeOut()
+        $("#" + $(this).attr('id') + "-zoom").fadeIn()
     })
 
     $(".location-zoom").on('mouseleave', function(event) {
-        $(this).hide("scale")
+        $(".location-zoom").fadeOut()
     })
 
 
