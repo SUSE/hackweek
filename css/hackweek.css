@@ -488,7 +488,10 @@ transition:.2s;
     margin: -235px auto 0 -235px;
     width: 472px;
 }
-
+#projects-unlock-container #link img{
+    height: 110px;
+    width: 130px;
+}
 #wheel_01{
     background: url('../images/projects/wheel_01.png');
     background-repeat: no-repeat;
