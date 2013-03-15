@@ -58,8 +58,14 @@
 .output {
     color: #FFF;
 }
+.help-title {
+    color: #FFF;
+}
+.help-command {
+    margin-left: 15px;
+}
 .output .welcome-message{
-    color: #08d869;
+    color: #FFF;
 }
 #terminal{
     display: none;
