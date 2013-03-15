@@ -150,6 +150,7 @@ $(function () {
 
 
     /* project page actions */
+    /* rotate lib: http://code.google.com/p/jqueryrotate/wiki/Examples */
     var angle = 0
     var circle_rotation = setInterval(function () {
         angle += 1
@@ -284,6 +285,8 @@ $(function () {
 
         $("#start-menu").delay(1000).fadeIn()
 
+    } else {
+        $("#start-menu").show()
     }
 
 

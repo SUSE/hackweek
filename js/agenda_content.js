@@ -2,7 +2,7 @@ var agenda_content = {"de": {
     "monday": " \n\
 Morning \n\
 ============= \n\
-### 09:00am Breakfast ###### \n\
+### 09:00am Breakfast \n\
 * Menu \n\
 * - Grilled Bacon \n\
 * - Fried Egg \n\
@@ -25,7 +25,7 @@ Afternoon \n\
     "tuesday": " \n\
 Morning \n\
 ============= \n\
-### 09:00am Breakfast ###### \n\
+### 09:00am Breakfast \n\
 * Menu \n\
 * - Grilled Bacon \n\
 * - Fried Egg \n\
