@@ -64,6 +64,12 @@ $(function () {
     return " ";
   });
 
+  $.register_command('..', function(){
+    directory_stack.pop();
+    set_directory_prompt(directory_stack);
+    return " ";
+  });
+
   $.register_command('cat', function(args){
     if(directory_stack.length == 0 &&
         $.inArray(args[1], home_files) >= 0) {
