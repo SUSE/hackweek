@@ -37,6 +37,7 @@
       // PROMPT_CLASS 
       // Will Applied to prompt container
       PROMPT_CLASS       : 'wterm_prompt',
+      CONTENT_CLASS       : 'content',
 
       // THEME_CLASS_PREFIX
       // All Theme Classes will be prefixed by this string
@@ -203,7 +204,7 @@
       * @args     : current_prompt, command, data
       **/
       var update_content = function( p, cmd, data ) {
-        content.append( '<div><span>' + p + ' ' + cmd + '</span><div>' + ( ( data ) ? data : '' ) + '</div></div>' );
+        content.append( '<div><span class="prompt">' + p + ' ' + cmd + '</span><div class="output">' + ( ( data ) ? data : '' ) + '</div></div>' );
         $('#wterm')[0].scrollTop = $('#wterm')[0].scrollHeight
       }; 
 
