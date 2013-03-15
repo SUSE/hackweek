@@ -12,4 +12,4 @@ Hack Week 9 \n\
 ### SUSE LINUX Products GmbH ### \n\
 * Hackweek 9 takes place April 08-12 2013. As usual, SUSE extends the invitation \n\
 * to openSUSE Community contributors. \n\ 
-"}
+"};

@@ -830,3 +830,7 @@ span:hover{
 .invert .terminal-dot{
     background-color: #fff;
 }
+
+.directory {
+    color: blue;
+}

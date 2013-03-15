@@ -21,17 +21,29 @@ $(function () {
 
   var directory_stack = [];
 
+  var to_directories = function(dirs) {
+    return $.map(dirs, function(e){
+      return "<span class='directory'>" + e + "</span>";
+    }).join("<br>");
+  };
+
+  var to_files = function(files) {
+    return $.map(files, function(e){
+      return "<span class='file'>" + e + "</span>";
+    }).join("<br>");
+  };
+
   $.register_command('ls', function(){
     if(directory_stack.length == 0) {
-      return home_content.join("<br>");
+      return to_directories(home_content);
     } else if(directory_stack[0] == "agenda") {
       if(directory_stack.length == 1) {
-        return Object.keys(agenda_content).join("<br>");
+        return to_directories(Object.keys(agenda_content));
       } else {
-        return Object.keys(agenda_content[directory_stack[1]]).join("<br>");
+        return to_files(Object.keys(agenda_content[directory_stack[1]]));
       }
     } else if(directory_stack[0] == "projects") {
-      return Object.keys(projects_content).join("<br>");
+      return to_files(Object.keys(projects_content));
     }
   });
 
