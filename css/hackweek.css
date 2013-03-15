@@ -495,6 +495,30 @@ span:hover{
     height: 110px;
     width: 130px;
 }
+#build_wheel_01{
+    background: url('../images/projects/build_wheel_01.png');
+    background-repeat: no-repeat;
+    width: 472px;
+    height: 469px;
+    float: left;
+    position: inherit;
+}
+#build_wheel_02{
+    background: url('../images/projects/build_wheel_02.png');
+    background-repeat: no-repeat;
+    width: 472px;
+    height: 469px;
+    float: left;
+    position: inherit;
+}
+#build_wheel_03{
+    background: url('../images/projects/build_wheel_03.png');
+    background-repeat: no-repeat;
+    width: 472px;
+    height: 469px;
+    float: left;
+    position: inherit;
+}
 #wheel_01{
     background: url('../images/projects/wheel_01.png');
     background-repeat: no-repeat;
