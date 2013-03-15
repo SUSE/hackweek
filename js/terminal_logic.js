@@ -104,12 +104,13 @@ $(function () {
   });
 
   $.register_command( 'help', function() {
-    return "<span class='welcome-message'>ls - List all content.</span><br>" +
-      "<span class='welcome-message'>cd - Change working directory</span><br>" +
-      "<span class='welcome-message'>cat &lt;FILE&gt; - Concatenate FILE, or standard input, to standard output.</span><br>" +
-      "<span class='welcome-message'>date - Returns Current Date</span><br>" +
-      "<span class='welcome-message'>open &lt;filename&gt; - Open the target in a new tab</span><br>" +
-      "<span class='welcome-message'>exit - Close Terminal shell.</span><br>"
+    return "<span class='help-title'>The most commonly used commands are:</span><br>" +
+      "<span class='welcome-message help-command'><b>ls</b> - List all content.</span><br>" +
+      "<span class='welcome-message help-command'><b>cd</b> - Change working directory</span><br>" +
+      "<span class='welcome-message help-command'><b>cat</b> &lt;FILE&gt; - Concatenate FILE, or standard input, to standard output.</span><br>" +
+      "<span class='welcome-message help-command'><b>date</b> - Returns Current Date</span><br>" +
+      "<span class='welcome-message help-command'><b>open</b> &lt;filename&gt; - Open the target in a new tab</span><br>" +
+      "<span class='welcome-message help-command'><b>exit</b> - Close terminal shell.</span><br>"
   });
 
 // COPY AND PASTED FUNCTIONS, REMOVE ON PRODUCTION
