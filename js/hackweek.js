@@ -173,7 +173,7 @@ $(function () {
 
     $("#build_wheel_03").click(function (event) {
         angle3 +=90;
-        if ( angle3%360 == 0 ) angle2 = 0
+        if ( angle3%360 == 0 ) angle3 = 0
         $(this).rotate({ animateTo: angle3})
     })
 
