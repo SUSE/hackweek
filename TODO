@@ -1,19 +1,46 @@
-General
+# General
 
 * Extend on transitions from one section to another
-* Content
 * Disclaimer and SUSE webpage logo
+* Link Hack Week Howto page
+* Add contact information (hackweek@suse.de? IRC)
+* Name Twitter hashtag somewhere
+* News feed
+* HTML snippets of banners for people to put on their sites, blogs, repos etc.
+* Show photos
+* Show videos
 
-1- What is Hackweek
+# What is Hackweek
 
-* Content
+* Check text with smaller browser windows
+* Add some links to the text
 * Logos
+* Pages for previous hack weeks with more information (e.g. award winners)
+* Project archive
 * Animations
 
-3- Projects
+# Hack Week HOWTO
+
+* Review text
+* Style page
+
+# Projects
 
 * Animation
+* Fancy unlocked state
+* Remove "break apart" text. We hack, not break ;-)
 
-6- Terminal
+# Where
+
+* Add link "Your location is missing? Tell us where you are." and text with
+  instructions how to tell us.
+
+# Terminal
 
 * What is,  Where (4 offices Locations)
+* Tab completion
+
+# Project Wiki
+
+* Tag overview page
+* Categories page
