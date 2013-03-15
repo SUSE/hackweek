@@ -193,16 +193,6 @@ $(function () {
             $('#arrow-start').fadeIn()
         }
 
-        /* start page text scroll animation */
-        if ($(window).scrollTop() <= $('#start').height()) {
-            var percent_scrolled_out = $(window).scrollTop() / $('#start').height()
-            var lines = ["1", "2", "3", "4"]
-            lines.forEach(function (entry) {
-                var element = $("#claim-line" + entry)
-                element.css({ top: $(window).scrollTop() + percent_scrolled_out * ($('#start').height() / 2 - element.position().top),
-                    'opacity': 1 - percent_scrolled_out });
-            });
-        }
 
         /* people page text scroll animation */
         if ($(window).scrollTop() > $('#people').position().top - $('#people').height() &&
