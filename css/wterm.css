@@ -25,7 +25,7 @@
   outline: none;   
 }
 .wterm_terminal div:first { margin-bottom: 1em; }
-.wterm_terminal .wterm_prompt { float: left; clear: left;  }
+.wterm_terminal .wterm_prompt { float: left; clear: left; color: #34bcc9;}
 .wterm_terminal  form { float: left; margin: 0px; width: 75%; }
 
 /* Themes */
@@ -40,10 +40,27 @@
 .wterm_theme_green_on_black input { 
   background: transparent; 
   border: 0; 
-  color: #0f0;
+  color: #fff;
   padding-top: 2px;
 }
-
+.prompt{
+    color: #34bcc9;
+}
+.command{
+    color: #fff;
+}
+.directory{
+    color: #D4DF4C;
+}
+.file{
+    color: #c035c0;
+}
+.output {
+    color: #FFF;
+}
+.output .welcome-message{
+    color: #08d869;
+}
 #terminal{
     display: none;
     z-index: 9999;
