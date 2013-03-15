@@ -154,7 +154,18 @@ $(function () {
     function project_unlock() {
         window.clearInterval(circle_rotation)
         $('#build_wheel_03').off('click');
-        alert('unlocked')
+        //alert('unlocked')
+        $('#lock').fadeIn();
+        $('#line_01').fadeIn();
+        $('#line_02').fadeIn();
+        $('#line_03').fadeIn();
+        $('#wheel_01').fadeIn();
+        $('#wheel_02').fadeIn();
+        $('#wheel_03').fadeIn();
+        $('#build_wheel_01').fadeOut();
+        $('#build_wheel_02').fadeOut();
+        $('#build_wheel_03').fadeOut();
+        $('#solid_wheel').fadeOut();
     }
 
     /* rotate lib: http://code.google.com/p/jqueryrotate/wiki/Examples */

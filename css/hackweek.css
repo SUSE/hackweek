@@ -629,7 +629,7 @@ span:hover{
     margin-top: 88px;
     position: inherit;
     width: 130px;
-    display: none;
+
 }
 #current{
     background: url('../images/projects/current.png');
@@ -639,7 +639,7 @@ span:hover{
     margin-top: -37px;
     position: inherit;
     width: 130px;
-    display: none;
+
 }
 #more_info{
     background: url('../images/projects/more_info.png');
@@ -649,7 +649,7 @@ span:hover{
     margin-top: 349px;
     position: inherit;
     width: 130px;
-    display: none;
+
 }
 /**  ******/
 #where{
