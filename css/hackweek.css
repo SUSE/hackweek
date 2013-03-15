@@ -526,6 +526,7 @@ span:hover{
     height: 469px;
     float: left;
     position: inherit;
+    display: none;
 }
 #wheel_02{
     background: url('../images/projects/wheel_02.png');
@@ -536,6 +537,7 @@ span:hover{
     height: 354px;
     position: inherit;
     margin-top: 57px;
+    display: none;
 }
 #wheel_03{
     background: url('../images/projects/wheel_03.png');
@@ -546,6 +548,7 @@ span:hover{
     height: 334px;
     position: inherit;
     margin-top: 67px;
+    display: none;
 }
 #lock{
     background: url('../images/projects/lock.png');
@@ -556,6 +559,7 @@ span:hover{
     height: 195px;
     margin-top: 130px;
     position: inherit;
+    display: none;
 }
 #arch_01{
     background: url('../images/projects/arch_01.png');
@@ -566,6 +570,7 @@ span:hover{
     position: inherit;
     right: 33px;
     width: 181px;
+    display: none;
 }
 #arch_02{
     background: url('../images/projects/arch_02.png');
@@ -576,6 +581,7 @@ span:hover{
     margin-top: 40px;
     position: inherit;
     width: 112px;
+    display: none;
 }
 #line_01{
     background: url('../images/projects/line_01.png');
@@ -585,6 +591,7 @@ span:hover{
     margin-top: 160px;
     position: inherit;
     width: 223px;
+    display: none;
 }
 #line_02{
     background: url('../images/projects/line_02.png');
@@ -594,6 +601,7 @@ span:hover{
     margin-top: 42px;
     position: inherit;
     width: 377px;
+    display: none;
 }
 #line_03{
     background: url('../images/projects/line_03.png');
@@ -603,6 +611,7 @@ span:hover{
     margin-top: 302px;
     position: inherit;
     width: 206px;
+    display: none;
 }
 #create{
     background: url('../images/projects/create.png');
@@ -612,6 +621,7 @@ span:hover{
     margin-top: 88px;
     position: inherit;
     width: 130px;
+    display: none;
 }
 #current{
     background: url('../images/projects/current.png');
@@ -621,6 +631,7 @@ span:hover{
     margin-top: -37px;
     position: inherit;
     width: 130px;
+    display: none;
 }
 #more_info{
     background: url('../images/projects/more_info.png');
@@ -630,6 +641,7 @@ span:hover{
     margin-top: 349px;
     position: inherit;
     width: 130px;
+    display: none;
 }
 /**  ******/
 #where{
