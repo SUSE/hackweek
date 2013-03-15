@@ -150,22 +150,32 @@ $(function () {
 
 
     /* project page actions */
+
+    function project_unlock() {
+        window.clearInterval(circle_rotation)
+        $('#build_wheel_03').off('click');
+        alert('unlocked')
+    }
+
     /* rotate lib: http://code.google.com/p/jqueryrotate/wiki/Examples */
     var angle = 0
+    var angle2 = 0
+    var angle3 = 0
     var circle_rotation = setInterval(function () {
         angle += 1
-        $("#build_wheel_01").rotate(angle)
-    }, 60);
-    var angle2 = 45
-    var circle_rotation2 = setInterval(function () {
         angle2 -= 1
+        $("#build_wheel_01").rotate(angle)
         $("#build_wheel_02").rotate(angle2)
-    }, 30)
-    var angle3 = 0
-    var circle_rotation3 = setInterval(function () {
-        angle3 += 1
-        $("#build_wheel_03").rotate(angle3)
-    }, 30)
+        if ( angle%360 == 0 ) angle = 0
+        if ( angle2%360 == 0 ) angle2 = 0
+        if (angle == 0 && angle2 == 0 && angle3 == 90) project_unlock()
+    }, 60);
+
+    $("#build_wheel_03").click(function (event) {
+        angle3 +=90;
+        if ( angle3%360 == 0 ) angle2 = 0
+        $(this).rotate({ animateTo: angle3})
+    })
 
 
 
