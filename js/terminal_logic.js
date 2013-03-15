@@ -1,6 +1,7 @@
 $(function () {
 
-  var home_content = ["agenda", "projects"];
+  var home_dirs = ["agenda", "projects"];
+  var home_files = ["what", "where"];
 
   var set_directory_prompt = function(dirs) {
     if(dirs.length === 0) {
@@ -35,7 +36,7 @@ $(function () {
 
   $.register_command('ls', function(){
     if(directory_stack.length == 0) {
-      return to_directories(home_content);
+      return [to_directories(home_dirs), to_files(home_files)].join("<br>");
     } else if(directory_stack[0] == "agenda") {
       if(directory_stack.length == 1) {
         return to_directories(Object.keys(agenda_content));
@@ -48,7 +49,7 @@ $(function () {
   });
 
   $.register_command('cd', function(args){
-    if(directory_stack.length === 0 && $.inArray(args[1], home_content) >= 0) {
+    if(directory_stack.length === 0 && $.inArray(args[1], home_dirs) >= 0) {
       directory_stack.push(args[1]);
     } else if(directory_stack.length === 1 &&
         directory_stack[0] === "agenda" &&
@@ -64,7 +65,10 @@ $(function () {
   });
 
   $.register_command('cat', function(args){
-    if(directory_stack.length == 2 &&
+    if(directory_stack.length == 0 &&
+        $.inArray(args[1], home_files) >= 0) {
+      return other_content[args[1]].replace(/\n/g, "<br>");
+    } else if(directory_stack.length == 2 &&
         directory_stack[0] == "agenda" &&
         $.inArray(args[1], Object.keys(agenda_content[directory_stack[1]])) >= 0) {
       return agenda_content[directory_stack[1]][args[1]].replace(/\n/g, "<br>");
