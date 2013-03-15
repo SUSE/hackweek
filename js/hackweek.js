@@ -45,8 +45,8 @@ $(function () {
     })
 
     $(document).keydown(function(e){
-      e.preventDefault();
         if (e.keyCode == 0 || e.keyCode == 94 || e.keyCode == 54 || e.keyCode == 176 || e.keyCode == 160) {
+            e.preventDefault();
             toggle_terminal()
         }
     })
