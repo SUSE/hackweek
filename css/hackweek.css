@@ -786,12 +786,24 @@ span:hover{
     position: absolute;
     bottom: 20px;
     left: 20px;
-    font-weight: 100;
+    font-weight: normal;
     text-transform: uppercase;
     letter-spacing: 7px;
     font-size: 13px;
 }
-
+#map-info a, a:visited{
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    transition:.2s;
+    text-decoration: none;
+    color: #7C817F;
+}
+#map-info a:hover{
+    color: #7AC142;
+    text-decoration: none;
+}
 #terminal-btn{
     font-family: 'Cutive Mono', sans-serif;
     position: fixed;
