@@ -353,7 +353,7 @@
 
             if( settings.AUTOCOMPLETE ) {
               var commands      = [ ];   
-              var current_value = input.attr( 'value' );
+              var current_value = input.val();
               // Command Completion
               if( current_value.match( /^[^\s]{0,}$/ ) ) {
                 for( i in dispatch ) {
@@ -379,7 +379,7 @@
             e.preventDefault();
             if( settings.HISTORY ) {
               hcurrent  = ( hcurrent === null )? history.length - 1 : ( hcurrent == 0 ) ? history.length - 1 : hcurrent - 1;
-              input.attr( 'value', history[ hcurrent ] );
+              input.val( history[ hcurrent ] );
             }
           break;
 
@@ -389,7 +389,7 @@
             if( settings.HISTORY ) {
               if( hcurrent === null || hcurrent == (history.length - 1 ) ) break;
               hcurrent++;
-              input.attr( 'value', history[ hcurrent ] );
+              input.val( history[ hcurrent ] );
             }
           break;
 
