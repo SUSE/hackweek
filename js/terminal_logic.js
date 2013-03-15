@@ -104,8 +104,7 @@ $(function () {
   });
 
   $.register_command( 'help', function() {
-    return "<span class='welcome-message'>SUSEterm</span>" + '<br>' +
-      "<span class='welcome-message'>ls - List all content.</span><br>" +
+    return "<span class='welcome-message'>ls - List all content.</span><br>" +
       "<span class='welcome-message'>cd - Change working directory</span><br>" +
       "<span class='welcome-message'>cat &lt;FILE&gt; - Concatenate FILE, or standard input, to standard output.</span><br>" +
       "<span class='welcome-message'>date - Returns Current Date</span><br>" +
