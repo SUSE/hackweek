@@ -204,7 +204,7 @@
       * @args     : current_prompt, command, data
       **/
       var update_content = function( p, cmd, data ) {
-        content.append( '<div><span class="prompt">' + p + ' ' + cmd + '</span><div class="output">' + ( ( data ) ? data : '' ) + '</div></div>' );
+        content.append( '<div><span class="prompt">' + p + ' </span><span class="command">' + cmd + '</span><div class="output">' + ( ( data ) ? data : '' ) + '</div></div>' );
         $('#wterm')[0].scrollTop = $('#wterm')[0].scrollHeight
       }; 
 
