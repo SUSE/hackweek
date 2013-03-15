@@ -1,5 +1,7 @@
 $(function () {
 
+  var home_content = ["agenda", "projects"];
+
   var set_directory_prompt = function(dirs) {
     if(dirs.length === 0) {
       $.set_prompt("geeko@hackweek:~ >");
@@ -21,7 +23,7 @@ $(function () {
 
   $.register_command('ls', function(){
     if(directory_stack.length == 0) {
-      return ["agenda", "projects"].join("<br>");
+      return home_content.join("<br>");
     } else if(directory_stack[0] == "agenda") {
       if(directory_stack.length == 1) {
         return Object.keys(agenda_content).join("<br>");
@@ -29,14 +31,12 @@ $(function () {
         return Object.keys(agenda_content[directory_stack[1]]).join("<br>");
       }
     } else if(directory_stack[0] == "projects") {
-      titles = $.map(projects, function(project, i){
-        return project.title;
-      });
+      return Object.keys(projects_content).join("<br>");
     }
   });
 
   $.register_command('cd', function(args){
-    if(directory_stack.length === 0 && (args[1] === "agenda" || args[1] === "projects")) {
+    if(directory_stack.length === 0 && $.inArray(args[1], home_content) >= 0) {
       directory_stack.push(args[1]);
     } else if(directory_stack.length === 1 &&
         directory_stack[0] === "agenda" &&
@@ -56,6 +56,22 @@ $(function () {
         directory_stack[0] == "agenda" &&
         $.inArray(args[1], Object.keys(agenda_content[directory_stack[1]])) >= 0) {
       return agenda_content[directory_stack[1]][args[1]].replace(/\n/g, "<br>");
+    } else if(directory_stack.length == 1 &&
+        directory_stack[0] == "projects" &&
+        $.inArray(args[1], Object.keys(projects_content)) >= 0) {
+      return projects_content[args[1]]
+    } else {
+      return "No such file or directory."
+    }
+  });
+
+  $.register_command('open', function(args){
+    if(directory_stack.length == 1 &&
+        directory_stack[0] == "projects" &&
+        $.inArray(args[1], Object.keys(projects_content)) >= 0) {
+      var win = window.open(projects_content[args[1]], '_blank');
+      win.focus();
+      return "done";
     } else {
       return "No such file or directory."
     }
@@ -68,11 +84,10 @@ $(function () {
   $.register_command( 'help', function() {
     return "<span class='welcome-message'>SUSEterm</span>" + '<br>' +
       "<span class='welcome-message'>ls - List all content.</span><br>" +
-      "<span class='welcome-message'>eval - Usage eval &lt;any javascript exression&gt;.</span><br>" +
-      "<span class='welcome-message'>date - Returns Current Date.</span><br>" +
-      "<span class='welcome-message'>cap - Usage cap &lt;string&gt; - Turns the string to upcase.</span><br>" +
-      "<span class='welcome-message'>go - Usage go &lt;url&gt; - Sets the browser location to URL.</span><br>" +
+      "<span class='welcome-message'>cd - Change working directory</span><br>" +
       "<span class='welcome-message'>cat &lt;FILE&gt; - Concatenate FILE, or standard input, to standard output.</span><br>" +
+      "<span class='welcome-message'>date - Returns Current Date</span><br>" +
+      "<span class='welcome-message'>open &lt;filename&gt; - Open the target in a new tab</span><br>" +
       "<span class='welcome-message'>exit - Close Terminal shell.</span><br>"
   });
 
