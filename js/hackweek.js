@@ -149,21 +149,21 @@ $(function () {
 
 
     /* project page actions */
-    var angle = 0;
+    var angle = 0
     var circle_rotation = setInterval(function () {
-        angle += 1;
-        $("#wheel_01").rotate(angle);
-    }, 50);
-
-    //setInterval(function () {
-    //    angle -= 3;
-    //    $("#arch_01").rotate(angle);
-    //}, 50);
-    //setInterval(function () {
-    //    angle -= 2;
-    //    $("#arch_02").rotate(angle);
-    //}, 50);
-
+        angle += 1
+        $("#build_wheel_01").rotate(angle)
+    }, 60);
+    var angle2 = 45
+    var circle_rotation2 = setInterval(function () {
+        angle2 -= 1
+        $("#build_wheel_02").rotate(angle2)
+    }, 30)
+    var angle3 = 0
+    var circle_rotation3 = setInterval(function () {
+        angle3 += 1
+        $("#build_wheel_03").rotate(angle3)
+    }, 30)
 
 
 
