@@ -499,7 +499,7 @@ span:hover{
     background: url('../images/projects/build_wheel_01.png');
     background-repeat: no-repeat;
     width: 472px;
-    height: 469px;
+    height: 472px;
     float: left;
     position: inherit;
 }
@@ -507,7 +507,7 @@ span:hover{
     background: url('../images/projects/build_wheel_02.png');
     background-repeat: no-repeat;
     width: 472px;
-    height: 469px;
+    height: 472px;
     float: left;
     position: inherit;
 }
@@ -515,7 +515,15 @@ span:hover{
     background: url('../images/projects/build_wheel_03.png');
     background-repeat: no-repeat;
     width: 472px;
-    height: 469px;
+    height: 472px;
+    float: left;
+    position: inherit;
+}
+#solid_wheel{
+    background: url('../images/projects/solid_wheel.png');
+    background-repeat: no-repeat;
+    width: 472px;
+    height: 472px;
     float: left;
     position: inherit;
 }
