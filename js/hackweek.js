@@ -147,11 +147,23 @@ $(function () {
         }
     }
 
+
     /* project page actions */
-    $("#break_apart").on('click', function(event) {
-        // make stuff fall down:
-        //http://blog.themeforest.net/tutorials/simulate-gravity-with-jquery/
-    })
+    var angle = 0;
+    var circle_rotation = setInterval(function () {
+        angle += 1;
+        $("#wheel_01").rotate(angle);
+    }, 50);
+
+    //setInterval(function () {
+    //    angle -= 3;
+    //    $("#arch_01").rotate(angle);
+    //}, 50);
+    //setInterval(function () {
+    //    angle -= 2;
+    //    $("#arch_02").rotate(angle);
+    //}, 50);
+
 
 
 
