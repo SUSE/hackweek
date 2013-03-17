@@ -1,6 +1,9 @@
-This repository is hosting the webpage for SUSE Hackweek 2013.
+This repository is hosting the infrastructure for SUSE Hack Week 9.
 
-The sources of the webpage are in the gh-pages branch. 
+The sources of the webpage are in the gh-pages branch. You can visit the site
+at: http://suse.github.com/hackweek/.
 
-You can visit the site at: http://suse.github.com/hackweek/
+The project list is in the Wiki at http://github.com/SUSE/hackweek/wiki.
+
+There are some tools in the tool directory.
 
