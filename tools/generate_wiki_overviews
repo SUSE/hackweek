@@ -71,7 +71,7 @@ Dir.entries( wiki_dir ).each do |entry|
   entry =~ /(.*)\.md$/
   page = $1
   next unless page
-  next if ["Home","'Categories'","'Tags'"].include? page
+  next if ["Home","'Categories'","'Tags'","'Template'"].include? page
   
   categories = Array.new
   tags = Array.new
