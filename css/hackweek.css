@@ -898,6 +898,11 @@ span:hover{
     margin-top: -30px;
     text-transform: none;
 }
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .missing-location {
+        margin-top: -25px;
+    }
+}
 @media only screen and (max-width : 1290px) {
 
 #what-is-title {
