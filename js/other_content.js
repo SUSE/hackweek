@@ -35,7 +35,6 @@ var other_content = {
   \n\
   Beijing - CN\n\
   ============= \n\
-  * Menu \n\
   * - Beijing Fortune Plaza Office Tower A \n\
   * - Room3603-3606 \n\
   * - No. 7 East Third Ring Road, Chaoyang District \n\
