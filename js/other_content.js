@@ -36,10 +36,10 @@ var other_content = {
   Beijing - CN\n\
   ============= \n\
   * Menu \n\
-  * - 北京市朝阳区东三环中路7号 \n\
-  * - 北京财富中心A座写字楼3603室 \n\
+  * - Beijing Fortune Plaza Office Tower A \n\
   * - Room3603-3606 \n\
-  * - 北京财富Beijing, 100020 \n\
+  * - No. 7 East Third Ring Road, Chaoyang District \n\
+  * - 100020, Beijing China \n\
   * - +86 10 6533 9000 \n\
   "
 };
