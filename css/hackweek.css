@@ -9,6 +9,8 @@ body {
     margin: 0px;
     background-color: #FFF;
     font-family: 'Roboto', Droid Sans, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
 }
 
 li {
@@ -882,6 +884,20 @@ span:hover{
     color: blue;
 }
 
+#contact {
+    color: #7C817F;
+    font-size: 12.5px;
+    letter-spacing: normal;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+}
+.missing-location {
+    background: none repeat scroll 0 0 transparent;
+    color: #00A54F;
+    font-size: 18px;
+    margin-top: -30px;
+    text-transform: none;
+}
 @media only screen and (max-width : 1290px) {
 
 #what-is-title {
