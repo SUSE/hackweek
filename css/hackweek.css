@@ -25,6 +25,7 @@ span:hover{
 .page-size {
     width: 100%;
     height: 100%;
+    min-width: 1150px; 
 }
 .bolder{
     font-weight: 900;
@@ -251,6 +252,7 @@ span:hover{
     background-repeat: repeat-x;
     z-index: 10;
     position: relative;
+    min-height: 900px;
 }
 #what-is-content {
     margin: 0 auto;
@@ -294,7 +296,7 @@ span:hover{
     font-size: 20px;
     text-align: left;
     font-weight: normal;
-    padding-left: 20px;
+    padding-left: 10px;
     padding-right: 20px;
     float: left;
     margin-top: 110px;
@@ -878,3 +880,32 @@ span:hover{
 .directory {
     color: blue;
 }
+
+@media only screen and (max-width : 1290px) {
+
+#what-is-title {
+    font-size: 22px;
+}
+
+#start-menu{
+    position: inherit;
+    left: 0;
+    right: 0;
+    display: none;
+}
+
+#what-is-cta {
+    width: 290px;
+    font-size: 15px;
+}
+
+#hackweek-logos {
+    padding-left: 40px;
+}
+
+#projects-title {
+    font-size: 22px;
+}
+
+}
+
