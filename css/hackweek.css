@@ -254,7 +254,7 @@ span:hover{
     background-repeat: repeat-x;
     z-index: 10;
     position: relative;
-    min-height: 800px;
+    min-height: 860px;
 }
 #what-is-content {
     margin: 0 auto;
