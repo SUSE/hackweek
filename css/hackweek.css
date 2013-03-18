@@ -252,7 +252,7 @@ span:hover{
     background-repeat: repeat-x;
     z-index: 10;
     position: relative;
-    min-height: 900px;
+    min-height: 800px;
 }
 #what-is-content {
     margin: 0 auto;
@@ -465,6 +465,7 @@ span:hover{
     background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(220, 220, 220)));
     z-index: 40;
     position: relative;
+    min-height: 700px;
 }
 #projects-title{
     margin: 0 auto;
@@ -909,3 +910,9 @@ span:hover{
 
 }
 
+@media only screen and (max-height : 700px) {
+#projects-unlock-container {
+    margin: -200px auto 0 -235px;
+}
+
+}
