@@ -890,6 +890,7 @@ span:hover{
     letter-spacing: normal;
     padding-bottom: 10px;
     text-transform: uppercase;
+    line-height: 20px;
 }
 .missing-location {
     background: none repeat scroll 0 0 transparent;
