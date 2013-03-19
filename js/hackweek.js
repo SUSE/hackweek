@@ -76,6 +76,9 @@ $(function () {
 
 
     function set_agenda_location(loc) {
+        if ( agenda_content[loc] == undefined ) {
+            loc = "nuremberg"
+        }
         var converter = new Showdown.converter();
         $('#monday-content .agenda-details').html(converter.makeHtml(agenda_content[loc].monday))
         $('#tuesday-content .agenda-details').html(converter.makeHtml(agenda_content[loc].tuesday))
