@@ -122,7 +122,7 @@ $(function () {
     if ($.cookie("agenda-location")) {
         set_agenda_location($.cookie("agenda-location"))
     } else {
-        set_agenda_location('de')
+        set_agenda_location('nuremberg')
     }
 
     /* auto open current agenda day */
