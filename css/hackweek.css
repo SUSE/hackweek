@@ -763,7 +763,6 @@ span:hover{
     right: 0;
     width: 33px;
     cursor: pointer;
-    z-index: 100;
 }
 #beijing-zoom{
     background: url('../images/beijing.png');
@@ -774,6 +773,7 @@ span:hover{
     width: 232px;
     height: 232px;
     display: none;
+    z-index: 100;
 }
 .office-location {
     color: #7C817F;
