@@ -254,7 +254,7 @@ span:hover{
     background-repeat: repeat-x;
     z-index: 10;
     position: relative;
-    min-height: 860px;
+    min-height: 890px;
 }
 #what-is-content {
     margin: 0 auto;
@@ -268,9 +268,27 @@ span:hover{
     font-size: 25px;
     text-align: center;
 }
+#what-is-title a{
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    transition:.2s;
+    color: #7ac142;
+    text-decoration: none;
+}
+#what-is-title a:hover{
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    transition:.2s;
+    text-decoration: underline;
+    color: #d4df4c;
+}
 #what-is-cta{
     background-color: #d4df4c;
-    height: 100%;
+    min-height: 800px;
     width: 350px;
     margin-top: 0px;
     margin-left: 50px;
@@ -903,6 +921,19 @@ span:hover{
     margin-top: -30px;
     text-transform: none;
 }
+.missing-location a, a:visited{
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    transition:.2s;
+    text-decoration: none;
+    color: #7C817F;
+}
+.missing-location a:hover{
+    color: #7AC142;
+    text-decoration: none;
+}
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     .missing-location {
         margin-top: -25px;
@@ -932,6 +963,15 @@ span:hover{
 
 #projects-title {
     font-size: 22px;
+}
+
+.claim-where {
+     font-size: 26px;
+ }
+
+.missing-location {
+    margin-top: -10px;
+    font-size: 18px;
 }
 
 }
