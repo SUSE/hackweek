@@ -101,25 +101,10 @@ $(function () {
         }, 800);
     })
 
-    $("#agenda-nuremberg-link").click(function (event) {
+    $(".agenda-city-link").click(function (event) {
         event.stopPropagation()
-        set_agenda_location('nuremberg')
-    })
-    $("#agenda-provo-link").click(function (event) {
-        event.stopPropagation()
-        set_agenda_location('provo')
-    })
-    $("#agenda-prague-link").click(function (event) {
-        event.stopPropagation()
-        set_agenda_location('prague')
-    })
-    $("#agenda-beijing-link").click(function (event) {
-        event.stopPropagation()
-        set_agenda_location('beijing')
-    })
-    $("#agenda-taipei-link").click(function (event) {
-        event.stopPropagation()
-        set_agenda_location('taipei')
+        var city = $(this).attr('id').replace("agenda-", "").replace("-link", "")
+        set_agenda_location(city)
     })
 
     if ($.cookie("agenda-location")) {
