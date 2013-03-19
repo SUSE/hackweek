@@ -1,5 +1,5 @@
 var agenda_content = {
-  "de": {
+  "nuremberg": {
     "monday": "\
 <br>\n\
 <br>\n\
@@ -82,7 +82,8 @@ var agenda_content = {
 <br>\n\
 <em>subject to change and more to come...</em>\n\
   "},
-  "us": {
+  
+  "provo": {
     "monday": "\
 <br>\n\
 <br>\n\
@@ -153,7 +154,7 @@ var agenda_content = {
     "
   },
 
-  "cz": {
+  "prague": {
     "monday": "\
 <br>\n\
 <br>\n\
@@ -223,7 +224,70 @@ var agenda_content = {
     "
   },
 
-  "chn": {
+  "beijing": {
+    "monday": "\
+<br>\n\
+<br>\n\
+<br>\n\
+# Morning \n\
+### 07:00 Start of Hack Week\n\
+* Get your keyboards ready \n\
+* Team up with your collaborators \n\
+* Start hacking \n\
+# All day \n\
+* Hacking like crazy \n\
+<br>\n\
+<br>\n\
+<br>\n\
+<em>subject to change and more to come...</em>\n\
+    ",
+    "tuesday": "\
+<br>\n\
+<br>\n\
+<br>\n\
+# All day \n\
+* Hacking like crazy \n\
+<br>\n\
+<br>\n\
+<br>\n\
+<em>subject to change and more to come...</em>\n\
+    ",
+    "wednesday": "\
+<br>\n\
+<br>\n\
+<br>\n\
+# All day \n\
+* Hacking like crazy \n\
+<br>\n\
+<br>\n\
+<br>\n\
+<em>subject to change and more to come...</em>\n\
+    ",
+    "thursday": "\
+<br>\n\
+<br>\n\
+<br>\n\
+# All day \n\
+* Hacking like crazy \n\
+<br>\n\
+<br>\n\
+<br>\n\
+<em>subject to change and more to come...</em>\n\
+    ",
+    "friday": "\
+<br>\n\
+<br>\n\
+<br>\n\
+# All day \n\
+* Hacking like crazy \n\
+<br>\n\
+<br>\n\
+<br>\n\
+<em>subject to change and more to come...</em>\n\
+    "
+  },
+  
+  "taipei": {
     "monday": "\
 <br>\n\
 <br>\n\
