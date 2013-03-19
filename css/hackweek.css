@@ -722,6 +722,9 @@ span:hover{
 }
 #provo-zoom{
     background: url('../images/provo.png');
+    background-repeat: no-repeat;
+    background-position: 23px center;
+    background-size: 80% auto;
     width: 232px;
     height: 232px;
     position: inherit;
@@ -742,6 +745,9 @@ span:hover{
 }
 #nuremberg-zoom{
     background: url('../images/nuremberg.png');
+    background-repeat: no-repeat;
+    background-position: 23px center;
+    background-size: 80% auto;
     left: 50%;
     margin-left: -139px;
     margin-top: 47px;
@@ -763,6 +769,9 @@ span:hover{
 }
 #prague-zoom{
     background: url('../images/prague.png');
+    background-repeat: no-repeat;
+    background-position: 23px center;
+    background-size: 80% auto;
     left: 50%;
     margin-left: -50px;
     margin-top: 80px;
@@ -784,8 +793,11 @@ span:hover{
 }
 #beijing-zoom{
     background: url('../images/beijing.png');
+    background-repeat: no-repeat;
+    background-position: 23px center;
+    background-size: 80% auto;
     margin-right: 150px;
-    margin-top: 175px;
+    margin-top: 135px;
     position: inherit;
     right: 0;
     width: 232px;
@@ -797,7 +809,7 @@ span:hover{
     color: #7C817F;
     font-size: 25px;
     font-weight: bold;
-    margin-top: 90px;
+    margin-top: 95px;
     position: inherit;
     text-align: center;
     width: 232px;
@@ -815,7 +827,7 @@ span:hover{
     color: #7C817F;
     font-size: 15px;
     font-weight: normal;
-    margin-top: 145px;
+    margin-top: 130px;
     position: inherit;
     text-align: center;
     width: 232px;
@@ -824,7 +836,7 @@ span:hover{
     color: #7C817F;
     font-size: 15px;
     font-weight: normal;
-    margin-top: 172px;
+    margin-top: 155px;
     position: inherit;
     text-align: center;
     width: 232px;
