@@ -805,6 +805,30 @@ span:hover{
     display: none;
     z-index: 100;
 }
+#singapore{
+    background: url('../images/pin.png');
+    height: 38px;
+    margin-right: 280px;
+    margin-top: 335px;
+    position: inherit;
+    right: 0;
+    width: 33px;
+    cursor: pointer;
+}
+#singapore-zoom{
+    background: url('../images/singapore.png');
+    background-repeat: no-repeat;
+    background-position: 23px center;
+    background-size: 80% auto;
+    margin-right: 175px;
+    margin-top: 225px;
+    position: inherit;
+    right: 0;
+    width: 232px;
+    height: 232px;
+    display: none;
+    z-index: 100;
+}
 .office-location {
     color: #7C817F;
     font-size: 25px;
