@@ -158,18 +158,16 @@ $(function () {
     function project_unlock() {
         window.clearInterval(circle_rotation)
         $('#build_wheel_03').off('click');
-        //alert('unlocked')
-        $('#lock').fadeIn();
-        $('#line_01').fadeIn();
-        $('#line_02').fadeIn();
-        $('#line_03').fadeIn();
-        $('#wheel_01').fadeIn();
-        $('#wheel_02').fadeIn();
-        $('#wheel_03').fadeIn();
-        $('#build_wheel_01').fadeOut();
-        $('#build_wheel_02').fadeOut();
-        $('#build_wheel_03').fadeOut();
-        $('#solid_wheel').fadeOut();
+        $("#build_wheel_01").rotate({ animateTo: 0})
+        $("#build_wheel_02").rotate({ animateTo: 0})
+        $('#lock, #line_01, #line_02, #line_03').fadeIn('slow');
+        //$('#wheel_01').fadeIn();
+        //$('#wheel_02').fadeIn();
+        //$('#wheel_03').fadeIn();
+        //$('#build_wheel_01').fadeOut();
+        //$('#build_wheel_02').fadeOut();
+        //$('#build_wheel_03').fadeOut();
+        //$('#solid_wheel').fadeOut();
     }
 
     /* rotate lib: http://code.google.com/p/jqueryrotate/wiki/Examples */
@@ -183,13 +181,13 @@ $(function () {
         $("#build_wheel_02").rotate(angle2)
         if ( angle%360 == 0 ) angle = 0
         if ( angle2%360 == 0 ) angle2 = 0
-        if (angle == 0 && angle2 == 0 && angle3 == 90) project_unlock()
-    }, 60);
+        if (angle3 == 270) project_unlock()
+    }, 90);
 
     $("#build_wheel_03").click(function (event) {
         angle3 +=90;
-        if ( angle3%360 == 0 ) angle3 = 0
         $(this).rotate({ animateTo: angle3})
+        if ( angle3%360 == 0 ) angle3 = 0
     })
 
 
@@ -324,14 +322,6 @@ $(function () {
       WIDTH:           "80%",
       HEIGHT:          "500px"
   });
-
-  $(function()
-    {
-    $("#wterm").jScrollPane({
-        showArrows: false,
-        autoReinitialise: true
-    });
-});
 
 });
 

@@ -254,7 +254,7 @@ span:hover{
     background-repeat: repeat-x;
     z-index: 10;
     position: relative;
-    min-height: 860px;
+    min-height: 890px;
 }
 #what-is-content {
     margin: 0 auto;
@@ -268,9 +268,27 @@ span:hover{
     font-size: 25px;
     text-align: center;
 }
+#what-is-title a{
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    transition:.2s;
+    color: #7ac142;
+    text-decoration: none;
+}
+#what-is-title a:hover{
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    transition:.2s;
+    text-decoration: underline;
+    color: #d4df4c;
+}
 #what-is-cta{
     background-color: #d4df4c;
-    height: 100%;
+    min-height: 800px;
     width: 350px;
     margin-top: 0px;
     margin-left: 50px;
@@ -704,6 +722,9 @@ span:hover{
 }
 #provo-zoom{
     background: url('../images/provo.png');
+    background-repeat: no-repeat;
+    background-position: 23px center;
+    background-size: 80% auto;
     width: 232px;
     height: 232px;
     position: inherit;
@@ -724,6 +745,9 @@ span:hover{
 }
 #nuremberg-zoom{
     background: url('../images/nuremberg.png');
+    background-repeat: no-repeat;
+    background-position: 23px center;
+    background-size: 80% auto;
     left: 50%;
     margin-left: -139px;
     margin-top: 47px;
@@ -745,6 +769,9 @@ span:hover{
 }
 #prague-zoom{
     background: url('../images/prague.png');
+    background-repeat: no-repeat;
+    background-position: 23px center;
+    background-size: 80% auto;
     left: 50%;
     margin-left: -50px;
     margin-top: 80px;
@@ -766,8 +793,35 @@ span:hover{
 }
 #beijing-zoom{
     background: url('../images/beijing.png');
+    background-repeat: no-repeat;
+    background-position: 23px center;
+    background-size: 80% auto;
     margin-right: 150px;
-    margin-top: 175px;
+    margin-top: 135px;
+    position: inherit;
+    right: 0;
+    width: 232px;
+    height: 232px;
+    display: none;
+    z-index: 100;
+}
+#singapore{
+    background: url('../images/pin.png');
+    height: 38px;
+    margin-right: 280px;
+    margin-top: 335px;
+    position: inherit;
+    right: 0;
+    width: 33px;
+    cursor: pointer;
+}
+#singapore-zoom{
+    background: url('../images/singapore.png');
+    background-repeat: no-repeat;
+    background-position: 23px center;
+    background-size: 80% auto;
+    margin-right: 175px;
+    margin-top: 225px;
     position: inherit;
     right: 0;
     width: 232px;
@@ -779,7 +833,7 @@ span:hover{
     color: #7C817F;
     font-size: 25px;
     font-weight: bold;
-    margin-top: 90px;
+    margin-top: 95px;
     position: inherit;
     text-align: center;
     width: 232px;
@@ -797,7 +851,7 @@ span:hover{
     color: #7C817F;
     font-size: 15px;
     font-weight: normal;
-    margin-top: 145px;
+    margin-top: 130px;
     position: inherit;
     text-align: center;
     width: 232px;
@@ -806,7 +860,7 @@ span:hover{
     color: #7C817F;
     font-size: 15px;
     font-weight: normal;
-    margin-top: 172px;
+    margin-top: 155px;
     position: inherit;
     text-align: center;
     width: 232px;
@@ -903,9 +957,25 @@ span:hover{
     margin-top: -30px;
     text-transform: none;
 }
+.missing-location a, a:visited{
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    transition:.2s;
+    text-decoration: none;
+    color: #7C817F;
+}
+.missing-location a:hover{
+    color: #7AC142;
+    text-decoration: none;
+}
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     .missing-location {
         margin-top: -25px;
+    }
+    .claim-where-2nd {
+        margin-right: 7px;
     }
 }
 @media only screen and (max-width : 1290px) {
@@ -932,6 +1002,15 @@ span:hover{
 
 #projects-title {
     font-size: 22px;
+}
+
+.claim-where {
+     font-size: 26px;
+ }
+
+.missing-location {
+    margin-top: -10px;
+    font-size: 18px;
 }
 
 }
