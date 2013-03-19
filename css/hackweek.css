@@ -829,6 +829,30 @@ span:hover{
     display: none;
     z-index: 100;
 }
+#taipei{
+    background: url('../images/pin.png');
+    height: 38px;
+    margin-right: 198px;
+    margin-top: 255px;
+    position: inherit;
+    right: 0;
+    width: 33px;
+    cursor: pointer;
+}
+#taipei-zoom{
+    background: url('../images/taipei.png');
+    background-repeat: no-repeat;
+    background-position: 23px center;
+    background-size: 80% auto;
+    margin-right: 91px;
+    margin-top: 172px;
+    position: inherit;
+    right: 0;
+    width: 232px;
+    height: 232px;
+    display: none;
+    z-index: 100;
+}
 .office-location {
     color: #7C817F;
     font-size: 25px;
