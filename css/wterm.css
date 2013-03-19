@@ -1,5 +1,5 @@
 /* Basic Terminal CSS */
-#wterm { width:80%;}
+#wterm { width:80%; height: 500px;}
 .wterm_terminal {  
   background: #000; 
   color: #fff; 
