@@ -321,14 +321,6 @@ $(function () {
       HEIGHT:          "500px"
   });
 
-  $(function()
-    {
-    $("#wterm").jScrollPane({
-        showArrows: false,
-        autoReinitialise: true
-    });
-});
-
 });
 
 
