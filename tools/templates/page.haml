@@ -1,0 +1,30 @@
+%head
+  %title
+    SUSE Hack Week - Past Project
+  %link{ :href => "../../images/favicon.gif", :rel => "shortcut icon" }
+  %link{ :href => "../../css/hackweek-single-page.css", :type => "text/css", :rel => "stylesheet" }
+%body
+  #navigation
+    %li#start-link.logo.invert  
+      %a{ :href => "../../index.html" }
+        %img{ :width => "112", :height => "52", :border => "0", :src => "../../images/px.gif" }
+    %li#what-is-link.invert
+      %a{ :href => "../../index.html#what-is" }
+        what is hack week?
+    %li#agenda-link.invert
+      %a{ :href => "../../index.html#agenda" }
+        agenda
+    %li#projects-link.invert
+      %a{ :href => "../../index.html#projects" }
+        projects
+    %li#where-link.invert
+      %a{ :href => "../../index.html#where" }
+        where?
+  #content
+    #wrapper
+      #wrapper-title
+        %h1
+          = render_title
+        %p &nbsp;
+      #wrapper-content
+        = render_content
