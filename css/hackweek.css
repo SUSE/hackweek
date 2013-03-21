@@ -853,6 +853,54 @@ span:hover{
     display: none;
     z-index: 100;
 }
+#london{
+    background: url('../images/pin.png');
+    height: 38px;
+    left: 50%;
+    margin-left: -53px;
+    margin-top: 161px;
+    position: inherit;
+    width: 33px;
+    cursor: pointer;
+}
+#london-zoom{
+    background: url('../images/london.png');
+    background-repeat: no-repeat;
+    background-position: 23px center;
+    background-size: 80% auto;
+    left: 50%;
+    margin-left: -139px;
+    margin-top: 47px;
+    position: inherit;
+    width: 232px;
+    height: 232px;
+    display: none;
+    z-index: 100;
+}
+#barcelona{
+    background: url('../images/pin.png');
+    height: 38px;
+    left: 50%;
+    margin-left: -45px;
+    margin-top: 203px;
+    position: inherit;
+    width: 33px;
+    cursor: pointer;
+}
+#barcelona-zoom{
+    background: url('../images/barcelona.png');
+    background-repeat: no-repeat;
+    background-position: 23px center;
+    background-size: 80% auto;
+    left: 50%;
+    margin-left: -139px;
+    margin-top: 105px;
+    position: inherit;
+    width: 232px;
+    height: 232px;
+    display: none;
+    z-index: 100;
+}
 .office-location {
     color: #7C817F;
     font-size: 25px;
@@ -888,6 +936,12 @@ span:hover{
     position: inherit;
     text-align: center;
     width: 232px;
+}
+.not-office-location{
+    margin-top: 103px;
+}
+.not-office-address{
+    margin-top: 142px;
 }
 #where-title{
     position: absolute;
