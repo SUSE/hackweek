@@ -1,0 +1,61 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>
+          Share your Kraft
+        </h1>
+        <p>&nbsp;</p>
+      </div>
+      <div id='wrapper-content'>
+        <h2>Description</h2>
+        <richtext>
+              <p>Kraft is a KDE software to manage business documents like offers and invoices in the small business, see http://volle-kraft-voraus.de for more details about its features.</p>
+              <p>This Hackweek project is about sharing Kraft. Nowadays, teams are often distributed over various places with just a internet line between work mates. The challenge is to make Kraft work in that scenario.</p>
+              <p>One might propose to solve this using a internet mysql instance at a hoster, but if the line is weak, this does not scale. Kraft will keep its client side database and only share data to not suffer from being offline or in the countryside.  Another requirement is to be able to install the Kraftserver at a cheap and standard hosting, meaning PHP and maybe mysql, but not root server etc etc.  In detail that means four problems to solve:</p>
+              <ol>
+                <li>Numbercycle sharing: Each document (invoice etc.) needs an unique number in an organization. The Kraftserver will create these and hand over to the clients.</li>
+                <li>Document sharing: The Kraftserver will care for document sharing between the Kraft instances, details tbd.</li>
+                <li>Catalog sharing: Kraft knows the concept of template catalogs. These are going to be shared between the instances over the Kraftserver.</li>
+                <li>Address sharing: This is a problem to be solved, however this won't be subject of this hackweek project.  The owncloud project seems to be a good starting point for the Kraftserver as it already brings in some very useful features such as users and groups and WebDAV capabilities.</li>
+              </ol>
+              <p/>
+            </richtext>
+      </div>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,76 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>
+          Mozmill for Firefox on Suse Linux
+        </h1>
+        <p>&nbsp;</p>
+      </div>
+      <div id='wrapper-content'>
+        <h2>Description</h2>
+        <richtext>
+              <p>Mozmill is a open-source Automation test tools for firefox which developed by Mozilla, We want to introduce it into Suse linux test workflow on firefox.</p>
+              <p>Not all of the test cases in Mozmill are suit for firefox version on Suse linux, So a certain of changes will be optimized and improved.</p>
+            </richtext>
+        <h2>Comments</h2>
+        <p><b>By B.         W.      :</b>
+        <richtext>
+                <p>I got mozmill to work on openSUSE with
+        sudo zypper -n in gcc python-devel python-pip mercurial
+        sudo pip install mozmill mercurial
+        hg clone http://hg.mozilla.org/qa/mozmill-tests
+        mozmill -t mozmill-tests/firefox/</p>
+                <p>nearly all tests passed</p>
+              </richtext></p>
+        <p><b>By X.         J.      :</b>
+        <richtext>
+                <p>Hi, Bernhard!
+        
+        Because of Chinese New Year last week, I am very sorry for the so late reply.
+        Thanks for your interesting and testing it on opensuse.
+        
+        I install and run the mozmill test cases may be a little different from you way, you can refer to this link:
+        https://bugzilla.novell.com/tr_show_case.cgi?case_id=1005223
+        
+        As such ways, almost more that 20% cases can not pass at first time run on SLES/SLED, especially for the latest test cases collection download from http://hg.mozilla.org/qa/mozmill-tests.</p>
+                <p>I will try your ways to run it tomorrow. Whatever result it is, thanks for sharing your method.</p>
+              </richtext></p>
+      </div>
+    </div>
+  </div>
+</body>

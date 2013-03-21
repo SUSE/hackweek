@@ -1,0 +1,80 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>
+          Upgrade Performance Co-Pilot (PCP) package and add PCP GUI
+        </h1>
+        <p>&nbsp;</p>
+      </div>
+      <div id='wrapper-content'>
+        <h2>Description</h2>
+        <richtext>
+              <p>OpenSuSE currently ships a fairly dated PCP package (2.5.0).&#xA0; It would be nice if a more modern</p>
+              <p>version of PCP was included.&#xA0; Version 3.0.0 has just been released by the community.&#xA0; Part of</p>
+              <p>the effort to move from 2.9.x to 3.0 was to update some of the packaging to split the libraries out of</p>
+              <p>the core package and to create various -devel packages.</p>
+            </richtext>
+        <h2>Comments</h2>
+        <p><b>By J.         H.      :</b>
+        <richtext>
+                <p>Current source tarballs build very easily on opensuse. pcp-gui has a lot of nice features that pcpmon (which seems mostly</p>
+                <p>abandoned by it's developer) lacks.</p>
+              </richtext></p>
+        <p><b>By D.         D.      :</b>
+        <richtext>
+                <p>For tracking, the openSUSE packaging done during hackweek is available from:
+        https://build.opensuse.org/project/show?project=home%3Admdiss%3Abranches%3Apcp-hw6</p>
+                <p>A few things I'd like to get done before submitting to Factory:
+        - spec file cleanups; the install script leaves a few holes in the manifest files
+        - use the correct icon for pcp-gui
+        - fix qassistantclient.h build dependency for Factory build (provided by libqt4-devel-4.6.3 in 11.3 and qt4-assistant-adp-devel in Factory)</p>
+              </richtext></p>
+        <p><b>By D.         D.      :</b>
+        <richtext>
+                <p>pcp-gui and updated (3.5.8) pcp packages are now included in the openSUSE:Factory build service project for inclusion in the next release branch.</p>
+                <p>https://build.opensuse.org/package/show?package=pcpproject=openSUSE%3AFactory
+        https://build.opensuse.org/package/show?package=pcp-guiproject=openSUSE%3AFactory</p>
+              </richtext></p>
+        <p><b>By S.         T.      :</b>
+        <richtext>
+                <p>Wonderful! We make a great deal of use of this in our prod environment, and it'll be good to be able to stop compiling our own 3.x rpm's : )</p>
+              </richtext></p>
+      </div>
+    </div>
+  </div>
+</body>

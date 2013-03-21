@@ -1,0 +1,103 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>
+          Beautiful one-click-install
+        </h1>
+        <p>&nbsp;</p>
+      </div>
+      <div id='wrapper-content'>
+        <h2>Description</h2>
+        <richtext>
+              <p>
+                Garrett made a
+                <a href="http://ux.suse.de/~garrett/public/hackweek/oneclick/mockups/oneclick-mockup-disable%20widgets.png">great mockup</a>
+                for a much more beautiful one click installer some time ago. It would be great to get this implemented.
+              </p>
+              <p>I think it could be done with a small Qt application which uses libzypp or PackageKit or something like that as the backend to do the actual installation.</p>
+              <p>I won't be able to spend much time on it, but Will said he might be interested. Maybe also one of the YaST guys could join.</p>
+              <p/>
+            </richtext>
+        <h2>Comments</h2>
+        <p><b>By G.         L.      :</b>
+        <richtext>
+                <p>I would be quite happy to help make this a reality.</p>
+                <p>When talking with Cornelius a short while ago, we realized that it could be even simpler (for the main flow at least). It would be fantastic if we have something great at the end of Hackweek... and I think that's completely possible.</p>
+              </richtext></p>
+        <p><b>By R.         M.      :</b>
+        <richtext>
+                <p>One of&#xA0;beautiful&#xA0;ideas in this proposal is to point out user that repository must be trusted before actually installing anything.</p>
+                <p>The missing piece is extended help how to check validity of the repository GPG keys. It is the same in YaST. You have some numbers on the screen and you have to trust them. How that works, how to check keys, when and why you can and should trust them is not explained.</p>
+                <ol>
+                  <li>User can cancel operation, which means that repository will not be added and software that he wants will not be installed. or&#xA0;</li>
+                  <li>Blindly accept key import and defeat purpose of this step.&#xA0;</li>
+                </ol>
+                <p>&#xA0;</p>
+              </richtext></p>
+        <p><b>By 6.         6.      :</b>
+        <richtext>
+                <p>LOVE the mockup! If it's like that, I vote for this!</p>
+              </richtext></p>
+        <p><b>By A.         B.      :</b>
+        <richtext>
+                <p>I love it, simple and user-friendly!</p>
+                <p>A search on top integrate  with "software.opensuse.org/search" will be great,</p>
+              </richtext></p>
+        <p><b>By T.         S.      :</b>
+        <richtext>
+                <p>Will looked into this during hackweek, is there already some code?</p>
+              </richtext></p>
+        <p><b>By C.         S.      :</b>
+        <richtext>
+                <p>It's still a great idea, and a beautiful concept. Would be fantastic, if it finally could become reality. Hackweek 6 is a good opportunity for that. Any takers?</p>
+              </richtext></p>
+        <p><b>By J.         R.      :</b>
+        <richtext>
+                <p>Well, this mockup is absolutely awesome.
+        
+        I guess it had been done before oneclick was really brought into YaST, so somebody has missed the mockups while implementing, but there are still chances that it can be fixed using libzypp/PackageKit along with PolicyKit directly, without calling YaST and dozens of extra windows popping around our desktops...</p>
+                <p>I'm looking forward.</p>
+              </richtext></p>
+        <p><b>By N.         S.      :</b>
+        <richtext>
+                <p>I think zypper/yast do a much better job at resolving conflicts than packagekit or whatever they call it</p>
+              </richtext></p>
+      </div>
+    </div>
+  </div>
+</body>

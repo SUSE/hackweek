@@ -1,0 +1,55 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>
+          Extract the Paxos implementation from Booth and enhance it to be usable in cloud
+        </h1>
+        <p>&nbsp;</p>
+      </div>
+      <div id='wrapper-content'>
+        <h2>Description</h2>
+        <richtext>
+              <p>Paxos is a widely used algorithm in distributed computing and hence cloud computing environment these years, such as Google's Chubby lock service, the Ceph distributed file system and Google's megastore storage system. It has been adopted by many open source projects and industries as a basic component to build up highly available storage.</p>
+              <p>Also, there are many Paxos variant algorithms and many Paxos implementation in different projects. Booth, a software which extends the Pacemaker (cluster resource manager in SLE HA extension) to support geographically distributed clustering, includes a Paxos implementation as well. To be more precise, Booth implemented the Basic-Paxos and Multi-Paxos as a generic layer, and added its variant Paxos Lease on top of it. In theory, other Paxos variants can also be implemented on top of the generic Paxos layer in Booth.</p>
+              <p>So my idea here is to extact the Paxos implementation from Booth, and enhance it to be reusable in other cloud projects, especially in the cloud storage fields, strengthen it to be more highly available.</p>
+              <p>For reference, the Booth can be found at:  https://github.com/jjzhang/booth</p>
+            </richtext>
+      </div>
+    </div>
+  </div>
+</body>

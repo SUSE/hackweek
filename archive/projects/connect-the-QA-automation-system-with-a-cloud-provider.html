@@ -1,0 +1,108 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>
+          connect the QA automation system with a cloud provider
+        </h1>
+        <p>&nbsp;</p>
+      </div>
+      <div id='wrapper-content'>
+        <h2>Description</h2>
+        <richtext>
+              <p>HAMSTA is able to administer and orchestrate systems that are local to the QA lab. 
+        
+        Some tests (e.g. load tests) require numerous additional clients that typically are being provided via VMs or physical HW on the own premises.
+        
+        It would be good if any system could be added as resource to HAMSTA and have tests / scripts executed on it.</p>
+              <p>challenges: porting hamsta-client to different OS', parameterizing test scripts (e.g. $IP) to accommodate changing environments, multicast traffic beyond the (company) firewall / vpn</p>
+            </richtext>
+        <h2>Comments</h2>
+        <p><b>By L.         W.      :</b>
+        <richtext>
+                <p>Can I understand it as:
+        
+        1. You want hamsta support CentOS/Ubuntu/Windows SUT reinstall
+        2. You want SUT can accept job without pre-install any hamsta client
+        3. You want SUT and master can be locate in different companies internet</p>
+                <p>Correct me if I am wrong or miss something.</p>
+              </richtext></p>
+        <p><b>By A.         G.      :</b>
+        <richtext>
+                <p>My understanding: 
+        1. no Windows; 
+        2. user install hamsta client; 
+        3. "different companies" is a business issue; technically an SUT outside of our firewall, can still be contacted by hamsta master.</p>
+                <p>Correct me if I am wrong.</p>
+              </richtext></p>
+        <p><b>By :</b>
+        </p>
+        <p><b>By O.         R.      :</b>
+        <richtext>
+                <p>Good assessment of the weak initial request :)</p>
+              </richtext></p>
+        <p><b>By O.         R.      :</b>
+        <richtext>
+                <p>Additionally, and IMHO most difficult, HAMSTA would leverage the EC2/Rackspace/... API to dynamically create and start a VM out there. This should be implemented in a layer where the specific provider API will be implemented in specific classes. This also will have to provide a mechanism to choose which provider (EC2/Rackspace) will be used</p>
+              </richtext></p>
+        <p><b>By L.         L.      :</b>
+        <richtext>
+                <p>Wow, finally something challenging ;-) So in general, you want hamsta to:</p>
+                <ol>
+                  <li>control existing pool of machines - what it does already</li>
+                  <li>access different clouds (private and external) and create/modify/delete VMs there and add control them</li>
+                </ol>
+                <p>For this, we need to (apart from the layer which woudl shield all different APIs):</p>
+                <ul>
+                  <li>somehow manage the account(credentials) for all external (paid) clouds (this is PITA) - this should have some limitations, so  we will not by mistake/bug create 1000 VMs in EC2</li>
+                  <li>create image store(s) (seems impractical to me to always use reinstall in this case) - and automate it so that new images gets created automatically (or just by one click)</li>
+                  <li>make a central point - currently, we have hamsta in each location, this seems to be a but impractical that each instance have access to the cloud individually, we could use some "agregator"/"master hamsta"</li>
+                </ul>
+                <p>I'm sure there will be more...</p>
+                <p>Nice, I like it ;-)</p>
+              </richtext></p>
+        <p><b>By J.         T.      :</b>
+        <richtext>
+                <p>We upload, create, start, and stop EC2 instances in SUSE Studio so we can share some experiences here. 
+        
+        The Rightscale library (http://rightaws.rubyforge.org/) supports a number of cloud providers, including EC2 but not Rackspace.</p>
+                <p>Rackspace is on our radar as well, so perhaps we can pool resources to work on a shared abstraction library.</p>
+              </richtext></p>
+      </div>
+    </div>
+  </div>
+</body>

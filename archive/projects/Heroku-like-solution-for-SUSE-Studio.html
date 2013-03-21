@@ -1,0 +1,106 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>
+          Heroku like solution for SUSE Studio
+        </h1>
+        <p>&nbsp;</p>
+      </div>
+      <div id='wrapper-content'>
+        <h2>Description</h2>
+        <richtext>
+              <p>Creating an appliance to run a specific rails appliacation can be quite annoying. There are extra repositories to add, package dependencies to satisfy, a database to setup, apache and passenger to setup, overlay files to add and so on.</p>
+              <p>
+                Cloning an appliance like
+                <a href="http://susegallery.com/a/CZ0T0D/rails-in-a-box">this</a>
+                can save some time, but some efforts are still required.
+              </p>
+              <p>
+                IMHO the easiest solution to deploy a rails app in the cloud is
+                <a href="http://heroku.com/">Heroku</a>
+                .
+              </p>
+              <p>My hackweek project (temporarly called 'Dister') aims to provide a command line tool similar to Heroku's one.</p>
+              <p>This is a list of the possible commands I want to implement.</p>
+              <p>
+                <b>
+                  dister create
+                  <em>[base_system] [template]</em>
+                </b>
+                base_system and template are optional parameters.
+        If base_system is not set dister will use latest version of openSUSE supported by Studio.
+        If template is not set dister will use the JeOS template.
+                <b>dister push</b>
+                pushes the current rails code to studio
+                <b>dister rake db:migrate</b>
+                performs all the db migrations locally and uploads a dump of the db to Studio
+                <b>dister add format format</b>
+                adds the specified format
+                <b>dister rm format format</b>
+                removes the specified format
+              </p>
+              <p>
+                <b>dister packages add package</b>
+                adds package to the appliance
+                <b>dister packages rm package</b>
+                removes package from the appliance
+              </p>
+              <p>
+                <b>dister build</b>
+                builds the appliance
+                <b>dister download</b>
+                downloads the appliance locally
+                <b>dister testdrive</b>
+                boots the appliance inside of testdrive and returns
+              </p>
+              <p/>
+              <p>SUSE Studio is going to support direct deployment of ec2 appliances to Amazon. Supporting this feature inside of my hackweek project would make terribly easy to push rails appliances into the cloud.</p>
+            </richtext>
+        <h2>Comments</h2>
+        <p><b>By C.         S.      :</b>
+        <richtext>
+                <p>Wonderful idea.</p>
+              </richtext></p>
+        <p><b>By D.         M.      :</b>
+        <richtext>
+                <p>This sounds like a lot of fun.</p>
+              </richtext></p>
+      </div>
+    </div>
+  </div>
+</body>

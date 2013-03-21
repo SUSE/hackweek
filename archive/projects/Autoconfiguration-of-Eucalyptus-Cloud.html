@@ -1,0 +1,106 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>
+          Autoconfiguration of Eucalyptus Cloud
+        </h1>
+        <p>&nbsp;</p>
+      </div>
+      <div id='wrapper-content'>
+        <h2>Description</h2>
+        <richtext>
+              <p>Since end of 2010 the packages for Eucalyptus Cloud have been improved in order to work out of the box on SUSE systems. Nevertheless it requires a lot of manual configuration work to setup an entire cloud.
+        
+        The goal of this hackweek project is to autoconfigure as much as possible (avahi/zeroconf) and maybe provide a simple configuration tool to prompt for the remaining information and set it up.</p>
+              <p>If time permits we try to provide SUSE Studio images for all Eucalyptus controllers.</p>
+            </richtext>
+        <h2>Comments</h2>
+        <p><b>By R.         S.      :</b>
+        <richtext>
+                <p>
+                  <b>Work for automation is underway.</b>
+                  <ul>
+                    <li>Jiri Suchomel is working on a YaST module, I am testing and reporting back to Jiri.</li>
+                    <li>I have a couple of python scripts that take care of auto registration of Cloud nodes (not yet in the Virtualization:Cloud project)</li>
+                  </ul>
+                </p>
+                <p>
+                  <b>Problems with automation:</b>
+                  <ul>
+                    <li>The biggest current problem is that Eucalyptus does not get along with openSSL 1.0 (or openSSL 0.9.8h as found in SLES). This causes the command line tools for registration of nodes etc. to fail. Registration of nodes etc. currently only works through the browser, which unfortunately makes this a manual process. I am working with the Eucalyptus folks to address the issue regarding openSSL 1.0</li>
+                    <li>A second issue is the use of DHCP. Although I figured out how to add an identification feature to the dhcp server running on the head node, I have not figured out how to enforce that the client, i.e. cloud node, only accepts an offer from the head node. This is a problem that needs resolution, thus if a DHCP expert can explain how this works as part of this hackweek project big progress would be made.</li>
+                  </ul>
+                </p>
+                <p>Robert</p>
+              </richtext></p>
+        <p><b>By B.         W.      :</b>
+        <richtext>
+                <p>It would be good to have this interoperable with Ubuntu eucalyptus nodes and cloud-controllers, which IIRC use avahi mdns/zero-conf for mutual autodetection.</p>
+                <p>This could even replace (some of) the DHCP magic.</p>
+              </richtext></p>
+        <p><b>By R.         S.      :</b>
+        <richtext>
+                <p>I am fine using a discovery method that already exists. I am not sure how to find out what Ubuntu is using though. I can install the Ubuntu Enterprise cloud on a couple of systems, but that will not necessarily help.</p>
+                <p>As far as DHCP is concerned I still think that a cloude node should get it's address only from the dhcp server that is running on the head node. Also, a given cloud node always has to get the same IP address once it is registered. At least for the latter part of this problem there has to be a solution in the Ubuntu ENterprise cloud product.</p>
+              </richtext></p>
+        <p><b>By J.         D.      :</b>
+        <richtext>
+                <p>Doing it via DHCP was just one idea. I was not aware of the fact that there are already better solutions in place like avahi.</p>
+                <p>When using avahi it even does not matter what network type (system, static, managed) you use for the cloud. So we really should follow the most compatible way. We even win the interoperability with Ubuntu for free. So in one cloud we could have mixed nodes. We should not invest in a SUSE-only solution in this case.</p>
+              </richtext></p>
+        <p><b>By J.         D.      :</b>
+        <richtext>
+                <p> As far as DHCP is concerned I still think that a cloude node should get it's address only from the dhcp server that is running on the head node.</p>
+                <p>This depends on the network mode that is used. Maybe some admin wants to assign IP addresses via his own DHCP, then we should not force him to do it differently.</p>
+              </richtext></p>
+        <p><b>By R.         S.      :</b>
+        <richtext>
+                <p>Yes, but now it is no longer "automagic". If we want to account for all possible ways an admin would want to configure the network we'll end up with the 1000 question and answer problem. This is no longer automated nor is it easy.</p>
+                <p>My idea of an automated cloud install is to show one YaST dialog when the head node image gets installed, that's it. For cloud node installation no interaction is necessary. This can of course be disable after the cloud node image is installed.</p>
+              </richtext></p>
+        <p><b>By R.         S.      :</b>
+        <richtext>
+                <p>FYI, I learned that the issues with the command line tools are related to the use of bouncycastl. The eucalyptus source tarball provides bcprov.jar and even the latest released version of bcprov does not play nice with openSSL 1.0.
+        
+        RH is tracking the following bug:</p>
+                <p>https://bugzilla.redhat.com/show_bug.cgi?id=663136</p>
+              </richtext></p>
+      </div>
+    </div>
+  </div>
+</body>

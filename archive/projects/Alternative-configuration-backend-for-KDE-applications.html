@@ -1,0 +1,82 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>
+          Alternative configuration backend for KDE applications
+        </h1>
+        <p>&nbsp;</p>
+      </div>
+      <div id='wrapper-content'>
+        <h2>Description</h2>
+        <richtext>
+              <p>It's sometimes annoying that desktop applications written with different toolkits or frameworks use different ways how to store configuration. This makes it harder to share configuration between applications, like sharing color preferences across applications written with different toolkits. It make it harder to write tools which work on configuration on a low level, like backup tools. It also makes it harder to share configuration between different machines, as for example to put configuration in an LDAP backend multiple configuration systems would have to be adapted to get a full desktop configuration supported.</p>
+              <p>KDE applications widely use kconfig_compiler to create high-level native code to access configuration from a generic configuration description. How the actual config backend works is more or less encapsulated.</p>
+              <p>It would be an interesting experiment to add the option to kconfig_compiler to create code, which accesses a different backend than the standard KDE KConfig one. It could for example generate code, which uses QSettings or dconf. This way KDE applications could ideally be moved to a different configuration backend just by a simple recompile.</p>
+              <p>The other way around kconfig_compiler could also create code, which can natively be used by non-KDE applications, e.g. a Qt-only or a GNOME interface.</p>
+              <p>I have no idea, if this would be useful for anything, but it would be fun to play around and explore the possibilities a bit. Maybe something good for a more consistent desktop experience could result, especially for a project as openSUSE, which contains a wide range of applications using different desktops frameworks.</p>
+              <p/>
+              <p/>
+            </richtext>
+        <h2>Comments</h2>
+        <p><b>By M.         K.      :</b>
+        <richtext>
+                <p>Hasn't Canonical announced that they plan to do that? Let them actually contribute to KDE for a change...</p>
+              </richtext></p>
+        <p><b>By G.         B.      :</b>
+        <richtext>
+                <p>
+                  Yes indeed, see
+                  <a href="http://www.markshuttleworth.com/archives/568">http://www.markshuttleworth.com/archives/568</a>
+                </p>
+              </richtext></p>
+        <p><b>By C.         S.      :</b>
+        <richtext>
+                <p>Mark announced that there will be Qt bindings for dconf. This is great, but it still would need changes in applications wanting to use them. The approach I described would not require that, as the backend is switched in the background, and applications don't need to be aware of that (at leas in an ideal world). Of course it would make a lot of sense to use the Qt binding for dconf to implement this, once they are there. But this is one layer below what I described in this idea.</p>
+              </richtext></p>
+        <p><b>By W.         S.      :</b>
+        <richtext>
+                <p>I discussed this with vuntz at the weekend.  It seemed doable.  The three characteristics of GSettings and its backend dconf are 1) trees of key-values 2) compulsory schemas and 3) change notification.  1) is in KConfig already since it got support for arbitrarily nested subgroups.  2) is somewhat present when KConfigXT is used as it asserts if a UI tries to access fields that are not specified in the .kcfg, but is not mandatory as plain KConfig can do what it likes with the configurations, and 3) is not present in KConfig but could be a future extension, and would still allow the sharing of data between DEs as long as the apps using the shared configuration do not rely on change notification.</p>
+              </richtext></p>
+        <p><b>By M.         K.      :</b>
+        <richtext>
+                <p>Inviting Jonathan Riddel and Aurelien Agateau anyway wouldn't hurt.</p>
+              </richtext></p>
+      </div>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,79 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>
+          Developer sprint support tool
+        </h1>
+        <p>&nbsp;</p>
+      </div>
+      <div id='wrapper-content'>
+        <h2>Description</h2>
+        <richtext>
+              <p>Many free software communities do developer sprints to provide focused time to get work done in a very productive way. openSUSE does that, and KDE has a long tradition of these sprints as well. Organizing and running these sprints can be anything from very easy to extremely challenging.</p>
+              <p>Usually there is a combination of existing tools used to handle sprints. Ad-hoc email, mailing lists, Wikis, static web pages, Etherpads, Google documents, spreadsheets, etc. This works to some degree, but it lacks efficiency in some areas, and some tasks are usually hard to accomplish.</p>
+              <p>So this idea is about creating a tool, which helps to organize developer sprints. It should cover three areas, administrative issues, visibility of results, and supporting the productive process.</p>
+              <p>The administrative part consists of things like assembling the list of participants, collecting data about their availability, travel, accommodation and food preferences, etc. It should also cover handling the budget, getting estimates about costs, handling approval and execution of reimbursement of travel costs.</p>
+              <p>Visibility of results is about making progress and results of the work being done at a sprint visible to the participants, the community, and other interested people. Often great things happen at sprints, but it's hard to find out about it, as information is scattered around or only present in forms obscure to people who haven't attended the sprints. A little bit of structure and support for aggregating information in a digestible way can do wonders.</p>
+              <p>Supporting the productive process is the most interesting and most challenging part of the picture. These sprints are mostly highly effective and productive. Bringing passionate people together for some focused face-to-face time without much distractions is usually the recipe for the success of a sprint. This is a dynamic process and depends a lot on the people, so a tool can only do so much. But it would be fantastic, if we could find ways how to support the process, make sure that good practices are shared and widely available, and experience with how to run a sprint in the best way is captured, spread, and put to good use as much as possible. How to do this certainly needs a bit of creativity. Maybe it's just about aggregating some documentation, maybe it's about providing simple tools for some techniques like brainstorming, maybe it's something completely different.</p>
+              <p>The idea of this sprint support tool would not be to replace existing working tools or mechanisms like mailing lists or Wikis, but fill in some of the gaps, which are still there, provide some integration points and aggregation, and capture some of the experience, which can be transported through a tool.</p>
+              <p>I would do the tool as a simple Ruby on Rails application, integrating and connecting to other systems, services, and applications, which fit into the context.</p>
+            </richtext>
+        <h2>Comments</h2>
+        <p><b>By S.         S.      :</b>
+        <richtext>
+                <p>Not sure if this would be of any help, but this is a tool we used on the mono uia team.
+        http://berserk.mono-a11y.org</p>
+              </richtext></p>
+        <p><b>By C.         S.      :</b>
+        <richtext>
+                <p>Thanks for the pointer. This is interesting. It could be a component for tracking the actual coding tasks. Are you happy with this tool?</p>
+              </richtext></p>
+        <p><b>By W.         S.      :</b>
+        <richtext>
+                <p>
+                  At the App Installer sprint this weekend and at the Solid spring in Madrid last September, we used a 'Kanban' system for tracking tasks and providing visibilty of what people were working on.  You can see it in
+                  <a href="http://dot.kde.org/2010/10/13/solid-sprint-enhances-key-kde-platform-technologies">the background in the photos at this dot story</a>
+                  .  A wall or large whiteboard is used for 3 sections, TODO, In Progress and DONE.  Tasks written on sticky notes start on the TODO section and are moved rightwards as they progress.  The charm of the system is its low learning curve (compared to Retrospectiva) and feeling of satisfaction when you walk up to the wall and move your notes.
+                </p>
+                <p>A way to capture the physical Kanban wall to help report to sponsors or live during a sprint with some remote participants could be a nice feature.</p>
+                <p>Apparently Redmine, being used by KDE for project tracking, already has a 'wall-of-postits' plugin.</p>
+              </richtext></p>
+      </div>
+    </div>
+  </div>
+</body>

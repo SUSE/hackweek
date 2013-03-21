@@ -1,0 +1,102 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>
+          Turn quilt into a noarch package
+        </h1>
+        <p>&nbsp;</p>
+      </div>
+      <div id='wrapper-content'>
+        <h2>Description</h2>
+        <richtext>
+              <p>Even though it is mainly made of bash and perl scripts, quilt is currently arch-specific. This is caused by one small helper binary names backup-files. The source code of this small helper binary accounts for about 6.7% of the total code.
+        
+        The helper could be rewritten in bash, and actually this has been done already. Debian reportedly uses a patch that does exactly this for 4 years now:
+        http://www.mail-archive.com/quilt-dev@nongnu.org/msg01137.html</p>
+              <p>While having this helper in bash rather than binary form certainly has an impact on performance, it should be possible to minimize this impact with some work. Also, virtually every piece of quilt could be rewritten in C for better performance, but performance was hardly the point of quilt in the first place.</p>
+              <p>So, the goal of this hackweek project is to get rid of backup-files in its C form, and convert it to bash.</p>
+            </richtext>
+        <h2>Comments</h2>
+        <p><b>By K.         F.      :</b>
+        <richtext>
+                <p>I think this is a bug report rather than a hackweek project.</p>
+              </richtext></p>
+        <p><b>By J.         D.      :</b>
+        <richtext>
+                <p>I'm not quite sure why you say that. Quilt works as is, so we can't call it a bug. This is only a bizarre design to mix programming language when you really don't have to.</p>
+              </richtext></p>
+        <p><b>By J.         D.      :</b>
+        <richtext>
+                <p>A noarch quilt package is now available at:</p>
+                <p>https://build.opensuse.org/package/show?package=quiltproject=home%3Ajdelvare%3AFactory</p>
+              </richtext></p>
+        <p><b>By J.         D.      :</b>
+        <richtext>
+                <p>The maintainers of the Debian quilt package have accepted all my proposed bug fixes already:</p>
+                <p>
+                  <a href="http://git.debian.org/?p=collab-maint/quilt.git">http://git.debian.org/?p=collab-maint/quilt.git</a>
+                </p>
+              </richtext></p>
+        <p><b>By J.         D.      :</b>
+        <richtext>
+                <p>I've just published a new version with more performance improvements. Expectedly, it's still somewhat slower than the original C implementation, but it should be hardly noticeable in practice now.</p>
+              </richtext></p>
+        <p><b>By J.         D.      :</b>
+        <richtext>
+                <p>I've just published a new version with more performance improvements. The restore and nolinks functions of backup-files are almost on-par with the original implementation, performance-wise, so "quilt pop" is almost as fast as it used to be. The only command which is still somewhat slow is "quilt snapshot", I'll work on it next week.</p>
+              </richtext></p>
+        <p><b>By J.         D.      :</b>
+        <richtext>
+                <p>Yesterday I've updated the package in project home:jdelvare:Factory. Performance is very good now, including for "quilt snapshot", and we are very close to an upstream submission.</p>
+              </richtext></p>
+        <p><b>By J.         D.      :</b>
+        <richtext>
+                <p>I have rebased the package in project home:jdelvare:Factory on quilt version 0.51 (from devel:tools:scm.) Upstream submission will happen this week.</p>
+              </richtext></p>
+        <p><b>By J.         D.      :</b>
+        <richtext>
+                <p>All my work is upstream now, and should be released by the end of the month.</p>
+              </richtext></p>
+        <p><b>By J.         D.      :</b>
+        <richtext>
+                <p>Quilt version 0.60 is packaged in both devel:tools:scm and openSUSE:Factory now. First product with this feature will be openSUSE 12.2.</p>
+              </richtext></p>
+      </div>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,74 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>
+          Support Remote Control for Pentax K series DSLR cameras
+        </h1>
+        <p>&nbsp;</p>
+      </div>
+      <div id='wrapper-content'>
+        <h2>Description</h2>
+        <richtext>
+              <p>libgphoto2 does not currently have 
+        support for remote controlling Pentax K DSLRs.
+        
+        There are however standalone projects, like
+        pkremote and pktriggercord that implement it.</p>
+              <p>The protocol is yet again special SCSI command tunneling over USB Mass Storage.</p>
+            </richtext>
+        <h2>Comments</h2>
+        <p><b>By M.         M.      :</b>
+        <richtext>
+                <p>Status as of the end of hackweek 7 is:</p>
+                <p>- gphoto2 --capture-image-and-download   ... works
+          can capture and download either jpeg or raw (needs to be set on camera)</p>
+                <p>- configuration settings for ISO , Aperture, Shutterspeed, Shooting (Exposure) Mode,
+          Image SIze, Image Quality implemented</p>
+                <p>- gphoto2 --capture-tethered    works and allows shooting with the camera that downloads
+          images as is.</p>
+                <p>(all also available in the UI frontends of pkremote and pktriggercord, so not really new)</p>
+              </richtext></p>
+        <p><b>By M.         M.      :</b>
+        <richtext>
+                <p>As I gave back the camera to Crhistian Zoz (thanks for lending!), this
+        basically concludes this feature for now.</p>
+              </richtext></p>
+      </div>
+    </div>
+  </div>
+</body>

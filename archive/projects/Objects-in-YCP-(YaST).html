@@ -1,0 +1,143 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>
+          Objects in YCP (YaST)
+        </h1>
+        <p>&nbsp;</p>
+      </div>
+      <div id='wrapper-content'>
+        <h2>Description</h2>
+        <richtext>
+              <p>As I am thinking about refactoring the network code, not having
+        objects in YCP is a pain. The twist is, I don't want to add YCP
+        objects but use Ruby objects. (We can already use Perl objects,
+        yast2-storage does it, but it's limited.)
+        
+        Here's sample code to show how it could look, modeled after
+        http://www.ruby-doc.org/stdlib-1.8.7/libdoc/uri/rdoc/classes/URI.html
+        
+        {
+            import "Assert";
+            // Yes, you can! (also in SP2)
+            // http://svn.opensuse.org/viewvc/yast/trunk/yast2/library/modules/Assert.ycp?view=markup
+        
+            // Original Ruby code:
+            // require 'uri'
+            import $[
+                     "what": "uri",
+                     "language": "ruby",
+                     "namespaces": ["URI", "URI::HTTP"]
+                    ];
+        /*
+        The above complicated syntax enables
+        - loading modules from elsewhere than /usr/share/YaST2/modules
+        - loading YCP namespaces (Ruby modules (classes))
+          named otherwise than the file they are in,
+          without needing to annotate them with TYPEINFO
+          (like perl-bindings/pluglib-bindings do)
+        */
+        
+            //  uri =  URI.parse("http://www.ruby-lang.org/")
+            any uri = URI::parse("http://www.ruby-lang.org/"); // [1]
+            // assert_equal "http", uri.scheme
+            Assert::Equal("http", uri-scheme());
+        
+            //  newuri = URI::HTTP.build( {:host = 'www.example.com', :path = '/foo/bar'})
+            any newuri = URI::HTTP::build($[ `host: "www.example.com", `path:   "/foo/bar"]);
+            // assert_equal "http://www.example.com/foo/bar",  newuri.request_uri
+            Assert::Equal  ("http://www.example.com/foo/bar", newuri-request_uri());
+        }                                                                                                                                                                                                                  
+        
+        Formally, whereas now YCP has
+            NAMESPACE :: IDENTIFIER ( PARAMS )
+        which calls a function (a module/class method in Ruby, a class
+        method in Perl), we add
+            EXPRESSION - IDENTIFIER ( PARAMS )
+        which calls a method (an instance method in Ruby.
+        [1] "any" is a lie, the type is actually a distinct one,
+        called YCPExternal in C++. We could use "extern" which is currently
+        an unused reserved word in YCP.
+        
+        But URIs are not my target. I am aiming for
+        
+        {
+            any eth = SUSE::Ifcfg::new("eth0");
+        
+            any br = SUSE::Ifcfg::Bridge::new("br0");
+            br-startmode(`auto);
+            br-add(eth);
+        /*
+          br-add will also set:
+        eth-bootproto(`none);
+        eth-startmode(br-startmode());
+        */
+        
+            any tap = SUSE::Ifcfg::Tap::new("tap0")-tunnel_set_owner("tux");
+            br-add(tap);
+        
+            foreach(any i, [br, tap, eth], { i-save(); });
+        }</p>
+              <p>if (you-are_interested()) {
+            you-please()-tell(martin);
+        }</p>
+            </richtext>
+        <h2>Comments</h2>
+        <p><b>By M.         V.      :</b>
+        <richtext>
+                <p>
+                  yast2-ruby-bindings-0.3.8,
+                  <a href="https://build.opensuse.org/request/show/86266">soon in Factory</a>
+                  , has my progress so far:
+                </p>
+                <p>
+                  instead of
+                  <tt>uri-scheme()</tt>
+                  , write
+                  <tt>URI::scheme(uri);</tt>
+                </p>
+                <p>
+                  It works until Ruby runs garbage collection :-( I need to debug why
+                  <tt>gc_mark</tt>
+                  did not have the intended effect.
+                </p>
+              </richtext></p>
+      </div>
+    </div>
+  </div>
+</body>

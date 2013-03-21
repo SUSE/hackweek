@@ -1,0 +1,68 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>
+          Build a wireless lan access point
+        </h1>
+        <p>&nbsp;</p>
+      </div>
+      <div id='wrapper-content'>
+        <h2>Description</h2>
+        <richtext>
+              <p>Use hostap mode to turn a laptop into a full featured access point. (not just ad-hoc). Find out which hardware is suitable. I have an USB-Wlan-dongle with rt73 chipset, whichis reported to support AP-mode.</p>
+            </richtext>
+        <h2>Comments</h2>
+        <p><b>By J.         W.      :</b>
+        <richtext>
+                <p>See
+        http://svn.berlios.de/svnroot/repos/opensuse/trunk/tools/wlan_webcam/</p>
+                <p>wlan_webcam.pl is a perl script wrapper featuring
+        - gain control over the machines networks
+        - check for a logitech webcam, (nonfatal if none)
+        - select a suitable wlan adapter (currently rt73usb only)
+        - find an unused wlan channel, or the one with the weakest signal
+        - start hostapd to create a master mode (infrasstructure) network
+        - start dnsmasq to serve dhcp clients, and resolve all dns queries to point locally.
+        - use nat to redirect 80, 88, 8000, 8080, 8888 to the port of the webcam server
+        - start mjpeg_streamer with the logitech webcam. 
+        voila.</p>
+              </richtext></p>
+      </div>
+    </div>
+  </div>
+</body>

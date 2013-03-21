@@ -1,0 +1,131 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>
+          Make NetworkManager better
+        </h1>
+        <p>&nbsp;</p>
+      </div>
+      <div id='wrapper-content'>
+        <h2>Description</h2>
+        <richtext>
+              <p>There are several features in NetworkManager, I wanna focus one or two</p>
+              <ul>
+                <li>
+                  <p>
+                    VPN autoconnect (?) (
+                    <a href="https://bugzilla.gnome.org/show_bug.cgi?id=349151">bgo #349151</a>
+                    ,
+                    <a href="https://bugzilla.gnome.org/show_bug.cgi?id=560471">bgo #560471</a>
+                    )
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Interface bonding support (
+                    <a href="https://bugzilla.gnome.org/show_bug.cgi?id=540995">bgo #540995</a>
+                    )&#xA0;
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Bridge interface support (
+                    <a href="https://bugzilla.gnome.org/show_bug.cgi?id=546197">bgo #546197</a>
+                    )
+                  </p>
+                </li>
+                <li>Local caching  nameserver support</li>
+                <li>
+                  <p>
+                    PPPoE over
+                    <a href="http://live.gnome.org/WiFi">WiFi</a>
+                    support (
+                    <a href="https://bugzilla.gnome.org/show_bug.cgi?id=559134">bgo #559134</a>
+                    )
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Connection time and traffic tracking (
+                    <a href="https://bugzilla.gnome.org/show_bug.cgi?id=601372">bgo #601372</a>
+                    )
+                  </p>
+                </li>
+                <li>VPN connections  in the top-level applet menu</li>
+              </ul>
+              <p>First I wanna hack the VPN autoconnect for NetworkManager.</p>
+            </richtext>
+        <h2>Comments</h2>
+        <p><b>By S.         S.      :</b>
+        <richtext>
+                <p>I'd love to see the Bridge interface support because of kvm and xen, but largely kvm.</p>
+              </richtext></p>
+        <p><b>By A.         J.      :</b>
+        <richtext>
+                <p>Please get them into upstream networkmanager and we can then do an update of that for 11.4. I mark it as reject since we will take what comes from upstream.</p>
+              </richtext></p>
+        <p><b>By M.         S.      :</b>
+        <richtext>
+                <p>
+                  I added the Hackweek VI patten just as an proposal - hope I was allowed to do so..  
+        I think in the wireless forum on
+                  <a href="http://forums.opensuse.org/english/get-technical-help-here/wireless/">http://forums.opensuse.org/english/get-technical-help-here/wireless/</a>
+                  and other sub-fora are probably many threads related to the networkmanager or the knetworkmanager (even if mostly their about driver issues), like:  
+        -
+                  <a href="http://forums.opensuse.org/forums/english/get-technical-help-here/network-internet/451885-vpn-connection-pptp.html">VPN Connection PPTP</a>
+                  -
+                  <a href="http://forums.opensuse.org/tags/pppoe.html">Tag:PPPoE</a>
+                </p>
+              </richtext></p>
+        <p><b>By B.         F.      :</b>
+        <richtext>
+                <p>Li if you can as a dessert, add ipv6 and it's configuration system-wide (systctl -a | grep ipv6 ) to the menu.
+        :-)</p>
+              </richtext></p>
+        <p><b>By L.         B.      :</b>
+        <richtext>
+                <p>now there are a guy submit part of patches for bonding support. I analyzed the patches and found to support the bonding, the first step is let ifcfg-suse plugin support to read the configuration file(/etc/sysconfig/network/*), I'm just working on this.</p>
+              </richtext></p>
+        <p><b>By L.         B.      :</b>
+        <richtext>
+                <p>You mean the nm-applet's menu? Sorry not got you clearly. :)</p>
+              </richtext></p>
+      </div>
+    </div>
+  </div>
+</body>

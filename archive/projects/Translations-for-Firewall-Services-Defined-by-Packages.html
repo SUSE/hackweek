@@ -1,0 +1,55 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>
+          Translations for Firewall Services Defined by Packages
+        </h1>
+        <p>&nbsp;</p>
+      </div>
+      <div id='wrapper-content'>
+        <h2>Description</h2>
+        <richtext>
+              <p>SuSEfirewall2 has been supporting FW services defined by packages for some time. YaST Firewall currently uses a workaround that make their name and description translatable. This functionality is now obsolete and will slowly die.
+        
+        Why? It needs to be done manually in YaST sources. Before creating the final translations, someone has to run script refresh-srv-def-by-pkgs-trans.sh in http://svn.opensuse.org/svn/yast/trunk/yast2/library/network/src/ This will recreate yast2-services-translations.ycp in the same location. Then someone needs to create pot files and submit them. In ideal world this would be automatic.</p>
+              <p>Moreover, the scrip mentioned above uses pdb command which is internal to SUSE and the database is outdated as it's not supported for openSUSE 11.2 ad further.</p>
+            </richtext>
+      </div>
+    </div>
+  </div>
+</body>

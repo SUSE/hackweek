@@ -1,0 +1,66 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>
+          Support for replicated root filesystem (DRBD)
+        </h1>
+        <p>&nbsp;</p>
+      </div>
+      <div id='wrapper-content'>
+        <h2>Description</h2>
+        <richtext>
+              <p>The idea is to support the root file system (or rather, the root block device) on top of DRBD (http://www.drbd.org/).
+        
+        There are at least two use cases.
+        
+        The first is for a VM guest: it allows the guest to be replicated (or have a fully uptodate backup image) somewhere even on a cloud where the hypervisor does not support the replication of images.
+        
+        The second is for a physical host: this allows an uptodate root image of the node. This can be used to recover the node in case of a lost local disk, as a backup, or for P2V/P2P migration. (Possibly by bringing the protected work load up on a virtual host immediately once the hardware has failed, or on another node.)
+        
+        The benefit of using drbd is that the node is immediately usable, without waiting for the resync to complete - DRBD will redirect reads that can't (yet) be completed locally to the backup copy. It is immediately usable.
+        
+        
+        The remote side would be a Linux host running DRBD as well, of course ("replica master"). A single replica master can host any number of DRBD end points. It seems feasible to have this replica master be a Studio Appliance, or even use a pacemaker cluster that manages the end points; this side would always only be a "slave" instance.
+        
+        DRBD can also cope well with temporary connection loss or the replica master rebooting; once restored, it will resync only the since modified data.</p>
+              <p>A further use case is that snapshots/backups of the workload can be taken on the replica master without impacting the live workload.</p>
+            </richtext>
+      </div>
+    </div>
+  </div>
+</body>

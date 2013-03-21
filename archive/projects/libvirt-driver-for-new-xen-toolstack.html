@@ -1,0 +1,83 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>
+          libvirt driver for new xen toolstack
+        </h1>
+        <p>&nbsp;</p>
+      </div>
+      <div id='wrapper-content'>
+        <h2>Description</h2>
+        <richtext>
+              <p>Xen 4.1.0 (due February 2011) will be the first release in which the new xl/libxl (aka libxenlight [1]) toolstack will be the default, preferred tool set.  Although still included in the release, the legacy xm/xend toolstack will be disabled and in process of deprecation.</p>
+              <p>libvirt needs a hypervisor driver that can communicate with the new Xen toolstack.  I'll be working on a libvirt driver for libxl during HW6.</p>
+              <p>[1] http://lists.xensource.com/archives/html/xen-devel/2009-11/msg00436.html</p>
+            </richtext>
+        <h2>Comments</h2>
+        <p><b>By J.         F.      :</b>
+        <richtext>
+                <p>I've posted a RFC on implementation approaches of the libvirt libxenlight driver on libvirt mailing list.</p>
+                <p>
+                  <a href="https://www.redhat.com/archives/libvir-list/2011-January/msg00875.html">https://www.redhat.com/archives/libvir-list/2011-January/msg00875.html</a>
+                </p>
+                <p>We have decided to go with an entirely new driver instead of adding libxenlight support to existing Xen unified driver.</p>
+                <p>Let the coding begin ...</p>
+              </richtext></p>
+        <p><b>By J.         F.      :</b>
+        <richtext>
+                <p>Update on my progress during hackweek:
+        
+        By Wednesday evening, the driver was able to define a new domain, list halted domains, and delete halted domains.  By Friday afternoon I was able to start a fully functional pv domain through the driver :-)</p>
+                <p>Next task is registering for domain events such as shutdown, reboot, crash, etc.  Along with documentation, this will be needed for an initial upstream submission of the new driver.</p>
+              </richtext></p>
+        <p><b>By J.         F.      :</b>
+        <richtext>
+                <p>Update:  I've posted several versions of the new libvirt libxenlight driver upstream, the latest being version 4
+        
+        https://www.redhat.com/archives/libvir-list/2011-March/msg00263.html</p>
+                <p>Hopefully the driver will be ACK'ed soon so I can commit it in time for libvirt 0.9.0 release.</p>
+              </richtext></p>
+        <p><b>By J.         F.      :</b>
+        <richtext>
+                <p>Update: Driver has finally be ACK'ed upstream and committed!</p>
+                <p>http://libvirt.org/git/?p=libvirt.git;a=commit;h=2b84e445d598894c711278afacfbb9247333bdd8</p>
+              </richtext></p>
+      </div>
+    </div>
+  </div>
+</body>
