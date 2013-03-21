@@ -39,7 +39,7 @@ end
 output = ARGV[0]
 
 if !output
-  STDERR.puts "Usage: features2githubwii <output-directory>"
+  STDERR.puts "Usage: features2markdown <output-directory>"
   exit 1
 end
 
