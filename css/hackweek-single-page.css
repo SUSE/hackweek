@@ -179,6 +179,10 @@ span:hover{
     display: inline-block;
     width: 100%;
 }
+#wrapper-content li {
+    line-height: 25px;
+    list-style: inherit;
+}
 h2 {
     color:#D4DF4C;
 }
