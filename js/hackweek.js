@@ -2,7 +2,7 @@ $(function () {
 
     $("#start-link").click(function () {
         $('html, body').animate({
-            scrollTop: $("#start").offset().top
+            scrollTop: 0
         }, 1000);
     })
 
@@ -219,12 +219,21 @@ $(function () {
         }
 
 
+        /* start page text scroll animation */
+        if ($(window).scrollTop() > $('#start').position().top - $('#start').height() &&
+            $(window).scrollTop() < $('#start').position().top + 2 * $('#start').height()) {
+            var percent_scrolled_out = Math.abs(($(window).scrollTop() - $('#start').position().top) / $('#start').height())
+            $('#start').css({'top': $(window).scrollTop()/2})
+            $('#hackweek9, #pay-off, #start-menu').css({'opacity': 1 - percent_scrolled_out*2})
+        }
+
+
         /* people page text scroll animation */
-        if ($(window).scrollTop() > $('#people').position().top - $('#people').height() &&
+        /*if ($(window).scrollTop() > $('#people').position().top - $('#people').height() &&
             $(window).scrollTop() < $('#people').position().top + 2 * $('#people').height()) {
             var percent_scrolled_out = Math.abs(($(window).scrollTop() - $('#people').position().top) / $('#people').height())
             $('.project-instructions').css({'opacity': 1 - percent_scrolled_out * 3})
-        }
+        }*/
 
         /* where page text scroll animation */
         if ($(window).scrollTop() > $('#where').position().top - $('#where').height()) {
