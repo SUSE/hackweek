@@ -169,12 +169,15 @@ span:hover{
 }
 #wrapper-title h1 {
     font-size: 30px;
-    margin-bottom: -18px;
     margin-top: 11px;
+}
+.sub-title{
+    margin-top: -18px;
 }
 #wrapper-content {
     margin-top: 10px;
     display: inline-block;
+    width: 100%;
 }
 h2 {
     color:#D4DF4C;
