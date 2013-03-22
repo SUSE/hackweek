@@ -82,7 +82,11 @@ puts "Creating index.html"
 
 @title = "Past Projects"
 
-@content = "<ul>\n"
+@content = "<p>Here is a list of projects and ideas from previous hack weeks. "
+@content += "Use it as inspiration for your own ideas, or join and continue a "
+@content += "project which interests you.</p>\n"
+
+@content += "<ul>\n"
 
 projects.each do |project|
   @content += "  <li><a href='#{project[:filename]}'>#{project[:title]}</a></li>\n"
