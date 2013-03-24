@@ -77,26 +77,3 @@ doc.xpath( "//feature" ).each do |feature|
     file.puts engine.render( binding )
   end
 end
-
-puts "Creating index.html"
-
-@title = "Past Projects"
-
-@content = "<p>Here is a list of projects and ideas from previous hack weeks. "
-@content += "Use it as inspiration for your own ideas, or join and continue a "
-@content += "project which interests you.</p>\n"
-
-@content += "<ul>\n"
-
-projects.each do |project|
-  @content += "  <li><a href='#{project[:filename]}'>#{project[:title]}</a></li>\n"
-end
-
-@content += "</ul>\n"
-
-template = File.read File.expand_path('../templates/page.haml', __FILE__ )
-engine = Haml::Engine.new template
-
-File.open output + "/index.html", "w" do |file|
-  file.puts engine.render( binding )
-end
