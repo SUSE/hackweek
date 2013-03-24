@@ -25,12 +25,9 @@ end
 
 projects = Hash.new
 
-puts "OUTPUT #{output}"
-
 Dir.entries( output ).each do |entry|
   next if entry !~ /\.html$/
   
-  puts "ENTRY #{entry}"
   File.open( output + "/" + entry ).each_line do |line|
     if line =~ /<h1>(.*)<\/h1>/
       title = $1
@@ -52,8 +49,6 @@ puts "Creating index.html"
 
 projects.keys.sort.each do |title|
   filename = projects[title]
-  puts " FILENAME #{filename}"
-  puts " TITLE #{title}"
   @content += "  <li><a href='#{filename}'>#{title}</a></li>\n"
 end
 
