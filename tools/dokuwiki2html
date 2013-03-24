@@ -1,0 +1,51 @@
+#!/usr/bin/ruby
+
+require "rubygems"
+require "haml"
+
+require File.expand_path('../lib/dokuwiki_parser.rb', __FILE__ )
+
+def render_title
+  @title
+end
+
+def render_content
+  @content
+end
+
+input = ARGV[0]
+output = ARGV[1]
+
+if !input || !output
+  STDERR.puts "Usage: dokuwiki2html <input-directory> <output-directory>"
+  exit 1
+end
+
+if !File.exists? input
+  STDERR.puts "Error: input directory '#{input}' doesn't exist."
+  exit 1
+end
+if !File.exists? output
+  STDERR.puts "Error: output directory '#{output}' doesn't exist."
+  exit 1
+end
+
+Dir.entries( input ).each do |entry|
+  next if entry !~ /(.*)\.txt$/
+  
+  filename = $1 + ".html"
+  
+  parser = DokuwikiParser.new File.read input + "/" + entry
+  parser.parse
+  @title = parser.title
+  @content = parser.content
+  
+  puts "Creating #{filename}"
+
+  template = File.read File.expand_path('../templates/page.haml', __FILE__ )
+  engine = Haml::Engine.new template
+  
+  File.open output + "/" + filename, "w" do |file|
+    file.puts engine.render( binding )
+  end
+end
