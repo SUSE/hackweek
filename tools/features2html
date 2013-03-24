@@ -26,8 +26,6 @@ end
 
 features_file = File.expand_path('../../archive/fate.xml',__FILE__)
 
-projects = Array.new
-
 doc = Nokogiri::XML(File.read(features_file))
 doc.xpath( "//feature" ).each do |feature|
   @title = feature.xpath("title").text
@@ -36,8 +34,6 @@ doc.xpath( "//feature" ).each do |feature|
 
   filename = @title.gsub( / /, "-" ) + ".html"
   
-  projects.push( { :title => @title, :filename => filename } )
-
   out = ""
   out += "<h2>Description</h2>\n"
   out += feature.xpath("description/richtext").to_s + "\n"
