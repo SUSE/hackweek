@@ -1,5 +1,8 @@
 $(function () {
 
+    /* Preload images */
+    $.preloadCssImages();
+
     $("#start-link").click(function () {
         $('html, body').animate({
             scrollTop: 0
@@ -50,6 +53,7 @@ $(function () {
             toggle_terminal()
         }
     })
+
 
     /* agenda */
 
@@ -189,16 +193,6 @@ $(function () {
     $(".location-zoom").on('mouseleave', function(event) {
         $(".location-zoom").fadeOut()
     })
-
-    /* preload images */
-    $.fn.preload = function () {
-        this.each(function () {
-            $('<img/>')[0].src = '../images/' + this;
-        });
-    }
-
-    $(['barcelona.png','london.png','taipei.png', 'singapore.png', 'beijing.png', 'prague.png', 'nuremberg.png', 'provo.png']).preload();
-
 
 
     window.toggle_terminal = function() {
