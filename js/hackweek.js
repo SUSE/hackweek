@@ -203,6 +203,17 @@ $(function () {
 
     }
 
+
+    function page_visible(element) {
+        return ($(window).scrollTop() > element.position().top - element.height() &&
+            $(window).scrollTop() < element.position().top + 2 * element.height())
+    }
+
+    function percent_invisible(element) {
+      return Math.abs(($(window).scrollTop() - element.position().top) / element.height())
+    }
+
+
     $(window).scroll(function () {
 
         /* hide - unhide navigation, arrow, terminal button on first page */
@@ -214,17 +225,19 @@ $(function () {
         }
         if ($('#navigation').is(":visible") && $(window).scrollTop() < $('#what-is').height()/1.5) {
             $('#navigation').fadeOut()
-            //$('#terminal-btn').fadeOut()
             $('#arrow-start').fadeIn()
         }
 
 
         /* start page text scroll animation */
-        if ($(window).scrollTop() > $('#start').position().top - $('#start').height() &&
-            $(window).scrollTop() < $('#start').position().top + 2 * $('#start').height()) {
-            var percent_scrolled_out = Math.abs(($(window).scrollTop() - $('#start').position().top) / $('#start').height())
+        if (page_visible($('#start'))) {
             $('#start').css({'top': $(window).scrollTop()/2})
-            $('#hackweek9, #pay-off, #start-menu').css({'opacity': 1 - percent_scrolled_out*2})
+            $('#hackweek9, #pay-off, #start-menu').css({'opacity': 1 - percent_invisible($('#start'))*2})
+        }
+
+        /* what-is page transition */
+        if (page_visible($('#what-is'))) {
+            $('#what-is-cta, #hackweek-logos').css({'opacity': 1 - percent_invisible($('#what-is'))})
         }
 
 
@@ -236,10 +249,9 @@ $(function () {
         }*/
 
         /* where page text scroll animation */
-        if ($(window).scrollTop() > $('#where').position().top - $('#where').height()) {
-            var percent_scrolled_out = Math.abs(($(window).scrollTop() - $('#where').position().top) / $('#where').height())
-            $('#where-title').css({'opacity': 1 - percent_scrolled_out/2,
-                right: (percent_scrolled_out * -500) - 40})
+        if (page_visible($('#where'))) {
+            $('#where-title').css({'opacity': 1 - percent_invisible($('#where'))/2,
+                right: (percent_invisible($('#where')) * -500) - 40})
         }
 
         /* set active page in navigation menu */
