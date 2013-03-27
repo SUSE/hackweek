@@ -733,6 +733,28 @@ span:hover{
     display: none;
     z-index: 100;
 }
+#bellingham{
+    background: url('../images/pin.png');
+    width: 33px;
+    height: 38px;
+    position: inherit;
+    margin-left: 160px;
+    margin-top: 170px;
+    cursor: pointer;
+}
+#bellingham-zoom{
+    background: url('../images/bellingham.png');
+    background-repeat: no-repeat;
+    background-position: 23px center;
+    background-size: 80% auto;
+    width: 232px;
+    height: 232px;
+    position: inherit;
+    margin-left: 60px;
+    margin-top: 80px;
+    display: none;
+    z-index: 100;
+}
 #nuremberg{
     background: url('../images/pin.png');
     height: 38px;
