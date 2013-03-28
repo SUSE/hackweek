@@ -1,0 +1,22 @@
+====== MoonStats, a library to represent statistics graphically ======
+
+{{tag>Idea Performance Web20 Mono Graphics}}
+
+===== Description =====
+Digg has some interesting ways to visualize user activity.  
+  * It would be interesting to do something similar with Moonlight for CVS/SVN/...
+  * A Wiki addon that turns history alive.
+  * Something to see where users come from and go to on a given web(page) (could be useful for sales folks).
+  * Something that tracks downloads
+  * Something that shows where bugs occur (you could see when to make sure that Hackathons don't produce negative work (breaking something is negative since doing nothing is zero work)).
+  * For the desktop, a df, memory usage, processor usage, other resource usage viewer...
+  * A way to map all CVE vulnerabilities that would illustrate the weakness of Windows.
+
+The idea is that a library might be written in a generic enough way to allow all or most of this class of problems to be written easily.  Skins could be applied on top of this generic library to tailor the effects to a users personal preference.
+
+===== People =====
+Vladimir Giszpenc originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+[[http://labs.digg.com/arc/|Digg animation]] There was another richer one, but I forget where it was.
+

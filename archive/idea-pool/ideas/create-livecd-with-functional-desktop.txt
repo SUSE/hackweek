@@ -1,0 +1,16 @@
+====== Create livecd with functional desktop ======
+
+{{tag>Community Desktop Management Network openSUSE Idea}}
+
+===== Description =====
+Create a livecd with functional desktop to work and install. A small set, like Kubuntu or Fedora 7. Easy to run, easy to install. There's a project called SuperSuse who customize the install process on machine.
+
+===== People =====
+Opensuse Community and developers.
+
+Gabriel Stein originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+http://en.opensuse.org/SUPER
+
+/*Happy Hacking everyone!*/

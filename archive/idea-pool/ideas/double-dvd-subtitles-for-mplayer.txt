@@ -1,0 +1,36 @@
+====== Double DVD subtitles for MPlayer ======
+
+{{tag>Idea Desktop Video multimedia mplayer dvd}}
+
+===== Description =====
+/* Describe your idea here. */
+when we want to learn a foreign language, below things may be happening:
+
+a good thing is watching DVDs is an enjoying way
+
+a bad  thing is we can't catch up the lines some times
+
+a good thins is DVDs have the foreign subtitle
+
+a bad  thing is there are lots words that we never met before
+
+a good thing is DVDs have our mother language subtitle too
+
+a bad  thing is mplayer can't display the both subtitles at the same time
+
+a good thing is hack week lets pacino make mplayer do it
+
+a bad  thing is pacino may be one step away from success
+
+a good thing is pacino is given the ... failure ITO days, watching lots of DVDs for a week.
+
+===== People =====
+mc pacino originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+Xinwei's interested in this.
+
+===== Related Materials =====
+none
+
+
+

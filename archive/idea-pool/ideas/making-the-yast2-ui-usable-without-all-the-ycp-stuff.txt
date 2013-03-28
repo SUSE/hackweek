@@ -1,0 +1,107 @@
+====== Making the YaST2 UI usable without all the YCP stuff ======
+
+{{tag>InProgress DevTool YaST openSUSE SLES SLED}}
+
+===== Description =====
+
+The YaST2 UI is a simple-to-use widget set that abstracts the application from any specific toolkit, and even from X11 vs. text mode. But currently it can only be used from YCP. It would be really cool to have it available from plain C++ programs (or anything that can easily bind to C++, like Python, Ruby etc.). Of course without having to link against all the YaST2 libs and frameworks and all dependencies (quite a lot) which come with that.
+
+==== What it is good for ====
+
+  * Simple configuration dialogs
+  * Workflow and form based applications (as opposed to one-document apps like an editor or a spreadsheet app)
+  * Applications that need a GUI or text UI only in certain situations (won't always have or want to have an X11 connection or even a controlling tty - the YaST2 UI will initialize all that stuff only on demand)
+  * Applications that are hard to split up into smallish parts that would be suitable for event-driven programming, yet need user input at some points.
+
+
+==== What it is NOT ====
+This is not a full-fledged general purpose GUI toolkit.
+
+If you are about to implement another word processor, editor, spreadsheet, game etc., use one of the underlying toolkits (Qt, Gtk+, ...) directly. You'll need all its features -- at least, more features than the YaST2 UI can offer. The abstraction inherent in a generic approach like the YaST2 UI will not give easy access to all the low-level functionality of such a toolkit (think of it: the common denominator of Qt, Gtk+ and NCurses won't provide any notion of graphical stuff, for example).
+
+
+===== People =====
+
+  * Stefan Hundhammer <sh@suse.de>: Abstract UI (libyui), Qt UI -- already working on it
+
+  * Will require help from somebody who knows the NCurses UI:
+    * Gabi Mohr <gs@suse.de> already volunteered (but works part time, 15 hours per week)
+    * Joerg Kress <jkress@suse.de> (?)
+
+  * Will require help from somebody who knows the YaST2-Gtk UI:
+    * Joerg Kress <jkress@suse.de> already volunteered
+    * Ricardo Cruz ? (the student who wrote much of yast2-gtk during the 2006 Google Summer of Code)
+    * Michael Meeks <mmeeks@novell.com> ? - technical contact / tutor for the SoC project
+
+  * Duncan Mac-Vicar Prett <dmacvicar@suse.de> : Bindings for Ruby and other languages
+
+  * [[http://en.opensuse.org/User:Mvidner|Martin Vidner]] : Adapting the liby2 interface so that ''yast2-perl-bindings'' can call it
+
+===== Related Materials =====
+
+Old YaST2 UI architecture:
+
+http://w3.suse.de/~sh/y2-ui-arch-old.pdf
+
+UI entangled with YCP stuff
+
+New modular YaST2 UI architecture:
+
+http://w3.suse.de/~sh/y2-ui-arch-modular.pdf
+
+  * modular
+  * usable from C++
+  * moved out YCP related part
+  * moved out ZYPP related part (loaded as plug-in upon demand)
+  * provisions for 
+     * Python and Ruby bindings
+     * XML interface
+
+SVN:
+
+http://svn.opensuse.org/svn/yast/branches/tmp/sh/mod-ui/
+
+Change log for UI (yast2-qt, yast2-ncurses, yast2-gtk) porting:
+
+http://svn.opensuse.org/svn/yast/branches/tmp/sh/mod-ui/core/libyui/src/ChangeLog
+
+==== Usage Sample ====
+
+<code C++>
+YDialog * dialog  = YUI::widgetFactory()->createMainDialog();
+YLayoutBox * vbox = YUI::widgetFactory()->widgetcreateVBox( dialog );
+YUI::widgetFactory()->createHeading ( vbox, "Sonic Server Configuration" );
+YUI::widgetFactory()->createVSpacing( vbox, 1.5 );
+YIntField *      portField       = YUI::widgetFactory()->createIntField     ( vbox, "Port", 5000, 5999, 5160 );
+YCheckBox *      publicCheckBox  = YUI::widgetFactory()->createCheckBox     ( vbox, "Public Access", false );
+YIntField *      maxPlayersField = YUI::widgetFactory()->createIntField     ( vbox, "Max. Players", 2, 999, 10 );
+YInputField *    mapDirField     = YUI::widgetFactory()->createInputField   ( vbox, "Map Directory"  );
+YPasswordField * passwordField   = YUI::widgetFactory()->createPasswordField( vbox, "Admin Password" );
+
+YAlignMent *  rightAlign = YUI::widgetFactory()->createRight( vbox );
+YLayoutBox *  buttonBox  = YUI::widgetFactory()->createHBox ( rightAlign );
+YPushButton *    okButton     = YUI::widgetFactory()->createPushButton( buttonBox, "OK" );
+YPushButton *    cancelButton = YUI::widgetFactory()->createPushButton( buttonBox, "Cancel" );
+
+// Let the user fill the fields in this form and wait until he activates a button
+YWidget * button = dialog->userInput();
+
+if ( button == okButton )
+{
+    // Retrieve values from the widgets
+
+    int         port       = portField->value();
+    bool        isPublic   = publicCheckBox->value();
+    int         maxPlayers = maxPlayersField->value();
+    std::string mapDir     = mapDirField->value();
+    std::string password   = passwordField->value();
+
+    // ... do something with the values...
+}
+
+// Close dialog
+delete dialog;
+</code>
+
+
+

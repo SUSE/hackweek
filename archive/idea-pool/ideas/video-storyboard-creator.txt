@@ -1,0 +1,12 @@
+====== Video Storyboard Creator ======
+
+{{tag>Community Desktop Graphics openSUSE Idea video mplayer}}
+
+===== Description =====
+
+Create tool which allows user to automatically create graphic storyboard of movie. User will open video file, program detects scene changes/transitions and generates HTML page with table containing first and last pictures of the scene, their time and duration of the scene. Program can use mplayer, xine or gstreamer as its backend.
+
+===== People =====
+
+Pavol Rusnak originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+

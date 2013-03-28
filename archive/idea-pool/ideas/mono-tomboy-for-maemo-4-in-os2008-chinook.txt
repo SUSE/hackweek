@@ -1,0 +1,40 @@
+====== Mono + Tomboy for Maemo 4  in OS2008 (Chinook) ======
+
+{{tag>Idea InProgress Mobile Mono DevTool HelpWanted HW-Hacker HW-Tester HW-Docs HW-Packaging}}
+
+===== Description =====
+
+Mono already works for Maemo 2 and 3 (OS2007 Bora) but not for Maemo 4 (OS2008 Chinook).  OS2008 is the current OS used in the Nokia N810 and is also compatible with the N800.
+
+The goal of this project will be to bring mono support to the Maemo 4 platform.  Tomboy (a mono note application) will be used to test mono feature support.
+
+For more information about this effort please visit [[http://code.google.com/p/tomboy-maemo/wiki/HackWeek2|this page]].
+
+===== People =====
+
+[[ecanuto@novell.com|Everaldo Canuto]] originated this idea and is hacking.
+
+[[jaebird@gmail.com|Jae Stutzman]] is helping wherever possible.
+
+[[erikhix@gmail.com|Erik Hix]] is watching with excitement and ready to test with his N800.
+
+[[tquerci@gmail.com|Torello Querci]] is helping in the hacking.
+
+[[fumasa@gmail.com|Rafael 'fumasa' Giorgetti]] is helping wherever possible.
+
+
+===== Related Materials =====
+
+Oficial page of Tomboy for Maemo port: http://code.google.com/p/tomboy-maemo/
+
+Maemo apps built against OS2007 will not run out of the box on OS2008. This link outlines the differences between the SDKs: http://maemo.org/development/sdks/api_changes_between_maemo_3_2_and_maemo_4_0.html This is important because it means the mono wrappers will need to be reworked.
+
+===== Scratchbox Howto =====
+
+Maemo has resources for the scratchbox installer here: http://maemo.org/development/sdks/maemo_4_0_chinook_sdk.html
+
+The actual howto is located at the Mono project site: http://www.mono-project.com/Maemo This page contains the steps //(in the future)// required to build Mono under scratchbox with repeatable results.
+ 
+Note: http://www.mono-project.com/Mono:ARM also has some information.
+
+/* Links, mockups, screen captures, files. */

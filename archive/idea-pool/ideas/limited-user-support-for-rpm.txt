@@ -1,0 +1,21 @@
+====== Limited user support for RPM ======
+
+{{tag>Idea RPM Desktop}}
+
+===== Description =====
+
+At present the only persons who can make use of the package management on a system are those with administrative privileges. If a user wants to install and run an application as themself they will lose the benefits of package management such as dependency checking & easy installation and removal. 
+
+Windows provides the facility to install MSIs either systemwide requiring administrative privileges or as the user installing.
+
+RPM provides facility to use an alternative RPM database (a user's own) or simply extract the packages in a different location. Neither of these methods work very well.
+
+It would be nice if a user could install software & any dependencies as themself in their /home using the system package management. The package manager could then inform the administrator upgrading system software when it is likely to break individual user's own installations as well.
+
+
+===== People =====
+
+Benjamin Weber originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+

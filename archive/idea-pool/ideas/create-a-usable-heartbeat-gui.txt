@@ -1,0 +1,45 @@
+====== Create a usable Heartbeat GUI ======
+
+/* If this is your first time using the Idea Pool, please take a second to read the  comment at the end of this template, which explains how to use tags.  
+
+Topic tags: Community, Security, QA, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Status tags: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+Help tags: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+
+Separate tags with a space like this:
+{{tag> blargle fizzbozz bimbledeedoo}}
+*/
+
+{{tag>Idea Management Server SLES}}
+
+===== Description =====
+The existing GUI supplied with Heartbeat is
+  * buggy
+  * user unfriendly
+  * destroys any part of the configuration it doesn't understand
+  * based on a fundamentally flawed design
+
+The idea is to resurrect the GUI which abeekhof started earlier in the year which performs the visual equivalent of XSLT processing.
+
+The GUI can be configured to use a specified class to render a given tag and gracefully fails back to XML text blocks for anything it doesn't understand.  The initial classes will be "form"-based, but only time and inclination prevent a more visual drag-n-drop set of classes.
+
+Eventually it would be nice to have some step-by-step wizards for resource creation.
+
+The GUI will leverage existing CLI tools supplied with heartbeat and provide the ability to preview the effect of configuration changes.
+
+===== People =====
+/* This section is for listing all of the people involved in this idea or project:
+  - The originator(s) of the idea
+  - Interested people who might later help out with implementing this idea
+  - Experts or knowledgeable people who could give advice about this idea
+
+If you are already working on this project, and you need help, you can use one of the  HelpWanted tags to say so, and then write some specific details about the kinds of help that you need here. */
+
+Andrew Beekhof originated this idea and will probably work on it during HackWeek.
+Interested parties are welcome to assist.
+
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */
+http://hg.beekhof.net/lha/Pacemaker/
+

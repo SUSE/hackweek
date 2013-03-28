@@ -1,0 +1,24 @@
+====== Visualise build dependencies and build progress ======
+
+
+{{tag>Idea BuildService devtool}}
+
+===== Description =====
+It would be interesting to visualize (build) dependencies of packages in
+BuildService, using graphviz for instance. And it would be cool if the
+build monitor would be available as an online refreshing dependency
+tree, so you could watch the nodes turning green and have an overview on
+what's going to build next. Perhaps the packages could be placed in the
+graph depending on their status, eg. one big pool for to-be-build, one
+pool for each build host, a dumping place of failed packages, a place
+for built packages...
+
+With a larger project (or when watching build of all BS projects?), it
+would make for a good xscreensaver hack ;-)
+
+===== People =====
+Michal Marek originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+
+

@@ -1,0 +1,12 @@
+====== Implement unclutter in xserver ======
+
+{{tag>Idea Desktop X11 HelpWanted}}
+
+===== Description =====
+
+The nice little program unclutter has limitations. With some applications (e.g. xchat) the mouse cursor can start to flicker and the CPU usage raises to 100%. Other limitations are listed in the man-page.
+
+The xserver is the right place for the functionality of unclutter. xset could be used to set parameters.
+
+===== People =====
+Arvin Schnell originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).

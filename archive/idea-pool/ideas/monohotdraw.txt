@@ -1,0 +1,16 @@
+====== MonoHotDraw: structured graphics library ======
+
+{{tag> Graphics DevTool Mono Idea InProgress TryMe}}
+
+===== Description =====
+MonoHotDraw is a two-dimensional graphics framework for structured drawing editors. It can be used to create graphic editors for UML, Mind Mapping, Flowcharts, Animation and Vector Graphics.
+
+===== People =====
+  - Manuel Ceron was working on it
+  - Mario Carrion is working on it
+
+Manuel Ceron and Mario Carrion originated this idea. 
+
+===== Related Materials =====
+
+http://monouml.org/doku.php?id=monohotdraw

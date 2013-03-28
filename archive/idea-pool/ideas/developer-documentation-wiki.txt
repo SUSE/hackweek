@@ -1,0 +1,17 @@
+====== Developer documentation wiki ======
+
+{{tag>InProgress Community DevTool Documentation}}
+
+===== Description =====
+
+As it was already mentioned on research mailing list, there is a sore need for a comprehensive, hypertext, up-to-date system documentation for developers. Currently, some parts of the system API are not documented at all or very poorly (e.g. the ioctl() interface), some have very obsolete documentation (glibc).
+
+The documentation should be a community, wiki-style project.
+
+The project also involves some programming because no wiki engine known to me has all features needed for such a massive specialized knowledge base, so there is an option of tweaking an existing wiki engine, or writing a brand new. Currently I have followed the former, but the latter seems to be more and more appealing.
+
+===== People =====
+
+Jiri Dluhos originated this idea, and is currently working on it in his spare time.
+
+===== Related Materials =====

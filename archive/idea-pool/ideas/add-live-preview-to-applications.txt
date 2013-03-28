@@ -1,0 +1,14 @@
+====== Add "Live Preview" to applications ======
+
+{{tag>usability preview live-preview InProgress}}
+
+===== Description =====
+It would be nice if Open Source applications like GIMP, Inkscape or OpenOffice.org had a "Live Preview" style of interaction. This UI concept has gained visibility with Office 2007, although it as such is nothing new, and some apps have had similar features already for a while.
+
+Live Preview means that for instance when browsing a list of fonts, the selected text will be laid out in each font as the pointer hovers over the font name in question. No clicks are needed. Of course, this is just ephemeral, and an actual click is needed to perform the font change actions.
+
+It is hard to describe this UI paradigm exactly, but I am sure, once once sees it in practice, for instance in Office 2007, is it painfully obvious that this is how it should be done.
+
+===== People =====
+
+Tor Lillqvist originated this idea.  He will also have a go at it for GIMP.

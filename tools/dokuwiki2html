@@ -13,11 +13,12 @@ def render_content
   @content
 end
 
-input = ARGV[0]
-output = ARGV[1]
+input = File.expand_path('../../archive/idea-pool/ideas', __FILE__ )
 
-if !input || !output
-  STDERR.puts "Usage: dokuwiki2html <input-directory> <output-directory>"
+output = ARGV[0]
+
+if !output
+  STDERR.puts "Usage: dokuwiki2html <output-directory>"
   exit 1
 end
 

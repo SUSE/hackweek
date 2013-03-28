@@ -1,0 +1,42 @@
+====== Task Scheduler and Generic Notifier with plugin architecture ======
+
+/* If this is your first time using the Idea Pool, please take a second to read the  comment at the end of this template, which explains how to use tags.  
+
+Topic tags: Community, Desktop, Management
+Product tags: openSUSE, SLED 
+Status tags: Idea
+Help tags: HelpWanted
+
+Separate tags with a space like this:
+{{tag> blargle fizzbozz bimbledeedoo}}
+*/
+
+{{tag>Idea}}
+
+===== Description =====
+/* Describe your idea here. */
+A generic user space Task Scheduler for the Enterprise Desktop with a generic, standard Notify/Alarm function that can be used by other applications on the desktop like e-mail, calendar etc. The goal is to have one standard notify system for applications on the desktop.
+
+A plugin architecture should allow to subscribe and act on events from other applications, like e-mail or when a backup is finished.
+
+plugins and functional ideas:
+  * Notify on e-mail and calendar(s) (GroupWise, Evolution, Google calendar) events
+  * RSI (Repetitive Strain Injuries) alarm functionality. Ergonomic software for the Enterprise Linux Desktop
+  * ..
+  * Initiate, schedule backups from the backups-made-easy idea (http://idea.opensuse.org/content/ideas/backups-made-easy)
+  * Launch desktop applications based on schedule 
+  * FUN plugin, but good for office workers; scheduled alarm with random selector 'who will get the coffee'
+===== People =====
+
+Moosy originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */
+
+Task Scheduler in Windows
+
+workrave RSI project
+
+
+
+

@@ -1,0 +1,31 @@
+====== Cocos: Compiler Construction Set ======
+
+/* 
+Status tags: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+Help tags: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+*/
+
+{{tag>InProgress DevTool Mono compiler HelpWanted}}
+
+===== Description =====
+
+A next-generation parser generator.
+
+A
+[[http://primates.ximian.com/~massi/blog/archive/2008/Feb-03.html|couple]]
+[[http://primates.ximian.com/~massi/blog/archive/2008/Feb-04.html|of]]
+entries on my blog provide an initial description.
+
+
+===== People =====
+
+Massimiliano Mantione is working on this.
+
+Hopefully, Marek Safar, Jb Evain and Rodrigo "Bamboo" De Oliveira will comment and/or
+lend a hand..
+
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */
+
+
+/*Happy Hacking everyone!*/

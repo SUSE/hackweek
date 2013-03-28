@@ -1,0 +1,34 @@
+====== Nike+ Support for Banshee ======
+
+{{tag>Idea Banshee Desktop InProgress}}
+
+===== Description =====
+Apple and Nike teamed up to make a nifty little iPod accessory that goes into your shoe and feeds all kinds of interesting data to your iPod when you go running.  In iTunes, this data in synced automagically to nikeplus.com.  In Banshee, it is ignored.  :-(
+
+The purpose of this project is to do 3 things:
+  - Grab the data off an iPod when it syncs with Banshee.
+  - Provide nifty graphs and statistics of your runs inside Banshee.
+  - Make it all look pretty using Moonlight.
+
+===== People =====
+Jonathan Pobst originated this idea and worked on it for Hack Week!
+
+===== Status =====
+I didn't get as far as I would have liked to during the week, as I spent a lot of time learning new stuff, but I at least got some decent screenshots:
+
+{{ideas:marathon1.png|Banshee showing all the run files}}
+
+{{ideas:marathon2.png|Banshee showing an individual run}}
+
+What works:
+  - Parsing of XML run files
+  - Graphing of individual run
+  - Graphing of all runs by length
+
+What doesn't work:
+  - Syncing with the iPod (files were manually retrieved)
+  - Runs by Week or Month
+  - Tooltip on summary graph is static
+  - Clicking on a run on a summary graph should graph the individual run
+  - Metric support for the 99% of countries who are too lazy/stubborn to convert to the US customary system.
+  - Error handling, stability, polish

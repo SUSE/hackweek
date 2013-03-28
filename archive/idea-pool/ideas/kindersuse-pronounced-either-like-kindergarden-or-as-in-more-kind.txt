@@ -1,0 +1,43 @@
+====== KinderSuse (pronounced either like kindergarden or as in more kind) ======
+
+{{tag>Idea Community Desktop openSUSE SLED}}
+
+===== Description =====
+The $100 laptop and Edubuntu are geared at kids.  This attempts to fix an accessibility issue.  Suse would go a long way by serving those that can't help themselves (as much).  GNOME rated G should be good for kids and for Geriatrics (which are an ever growing (affluent) sector of society.
+
+Everyone needs to bring in their kids and grand parents and do some usability studies.  Browsers can zoom in and out, the desktop should not need a magnifier, it should be just as simple.  Wizards or Druids needs to be ubiquitous given a configuration setting of some kind.  A central place to search through all desktop help is needed.  As applications get installed, their help should "register" into a central database that gets searched from one spot.
+
+Getting help should be easy.  Going to a command line (or Google) and looking up a man page is tolerable for programmers but way difficult for the uninitiated.  It is a question of human interaction and as far as my mother is concerned, computers still suck.  They are useful, but they are hard to deal with.  Microsoft is moving along on speech recognition.  We could take the initiative and make speech --GSpeech or whatever is the technology that makes sense-- an <b>integral</b> part of the desktop.  Call back functions would take a whole new meaning.
+
+Imagine:
+Create new folder!
+Done.  What would you like to NAME it?
+Name it "Vacation 2007"  No Name it "Vacation at the shore"
+Done.  Do you want put it in your "My Documents" folder?  --- This sounds awful ---
+No.  Put it in the "My Pictures" folder.
+Done.
+Add pictures from my camera to the folder.
+Sorry.  I don't understand.
+Remember Camera is set to root media camera.
+Understood.
+Add pictures from my camera to the folder.
+Sorry I don't understand.
+What don't you understand?
+What folder should I add the pictures to?
+Oh should of said that.  Add them to the ...  What was the name of the last folder I created.
+"Vacation at the shore"
+Add them to that folder.
+---An empty file called "them" gets added to "that" folder---
+
+Pronouns will be tough but we need to start!  If we have smart phones, why can't we have smart computers?!?
+
+
+ 
+===== People =====
+
+Vladimir Giszpenc originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+* [[http://linux-sound.org/speech.html|sound stuff]]
+* [[http://www.edubuntu.org/|Edubuntu]]
+* [[http://www.census.gov/cgi-bin/ipc/idbpyrs.pl?cty=US&out=s&ymax=250|Population growth charts]]

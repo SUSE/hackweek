@@ -1,0 +1,19 @@
+====== USB over IP ======
+
+{{tag>InProgress Kernel Network}}
+
+===== Description =====
+
+USB over IP is an interesting idea allowing you to access USB devices across the network.
+
+There is a 2 year old patch for USB over IP support. It has some implementation problems (incorrect socket usage, incorrect locking, incorrect sysfs support, etc.) and is targeted for too old kernel release (2.6.15?). It would be nice to fix (or rewrite it) for the latest kernel.
+
+===== People =====
+
+Jiri Benc originated this idea and is working on it during the hack week.
+
+===== Related Materials =====
+
+http://lwn.net/Articles/162779/
+
+http://sourceforge.net/projects/usbip/

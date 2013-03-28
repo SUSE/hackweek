@@ -1,0 +1,25 @@
+====== Add a buildservice project that recompiles Debian packages ======
+
+/* If this is your first time using the Idea Pool, please take a second to read the  comment at the end of this template, which explains how to use tags.  
+
+Topic tags: buildservice Debian
+Product tags: openSUSE
+Status tags: TryIt
+
+Separate tags with a space like this:
+{{tag> blargle fizzbozz bimbledeedoo}}
+*/
+
+{{tag>TryIt devtool buildservice inbuildservice JudgeBest JudgeTeam JudgeMe JudgeCommunity}}
+
+===== Description =====
+Recompiling Debian packages as RPMs requires some mapping and actually doing it. Some bootstrap problems aside, it's mainly about understanding debian build system.
+
+===== People =====
+Stephan Kulow originated this idea. Stephan Kulow works on a spec file generator, Richard Guenther on packaging necessary tools.
+
+<html>
+<center>															<script type="text/javascript" src="http://blip.tv/scripts/pokkariPlayer.js?ver=2007062101"></script><script type="text/javascript" src="http://blip.tv/syndication/write_player?skin=js&posts_id=292185&source=3&autoplay=true&file_type=flv&player_width=&player_height="></script><div id="blip_movie_content_292185"><a rel="enclosure" href="http://blip.tv/file/get/Natfriedman-DebianPackageBuildingLightningTalk352.flv" onclick="play_blip_movie_292185(); return false;"><img title="Click to play" alt="Video thumbnail. Click to play"  src="http://blip.tv/file/get/Natfriedman-DebianPackageBuildingLightningTalk352.flv.jpg" border="0" title="Click To Play" /></a><br /><a rel="enclosure" href="http://blip.tv/file/get/Natfriedman-DebianPackageBuildingLightningTalk352.flv" onclick="play_blip_movie_292185(); return false;">Click To Play</a></div>										</center>
+</html>
+
+/*Happy Hacking everyone!*/

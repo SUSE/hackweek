@@ -1,0 +1,17 @@
+====== Create cool game appliance ======
+
+{{tag>InProgress openSUSE Graphics games}}
+
+===== Description =====
+There are cool games like OpenArena that are free, but are too big to fit into standard distribution. The idea is to combine LiveDVD with one of such games, to create a single boot & play medium.
+
+===== People =====
+
+Stanislav Visnovsky originated this idea.  Ladislav Michnovic is interested in implementing this idea.
+
+===== Related Materials =====
+
+http://openarena.ws/
+
+http://build.opensuse.org/project/show?project=home%3Ajsuchome
+

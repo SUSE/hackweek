@@ -1,0 +1,16 @@
+====== OpenID provider backed onto ichain ======
+
+{{tag>Idea Community}}
+
+===== Description =====
+Create an OpenID provider that authenticates against ichain, to enable community projects to utilise users' existing Novell accounts for authentication.
+
+===== People =====
+
+Benjamin Weber originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+Darix mentioned he had looked at prototyping this.
+
+===== Related Materials =====
+
+http://openid.net/

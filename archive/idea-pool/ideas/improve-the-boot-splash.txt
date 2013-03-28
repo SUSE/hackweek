@@ -1,0 +1,17 @@
+====== Improve the boot splash ======
+
+{{tag>Idea Kernel openSUSE SLED}}
+
+===== Description =====
+The current boot splash implementation is a bit uninformative. For example, if
+the file system is being checked (ext3 is our default file system!), then it
+looks for the average user as if the system just is crash, if he doesn't watch
+the HDD LED (or has a noisy disk :-)).
+
+This is related to "Write a user friendly frontend for fsck" (don't know how
+to create links in that wiki).
+
+===== People =====
+Bernhard Walle originated this idea.  He's working during hack week on that
+project.
+

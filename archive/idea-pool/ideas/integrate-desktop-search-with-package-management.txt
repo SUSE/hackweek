@@ -1,0 +1,16 @@
+====== Integrate Desktop Search with Package Management ======
+
+{{tag>Idea Desktop IdeaPool openSUSE SLED HelpWanted}}
+
+===== Description =====
+
+Having the Desktop search engines index/access the package management metadata to be able to present the user with a list of (potentially) installable
+application swould be very nice.
+
+===== People =====
+
+Christoph Thiel originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+
+http://fourier.suse.de/mlarch/SuSE/research/2007/research.2007.04/msg00037.html

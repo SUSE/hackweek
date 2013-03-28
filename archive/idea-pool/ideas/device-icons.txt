@@ -1,0 +1,25 @@
+====== Device Icons ======
+
+{{tag>Idea HelpWanted PimpMyDesktop openSUSE SLED Desktop Graphics Gnome Nautilus Banshee HW-Hacker F-Spot icon theme spec}}
+
+===== Description =====
+
+{{ideas:computer-gaming-sony-psp.png|}} {{ideas:computer-tablet-nokia-n770.png|}} {{ideas:input-gaming-sony-psx-dual-shock.png|}} {{ideas:input-wheel-griffin-powermate.png|}} {{ideas:phone-sony-ericsson-w300i.png|}} {{ideas:phone-sony-ericsson-w810i.png|}}
+
+To allow themeability, the [[http://standards.freedesktop.org/icon-naming-spec/icon-naming-spec-latest.html|naming spec]] defines a few generic devices. It would make it a lot more personal and appealing if connected devices showed the actual specific device icons on the desktop and related applications (DAPs in Banshee, cameras in F-Spot during import). 
+
+The generic fallback is necessary to allow theme authors to provide a visually consistent theme without the need to style all the individual specific device icons.
+
+The specific icon name should be provided in the HAL FDI descriptor file.
+
+
+===== People =====
+
+Rodney Dawes and Jakub Steiner originated this idea.  Artists from the Tango project are already creating artwork. Rodney Dawes came up with a draft on the naming scheme. David Zeuthen and Matthias Clasen from Redhat were interested in the project as well.
+
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */
+
+  * [[http://svn.gnome.org/viewcvs/gnome-icon-theme-extras/|Growing list of device icon artwork]].
+  * [[http://people.freedesktop.org/~dobey/device-names.txt|Naming Draft]]
+  * [[http://lists.freedesktop.org/archives/xdg/2007-March/007810.html|Naming Concept, Fallback]]

@@ -1,0 +1,13 @@
+====== Internet Search Engine for openSUSE and SUSE Linux ======
+
+{{tag>Community Web20 Idea}}
+
+===== Description =====
+Create a Internet Search Engine that indexes openSUSE and SUSE Linux releated sites. This
+should be very easy since Google provides a service for this scenario.
+
+===== People =====
+Arvin Schnell originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+http://www.google.com/coop/

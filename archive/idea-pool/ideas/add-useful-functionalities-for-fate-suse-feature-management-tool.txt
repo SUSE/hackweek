@@ -1,0 +1,31 @@
+====== Adding Useful Functions for Fate ======
+
+{{tag>Idea Management devtool FATE internal}}
+
+===== Description =====
+
+It's great to have Fate as a feature management tool and as a front-end to the SUSE feature database. To make life easier (when working with the Fate Client), some more functions would be helpful:
+
+* Export Functionality for the List of Search Results
+
+File > Show Feature Table gives you an excellent overview of features, including fate number, headline and the most important meta-data
+such as current status of a feature. Users can also search or filter the data in the dialog. So far, so good - if only there was some kind of functionality 
+to save this list of search results (e.g., very simply, the possibility to select multiple or all items/entries in this list to copy and paste it to a text editor).
+
+* Tabbed Browsing
+
+Possibility to execute several queries in parallel and then switch back and forth between the results of each query (like tabbed browsing).
+At the moment, you can only switch back and forth between several features but as soon as you enter a new query, you "loose" the results of the one before. If you want to view the results of the last query (or compare the results of several queries), you have to start a new query each time or restart a former one.
+
+As a workaround, you can, of course, use tabs in the Fate Web interface, but it would be great if the Fate Client could offer this functionality, too.
+
+
+
+===== People =====
+Tanja Roth originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+Being part of the doc team, I would certainly volunteer to document these new Fate features in case they will be implemented :)
+
+===== Related Materials =====
+
+Another Fate-related idea can be found at: [[http://idea.opensuse.org/content/ideas/add-support-for-an-external-editor-to-fate]] :-)

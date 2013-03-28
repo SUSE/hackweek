@@ -1,0 +1,17 @@
+====== Information bar for nautilus ======
+
+{{tag>Idea,nautilus,desktop,gnome}}
+
+===== Description =====
+I was inspired by the new file-manager of KDE which is called Dolphin, you know.
+An information bar in nautilus which gives the possibility to get the main information about
+the document, the possibility to rate and to add a comment to the file/directory.
+
+And with beagle it should be possible then to search for high rated files and through
+the descriptions and so on.
+
+
+===== People =====
+Andy Pischka originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+

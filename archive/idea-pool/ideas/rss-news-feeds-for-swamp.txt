@@ -1,0 +1,27 @@
+====== RSS News feeds for SWAMP ======
+{{tag>Done swamp InBuildService }}
+
+===== Description =====
+/* Describe your idea here. */
+
+
+Add configureable Newsfeeds (RSS, Atom) for Workflow/Tasks lists in SWAMP. 
+For example "my tasks" newsfeed, "latest workflows" newsfeed...
+All workflow lists in webswamp should have an XML button at the bottom that links to 
+the corresponding newsfeed. 
+
+The rss reader needs to support HTTP-auth to use the swamp feeds. 
+
+This feed can be used by this (http://idea.opensuse.org/content/ideas/dynamic-web-service-portal) idea. 
+
+I also added Atom feed support to the Keeper.
+
+
+===== People =====
+
+Thomas Schmidt did it.
+
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */
+
+

@@ -1,0 +1,25 @@
+====== enhance OpenAL Surround Sound ======
+
+{{tag>Desktop SLED openSUSE sound InProgress}}
+
+===== Description =====
+The OpenAL reference implementation for Linux seriously lacks features that are standard on other operating systems:
+
+  * It only renders four channel surround sound (4.0) whereas modern sound cards and systems typically support 5.1 or 7.1
+  * one cannot configure/tune the speaker placement
+  * it has no hardware acceleration. There used to be an enhanced OpenAL for emu10k1 cards (sb live) which consumed less cpu than the OpenAL reference implementation
+ 
+===== People =====
+/* This section is for listing all of the people involved in this idea or project:
+  - The originator(s) of the idea
+  - Interested people who might later help out with implementing this idea
+  - Experts or knowledgeable people who could give advice about this idea
+
+If you are already working on this project, and you need help, you can use one of the  HelpWanted tags to say so, and then write some specific details about the kinds of help that you need here. */
+
+Ludwig Nussel originated this idea.  Takashi Iwai is currently working on implementing this idea.
+
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */
+[[http://www.openal.org/|OpenAL]]
+[[http://www.lost.org.uk/openal.html|openal-alsa-emu10k1]]

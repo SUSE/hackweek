@@ -1,0 +1,190 @@
+====== Implement Desklets using Moonlight ======
+
+{{tag>Idea InProgress  Mono Desktop Web20 DevTool Graphics javascript TryMe HelpWanted Judgeme JudgeBest JudgeDesktop}}
+
+===== Description =====
+
+OSX and Vista implements some nice small desktop applications (aka applets/docklets/gadgets/desklets). As I have been working in the past few weeks on Moonlight (Free implementation of Silverlight), and seeing as Moonlight is a perfect way to get things like OSX Dashboard or gDesklets.
+
+Why not use gDesklets? Because Moonlight give us a way to write much more rich Desklets using animations and storylines and full access to C#
+
+Moonlight (although Gtk# might be used in a few places) will be used to get effects and for rapid application development. 
+
+Meet us in channel #desklets in irc.gnome.org
+
+You can find the sample desklets directory in moon/desklet
+
+Basic goals:
+
+  - Applications will be basic XAML shells that can use custom widgets.
+  - See moon/desklet/lameclock for a sample desklet using XAML and Moonlight.
+  - See moon/desklet/lameclock for some sample animation for configuration.
+  - To launch applications, we will use mopen, part of Moonlight.
+  - you can use mopen with the -transparent flag to get alpha blended widgets on the screen (under implementation now).
+  - Read the mopen.1 man page for details about code sharing, VM sharing, and how to launch new apps.
+  - "Gadgets" or "Widgets" will basically be simple XAML apps, see Surface for a sample of these can be done.
+  - Since we will be using "mopen" infrastructure, the entire desklet has to be stored in a directory, with an entry file called "default.xaml".
+
+Some other features:
+  - Write a gadget launcher, this probably needs to be done once we have some gadgets, handle install ationand add desklets to desktop, this application will use mopen to share one Mono VM for all desklets. Multi domains will also needed.
+  - The entire desklet can be written with Moonlight/XAML and is preferred over Gtk# because its content can be easily animated using XAML's animation features.
+  - Create some sample desklets:
+    - Multi clock, an digital clock with multiple themes.
+    - Calendar desklet, maybe just a transluced calendar with some options like amount of months (1,3,6, year)
+    - Slide show desklet, an slide show desklet application to show images from dir, time to change images can be configured, also we can show images from picasa or flickr albums.
+    - Some other desklet ideas will accepted and implemented based on number of hackers that join with us.
+
+Things to decide:
+
+  - Best way to package desklets (zip, gz or bz). Zip seems to be the best option, since mono ships with SharpZip lib and that way we have no external dependencies.
+  - ...
+
+These are the Desklets we either plan to implement or are already done:
+
+  - Calendar - Done, in opaque and glassy versions. Calendars integreate with Google Calendar highlighting days with relevant event.
+  - Digital Clock - Done
+  - Analog Clock - Done, in opaque and glassy versions.
+  - CPU monitor - Done.
+  - Network traffic monitor - Done, very simple monitoring of the current upload/download Kbps.
+  - Calculator - Done, features only elementary math.
+  - Weather - Done, queries online data.
+  - Slideshow - Done, integrated with Picasa, it slides thru a photo set.
+  - Rule - Done, allows one to measure the whole desktop!
+  - Video Player - Done, features only simple stop/pause/start controls.
+
+The team is using the irc channel #desklets at irc.gnome.org to meet and discuss the subject, everyone is invited to join us and chat about all our nice Desklets :)
+
+===== People (alphabetical order) =====
+/* This section is for listing all of the people involved in this idea or project:
+  - The originator(s) of the idea
+  - Interested people who might later help out with implementing this idea
+  - Experts or knowledgeable people who could give advice about this idea
+
+If you are already working on this project, and you need help, you can use one of the  HelpWanted tags to say so, and then write some specific details about the kinds of help that you need here. */
+
+<html>
+<a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081564855384296898"><img src="http://lh4.google.com/everaldo.canuto/RoVYUAxKTcI/AAAAAAAAAM0/thYc-LRjHpg/s144/andreia.jpg" /></a>
+</html>
+**Andreia Gaita** is helping in the hacking.
+
+<html>
+<a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081556566097415538"><img src="http://lh6.google.com/everaldo.canuto/RoVQxgxKTXI/AAAAAAAAAMM/G5pznrEaua4/s144/everaldo.jpg" /></a>
+</html>
+**Everaldo Canuto** originated this idea and helping in the hacking.
+
+<html>
+<a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081564043635477938"><img src="http://lh3.google.com/everaldo.canuto/RoVXkwxKTbI/AAAAAAAAAMs/HT3Lq-XnQ8A/s144/grendel.jpg" /></a>
+</html>
+**Marek Habersack** is helping in the hacking.
+
+**Miguel de Icaza** is helping in the hacking.
+
+<html>
+<a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081556566097415554"><img src="http://lh6.google.com/everaldo.canuto/RoVQxgxKTYI/AAAAAAAAAMU/ouO4Pv-I24c/s144/fumasa.jpg" /></a>
+</html>
+Rafael Fumasa doesn't work for Novell, but we joined us and made a great calculator!
+
+<html>
+<a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081556566097415570"><img src="http://lh6.google.com/everaldo.canuto/RoVQxgxKTZI/AAAAAAAAAMc/nHMz3_KKJBs/s144/kumpera.jpg" /></a>
+</html>
+**Rodrigo Kumpera** is helping in the hacking.
+
+<html>
+<a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081556759370943906"><img src="http://lh3.google.com/everaldo.canuto/RoVQ8wxKTaI/AAAAAAAAAMk/NihW5SQp-Qs/s144/toshok.jpg" /></a>
+</html>
+I also can't forget to add Chris Toshok, this amazing guy who helped us with the libraries and all the stuff, he is a genius! 
+
+Hackers, packagers, testers and designers <del>will be</del> were welcome ;)
+
+
+<html>
+<center>
+<a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081567681472777682"><img src="http://lh6.google.com/everaldo.canuto/RoVa4gxKTdI/AAAAAAAAAM8/WI6_EqdQtNY/s400/allthepeople.jpg" /></a><br/>
+All Together
+</center>
+</html>
+
+
+===== Related Materials =====
+
+OSX Dashboard: http://www.apple.com/macosx/features/dashboard/ 
+
+Vista Gadgets: http://vista.gallery.microsoft.com/vista/SideBar.aspx?mkt=en-us 
+
+gDesklets: http://www.gdesklets.org/ 
+
+
+==== Links, mockups, screen captures, files. ====
+
+My first desklet clock:
+http://picasaweb.google.com/everaldo.canuto/MoonLight/photo#5079539077446297602
+
+<html>
+<center>
+<object width="425" height="350"> <param name="movie" value="http://www.youtube.com/v/J-kweEzP9XY"> </param> <embed src="http://www.youtube.com/v/J-kweEzP9XY" type="application/x-shockwave-flash" width="425" height="350"> </embed> </object>
+</center>
+</html>
+
+<html>
+<center>
+<embed style="width:400px;height:326px;" type="application/x-shockwave-flash" src="http://video.google.com/googleplayer.swf?docId=96431092841486129&hl=en" id="VideoPlayback" align="middle"  quality="best" bgcolor="#ffffff" scale="noScale" salign="TL"  FlashVars="playerMode=embedded"></embed><br />
+It is not possible to see the clock and calendar in action in the other video, so this video is just to show that
+</center>
+</html>
+
+<html>
+<center>
+<a href="http://picasaweb.google.com/everaldo.canuto/Desklets/photo#5080887826804526354"><img src="http://lh4.google.com/everaldo.canuto/RoLwjwxKTRI/AAAAAAAAALI/xX4zioVCVr0/s400/glassy-blue.jpg" /></a>
+<a href="http://picasaweb.google.com/everaldo.canuto/Desklets/photo#5080887826804526370"><img src="http://lh4.google.com/everaldo.canuto/RoLwjwxKTSI/AAAAAAAAALQ/XDIfxz2JsPg/s400/glassy-green.jpg" /></a>
+</center>
+</html>
+
+==== Friday pictures ====
+
+<html>
+<center>
+<a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081556561802448210"><img src="http://lh5.google.com/everaldo.canuto/RoVQxQxKTVI/AAAAAAAAAL8/RK_TxfX_ibw/s400/desklets1.jpg" /></a>
+<a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081556566097415522"><img src="http://lh6.google.com/everaldo.canuto/RoVQxgxKTWI/AAAAAAAAAME/KeFqp6j3uXc/s400/desklets2.jpg" /></a>
+</center>
+</html>
+
+
+/* How to Use Tags
+
+All idea pages are tagged to make them easier to find and to indicate to the rest of the world the current state of your project.
+
+You can apply as many topic and product tags to your idea as you want.
+
+Status Tags
+-----------
+Idea: No one is working on this idea yet.
+InProgress:  The project is underway.  When you apply this tag to an idea, please also edit the People section of the page to indicate who is working on the project. 
+TryMe:  This project is at the point where other people can try it.  Include a link for code/packages in the page so people can find it.
+InBuildService:  Idea's implementation posted in the openSUSE build service.  Provide a link.
+Done:  The idea has been fully realized (though it may not yet be in a product).
+Shipped:  Hooray!
+
+Help tags:  
+----------
+
+You can apply Help tags to your project to recruit other people to help you with its implementation.  Don't apply Help tags to a project which is not already being implemented.  
+Before applying any HelpWanted tags to your project, make sure that you've listed the current project contributors and leaders in the People section of this page, so that potential contributors know whom to contact.
+
+HelpWanted:  This is a generic tag that you can apply to indicate that you want help on a project.
+HW-Hacker: You need help writing code.
+HW-Tester: You have something that you want help testing, or writing unit tests for.
+HW-Designer: You have a great idea but can't come up with the UI? Ask for help.
+HW-PM: You want help from a product manager, to get market research or talk to a partner.
+HW-Docs: You want someone to help you write documentation for your project.
+HW-Packaging: Your project is going well but you want someone to help you build packages out of it.
+*/
+
+
+/*
+Topic tags: Community, Security, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Help: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+Status: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+
+Separate your tags with a space (e.g "tag>Idea Server Performance").
+*/

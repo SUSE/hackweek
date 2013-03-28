@@ -1,0 +1,18 @@
+====== professional GNOME panel like SLAB ======
+
+{{tag>Idea Desktop}}
+
+===== Description =====
+SLAB is a major hit in linux desktop. Its better to have a gnome panel like that. Ref the below link to view a sample. instead of following a max style menu or windows, linux can have its own visual like showed in this image. It might give a unique visual to SUSE if implemented
+
+[[http://www.gnome-look.org/CONTENT/content-pre2/31128-2.jpg]]
+[[http://www.gnome-look.org/CONTENT/content-pre2/31128-1.jpg]]
+
+===== People =====
+osschk@gmail.com
+a community in gnome-look.org
+[[http://www.gnome-look.org/content/show.php?content=31128]]
+mockup screens are downloaded 43812 times.
+
+osschk originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+

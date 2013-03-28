@@ -1,0 +1,20 @@
+====== Add support for an external editor to FATE ======
+{{tag>Management KDE Idea devtool FATE internal}}
+
+===== Description =====
+FATE has the standard KDE/Qt text widget to enter text. This is very basic.
+There's even (AFAIK) no possibility to change this to a monospace font.
+
+I'd like to see either:
+
+  * support for an external editor (like some email applications have), i.e. just add a button that loads the external editor with the text in the text field and gray out the text field until the text editor has been terminated, then just sync
+  * support for the KWrite text widget. AFAIK there's also a vim engine that is available as KDE component.
+  * XEmbed to embed a external editor. gvim has XEmbed support, and I'm sure Emacs has, too. :-)
+
+I normally use copy & paste for features that are more than just a few lines.
+And people should be encouraged to write a bit more text as most features are
+a bit "unclear" -- the poor text widget shound't embarrass someone from
+writing a bit more text. ;-)
+
+===== People =====
+Bernhard Walle originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).

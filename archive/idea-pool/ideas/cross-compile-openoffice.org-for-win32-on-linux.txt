@@ -1,0 +1,88 @@
+====== Cross-compile OpenOffice.org for Win32 on Linux ======
+
+/* If this is your first time using the Idea Pool, please take a second to read the  comment at the end of this template, which explains how to use tags.  
+
+Topic tags: Community, Security, QA, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Status tags: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+Help tags: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+
+Separate tags with a space like this:
+{{tag> blargle fizzbozz bimbledeedoo}}
+*/
+
+{{tag>InProgress Desktop DevTool HelpWanted office crossplatform windows JudgeFailure}}
+
+===== Description =====
+**icecream** is a distributed compilation tool that takes jobs to compile, and distributes them to remote machines.  It can save a considerable time of your build - we are able to build OOo in about 25 minutes with icecream.
+
+On the other hand, Win32 OOo build takes ages.  The idea is to enhance icecream so that even the Win32 jobs can be sent to remote machines - to Linux machines :-)  There would they be compiled using the Win32 compiler in Wine.  It is possible - the **icecream** calls the compiler first to preprocesses the source on the machine where the build started, and on the remote machine it is then compiled without any outside dependencies.  I've tested that Visual Studio C++ 2005 Express runs in Wine and produces output - so things should be fine.
+
+We can of course go further, and try to do a full cross-compilation - so that the build would be started on Linux, but the result would be a Win32 installation set.  This will for sure need more effort (and more people).
+
+===== People =====
+/* This section is for listing all of the people involved in this idea or project:
+  - The originator(s) of the idea
+  - Interested people who might later help out with implementing this idea
+  - Experts or knowledgeable people who could give advice about this idea
+
+If you are already working on this project, and you need help, you can use one of the  HelpWanted tags to say so, and then write some specific details about the kinds of help that you need here. */
+
+**Jan Holesovsky** originated this idea, and is working on implementing this idea.  For the real cross-compilation, having more people would be helpful.
+
+===== The Failure =====
+
+This task failed, and yet the output was worth the week of hacking ;-)  I succeeded in running the MSVC compiler in Wine on Linux, but then icecream betrayed me horribly.  I tried to port it to Win32 using MinGW - failed because of problems with sockets.  Then I used Cygwin.  Icecream on Cygwin was supposed to work according to what I've googled, it should have been able to distribute gcc/g++ tasks over the network of Cygwin machines, but another failure - sockets again, the thing was dying horribly when I connected it to Linux scheduler, and started an icecream monitor.
+
+After 2 days of trying, I decided to drop it, and focused on [[http://ccache.samba.org|ccache]] instead.  And this worked - I created a patch for ccache that adds support for MSVC to ccache.  Using this, I got about 20% compilation speedup (on the 15% penalty of the initial ccache filling).
+
+Overall - I failed, but I still believe that the icecream + wine combination is still doable & worth trying.  OTOH, icecream + cognac, eh, MSVC ccache is a fine result as well ;-)
+
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */
+
+  * The patch: [[http://artax.karlin.mff.cuni.cz/~kendy/ccache/ccache-msvc.diff|ccache-msvc.diff]]  It is a patch against [[http://ccache.samba.org/|ccache cvs]]
+  * The executable: [[http://artax.karlin.mff.cuni.cz/~kendy/ccache/ccache.exe|ccache.exe]]
+  * The lightning talk video: [[http://idea.opensuse.org/content/blog/prague-hackweek-projects-part-2|Prague Hack Week Projects #2]]
+
+/* How to Use Tags
+
+All idea pages are tagged to make them easier to find and to indicate to the rest of the world the current state of your project.
+
+You can apply as many topic and product tags to your idea as you want.
+
+Status Tags
+-----------
+Idea: No one is working on this idea yet.
+InProgress:  The project is underway.  When you apply this tag to an idea, please also edit the People section of the page to indicate who is working on the project. 
+TryMe:  This project is at the point where other people can try it.  Include a link for code/packages in the page so people can find it.
+InBuildService:  Idea's implementation posted in the openSUSE build service.  Provide a link.
+Done:  The idea has been fully realized (though it may not yet be in a product).
+Shipped:  Hooray!
+
+Help tags:  
+----------
+
+You can apply Help tags to your project to recruit other people to help you with its implementation.  Don't apply Help tags to a project which is not already being implemented.  
+Before applying any HelpWanted tags to your project, make sure that you've listed the current project contributors and leaders in the People section of this page, so that potential contributors know whom to contact.
+
+HelpWanted:  This is a generic tag that you can apply to indicate that you want help on a project.
+HW-Hacker: You need help writing code.
+HW-Tester: You have something that you want help testing, or writing unit tests for.
+HW-Designer: You have a great idea but can't come up with the UI? Ask for help.
+HW-PM: You want help from a product manager, to get market research or talk to a partner.
+HW-Docs: You want someone to help you write documentation for your project.
+HW-Packaging: Your project is going well but you want someone to help you build packages out of it.
+*/
+
+
+/*
+Topic tags: Community, Security, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Help: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+Status: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+
+Separate your tags with a space (e.g "tag>Idea Server Performance").
+*/
+
+/*Happy Hacking everyone!*/

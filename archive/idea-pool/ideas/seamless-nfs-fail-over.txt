@@ -1,0 +1,15 @@
+====== Seamless, scalable NFS fail-over on top of OCFS2 ======
+
+{{tag>Idea Server Network UnixFeature SLES HelpWanted filesystem}}
+
+===== Description =====
+
+While Novell/SUSE has a powerful fail-over solution with Linux HA v2, the fail-over of NFS exports is not quite seamless due to lock handling, nor can several servers export the same NFS volume for scalability yet.
+
+Tackling the missing code features in a Resource Agent for the cluster, writing a setup guide et ceters would be great.
+
+===== People =====
+
+Lars Marowsky-Brée originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====

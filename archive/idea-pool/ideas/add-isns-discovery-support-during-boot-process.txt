@@ -1,0 +1,19 @@
+====== Add iSNS discovery support during boot process ======
+
+Topic tags: Kernel, Desktop, Virtualization, Network, Bootloader
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Status tags: Idea, InProgress
+Help tags: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+
+Separate tags with a space like this:
+{{tag> }}
+
+
+{{tag>Idea}}
+
+===== Description =====
+During the boot process, iSNS could be used to discovery iSCSI targets.  This would also enable virtual machines to locate virtual disks space (iSCSI LUNs).
+
+
+Robert Whitehead originated this idea.  He is working on implementing this idea.
+

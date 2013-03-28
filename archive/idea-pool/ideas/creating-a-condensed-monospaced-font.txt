@@ -1,0 +1,35 @@
+====== Creating a Condensed Monospaced Font ======
+{{tag>Artwork Font InProgress HW-Designer}}
+
+===== Description =====
+We see it every day, we normally don’t think about it, but it is nevertheless important: Fonts. Obviously we need fonts to communicate with each other, especially in digital media.
+
+Today, we have very promising open source fonts: DejaVu, Gentium, LinuxLibertine, to name a few. Without these, our world of characters would be very small and limited.
+
+However, the monospaced typefaces are a bit broad sometimes. If you have to document a configuration file with long lines, possibly the text does not fit into the margins of your text block. For this reason, we need a fixed-width (or monospaced) typeface in a condensed variant.
+
+
+===== People =====
+Thomas Schraitle originated this idea.  
+
+
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */
+More information can be found here:
+[[http://lizards.opensuse.org/author/thomas-schraitle/|Mockups]].
+FontForge's SFD file is available from my 
+[[http://www.suse.de/~toms/hackweek3/|public webspace]].
+
+
+===== What's missing =====
+Font design is very tough. As such, the font misses some important parts:
+
+  * Some proportions have to be corrected
+  * Hinting needs to be improved
+  * Digits
+  * More characters
+  * Bold, italic, and bold+italic versions of the font
+  * And probably much, much more
+
+
+/*Happy Hacking everyone!*/

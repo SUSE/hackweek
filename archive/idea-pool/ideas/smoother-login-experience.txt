@@ -1,0 +1,41 @@
+====== Smoother Login Experience ======
+
+/* If this is your first time using the Idea Pool, please take a second to read the  comment at the end of this template, which explains how to use tags.  
+
+Topic tags: Community, Security, QA, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Status tags: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+Help tags: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+
+Separate tags with a space like this:
+{{tag> blargle fizzbozz bimbledeedoo}}
+*/
+
+{{tag>Idea Login openSUSE SLED GDM KDM Session HW-Hacker PimpMyDesktop desktop}}
+
+===== Description =====
+
+The experience of logging into our desktop is somewhat flaky and flickery. It's a bit better with KDE, but still doesn't have a polished feel.
+
+There should be minimal flicker and UI elements that do not respond. Windows suffers from this just as we do. I believe enlightenment did a nice curtain effect a long time ago where you would only be show a desktop when it was fully loaded and ready to go.
+
+===== People =====
+
+Jakub Steiner originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+
+Here's an older rendition how I'd imagine the login experience to be fluid and pleasant. But the dependence on 3D effects isn't necessary. Hiding the progressive loading below some fullscreen banner with progress bar or spinner is good enough.
+
+<html>
+<object type="application/x-shockwave-flash" 
+data="http://jimmac.musichall.cz/inc/flowplayer/FlowPlayer.swf" width="400" height="323">
+<param name="allowScriptAccess" value="sameDomain" />
+
+	<param name="movie" value="FlowPlayer.swf" />
+	<param name="quality" value="high" />
+	<param name="scale" value="noScale" />
+	<param name="wmode" value="transparent" />
+	<param name="flashvars" value="baseURL=http://jimmac.musichall.cz/images/guimockups/login&amp;videoFile=xgl-login.flv&amp;autoPlay=false&amp;bufferLength=5&amp;hideControls=false&amp;loop=false&amp;hideControls=false" />
+</object><br />
+</html>

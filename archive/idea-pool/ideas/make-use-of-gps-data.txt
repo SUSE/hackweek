@@ -1,0 +1,154 @@
+====== Analysis and Visualization of GPS Data ======
+
+{{tag>Idea Mobile openSUSE HelpWanted HW-Hacker HW-Tester HW-Designer HW-PM HW-Docs HW-Packaging}}
+
+===== Description =====
+
+
+
+== Project 1: Mobile Device with GPS for improved Training Diagnostics ==
+
+There is a huge amount of devices that collect data while training.
+Many sportsmen own a heart rate monitor and a speedometer that also records cadence, altitude. Additionally GPS devices aren't expensive anymore. Even the the latest mobile phones have GPS receivers included. The training data could be combined with the geographic data provided by the GPS logger.
+
+
+
+  * Record route with the mobile device GPS logger
+  * Record heart rate, speed, power, altitude, cadence and so on
+  * Combine the above mentioned data
+  * Analyze the combined data (e.g. show a map of the area with the highest speed, or select a point of the route and show the corresponding heart rate)
+  * Visualize your daily training data in a diary like Logbook
+  * Show track with mapdata from openstreetmap.org
+
+
+
+
+
+== Project 2: Maps for Mobile Devices with GPS ==
+
+To create maps or atlases for offline usage in your mobile GPS device there are currently only some ugly (e.g. googleak) windows tools. 
+
+  * Create Maps with different zoomlevels using the maptiles from openstreetmaps or google maps
+  * Plan route with the ActivityDiary (Project1)
+  * Copy routing information and maps to the mobile device
+  * Use the maps in your mobile device as navigation system
+
+
+===== People =====
+
+Tom Patzig and Thomas Goettlicher originated and worked on this idea.
+Please feel free to join.
+
+----
+
+===== Results =====
+
+After a hard, but very successfull HW³, we accomplished a lot of things on our todo list for the first version of our **openSUSE-ActivityDiary**.
+
+A good Application needs a fantastic Logo...
+
+Robert Lihm was so kind to make us a first draft of the **openSUSE-ActivityDiary** Logo. Lovely.
+
+{{ideas:activitydiary-logo.png|}}
+
+__Successfull fullfilled Tasks:__             
+
+  * a Map View which displays an "infinite" map with maptiles from openStreetMap.org smoothless scrollable and in every zoomlevel
+  * the Map View works in calculated latitude/longitude coordinates to have an exact representation of each point on the map
+  * a transparent downloader with 5 simultaneous download processes, that uses different hosts from openstreetmap.org to download, cache and handout local stored maptiles to the view
+  * a GPX parser to get every property from the recorded GPS file
+  * a diagram-view to show the Altitude-course of your recorded Track
+
+__Current features, available with **openSUSE-ActivityDiary**:__
+
+  * smoothless scroll and zoom around the world with the MapView ;-)
+  * offline usage (with cached maptiles from a pre-downloaded area)
+  * import of GPX files
+  * colored Track read from the GPS file
+  * marked Start and End points from the recorded Track
+  * diagram of the Altitude-course from the recorded Track
+  * Additional Track Info (total length, speed, total time)
+  * Start- and End Point of the track can be moved to any waypoint on the track to get the additional info only for that part of the track (speed,time,length,altitude)
+
+There are still some things to do, for an release of version 0.1 and we have also great ideas to extend **openSUSE-ActivityDiary** :
+  * export new track as gpx file to use in your GPS-Device
+  * combine GPS Data with Data from heart rate device
+  * export and upload Tracks to a public Blog services
+  * ...
+
+The sourcecode is available here:
+
+[[svn://anonsvn.kde.org/home/kde/branches/work/~tpatzig/activitydiary]]
+
+
+==== **openSUSE-ActivityDiary** in Action: ====
+
+
+the full Ui (with loaded Track): 
+
+{{ideas:activitdiary-ui.png|}}
+
+Fullscreen MapView (with loaded Track):
+
+{{ideas:activitydiary-fullscreen.png|}}
+
+the Altitude-course diagram from a loaded Track:
+
+{{ideas:activitydiary-altitude.png|}}
+
+the MapView with moved Start and end points (selected part of the track)
+
+{{ideas:activitydiary-movedpins.png|}}
+
+
+
+
+
+
+
+
+
+
+
+
+/* How to Use Tags
+
+All idea pages are tagged to make them easier to find and to indicate to the rest of the world the current state of your project.
+
+You can apply as many topic and product tags to your idea as you want.
+
+Status Tags
+-----------
+Idea: No one is working on this idea yet.
+InProgress:  The project is underway.  When you apply this tag to an idea, please also edit the People section of the page to indicate who is working on the project. 
+TryMe:  This project is at the point where other people can try it.  Include a link for code/packages in the page so people can find it.
+InBuildService:  Idea's implementation posted in the openSUSE build service.  Provide a link.
+Done:  The idea has been fully realized (though it may not yet be in a product).
+Shipped:  Hooray!
+
+Help tags:  
+----------
+
+You can apply Help tags to your project to recruit other people to help you with its implementation.  Don't apply Help tags to a project which is not already being implemented.  
+Before applying any HelpWanted tags to your project, make sure that you've listed the current project contributors and leaders in the People section of this page, so that potential contributors know whom to contact.
+
+HelpWanted:  This is a generic tag that you can apply to indicate that you want help on a project.
+HW-Hacker: You need help writing code.
+HW-Tester: You have something that you want help testing, or writing unit tests for.
+HW-Designer: You have a great idea but can't come up with the UI? Ask for help.
+HW-PM: You want help from a product manager, to get market research or talk to a partner.
+HW-Docs: You want someone to help you write documentation for your project.
+HW-Packaging: Your project is going well but you want someone to help you build packages out of it.
+*/
+
+
+/*
+Topic tags: Community, Security, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Help: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+Status: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+
+Separate your tags with a space (e.g "tag>Idea Server Performance").
+*/
+
+/*Happy Hacking everyone!*/

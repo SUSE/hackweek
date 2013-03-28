@@ -1,0 +1,44 @@
+====== Improve vformat plug-in for OpenSync ======
+{{tag>Done Desktop Mobile openSUSE SLED}}
+
+===== Description =====
+/* Describe your idea here. */
+The vformat plugin is one of the most important plugins for the OpenSync framework. You need it for synchronization with file-sync, syncml, irmc, kdepim, evolution, sunbird, etc.
+
+With the help of OpenSync and the vformat plugin you can perform the following tasks:
+
+Contacts:
+  * convert from vcard21 to vard30
+  * convert from vcard30 to vcard21
+
+Events:
+  * convert from vevent10 to vevent20
+  * convert from vevent20 to vevent10
+
+Todos:
+  * convert from vtodo10 to vtodo20
+  * convert from vtodo20 to vtodo10
+
+In general you can convert every vcalendar 1.0 (vcal) and vcalendar 2.0 (ical) entry to its counterpart. First we convert from source-format to xmlformat-contact or xmlformat-event. After this is done we validate the whole xmlDoc against a xsd schema and convert it to target-format.
+
+There are still some open tasks:
+  * add converter for xmlformat-event to vcal/ical
+  * review xsd schemas and correct them
+  * fix memory corruptions
+  * add unit tests
+
+===== People =====
+Christopher Stender originated this idea and is working on it.
+
+===== Related Materials =====
+http://www.opensync.org/ (OpenSync)
+
+http://www.opensync.org/browser/format-plugins/vformat (vformat svn browser)
+
+http://www.imc.org/pdi/vcal-10.txt (spec of vevent10)
+
+http://www.imc.org/pdi/vcard-21.txt (spec of vcard21)
+
+http://www.ietf.org/rfc/rfc2445.txt (RFC of vevent20)
+
+http://www.ietf.org/rfc/rfc2426.txt (RFC of vcard30)

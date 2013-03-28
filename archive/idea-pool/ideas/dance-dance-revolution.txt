@@ -1,0 +1,28 @@
+====== Dance Dance Revolution ======
+
+{{tag>Idea Desktop Done InBuildService}}
+
+===== Description =====
+Most Asians are familiar with DDR (Dance Dance Revolution) which was originated from Japan and later got very popular in game halls, where you can choose any weird game machine and play games. 
+
+With the dance machine, songs are played, tempos are shown on monitor, and the player just need to step at the right place on the dance pad at the right time (follow the tempo), and sometims also has to move his/her arms in the air. Single player or multiple players are supported.
+
+I just saw "stepmania" that seems to be a commercial software, with which you can use a computer to dance. http://www.justddr.com/ddr.html
+
+Maybe we can develop a similar software to add this dance to games.
+
+
+===== People =====
+
+Yi Xu originated this idea.  Pavol Rusnak packaged two DDR games into BuildService.
+
+===== Related Materials =====
+[[ http://icculus.org/pyddr/ | Pydance ]]
+
+[[ http://www.stepmania.com/ | Stepmania ]]
+
+[[ http://sourceforge.net/projects/stepmania/ | Stepmania @ SF]]
+
+[[ http://build.opensuse.org/project/show?project=games%3Aarcade | games:arcade]] BuildService Project (containing Pydance and Stepmania)
+
+[[ http://software.opensuse.org/download/games:/arcade/ | games:arcade]] Repository

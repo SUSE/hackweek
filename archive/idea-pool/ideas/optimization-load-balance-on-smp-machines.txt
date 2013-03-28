@@ -1,0 +1,26 @@
+====== Optimization load balance on SMP machines ======
+
+{{tag>Idea Performance}}
+
+===== Description =====
+
+The manager of optimum priorities and nice-levels processes of system.
+
+Dynamically changeable nice-level and priorities of real time at processes
+
+===== People =====
+/* This section is for listing all of the people involved in this idea or project:
+  - The originator(s) of the idea
+  - Interested people who might later help out with implementing this idea
+  - Experts or knowledgeable people who could give advice about this idea
+
+If you are already working on this project, and you need help, you can use one of the  HelpWanted tags to say so, and then write some specific details about the kinds of help that you need here. */
+
+Pavlinux, linuxoid@tochka.ru originated this idea.  
+No one (i don't know) is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+
+Idea: No one is working on this idea yet?
+
+

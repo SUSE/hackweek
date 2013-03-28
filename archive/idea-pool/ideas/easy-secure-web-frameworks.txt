@@ -1,0 +1,91 @@
+====== Easy, secure web frameworks ======
+/*
+Topic tags: Community, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Help: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+Status: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+
+Separate your tags with a space (e.g "tag>Idea Server Performance").
+*/
+
+{{tag>InProgress Server Security SLES openSUSE Web20 LAMP}}
+
+===== Description =====
+
+There are many popular open source web servers and frameworks today: MediaWiki, DokuWiki, Joomla, WordPress, MoveableType, Drupal, PHPNuke, TWiki, PHP Forum, FlexWiki, Personal Content Manager, Small Business Suite, SugarCRM, Django, Ruby on Rails, TurboGears, Pylons, Lucene.  Thousands of applications are built on these foundations every day (including this web site).
+
+Everyone runs into the same problems:
+
+  * Setting these things up is hard, partly due to incompatibilities with the default apache or mysql configuration.
+
+  * Almost everyone customizes these applications somewhat (c.f. this site) and merging in upstream changes is difficult.
+
+  * Most of these applications regularly have security problems which can compromise the server, and so updates are released which must be incorporated.
+
+Let's make SUSE really well-suited for all the web developers of the world by solving these problems for them.
+
+Here are a few ways to get there:
+
+  * Package all of these tools and make them available for openSUSE.
+
+  * Package them side-by-side with AppArmor profiles so that security problems in these frameworks don't ever lead to serious intrusions.
+
+  * Ship packages with two different trees in place: a master tree, indexed and versioned as a git repository, and a production tree in the web server vhost directory, which is just a 'pull' of the master tree.  This will aid people in making local changes, tracking their diffs, syncing with upstream changes, etc.  Subsequent updates would update the master tree but would not overwrite the production tree.
+ 
+  * Use Kiwi to build ready-to-run appliances, e.g a bugzilla appliance that has mysql preconfigured for it.
+
+  * Ensure that the default SUSE apache and mysql configurations support the basic things, like mod_rewrite, mod_php5; that the basic PHP configuration supports all of the PHP-based applications (e.g. short_open_tag is set on). 
+
+A good investigative step would be to go into the communities of people who set these things up regularly (e.g. #mediawiki) and figure out what would be the ideal solution for them.
+
+===== People =====
+/* People working on this, interested people, knowledgeable people */
+Nat Friedman, Garrett LeSage, and Miguel de Icaza originated this idea.
+
+Cristian Rodriguez is working on the implementation of this idea.
+
+===== Related Materials =====
+
+http://software.opensuse.org/download/server:/php:/applications/
+
+/* How to Use Tags
+
+All idea pages are tagged to make them easier to find and to indicate to the rest of the world the current state of your project.
+
+You can apply as many topic and product tags to your idea as you want.
+
+Status Tags
+-----------
+Idea: No one is working on this idea yet.
+InProgress:  The project is underway.  When you apply this tag to an idea, please also edit the People section of the page to indicate who is working on the project. 
+TryMe:  This project is at the point where other people can try it.  Include a link for code/packages in the page so people can find it.
+InBuildService:  Idea's implementation posted in the openSUSE build service.  Provide a link.
+Done:  The idea has been fully realized (though it may not yet be in a product).
+Shipped:  Hooray!
+
+Help tags:  
+----------
+
+You can apply Help tags to your project to recruit other people to help you with its implementation.  Don't apply Help tags to a project which is not already being implemented.  
+Before applying any HelpWanted tags to your project, make sure that you've listed the current project contributors and leaders in the People section of this page, so that potential contributors know whom to contact.
+
+HelpWanted:  This is a generic tag that you can apply to indicate that you want help on a project.
+HW-Hacker: You need help writing code.
+HW-Tester: You have something that you want help testing, or writing unit tests for.
+HW-Designer: You have a great idea but can't come up with the UI? Ask for help.
+HW-PM: You want help from a product manager, to get market research or talk to a partner.
+HW-Docs: You want someone to help you write documentation for your project.
+HW-Packaging: Your project is going well but you want someone to help you build packages out of it.
+*/
+
+
+/*
+Topic tags: Community, Security, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Help: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+Status: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+
+Separate your tags with a space (e.g "tag>Idea Server Performance").
+*/
+
+/*Happy Hacking everyone!*/

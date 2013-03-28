@@ -1,0 +1,23 @@
+====== Live CD/DVD install ======
+
+{{tag>TryMe openSUSE Usability}}
+
+===== Description =====
+/* Describe your idea here. */
+It can be embarassing asking friends to try out openSUSE; because there is no indication whether any of their hardware will work at all well before they've gone through an hour of installation, partitioned their disk etc.
+
+I would like to be able to boot SuSE on their machines, tweak their hardware to work (if it will), let them have a play; and say "if you like it, we can install it, click here ..." and then have the fun of partitioning the system (or preferably to install first off on their Win32 drive into a loopback filesystem). 
+
+===== People =====
+
+Michael Meeks originated this idea. 
+Jiri Srain is working on implementing this idea.
+The version in the YaST SVN is able to install from a kiwi-based live CD/DVD.
+
+===== Related Materials =====
+
+Presumably we have the raw material: a live CD / DVD of OpenSUSE already.
+
+Presumably we also ship with 'cp -a' - so transferring a live system shouldn't be impossibly difficult.
+
+[http://www.cutlersoftware.com/ubuntusetup/wubi/en-US/faq.html Loopback Win32 installation]

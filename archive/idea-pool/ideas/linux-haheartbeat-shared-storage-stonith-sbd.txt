@@ -1,0 +1,17 @@
+====== Linux-HA/heartbeat: shared storage STONITH (SBD) ======
+
+{{tag>Idea Server UnixFeature SLES Done InBuildService}}
+
+===== Description =====
+The idea is to create a STONITH mechanism which works through the shared storage, akin to the Novell Cluster Services's Split-Brain-Detector's "poison pill."
+
+This would allow Linux-HA (the underlaying technology to SLES's High-Availability Storage Infrastructure) to be applicable in all scenarios where shared storage exists, and not always require an external power switch to fence.
+
+Scenarios of this kind include virtualized environments as well as certain split-site configurations as well.
+
+As this item protects the data integrity of the cluster, it must be very reliable.
+
+===== People =====
+Lars Marowsky-Brée originated this idea and will work on this during HackWeek 2008.
+
+===== Related Materials =====

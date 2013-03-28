@@ -1,0 +1,48 @@
+====== Replace bootsplash by splashy ======
+
+/* If this is your first time using the Idea Pool, please take a second to read the  comment at the end of this template, which explains how to use tags.  
+
+Topic tags: Community, Security, QA, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Status tags: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+Help tags: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+
+Separate tags with a space like this:
+{{tag> blargle fizzbozz bimbledeedoo}}
+*/
+
+{{tag>InProgress Kernel Graphics openSUSE HW-Designer HW-Tester HW-Hacker}}
+
+===== Description =====
+/* Describe your idea here. */
+The old bootsplash patch for the kernel is now outdated and got superseded by splashy, a userspace solution for boot splash screens.
+openSUSE already uses splashy via libsplashy for suspend2disk and resume splash screens but not for boot splash screens.
+Therefore I suggest to replace the old bootsplash by splashy.
+
+===== People =====
+/* This section is for listing all of the people involved in this idea or project:
+  - The originator(s) of the idea
+  - Interested people who might later help out with implementing this idea
+  - Experts or knowledgeable people who could give advice about this idea
+
+If you are already working on this project, and you need help, you can use one of the  HelpWanted tags to say so, and then write some specific details about the kinds of help that you need here. */
+
+Johannes Engel originated this idea.  Holger Macht implemented the original splashy package for suspend and resume and might therefore be the ideal candidate for picking up this idea. ;)
+
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */
+http://splashy.alioth.debian.org/wiki/ is the homepage of splashy
+
+===== Status =====
+/* Status of the idea, things to be done... */
+Some initial work is done which implies changes in /etc/rc.splash and /etc/rc.status. A proof-of-concept /etc/rc.splash with splashy integration can be found here: http://www.homac.de/files/rc.splashy
+
+TODO
+  * adaption to parallel booting (RUN_PARALLEL="yes") (adjust startpar from sysvinit package)
+  * include splashy in initrd to get splash screen as early as possible
+  * avoid breaking splash screen after reaching runlevel B
+  * improve cooperation with Xorg (optional)
+  * improve cooperation of splashy and kbd service (optional)
+  * design a splash screen which allows printing log messages (optional)
+
+/*Happy Hacking everyone!*/

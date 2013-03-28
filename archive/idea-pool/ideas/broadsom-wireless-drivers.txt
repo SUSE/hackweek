@@ -1,0 +1,18 @@
+====== Broadcom Wireless Drivers ======
+
+{{tag>Idea driver hardware wifi}}
+
+===== Description =====
+I've been a distro whore looking for a distro that supports a lot of current hardware right out of the gate. Yes, I know... insert N00b comment here. The biggest problem I've run into is the lack of support from hardware vendors. Everytime I build out a new HP/Acer/Etc I run into problems with the Broadcom wireless adapter. It would be great if someone would write a driver for this darn thing. I know that I can do ndiswrapper, but this always seems like a pain in the arse.
+
+===== People =====
+Michael A. Keller originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+/*
+Topic tags: Community, Kernel, Desktop, Mobile, Management, Network
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC, Fedora
+Status: Idea
+*/
+
+/*BCM43xx*/

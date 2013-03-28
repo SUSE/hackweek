@@ -1,0 +1,179 @@
+====== Mount Manager ======
+
+I have decided to change the name from Volume Mounter to Mount Manager, as the daemon should be supposed not only to mount volumes, but e.g. network filesystems as well. Moreover, it will manage them.
+
+/* If this is your first time using the Idea Pool, please take a second to read the  comment at the end of this template, which explains how to use tags.  
+
+Topic tags: Community, Security, QA, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Status tags: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+Help tags: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+
+Separate tags with a space like this:
+{{tag> blargle fizzbozz bimbledeedoo}}
+*/
+
+{{tag>InProgress HelpWanted Desktop Management openSUSE Usability}}
+
+===== Description =====
+/* Describe your idea here. */
+
+The idea is inspired by 'autofs' automounter, 'ivman' volume manager and 'NetworkManager' networking server. Similarly to Networkanager, the mounter daemon would run as GUI-independent system process (started by init), and it would provide all the work on automaic mounting of removable media just inserted (like ivman) and on-demand mounting when a mountpoint was entered (like automount). All of this will be configurable system-wide - where to mount plugged device (using unique ID of the media provided by HAL and/or Mount Manager, or using fstab), which media not to mount to users, what to mount (and how) when given mounpoints are entered (which users are allowed to enter them, etc.).
+
+Moreover, it would communicate with the user-dependent client/s through dbus. The clients will provide persistent naming of removable media (based on unique ID of the media) and user-defined mountpoints with user-defined settings (e.g. mount 'something' when the given directory is entered to, but only for me). Users can, naturally, control umounting/ejecting of volumes mounted.
+
+In a top of that, the manager would also provide encryption/decryption handling for media with encrypted content. Also configured system-wide or user dependent (like wireless connection in NetworkManager).
+
+The manager would also monitor mounts done by standard 'mount/umount' (though /proc) and notify users about media such mounted (if they are readable by the users, of course). In the future, the manager could also mount all the devices in /etc/fstab during system boot (and notify init daemon about the media mounted).
+
+I thing, that it would have several advantages:
+
+  * mounting/umounting will be handled by one specialized daemon (do one think and to it well ;-))
+  * GUI environment will not have to take care about mount/umount
+  * GUI environment will be notified about mounting/umounting and the users will have control over it
+  * persistent naming for users - when I connect my USB, it will always be mounted as XXXYYY, without the need of being root to configure this
+  * new devices/mounts can be added (or the old deleted) through GUI
+  * user can control (umount/eject) devices through GUI
+  * the device will be readable by the user which plugged it (or by all, depending on configuration)
+  * on the other hand, root can disable particular devices to be readable by user (e.g. when it contains some config data ...)
+  * root/user can define mounpoints which will be mounted/umounted on-demand (when the mountpoint is entered), e.g. floppy or shared file systems
+  * automatic media mounting will "just work" :-) (thanks to NetworkManager for this phrase)
+
+
+
+===== People =====
+/* This section is for listing all of the people involved in this idea or project:
+  - The originator(s) of the idea
+  - Interested people who might later help out with implementing this idea
+  - Experts or knowledgeable people who could give advice about this idea
+
+If you are already working on this project, and you need help, you can use one of the  HelpWanted tags to say so, and then write some specific details about the kinds of help that you need here. */
+
+Daniel Tihelka originated this idea. He is currently working on implementing this idea, but help with dbus and hald stuff will be really appreciated.
+
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */
+
+There is my basic idea, how the communication between Mount Manager and its GUI clients would work:
+
+New device is plugged:
+
+  * MM is notified about new storage device added (USB, CD, DVD, Camera, ...) by HAL daemon
+  * MM looks into config, if the particular device (identified e.g. by ID) is not disabled for users. For example in the case, when USB stick with done administrator data is plugged in. It should not be readable by users ;-)
+   * the device cannot be mounted by users: when such device is listed in the config, it will be mounted to be readable by root only
+   * the device can be mounted by users. MM looks if a user-dependent persistent mounting is required for the device (set by client/s through DBus when connected):
+     * no special requirement, MM will look to /etc/fstab if there is a record for the device
+     * no /etc/fstab record, the name of mountpoint will be chosen by MM
+     * fstab item found, the mountpoint from /etc/fstab will be used
+   * mount the device
+   * MM notifies the user-clients about new volume mounted.
+
+
+
+Mountpoint is entered (on-demand, can be called 'autofs' mode) mounting:
+
+  * ??? MM is notified about mounpoint enter by ???
+  * MM checks if the mountpoint is system-wide or user dependent
+    * the mounpoint is system-wide, mount it according to the configuration (enabled for all users, for particular group, etc.), use encryption specified in the config, if the device is encrypted.
+    * the mounpoint is user-dependent (user-dependent module "registered" it in MM), mount it to be accessible by the user only. If the mounpoint is encrypted, use the encryption settings provided by the user-dependent module.
+
+
+
+Any advices/enhancement ideas are very welcome!
+
+
+===== Proposal of work plan: ===== 
+
+may be changed, if discrepancies or drawbacks in design found). Items started with (**W**) mean 'working on it', items started with (**F**) mean finished:
+
+
+Version 0.1:
+
+  * (**W**) communication with simple client (command-line python) through dbus. The step will consist of:
+    * connection to dbus from MM
+    * sending signals volume_added, volume_mounted, and others through dbus
+    * obtaining persistent naming of particular volume from client
+    * providing the list of already mounted volumes
+    * very simple command-line python client communication with MM (with hard-coded settings)
+  * (**W**) handling of hal messages
+    * listening of hald messages (through libhal)
+    * dummy mounting procedures
+  * (**W**) /etc/fstab handling
+    * looking into fstab if volumes are listed (if no persistent naming is required by clients)
+    * monitoring /proc/mounts (and /etc/mtab) if new devices were mounted not by the means of MM, and sending signal to the clients
+  * configuration
+    * list of user-disabled devices
+    * list of user-enabled persistent namings, group (and optionally user) dependent
+  * mounting control
+    * determining mountpoint - the choice among user-defined name, config-defined name, fstab-defined name, MM build name (if not any other found)
+    * handling the case of more than one user-client connected
+  * test of correct cooperation with the client.
+  * real mounting
+    * the call of 'mount' command
+    * right read/write attributes for mountpoint
+  * daemonizing
+    * syslog logger
+
+Version 0.1.x
+
+  * bugfixes
+  * security issues
+
+Version 0.2:
+
+  * not sure yet, may be on-demand mounting or suspend/resume handling, ...
+
+
+
+Ask for help with:
+
+  * coding
+  * GUI client for KDE, Gnome, and other window managers ...
+
+
+===== Source: ===== 
+
+The source can be found at [[http://sourceforge.net/projects/mount-manager/]].
+
+
+/* How to Use Tags
+
+All idea pages are tagged to make them easier to find and to indicate to the rest of the world the current state of your project.
+
+You can apply as many topic and product tags to your idea as you want.
+
+Status Tags
+-----------
+Idea: No one is working on this idea yet.
+InProgress:  The project is underway.  When you apply this tag to an idea, please also edit the People section of the page to indicate who is working on the project. 
+TryMe:  This project is at the point where other people can try it.  Include a link for code/packages in the page so people can find it.
+InBuildService:  Idea's implementation posted in the openSUSE build service.  Provide a link.
+Done:  The idea has been fully realized (though it may not yet be in a product).
+Shipped:  Hooray!
+
+Help tags:  
+----------
+
+You can apply Help tags to your project to recruit other people to help you with its implementation.  Don't apply Help tags to a project which is not already being implemented.  
+Before applying any HelpWanted tags to your project, make sure that you've listed the current project contributors and leaders in the People section of this page, so that potential contributors know whom to contact.
+
+HelpWanted:  This is a generic tag that you can apply to indicate that you want help on a project.
+HW-Hacker: You need help writing code.
+HW-Tester: You have something that you want help testing, or writing unit tests for.
+HW-Designer: You have a great idea but can't come up with the UI? Ask for help.
+HW-PM: You want help from a product manager, to get market research or talk to a partner.
+HW-Docs: You want someone to help you write documentation for your project.
+HW-Packaging: Your project is going well but you want someone to help you build packages out of it.
+*/
+
+
+/*
+Topic tags: Community, Security, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Help: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+Status: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+
+Separate your tags with a space (e.g "tag>Idea Server Performance").
+*/
+
+/*Happy Hacking everyone!*/

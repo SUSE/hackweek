@@ -1,0 +1,18 @@
+====== ValGrind# ======
+
+{{tag>Idea Security QA DevTool Mono}}
+
+===== Description =====
+The debugger is able to figure out and warn that a value is assigned but never used.  Programmers need the same type of crutch to lean on with memory management.  If something implements IDisposable and is *never* disposed, it should give a warning somehow somewhen telling the developer about the using syntactic sugar and try finally.  It should probably work on IL to be useful across languages.  Not sure if possible, but it could work just like ValGrind and host a run or maybe load some kind of trace and report the managed objects that are not disposed (with enough debug info to solve the problem).
+
+Adding this utility to MonoDevelop would make it the clear choice for secure (memory leaks == security hole) development.
+
+Related to this would be some help with Gtk+ warnings of the type GLib-GObject-CRITICAL **: g_object_ref: assertion `object->ref_count > 0' failed which are nice to know about but not enough information to fix the problem.
+
+===== People =====
+
+Vladimir Giszpenc originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+http://valgrind.org/
+

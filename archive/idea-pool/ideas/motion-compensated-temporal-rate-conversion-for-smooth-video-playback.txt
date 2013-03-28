@@ -1,0 +1,44 @@
+====== Motion compensated temporal rate conversion for smooth video playback ======
+
+/* If this is your first time using the Idea Pool, please take a second to read the  comment at the end of this template, which explains how to use tags.  
+
+Topic tags: Community, Security, QA, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Status tags: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+Help tags: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+
+Separate tags with a space like this:
+{{tag> blargle fizzbozz bimbledeedoo}}
+*/
+
+{{tag>Idea Graphics multimedia video}}
+
+===== Description =====
+Movies are filmed with 24fps, which doesn't nicely convert to 60fps of projectors, and is definitely not enough to allow for smooth camera movement (even the 50fps of IMAX films isn't enough). Also PAL (25fps) doesn't fit at all, which often results in very visible judder.
+
+To compensate for this, we need temporal rate conversion, which allows for optical flow compensated (often wrongly called motion compensated) interpolation between frames. Calculating a dense(!) stable(!) optical flow field is a complicated task, and typically too slow for real time applications like movie players.
+
+For video codecs the optical flow calculation used for motion compensation uses block matching, but it isn't dense, and doesn't have to be stable, so these algorithms probably cannot be used.
+
+The best algorithm to implement here is probably a multiscale wavelet-based optical flow estimator with a multigrid solver for the resulting nonlinear equation system. In order to make this real-time feasible, this should be implemented on fast GPUs like NVidia's 8800.
+
+Probably the most difficult issue is to convert the forward-pointing motion vectors into backward-pointing ones needed for interpolation, because that doesn't fit the GPU approach at all.
+
+===== People =====
+
+Matthias Hopf originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+Matthias Hopf is already reading tons of papers and brainstorming how this could be implemented on the GPU.
+
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */
+
+Fast two-frame multiscale dense optical ﬂow estimation using discrete wavelet filters:\
+http://www.umiacs.umd.edu/~rama/Conf.pdf-files/ViewMedia-37.pdf
+
+Motion Vector Steered temporal rate conversion:\
+http://www.microsoft.com/whdc/archive/TempRate1.mspx#ELF
+
+The art of optical flow (more cinematic effects based):\
+http://www.fxguide.com/article333.html
+

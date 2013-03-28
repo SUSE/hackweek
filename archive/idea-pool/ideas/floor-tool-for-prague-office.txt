@@ -1,0 +1,21 @@
+====== Floor Tool for Prague Office ======
+
+{{tag>Done Desktop Presence Floor Internal}}
+
+===== Description =====
+The Prague office has grown quite a bit and we lose track of who is who where when. In Nuernberg there is /suse/bin/floor, even including the previous Prague office.
+
+We need to either update /suse/bin/floor or write a local tool. (BTW lately the net connection is so fast that it is viable to run /suse/bin/floor over plain ssh+X.)
+
+It would be cool if it could automatically detect people's presence from IRC, GWIM, and Jabber.
+
+
+===== People =====
+
+* Martin Vidner originated this idea. Martin Polster maintains web-based floor tool. Pavol Rusnak already sent him current plans of Prague office.
+
+===== Related Materials =====
+
+* [[http://floor.suse.de|current web-based floor-tool]] ([[https://svn.suse.de/svn/inttools/trunk/floor|sources]])
+
+* [[http://idea.opensuse.org/content/ideas/floor-tool-3d|Floor Tool 3D idea]]

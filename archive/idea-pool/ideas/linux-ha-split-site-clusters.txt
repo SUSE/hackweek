@@ -1,0 +1,14 @@
+====== Linux-HA: Split-site clusters ======
+
+{{tag>Idea HelpWanted Server UnixFeature SLES}}
+
+===== Description =====
+
+Define an architecture how Linux-HA / HASI environments can be extended to split-site environments, both synchronously (metropolitan area) and asynchronously (wide area); identify missing pieces and define ways to address them.
+
+
+===== People =====
+
+Lars Marowsky-Brée originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====

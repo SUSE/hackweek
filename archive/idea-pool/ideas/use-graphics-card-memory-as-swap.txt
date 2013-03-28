@@ -1,0 +1,12 @@
+====== Use graphics card memory as swap ======
+
+{{tag>Kernel Graphics YaST Idea}}
+
+===== Description =====
+Use memory of graphics card memory as swap esp. during installation.
+
+===== People =====
+Arvin Schnell originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+Some information can be found at http://www.linuxnews.pl/_news/2002/09/03/_long/1445.html.

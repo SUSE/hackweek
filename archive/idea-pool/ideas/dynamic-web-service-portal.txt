@@ -1,0 +1,131 @@
+====== Dynamic Web Service Portal ======
+
+/* If this is your first time using the Idea Pool, please take a second to read the  comment at the end of this template, which explains how to use tags.  
+
+Topic tags: Community, Security, QA, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Status tags: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+Help tags: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+
+Separate tags with a space like this:
+{{tag> blargle fizzbozz bimbledeedoo}}
+*/
+
+{{tag>InProgress Web20 Desktop Server JudgeFailure}}
+
+===== Description =====
+/* Describe your idea here. */
+
+At SUSE we have a couple of web applications which are part of the daily work, for example Bugzilla, SWAMP or Fate. Additionally there are tons of mailing lists, Wikis, Subversion repositories, the Build Service and several other sources of information. It's hard to keep an overview of all what's coming in and going on. Having a portal which aggregates all relevant information in one location and allows the user to act on that information could be a tremendous help.
+
+The idea is to create a dynamic web service portal based on Atom feeds which brings all the different services and sources of information together. It should of course be designed and implemented in a way which is flexible enough to be useful in other contexts than SUSE.
+
+Some of the applications already provide access through a web service some others could easily be enabled or adapted to do so. Preferably there would be a light-weight web service like a simple REST interface. A standard RSS or Atom feed accessible through HTTP in many cases might already be sufficient to get all information which makes sense to be shown in a portal.
+
+To make it simple to manage and display the relevant information it should be mapped to a common format. Atom seems to be a suitable candidate for this because it's a straight-forward format providing the most used fields by default and because it's easily extensible. One extension which would be required is a way to specify which actions on the aggregated objects are available and how they can be executed. This way we get an "Activated Atom".
+
+The portal has to be dynamic to be able to adapt to services moving around, services being created or removed, and specific needs by specific users. It also has to be dynamic to allow easy development and deployment of connections to services. So it would be cool, if a developer could transfer a module connecting to some web service from a portal on a commonly accessible remote server to a private portal on a local server, improve it and when it's ready for public consumption transfer it back to the remote server.
+
+So to make this real we need to implement a framework for running modules fetching feeds, converting them to "Activate Atom" and aggregating them to the portal data. On top of that we need a user interface providing a view on the aggregated data.
+
+I consider to implement this with Ruby on Rails. Ruby scripts would be pretty convenient for writing the modules and Rails provides the perfect framework to writing a web UI. For deployment of the modules we maybe could use a version control system integrated with the portal.
+
+===== People =====
+/* This section is for listing all of the people involved in this idea or project:
+  - The originator(s) of the idea
+  - Interested people who might later help out with implementing this idea
+  - Experts or knowledgeable people who could give advice about this idea
+
+If you are already working on this project, and you need help, you can use one of the  HelpWanted tags to say so, and then write some specific details about the kinds of help that you need here. */
+
+Cornelius Schumacher originated this idea and is working on it.
+
+Garrett LeSage had the same idea also and will be helping out.
+
+Thomas Schmidt has added Atom feeds to SWAMP and Fate.
+
+===== Project Resources =====
+
+I created a 
+[[http://hackweek.blogspot.com|Hackweek Blog]] for documenting progress of this project. Will also be a nice source of data for testing.
+
+Code is in the [[https://forgesvn1.novell.com/svn/molecule|SVN Repository]].
+
+===== Status =====
+
+  * Initial frame work for running Atom collectors (i.e. the modules fetching Atom or adapting a web service to an Atom feed) is done
+  * Collectors for raw Atom, Bugzilla and SWAMP are done
+  * Web GUI skeleton is done
+  * OPML files are used for specifying feed collections and their configuration. Parsing and hand-over from collectors to GUI works
+
+Many, many things are not done yet:
+
+  * Adding specific actions to feeds and provide a GUI to execute them.
+  * Fine-grained configuration of when to fetch or update feeds.
+  * Complete parsing of Atom entries and display of all relevant data in the GUI.
+  * More robust configuration and default setup so that the portal not only runs on my own fine-tuned system
+  * Add more collectors: Fate, RSS, Mail, SVN, ...
+  * Turn GUI into something which deserves the name and doesn't cause eye cancer
+  * Use AJAX to dynamically update the GUI 
+  * Well-defined way to deploy collectors
+  * Method to migrate collector instances between servers including locally running servers (could e.g. be based on Git)
+  * Write down all the ideas which came up in discussions during the hack week
+
+===== Related Materials =====
+
+[[http://atompub.org/rfc4287.html|Atom Specification]]
+
+[[http://en.wikipedia.org/wiki/Atom_(standard)|More Atom resources]]
+
+[[http://www.rubyonrails.org|Ruby on Rails]]
+
+[[http://www.opml.org|OPML]] might be useful as a format for collections of feeds.
+
+[[http://en.wikipedia.org/wiki/News_aggregator|Overview of existing aggregation solutions]]
+
+[[https://portal.dev.java.net/|OpenPortal]] This is a Java portal server. Might be an option for the management part, although it comes with some Java Enterprise ballast.
+
+[[http://www.ibm.com/websphere/portal|That's]] how Bug Business does it.
+
+
+/* How to Use Tags
+
+All idea pages are tagged to make them easier to find and to indicate to the rest of the world the current state of your project.
+
+You can apply as many topic and product tags to your idea as you want.
+
+Status Tags
+-----------
+Idea: No one is working on this idea yet.
+InProgress:  The project is underway.  When you apply this tag to an idea, please also edit the People section of the page to indicate who is working on the project. 
+TryMe:  This project is at the point where other people can try it.  Include a link for code/packages in the page so people can find it.
+InBuildService:  Idea's implementation posted in the openSUSE build service.  Provide a link.
+Done:  The idea has been fully realized (though it may not yet be in a product).
+Shipped:  Hooray!
+
+Help tags:  
+----------
+
+You can apply Help tags to your project to recruit other people to help you with its implementation.  Don't apply Help tags to a project which is not already being implemented.  
+Before applying any HelpWanted tags to your project, make sure that you've listed the current project contributors and leaders in the People section of this page, so that potential contributors know whom to contact.
+
+HelpWanted:  This is a generic tag that you can apply to indicate that you want help on a project.
+HW-Hacker: You need help writing code.
+HW-Tester: You have something that you want help testing, or writing unit tests for.
+HW-Designer: You have a great idea but can't come up with the UI? Ask for help.
+HW-PM: You want help from a product manager, to get market research or talk to a partner.
+HW-Docs: You want someone to help you write documentation for your project.
+HW-Packaging: Your project is going well but you want someone to help you build packages out of it.
+*/
+
+
+/*
+Topic tags: Community, Security, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Help: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+Status: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+
+Separate your tags with a space (e.g "tag>Idea Server Performance").
+*/
+
+/*Happy Hacking everyone!*/

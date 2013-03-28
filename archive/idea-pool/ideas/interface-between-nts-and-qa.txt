@@ -1,0 +1,16 @@
+====== Interface between NTS and QA ======
+Idea
+HelpWanted
+
+
+{{tag>Idea}}
+
+===== Description =====
+It would be nice to have a interface between the NTS (Novell Standard Support) and the QA department, which automatical gathers the information about which problems occured the most.
+Then it should generate a list which informs the QA department about what to give more/special focus.
+
+===== People =====
+Marco Michna originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */

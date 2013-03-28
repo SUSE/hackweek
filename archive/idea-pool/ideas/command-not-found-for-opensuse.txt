@@ -1,0 +1,28 @@
+====== command-not-found for openSUSE ======
+
+{{tag>openSUSE Console Community TryMe InBuildService }}
+
+===== Description =====
+
+Port Ubuntu's command-not-found functionality to openSUSE, that is mainly data creation for openSUSE and creating a package.
+
+===== People =====
+
+Stephan Binner originated this idea.  Pavol Rusnak is working on implementing this idea.
+
+===== Status =====
+
+Project is ready in BuildService. Install patched bash and command-not-found from BuildService, add ". /etc/bash_command_not_found" to your bashrc file or read README in command-not-found package.
+
+===== Related Materials =====
+https://wiki.ubuntu.com/CommandNotFoundMagic
+
+Screenshot:
+http://stick.gk2.sk/projects/command-not-found/cnf.png
+
+BuildService:
+https://build.opensuse.org/project/show?project=home:prusnak:command-not-found
+
+Repository:
+http://download.opensuse.org/repositories/home:/prusnak:/command-not-found/
+

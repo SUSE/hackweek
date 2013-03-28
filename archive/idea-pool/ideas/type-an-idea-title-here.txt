@@ -1,0 +1,16 @@
+====== Idea addition error ======
+
+You forgot to name your idea's name in the "''Type an idea title here''" entry field before clicking on the "Add my idea" button on the [[:|front page]].
+
+<ifauth @user>
+This same entry is included below for your convenience.
+</ifauth>
+
+{{blog>ideas?0}}
+<ifauth !@user>
+<div id="start-signin">
+Please <html><a href="?do=login">sign in</a></html>
+or <html><a href="?do=register">sign up for an account</a></html> to post your idea.
+</div>
+</ifauth>
+~~DISCUSSION:off~~

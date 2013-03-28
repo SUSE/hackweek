@@ -1,0 +1,50 @@
+====== automated install tests in virtualized environments ======
+
+/* If this is your first time using the Idea Pool, please take a second to read the  comment at the end of this template, which explains how to use tags.  
+
+Topic tags: Community, QA, Kernel, Desktop, Virtualization, Server, Performance, DevTool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Status tags: Idea
+Help tags: HelpWanted, HW-Tester, HW-PM, HW-Docs, HW-Packaging
+
+Separate tags with a space like this:
+{{tag> blargle fizzbozz bimbledeedoo}}
+*/
+
+{{tag>Community QA Kernel Desktop Virtualization Server Performance DevTool Idea}}
+
+===== Description =====
+/* Describe your idea here. */
+The test matrix for install tests is incredible large (>100 scenarios) - doing all of them manually is not feasible.
+
+Leveraging our cool tool [[http://www.suse.com/~ug/autoyast_doc/index.html|AutoYaST]] and (on architectures where appropriate) virtualization technologies can help increasing the automation level dramatically. 
+
+What we probably need:
+
+1. a central repository hosting AutoYaST profiles including support for
+  * different architectures, virtual machines
+  * different partition layouts
+  * network interfaces
+  * ...
+
+The repo definitely should make use of the full powers of AutoYaST's [[http://www.suse.com/~ug/autoyast_doc/rulesandclass.html|Rules & Classes]] concept.
+
+2. integration for XEN / kvm / ... 
+
+3. integration into the QA infrastructure
+  * CTCS   - test frame work
+  * HAMSTA - hardware scheduler
+  * ...
+
+(and finally, of course;)
+
+  4. a set of checks to validate the installed system 
+  
+
+===== People =====
+Olli Ries originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+Martin Mrazik is playing with this idea.
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */
+

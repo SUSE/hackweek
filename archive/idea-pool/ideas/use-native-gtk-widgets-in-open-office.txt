@@ -1,0 +1,8 @@
+====== Use native GTK+ widgets in open office ======
+
+Currently open office looks kinda of out of place on the Linux desktop for both KDE and GNOME/XFCE users. This is because it does not use many of the GTK+ widgets found in other GNOME applications, instead it uses its own widget kit. This is pretty bad for usability as it breaks users expectations of the application, for example list views behave differently. 
+
+Although the applications kind of integrate into the theme, the application is still sort of an eye sore. 
+
+Switching to an external library like GTK+ would also mean the open office team coud leverage their GTK+ teams development and testing resources. I am sure the GTK+ team would benefit from this as well.
+

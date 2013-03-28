@@ -1,0 +1,22 @@
+====== Write a core dump collector ======
+
+{{tag>Idea devtool bugs}}
+
+===== Description =====
+
+Recent kernels can run a program when a core dump happens (by
+writing |programname into /proc/sys/kernel/core_pattern) Write a suitable
+script that extracts some information out of it using gdb (like backtrace/program name etc.)
+Then write a gui tool that displays them.
+
+Possibly it could be also submitted to a website.
+
+Bonus points if it knows how to fetch debuginfo packages automatically to get
+symbolic backtrace.
+
+===== People =====
+
+Andi Kleen originated this idea. No one is currently working on implementing the idea (it's up for grabs!).
+
+===== Related Materials =====
+

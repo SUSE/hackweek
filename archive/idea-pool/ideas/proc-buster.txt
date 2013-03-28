@@ -1,0 +1,14 @@
+====== proc buster ======
+
+{{tag>Idea HelpWanted Community QA Kernel openSUSE SLES SLED SLERT SLEPOS SLETC}}
+
+===== Description =====
+the proc fs is currently not tested well enough, a lot of bugs related to race conditions are reported.
+Andi Kleen suggested to loop over all processes in /proc, open()/close() the entries, read from /proc/*/mem/ and also access other non PID related /proc entries.
+
+
+===== People =====
+
+Olli Ries originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====

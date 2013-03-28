@@ -1,0 +1,40 @@
+====== Simplify configuration for automatic wakeup (LAN, Time, Ring) of PCs ======
+
+{{tag> openSUSE Desktop SLED SLES}}
+
+
+===== Description =====
+Recently, there was a c't article (German computer magazine) about different
+wakeup methods by time ("Linux aufgeweckt", "Zeit- und ereignisgesteuertes
+Starten des Rechners ersetzt den Dauerbetrieb", c't 11/07, Seite 206).
+
+  * with ACPI (/proc/acpi/alarm)
+  * with Linux interacting with the BIOS by writing to /dev/nvram
+  * by just having a fixed wakeup time in the BIOS, and Linux changes the system time to have the effect of actually chaging the wakeup time (only works if no other operating systems are used in the meanwhile, because they would see a wrong time)
+
+Also useful is wake on LAN. For sending the packet we have the "wol" package.
+But the computer must be configured to
+
+  * activate WOL, which can be done in the BIOS on some PCs or also via the Ethernet driver by "ethtool" (ethtool -s eth0 wol g)
+  * change ACPI (/proc/acpi/wakeup, finding out the network device, and enable this)
+
+That's all no problem for experienced users. However, I would suggest a YaST
+module together with some init scripts to support the user in the task of
+setting up wakeup. For example, for WOL you need a init script that runs
+ethtool and writes a value to /proc/acpi/wakeup. Together with a
+/etc/sysconfig/wakeup file which saves the values that would make things
+easier.
+
+For time triggered wakup, it's not as easy. The user have to find out which
+method works, and if he uses the 2nd method, he has to do some experimental
+stuff (nvram-wakeup guides him through the steps).
+
+A community-maintained list in the openSUSE wiki for which device which method
+works would also be a good idea.
+
+===== People =====
+Bernhard Walle originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */
+

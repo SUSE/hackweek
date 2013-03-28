@@ -1,0 +1,14 @@
+====== Download and Install Packages in Parallel in YaST ======
+
+{{tag>Idea openSUSE SLES SLED HelpWanted Performance YaST}}
+
+===== Description =====
+We know it is hard to speed up package installation in YaST. But one of the areas
+where we can definitely gain speed is to do things in parallel - especially the packages could be downloaded, delta-rpms applied etc in parallel with rpm running to install another package, so the installed does not need to wait for a package to be ready to feed rpm.
+
+===== People =====
+
+Stanislav Visnovsky originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+

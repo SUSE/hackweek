@@ -1,0 +1,24 @@
+====== Network console support for the bootloader ======
+
+{{tag>openSUSE Community Server Idea bootloader}}
+
+===== Description =====
+GRUB already has networking support, but only for downloading the kernel and
+initrd image. It also has support for serial consoles to choose the kernel and
+to fix your configuration (by using the shell or the interactive editing).
+
+I'd like to see some network console, i.e. the same interface that I see over
+serial console over network (maybe a simple telnet implementation).
+
+My personal use case is a home server, where I have no serial console because
+I don't want to put my flat full of cables, and also no screen or keyboard.
+After the power was lost and I had to boot the system, I went into a
+bootloader configuration that doesn't boot. Having a GRUB network console
+would have saved me from about 30 minutes work. :-)
+
+I know that real data centers don't need something as there's a serial console
+or a management processor anyway.
+
+===== People =====
+Bernhard Walle originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+

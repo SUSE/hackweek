@@ -1,0 +1,13 @@
+====== Tooltips for YaST dialogs ======
+
+{{tag>Done Management DevTool YaST}}
+
+===== Description =====
+YaST UI and CWM library provide a nice way how to get tooltips for the YaST dialogs. The idea is to provide another optional parameter to specify the tooltips. The generic libraries, like CWM then provide the tooltip as appropriate. The standard UI code will need to be adapted.
+
+===== People =====
+Stano Visnovsky originated this idea and is hacking on it. 
+
+===== Related Materials =====
+
+http://software.opensuse.org/download/home:/visnov/ project in build service

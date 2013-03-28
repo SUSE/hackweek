@@ -1,0 +1,132 @@
+/* IF YOU EDIT THIS PAGE PLEASE KEEP THE "NOVELL ONLY" SWITCH ACTIVE FOR NOW */
+
+====== CONFIG_PAGE_SHIFT (aka software PAGE_SIZE) ======
+
+FYI: this has the "Novell Only" switch enabled.
+
+/* If this is your first time using the Idea Pool, please take a second to read the  comment at the end of this template, which explains how to use tags.  
+
+Topic tags: Community, Security, QA, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Status tags: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+Help tags: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+
+Separate tags with a space like this:
+{{tag> blargle fizzbozz bimbledeedoo}}
+*/
+
+{{tag>inprogress kernel performance server sles judgeperf}}
+
+===== Description =====
+The x86 and amd64 architectures only support a fixed 4k page size. The smaller the page size, the lower amount of memory is wasted in partially unused ram, but the slower the global performance is. The next available page size is 2M which is generally too big for general purpose applications and the x86 ABI requires mmap offset paremeter to work with 4k granularity (amd64 abi fixes that problem but apps have been written for the x86 ABI so we'd rather keep supporting the 4k file offset granularity in mmap if we want to be sure not to break backwards compatibility with userland).
+
+While there's nothing we can do in software to alleviate the hardware-overhead of the 4k page size (like tlb caching and frequency of the hardware pagetable walking), the 4k page size end up hurting many purely software things.
+
+The xfs developers for example want to enlarge their filesystem blocksize (the filesystem blocksize has a tradeoff similar to the PAGE_SIZE, the larger the faster the filesystem but more disk space is potentially wasted), they also want to use the "normal" writeback pagecache efficient behavior when using a writable fs on top of a dvd-ram with an hardblocksize of 64k. But they can't on x86/amd64 because the PAGE_SIZE is still 4k and the whole linux kernel can't handle more than a hardblocksize of PAGE_SIZE.
+
+The problem with the 4k PAGE_SIZE isn't just the maximum hardblocksize storage device we can support (i.e. dvd with 64k hardblocksize) but the whole kernel is slower because of the 4k thing. This starts from the page faults in a memcpy() that are double the number than if this was a 8k page-size, all the memory allocations (including slub/slab/blob/blam/slap/blab) are double or 4 fold or 8 fold the ones that would happen with a 8k/16k/32k page size.
+
+So the whole idea is to once and for all decuple the size of the pte-entry (4k on x86/amd64) with the page allocator granularity. the HARD_PAGE_SHIFT will be 4k still, the common code PAGE_SIZE will be variable and configurable at compile time with CONFIG_PAGE_SHIFT.
+
+I feel this need to happen at some point in the linux VM, since once done I can't imagine any server running with a 4k page-size anymore.
+
+This requires rewriting every time we touch a pte, so this might affect drivers but all the rest of the code that isn't aware of what is a pte_t should require no change at all. There will be tons of complications like putting two (or more) pte_t arrays inside the same physical page to avoid wasting memory. But after initial skepticism because of the backwards compatibility problem, I returned overall optimistic that this is the right way to go because the objrmap/anon-vma should make it possible to alias the same 8k page on top of not naturally aligned pte entries, even for anonymous memory with mremap, by doing proper alignment math on page->offset and vma->vm_offset (pointed by the anon_vma) and shifting it right of HARD_PAGE_SHIFT. This should allow for a total backwards compatible design without any aliasing in the pagecache (only the pte won't be naturally aligned but that's ok, aliasing at the virtual level is a fundamental property of the VM and it always happens). Well, either that or I'll compete for the "Most spectacular failure" prize.
+
+It's hard to imagine this done in one week but we can start at least and hopefully reach a point where we can run a benchmark to evaluate the performance boost in the best case (no idea if this doable in one week, my kernel already compiled with CONFIG_PAGE_SHIFT 13, but there's not a chance that it will boot since nothing is using HARD_PAGE_SHIFT set to 12 yet).
+
+This whole issue is really a pure tradeoff between memory consumption and I/O and CPU performance (and for the dvd-ram and xfs also a way to use larger hardblocksize), so being able to benchmark is the first priority, if there's no significant benchmark gain this whole thing is unnecessary.
+
+In a second step one could try to transparently map a 2M page instead of 2**9 4k pages if the vm_offset tells the alginment is ok, but I don't think we'll get there any time soon, because I expect in average production the software page size will be set to not more than 64k. 64k is probably the ideal value, only 8 times faster in allocating ram but without huge ram waste and especially with natural readahead from disk. (doing I/O in pagecache chunks larger than 64k sounds too much)
+
+Alternatives: SGI is working on an alternate approach called "variable order page cache" http://lwn.net/Articles/231520/ that tries to keep the page allocator at 4k and changes the pagecache layer at order > 0 allocations. The major showstopper with their design is that there's no way they can defrag reliably the kernel memory. The memory waste will be way huge due to ram reservations and the pagecache won't be allowed to spread all over the physical ram. Worst of all the defragmenter will waste lots of cpu, so it's not a strightforward tradeoff and it has corner cases where its underperformance will be hard to evaluate (even if in the best-case the I/O performance will be good). Overall it's an inferior design that decreases the reliability of the I/O, it makes the ram less generic due to the required reservation and there's no advantage at all except being able to access devices with an hard/soft blocksize larger than 4k (it only tackle on the I/O performance with 4k fs, it hurts CPU performance if something). My design solves their troubles (I/O performance) and at the same time it boost the performance of everyone else too. It however requires compiling a kernel with a special CONFIG_PAGE_SHIFT, but then you also have to specially create xfs with a >4k blocksize so it seems a minor issue, and in theory the CONFIG_PAGE_SHIFT can also become a boottime parameter if we're ok to waste quite some cycles at runtime (the variable order page size also has to waste quite some cycles to be dynamic at runtime of course!).
+
+===== People =====
+/* This section is for listing all of the people involved in this idea or project:
+  - The originator(s) of the idea
+  - Interested people who might later help out with implementing this idea
+  - Experts or knowledgeable people who could give advice about this idea
+
+If you are already working on this project, and you need help, you can use one of the  HelpWanted tags to say so, and then write some specific details about the kinds of help that you need here. */
+
+Andrea Arcangeli originated this idea, already started some bit and he'll continue working on it during the Hack Week. If Nick, Andi or anybody else wants to help they're welcome. If this is turns out to be good idea, but too hard without community help, at some point we need to release it regardless of our potentially unfinished status.
+
+The original idea of having a software page size larger than a hardware page size, originated at SUSE by Andrea Arcangeli and Andi Kleen while helping AMD to design their amd64 cpu, IIRC the conclusion was not to worry too much about the 4k page size being too small because we could make a soft-page-size if the time would come (or even a 2M PAGE_SIZE kernel), it's just that at the time we thought we had to break backwards compatibility (hence the ABI change in amd64 not requiring a 4k mmap offset alignment anymore), but I hope my improved/refined idea handling virtual aliasing with the page->offset/anon_vma will avoid that.
+
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */
+
+
+/* How to Use Tags
+
+All idea pages are tagged to make them easier to find and to indicate to the rest of the world the current state of your project.
+
+You can apply as many topic and product tags to your idea as you want.
+
+Status Tags
+-----------
+Idea: No one is working on this idea yet.
+InProgress:  The project is underway.  When you apply this tag to an idea, please also edit the People section of the page to indicate who is working on the project. 
+TryMe:  This project is at the point where other people can try it.  Include a link for code/packages in the page so people can find it.
+InBuildService:  Idea's implementation posted in the openSUSE build service.  Provide a link.
+Done:  The idea has been fully realized (though it may not yet be in a product).
+Shipped:  Hooray!
+
+Help tags:  
+----------
+
+You can apply Help tags to your project to recruit other people to help you with its implementation.  Don't apply Help tags to a project which is not already being implemented.  
+Before applying any HelpWanted tags to your project, make sure that you've listed the current project contributors and leaders in the People section of this page, so that potential contributors know whom to contact.
+
+HelpWanted:  This is a generic tag that you can apply to indicate that you want help on a project.
+HW-Hacker: You need help writing code.
+HW-Tester: You have something that you want help testing, or writing unit tests for.
+HW-Designer: You have a great idea but can't come up with the UI? Ask for help.
+HW-PM: You want help from a product manager, to get market research or talk to a partner.
+HW-Docs: You want someone to help you write documentation for your project.
+HW-Packaging: Your project is going well but you want someone to help you build packages out of it.
+*/
+
+
+/*
+Topic tags: Community, Security, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Help: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+Status: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+
+Separate your tags with a space (e.g "tag>Idea Server Performance").
+*/
+
+Status: hello world static binary run with init=/tmp/hello-static with the larger 8k PAGE_SIZE. This shows the filesystem and basic kernel operations are working. The pagetable handling still need to be clustered, currently it does one page fault per 4k pte, while we want to reduce the page fault rate of some order of magnitude too, not only the page-allocation-rate. The anonymous memory and pte allocations must be optimized not to take more ram than necessary. Status of the feature is still very primitive but very close to run some benchmark with init replacement to evaluate performance of fs and vm. Code is located at wotan.suse.de:~andrea/hard-page-size . Boot log was posted to the kernel@suse ML.
+
+The following simple bench seems to run fine when booted as init=/tmp/bench-static after "cp -a /dev/hda /tmp/".
+
+#include <stdio.h>
+#include <sys/time.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <assert.h>
+
+#define BUFSIZE (100*1024*1024)
+
+main()
+{
+        struct timeval before, after;
+        int fd = open("/tmp/hda", O_RDONLY);
+        unsigned long usec;
+        char * c = malloc(BUFSIZE);
+        assert(c);
+        assert(fd > 2);
+        for (;;) {
+                gettimeofday(&before, NULL);
+                if (read(fd, c, BUFSIZE) != BUFSIZE)
+                        printf("errorn");
+                gettimeofday(&after, NULL);
+                lseek(fd, 0, 0);
+                usec = (after.tv_sec - before.tv_sec)*1000000;
+                usec += after.tv_usec - before.tv_usec;
+                printf("%d usecn", usec);
+        }
+}
+
+virtualization shows very skewed timings, and my amd64 test box isn't functional at the moment due to problems in my server room so I couldn't really measure anything yet :(

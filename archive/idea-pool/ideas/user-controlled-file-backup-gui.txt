@@ -1,0 +1,21 @@
+====== user controlled file backup gui ======
+
+{{tag>InProgress rsnapshot gui backup}}
+===== Description =====
+Apple has a tool called "Timemachine" which makes it possible to restore data like pictures in a cool gui. The idea is to bring this tool to linux. I want to use rsnapshot for the backup and a konqueror toolbar to restore.
+
+The user should be able to define a path where the data is backuped.
+if an update exist the toolbar should enable the icons and allow a look in the backup.
+
+===== People =====
+/* This section is for listing all of the people involved in this idea or project:
+  - The originator(s) of the idea
+
+  - Experts or knowledgeable people who could give advice about this idea
+
+If you are already working on this project, and you need help, you can use one of the  HelpWanted tags to say so, and then write some specific details about the kinds of help that you need here. */
+
+Michael Skibbe originated this idea and works on it!
+
+Interested people who has knowledge in developing konqueror toolbar and gui related things
+===== Related Materials =====

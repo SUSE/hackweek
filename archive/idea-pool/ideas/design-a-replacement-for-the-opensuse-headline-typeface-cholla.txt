@@ -1,0 +1,17 @@
+====== Design a replacement for the openSUSE headline typeface, Cholla ======
+
+{{tag> design font cholla replacement Community openSUSE FontForge OTF Graphics Idea TryMe}}
+
+===== Description =====
+Design a typeface and implement it into a computer font. The typeface is to have a similar geometric, techno feel as the current Cholla font used for openSUSE brandning, but freely licensed (OFL) so it can be used by the community.
+
+===== People =====
+
+Jakub Steiner originated this idea and has been working on getting the basic glyph coverage.
+
+===== Related Materials =====
+
+  * http://jimmac.musichall.cz/images/blog/5thleg-wip.pdf (PDF preview)
+  * https://forgesvn1.novell.com/svn/opensuse-art/trunk/fonts/FifthLegWide.otf (OpenType font for download)
+  * FontForge Source available in opensuse-art SVN -- https://forgesvn1.novell.com/svn/opensuse-art/trunk/fonts
+

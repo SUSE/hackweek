@@ -1,0 +1,18 @@
+====== End-to-end "OEM Linux" creator ======
+
+{{tag>Idea DevTool openSUSE SLED SLES}}
+
+===== Description =====
+
+Extend the existing Product Creator to include branding, an installation workflow editor etc. and integrate it with the openSUSE Build Service.
+
+The aim should be to have a tool that allows creating a fully customized and branded special-purpose Linux based on SUSE Linux Enterprise or openSUSE with one tool chain from adding and compiling new packages in the Build Service to creating images with KIWI.
+
+This may need some groundwork, e.g. a clearer separation of the branding files that currently are spread over many packages.
+
+===== People =====
+
+Joachim Werner originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */

@@ -1,0 +1,26 @@
+====== Great minds think alike and in parrallel ======
+
+{{tag>Idea Kernel Network Mono}}
+
+===== Description =====
+The biggest problem people in the FLOSS community seem to have with Microsoft, is that they keep winning.  They improve on the ideas of others (or worsen them) and then market the heck out of them to get a huge market share.  With backwards compatibility, they continue to rule the computer landscape.  Phones and other small devices are not as homogeneous.  The other domain that Microsoft cannot compete in is the lots of cheap machines working together market.  Luckily for them, people are not sharing resources much, but as multi-core computers enter the scene, people will soon realize that they have WAY too much computing power, and that they need to give some back to the community.  The Linux community should love this kind of effort.
+
+If people start using foreach() instead of for() and lambda expressions and continuations and threads and micro-threads, and other parallel friendly syntactic sugar (sorry I am no expert), the community could get very fast implementations of complex stuff and slow simple stuff.   The Mono team needs to work with kernel and network folks to find concepts they can turn into syntactic sugar that help developers write parallel apps.  We need a parallel howto and other resources of that type.  When C# wins some shootout or whatever competition.  Bosses will want the fastest language.  The person with the power of the purse makes the buying decisions, not necessarily the engineer down in the dungeon.  Linux could win some converts with a few headlines...
+
+Some ideas:
+
+If I have access to three wireless networks (I know it is stealing but it would take one third the time and I would willingly share mine :), why can't I download something three times as fast.
+
+When I index or search or compile or sort, could I offload some of the work?  If not, could it be written in a parallel friendly way and use multiple cores?  How long does it take to compile and build Mono?  Could you reduce it by a factor of 100?  You can sell that sort of boast!
+
+Robots need a lot of processing power.  The Koreans have a robot that offloads a lot of the work.  Could tha t be married to a several computers helping the robot.
+
+Big Blue was one really big Uber chess Computer.  Could we write a chess program that is small, simple, elegant and could beat Blue with the power of the community?
+
+Let's get from Mono to Co-Mono!
+===== People =====
+Vladimir Giszpenc originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+[[http://www.secondlife.com/}Second Life]]   They want to use micro threads to synchronize their world.
+[[http://gizmodo.com/gadgets/robots/korea-ups-the-ante-in-future-robot-wars-with-japan-262194.php|Korean robot example]]  This might be the wrong robot link but I know I read it somewhere...

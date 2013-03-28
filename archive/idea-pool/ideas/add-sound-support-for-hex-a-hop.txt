@@ -1,0 +1,16 @@
+====== Sound support for Hex-A-Hop (Game) ======
+
+{{tag>Idea games openSUSE Sound Community}}
+
+===== Description =====
+Just found a great game with sources available. **Hex-A-Hop** is a puzzle game based on hexagonal tiles. Only lacking feature is sound IMHO. Would be cool to add some sound and getting familiar with SDL by doing this. Need to check the license of the current sources/content together with the author (Tom Beaumont &lt;tombeaumont@yahoo.com&gt;) first. Currently there is only a copyright notice available ("All content is Copyright 2005 Tom Beaumont").
+
+===== People =====
+
+Stefan Dirsch originated this idea.  Pavol Rusnak is interested in implementing this idea.
+
+===== Related Materials =====
+
+[[http://www.aceinternet.co.uk/~mokona/]]
+
+[[http://idea.opensuse.org/content/ideas/rewrite-dark-oberon-to-use-open-source-sound-library|similar idea (rewrite dark oberon to use open source sound library)]]

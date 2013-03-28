@@ -1,0 +1,19 @@
+====== Evolution: Add 'Related Tasks' to  Appointment  ======
+
+{{tag>Idea, Evolution, Desktop, Management, HelpWanted, HW-Hacker}}
+
+===== Description =====
+Add 'Related Tasks' to Appointment in Evolution. 
+Now Tasks and Appointments are separated and there is no way to link them together.
+
+  - Select related tasks (from different task lists) when new appointment created
+  - List of related appointments inside task description.
+
+===== People =====
+
+Antono Vasiljev originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */
+
+

@@ -1,0 +1,27 @@
+====== Analyze mouse moves and key strokes ======
+
+{{tag>InProgress Desktop openSUSE SLED X11 RSI}}
+
+===== Description =====
+
+Traditionally the mouse is simply used to click buttons and keyboard to type text. In this approach mouse movements and key strokes are collected to acquire information about the user's work habits and support her/him.
+
+This could lead to an optimized window placement in order to reduce mouse movements. Someone who behaves like an expert could get expert modes in programs enabled by default. Perhaps it is possible to guess whether the user is exhausted and needs a brake or gymnastics. A confused user might be provided with help pages or relaxing music.
+
+This technique basically works like a screensaver that watches mouse and keyboard. Additionally it tries to understand the user. One might call it "Usersaver" :-)
+
+===== People =====
+
+Thomas Goettlicher originated this idea. 
+
+Thomas Goettlicher is currently working on implementing this idea. 
+
+Everyone who wants to join is welcome. :-)
+
+===== Related Materials =====
+
+http://www.rsibreak.org
+
+
+
+

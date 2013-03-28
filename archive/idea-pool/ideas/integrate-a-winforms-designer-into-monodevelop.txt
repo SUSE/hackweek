@@ -1,0 +1,27 @@
+====== Integrate a WinForms designer into Monodevelop ======
+
+/* If this is your first time using the Idea Pool, please take a second to read the  comment at the end of this template, which explains how to use tags.  
+
+Topic tags: Community, Security, QA, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Status tags: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+Help tags: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+
+Separate tags with a space like this:
+{{tag> blargle fizzbozz bimbledeedoo}}
+*/
+
+{{tag>Idea Mono Monodevelop WinForms C# Windows}}
+
+===== Description =====
+
+You may think that a GTK designer ist still integrated and it would also make
+no sense to integrate a second form designer, but it makes sense! 
+A WinForms designer would give you the possibility to create nice UI in a very
+short term. It would also be an assurance for interoperability, because
+apps with a WinForms GUI don't need a GTK on Windows.
+ 
+
+===== People =====
+
+Andy Pischka originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).

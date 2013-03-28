@@ -1,0 +1,28 @@
+====== Port the KDE kiosktool to KDE4 ======
+
+/* If this is your first time using the Idea Pool, please take a second to read the  comment at the end of this template, which explains how to use tags.  
+
+Topic tags: Community Desktop, Management, Network, UnixFeature, Server, Graphics, DevTool, 
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Status tags: Idea
+Help tags: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+
+Separate tags with a space like this:
+{{tag> blargle fizzbozz bimbledeedoo}}
+*/
+
+{{tag>Idea openSUSE SLES SLED SLERT SLEPOS SLETC kde}}
+
+===== Description =====
+The Kiosktool is a very important tool for larger deployments of KDE. Currently Kiosktool is not ported to KDE4, which will become a large handicap for KDE when choosing a desktop environment in these settings.
+
+I work at Cendio AB in Sweden (http://www.cendio.com) with thin client systems. We deliver Linux desktops, mostly for school use, and I can't stress enough how important kiosktool has been in these installations.
+
+===== People =====
+
+Inge Wallin originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+
+http://extragear.kde.org/apps/kiosktool/
+

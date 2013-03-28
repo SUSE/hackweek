@@ -1,0 +1,14 @@
+====== Add screenshots to packages of the Build Service ======
+
+{{tag>Idea Buildservice}}
+
+===== Description =====
+Users of the Build Service should have the possibility to add screenshots - or any kind of images like logos - to packages.
+
+===== People =====
+David Mayr originated this idea.  He'd like to implement this after finishing his thesis.
+No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */
+

@@ -1,0 +1,35 @@
+====== Improve USB dump analysis support in Wireshark ======
+
+{{tag>Idea DevTool HelpWanted}}
+
+===== Description =====
+
+**Update:**
+
+It appears that wireshark with CVS libpcap can already capture and highlight base USB traffic, as well as USB Mass Storage protocol. (try packages from [[http://download.opensuse.org/repositories/home:/dgollub/|dgollub's home]])
+
+Oops, I'm too late!
+
+Therefore, this project's aim is now to do the following:
+  * implement PTP/MTP packet dissector
+  * possibility of importing USB dumps from windows tools (usbsnoop, USB Monitor, XML export format)
+  * get all this to STABLE and, if possible, upstream
+
+
+===== Original description =====
+
+This should be a tool, similar in purpose to Wireshark, but for USB traffic. It should be able to read current traffic from debugfs, and decode USB dumps from tools like [[sourceforge.net/projects/usbsnoop/|usbsnoop]].
+
+Most importantly, it should be able to decode various USB protocols - I am aiming for PTP/MTP, but the tool should be extensible and handle protocols as plugins.
+
+It would also be nice if the tool allowed interactive USB packet forging, but I'm not sure if that is feasible.
+
+In the short term, I would like to get to a state where the tool is able to read live traffic and/or USB dump and output translated MTP packets in human readable format.
+
+As a long term goal, this tool should be an open-source alternative to [[http://www.hhdsoftware.com/Products/home/usb-monitor.html|USB Monitor]].
+
+===== People =====
+
+jan matejek originated this idea and will be working on it during HackWeek 3.
+
+I have next to no experience with USB development so I'd appreciate any help in that area, even pointers to good documentation.

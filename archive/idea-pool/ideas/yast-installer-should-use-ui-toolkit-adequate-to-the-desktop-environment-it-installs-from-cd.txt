@@ -1,0 +1,9 @@
+====== yast installer should use ui toolkit adequate to the desktop environment it installs from cd ======
+
+{{tag>Idea desktop opensuse helpwanted}}
+
+===== Description =====
+yast shouldn't use qt for installer, if running from gnome-cd and vice versa - should't use gtk for installer (if possible) when running from kde-cd.
+
+===== People =====
+Jakub 'Livio' Rusinek originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).

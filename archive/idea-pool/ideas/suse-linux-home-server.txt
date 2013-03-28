@@ -1,0 +1,33 @@
+====== Suse Linux Home Server ======
+
+{{tag>Idea Home Network Management Usability}}
+
+===== Description =====
+The home network has arrived.  There are millions of homes with broadband routers and, by extension, home networks.  While the original purpose of broadband routers was to share a single internet connection to multiple PCs over wired and wireless protocols, more varied devices are looking to join these networks: digital video recorders, game consoles, IP phone endpoints, printers, network-attached storage, media players, and handheld devices of all stripes. How does system administration happen in this environment? How should these devices be installed, configured, and monitored? How can shared resources be made available, both inside the home and over the internet, easily but securely?
+
+The time is ripe for a home server, an appliance which sits at the center of the home network, in place of the broadband router, providing a window onto the network as well as one-stop shop for configuring and monitoring networked devices.  In principle its scope could encompass all the services one would expect of a corporate IT shop: network configuration, directory services, network storage, print services, backup, voice communications, and most of all troubleshooting.  However, as a new class of device it is important to start with an obtainable subset of functions and grow from there.
+
+One possible initial feature set is routing, printing, storage, IP telephony, and PC diagnostics and control/screensharing.  While ambitious, these functions largely exist in tried and true open source projects.  The goal in building a home server would be to integrate them into a single appliance, provide an excellent user experience, and mix in the "special sauce", diagnostics. They say networking is one letter away from "not working"---a home server should help make your network //work//.
+
+The devices mentioned earlier, from broadband routers to media players, are all marketed on their feature sets because features are sexy.  In fact, feature sets tend to bleed into each other: game consoles browse the web, routers do print serving and telephony, and PCs do just about everything.  The home network doesn't need more features, what it needs is a place to go when those features don't work as advertised.
+
+Integral to the design should be a diagnostic interface. For every feature provided in the server, there should be a way to diagnose and fix it when it is broken.  For example, if the home server provides DHCP addressing, it should help troubleshoot when a device is not getting an IP address.  If it provides print services, it should help troubleshoot printing. The reason for providing services like printing and storage within the home server itself isn't that these services are hard to come by---it wouldn't be surprising if the next XBox had a print server---but because integration is the best way to provide a solid diagnostic experience.
+
+===== Users =====
+It's tempting to try to bring home networking to the masses, but realistically it is best to aim for the people who are currently setting up home networks now, people who know what an IP address is and the difference between a WAN and LAN IP.  For the most part, these people enjoy setting up home networks but don't like it when these networks don't work.  Especially frustrating is when they set up a network at a family member's home and are called for technical support---even worse when they don't live in the same city. The interface should be good enough that a person could connect to a family member's server over the network and diagnose and fix a wide range of common problems or, in the case that it is the internet connection itself that is broken, can guide a non-technical user through the diagnosis over the phone. Being able to easily see and control the screen of PCs within the house would be a huge feature.
+
+===== Extensions =====
+The sky is the limit with a home server, it could: share personal resources like photos and music over the internet; connect with online services such as backup or telephony; connect with an online forum so people could connect with others with similar devices to share experiences with; provide a plugin architecture for vendors to create their own diagnostic modules; be a personal web, mail, calendar, bittorrent or IM server; talk to other home servers to diagnose problems end-to-end; serve as an offsite "backup exchange" between friends; and on and on.  Making the home server open and extensible could serve to facilitate all of these features without actually developing them within one project.
+
+===== Related Ideas =====
+
+  * [[nas-web-interface-for-servers]]
+  * [[useful-thinclient-image-in-less-than-70mb]]
+  * [[openhardwaremanager-dynamic-system-configuration-framework]]
+  * [[media-server-based-on-directory-as-backend-in-storing-songvideo-identity]]
+  * [[create-a-properly-integrated-solution-for-directory-based-user-authenticationauthorization]]
+  * [[feature-rich-torrent-web-interface]]
+
+===== People =====
+[[http://nick.matsakis.net|Nick Matsakis]] originated this idea.  He's looking for other people who would be excited to define what a product like this would look like.
+

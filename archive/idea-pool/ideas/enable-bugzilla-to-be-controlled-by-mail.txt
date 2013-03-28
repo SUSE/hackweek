@@ -1,0 +1,27 @@
+====== Enable Bugzilla to be controlled by mail ======
+{{tag>Community Management openSUSE SLES Idea mail devtool bugs internal}}
+
+===== Description =====
+I know, Bugzilla can *send* mails to get notified about changes for bugs. But
+you have still to open a browser, log in (wait 20 seconds) and type your
+changes here.
+
+I like the way the Debian bug system handles the bugs. Just mail to
+bugnumber@bugs.debian.org to add a comment into the bug system. There are some
+control commands like "reassign" or "reopen".
+
+See http://www.debian.org/Bugs/server-control.
+
+Of course, this should be *additional* to the web interface. For more exotic
+tasks the web interface is better, but for the general task which is to add a
+comment and maybe set the bug to NEEDINFO, the email is much faster (at least
+for me ;-)).
+
+
+===== People =====
+Bernhard Walle originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+http://www.debian.org/Bugs/server-control
+
+

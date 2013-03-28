@@ -1,0 +1,38 @@
+====== Clustered BTRFS prototype ======
+
+{{tag>Idea Kernel UnixFeature Server SLES HelpWanted filesystem}}
+
+===== Description =====
+
+btrfs is Chris Mason's new filesystem. It offers
+
+  * Extent based file storage (2<sup>64</sup> max file size)
+  * Space efficient packing of small files
+  * Space efficient indexed directories
+  * Dynamic inode allocation
+  * Writable snapshots
+  * Subvolumes (separate internal filesystem roots)
+  * Object level mirroring and striping
+  * Checksums on data and metadata (multiple algorithms available)
+  * Strong integration with device mapper for multiple device support
+  * Online filesystem check
+  * Very fast offline filesystem check
+  * Efficient incremental backup and FS mirroring
+
+The idea is to prototype how this could be brought to clusters, by "simply" figuring out which
+locks need to be converted to DLM locks, and what additional hooks might be needed.
+
+(Combined with the OCFS2 or GFS2 DLM.)
+
+This would solve a number of feature parity issues we have with RHAT, Sun, ZFS etc.
+
+===== People =====
+
+Lars Marowsky-Brée originated this idea and will work on it during HackWeek.
+
+David Sterba is interested in this idea and will work on it during HackWeek.
+
+===== Related Materials =====
+
+http://oss.oracle.com/~mason/btrfs/
+

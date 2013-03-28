@@ -1,0 +1,25 @@
+====== Groupwise IM support for BitlBee ======
+
+/* If this is your first time using the Idea Pool, please take a second to read the  comment at the end of this template, which explains how to use tags.  
+
+Topic tags: Community, Security, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Status tags: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+Help tags: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+
+Separate tags with a space like this:
+
+*/
+{{tag>Community Desktop openSUSE groupwise Idea}}
+
+
+===== Description =====
+BitlBee is a daemon that provides access to IM protocols via a IRC clients. It
+supports different protocols including ICQ, Jabber, MSN, Yahoo.
+
+Support for the Novell protocol would be nice. (And no discussion that gaim
+and Kopete are much better.)
+
+===== People =====
+Bernhard Walle originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+

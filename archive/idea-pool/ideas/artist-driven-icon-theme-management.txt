@@ -1,0 +1,52 @@
+====== Artist-Driven Icon Theme Design Workflow ======
+
+/* If this is your first time using the Idea Pool, please take a second to read the  comment at the end of this template, which explains how to use tags.  
+
+Topic tags: Community, Security, QA, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Status tags: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+Help tags: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+
+Separate tags with a space like this:
+{{tag> blargle fizzbozz bimbledeedoo}}
+*/
+
+{{tag>InProgress Icon DevTool Community Artist Designer Graphics}}
+
+===== Description =====
+
+Goal: Make it easy to create and maintain an icon theme.
+
+Creating and maintaining a consistent icon theme is a very time consuming effort. 
+
+We use centralized version management and the GNU autotools to manage icon themes. Currently the icons are maintained in separate files per canvas size. It's hard to keep colors consistent if changes are done progressively. Creating a size takes too many steps, lots of work with the filesystem is involved and it's very prone to human error. A centralized CVS or SVN repository requires a maintainer to make sure all the sizes are provided and the artwork is acceptable before committing. Usually it means email/IRC pingpong with the contributor.
+
+A decentralized process where individual artists maintain their own working theme, and the maintainer takes care of the 'official' tree depending on the few contributors he/she trusts would work better.
+
+Goals:
+  * A single canvas for all target sizes. The workflow must involve creating pixel-perfect art for resolutions below 48x48px canvas. The artist must have all the sizes on canvas to easily keep things consistent across sizes. Some script to scale from a large resolution version automatically down, with the intention to touch it up would be a bonus.
+  * No change to the current icon related specs (how we install and lookup icons, how we name them).
+  * Script generates a usable icon theme by calling Inkscape to render individual sizes per icon. Script should be aware of the naming spec and not require the artist to explicitly add icon name somewhere to get installed (current makefile system).
+
+{{ ideas:new-workflow.png |Proprosed Single Cavas Workflow}}
+
+Likely Tools:
+  * Inkscape - thanks to a sane grid functionality the need for a bitmap editor is low. Possible to embed/link bitmaps in the SVG if an artist still prefers a bitmap workflow for low-res. Allows to export bitmaps based on group ids from commandline (chop an image based on defined rectangles)
+  * Perl/Python scripts to call inkscape to render bitmaps
+  * Git for distributed version control
+
+
+===== People =====
+
+Jakub Steiner originated this idea and will be focusing on it during hackweek. Help appreciated in assembling current tango-icon-theme assets and generating the 'master' SVGs with a script.
+
+
+
+===== Related Materials =====
+
+  * Why do we need to care about specific sizes?
+    * http://jimmac.musichall.cz/weblog.php/Artwork/ScalableIcons.php
+    * http://iconfactory.com/home/permalink/1731
+
+  * GIT - http://git.or.cz/
+  * Inkscape - http://inkscape.org

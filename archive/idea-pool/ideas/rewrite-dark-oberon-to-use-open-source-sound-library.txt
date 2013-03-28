@@ -1,0 +1,24 @@
+====== Rewrite Dark Oberon to use open-source sound library ======
+
+{{tag>Idea Community Sound games openSUSE}}
+
+===== Description =====
+
+Dark Oberon is an open source real-time strategy game similar to Warcraft II released under GPL. However, it uses FMOD sound library which is closed source and has no 64-bit version. (FMOD developers are focusing on newer FMODex API and have no intention to release 64-bit FMOD.)
+
+There are 2 options:
+
+  * rewrite game to use newer FMODex API (allows 64-bit build, still closed source though)
+  * use open source sound library like SDL_mixer, OpenAL or similar
+
+First option is IMHO easier, but second one is certainly greater! ;-)
+
+===== People =====
+
+Pavol Rusnak originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+
+[[http://dark-oberon.sourceforge.net/|Dark Oberon SF page]]
+
+[[http://idea.opensuse.org/content/ideas/add-sound-support-for-hex-a-hop|similar idea (add sound support for hex-a-hop)]]

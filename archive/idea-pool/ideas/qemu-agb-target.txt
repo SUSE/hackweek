@@ -1,0 +1,188 @@
+====== QEMU GBA Emulation ======
+
+/* If this is your first time using the Idea Pool, please take a second to read the  comment at the end of this template, which explains how to use tags.  
+
+Topic tags: Community, Security, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Status tags: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+Help tags: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+
+Separate tags with a space like this:
+{{tag> blargle fizzbozz bimbledeedoo}}
+*/
+
+{{tag>InProgress TryMe JudgeMe JudgeBest GBA games emulator QEMU AGB ARM}}
+
+===== Description =====
+Add a GBA (Game Boy Advance) machine implementation to QEMU.
+
+May serve as a tool for ironing out bugs in the Thumb emulation in QEMU, but probably is altogether useless. Just the way I like it.
+
+===== Progress =====
+
+People keep pestering me about screenshots. There is no video emulation yet, but maybe this VRAM hex dump should give you an impression of what's to come:
+
+<code>
+00000000  33 00 34 00 33 00 34 00  0f 00 10 00 0f 00 10 00  |3.4.3.4.........|
+00000010  07 00 08 00 0f 00 10 00  0f 00 10 00 0f 00 10 00  |................|
+*
+00000040  35 00 36 00 35 00 36 00  11 00 12 00 11 00 12 00  |5.6.5.6.........|
+00000050  09 00 0a 00 11 00 12 00  11 00 12 00 11 00 12 00  |................|
+*
+00000080  0b 00 0c 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+00000090  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+*
+000000c0  0d 00 0e 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+000000d0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+*
+00000100  0b 00 0c 00 00 00 00 00  00 00 00 00 01 00 02 00  |................|
+00000110  00 00 00 00 00 00 00 00  01 00 02 00 00 00 00 00  |................|
+00000120  00 00 00 00 01 00 02 00  00 00 00 00 00 00 00 00  |................|
+00000130  01 00 02 00 00 00 00 00  00 00 00 00 01 00 02 00  |................|
+00000140  0d 00 0e 00 00 00 00 00  00 00 00 00 03 00 04 00  |................|
+00000150  00 00 00 00 00 00 00 00  03 00 04 00 00 00 00 00  |................|
+00000160  00 00 00 00 03 00 04 00  00 00 00 00 00 00 00 00  |................|
+00000170  03 00 04 00 00 00 00 00  00 00 00 00 03 00 04 00  |................|
+00000180  0b 00 0c 00 00 00 00 00  00 00 00 00 01 00 02 00  |................|
+00000190  00 00 00 00 00 00 00 00  01 00 02 00 00 00 00 00  |................|
+...
+</code>
+
+... and so forth. This is how it looks by now (2007-06-27, 16:51):
+
+{{ideas:first_shot.png|}}
+
+Keypad input is unimplemented so far, so you can't play yet ... :)
+
+As of 2007-06-28, 14:00 or something, with input implemented and a few minor bugfixes, you can actually play my half-finished GBA game:
+
+{{ideas:in_game.png}}
+
+With serial EEPROM DMA implemented (15:45), Super Mario Advance starts to do something:
+
+{{ideas:first_real_game.png}}
+
+I actually found a Thumb bug in QEMU: R15 reads discarded the Thumb bit, causing QEMU to barf after executing some Thumb insns as ARM insns. With this fix:
+
+<code>
+Index: target-arm/translate.c
+===================================================================
+RCS file: /sources/qemu/qemu/target-arm/translate.c,v
+retrieving revision 1.53
+diff -u -r1.53 translate.c
+--- target-arm/translate.c      11 Jun 2007 18:59:35 -0000      1.53
++++ target-arm/translate.c      28 Jun 2007 15:48:59 -0000
+@@ -307,7 +307,7 @@
+     if (reg == 15) {
+         /* normaly, since we updated PC, we need only to add one insn */
+         if (s->thumb)
+-            val = (long)s->pc + 2;
++            val = (long)s->pc + 3;
+         else
+             val = (long)s->pc + 4;
+         gen_op_movl_TN_im[t](val);
+@@ -3062,7 +3062,10 @@
+                     gen_op_movl_T1_im(val);
+                     gen_movl_reg_T1(s, 14);
+                 }
+-                gen_movl_T0_reg(s, rm);
++                if (rm == 15)
++                  gen_op_movl_T0_im(s->pc + 2);
++                else
++                  gen_movl_T0_reg(s, rm);
+                 gen_bx(s);
+                 break;
+             }
+</code>
+
+... Rockman Exe gets to the title screen, although a few unimplemented 32-bit register accesses make it less visually appealing than usual:
+
+{{ideas:rockman_garbled.png}}
+
+It works better by now:
+
+{{ideas:rockman_clear.png}}
+
+===== Code =====
+Here's the code: [[ftp://ftp.suse.de/private/uli/qemu-agb-20070629.tar.gz]]
+
+Build with
+
+<code>
+./configure --target-list=arm-softmmu --cc=/tmp/gcc33/bin/gcc
+make
+</code>
+
+(Yes, you **need** GCC 3.3. QEMU needs extra patches to work with GCC 4, and even then not all host/target combinations work. i386 host is particularly broken.)
+
+Invocation:
+
+<code>
+./arm-softmmu/qemu-system-arm  -M agb926 -hda some_garbage.img -kernel game.gba
+</code>
+
+(QEMU does not run if you don't give it a disk image. A BIOS image is neither required nor supported. And, yes, this emulates a Game Boy Advance with an ARM926. The most advanced GBA ever. :)
+
+Key mapping: A -> Z, B -> X, Start -> Enter, Select -> Tab, D-Pad -> cursor keys and keypad. (I kinda sorta forgot to implement L and R...)
+
+===== People =====
+/* This section is for listing all of the people involved in this idea or project:
+  - The originator(s) of the idea
+  - Interested people who might later help out with implementing this idea
+  - Experts or knowledgeable people who could give advice about this idea
+
+If you are already working on this project, and you need help, you can use one of the  HelpWanted tags to say so, and then write some specific details about the kinds of help that you need here. */
+
+Ulrich Hecht originated this idea and is currently working on implementing it.
+
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */
+[[http://gpsp-dev.blogspot.com/|gbSP development]] blog; insights on developing a recompiling AGB emulator.
+
+[[http://nocash.emubase.de/gbatek.htm|GBATEK]], platform reference by Martin Korth.
+
+[[http://vba.ngemu.com/|VisualBoyAdvance]], the reference interpreting GBA emulator. Probably a good place to lift hardware emulation code from.
+
+Stuart Brady's [[http://homepage.ntlworld.com/wholehog/stuart/qemu/z80.html|QEMU Z80 Target]], the inspiration for this, and proof that weirder things have been done.
+
+/* How to Use Tags
+
+All idea pages are tagged to make them easier to find and to indicate to the rest of the world the current state of your project.
+
+You can apply as many topic and product tags to your idea as you want.
+
+Status Tags
+-----------
+Idea: No one is working on this idea yet.
+InProgress:  The project is underway.  When you apply this tag to an idea, please also edit the People section of the page to indicate who is working on the project. 
+TryMe:  This project is at the point where other people can try it.  Include a link for code/packages in the page so people can find it.
+InBuildService:  Idea's implementation posted in the openSUSE build service.  Provide a link.
+Done:  The idea has been fully realized (though it may not yet be in a product).
+Shipped:  Hooray!
+
+Help tags:  
+----------
+
+You can apply Help tags to your project to recruit other people to help you with its implementation.  Don't apply Help tags to a project which is not already being implemented.  
+Before applying any HelpWanted tags to your project, make sure that you've listed the current project contributors and leaders in the People section of this page, so that potential contributors know whom to contact.
+
+HelpWanted:  This is a generic tag that you can apply to indicate that you want help on a project.
+HW-Hacker: You need help writing code.
+HW-Tester: You have something that you want help testing, or writing unit tests for.
+HW-Designer: You have a great idea but can't come up with the UI? Ask for help.
+HW-PM: You want help from a product manager, to get market research or talk to a partner.
+HW-Docs: You want someone to help you write documentation for your project.
+HW-Packaging: Your project is going well but you want someone to help you build packages out of it.
+*/
+
+
+/*
+Topic tags: Community, Security, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Help: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+Status: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+
+Separate your tags with a space (e.g "tag>Idea Server Performance").
+*/
+
+/*Happy Hacking everyone!*/

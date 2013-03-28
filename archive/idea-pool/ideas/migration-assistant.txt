@@ -1,0 +1,25 @@
+====== Migration Assistant ======
+
+{{tag>Community InProgress Installation Desktop openSUSE}}
+
+===== Description =====
+
+Ubuntu came with nice feature called Migration Assistant. It helps
+user to migrate documents and settings from another OS present on
+system. Currently it supports Windows (XP and Vista) and Linux. It
+would be nice feature to have also in SUSE.
+
+I ported Ubuntu assistant to SUSE in December, but the original code is full of bugs
+and not very well designed. I would like to rewrite it from scratch in C++,
+using interfaces which will allow to write import/export plugins.
+Also support for migrating system wide settings could be nice
+(for example, various config files from /etc or registry, copying binary wifi driver
+from Windows into ndiswrapper). I'm open to any of your ideas!  :) 
+
+===== People =====
+
+Pavol Rusnak originated this idea and will be working on it during HackWeek.
+
+===== Related Materials =====
+
+[[https://launchpad.net/ubuntu/+source/migration-assistant|Ubuntu Migration Assistant]] in [[https://build.opensuse.org/project/show?project=home%3Aprusnak%3Amigration|BuildService]] and [[http://download.opensuse.org/repositories/home:/prusnak:/migration/|Repository]]

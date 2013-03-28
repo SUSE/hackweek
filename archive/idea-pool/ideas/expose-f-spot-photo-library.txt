@@ -1,0 +1,35 @@
+====== Expose F-Spot Photo Library ======
+
+/* If this is your first time using the Idea Pool, please take a second to read the  comment at the end of this template, which explains how to use tags.  
+
+Topic tags: Community, Security, QA, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Status tags: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+Help tags: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+
+Separate tags with a space like this:
+{{tag> blargle fizzbozz bimbledeedoo}}
+*/
+
+{{tag>Idea HW-Designer HW-Hacker Desktop F-Spot wireless Management Network API Photo openSUSE SLED}}
+
+===== Description =====
+
+Many use F-spot to manage their photo library. Yet it's a very self-contained world. 
+
+  * It would be nice if I could import images into the library using other tools. Similarly export.
+  * I should be able to have Insert>Photo function in many applications that would allow me to search for photos using tags and provide a small thumbnail roll.
+  * Media center application should have access to the photos.
+  * The library should be optionally exposed on LAN using bonjour or whatever it's called now.
+  * I should be able to transfer photos from my phone over Bluetooth/Obex.
+
+Maybe there will be enough interest to standardize across management apps such as F-spot and Digikam so that apps would only worry about one API to query for photos.
+
+===== People =====
+
+Jakub Steiner originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+
+  * http://f-spot.org/
+  * http://www.digikam.org/

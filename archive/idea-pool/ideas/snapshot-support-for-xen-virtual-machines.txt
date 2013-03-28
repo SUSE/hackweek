@@ -1,0 +1,23 @@
+====== Snapshot support for Xen virtual machines ======
+
+{{tag>Idea Virtualization Management Server}}
+
+===== Lightning Talk =====
+
+<html><embed style="width:400px;height:326px;" type="application/x-shockwave-flash" src="http://video.google.com/googleplayer.swf?docId=728873256971005141&hl=en" id="VideoPlayback" align="middle"  quality="best" bgcolor="#ffffff" scale="noScale" salign="TL"  FlashVars="playerMode=embedded"></embed></html>
+
+===== Description =====
+Implement DMTF SVPC snapshot modeling for Xen.  SVPC modeling has notion of ‘Full Snapshot’ and ‘Disk Snapshot’. Full snapshot includes a snapshot of vm memory image as well.  I would like to implement full and disk snapshot support.  Will start with LVM vbds since LVM contains snapshot support.
+
+
+===== People =====
+
+Jim Fehlig originated this idea and is currently working on it.
+
+===== Related Materials =====
+Lars entered a similar idea: http://idea.opensuse.org/content/ideas/virtual-upgradeupdate-sandbox
+
+SVPC System Virtualization Profile describes snapshot model for virtual systems:
+http://www.dmtf.org/apps/org/workgroup/redundancy/download.php/30650/DMTF-System_Virtualization_Profile_0_8_1.pdf
+
+{{tag>InProgress JudgeFailure}}

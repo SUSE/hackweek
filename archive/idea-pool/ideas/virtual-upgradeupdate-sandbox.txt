@@ -1,0 +1,17 @@
+====== Virtual upgrade/update sandbox ======
+
+{{tag>Idea Virtualization Management Server Desktop openSUSE SLES SLED HelpWanted QA}}
+
+===== Description =====
+
+Take a snapshot of the running system with the client/customer's workload, run it in a virtual sandbox (Xen, KVM, VMWare ...). Apply all intended updates to the sandbox. Perform some automated regression tests to see whether the workload still works, and let the user try it out for herself.
+
+Gather feedback and automatically report it back to SUSE/Novell for QA. Discard the sandbox. If the user approves, now apply the updates to the running system as well.
+
+The idea is to increase beta testing coverage and to make users more confident in applying updates.
+
+===== People =====
+
+Lars Marowsky-Brée originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====

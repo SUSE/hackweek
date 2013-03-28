@@ -1,0 +1,101 @@
+====== Cross-desktop unified UI -- Defining the "native" open source look and feel ======
+
+/* If this is your first time using the Idea Pool, please take a second to read the  comment at the end of this template, which explains how to use tags.  
+
+Topic tags: Community, Security, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Status tags: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+Help tags: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+
+Separate tags with a space like this:
+{{tag> blargle fizzbozz bimbledeedoo}}
+*/
+
+{{tag>KDE GNOME Desktop InProgress}}
+
+===== Description =====
+/* Describe your idea here. */
+All desktop applications should:
+  * Have the same look and feel
+  * Use the same icons
+  * Be designed with a consistent with a set of guidelines in mind
+
+...Of course, this also means that there should be a set of guidelines. 
+
+Currently, we have several toolkits; it would be nice to have each of them use a UI graphics library that they could call upon to draw buttons, scrollbars, etc.  Obviously, most people are thinking of both Qt and GTK+ at this point, but we actually use so many other toolkits currently, as well... Think about Mozilla's XUL, Mono's implementation of Windows.Forms, Wine, Java SWING, and OOo's own widgets, for instance.
+
+Right now, we do have a little bit of rubber meeting the road in the area of icons. [[http://tango.freedesktop.org/Tango_Desktop_Project|The Tango Desktop Project]] has made a cross-desktop standard for icon naming and provides a reference set of excellent icons which can be used in any software.
+
+However, when it comes to widgets, people have implemented themes which mimic either GTK+ or Qt, and do so poorly.  Theming on Linux is currently quite a broken mess and implemented in a shoddy way wherever themes are used.
+
+Implementation suggestions to realize this idea:
+  * Work on a common, shared UI suggestions document based on KDE & GNOME HIGs / style guides
+  * Develop a library and theme format to specify the way certain widgets should be drawn; this should take advantage of all the nice rendering stuff we now have in the desktop (cairo, transparency, SVG, etc.) -- in addition to just the look of widgets themselves, it should also contain some information about policy, such as various suggested padding sizes (internal and external to widgets, such as padding and margin in CSS), and should include spacing with different meanings in mind as well (associated widgets should be spaced differently from one another than widgets not associated)
+  * Make a theme format which is based on CSS, so that certain widgets can be styled, with cascades as well -- this does not need to map 1:1 to CSS used in HTML, but should be the same structure and idea -- it should also allow for multiple classes, so that a toolkit or application could request an object of a button class, and it would be drawn as a button (and inherit some basic button states, such as a hover and clicked); also, if a widget has multiple classes specified, then it should inherit the properties of both defined classes
+
+===== People =====
+/* This section is for listing all of the people involved in this idea or project:
+  - The originator(s) of the idea
+  - Interested people who might later help out with implementing this idea
+  - Experts or knowledgeable people who could give advice about this idea
+
+If you are already working on this project, and you need help, you can use one of the  HelpWanted tags to say so, and then write some specific details about the kinds of help that you need here. */
+
+Garrett LeSage originated this idea.  
+
+[[http://tango.freedesktop.org/Tango_Desktop_Project|The Tango Desktop Project]] has been hard at work at making this happen in the realm of icons.
+
+We need excellent hackers to make this a reality for the rest of the desktop.
+
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */
+
+==== Links ====
+  * [[http://tango.freedesktop.org/Tango_Desktop_Project|The Tango Desktop Project]]
+  * [[http://www.metatheme.org/|MetaTheme]] is working on something sort of like this for widgets -- not sure about the quality of code, the implementation, or state of the project
+
+==== Interface Guidelines ====
+  * [[http://developer.gnome.org/projects/gup/hig/2.0/|GNOME Human Interface Guidelines]]
+  * [[http://developer.kde.org/documentation/standards/kde/style/basics/|KDE User Interface Guidelines]]
+
+/* How to Use Tags
+
+All idea pages are tagged to make them easier to find and to indicate to the rest of the world the current state of your project.
+
+You can apply as many topic and product tags to your idea as you want.
+
+Status Tags
+-----------
+Idea: No one is working on this idea yet.
+InProgress:  The project is underway.  When you apply this tag to an idea, please also edit the People section of the page to indicate who is working on the project. 
+TryMe:  This project is at the point where other people can try it.  Include a link for code/packages in the page so people can find it.
+InBuildService:  Idea's implementation posted in the openSUSE build service.  Provide a link.
+Done:  The idea has been fully realized (though it may not yet be in a product).
+Shipped:  Hooray!
+
+Help tags:  
+----------
+
+You can apply Help tags to your project to recruit other people to help you with its implementation.  Don't apply Help tags to a project which is not already being implemented.  
+Before applying any HelpWanted tags to your project, make sure that you've listed the current project contributors and leaders in the People section of this page, so that potential contributors know whom to contact.
+
+HelpWanted:  This is a generic tag that you can apply to indicate that you want help on a project.
+HW-Hacker: You need help writing code.
+HW-Tester: You have something that you want help testing, or writing unit tests for.
+HW-Designer: You have a great idea but can't come up with the UI? Ask for help.
+HW-PM: You want help from a product manager, to get market research or talk to a partner.
+HW-Docs: You want someone to help you write documentation for your project.
+HW-Packaging: Your project is going well but you want someone to help you build packages out of it.
+*/
+
+
+/*
+Topic tags: Community, Security, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Help: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+Status: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+
+Separate your tags with a space (e.g "tag>Idea Server Performance").
+*/
+
+/*Happy Hacking everyone!*/

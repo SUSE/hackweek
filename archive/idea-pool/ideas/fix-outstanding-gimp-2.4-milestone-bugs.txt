@@ -1,0 +1,13 @@
+====== Fix outstanding GIMP 2.4 milestone bugs ======
+
+
+{{tag>Idea GIMP Desktop graphics}}
+
+===== Description =====
+The long awaited GIMP 2.4 release is quite close. The number of outstanding bugs on the 2.4 milestone is not large. GIMP developers (of which there are not many) need all help they can get. 
+
+===== People =====
+
+Tor Lillqvist originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====

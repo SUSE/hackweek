@@ -1,0 +1,164 @@
+====== Desktop status awareness ======
+
+/* If this is your first time using the Idea Pool, please take a second to read the  comment at the end of this template, which explains how to use tags.  
+
+Topic tags: Community, Security, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Status tags: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+Help tags: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+
+Separate tags with a space like this:
+{{tag> blargle fizzbozz bimbledeedoo}}
+*/
+
+{{tag>InProgress Network Desktop JudgeMe JudgeBest JudgePower JudgeDesktop}}
+
+===== Description =====
+Every user runs out for a coffee, lunch and quick meeting leaving their desktops. Lot of users are optimize and schedule their package downloads/upgrade/install, email offline downloads, huge file downloads and other time/network consuming tasks during the idle time of the computer. 
+
+Screensaver, gaim, powermanager, and few other apps are aware of the desktop idle status and show screensaver, or set the user status or power off/hibernate.
+
+There should be a option for the user to automatically schedule these tasks. Have a option like "Schedule *** tasks while idle" before hibernate or suspend or shutdown.
+ 
+Applications should be listening for dbus messages for desktop/idle status and start the downloading or process any such time consuming actvities. Few applications, I think that can be benefited are
+
+  - Evolution (Can download messages for offline)
+  - Realplay (Can buffer video streams)
+  - Updater (Can download packages/install and upgrade transparently)
+  - Scheduled file downloads (May be a firefox extension)
+
+
+===== People =====
+/* This section is for listing all of the people involved in this idea or project:
+  - The originator(s) of the idea
+  - Interested people who might later help out with implementing this idea
+  - Experts or knowledgeable people who could give advice about this idea
+
+If you are already working on this project, and you need help, you can use one of the  HelpWanted tags to say so, and then write some specific details about the kinds of help that you need here. */
+
+Srinivasa Ragavan originated this idea.  Srini is working on this and people are welcome to join Srini.
+
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */
+
+Myle is not yet in svn. The sources can be download from [[http://gnomebangalore.org/~sragavan/myle.tgz]] The myle (mono.exe myle) binary is part of the download. Just run from the TARDIR/myle/bin/lib/myle/ for now.
+Initial video of Myle is at [[http://idea.opensuse.org/content/blog/bangalore-hackweek-1]]
+
+The current implementation is more of a PoC. It has lots of hacks and the build system is not working fine.
+The source TARBALLDIR/myle/external/ has the patches for the external application. 
+
+Myle listens for xscreensaver and webcam for users presence. If there is no mouse activity of if there is not any/much motion in the webcam, it assumes the users away and sets it to idle. 
+
+
+On idle:
+   - It pauses Banshee and Totem (check if they are playing already)
+   - It sends a DBus messages on Idle and another on becoming active.
+   - Sets the backlight brightness to dim on idle (FIXME Restore the settings)
+   - Evolution listens for it and syncs messages for offline.
+     - FIXME Integrate addressbook caching on idle
+   - FIXME Write a firefox plugin for giving options for downloading big files on idle with resume support.
+   - FIXME Add support for rug/zen/yum for downloading critical updates on idle and giving the user a option of just installation on becoming active.
+   - FIXME Check the N/W load before activating.
+
+On Presentation:
+   - Mutes Pidgin ( FIXME Check the previous state and restore)
+   - Disables libnotify popups
+   - Disables Pidgin guifications
+   - Disables Pidgin's chat window display till the user becomes active.
+   - FIXME Write a OOo plugin/code to send a DBus message when Impress starts so that the mode can be set to Presentation and restore at the end of the slideshow. It blocks libnotify popups if they are not critical (For battery warnings etc)
+
+On Secure:
+   - Disables Firefox History, unsafe protocols, extension installations
+     - FIXME Disable the password manager
+   - Disables Gaim chat/IM/system logs 
+     - FIXME Disable the remember(ed) passwords
+   - FIXME Add support for Evolution to disable caching and remember(ed) passwords
+     - FIXME Add support for kiosk mode in evolution so that the accounts/logs exist just for the session and clear everything on quit.
+
+On Configure:
+   - Provides an option to set the idle time
+   - Option to set the video driver and video probing duration 
+   - FIXME Cleanup configure for status specific seeting 
+   - FIXME Add support for application specific controls in each states
+   - FIXME Fix the crashes on empty strings on time
+
+=== Generic Myle Improvements ===
+
+FIXME Implement video mode. (Detect, fullscreen video mode and optimize the desktop)
+
+FIXME Add a MyleState class  and get the states and restore after idle.
+
+FIXME Check for existing states before enforcing the states. For example, if banshee is paused already no point pausing it on idle and playing back on active. It will be annoying.
+
+FIXME Add a plugin framework so that application controllers can be plugged in and controlled 
+
+FIXME Get better icons
+
+FIXME Fix the build system and organize the classes better
+
+=== Evolution Patch against 2.12 ===
+The patch adds a DBus Interface to Evolution to listen for messages from Myle to sync/cancel offline downloads. I have added the plugin binary to the sources. It was made against Evolution 2.12 and should work fine on Evolution 2.12 also.
+
+FIXME Write a new plugin for DBus Handler, instead of adding it to default-mailer plugin.
+
+=== Totem Patch against TRUNK (GNOME 2.20)===
+
+The patch modifies the lirc plugin to DBus plugin. It adds a dbus interface to Totem for play/pause and to know if it is playing  any files.
+
+FIXME Write a new DBUS plugin.
+
+FIXME Clean the hack to know if totem is playing.
+
+=== Pidgin Patch against 2.02 ===
+The patch modifies the sample DBus plugin to achieve this. Probably a new plugin has to be written to control the configuration items
+
+FIXME Write it as a new plugin
+
+FIXME Add DBus interface to get the previous configurations for restoring
+
+=== Notificaion Daemon Patch (Against 0.3.5)===
+
+The patch adds an hack to the notificaion daemon to avoid popups if the popup_enabled gconf key is enabled and the urgency is less than critical. The same patch can apply to src/daemon/daemon.c on TRUNK (GNOME 2.20) instead of src/daemon.c
+
+
+/* How to Use Tags
+
+All idea pages are tagged to make them easier to find and to indicate to the rest of the world the current state of your project.
+
+You can apply as many topic and product tags to your idea as you want.
+
+Status Tags
+-----------
+Idea: No one is working on this idea yet.
+InProgress:  The project is underway.  When you apply this tag to an idea, please also edit the People section of the page to indicate who is working on the project. 
+TryMe:  This project is at the point where other people can try it.  Include a link for code/packages in the page so people can find it.
+InBuildService:  Idea's implementation posted in the openSUSE build service.  Provide a link.
+Done:  The idea has been fully realized (though it may not yet be in a product).
+Shipped:  Hooray!
+
+Help tags:  
+----------
+
+You can apply Help tags to your project to recruit other people to help you with its implementation.  Don't apply Help tags to a project which is not already being implemented.  
+Before applying any HelpWanted tags to your project, make sure that you've listed the current project contributors and leaders in the People section of this page, so that potential contributors know whom to contact.
+
+HelpWanted:  This is a generic tag that you can apply to indicate that you want help on a project.
+HW-Hacker: You need help writing code.
+HW-Tester: You have something that you want help testing, or writing unit tests for.
+HW-Designer: You have a great idea but can't come up with the UI? Ask for help.
+HW-PM: You want help from a product manager, to get market research or talk to a partner.
+HW-Docs: You want someone to help you write documentation for your project.
+HW-Packaging: Your project is going well but you want someone to help you build packages out of it.
+*/
+
+
+/*
+Topic tags: Community, Security, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Help: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+Status: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+
+Separate your tags with a space (e.g "tag>Idea Server Performance").
+*/
+
+/*Happy Hacking everyone!*/

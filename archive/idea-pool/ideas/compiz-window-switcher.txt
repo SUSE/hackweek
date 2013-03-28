@@ -1,0 +1,57 @@
+====== Compiz Window Switcher ======
+
+/* If this is your first time using the Idea Pool, please take a second to read the  comment at the end of this template, which explains how to use tags.  
+
+Topic tags: Community, Security, QA, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Status tags: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+Help tags: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+
+Separate tags with a space like this:
+{{tag> blargle fizzbozz bimbledeedoo}}
+*/
+
+{{tag>Idea compiz HW-Hacker window management switch PimpMyDesktop desktop}}
+
+===== Description =====
+We usually use the keyboard to switch between running application windows. Below is a mockup of a window switcher that keeps the keyboard controls, but adds the possibility to use the mouse as well. Due to the switcher comming up where the cursor is and the arrangement in a circle, there is no need to move the mouse too much or be precise.
+
+This design could be implemented as a compiz plugin.
+
+Additionally the switcher could keep track of the favorite apps in the SLAB and keep them arranged consistently (browser always on top, e-mail on the right, etc.) I would aid the user spatially.
+
+===== People =====
+
+Jakub Steiner originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+
+Animated mockup of the Compiz window switcher. In this case only the keyboard (Alt+Tab is used).
+
+<html>
+<object type="application/x-shockwave-flash" 
+data="http://jimmac.musichall.cz/inc/flowplayer/FlowPlayer.swf" width="400" height="323">
+<param name="allowScriptAccess" value="sameDomain" />
+
+	<param name="movie" value="FlowPlayer.swf" />
+	<param name="quality" value="high" />
+	<param name="scale" value="noScale" />
+	<param name="wmode" value="transparent" />
+	<param name="flashvars" value="baseURL=http://jimmac.musichall.cz/images/guimockups/switcher&amp;videoFile=switcher.flv&amp;autoPlay=false&amp;bufferLength=5&amp;hideControls=false&amp;loop=false&amp;hideControls=false" />
+</object><br />
+</html>
+
+The same thing slowed down so you better see what's happening.
+
+<html>
+<object type="application/x-shockwave-flash" 
+data="http://jimmac.musichall.cz/inc/flowplayer/FlowPlayer.swf" width="400" height="323">
+<param name="allowScriptAccess" value="sameDomain" />
+
+	<param name="movie" value="FlowPlayer.swf" />
+	<param name="quality" value="high" />
+	<param name="scale" value="noScale" />
+	<param name="wmode" value="transparent" />
+	<param name="flashvars" value="baseURL=http://jimmac.musichall.cz/images/guimockups/switcher&amp;videoFile=switcher-slowmo.flv&amp;autoPlay=false&amp;bufferLength=5&amp;hideControls=false&amp;loop=false&amp;hideControls=false" />
+</object><br />
+</html>

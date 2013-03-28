@@ -1,0 +1,106 @@
+====== Audio CD metadata in HAL ======
+
+/* If this is your first time using the Idea Pool, please take a second to read the  comment at the end of this template, which explains how to use tags.  
+
+Topic tags: Community, Security, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Status tags: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+Help tags: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+
+Separate tags with a space.
+*/
+
+{{tag>Desktop openSUSE SLED Idea Banshee Multimedia PimpMyDesktop sound}}
+
+===== Description =====
+/* Describe your idea here. */
+
+It would be nice to have a HAL callout that is run when a CD containing audio is found. The callout would then use MusicBrainz to fetch audio CD metadata and merge it into the device properties for the disc. This way, all applications can relatively easily read the rich metadata without having to know or care about doing the heavy lifting - all the application has to do is read some HAL properties.
+
+GNOME VFS could also read the album title from HAL and set that as the display name for the disc so it would show up in the file chooser and in Nautilus, for example. The MusicBrainz code in Banshee could also be removed, reducing complexity a little (well, more like migrating it into this callout).
+
+==== Some potential issues ====
+
+  * Network is required, so this callout may take many seconds to return, which would block HAL from showing the disc in the GDL, convincing users their disc or drive is bad ("Hey, I inserted this disc and nothing happened!"). Thus the callout itself just forks another process and returns. This would eliminate the blocking, but then any applications relying on the callout would have to listen for a signal or something to react when the out of process tool merges its metadata into the tree.
+
+  * Character encodings - this may not actually be an issue, but it should be checked up on before implementing anything. We need to be able to store all the user readable strings in HAL. Hopefully the property values are stored in UTF8.
+
+  * While not really a technical limitation to the purpose of this tool, there is a "design annoyance" due to the type system in HAL. HAL does not support all of the DBus supported types. For instance, structs, variants, arrays of types, etc, are not supported. The only array type is for the string type. 
+
+==== Possible property layout ====
+
+Just to give an idea of what kind of data an application could expect and what this tool could support:
+
+  * audio.metadata.artist_names (strlist)
+  * audio.metadata.album_title (string)
+  * audio.metadata.track_titles (strlist)
+  * audio.metadata.track_count (string)
+  * audio.metadata.durations (strlist - values are in milliseconds)
+  * audio.metadata.cover_art_path (string)
+  * audio.metadata.musicbrainz.album_id (int)
+  * audio.metadata.musicbrainz.track_ids (strlist - values are ints)
+
+==== Album Art ====
+
+The tool should also download album art. What is needed is a common location and naming spec to correlate file names to album/disc IDs. Currently Banshee takes a simplistic approach, but also the same approach taken by some major online music stores like Rhapsody. The cover art is saved with a filename taking the form {artist}-{album_title}.png, where {artist} and {album_title} contain only characters [a-z0-9]. A common directory for storing this data should be chosen, like ~/.config/album-art.
+
+A problem with this common location is that because the tool runs as whatever user HAL is running as, ~ doesn't really make sense, so there would need to be a system-level directory for storing artwork.
+
+The tool could either hard code a path to the saved album art as a property or the application can just follow the path spec above.
+
+===== People =====
+/* This section is for listing all of the people involved in this idea or project:
+  - The originator(s) of the idea
+  - Interested people who might later help out with implementing this idea
+  - Experts or knowledgeable people who could give advice about this idea
+
+If you are already working on this project, and you need help, you can use one of the  HelpWanted tags to say so, and then write some specific details about the kinds of help that you need here. */
+
+Aaron Bockover originated this idea and would like to work on it if no one else wants to (it's up for grabs!).
+
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */
+
+  * [[http://svn.gnome.org/viewcvs/podsleuth|PodSleuth]] is a tool implemented as a HAL callout that shares some of the basic implementation goals that this tool would require.
+
+/* How to Use Tags
+
+All idea pages are tagged to make them easier to find and to indicate to the rest of the world the current state of your project.
+
+You can apply as many topic and product tags to your idea as you want.
+
+Status Tags
+-----------
+Idea: No one is working on this idea yet.
+InProgress:  The project is underway.  When you apply this tag to an idea, please also edit the People section of the page to indicate who is working on the project. 
+TryMe:  This project is at the point where other people can try it.  Include a link for code/packages in the page so people can find it.
+InBuildService:  Idea's implementation posted in the openSUSE build service.  Provide a link.
+Done:  The idea has been fully realized (though it may not yet be in a product).
+Shipped:  Hooray!
+
+Help tags:  
+----------
+
+You can apply Help tags to your project to recruit other people to help you with its implementation.  Don't apply Help tags to a project which is not already being implemented.  
+Before applying any HelpWanted tags to your project, make sure that you've listed the current project contributors and leaders in the People section of this page, so that potential contributors know whom to contact.
+
+HelpWanted:  This is a generic tag that you can apply to indicate that you want help on a project.
+HW-Hacker: You need help writing code.
+HW-Tester: You have something that you want help testing, or writing unit tests for.
+HW-Designer: You have a great idea but can't come up with the UI? Ask for help.
+HW-PM: You want help from a product manager, to get market research or talk to a partner.
+HW-Docs: You want someone to help you write documentation for your project.
+HW-Packaging: Your project is going well but you want someone to help you build packages out of it.
+*/
+
+
+/*
+Topic tags: Community, Security, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Help: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+Status: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+
+Separate your tags with a space (e.g "tag>Idea Server Performance").
+*/
+
+/*Happy Hacking everyone!*/

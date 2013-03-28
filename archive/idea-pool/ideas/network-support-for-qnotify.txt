@@ -1,0 +1,22 @@
+====== network support for qnotify ======
+
+/*
+Topic tags: Community, Security, QA, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Status tags: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+Help tags: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+*/
+
+{{tag>Network Qt Desktop InProgress}}
+
+===== Description =====
+qnotify is a lightweight desktop notification application using only the Qt toolkit. The goal of this project is to give it network support so that it is possible to trigger notifications from remote machines.
+
+===== People =====
+
+Andreas Bauer originated this idea and is currently working on it.
+
+===== Related Materials =====
+
+  * Project homepage: http://qnotify.homac.de/
+  * Sourceforge page: http://sourceforge.net/projects/qnotify/

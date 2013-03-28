@@ -1,0 +1,8 @@
+====== Provide smart integrated ======
+{{tag>Idea Management openSUSE}}
+===== Description =====
+Provide smart package manager integrated on opensuse, on normal installation.
+
+===== People =====
+Gabriel Stein originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+

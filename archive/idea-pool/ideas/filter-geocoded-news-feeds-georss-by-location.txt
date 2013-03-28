@@ -1,0 +1,28 @@
+====== Filter geocoded news feeds (GeoRSS) by location ======
+
+/* If this is your first time using the Idea Pool, please take a second to read the  comment at the end of this template, which explains how to use tags.  
+
+Topic tags: Community, Security, QA, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Status tags: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+Help tags: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+
+Separate tags with a space like this:
+{{tag> blargle fizzbozz bimbledeedoo}}
+*/
+
+{{tag> Web20 TryMe GeoRSS OSM}}
+
+===== Description =====
+
+[[http://www.openstreetmap.org/|OpenStreetMap]] provides GeoRSS feeds of the users' [[http://www.openstreetmap.org/diary|diaries]] and [[http://www.openstreetmap.org/traces|traces]]. I want to filter them by location so that I only see ones near my home. [[http://mvidner.blogspot.com/2008/08/openstreetmap-diaries-via-georss-box.html|Geofilter]] is the result. It is a very simple web service to which you pass a GeoRSS feed and a bounding box and it gives you the filtered feed.
+
+Interested? Write to me. 
+===== People =====
+
+Martin Vidner originated this idea. 
+
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */
+Have I reinvented the wheel? AFAIK there is no such free service. ([[http://pipes.yahoo.com/|Yahoo Pipes]] can do many things but not this.)
+

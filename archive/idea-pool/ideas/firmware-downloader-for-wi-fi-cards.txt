@@ -1,0 +1,32 @@
+====== Firmware downloader for wi-fi cards ======
+
+{{tag>Idea Kernel wireless}}
+
+===== Description =====
+
+Many modern wi-fi cards need a firmware. Unfortunately, most of firmware images are under license that doesn't allow redistribution, so we cannot make a RPM with them.
+
+To solve that, some Linux drivers have a tool for extracting firmware from a Windows driver or downloading it from a predefined set of locations. That's not ideal as you need a different tool for different hardware and automated tools (like YaST) can not reliably use it.
+
+It would be nice to have a tool, that either scans for available wi-fi cards or is given a particular PCI or USB ID and for each card:
+  * Report a name of driver required for this card,
+
+  * report that the card doesn't need a firmware, or
+
+  * report the name(s) of firmware image(s) required,
+
+  * with appropriate command line option, the attempt to download and install firmware is made,
+
+  * with another option, a description how to get and install firmware is displayed.
+
+The output should be usable by tools like YaST.
+
+This can greatly improve user experience when installing wi-fi cards with YaST or similar tools.
+
+===== People =====
+
+Jiri Benc originated this idea and is able to give advices if needed.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+
+[[http://developer.berlios.de/project/showfiles.php?group_id=4547|fwcutter for bcm43xx]]

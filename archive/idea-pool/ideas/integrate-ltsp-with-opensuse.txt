@@ -1,0 +1,30 @@
+====== Integrate LTSP with openSUSE ======
+
+{{tag>Idea Community Desktop Network Server IdeaPool openSUSE SLED Idea InBuildService HelpWanted}}
+
+===== Description =====
+
+Quoting ltsp.org: "The Linux Terminal Server Project adds thin-client support to Linux servers. LTSP is a flexible, cost effective solution that is empowering schools, businesses, and organizations all over the world to easily install and deploy desktop workstations. A growing number of Linux distributions include LTSP out-of-the-box."
+
+openSUSE should also support LTSP out-of-the-box!
+
+
+===== People =====
+
+Christoph Thiel originated this idea.  There are a couple of community folks pushing for this already.
+
+===== Related Materials =====
+
+  * http://wiki.ltsp.org/twiki/bin/view/Ltsp/WebHome
+  * http://en.opensuse.org/LTSP
+  * http://en.opensuse.org/Meetings/LTSP_Meeting_2007-04-24
+
+  * https://bugzilla.novell.com/show_bug.cgi?id=216753
+
+  * http://lists.opensuse.org/opensuse-project/2007-05/msg00144.html
+  * http://lists.opensuse.org/opensuse-project/2007-06/msg00021.html
+
+Here is a screenshot of LTSP5' LDM (LTSP Display Manager) on openSUSE:
+
+
+{{ideas:kiwi-ltsp.jpg|}}

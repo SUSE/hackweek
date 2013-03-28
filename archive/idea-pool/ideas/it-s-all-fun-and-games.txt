@@ -1,0 +1,22 @@
+====== It's all fun and games ======
+
+
+{{tag>Idea Community Graphics Mono Mobile}}
+
+===== Description =====
+Unfortunately sometimes even the wheel should be reinvented.  MoonLight is exciting and should be put to work!  I think that one way to pitch it is with games that actually work on Linux and Windows (and everywhere else MoonLight shines).  I recommend adding cool graphics to simple games.  
+
+Battleship, Tic-tac-toe, Rock/Paper/Scissors, connect four, reversi, checkers, chess, etc. with cool animations.  You should force 2+ players to build the community.  Or add games like Sudoku, minesweeper, tetris, digger, asteroids, a Mono Lunar lander would be cool, etc for solitary games.
+
+If you tease with some games on the browser and the rest on Gtk+, you might get some converts from Windows land.  If the games I mentioned are too boring, you could do the Bond game for world domination, risk, or something that you find fun.
+
+Lastly, it might be a good idea to do learning games.  I have no idea what is on Edubuntu, but I imagine that there are games that help with science/math/logic, vocabulary/geography/memorization.  You could event do a typing tutor that would have a huge potential audience.
+
+
+The first game should be the granddaddy of all games (and half of my favorite sport) **Pong**.  This could be not only a desklet, but it could be written to work on the OpenMoko platform as well as the browser.  It is simple enough that an engineer could write it without the help of artist types.  It has history on its side.  It should be small.  
+
+===== People =====
+Vladimir Giszpenc originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+http://en.wikipedia.org/wiki/Pong

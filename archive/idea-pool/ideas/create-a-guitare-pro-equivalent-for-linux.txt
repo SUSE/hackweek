@@ -1,0 +1,24 @@
+====== create a Guitare Pro equivalent for linux ======
+
+/* If this is your first time using the Idea Pool, please take a second to read the  comment at the end of this template, which explains how to use tags.  
+
+Topic tags: IdeaPool
+Product tags: openSUSE
+Status tags: Idea
+Help tags: 
+
+Separate tags with a space like this:
+{{tag> blargle fizzbozz bimbledeedoo}}
+*/
+
+{{tag>Idea desktop music}}
+
+===== Description =====
+The idea is to create a Tool like Guitare Pro (http://www.guitar-pro.com/en/index.php) for the linux world. This tool should it make possible to show tabs or notes in a grafic interface. This interface should allow to change this and write it down in some file formats like a simple text file. Tools like this should help learning an instrument like guitar or keyboard.
+
+There are already implementations of this idea. Tuxguitar is one of them written in Java. But i like a more comfortable C++ Programm.
+
+===== People =====
+Michael Skibbe originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====

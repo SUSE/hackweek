@@ -1,0 +1,63 @@
+
+{{tag>InProgress HelpWanted LowPower Desktop hardware judgepower}}
+
+
+===== Configure-Computer-Wakeup-Time - Description =====
+
+I would like to be able to set the wakeup time/date of the computer in the shutdown/suspend dialogue.
+Many people leave their Office PC running at night because they don't want to wait 
+until it started up in the morning. If they could use this idea in an easy way, it would 
+save lots of wasted energy of office workstations. 
+
+  * **It seems that most notebook BIOS lack the feature of wakeup time... :-(**
+
+Technically, there are three methods to achieve this: 
+
+  * Write wakeup time to ''/proc/acpi/alarm''
+  * nvram-wakeup: writes directly to BIOS nvram, hardware dependant.
+  * "Settime": Having a fixed wakeup time in the BIOS, and set the system time on shutdown accordingly to the configured wakeup time. 
+
+Notes for ACPI wakeup: 
+
+  * Kernel needs to be compiled with ''CONFIG_ACPI_SLEEP_PROC_FS=y''
+  * Sysconfig (/etc/sysconfig/clock) ''SYSTOHC = no'' has to be set. (BIOS resets wakeup time when clock is written on shutdown)
+  * Easy way to set offset wakeup time: ''echo "+00-00-00 00:05:00" > /proc/acpi/alarm''
+  * Wakeup function has to be **disabled** in BIOS
+
+Notes for HAL integration: 
+  * Include into suspend script: ''/usr/lib/hal/scripts/linux/hal-system-power-suspend-linux''
+
+Notes for Kernel >= 2.6.22 
+
+  * ''/proc/acpi/alarm'' is no more avalable', replaced by ''/sys/class/rtc/rtc0/wakealarm''
+  * This file takes seconds since epoch as input (for example: ''date -d "Jun 26 13:00" "+%s"'', reverse: ''date -d @<seconds>'')
+  * To set a new value, it needs a reset: ''echo 0 > /sys/class/rtc/rtc0/wakealarm''
+
+Issues: 
+
+  * Kernel needs to be compiled with unset ''CONFIG_RTC'' and ''CONFIG_GEN_RTC'' to have ''/sys/class/rtc/rtc0/wakealarm'' available (needs to be recompiled for openSUSE 10.3)
+  * There seems to be a bug: ''echo 1182948552 > /sys/class/rtc/rtc0/wakealarm; cat /sys/class/rtc/rtc0/wakealarm'' returns 2051637448. There is a non-constant offset, maybe due to the BIOS not storing the century? (http://lkml.org/lkml/2007/6/19/264)
+  * /sys/class/rtc/rtc0/wakealarm seems to only accept times > 2h in the future
+
+
+===== People =====
+
+Thomas Schmidt originated this idea and will be working on it. 
+
+Any help or hints for integration in kpowersave, HAL... would be nice, 
+because this is an unknown area to me. 
+
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */
+
+
+This idea is inspired by a c't article in 11/2007, page 206ff 
+(http://www.heise.de/ct/07/11/links/206.shtml)
+
+ACPI alarm doc: http://acpi.sourceforge.net/documentation/alarm.html
+
+ACPI wakeup in mythtv: http://www.mythtv.org/wiki/index.php/ACPI_Wakeup
+
+HAL specification: http://people.freedesktop.org/~david/hal-spec/hal-spec.html
+
+Linux Magazine article: http://www.linux-magazine.com/issue/46/Wakeup_Call_For_Computers.pdf

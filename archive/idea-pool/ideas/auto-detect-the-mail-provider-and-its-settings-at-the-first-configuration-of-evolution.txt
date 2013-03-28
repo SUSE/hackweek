@@ -1,0 +1,7 @@
+====== Autodetect the mail provider and its settings at the first configuration of Evolution ======
+
+{{tag> openSUSE Desktop Idea}}
+
+
+===== Description =====
+A new user starts his Evolution mail client for the first time. He enters his email address and has to enter all his smtp stuff. My mother cannot do this on her own. The provider could be detected and the server settings could be inserted for him.

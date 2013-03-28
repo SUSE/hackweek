@@ -1,0 +1,100 @@
+====== Party extension for Banshee (YouTube/Flash streaming mixed with current music in the user's library) ======
+
+/* If this is your first time using the Idea Pool, please take a second to read the  comment at the end of this template, which explains how to use tags.  
+
+Topic tags: Community, Security, QA, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Status tags: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+Help tags: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+
+Separate tags with a space like this:
+{{tag> blargle fizzbozz bimbledeedoo}}
+*/
+
+{{tag>Idea Mono Banshee Gstreamer Flash YouTube Streaming Mixing HelpWanted Download}}
+
+===== Description =====
+**Motivation**: you want to make a party at home, with video-clips playing at a big screen in the background (in the living room for example).
+
+**Problems**:
+  * You have to do a pre-download of your video-clips.
+  * Everybody will want to be a DJ so there will be a lot of people forming a queue in your computer
+  * People will get angry if somebody stops/skips his song
+  * Everybody will shout at you if you don't have <put your favourite song here>, so
+  * Everybody will want to use YouTube instead of your video playing list, and
+  * YouTube has a very low sound/video quality for the general speed you may get in order not to pre-buffer the content.
+  * Sound is more important than video in a party (come on, it's a party, not a cinema), so:
+
+__Idea A__: why not using the audio from your music playlists and the video from youtube?
+
+**However**:
+  * This still doesn't solve the problem of letting the people choose the music in an organized way.
+  * You may have buffering problems and, as a consequence, not constant playback, if you rely on your poor internet connection.
+
+**Then**:
+
+__Idea B__ (which would solve last two problems in one shot): why not having a mode on Banshee that let's you choose what is *going* to play (as opposed to what is playing right now or what was put in the queue firstly by others), which intelligently tries to pre-download videos in the background (maybe doing multiple downloads simultaneously?), and stops the music (or replaces it with other playlist) if the buffering is not successfull? (It wouldn't forward to the next song, as opposed to stoping a song playback in the middle of the song.)
+
+**In the end**:
+  * People won't be able to choose a song that is not in your library so.
+
+__Future ideas__:
+  * Integrate this extension with another extension that communicates to some P2P programs such as Monsoon or Nicotine+, in order to download music.
+
+
+
+===== People =====
+/* This section is for listing all of the people involved in this idea or project:
+  - The originator(s) of the idea
+  - Interested people who might later help out with implementing this idea
+  - Experts or knowledgeable people who could give advice about this idea
+
+If you are already working on this project, and you need help, you can use one of the  HelpWanted tags to say so, and then write some specific details about the kinds of help that you need here. */
+
+Andrés G. Aragoneses originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */
+[[http://mail.gnome.org/archives/banshee-list/2008-May/thread.html#00107|Thread on banshee mailing list (about use case and about technical solution)]]
+
+/* How to Use Tags
+
+All idea pages are tagged to make them easier to find and to indicate to the rest of the world the current state of your project.
+
+You can apply as many topic and product tags to your idea as you want.
+
+Status Tags
+-----------
+Idea: No one is working on this idea yet.
+InProgress:  The project is underway.  When you apply this tag to an idea, please also edit the People section of the page to indicate who is working on the project. 
+TryMe:  This project is at the point where other people can try it.  Include a link for code/packages in the page so people can find it.
+InBuildService:  Idea's implementation posted in the openSUSE build service.  Provide a link.
+Done:  The idea has been fully realized (though it may not yet be in a product).
+Shipped:  Hooray!
+
+Help tags:  
+----------
+
+You can apply Help tags to your project to recruit other people to help you with its implementation.  Don't apply Help tags to a project which is not already being implemented.  
+Before applying any HelpWanted tags to your project, make sure that you've listed the current project contributors and leaders in the People section of this page, so that potential contributors know whom to contact.
+
+HelpWanted:  This is a generic tag that you can apply to indicate that you want help on a project.
+HW-Hacker: You need help writing code.
+HW-Tester: You have something that you want help testing, or writing unit tests for.
+HW-Designer: You have a great idea but can't come up with the UI? Ask for help.
+HW-PM: You want help from a product manager, to get market research or talk to a partner.
+HW-Docs: You want someone to help you write documentation for your project.
+HW-Packaging: Your project is going well but you want someone to help you build packages out of it.
+*/
+
+
+/*
+Topic tags: Community, Security, Kernel, Desktop, Virtualization, Web20, Mobile, Management, Network, UnixFeature, Server, LowPower, Performance, LAMP, Graphics, DevTool, Mono, IdeaPool
+Product tags: openSUSE, SLES, SLED, SLERT, SLEPOS, SLETC
+Help: HelpWanted, HW-Hacker, HW-Tester, HW-Designer, HW-PM, HW-Docs, HW-Packaging
+Status: Idea, InProgress, TryMe, InBuildService, Done, Shipped
+
+Separate your tags with a space (e.g "tag>Idea Server Performance").
+*/
+
+/*Happy Hacking everyone!*/

@@ -1,0 +1,17 @@
+====== Hello Mono (in same voice as Hello Moto) ======
+
+{{tag>Idea Community Mobile Mono}}
+
+===== Description =====
+OpenMoko is really weak in terms of hardware.  But fortunately for the Open Source community, it is enough!  We need to see some Mono Enthusiasm about the next huge technology that is coming.  There is not enough room for Java and Mono on such a limited platform.  Java will win hands down for now, but it is not a reason to quit and give up.  The Mono team needs to represent!  Moonlight is small, fast, and plays well with others.  Whatever Sun invented, it is not as nice as Moonlight.  Let's get the show on the road.  Has noone seen the hype around Apple's new phone?  It is a phenomenon!
+
+If someone can start proselytizing on the OpenMoko and other embedded markets, Novell may see more .Net defectors coming over to target Open Source systems.
+
+
+===== People =====
+Vladimir Giszpenc originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+/* Links, mockups, screen captures, files. */
+http://www.openmoko.org/
+

@@ -1,0 +1,16 @@
+====== BASH completion for zypper ======
+
+{{tag>Idea TryMe}}
+
+===== Description =====
+I miss bash completion script for zypper, so i make a decision to create one. My BASH completion script have basic features, like suggestion of command (help, install, update,...) in future, when zypper will be faster then now i want to implement suggestion of package name for //zypper install [package]//. It is not possible to implement it now, because zypper search is much slow...
+
+===== People =====
+
+Marek Stopka originated this idea and is working on it.
+
+Marek Stopkas is thinking about idea from Jano Kupec.
+===== Related Materials =====
+  * [[http://www.m4r3k.org/storage/zypper-20080212-1022.sh | script snapshot 0.1 aplha1 ]] :-)
+  * [[http://www.m4r3k.org/storage/zypper-20080213-1506.sh | script snapshot 0.1 aplha2 ]] :-)
+  * [[http://www.m4r3k.org/storage/zypper-20080215-1318.sh | script snapshot 0.2 aplha1]] :-) This version should be compatible with SVN version of zypper.

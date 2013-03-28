@@ -1,0 +1,10 @@
+====== NX 3.0 (FreeNX/NoMachine/2x) ======
+{{tag>Idea Desktop Virtualization Mobile Management Server SLETC x11 IdeaPool HelpWanted HW-Hacker HW-Tester HW-Designer HW-PM HW-Docs HW-Packaging}}
+
+===== Description =====
+/* Describe your idea here. */
+
+A GUI to easy setup the newest NX 3.0/FreeNX server and client **with working** public key authentication. 
+
+===== People =====
+brubaker originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).

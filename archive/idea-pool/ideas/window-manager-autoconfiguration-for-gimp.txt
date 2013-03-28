@@ -1,0 +1,47 @@
+====== Window Manager Autoconfiguration for GIMP ======
+
+
+{{tag>Idea GIMP Graphics HelpWanted HW-Hacker WM WindowManager}}
+
+===== Description =====
+
+GIMP doesn't manage its windows/docks. It's the window manager's job (WM). The problem is that each window manager does it slightly differently. Special cases such as hiding docks below image window in fullscreen require GIMP to have quite a number of options to be set in the preferences to work well depending on the WM the artist is running. The options look like this:
+
+{{ ideas:wm-prefs.png | Current cryptic window manager preferences.}}
+
+So while it's possible to have GIMP configured to behave the same regardless of running it under Mac OS X, Windows, KWM, metacity or compiz, it requires the graphic designer to set options that are not very clearly understandable.
+
+It would be a lot nicer if GIMP could figure this out on its own, setting itself up based on the window manager it detects is running. I bet there are more applications that have non-trivial window management requirements, so this doesn't need to be a strictly GIMP-only project. 
+
+To deal with corner cases (Unknown WMs), GIMP preference options like these may be presented to the few:
+
+FIXME
+
+===== People =====
+
+Jakub Steiner originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+
+===== Related Materials =====
+
+Here's the current configuration options that do the same thing, as I've assembled them:
+
+==== Compiz ====
+
+Toolbox: utility, Other docks: utility, transient to the image window = YES, activate focused image = NO
+
+
+==== Metacity ====
+
+Toolbox: utility, Other docks: utility, transient to the image window = NO, activate focused image = NO
+
+==== KWM ====
+
+FIXME
+
+==== Windows ====
+
+FIXME
+
+==== Mac OS ====
+
+FIXME: X11, Aqua
