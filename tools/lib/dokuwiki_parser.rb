@@ -23,7 +23,7 @@ class DokuwikiParser
           comment = true
           skip = 1
         else
-          out += text[i]
+          out += text[i].chr
         end
       end
     end
@@ -59,7 +59,7 @@ class DokuwikiParser
   end
   
   def parse_tags
-    if @line =~ /{{tag>(.*)}}/
+    if @line =~ /\{\{tag>(.*)\}\}/
       tags = $1.split
       o "<p><b>Tags:</b> #{tags.join(", ")}</p>\n"
       return true
