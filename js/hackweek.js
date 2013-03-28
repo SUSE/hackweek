@@ -1,8 +1,11 @@
 $(function () {
 
+    /* Preload images */
+    $.preloadCssImages();
+
     $("#start-link").click(function () {
         $('html, body').animate({
-            scrollTop: $("#start").offset().top
+            scrollTop: 0
         }, 1000);
     })
 
@@ -50,6 +53,7 @@ $(function () {
             toggle_terminal()
         }
     })
+
 
     /* agenda */
 
@@ -191,7 +195,6 @@ $(function () {
     })
 
 
-
     window.toggle_terminal = function() {
         if ($('#terminal').is(":visible")) {
             $('#terminal').slideUp('fast');
@@ -202,6 +205,17 @@ $(function () {
         }
 
     }
+
+
+    function page_visible(element) {
+        return ($(window).scrollTop() > element.position().top - element.height() &&
+            $(window).scrollTop() < element.position().top + 2 * element.height())
+    }
+
+    function percent_invisible(element) {
+      return Math.abs(($(window).scrollTop() - element.position().top) / element.height())
+    }
+
 
     $(window).scroll(function () {
 
@@ -214,23 +228,33 @@ $(function () {
         }
         if ($('#navigation').is(":visible") && $(window).scrollTop() < $('#what-is').height()/1.5) {
             $('#navigation').fadeOut()
-            //$('#terminal-btn').fadeOut()
             $('#arrow-start').fadeIn()
         }
 
 
+        /* start page text scroll animation */
+        if (page_visible($('#start'))) {
+            $('#start').css({'top': $(window).scrollTop()/2})
+            $('#hackweek9, #pay-off, #start-menu').css({'opacity': 1 - percent_invisible($('#start'))*2})
+        }
+
+        /* what-is page transition */
+        if (page_visible($('#what-is'))) {
+            $('#what-is-cta, #hackweek-logos').css({'opacity': 1 - percent_invisible($('#what-is'))})
+        }
+
+
         /* people page text scroll animation */
-        if ($(window).scrollTop() > $('#people').position().top - $('#people').height() &&
+        /*if ($(window).scrollTop() > $('#people').position().top - $('#people').height() &&
             $(window).scrollTop() < $('#people').position().top + 2 * $('#people').height()) {
             var percent_scrolled_out = Math.abs(($(window).scrollTop() - $('#people').position().top) / $('#people').height())
             $('.project-instructions').css({'opacity': 1 - percent_scrolled_out * 3})
-        }
+        }*/
 
         /* where page text scroll animation */
-        if ($(window).scrollTop() > $('#where').position().top - $('#where').height()) {
-            var percent_scrolled_out = Math.abs(($(window).scrollTop() - $('#where').position().top) / $('#where').height())
-            $('#where-title').css({'opacity': 1 - percent_scrolled_out/2,
-                right: (percent_scrolled_out * -500) - 40})
+        if (page_visible($('#where'))) {
+            $('#where-title').css({'opacity': 1 - percent_invisible($('#where'))/2,
+                right: (percent_invisible($('#where')) * -500) - 40})
         }
 
         /* set active page in navigation menu */
@@ -266,8 +290,8 @@ $(function () {
 
         /* invert terminal link color */
         $('#terminal-btn').removeClass('invert')
-        if (($('#terminal-btn').position().top + $('#terminal-btn').height()/2 > $("#people").position().top - $(window).scrollTop()) &&
-                ($('#terminal-btn').position().top + $('#terminal-btn').height()/2 < $("#people").position().top - $(window).scrollTop() + $('#people').height())) {
+        if (($('#terminal-btn').position().top + $('#terminal-btn').height()/2 > $("#start").position().top - $(window).scrollTop()) &&
+                ($('#terminal-btn').position().top + $('#terminal-btn').height()/2 < $("#start").position().top - $(window).scrollTop() + $('#start').height())) {
             $('#terminal-btn').addClass('invert')
         }
         if (($('#terminal-btn').position().top + $('#terminal-btn').height()/2 > $("#what-is").position().top - $(window).scrollTop()) &&

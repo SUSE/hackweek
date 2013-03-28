@@ -11,7 +11,7 @@ body {
     font-family: 'Roboto', Droid Sans, sans-serif;
     background: url('../images/geeko-tile.png');
     background-color: #222222;
-    background-repeat: repeat-x;
+    background-repeat: repeat;
     -webkit-font-smoothing: antialiased;
     font-smoothing: antialiased;
 }
