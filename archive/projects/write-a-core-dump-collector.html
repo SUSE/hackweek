@@ -1,0 +1,57 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Write a core dump collector</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, devtool, bugs</p>
+        <h2>Description</h2>
+        <p>Recent kernels can run a program when a core dump happens (by
+        writing |programname into /proc/sys/kernel/core_pattern) Write a suitable
+        script that extracts some information out of it using gdb (like backtrace/program name etc.)
+        Then write a gui tool that displays them.</p>
+        <p>Possibly it could be also submitted to a website.</p>
+        <p>Bonus points if it knows how to fetch debuginfo packages automatically to get
+        symbolic backtrace.</p>
+        <h2>People</h2>
+        <p>Andi Kleen originated this idea. No one is currently working on implementing the idea (it's up for grabs!).</p>
+        <h2>Related Materials</h2>
+      </div>
+    </div>
+  </div>
+</body>

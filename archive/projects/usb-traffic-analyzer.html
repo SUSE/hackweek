@@ -1,0 +1,63 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Improve USB dump analysis support in Wireshark</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, DevTool, HelpWanted</p>
+        <h2>Description</h2>
+        <p>**Update:**</p>
+        <p>It appears that wireshark with CVS libpcap can already capture and highlight base USB traffic, as well as USB Mass Storage protocol. (try packages from [[http://download.opensuse.org/repositories/home:/dgollub/|dgollub's home]])</p>
+        <p>Oops, I'm too late!</p>
+        <p>Therefore, this project's aim is now to do the following:
+          * implement PTP/MTP packet dissector
+          * possibility of importing USB dumps from windows tools (usbsnoop, USB Monitor, XML export format)
+          * get all this to STABLE and, if possible, upstream</p>
+        <h2>Original description</h2>
+        <p>This should be a tool, similar in purpose to Wireshark, but for USB traffic. It should be able to read current traffic from debugfs, and decode USB dumps from tools like [[sourceforge.net/projects/usbsnoop/|usbsnoop]].</p>
+        <p>Most importantly, it should be able to decode various USB protocols - I am aiming for PTP/MTP, but the tool should be extensible and handle protocols as plugins.</p>
+        <p>It would also be nice if the tool allowed interactive USB packet forging, but I'm not sure if that is feasible.</p>
+        <p>In the short term, I would like to get to a state where the tool is able to read live traffic and/or USB dump and output translated MTP packets in human readable format.</p>
+        <p>As a long term goal, this tool should be an open-source alternative to [[http://www.hhdsoftware.com/Products/home/usb-monitor.html|USB Monitor]].</p>
+        <h2>People</h2>
+        <p>jan matejek originated this idea and will be working on it during HackWeek 3.</p>
+        <p>I have next to no experience with USB development so I'd appreciate any help in that area, even pointers to good documentation.</p>
+      </div>
+    </div>
+  </div>
+</body>

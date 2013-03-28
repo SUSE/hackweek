@@ -1,0 +1,64 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Error reporting library and infrastructure</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, Mono, Desktop, QA, DevTool, Server, HelpWanted</p>
+        <h2>Description</h2>
+        <p>Currently, errors in MonoDevelop tend to be reported by a very small percentage of users. Either those users are incredibly unlucky, or there are a lot of errors that are not getting reported. This idea aims to increase the collection of error information by implementing a system for users to report errors with a single click of a button, and see the current status of the bug that they've reported.</p>
+        <p>Many different components will be required</p>
+        <p>  * Client library for Mono applications to report non-fatal errors (exceptions)
+          * Crash handler for collecting information about segfaults
+          * Sharable infrastructure to route error information to a web service, checking for updates of problems' status
+          * Web service to collect reports and aggregate similar problems by "fingerprint", and report back to users the status of linked Bugzilla reports (including workarounds, if any).
+          * A web frontend to allow admins to triage reports before linking them to Bugzilla.</p>
+        <p>Although the implementation will use Mono, the implementation should be sufficiently generic to allow other client libraries to be implemented. It should also be portable to other platforms where possible, to allow binary deployment of Mono apps to other platforms.  </p>
+        <h2>People</h2>
+        <p>Michael Hutchinson originated this idea and is working on it.</p>
+        <h2>Related Materials</h2>
+        <p>** Code re-use **</p>
+        <p>  * Can share Bugzilla client library with [[Implement a GUI bugzilla client]]
+          * Segfault handler can maybe use Ubuntu's [[https://wiki.ubuntu.com/Apport|Apport]] on Linux, though Mono's already pretty good at dumping debug info after an unmanaged crash.</p>
+        <p>** App statistics collection **</p>
+        <p>It has also been suggested that the infrastructure could be used in [[http://www.snorp.net/log/2008/01/18/application-usage-monitoring/|collecting other metrics/statistics]] from user apps (with their permission of course), such as memory usage, relative popularity of menu items etc. The privacy implications would need to be considered very carefully, but these data could greatly benefit developers in improving the usability of their apps.</p>
+        <p>This idea is sufficiently similar that it would make sense to combine the error reporting and statistics features into the same client library, settings GUI, reporting infrastructure and web client.</p>
+      </div>
+    </div>
+  </div>
+</body>

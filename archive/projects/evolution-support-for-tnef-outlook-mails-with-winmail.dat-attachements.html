@@ -1,0 +1,62 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Evolution support for TNEF Outlook mails with "winmail.dat" attachements</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Desktop, Evolution, Done, JudgeMe</p>
+        <h2>Description</h2>
+        <p>A lot of Evolution on Linux users receive E-Mails from Outlook users with "winmail.dat" attachements. These are roughly speaking just proprietary archives which actually contain data which Evolution is able to handle such as meeting invitations, iCal, further attachments and more.</p>
+        <p>It would increase the value of migrating to a Linux environment if Evolution would support "unrolling" those files automatically without regular user joe to have to use command line libraries to extract the content or even worse being stuck with such a .dat file.</p>
+        <p>Infact there is already a very [[http://www.go-evolution.org/Tnef|hackish Evolution Plugin]] which uses the [[http://ytnef.sourceforge.net/|ytnef library]] to do this job and it offers a great user experience as all the attachements are nicely shown in Evolutions preview pane even with interactive meeting invitation functionality. (Take it as a PoC)</p>
+        <p>It would an idea, as noted by the ytnef developer himself, to create a clean plugin without external dependencies (includes tnef code) which integrates nicely into Evolution and hopefully is bundled upstream. Might be a good idea for LOADS of lizards ;)</p>
+        <h2>People</h2>
+        <p> ** Lucky R. Wankhede ** is currently working in implementing this idea.... but still you can grab it.(it's up for grabs!). </p>
+        <p> ** Lucky R. Wankhede ** has completed this idea....</p>
+        <p>  Now Evolution will be able to recognize winmail.dat mails... 
+          The previos code was using the hacked way of doing it ...
+          But I corrected it and make to user libytnef to decode the winmail.dat files ... </p>
+        <p> //M.S.// originated this idea. </p>
+        <h2>Related Materials</h2>
+        <p>  * [[http://www.go-evolution.org/Tnef|Current "Workaround" to support TNEF in the Evolution Wiki]]
+          * [[http://ytnef.sourceforge.net/|TNEF Stream Reader on Sourceforge (created on the fact that Evolution doesn't provide this)]]
+          * [[http://sourceforge.net/projects/tnef/|Other TNEF library]]</p>
+      </div>
+    </div>
+  </div>
+</body>

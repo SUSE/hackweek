@@ -1,0 +1,70 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Cross-desktop unified UI -- Defining the "native" open source look and feel</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> KDE, GNOME, Desktop, InProgress</p>
+        <h2>Description</h2>
+        <p>All desktop applications should:
+          * Have the same look and feel
+          * Use the same icons
+          * Be designed with a consistent with a set of guidelines in mind</p>
+        <p>...Of course, this also means that there should be a set of guidelines. </p>
+        <p>Currently, we have several toolkits; it would be nice to have each of them use a UI graphics library that they could call upon to draw buttons, scrollbars, etc.  Obviously, most people are thinking of both Qt and GTK+ at this point, but we actually use so many other toolkits currently, as well... Think about Mozilla's XUL, Mono's implementation of Windows.Forms, Wine, Java SWING, and OOo's own widgets, for instance.</p>
+        <p>Right now, we do have a little bit of rubber meeting the road in the area of icons. [[http://tango.freedesktop.org/Tango_Desktop_Project|The Tango Desktop Project]] has made a cross-desktop standard for icon naming and provides a reference set of excellent icons which can be used in any software.</p>
+        <p>However, when it comes to widgets, people have implemented themes which mimic either GTK+ or Qt, and do so poorly.  Theming on Linux is currently quite a broken mess and implemented in a shoddy way wherever themes are used.</p>
+        <p>Implementation suggestions to realize this idea:
+          * Work on a common, shared UI suggestions document based on KDE & GNOME HIGs / style guides
+          * Develop a library and theme format to specify the way certain widgets should be drawn; this should take advantage of all the nice rendering stuff we now have in the desktop (cairo, transparency, SVG, etc.) -- in addition to just the look of widgets themselves, it should also contain some information about policy, such as various suggested padding sizes (internal and external to widgets, such as padding and margin in CSS), and should include spacing with different meanings in mind as well (associated widgets should be spaced differently from one another than widgets not associated)
+          * Make a theme format which is based on CSS, so that certain widgets can be styled, with cascades as well -- this does not need to map 1:1 to CSS used in HTML, but should be the same structure and idea -- it should also allow for multiple classes, so that a toolkit or application could request an object of a button class, and it would be drawn as a button (and inherit some basic button states, such as a hover and clicked); also, if a widget has multiple classes specified, then it should inherit the properties of both defined classes</p>
+        <h2>People</h2>
+        <p>Garrett LeSage originated this idea.  </p>
+        <p>[[http://tango.freedesktop.org/Tango_Desktop_Project|The Tango Desktop Project]] has been hard at work at making this happen in the realm of icons.</p>
+        <p>We need excellent hackers to make this a reality for the rest of the desktop.</p>
+        <h2>Related Materials</h2>
+        <h3>Links</h3>
+        <p>  * [[http://tango.freedesktop.org/Tango_Desktop_Project|The Tango Desktop Project]]
+          * [[http://www.metatheme.org/|MetaTheme]] is working on something sort of like this for widgets -- not sure about the quality of code, the implementation, or state of the project</p>
+        <h3>Interface Guidelines</h3>
+        <p>  * [[http://developer.gnome.org/projects/gup/hig/2.0/|GNOME Human Interface Guidelines]]
+          * [[http://developer.kde.org/documentation/standards/kde/style/basics/|KDE User Interface Guidelines]]</p>
+      </div>
+    </div>
+  </div>
+</body>

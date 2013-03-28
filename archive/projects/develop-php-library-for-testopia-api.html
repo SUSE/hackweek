@@ -1,0 +1,85 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Develop PHP library for Testopia API</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Done, QA, Testopia, PHP, Prize, JudgeMe, JudgeQA</p>
+        <h2>Description</h2>
+        <p>Testopia offers an access via XML-RPC API. Having a PHP library to access this API would offer websites (and commandline tools) read/write access to Testopia. The idea is to develop such a library.</p>
+        <p>Working with such a library would save QA team a lot of work and a lot of time.</p>
+        <p>It's - internal - available at http://w3.suse.de/~holgi/phpTestopialib.tgz</p>
+        <h2>Video</h2>
+        <p><html><center><script type="text/javascript" src="http://blip.tv/scripts/pokkariPlayer.js?ver=2007062101"></script><script type="text/javascript" src="http://blip.tv/syndication/write_player?skin=js&posts_id=292247&source=3&autoplay=true&file_type=flv&player_width=&player_height="></script><div id="blip_movie_content_292247"><a rel="enclosure" href="http://blip.tv/file/get/Natfriedman-PHPLibraryForTestopiaAPI188.mp4" onclick="play_blip_movie_292247(); return false;"><img title="Click to play" alt="Video thumbnail. Click to play"  src="http://blip.tv/file/get/Natfriedman-PHPLibraryForTestopiaAPI188.mp4.jpg" border="0" title="Click To Play" /></a><br /><a rel="enclosure" href="http://blip.tv/file/get/Natfriedman-PHPLibraryForTestopiaAPI188.mp4" onclick="play_blip_movie_292247(); return false;">Click To Play</a></div></center></html></p>
+        <h2>Information in telegraphic style</h2>
+        <p>Testopia is an enhancement of Bugzilla. We use it to create TestPlans and track testing.
+        It can be controlled by a webinterface -> which works fine for people but bad for machines.
+        So Testopia got a XML-RPC interface.</p>
+        <p>My project was to develop a library which 'talks' to that Testopia interface. I decided to use PHP because it offers access from our webbased tools as well as from the commandline.</p>
+        <p>The library contains 72 functions and offers nearly all Testopia operations which are available via the webinterface. It is only limited by the Testopia API itself.</p>
+        <p>This library offers a bunch of new possibilities for our QA teams:
+          * creation and modifing of TestPlans and TestRuns
+          * creation and modifing of TestCases 
+          * creation and modifing of Test Results
+        And all this by our scripts or tools.</p>
+        <p>To understand the benefit following example will help you.</p>
+        <p>Using the library with our QA tool HAMSTA:</p>
+        <p>With HAMSTA we can start testsuites on several testmachines via a webinterface. During the testsuites are running they execute a bunch of Testcases and store the results in result file.
+        This files will be colleted by the HAMSTA tool afterwards but the results have to be entered into Testopia by a person.</p>
+        <p>With my library HAMSTA can be enhanced to:
+          * create a new TestPlan and assign relevant TestCases
+          * create a TestRun for every hardware architecture
+          * collect the results of all tests and enter them into Testopia
+        Creation of TestPlans and TestRuns will done automatically as well as entering all the results. 
+        So we save a lot of time in future and can – hopefully – take the time to develop more useful QA tools and libraries ...</p>
+        <p>And best thing of project:  it's finished and working fine!! :-)</p>
+        <p>Here is a small demo:
+        You can [[http://tidb.suse.de/testopia/demo.php|modify]] the status of a single TestCase of a certain TestRun from a non Testopia website and check result within [[https://bugzilla.novell.com/tr_show_run.cgi?current_tab=case_run&field-1-0-0=run_id&run_id=299&type-1-0-0=anyexact&value-1-0-0=299&pagesize=1&page=1|Testopia]]:
+          * [[https://bugzilla.novell.com/tr_show_run.cgi?current_tab=case_run&field-1-0-0=run_id&run_id=299&type-1-0-0=anyexact&value-1-0-0=299&pagesize=1&page=1|Testopia view]]
+          * [[http://tidb.suse.de/testopia/demo.php|Demo page]] (just available internal)
+        Of course this is just a simple demo. More complex operations are possible.</p>
+        <h2>People</h2>
+        <p>Holger Sickenberg originated this idea.  He also implemented this idea.</p>
+        <h2>Related Materials</h2>
+        <p>  * http://www.mozilla.org/projects/testopia/
+          * http://www.php.net/
+          * http://bugzilla.novell.com/</p>
+      </div>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,63 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Generic sensors library</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> InProgress, Maintainability</p>
+        <h2>Description</h2>
+        <p>libsensors was designed a long time ago, and starts showing its age. Back then there was no standard kernel/user-space interface so the library had to know the specifics of every hardware monitoring driver. With Linux 2.6 and sysfs, we've defined a mostly standard kernel/user-space interface, so it should be possible to write a new libsensors that would be completely generic. Unfortunately, nobody took the time to work seriously on this. There was an attempt by students from Netherlands several months ago, but it was more like a proof of concept that is nowhere next to a releasable state.</p>
+        <p>I can see at least 4 major advantages in having a generic libsensors:
+          - Users wouldn't have to upgrade to the very latest version of libsensors to get support for new hardware. Upgrading the kernel would be enough.
+          - Graphical front-ends displaying sensors value would no longer need to be updated each time a new version of libsensors is released.
+          - The maintenance work on libsensors would drop to virtually zero, freeing resources for more interesting development work.
+          - The library would be much smaller. Right now the library weights over 300 kB (on x86_64) and keeps growing with every new supported device.</p>
+        <h2>People</h2>
+        <p>Jean Delvare originated this idea, and will be working on it.</p>
+        <h2>Related Materials</h2>
+        <p>There is a separate branch upstream for this project:</p>
+        <p>http://www.lm-sensors.org/browser/lm-sensors/branches/lm-sensors-3.0.0</p>
+        <p>I plan to build openSuse 10.2 packages on Friday (June 29th) with whatever I will have come up with. Testers will be welcome.</p>
+        <h2>Side Quests</h2>
+        <p>As the new libsensors will not be compatible with the previous one, and will only support Linux 2.6, I believe it's the right time to clean up a number of things in the lm-sensors package. This includes:
+          * Moving the i2c tools to a separate package.
+          * Removing some compatibility code.</p>
+      </div>
+    </div>
+  </div>
+</body>

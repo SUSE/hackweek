@@ -1,0 +1,63 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Network-enable all our apps</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, filesystem, network, Desktop, SLED, openSUSE</p>
+        <h2>Description</h2>
+        <p>All of our applications should be aware of the network.  This means, at least, that our applications should allow one to open files off the network transparently.  For GNOME applications, this means a broader acceptance of GNOME-VFS.  I think all KDE applications use kioslaves and have this ability by default.</p>
+        <p>In addition to opening files over the network, drag and drop between various applications should work as well.  I should be able to drag a remote file from Konqueror to the GIMP or Inkscape and have the file opened over the network, transparently.  (To the end-user, it doesn't matter if the URI is a non-standard fish:// -- the end-user wants it to work.  In the fish case, perhaps the URI could be automatically be translated into sftp or such, if it isn't already.)</p>
+        <h2>People</h2>
+        <p>Garrett LeSage originated this idea.  Some people seem to be working on this in the community somewhat already.</p>
+        <h2>Related Materials</h2>
+        <h3>KDE</h3>
+        <p>  * [[http://docs.kde.org/stable/en/kdebase/kioslave/fish.html|Fish kioslave]]
+          * [[http://docs.kde.org/stable/en/kdebase/kioslave/index.html|All kioslaves]]</p>
+        <h3>GNOME</h3>
+        <p>  * [[http://mail.gnome.org/archives/gtk-devel-list/2007-February/msg00062.html|gvfs status]]</p>
+        <h3>System-level (FUSE)</h3>
+        <p>  * [[http://fuse.sourceforge.net/|FUSE]]
+          * [[http://lists.freedesktop.org/archives/portland/2006-July/000655.html|KIO and GnomeVFS integration with Linux-FUSE]] ([[http://lists.freedesktop.org/archives/portland/2006-July/thread.html#655|thread]])
+          * [[http://rlove.org/log/2006070601|A Great Way for Purging an Ex-Girlfriend From Your Life]]
+            * [[http://rlove.org/talks/guadec_rlove_fuse_2006.odp|OOo slides from rlove's talk]]
+          * [[http://portland.freedesktop.org/wiki/TaskVFS|Freedesktop Portland cross-desktop VFS]]</p>
+      </div>
+    </div>
+  </div>
+</body>

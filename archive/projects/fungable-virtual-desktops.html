@@ -1,0 +1,66 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Fungible Virtual Desktops</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, Security, Desktop, Virtualization, Mobile, Management</p>
+        <h2>Description</h2>
+        <p>Some companies have "laptop pools", where staff who are going on a business trip can check out a laptop for the duration of their trip, and check it back in when they return. Enterprises do this if travel for most staff is relatively rare, and they want to save money by having far less laptops than people.</p>
+        <p>There are a bunch of problems with this approach:
+          * You don't get your personal desktop environment, you get some generic setup from IT.
+          * To save you from someone else's infections and to protect their data, you have to re-install the box every time, which is time consuming.
+          * Before you give the machine back, you have to find and save all the data on the machine you care about.</p>
+        <p>And this is all sufficiently annoying that many enterprises just don't do it.</p>
+        <p>Idea: [[http://www.answers.com/fungible&r=67|Fungible]] virtual desktops.
+          * Each laptop has a minimal permanent install that is just a VM host, with suitable drivers for whatever hardware is in the machine
+          * User desktops live in a big server as images
+          * To check out a laptop, the user's desktop VM image is just copied to whatever laptop is handy</p>
+        <p>Security: You can encrypt the virtual volume, so the data is protected until it meets up with the user, who has the volume key on their personal USB memory stick. Note: need LUKS support for [[Make LUKS Support Memory Stick Storage of Disk Encryption Keys|external storage keys]]</p>
+        <p>An extension to this idea could be to support user desktops the same way. You would not want to transfer your 50GB VM image to your desktop every morning, but perhaps it could work if your VM image was NFS mounted from the big server, so it could be accessed on demand by a thin client.</p>
+        <h2>People</h2>
+        <p>Crispin Cowan originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+        <h2>Related Materials</h2>
+        <p>[[http://www.ltsp.org/|LTSP: Linux Terminal Server Project]]</p>
+        <p>[[http://www.xensource.com/|Xen]]</p>
+        <p>[[http://virt.kernelnewbies.org/KVM|KVM]]</p>
+        <p>[[http://www.vmware.com/products/ace/|VMware ACE Virtual Desktop Management]]</p>
+      </div>
+    </div>
+  </div>
+</body>

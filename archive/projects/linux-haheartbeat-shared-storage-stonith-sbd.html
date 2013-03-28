@@ -1,0 +1,54 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Linux-HA/heartbeat: shared storage STONITH (SBD)</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, Server, UnixFeature, SLES, Done, InBuildService</p>
+        <h2>Description</h2>
+        <p>The idea is to create a STONITH mechanism which works through the shared storage, akin to the Novell Cluster Services's Split-Brain-Detector's "poison pill."</p>
+        <p>This would allow Linux-HA (the underlaying technology to SLES's High-Availability Storage Infrastructure) to be applicable in all scenarios where shared storage exists, and not always require an external power switch to fence.</p>
+        <p>Scenarios of this kind include virtualized environments as well as certain split-site configurations as well.</p>
+        <p>As this item protects the data integrity of the cluster, it must be very reliable.</p>
+        <h2>People</h2>
+        <p>Lars Marowsky-Brée originated this idea and will work on this during HackWeek 2008.</p>
+        <h2>Related Materials</h2>
+      </div>
+    </div>
+  </div>
+</body>

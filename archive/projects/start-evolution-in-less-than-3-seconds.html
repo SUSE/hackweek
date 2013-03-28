@@ -1,0 +1,61 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Start Evolution in less than 3 seconds</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> InProgress, SLED, Desktop, Evolution, Performance, JudgePerf</p>
+        <h2>Description</h2>
+        <p>When a user configures an exchange account in Evolution and restarts Evolution, it takes approx. 20 secs to bring the UI and then starts loading folders.  In short, users have to wait for minutes together (depends on the number of messages in the folder that is getting loaded) before they can do anything with the application.  </p>
+        <p>This idea is to reduce the time taken by Evolution/Exchange connector to bring the UI and before loading folders.</p>
+        <h2>People</h2>
+        <p>Veerapuram Varadhan originated this idea and would be working on it for Hackweek.</p>
+        <h2>Where can I get it?</h2>
+        <p>Initial working patch is [[http://people.freedesktop.org/~vvaradan/misc/evo/evo-exchange-round-3-opt.patch | here]]. (has bugs!)</p>
+        <p>Updated patch is [[http://people.freedesktop.org/~vvaradan/misc/evo/evo-exchange-round-3-opt-ver1.patch | here]]. (Bugs fixed and Yes, has bugs!) ;-)</p>
+        <h2>ToDo</h2>
+        <p>[x] <del>Move non-critical server communication code to a separate thread</del></p>
+        <p>[x] <del>Postpone loading of folders to first-call to get_folder</del></p>
+        <p>[x] <del>Load folders from disk and fire-up a sync in another thread</del></p>
+        <p>[] Appropriate (un)locking of webdav-hierarchy objects</p>
+        <h2>Pre-Requisite to use the patch</h2>
+        <p>In order to achieve 3 seconds loading time including showing previously selected message - you would also need this [[http://people.freedesktop.org/~vvaradan/misc/evo/evo-exchange-round-2-opt.patch | Folder loading optimization patch]]</p>
+      </div>
+    </div>
+  </div>
+</body>

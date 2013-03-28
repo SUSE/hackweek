@@ -1,0 +1,54 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>CIM Enabled Shell</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> InProgress, Management, SLES</p>
+        <h2>Description</h2>
+        <p>There already exists a binding between CIM and python in SUSE called pywbem. It would be nice to try to integrate this with python shell -- iPython.</p>
+        <p>I'm currently working on a CIM to Python mapping called powerCIM. It provides a more intuitive mapping of CIM objects to Python than pywbem does (but it is still using pywbem as back-end). Integrating powerCIM with iPython is probably the way to go, because it has some nice features which are not in pywbem (e.g. if you have a SSHService class you can call SSHService.StopService() directly on the object).</p>
+        <h2>People</h2>
+        <p>Martin Mrazik originated this idea.  He is currently experimenting with this idea.</p>
+        <h2>Related Materials</h2>
+        <p>  * http://ipython.scipy.org/moin/ -- iPython
+          * http://svn.opensuse.org/svn/powerCIM/trunk/ -- powerCIM</p>
+      </div>
+    </div>
+  </div>
+</body>

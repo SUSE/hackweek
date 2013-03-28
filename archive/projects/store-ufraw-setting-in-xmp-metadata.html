@@ -1,0 +1,72 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>save ufraw settings in xmp metadata</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, InProgress, desktop, camera, Photography</p>
+        <h2>Description</h2>
+        <p>ufraw is a tool for "developing" raw files from camera. It should be possible
+        to store the setting used for the processing together with the photo and
+        reproduce or adjust the process later. </p>
+        <p>xmp seems to be ideal format for it.</p>
+        <p>UPDATE 19.2.2008:</p>
+        <p>I have partially working patch. I decided to use xmp support in libexiv2, 
+        because this library is already used in ufraw. The xmp support in libexiv2 0.16 
+        has some bugs, so the patch now works only with latest svn version.</p>
+        <p>DONE:</p>
+        <p>- C wrapper for exiv2
+        - reading and writing of most options
+        - embedding xmp in jpeg and png</p>
+        <p>TODO:</p>
+        <p>- finish list of tags and decide which namespace should be used. Possibilities
+        are Adobe's crs (cammera raw settings) or ufraw private namespace. Crs is a standard
+        for RAW processing, however the values must have the same meaning as in Adobe's 
+        implementation, which is not always true, because the algorithm are different.</p>
+        <p>- finish the commandline and gui options</p>
+        <p>- xmp in tiff</p>
+        <h2>People</h2>
+        <p>Vladimir Nadvornik originated this idea.  He started to work on it.</p>
+        <h2>Related Materials</h2>
+        <p>http://ufraw.sourceforge.net/</p>
+        <p>http://en.wikipedia.org/wiki/Extensible_Metadata_Platform</p>
+        <p>http://www.google.com/search?q=xmp+raw</p>
+      </div>
+    </div>
+  </div>
+</body>

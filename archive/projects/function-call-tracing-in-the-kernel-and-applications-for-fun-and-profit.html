@@ -1,0 +1,95 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Function Call Tracing in the Kernel and Applications (for Fun and Profit)</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Community, Security, QA, Kernel, Desktop, Management, UnixFeature, Server, Performance, DevTool, InProgress, HW-Tester, HW-Docs, HW-Packaging</p>
+        <h2>Description</h2>
+        <p>The project FCTRACE -- function call tracing -- uses the Linux kernel
+        probes (kprobes) to trace kernel mode (and later user mode) function
+        calls done by an application or any thread of execution. By design, it
+        tries to have as little negative impact on system performance as
+        possible, and sets up and removes probes dynamically as needed.</p>
+        <p>The aim for this week is to create a generally working prototype, which
+        can start a trace in kernel space from a specified function address or a
+        given system-call.</p>
+        <p>There are various uses for this, here are some of the main uses I had in mind:
+          * as a RAS (reliability, availability, serviceability) tool: a user has a difficult-to-reproduce but serious problem with an application or kernel (spurious crashes, data loss or corruption etc.): he can use fctrace to get the call history and cut down on the code review that needs to be done
+          * as a helper for improved bug reports: a user can reproduce a problem easily on large installations, special hardware or a special setup that the developer cannot access: the user can use fctrace to give the developer more information so he can fix the bug nonetheless, or home in quickly on problematic code behaviour and create simple test code snippets for the user to try out
+          * as a security team tool: understanding what happens in the code is essential for finding security problems proactively: the tool can speed up understanding the general structure of a program; also, for reactively finding and fixing security bugs, the tool can quickly show the involved functions and speed up the fix process
+          * as a performance analysis tool (this is a future extension): the performance analysis does not need a setup and gathers data from the actual execution environment
+          * as a learning tool (helping the community to thrive): what happens (e.g. in the kernel, in Mozilla, in Apache, in glibc etc.) when the user clicks here, calls this kernel or library function, etc.</p>
+        <p>The main benefits over other tracing tools (strace, ltrace, LTT and related tools like systemtap) are one or more of these: fctrace
+          * shows all function calls, not just system or library calls
+          * is supported on all main platforms (basically every platform that has kprobes)
+          * is simple to port
+          * has very little need for maintenance
+          * module can be compiled and used with any kernel (that supports kprobes), not just SUSE kernels
+          * has no performance impact when unused, quite small performance impact when used
+          * has little or no loss of events
+          * works with any application or kernel thread
+          * has ease of use -- as simple as strace, no setup is needed
+          * has lots of possibilities for extension (e.g. in the security area)
+          * planned extension: filtering of calls
+          * planned extension: display function arguments (requires debuginfo or type info in executable)
+          * planned extension: call graphs (with separate evaluator)
+          * planned extension: performance analysis (with separate frontend)
+          * planned extension: ... more ideas (and designs) exist, need to add them here</p>
+        <p>The main idea is that nowadays applications and the kernel are far too big to watch and
+        understand from the behaviour at the external interfaces only. Watching the function calls
+        gives additional information which is often sufficient to understand a problem. At the
+        very least, it can usually help to quickly identify the function or a set of functions that
+        need to be checked.</p>
+        <p>Without fctrace, this information can in principle be gathered from the source code (if
+        available). But with the abundance of function registrations for plugins and modules
+        that are nowadays being used in many applications (Apache, Mozilla, Gimp, ...) and the
+        kernel, tracing the source becomes much more tedious. Also, in some situations a fix
+        is really wanted (data corruption), but the reproducer of the problem would not look
+        through the source code himself. And even for a developer, esp. who is looking at
+        yet unknown code, this task is better left to a tool which can work much more quickly.</p>
+        <h2>People</h2>
+        <p>Olaf Dabrunz originated this idea. Patrick Kirsch programmed the initial prototype. Olaf and Patrick are improving the prototype. Help is wanted, see help tags (or any other kind of contribution). :)</p>
+        <h2>Related Materials</h2>
+        <p>The sourceforge project page is at https://sourceforge.net/projects/call-tracing.
+        The Subversion branch we are currently working on is the new-layout branch at 
+        https://call-tracing.svn.sourceforge.net/svnroot/call-tracing/branches/new-layout.</p>
+      </div>
+    </div>
+  </div>
+</body>

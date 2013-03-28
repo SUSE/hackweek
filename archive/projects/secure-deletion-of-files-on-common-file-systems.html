@@ -1,0 +1,51 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Secure deletion of files on common file systems</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, Kernel, filesystems, security</p>
+        <h2>Description</h2>
+        <p>Several Linux file systems support tagging of files for secure deletion but don't actually honor them. When files are no longer used, the most common method of deletion is to remove the file metadata and mark the blocks freed. This means that while there is no longer a link to the deleted file, the file's data exists as certainly as if it weren't deleted at all. Secure deletion means that when the file is deleted, the existing file data is overwritten before it is freed. There are multiple levels of secure deletion (how many times it is overwritten), but for most purposes once is enough. There is an obvious performance impact for this, since it essentially means that the entirety of the file will be written again as if it were new before it is deleted. The flag should be available and honored at the inode and file system level.</p>
+        <h2>People</h2>
+        <p>Jeff Mahoney originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+        <h2>Related Materials</h2>
+      </div>
+    </div>
+  </div>
+</body>

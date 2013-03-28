@@ -1,0 +1,71 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Implement a GUI bugzilla client</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, Desktop, Mono</p>
+        <h2>Description</h2>
+        <p>Implement a bugzilla client library and GUI, so we can use bugzilla without going through the web interface.</p>
+        <p>It should include all basic bugzilla features, like Login, Search, Customize / Save searches, Add / Modify bugs, [add more here]</p>
+        <p>A local cache and offline mode would be handy.</p>
+        <p>The whole thing is to be implemented in Mono/C#, the GUI toolkit is still under discussion... should it be Winforms? Gtk#, XAML? All of the above?</p>
+        <p>Grendel: I believe we should include all the GUI versions with one backend library. Maybe even provide a GTK# Bugzilla control? And a MonoDevelop Add-In based on the library.</p>
+        <h2>People</h2>
+        <p>Andreia Gaita originated this idea.</p>
+        <p>Marek Habersack is interested in working on this idea</p>
+        <h2>Related Materials</h2>
+        <p>Bugzilla client library can be shared with the [[Error reporting library and infrastructure]] project.</p>
+        <h2>Comments</h2>
+        <p>Since the discussion area looks to be down at the moment, I'm going to add some comments here.</p>
+        <p>  * The code is hosted at http://code.google.com/p/bugzz/
+          * We're on #bugzz at gimpnet.</p>
+        <h3>Featurettes:</h3>
+        <p>  * 3 GUIs, one backend library. The GUIs should preferably follow one single design, so they do more or less the same and we don't spend too much time on design/usability issues. Also, for extra cookie points, we can see how the 3 toolkits compare.</p>
+        <p>  * We need to avoid the chain login time, which is enormous and not needed, since the bugzilla login itself is fast. Some sort of timeout, or check what the login returns to see if we can know when the bugzilla login is done.</p>
+        <p>  * Customization settings for default values in searches and bugs. This will probably involve adding support for XML templates for people to use</p>
+        <p>  * Offline mode</p>
+        <p>  * Caching mechanism for bugs and search results.</p>
+        <p>  * Batch commits when changing from offline to online mode</p>
+        <p>  * Synchronization mechanism for detecting changes in online bugs when batch commiting, and, for certain conditions (the bug changed status online while the user was offline, for instance), confirm the change before commiting it.</p>
+        <h3>Ongoing status</h3>
+        <p>  *  First screenshot of live, freshly baked bugs! {{http://bugzz.googlecode.com/svn-history/r23/trunk/screenies/we_have_bugs!.png?557x475}} --- //[[shana.ufie@gmail.com|Andreia Gaita]] 2008-02-12 @ 21:09//</p>
+      </div>
+    </div>
+  </div>
+</body>

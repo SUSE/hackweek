@@ -1,0 +1,53 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Manage documents containing hard coded and dynamic events</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> InProgress, Web20, HelpWanted, HW-Hacker, HW-Designer</p>
+        <h2>Description</h2>
+        <p>Many documents such as contracts contain events on which certain things are scheduled to happen. The most obvious examples are effective dates, expiry dates, survival periods etc. When these are hard coded in the document, it is easy to manage them in a database. However, even though most contracts have a fixed effective date to start on and expiry date to end on, there is often a provision that a contract will automatically renew itself for further periods, if not terminated before a certain date. The 'certain date' will normally be defined as something like '90 days before the expiry date'. Thus, this has to be determined. There are other 'rolling events' which have to be considered as well, such as milestones.</p>
+        <p>Once the events have been stored in a database, the person responsible for the contract should be alerted by email (etc) on %event - x days where x is the number of days that the person responsible needs to act on the event (some contracts need to be terminated in writing, and sent by FedEx etc, so it may take some time).</p>
+        <p>The actual documents themselves can be stored centrally, with access being only granted to the person responsible (or a group of responsible persons). It could be possible to run the scanned versions through tesseract etc in order to be able to perform a full-text search from a frontend. </p>
+        <h2>People</h2>
+        <p>Ciaran Farrell originated this idea and is working on it using Symfony.</p>
+        <h2>Related Materials</h2>
+      </div>
+    </div>
+  </div>
+</body>

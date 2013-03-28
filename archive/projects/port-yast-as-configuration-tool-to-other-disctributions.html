@@ -1,0 +1,56 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>port YaST as configuration tool to other distributions</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, YaST, Management, DevTool</p>
+        <h2>Description</h2>
+        <p>The idea is to make YaST portable to any other distributions. I did something similar in past : 
+        http://build.opensuse.org/project/show?project=YaST%3ASVN but there was problem that I was able to build it only to rpm-based distributions (it was Fedora in that case). With this initiative :
+        http://idea.opensuse.org/content/ideas/making-the-yast2-ui-usable-without-all-the-ycp-stuff
+        UI will be independent from zypp so it is only pkg-bindings which are depended on rpm. For other distributions we can create pkg-bindings-fake and their developers can write necessarily code for that later.</p>
+        <p>Also we should provide mechanism to build SCR agents (System Configuration Repository - http://forgeftp.novell.com/yast/doc/SLES9/tdg/html/id_big_architecture.html#id2529648) from other locations depended on distribution. They needs other agents, because there are other configuration location or configuration is merged/splitted into different count of files. It's similar like NetworkManager uses different configurations for different distributions but there is one shared place for upstream sources.</p>
+        <p>Just to keep in mind Yet Another Link - some development problems but not realted to porting (except last one): http://en.opensuse.org/YaST_Problems_from_Developer's_View</p>
+        <h2>People</h2>
+        <p>Michal Zugec originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+        <h2>Related Materials</h2>
+      </div>
+    </div>
+  </div>
+</body>

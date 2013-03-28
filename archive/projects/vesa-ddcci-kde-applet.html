@@ -1,0 +1,65 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>VESA DDC/CI - KDE Applet</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, Desktop, openSUSE, SLED, kde</p>
+        <h2>Description</h2>
+        <p>Monitors can be controlled by software using the VESA DDC/CI protocol. There's already a command line interface for that, called ddccontrol (http://ddccontrol.sourceforge.net/).</p>
+        <p>Quote from the homepage:
+        ''DDCcontrol is a program running on Linux, used to control monitor parameters, like brightness and contrast, by software, i.e. without using the OSD (On Screen Display) and the buttons in front of the monitor.''</p>
+        <p>The idea is to create a KDE frontend for the ddccontrol library, possibly a taskbar applet. It would be quite cool to change the brightness, contrast and color temperature of your screen with a single click in the KDE kicker :)</p>
+        <p>Features it should have:
+          * Presets
+          * Global keyboard shortcuts
+          * Eventually, the application should have a DCOP or dbus interface, at least for loading presets.</p>
+        <p>Additional ideas regarding DDC/CI:
+          * ncurses alsamixer-like DDC/CI interface
+          * Bluetooth/LIRC integration</p>
+        <h2>People</h2>
+        <p>Wolfgang Frisch originated this idea.  No one is currently working on implementing this idea (it's up for grabs!). The project would be best done by someone who's well versed with the KDE libraries.</p>
+        <h2>Related Materials</h2>
+        <p>[[http://ddccontrol.sourceforge.net/|DDCcontrol homepage]]
+        [[http://en.wikipedia.org/wiki/Display_Data_Channel#DDC.2FCI|Wikipedia page about DDC(/CI)]]</p>
+        <p>Test Applet screenshot:
+        {{ideas:kddccontrol-test-01.png|}}</p>
+      </div>
+    </div>
+  </div>
+</body>

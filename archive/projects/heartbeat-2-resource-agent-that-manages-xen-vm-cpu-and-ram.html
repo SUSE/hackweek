@@ -1,0 +1,51 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Heartbeat 2 resource agent that manages Xen VM CPU and RAM.</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, management, virtualization</p>
+        <h2>Description</h2>
+        <p>Create a Heartbeat 2 resource agent which can : reserve a portion of a core on each cluster node for Dom0 I/O + distributes RAM which is not used on a node to running VMs + keeps in mind that some RAM might be needed for a failover in case of a crash of another cluster node + allows for CPU reweight-ing ... something like that. Ideally this RA would make use of Till Franke's idea's implentation regarding Xen metrics ...</p>
+        <h2>People</h2>
+        <p>jo de baer originated this idea and is working on it.</p>
+        <h2>Related Materials</h2>
+      </div>
+    </div>
+  </div>
+</body>

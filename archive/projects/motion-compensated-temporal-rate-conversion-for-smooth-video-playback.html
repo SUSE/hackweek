@@ -1,0 +1,62 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Motion compensated temporal rate conversion for smooth video playback</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, Graphics, multimedia, video</p>
+        <h2>Description</h2>
+        <p>Movies are filmed with 24fps, which doesn't nicely convert to 60fps of projectors, and is definitely not enough to allow for smooth camera movement (even the 50fps of IMAX films isn't enough). Also PAL (25fps) doesn't fit at all, which often results in very visible judder.</p>
+        <p>To compensate for this, we need temporal rate conversion, which allows for optical flow compensated (often wrongly called motion compensated) interpolation between frames. Calculating a dense(!) stable(!) optical flow field is a complicated task, and typically too slow for real time applications like movie players.</p>
+        <p>For video codecs the optical flow calculation used for motion compensation uses block matching, but it isn't dense, and doesn't have to be stable, so these algorithms probably cannot be used.</p>
+        <p>The best algorithm to implement here is probably a multiscale wavelet-based optical flow estimator with a multigrid solver for the resulting nonlinear equation system. In order to make this real-time feasible, this should be implemented on fast GPUs like NVidia's 8800.</p>
+        <p>Probably the most difficult issue is to convert the forward-pointing motion vectors into backward-pointing ones needed for interpolation, because that doesn't fit the GPU approach at all.</p>
+        <h2>People</h2>
+        <p>Matthias Hopf originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+        <p>Matthias Hopf is already reading tons of papers and brainstorming how this could be implemented on the GPU.</p>
+        <h2>Related Materials</h2>
+        <p>Fast two-frame multiscale dense optical ﬂow estimation using discrete wavelet filters:\
+        http://www.umiacs.umd.edu/~rama/Conf.pdf-files/ViewMedia-37.pdf</p>
+        <p>Motion Vector Steered temporal rate conversion:\
+        http://www.microsoft.com/whdc/archive/TempRate1.mspx#ELF</p>
+        <p>The art of optical flow (more cinematic effects based):\
+        http://www.fxguide.com/article333.html</p>
+      </div>
+    </div>
+  </div>
+</body>

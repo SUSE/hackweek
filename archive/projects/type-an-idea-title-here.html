@@ -1,0 +1,57 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Idea addition error</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p>You forgot to name your idea's name in the "''Type an idea title here''" entry field before clicking on the "Add my idea" button on the [[:|front page]].</p>
+        <p><ifauth @user>
+        This same entry is included below for your convenience.
+        </ifauth></p>
+        <p>{{blog>ideas?0}}
+        <ifauth !@user>
+        <div id="start-signin">
+        Please <html><a href="?do=login">sign in</a></html>
+        or <html><a href="?do=register">sign up for an account</a></html> to post your idea.
+        </div>
+        </ifauth>
+        ~~DISCUSSION:off~~</p>
+      </div>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,55 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>webfrontend for server configuration</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> InProgress, Community, Management, Server, LAMP, openSUSE, SLES</p>
+        <h2>Description</h2>
+        <p>Create a webfrontend to configure server services easily (http, mail, mailinglist, database, ftp etc.). The system should be independent of server software running, independent of the operating system, be extendible with plugins, support multiple users (role based) and multiple hosts (consolidate services to dedicated machines).</p>
+        <p>The authority for configuration will be the database the application works on. The configuration may be pushed to the clients or pulled from the clients. They write it to their systems config files or config services (eg. LDAP), so at this point they can even use existing configuration tools like YaST. All servers and services should remain running even if the authoritive database is down (just configuration updates will not be distributed).</p>
+        <p>There are already solutions in place (webmin or vhcs, to name two well known) but they are mainly done from a different approach.</p>
+        <h2>People</h2>
+        <p>J. Daniel Schmidt originated this idea.  He is currently working on implementing this idea.</p>
+        <h2>Related Materials</h2>
+        <p>Project "green" started in 2004:
+        http://green.jdsn.de</p>
+      </div>
+    </div>
+  </div>
+</body>

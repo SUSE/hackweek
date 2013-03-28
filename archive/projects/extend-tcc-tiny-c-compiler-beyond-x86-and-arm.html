@@ -1,0 +1,53 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Extend TCC (Tiny C Compiler) beyond x86 and ARM</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, compiler, powerpc, s390, ia64, ARM, amd64</p>
+        <h2>Description</h2>
+        <p>TCC (Tiny C Compiler) is a very fast and simple near-C99 compiler currently supporting x86 (to-memory and to-file (ELF and PE) compilation) and ARM (to-memory only). It is good enough to be able to compile the Linux kernel at boot time in 15 seconds and even has its own bootloader for that purpose. :)</p>
+        <p>Extend it to support all the great architectures out there, and maybe implement to-file compilation on ARM, too. Judging from the amount of code necessary to support ARM, adding a new backend should be feasible in less than a week.</p>
+        <h2>People</h2>
+        <p>Ulrich Hecht originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+        <h2>Related Materials</h2>
+        <p>[[http://www.tinycc.org/|Tiny C Compiler]]</p>
+      </div>
+    </div>
+  </div>
+</body>

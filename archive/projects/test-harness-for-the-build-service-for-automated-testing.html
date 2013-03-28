@@ -1,0 +1,103 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Test harness for the build service for automated testing</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> DevTool, openSUSE, Tryit, TryMe, BuildService, Qa, JudgeQa, JudgeMe, JudegeBest, JudgeCommunity, JudgeTeam, Done</p>
+        <h2>Description</h2>
+        <p>Set up a system in the build service where people can run automated tests as part of the build.  Perhaps tie this to testopia.</p>
+        <h2>People</h2>
+        <p>JP Rosevear originated this idea. </p>
+        <p>Nagappan would like to take up this task along  with Srinidhi and Akhil as part of Hack Week !</p>
+        <p><html>
+        <embed style="width:400px; height:326px;" id="VideoPlayback" type="application/x-shockwave-flash" src="http://video.google.com/googleplayer.swf?docId=-6184326840429777573&hl=en" flashvars=""> </embed>
+        </html></p>
+        <h2>Related Materials</h2>
+        <p>Try this patch (http://people.freedesktop.org/~nagappan/obs-test-harness-new.patch) and send your feed back to anagappan AT novell DOT com, srinidhi AT novell DOT com</p>
+        <h3>Features added as part of HackWeek</h3>
+        <p>  * Test automation will be run in same enviroment as build environment.
+          * A shell environment for the user, with which user can invoke any scripting language.</p>
+        <h3>Advantages</h3>
+        <p>  * User can add their testing scripts, written in any scripting language and they can invoke the scripts inside test-harness.sh.
+          * Environment is recreated everytime, when the test-harness is invoked. Thus giving a reliable environment and test results.
+          * Its not restricted to just test one application, you can add how many ever package you want to test, just add all of them in BuildRequires (in future TestRequires) and invoke all the tests !!!</p>
+        <h3>Pre-Requisite to use the test environment</h3>
+        <p>  * Need to have the test initiater code in test-harness.sh, uploaded to the current project where you want to test the application.
+          * Log files should be generated in XML or HTML format / extension only.
+          * Once the test is done, the result XML and / or HTML file(s) has to be moved to /tmp/RESULT directory, which will be uploaded to repository directory.</p>
+        <h3>Known issues</h3>
+        <p>  * Test results are uploaded to repository directory.
+          * Tests are done only in RPM based environment.
+          * If test-harness.sh is not available in the current project, still it goes till the invocation of test-harness.sh file.
+          * All required projects for testing should be either linked or should be built in the same project.
+          * Need to give all the packages required for testing in BuildRequires.
+          * Tested in OpenSuSE-10.2 and that too in chroot environment. Need to check them with other distributions and in Xen environment.</p>
+        <h3>Future ideas</h3>
+        <p>  * Instead of BuildRequires, It will be good, if we have TestRequires field in spec file, with which we can just install packages relate to testing and that too at the time of testing.
+          * Tests should be done for DEB based environment.
+          * Need to find appropriate directory and upload them.
+          * Since we are giving a shell environment through test-harness.sh, we need to restrict the commands !?!
+          * When test results are uploaded, it should not delete the rpm's available in repository.</p>
+        <h3>Acknowledgment</h3>
+        <p>Thanks to Michael Schroeder, darix and bauersman for all their valuable help and suggestion.</p>
+        <p>// Before starting this project, we don't have any idea how build system works, no perl / ruby knowledge, which are required knowledge for this project !</p>
+        <h3>Example test-harness.sh script content</h3>
+        <p>  ##################### Script starts here ###################
+          echo "gnome-session" > ~/.xinitrc</p>
+        <p>  export DISPLAY=localhost:1
+          /usr/bin/Xvfb -reset -terminate -once :1 -screen 0 1024x768x24&
+          pid=`pidof Xvfb`
+          sleep 5</p>
+        <p>  mkdir -p /tmp/test
+          tar zxv -C /tmp/test -f gedit.tar.gz</p>
+        <p>  lwd=`pwd`
+          cd /tmp/test/gedit
+          ldtprunner gedit-execution.xml
+          cd $lwd</p>
+        <p>  mkdir -p /tmp/RESULT
+          cp -a /tmp/test/gedit/gedit-log.xml /tmp/RESULT/</p>
+        <p>  kill -s TERM `echo $pid | cut -d " " -f 1` # Kill Xvfb session at end
+          ##################### Script ends here ###################</p>
+        <h3>General Links related to testing</h3>
+        <p>  * Linux Desktop Testing Project - http://ldtp.freedesktop.org
+          * Integrate LDTP tests into jhbuild - http://bugzilla.gnome.org/show_bug.cgi?id=349114</p>
+      </div>
+    </div>
+  </div>
+</body>

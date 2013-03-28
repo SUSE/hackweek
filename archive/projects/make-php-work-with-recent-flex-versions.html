@@ -1,0 +1,61 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>make php work with recent flex versions</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, LAMP</p>
+        <h2>Description</h2>
+        <p>The php language scanner requires a certain (old) flex version, because
+        it relies on internals of that version to implement a reentrant scanner.
+        This causes problems for us (we have to keep that old version just
+        because of php) as well as for users who want to rebuild php (they have
+        to make sure they have the right version installed). So this idea is
+        about porting the php scanner to recent flex. Given that flex has now
+        native support for reentrant scanners, it shouldn't be too difficult.</p>
+        <p>Note: I'm talking about the lex-style scanner generator, not the
+        Adobe product :-)</p>
+        <h2>People</h2>
+        <p>Michal Marek is going to work on this during the hackweek.
+        The idea itself isn't anything new actually.</p>
+        <h2>Related Materials</h2>
+        <p>http://www.mail-archive.com/internals@lists.php.net/msg22600.html</p>
+      </div>
+    </div>
+  </div>
+</body>

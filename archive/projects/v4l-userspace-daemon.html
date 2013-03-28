@@ -1,0 +1,56 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>v4l userspace daemon</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea</p>
+        <h2>Description</h2>
+        <p>a daemon suggested by v4l people, that will resize, convert between color formats, and similar things -- those two are basic needed by 2 drivers to support even webcams with only for example bayer format in non-pwlib applications without need to rewrite them from scratch or implement every new added color format.</p>
+        <p>The idea is to create simple kernel module, which will hook to v4l and add some (or any) missing formats and sizes to the capabilities. this module will also implement an interface (probably /dev/ char spec. file) where the daemon will listen.</p>
+        <p>Whenever an user application opens /dev/videoX, and try to get capabilities, kernel asks the driver and the module (and such the daemon) through the hooks and return them. And then, when app wants data, daemon tunnels the recomputed data directly to the app.</p>
+        <h2>People</h2>
+        <p>  * Thierry Merle <thierry.merle@free.fr>
+          * Jiri Slaby</p>
+        <p>Jiri Slaby originated this idea.</p>
+        <h2>Related Materials</h2>
+        <p>http://thierry.merle.free.fr/v4l2_extension/general.html</p>
+      </div>
+    </div>
+  </div>
+</body>

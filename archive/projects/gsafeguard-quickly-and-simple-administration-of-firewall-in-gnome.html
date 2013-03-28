@@ -1,0 +1,62 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>GSafeguard - Quickly and simple administration of Firewall in GNOME</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> InProgress, Security, Desktop</p>
+        <h2>Description</h2>
+        <p>If you wanna start/stop Firewall or configure it, you must run SuSEfirewall2 in terminal or select the firewall managerment from Yast, a little inconvenient.</p>
+        <p>1. Applet for gnome that could start and stop firewall quickly.</p>
+        <p>{{ ideas:GSafeguard_applet.png | GSafeguard Applet screenshot}}</p>
+        <p>2. Provide a log list what blocked and allowed by firewall.</p>
+        <p>{{ ideas:allow_packet.png | GSafeguard Allow packet menu screenshot}}</p>
+        <p>3. A simple and friendly GUI for displaying and administering firewall rules. For example, user could right click one log in list, then from menu select allow the packet, after that some rules will be add to Firewall's rules.</p>
+        <h2>People</h2>
+        <p>Bin Li originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+        <h2>Related Materials</h2>
+        <p>1. How to write an applet?</p>
+        <p>http://developer.gnome.org/arch/gnome/corecomponents/panel/applets.html</p>
+        <p>2. How to use DBus?</p>
+        <p>http://dbus.freedesktop.org/doc/dbus-tutorial.html</p>
+        <p>3. How to implement firewall function with iptables?</p>
+        <p>http://www.kmyfirewall.org/kmf_doc/index.html</p>
+      </div>
+    </div>
+  </div>
+</body>

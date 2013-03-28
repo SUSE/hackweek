@@ -1,0 +1,61 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Network console support for the bootloader</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> openSUSE, Community, Server, Idea, bootloader</p>
+        <h2>Description</h2>
+        <p>GRUB already has networking support, but only for downloading the kernel and
+        initrd image. It also has support for serial consoles to choose the kernel and
+        to fix your configuration (by using the shell or the interactive editing).</p>
+        <p>I'd like to see some network console, i.e. the same interface that I see over
+        serial console over network (maybe a simple telnet implementation).</p>
+        <p>My personal use case is a home server, where I have no serial console because
+        I don't want to put my flat full of cables, and also no screen or keyboard.
+        After the power was lost and I had to boot the system, I went into a
+        bootloader configuration that doesn't boot. Having a GRUB network console
+        would have saved me from about 30 minutes work. :-)</p>
+        <p>I know that real data centers don't need something as there's a serial console
+        or a management processor anyway.</p>
+        <h2>People</h2>
+        <p>Bernhard Walle originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+      </div>
+    </div>
+  </div>
+</body>

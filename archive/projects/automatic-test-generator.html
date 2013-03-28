@@ -1,0 +1,125 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Automatic Unit Tests Generator</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> InProgress, QA, DevTool, Mono, JudgeQA</p>
+        <h2>Description</h2>
+        <p>Write a tool which would be able to produce set of tests based on public API of .NET assembly. As the first step we can begin with static methods, properties, and indexers. They will be easier to isolate and test.</p>
+        <p>The idea is to use a reflection or Cecil to inspect input/output arguments then generate automatically input data in memory and hit tested method with the data. After execution and some filtering, produce unit-test (C# code) which can be later used to test mimicked API or assembly.</p>
+        <h2>Status</h2>
+        <p>I have proved that the concept is feasible and tool can produce interesting results. Many of the core features are in-place and my guess is that another 10 MD work can bring some real results.</p>
+        <p>Here is a preview what the tool is able to do already without any hard-coded values.</p>
+        <p>namespace System.MonoTests {
+            using NUnit.Framework;</p>
+        <p>	[TestFixture()]
+        	public class TimeZoneInfoTest {
+        		[Test()]
+        		public void ConvertTimeToUtc_Test_InvalidArguments() {
+                    System.DateTime result = System.TimeZoneInfo.ConvertTimeToUtc(null);
+                    Assert.AreEqual(1, result.Day, "Day");
+                    Assert.AreEqual(System.DayOfWeek.Monday, result.DayOfWeek, "DayOfWeek");
+                    Assert.AreEqual(1, result.DayOfYear, "DayOfYear");
+                    Assert.AreEqual(0, result.Hour, "Hour");
+                    Assert.AreEqual(System.DateTimeKind.Utc, result.Kind, "Kind");
+                    Assert.AreEqual(0, result.Millisecond, "Millisecond");
+                    Assert.AreEqual(0, result.Minute, "Minute");
+                    Assert.AreEqual(1, result.Month, "Month");
+                    Assert.AreEqual(0, result.Second, "Second");
+                    Assert.AreEqual(0, result.Ticks, "Ticks");
+                    Assert.AreEqual(0, result.TimeOfDay.Ticks, "Ticks");
+                    Assert.AreEqual(0, result.TimeOfDay.Days, "Days");
+                    Assert.AreEqual(0, result.TimeOfDay.Hours, "Hours");
+                    Assert.AreEqual(0, result.TimeOfDay.Milliseconds, "Milliseconds");
+                    Assert.AreEqual(0, result.TimeOfDay.Minutes, "Minutes");
+                    Assert.AreEqual(0, result.TimeOfDay.Seconds, "Seconds");
+                    Assert.AreEqual(0, result.TimeOfDay.TotalDays, "TotalDays");
+                    Assert.AreEqual(0, result.TimeOfDay.TotalHours, "TotalHours");
+                    Assert.AreEqual(0, result.TimeOfDay.TotalMilliseconds, "TotalMilliseconds");
+                    Assert.AreEqual(0, result.TimeOfDay.TotalMinutes, "TotalMinutes");
+                    Assert.AreEqual(0, result.TimeOfDay.TotalSeconds, "TotalSeconds");
+                    Assert.AreEqual(1, result.Year, "Year");
+                    Assert.IsFalse(result.IsDaylightSavingTime(), "IsDaylightSavingTime");
+                    Assert.AreEqual(4611686018427387904, result.ToBinary(), "ToBinary");
+                    Assert.AreEqual(0, result.ToOADate(), "ToOADate");
+                    Assert.AreEqual("Monday, 01 January 0001", result.ToLongDateString(), "ToLongDateString");
+                    Assert.AreEqual("00:00:00", result.ToLongTimeString(), "ToLongTimeString");
+                    Assert.AreEqual("01/01/0001", result.ToShortDateString(), "ToShortDateString");
+                    Assert.AreEqual("00:00", result.ToShortTimeString(), "ToShortTimeString");
+                    string[] expected_array = new string[] {
+                            "01/01/0001",
+                            "Monday, 01 January 0001",
+                            "Monday, 01 January 0001 00:00",
+                            "Monday, 01 January 0001 12:00 AM",
+                            "Monday, 01 January 0001 0:00",
+                            "Monday, 01 January 0001 12:00 AM",
+                            "Monday, 01 January 0001 00:00:00",
+                            "01/01/0001 00:00",
+                            "01/01/0001 12:00 AM",
+                            "01/01/0001 0:00",
+                            "01/01/0001 12:00 AM",
+                            "01/01/0001 00:00:00",
+                            "January 01",
+                            "January 01",
+                            "0001-01-01T00:00:00.0000000Z",
+                            "0001-01-01T00:00:00.0000000Z",
+                            "Mon, 01 Jan 0001 00:00:00 GMT",
+                            "Mon, 01 Jan 0001 00:00:00 GMT",
+                            "0001-01-01T00:00:00",
+                            "00:00",
+                            "12:00 AM",
+                            "0:00",
+                            "12:00 AM",
+                            "00:00:00",
+                            "0001-01-01 00:00:00Z",
+                            "Monday, 01 January 0001 00:00:00",
+                            "0001 January",
+                            "0001 January"};
+                    Assert.AreEqual(expected_array, result.GetDateTimeFormats(), "GetDateTimeFormats");
+                    Assert.AreEqual(System.TypeCode.DateTime, result.GetTypeCode(), "GetTypeCode");
+                }
+        	}
+        }</p>
+        <h2>People</h2>
+        <p>Marek Safar originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+        <h2>Related Materials</h2>
+      </div>
+    </div>
+  </div>
+</body>

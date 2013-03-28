@@ -1,0 +1,58 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Run linux desktop from a ramdisk that gets persisted to disk on shutdown</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Kernel, Desktop, Performance, Idea, openSUSE, SLED, SLES</p>
+        <h2>Description</h2>
+        <h2>People</h2>
+        <p>Thomas Wiest and Wade Berrier originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+        <h2>Related Materials</h2>
+        <p>The idea came from seeing a $1200 ramdisk with a sata interface built in.  The disk has a battery and a flash disk (or solid state) to persist data even if the power goes out.</p>
+        <p>But, this should be possible with using plain system ram as well, which would be much cheaper.  For my machine personally, I don't have power outages to worry about, and the machine is always on.</p>
+        <p>The idea would be that you could load up a disk image into a ramdisk from a harddrive on bootup.  That means bootup would be slow, but that also means that you'd never hit the disk.  You could use a harddrive as additional slow storage (music, photos, etc...) if needed.  But if you had 6-8GB of ram (which doesn't cost that much), you could use 2GB for memory, and then 4-6 GB for the root partition.</p>
+        <p>You could also boot up an image from the network for a diskless machine.</p>
+        <p>You would need to be able to have the ability to overflow to a harddrive just in case the ramdisk fills up.  (Use swap memory for this?)</p>
+        <p>Persisting the state of the machine could be done on shutdown, or daily from a cronjob at 1am.  Or if on a laptop when your battery power goes below a certain point.</p>
+        <p>There may be some kernel filesystem buffering tricks to get the same result, but they would *only* be acceptable if the disk was *never* touched after the system was up and running.</p>
+        <p>Speaking of laptop usage, it could possibly save a lot of battery power if you were never reading/writing to a harddisk.</p>
+      </div>
+    </div>
+  </div>
+</body>

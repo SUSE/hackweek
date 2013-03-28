@@ -1,0 +1,56 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Backups made easy</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, Desktop, SLES, SLED</p>
+        <h2>Description</h2>
+        <p>There is a very nice open source backup solution called Dirvish.   As any other backup tool, it does a complete backup of the data, but incremental backups are created by hard linking all the files from a previous date, removing differences and adding new files to the tree.</p>
+        <p>Doing daily backups is very cheap: only the differences consume space, but if you browse the file system, you will actually see various 'views' depending on the directory that you access: if you access the backup under 2007-01-01 you see the tree as it was done that day, if you go to 2007-01-02 you see the tree as it was the next day, but the file system only consumes the difference.</p>
+        <p>Dirvish is currently a set of perl scripts that drive rsync.   All the hard work is done by rsync, and dirvish takes care of the policy: how often to backup, when to remove extra backups, which ones to keep and so on.</p>
+        <p>The configuration is fairly complicated, writing a small UI on top of the Dirvish functionality should be easy.</p>
+        <p>And since this works on top of rsync, dirvish can backup to remote servers, or it can backup other machines into a backup device</p>
+        <h2>People</h2>
+        <p>Miguel de Icaza originated this idea.</p>
+        <h2>Related Materials</h2>
+        <p>  * https://wiki.ubuntu.com/HomeUserBackup</p>
+      </div>
+    </div>
+  </div>
+</body>

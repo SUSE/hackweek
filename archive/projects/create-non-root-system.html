@@ -1,0 +1,54 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Create non-root system</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, Desktop, Security, System</p>
+        <h2>Description</h2>
+        <p>It would be nice if a user could administer their system without having to know about root.</p>
+        <p>We have a lot of tools like sudo, cups policies, PolicyKit, DBus, but no
+        UI and nothing putting it all together.  We are part way there with the 10.3 %wheel setup allowing a user to become root with their own password if they are in the while group.  We could tag a user or users on the system as "admin" users like MacOS X or Windows and allow those users to have more power.  Perhaps guarding really important operations by requesting the users password again (like MacOS X for a system update).</p>
+        <p>Klaus Kampf calls this "role based yast" so the Yast may have further background.</p>
+        <h2>People</h2>
+        <p>JP Rosevear originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+        <h2>Related Materials</h2>
+      </div>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,69 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Recursive modification time</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> InProgress, Kernel, Performance, UnixFeature, SLES, SLED, openSUSE</p>
+        <h2>Description</h2>
+        <p>The basic idea is simple: Provide an efficient way for an application to find out whether & which file / directory in the subtree of the given directory has changed. So for example things like your backup program, beagle, etc. don't have to scan unchanged parts of the system again and again. Also e.g. KDE could cache desktop files and use this mechanism to verify whether it's cache is still valid.</p>
+        <p>How to do it efficiently: For each directory we keep on disk two additional pieces of information. A flag and a timestamp. Flag has a meaning "I want recursive modification time on this directory". Timestamp has a meaning "flag has been reset at this time". What kernel does when directory / file D is modified is:
+        ''While D has the flag set do
+            reset the flag
+            set the timestamp to current time
+            D = parent of D
+        done''</p>
+        <p>What application does is: As an initialization step during installation, it sets flags on the directory and its subdirectories it is interested in. When it wants to check for modification, it checks whether the timestamp is newer than the time when the last check happened. If not, we know nothing in the subtree has changed and we don't have to scan this subtree further. If yes, we enter the directory, recursively scan it's contents and set the flag.</p>
+        <p>Note that this scheme has several nice properties:
+          - frequently modified files cause just one propagation of modification time between scans by an application
+          - the scheme works correctly for arbitrary number of applications watching the same directory
+          - contents of unchanged directories don't have to be read
+          - scales well when applied to the whole filesystem
+        (last two points are the main advantages against currently available systems like FAM)</p>
+        <p>Some bad properties:
+          - hardlinks and bind mounts have to be handled separately from userspace (this can be mostly hidden by a library between an application and kernel)
+          - needs support in the filesystem, disk format change (or we have to use xattrs but then performance is worse)</p>
+        <h2>People</h2>
+        <p>The general idea is a folklore. Ideas how to implement it are from Jan Kara (me ;), thanks goes also to Pavel Machek for useful discussions.</p>
+        <p>I (Jan Kara, <jack@suse.cz>) have a kernel patch done for ext3 (although it may need some tweaks still), I'm working on the library hiding nasty things about bind mounts and hardlinks (to prove that I'm right and these problems *can* be solved ;).</p>
+        <p>http://beta.suse.com/private/jack/recursive_mtime carries the kernel patches for ext3 (against 2.6.23) and a short proposal for the library interface. I can provide a current library code on request but that's still under heavy development...</p>
+        <h2>Related Materials</h2>
+      </div>
+    </div>
+  </div>
+</body>

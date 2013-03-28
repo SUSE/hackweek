@@ -1,0 +1,56 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>universal systemwide help agent framework</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, Desktop, UnixFeature</p>
+        <h2>Description</h2>
+        <p>A systemwide operating universal and easy extensible help agent framework (with three layers) to give users a helpsystem not specific to a special app or desktop.</p>
+        <p>Frontends could be textbased (for usage on pure textconsole) or even as interactive avatar.
+        Backends to scan and analyze the system, for integrating additional system-"knowledge" could build a easily extensible framework to find "most common" errors in system.</p>
+        <p>A daemon running in background - looking for various suspicious or even dangerous situations - could inform the user of possible problems the system has. The other way round the user could query the framework - via the various frontends - if e.g. the harddisk is ok as it is sooo slow .. which will make the framework to look for backends to scan and analyze the disk, telling the user "don't know yet, but i can check for it via "foobar-test" and "foobar-benchmark" if it is working as appropriate.. do you want me to proceed (y/n)?" .. and so forth</p>
+        <p>The Frontends need to do the parsing themselves, trying to identify what the user asks for, comunicating with the framework with a defined API .. _but_ the framework could also help the frontends via special knowledge-backends that e.g. could hold common phrases for often arising problems.</p>
+        <p>The framework could eventually also include some sort of automated learning .. associating found system states with arising problematic symptoms.</p>
+        <h2>People</h2>
+        <p>Frank Seidel originated this idea. No one is currently working on implementing this idea (it’s up for grabs!).</p>
+        <h2>Related Materials</h2>
+      </div>
+    </div>
+  </div>
+</body>

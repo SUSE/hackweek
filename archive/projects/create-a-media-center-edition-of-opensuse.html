@@ -1,0 +1,84 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Create a "Media Center" edition of openSUSE</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> InProgress, Desktop, SLED, openSUSE, multimedia, HW-Designer, HW-Hacker, HW-Tester, JudgeBest, JudgeMe</p>
+        <h2>Description</h2>
+        <p>Create a one-CD/DVD solution to turn a computer into a Media Center, a Media Center would:</p>
+        <p>  * Watch TV
+          * Record of TV / Playback of recorded TV
+          * Configure TV setup by different cable/satellite/tv providers
+          * Configure IR setup by different remotes/recivers
+          * DVD / File player
+          * Music player
+          * Image Viewer
+          * Games (???)
+          * Network Export of Media Files (NFS/SMB/HTTP)</p>
+        <p>Software to use</p>
+        <p>  * [[http://freevo.sf.net/|Freevo]] as general visual frontend
+          * xine or mplayer as backend (for TV it might be wiser to use vdr or dvbstream)
+          * YaST modules to configure IR/TV/Export
+          * Different Emulators (dgen, mame) and games (ManiaDrive, supertuxcart etc.)
+          * [[http://www.musicpd.org/|Music Player Daemon]] and clients as music player backend
+          * [[http://www.jinzora.org/|Jinzora]] as HTTP media frontend</p>
+        <h2>TODO</h2>
+        <p>  Stuff we can do:</p>
+        <p>  * channels.conf to TV_CHANNELS(local_conf.py) conversion
+          * jinzora setup
+          * mpd setup
+          * games setup
+          * NFS/SMB export
+          * ivman setup</p>
+        <p>  Stuff we cant do:</p>
+        <p>  * Ask lslezak to finish yast tv module channel configuration for dvb*
+          * Ask lslezak to finish yast tv module configuration for lirc 
+            * Idea: cat all lircd configs into one, ask user to press button on the remote parse irw output for remote name and trim config down to that remote.</p>
+        <h2>People</h2>
+        <p>Miguel de Icaza originated this idea.</p>
+        <p>Henne Vogelsang is implementing this idea.</p>
+        <h2>Related Materials</h2>
+        <p>  * [[http://www.mythtv.org/|MythTV]]
+          * [[http://freevo.sf.net/|Freevo]]
+          * [[http://www.jinzora.org/|Jinzora]]
+          * [[http://www.musicpd.org/|Music Player Daemon]]</p>
+      </div>
+    </div>
+  </div>
+</body>

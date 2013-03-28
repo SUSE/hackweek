@@ -1,0 +1,68 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Artist-Driven Icon Theme Design Workflow</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> InProgress, Icon, DevTool, Community, Artist, Designer, Graphics</p>
+        <h2>Description</h2>
+        <p>Goal: Make it easy to create and maintain an icon theme.</p>
+        <p>Creating and maintaining a consistent icon theme is a very time consuming effort. </p>
+        <p>We use centralized version management and the GNU autotools to manage icon themes. Currently the icons are maintained in separate files per canvas size. It's hard to keep colors consistent if changes are done progressively. Creating a size takes too many steps, lots of work with the filesystem is involved and it's very prone to human error. A centralized CVS or SVN repository requires a maintainer to make sure all the sizes are provided and the artwork is acceptable before committing. Usually it means email/IRC pingpong with the contributor.</p>
+        <p>A decentralized process where individual artists maintain their own working theme, and the maintainer takes care of the 'official' tree depending on the few contributors he/she trusts would work better.</p>
+        <p>Goals:
+          * A single canvas for all target sizes. The workflow must involve creating pixel-perfect art for resolutions below 48x48px canvas. The artist must have all the sizes on canvas to easily keep things consistent across sizes. Some script to scale from a large resolution version automatically down, with the intention to touch it up would be a bonus.
+          * No change to the current icon related specs (how we install and lookup icons, how we name them).
+          * Script generates a usable icon theme by calling Inkscape to render individual sizes per icon. Script should be aware of the naming spec and not require the artist to explicitly add icon name somewhere to get installed (current makefile system).</p>
+        <p>{{ ideas:new-workflow.png |Proprosed Single Cavas Workflow}}</p>
+        <p>Likely Tools:
+          * Inkscape - thanks to a sane grid functionality the need for a bitmap editor is low. Possible to embed/link bitmaps in the SVG if an artist still prefers a bitmap workflow for low-res. Allows to export bitmaps based on group ids from commandline (chop an image based on defined rectangles)
+          * Perl/Python scripts to call inkscape to render bitmaps
+          * Git for distributed version control</p>
+        <h2>People</h2>
+        <p>Jakub Steiner originated this idea and will be focusing on it during hackweek. Help appreciated in assembling current tango-icon-theme assets and generating the 'master' SVGs with a script.</p>
+        <h2>Related Materials</h2>
+        <p>  * Why do we need to care about specific sizes?
+            * http://jimmac.musichall.cz/weblog.php/Artwork/ScalableIcons.php
+            * http://iconfactory.com/home/permalink/1731</p>
+        <p>  * GIT - http://git.or.cz/
+          * Inkscape - http://inkscape.org</p>
+      </div>
+    </div>
+  </div>
+</body>

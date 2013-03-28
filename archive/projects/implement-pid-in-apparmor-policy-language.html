@@ -1,0 +1,53 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Implement $PID in AppArmor Policy Language</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, Security</p>
+        <h2>Description</h2>
+        <p>AppArmor profiles could be made tighter if one specify /some/path/to/$pid instead of /some/path/to/[0-9]*</p>
+        <p>Idea: implement a special token for $pid (and for $uid) that is loaded into the AppArmor module, and checked at access time to match against the actual PID of the confined process.</p>
+        <p>Caveat: In AA versions in 10.2 and earlier, the access control was done by string matching, and so it was relatively simple to just insert special case logic for the $pid and $uid tokens. In 10.3 and later, AA uses a compiled FSM (Finite State Machine) making this somewhat more difficult to implement. Special acceptance states would have to be built into the FSM.</p>
+        <h2>People</h2>
+        <p>Crispin Cowan originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+        <h2>Related Materials</h2>
+      </div>
+    </div>
+  </div>
+</body>

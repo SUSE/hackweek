@@ -1,0 +1,59 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>openHardwareManager - dynamic online system configuration framework</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> InProgress, Management, Network, hardware, UnixFeature</p>
+        <h2>Description</h2>
+        <p>We already have many frameworks to dynamically configure system setting, like NetworkManager for network, kpowersave/gpm/powersave/cpufreq etc. for dynamic powermanagement, SCPM for overall profile switching,
+        alsa and various mixer tools for sound volume configuration, etc. ...</p>
+        <p>What i'd like to have is a common framework (openHM.org) with a defined API making it easy to integrate it with (UI and automated) frontends and backends/providers to configure certain hardware.
+        Think of it as generalized NetworkManger, not only careing about network, but about just anything a appropriate openHM-provider is available.
+        Every configuration- and info-provider and every frontend can register and query for certain capabilities and services.</p>
+        <p>Of course openHM should also make use of already existing standards in this regard e.g. like d-bus for communication.</p>
+        <p>openHM and HAL: Shall this be something similar? No, not at all. HAL could be integrated as a (one of many possible) providers to gather hardware information and trigger certain hardware actions. But of course it would also be possible to integrate backends directly using the kernel.</p>
+        <p>This could e.g. lead to general purpose UI-Tools to manage all sorts hardware settings. One could also think of a special backend providing the capability to make changes permanent in a system- and/or in a user-wide way.</p>
+        <p>Further it could help to make it easier write certain hardware daemons helping to avoid many possible flaws (like intensive hardware polling when its not needed at all). </p>
+        <h2>People</h2>
+        <p>Frank Seidel originated this idea. Hi is working on implementing this idea. </p>
+        <h2>Related Materials</h2>
+      </div>
+    </div>
+  </div>
+</body>

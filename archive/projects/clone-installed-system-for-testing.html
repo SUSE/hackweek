@@ -1,0 +1,61 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Clone installed system for testing</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, QA, Virtualization, openSUSE, Idea</p>
+        <h2>Description</h2>
+        <p>The idea is to create a tool that will automagically create a virtual machine from installed
+        system. The VM then can be used for real-life update testing of beta distributions.</p>
+        <p>The VM shold run on the original machine, preferably without impact to other services and without 
+        reboot. The only requirements should be root account and enough disk space.</p>
+        <p>It should work this way:</p>
+        <p>1. boot an image on target machine (virtual or physical)</p>
+        <p>2. target asks for root ssh password for source machine</p>
+        <p>3. target analyzes the source machine over ssh and propose the migration</p>
+        <p>4. copy whole partitions or all files over ssh</p>
+        <p>5. necessary adjustments on target</p>
+        <p>This setup should run everywhere (xen, virtualbox, vmware, physical test machine) and with minimal influence on source machine. It makes the deployment in the openSUSE community easy.</p>
+        <h2>People</h2>
+        <p>Vladimir Nadvornik originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+        <h2>Related Materials</h2>
+      </div>
+    </div>
+  </div>
+</body>

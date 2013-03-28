@@ -1,0 +1,94 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Make Emacs a Better Translation Tool</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Community, openSUSE, DevTool, Emacs, i18n, HW-Hacker, HelpWanted, TryMe</p>
+        <h2>Description</h2>
+        <h4>po-mode</h4>
+        <p>po-mode helps editing .po files; it is part of the gettext package.</p>
+        <p>po-mode is out-dated, it does not support ''msgctxt'' fields that were introduced with gettext 0.16.  
+        [Update: Bruno pointed out that po-mode already honors msgctxt.] </p>
+        <p>Editing plural entries does not work reliable--it often clashes with fuzzy markers.</p>
+        <p>[Reminder by Bruno:] gettext/Admin/plans:</p>
+        <p>   po-mode.el: Editing of msgstr[i] plural forms, and setting of formula.</p>
+        <p>D.h. es muss dem Übersetzer möglich sein, jedes der msgstr[i] einzeln zu
+        editieren, und deren Anzahl sollte eine Funktion der Plural-Formel sein.
+        Wenn keine da ist, sollte man sich die passende mittels 'msginit' holen.</p>
+        <p>Better translation memory support is desirable.  Finally, add some eye-candy (mini-icons).</p>
+        <h5>Test Version</h5>
+        <p>It took longer than expected...  The first attempt failed miserably, but it was fun and I intend to continue working on this project when time permits.  ChangeLog:</p>
+        <p><html>
+        <pre>
+        2007-06-29  Karl Eichwalder  <ke@suse.de></p>
+        <p>	* po-mode.el (po-find-this-msgstr): New function.
+        	(po-find-span-of-entry): Use it.</p>
+        <p>	* po-mode.el (po-get-msgstr-flavor): New function.
+        	(po-any-msgstr-regexp-old): New variable.
+        	(po-set-msgstr-new): New function, based on po-set-msgstr.
+        	(po-subedit-exit-old): New function, renamed from po-subedit-exit.
+        	(po-edit-msgstr-old): New function, renamed from po-edit-msgstr.
+        	(po-get-msgstr-new): New function, based on po-get-msgstr.
+        	(po-set-msgstr-new): New function, based on po-set-msgstr.
+        	(po-edit-string-new): New function, based on po-edit-string.
+        	(po-edit-msgstr): Use po-get-msgstr-new.
+        	(po-subedit-exit): Use po-set-msgstr-new.</p>
+        <p>	* po-mode.el (po-subedit-mode-menu-layout, po-mode-menu-layout):
+        	Remove trailing string.
+        	* po-mode.el (po-mode-menu-layout): Make "Source marking" a
+        	submenu.
+        	Remove subtitles from menus.
+        	Comment unimplemented features.
+        </pre>
+        </html></p>
+        <p>**Download:**
+        http://www.suse.de/~ke/po-mode.el</p>
+        <p>Thanks for help and enlightenment to Bruno Haible!</p>
+        <h4>xliff</h4>
+        <p>Enhance one of the Emacs' xml modes for editing xliff files.</p>
+        <h4>Interface to community translation projects</h4>
+        <p>Integrate communication with community translation projects into the Emacs workbench.  For example, http://www.iro.umontreal.ca/translation/</p>
+        <h2>People</h2>
+        <p>Karl Eichwalder works on this project.</p>
+        <h2>Related Materials</h2>
+        <p>Emacs and gettext documentation.  Check KBabel for inspiration.</p>
+      </div>
+    </div>
+  </div>
+</body>

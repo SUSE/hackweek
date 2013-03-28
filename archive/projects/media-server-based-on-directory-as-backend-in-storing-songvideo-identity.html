@@ -1,0 +1,58 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Media server Based on Directory as Backend in storing song/video identity</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> InProgress, Server, Hacker</p>
+        <h2>Description</h2>
+        <p>making of a plugin based media server to serve (audio/video) to different client's based on DAAP or shoutcast or mythTV. here the identity of the media (song/video) is stored in the LDAP Directory.
+        since a songs have a tree structure, the artist->(album1->song1/song2/song3)/(album2->song1/song2/song3), the same structure holds for videos too. hence they could be stored in a directory based tree. advantage of storing mostly read-only info in the directory makes fetching of data faster for playlist processing.
+        The server design by making it plugin based, the plugins for DAAP/ shoutcast and mythTV can make this server to serve for different plugins.  </p>
+        <p>the songs can be accessed using banshee/itunes from the server. 
+        the video can be accessed using mythTv from server. </p>
+        <h2>People</h2>
+        <p>Hemanth G originated this idea. & currently working on implementing this idea.</p>
+        <p>who else, You can jump in too.... !!!!</p>
+        <h2>Related Materials</h2>
+        <p>**tree structure for the music data stored in directory**</p>
+        <p>{{http://lh6.google.com/image/meethemanth/RnuWvauJVOI/AAAAAAAAAGQ/FPaw0uWXCOs/s800/tree-music.jpg?640x451}}</p>
+      </div>
+    </div>
+  </div>
+</body>

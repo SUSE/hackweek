@@ -1,0 +1,57 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Create a VB6 -> VB.Net converter</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, DevTool, Mono</p>
+        <h2>Description</h2>
+        <p>The VB6 -> VB.Net converter currently available isn't really an option for anybody that has a decent sized VB6 project, because of a few issues:</p>
+        <p>* It's not possible to tweak or change the output, the converter has decided it has one way to do it that's it. And it's very easy to see that it's been machine-generated.</p>
+        <p>* The converted code is tweaked for maximium compatibility, it's not maintainable, and it's certainly not easy to make it look .Netish.</p>
+        <p>* It generates a huge amount of todos, warnings, and quite a few errors as well, that has to be fixed before anything can be done. And with a medium-size project the same 10 error causes would show up 100 times, this can be quite a task (and very error-prone).</p>
+        <p>A better solution would solve these problems, by offering options for the generated output:</p>
+        <p>* Allow redirection from a VB6 dll/class/method to another (maybe completely) different .Net assembly/class/method, possibly by using xml files. With this it's also possible to set up different profiles, i.e. a --max-compat option, or a --max-netish, or whatever.</p>
+        <p>* Make as much as possible of the code-generation configurable.</p>
+        <h2>People</h2>
+        <p>Rolf Bjarne Kvinge originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+        <h2>Related Materials</h2>
+      </div>
+    </div>
+  </div>
+</body>

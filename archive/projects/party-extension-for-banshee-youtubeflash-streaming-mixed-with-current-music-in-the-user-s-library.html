@@ -1,0 +1,70 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Party extension for Banshee (YouTube/Flash streaming mixed with current music in the user's library)</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, Mono, Banshee, Gstreamer, Flash, YouTube, Streaming, Mixing, HelpWanted, Download</p>
+        <h2>Description</h2>
+        <p>**Motivation**: you want to make a party at home, with video-clips playing at a big screen in the background (in the living room for example).</p>
+        <p>**Problems**:
+          * You have to do a pre-download of your video-clips.
+          * Everybody will want to be a DJ so there will be a lot of people forming a queue in your computer
+          * People will get angry if somebody stops/skips his song
+          * Everybody will shout at you if you don't have <put your favourite song here>, so
+          * Everybody will want to use YouTube instead of your video playing list, and
+          * YouTube has a very low sound/video quality for the general speed you may get in order not to pre-buffer the content.
+          * Sound is more important than video in a party (come on, it's a party, not a cinema), so:</p>
+        <p>__Idea A__: why not using the audio from your music playlists and the video from youtube?</p>
+        <p>**However**:
+          * This still doesn't solve the problem of letting the people choose the music in an organized way.
+          * You may have buffering problems and, as a consequence, not constant playback, if you rely on your poor internet connection.</p>
+        <p>**Then**:</p>
+        <p>__Idea B__ (which would solve last two problems in one shot): why not having a mode on Banshee that let's you choose what is *going* to play (as opposed to what is playing right now or what was put in the queue firstly by others), which intelligently tries to pre-download videos in the background (maybe doing multiple downloads simultaneously?), and stops the music (or replaces it with other playlist) if the buffering is not successfull? (It wouldn't forward to the next song, as opposed to stoping a song playback in the middle of the song.)</p>
+        <p>**In the end**:
+          * People won't be able to choose a song that is not in your library so.</p>
+        <p>__Future ideas__:
+          * Integrate this extension with another extension that communicates to some P2P programs such as Monsoon or Nicotine+, in order to download music.</p>
+        <h2>People</h2>
+        <p>Andrés G. Aragoneses originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+        <h2>Related Materials</h2>
+        <p>[[http://mail.gnome.org/archives/banshee-list/2008-May/thread.html#00107|Thread on banshee mailing list (about use case and about technical solution)]]</p>
+      </div>
+    </div>
+  </div>
+</body>

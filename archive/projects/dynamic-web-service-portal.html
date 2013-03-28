@@ -1,0 +1,86 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Dynamic Web Service Portal</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> InProgress, Web20, Desktop, Server, JudgeFailure</p>
+        <h2>Description</h2>
+        <p>At SUSE we have a couple of web applications which are part of the daily work, for example Bugzilla, SWAMP or Fate. Additionally there are tons of mailing lists, Wikis, Subversion repositories, the Build Service and several other sources of information. It's hard to keep an overview of all what's coming in and going on. Having a portal which aggregates all relevant information in one location and allows the user to act on that information could be a tremendous help.</p>
+        <p>The idea is to create a dynamic web service portal based on Atom feeds which brings all the different services and sources of information together. It should of course be designed and implemented in a way which is flexible enough to be useful in other contexts than SUSE.</p>
+        <p>Some of the applications already provide access through a web service some others could easily be enabled or adapted to do so. Preferably there would be a light-weight web service like a simple REST interface. A standard RSS or Atom feed accessible through HTTP in many cases might already be sufficient to get all information which makes sense to be shown in a portal.</p>
+        <p>To make it simple to manage and display the relevant information it should be mapped to a common format. Atom seems to be a suitable candidate for this because it's a straight-forward format providing the most used fields by default and because it's easily extensible. One extension which would be required is a way to specify which actions on the aggregated objects are available and how they can be executed. This way we get an "Activated Atom".</p>
+        <p>The portal has to be dynamic to be able to adapt to services moving around, services being created or removed, and specific needs by specific users. It also has to be dynamic to allow easy development and deployment of connections to services. So it would be cool, if a developer could transfer a module connecting to some web service from a portal on a commonly accessible remote server to a private portal on a local server, improve it and when it's ready for public consumption transfer it back to the remote server.</p>
+        <p>So to make this real we need to implement a framework for running modules fetching feeds, converting them to "Activate Atom" and aggregating them to the portal data. On top of that we need a user interface providing a view on the aggregated data.</p>
+        <p>I consider to implement this with Ruby on Rails. Ruby scripts would be pretty convenient for writing the modules and Rails provides the perfect framework to writing a web UI. For deployment of the modules we maybe could use a version control system integrated with the portal.</p>
+        <h2>People</h2>
+        <p>Cornelius Schumacher originated this idea and is working on it.</p>
+        <p>Garrett LeSage had the same idea also and will be helping out.</p>
+        <p>Thomas Schmidt has added Atom feeds to SWAMP and Fate.</p>
+        <h2>Project Resources</h2>
+        <p>I created a 
+        [[http://hackweek.blogspot.com|Hackweek Blog]] for documenting progress of this project. Will also be a nice source of data for testing.</p>
+        <p>Code is in the [[https://forgesvn1.novell.com/svn/molecule|SVN Repository]].</p>
+        <h2>Status</h2>
+        <p>  * Initial frame work for running Atom collectors (i.e. the modules fetching Atom or adapting a web service to an Atom feed) is done
+          * Collectors for raw Atom, Bugzilla and SWAMP are done
+          * Web GUI skeleton is done
+          * OPML files are used for specifying feed collections and their configuration. Parsing and hand-over from collectors to GUI works</p>
+        <p>Many, many things are not done yet:</p>
+        <p>  * Adding specific actions to feeds and provide a GUI to execute them.
+          * Fine-grained configuration of when to fetch or update feeds.
+          * Complete parsing of Atom entries and display of all relevant data in the GUI.
+          * More robust configuration and default setup so that the portal not only runs on my own fine-tuned system
+          * Add more collectors: Fate, RSS, Mail, SVN, ...
+          * Turn GUI into something which deserves the name and doesn't cause eye cancer
+          * Use AJAX to dynamically update the GUI 
+          * Well-defined way to deploy collectors
+          * Method to migrate collector instances between servers including locally running servers (could e.g. be based on Git)
+          * Write down all the ideas which came up in discussions during the hack week</p>
+        <h2>Related Materials</h2>
+        <p>[[http://atompub.org/rfc4287.html|Atom Specification]]</p>
+        <p>[[http://en.wikipedia.org/wiki/Atom_(standard)|More Atom resources]]</p>
+        <p>[[http://www.rubyonrails.org|Ruby on Rails]]</p>
+        <p>[[http://www.opml.org|OPML]] might be useful as a format for collections of feeds.</p>
+        <p>[[http://en.wikipedia.org/wiki/News_aggregator|Overview of existing aggregation solutions]]</p>
+        <p>[[https://portal.dev.java.net/|OpenPortal]] This is a Java portal server. Might be an option for the management part, although it comes with some Java Enterprise ballast.</p>
+        <p>[[http://www.ibm.com/websphere/portal|That's]] how Bug Business does it.</p>
+      </div>
+    </div>
+  </div>
+</body>

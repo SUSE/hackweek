@@ -1,0 +1,57 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Hardware profile pattern matching</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p>FYI: this has the "Novell Only" switch enabled.</p>
+        <p><b>Tags:</b> Idea, Hardware</p>
+        <h2>Description</h2>
+        <p>Installing Linux on any type of computer is easy nowadays. Getting it to work with all the on-board or add-on devices is still hard.</p>
+        <p>Support for special features e.g. extra keys on the keyboard, etc., almost impossible without manual configuration
+        With a proper detection of the hardware, this should be automatable.</p>
+        <p>The idea is to improve detection of computer systems by applying pattern matching. So instead of direct hardware detection (extra keys are probably quite hard to autodetect ...), indirect detection is applied. This should work since computers have a unique combination of chips and chip ids (//pci fingerprint//).</p>
+        <p>With this information, the installer will be able to detect specific vendor systems and install (resp. configure) the correct device support. The database to match against is either on the install media (CD) or, in combination with online installs, on a server on the internet.</p>
+        <p>This idea could be patentable, so I enabled the 'Novell only' flag for now.</p>
+        <h2>People</h2>
+        <p>Klaus Kämpf originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+        <h2>Related Materials</h2>
+      </div>
+    </div>
+  </div>
+</body>

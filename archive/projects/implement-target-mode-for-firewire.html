@@ -1,0 +1,57 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Additional Target mode backends</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> InProgress, storage, kernel</p>
+        <h2>Description</h2>
+        <p>With 10.3 we've added the tgt generic target framework to OpenSUSE. This currently provides support for iSCSI and ibmvscsi. As this is quite limited it would be great to enhance this with other backends.</p>
+        <p>  * FC Target Mode: There already is a FC Target mode driver for the QLogic HBAs, originally done for the scst project. So it should be doable to port them to the tgt framework.
+          * Firewire Target: There is a stand-alone tool from Oracle, called 'endpoint'. This should be ported to the tgt framework
+          * aic79xx: The current aic79xx driver has support for Target mode, although this is currently disabled. Would be fun to enable it and hook it in the tgt framework.</p>
+        <h2>People</h2>
+        <p>Hannes Reinecke originated this idea and will be working on it. Help will be very much appreciated. Sebastian Vollath will test linux fc targets.</p>
+        <h2>Related Materials</h2>
+        <p>http://developer.berlios.de/projects/stgt</p>
+        <p>http://scst.sourceforge.net</p>
+        <p>http://oss.oracle.com/projects/endpoint</p>
+      </div>
+    </div>
+  </div>
+</body>

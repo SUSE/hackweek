@@ -1,0 +1,69 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Clustered BTRFS prototype</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, Kernel, UnixFeature, Server, SLES, HelpWanted, filesystem</p>
+        <h2>Description</h2>
+        <p>btrfs is Chris Mason's new filesystem. It offers</p>
+        <p>  * Extent based file storage (2<sup>64</sup> max file size)
+          * Space efficient packing of small files
+          * Space efficient indexed directories
+          * Dynamic inode allocation
+          * Writable snapshots
+          * Subvolumes (separate internal filesystem roots)
+          * Object level mirroring and striping
+          * Checksums on data and metadata (multiple algorithms available)
+          * Strong integration with device mapper for multiple device support
+          * Online filesystem check
+          * Very fast offline filesystem check
+          * Efficient incremental backup and FS mirroring</p>
+        <p>The idea is to prototype how this could be brought to clusters, by "simply" figuring out which
+        locks need to be converted to DLM locks, and what additional hooks might be needed.</p>
+        <p>(Combined with the OCFS2 or GFS2 DLM.)</p>
+        <p>This would solve a number of feature parity issues we have with RHAT, Sun, ZFS etc.</p>
+        <h2>People</h2>
+        <p>Lars Marowsky-Brée originated this idea and will work on it during HackWeek.</p>
+        <p>David Sterba is interested in this idea and will work on it during HackWeek.</p>
+        <h2>Related Materials</h2>
+        <p>http://oss.oracle.com/~mason/btrfs/</p>
+      </div>
+    </div>
+  </div>
+</body>

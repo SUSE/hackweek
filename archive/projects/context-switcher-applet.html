@@ -1,0 +1,74 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Context switcher applet</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Desktop, openSUSE, SLED, InProgress</p>
+        <h2>Description</h2>
+        <p>Create an applet that lets users create new virtual desktops (aka workspaces, viewports etc.) when needed in order to organize their work more efficiently. Remove the different terms/concepts by introducing the concept of contexts.</p>
+        <p>Applet should be similar to the window selector applet in GNOME, but with functionality to create/handle contexts (which would be workspaces in regular setups and viewports in XGL setups).</p>
+        <p>**Current state**</p>
+        <p>The current GNOME Desktop in both SLED and openSUSE does not provide workspaces by default. IMHO this has two reasons:
+          * Workspaces are not recognized in desktop effects enabled environments
+          * The one panel setup doesn't provide enough space for a multi-workspace setup greater than 4 (at least on a 1024px wide display)</p>
+        <p>Currently we have different terms and concepts describing the very same thing: "virtual desktops", "workspaces" and "viewports" all provide some kind of "creating additional screen estate to keep your work organized".</p>
+        <p>Many people have used these concepts to organize their work into contexts, e.g.:
+          * Workspace 1: windows/apps related to work-in-progress project A
+          * Workspace 2: windows/apps related to research project B
+          * Workspace 3: intersting yet unrelated browser windows (aka collateral browsing)
+          * Workspace 4: communication apps, say Pidgin and Evolution</p>
+        <p>However this //process// is done totally //in the mind of the user//. A new user first has to learn what he/she can do with workspaces and why they are useful. Furthermore it's rather static, i.e. creating new workspaces for new contexts requires too many clicks.</p>
+        <p>**Introducing Contexts**</p>
+        <p>By introducing the concept of contexts we gain two main advantages:
+          * Remove the different terms/concepts depending on the user's setup. It's always a working context you see.
+          * For users new to multi-workspaces setups, it might be easier to grasp what they can do with the technology. Because we expose the technology as a work process.</p>
+        <p>One obvious disadvantage:
+          * Other uses of workspaces are out of scope or rather the term might not fit other processes</p>
+        <p>**Implementation**</p>
+        <p>Applet should work like the window-selector applet but be aware of contexts. This means a minimum of needed panel space to do both window and context switching which is positive for single panel setups. Include a "Show Desktop" item in the menu and the applet could take the place of the "Show Desktop" applet currently by default on the panel in both openSUSE and SLED (IMHO, that would be exactly the place, where it makes most sense to be).</p>
+        <p>The technological concept behind (workspaces vs. viewports) should be hidden. </p>
+        <h2>People</h2>
+        <p>Joerg Kress originated this idea.  Joerg is currently doing UI research. Help always appreciated. The UX team might help.</p>
+        <h2>Related Materials</h2>
+        <p>Mockups coming soon...</p>
+        <p>Interesting code might be in libwnck, gnome-panel and the super-switcher project.</p>
+      </div>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,52 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>GUI driver management</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, Desktop, Hardware</p>
+        <h2>Description</h2>
+        <p>The point here, is that although OpenSuSE has a great tool named YaST, user still has to solve some problems from console or 3rd party apps. I'll provide an example of my own. I have a Dell Inspiron 1525 laptop. Ubuntu 8.04.1 could manage all of my hardware either out-of-box or through Restricted Drivers Manager (project jockey). OpenSuSE couldn't configure my Broadcom 4310 wi-fi card. The official solution is to run a bash script to download a firmware. That, however, didn't work out for me. So I had to use Ndiswapper, which still couldn't be managed from within YaST. And I believe, that Broadcom issue is not the only one. So, either YaST should get extended to deal with such things (and I believe it's a better solution) or another tool should be offered - but still, all hardware issues should be able to deal with in GUI. It should also download the needed drivers from repos (or install it from installation media) when the drivers are not included by default.</p>
+        <p>Probably a solution for it also involves another thing. Each time a user installs OpenSuSE on his box, all info concerning hardware on the machine should be uploaded to a centralized online database - like it happens in Ubuntu, Fedora (with smolt) or Mandriva (with HCL). There each entry that isn't supported out-of-box should get a script that would download necessary files and write necessary config lines to make that piece of hardware running. And then, YaST should query this database, get this script and run it.</p>
+        <h2>People</h2>
+        <p>Ilya Ilembitov originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+        <h2>Related Materials</h2>
+      </div>
+    </div>
+  </div>
+</body>

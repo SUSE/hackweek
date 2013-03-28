@@ -1,0 +1,73 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>multiple MAC addresses on a single ethernet device</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Kernel, Network, InProgress</p>
+        <h2>Description</h2>
+        <p>The idea is to allow a single host to use multiple MAC addresses
+        simultaneously over a single physical network device.</p>
+        <p>The main use case why I am doing this is described below, but I'd be
+        interested to hear if this could be useful for other things as well.</p>
+        <p>The DSL lines of Deutsche Telekom allow up to 10 simultaneous
+        PPPoE connections per DSL line, but only one per client side MAC address.
+        To terminate more than one PPPoE connection from the same DSL line
+        on a single host (e.g. one for IPv4 and one for IPv6), the host ether needs
+        one network card per PPPoE connection and have them connected to the DSL
+        moden via a switch, or it needs a way to let the ppp daemons use individual
+        MAC addresses over a single physical ethernet device.</p>
+        <p>So far, I came up with the following approaches to implement this:</p>
+        <p>  - Write a kernel module that creates pairs of crossconnected network devices, one pair per desired PPPoE connection. Of each pair one device will be put into a bridge with the physical ethernet device and the other one will be used by one ppp deamon. This is similar to the Xen netloop device, but doesn't depend on Xen.
+          - Extend the network bridging code, so that a bridge can have multiple network devices with individual MAC addresses that work similar to 'brX'. This would be a software implementation of the "multiple network cards connected to a single switch" hardware solution, described above. The pro over approach 1 is, that for n PPPoE sessions it needs only n network devices instead of 2n. It might also be somewhat more efficient, because the packets have one less network interface to traverse on their way.
+          - Extend the PPPoE code (kernel and userspace), so that a MAC address can be set in the ppp configuration which will be used for this session and the ethernet device will automatically be put into promiscuous mode if this option is given.</p>
+        <p>I already have a working implementation of 1, which is based on the dummy network
+        driver and will try to get that into the kernel, either as a separate module or
+        integrated back into the dummy driver.</p>
+        <p>Approach 3 would probably be the easiest to use, but it looks like it is also
+        the hardest to implement from what I have seen by looking at the code so far.
+        Also, it would only be usable for the PPPoE use case, whereas 1 and 2 are more
+        generic.</p>
+        <p>I will use hackweek to try implementing approach 2.</p>
+        <h2>People</h2>
+        <p>Reinhard Max originated this idea and is working on implementing it.</p>
+        <h2>Related Materials</h2>
+      </div>
+    </div>
+  </div>
+</body>

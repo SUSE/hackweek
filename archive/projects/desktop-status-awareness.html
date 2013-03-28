@@ -1,0 +1,111 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Desktop status awareness</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> InProgress, Network, Desktop, JudgeMe, JudgeBest, JudgePower, JudgeDesktop</p>
+        <h2>Description</h2>
+        <p>Every user runs out for a coffee, lunch and quick meeting leaving their desktops. Lot of users are optimize and schedule their package downloads/upgrade/install, email offline downloads, huge file downloads and other time/network consuming tasks during the idle time of the computer. </p>
+        <p>Screensaver, gaim, powermanager, and few other apps are aware of the desktop idle status and show screensaver, or set the user status or power off/hibernate.</p>
+        <p>There should be a option for the user to automatically schedule these tasks. Have a option like "Schedule *** tasks while idle" before hibernate or suspend or shutdown.</p>
+        <p>Applications should be listening for dbus messages for desktop/idle status and start the downloading or process any such time consuming actvities. Few applications, I think that can be benefited are</p>
+        <p>  - Evolution (Can download messages for offline)
+          - Realplay (Can buffer video streams)
+          - Updater (Can download packages/install and upgrade transparently)
+          - Scheduled file downloads (May be a firefox extension)</p>
+        <h2>People</h2>
+        <p>Srinivasa Ragavan originated this idea.  Srini is working on this and people are welcome to join Srini.</p>
+        <h2>Related Materials</h2>
+        <p>Myle is not yet in svn. The sources can be download from [[http://gnomebangalore.org/~sragavan/myle.tgz]] The myle (mono.exe myle) binary is part of the download. Just run from the TARDIR/myle/bin/lib/myle/ for now.
+        Initial video of Myle is at [[http://idea.opensuse.org/content/blog/bangalore-hackweek-1]]</p>
+        <p>The current implementation is more of a PoC. It has lots of hacks and the build system is not working fine.
+        The source TARBALLDIR/myle/external/ has the patches for the external application. </p>
+        <p>Myle listens for xscreensaver and webcam for users presence. If there is no mouse activity of if there is not any/much motion in the webcam, it assumes the users away and sets it to idle. </p>
+        <p>On idle:
+           - It pauses Banshee and Totem (check if they are playing already)
+           - It sends a DBus messages on Idle and another on becoming active.
+           - Sets the backlight brightness to dim on idle (FIXME Restore the settings)
+           - Evolution listens for it and syncs messages for offline.
+             - FIXME Integrate addressbook caching on idle
+           - FIXME Write a firefox plugin for giving options for downloading big files on idle with resume support.
+           - FIXME Add support for rug/zen/yum for downloading critical updates on idle and giving the user a option of just installation on becoming active.
+           - FIXME Check the N/W load before activating.</p>
+        <p>On Presentation:
+           - Mutes Pidgin ( FIXME Check the previous state and restore)
+           - Disables libnotify popups
+           - Disables Pidgin guifications
+           - Disables Pidgin's chat window display till the user becomes active.
+           - FIXME Write a OOo plugin/code to send a DBus message when Impress starts so that the mode can be set to Presentation and restore at the end of the slideshow. It blocks libnotify popups if they are not critical (For battery warnings etc)</p>
+        <p>On Secure:
+           - Disables Firefox History, unsafe protocols, extension installations
+             - FIXME Disable the password manager
+           - Disables Gaim chat/IM/system logs 
+             - FIXME Disable the remember(ed) passwords
+           - FIXME Add support for Evolution to disable caching and remember(ed) passwords
+             - FIXME Add support for kiosk mode in evolution so that the accounts/logs exist just for the session and clear everything on quit.</p>
+        <p>On Configure:
+           - Provides an option to set the idle time
+           - Option to set the video driver and video probing duration 
+           - FIXME Cleanup configure for status specific seeting 
+           - FIXME Add support for application specific controls in each states
+           - FIXME Fix the crashes on empty strings on time</p>
+        <h4>Generic Myle Improvements</h4>
+        <p>FIXME Implement video mode. (Detect, fullscreen video mode and optimize the desktop)</p>
+        <p>FIXME Add a MyleState class  and get the states and restore after idle.</p>
+        <p>FIXME Check for existing states before enforcing the states. For example, if banshee is paused already no point pausing it on idle and playing back on active. It will be annoying.</p>
+        <p>FIXME Add a plugin framework so that application controllers can be plugged in and controlled </p>
+        <p>FIXME Get better icons</p>
+        <p>FIXME Fix the build system and organize the classes better</p>
+        <h4>Evolution Patch against 2.12</h4>
+        <p>The patch adds a DBus Interface to Evolution to listen for messages from Myle to sync/cancel offline downloads. I have added the plugin binary to the sources. It was made against Evolution 2.12 and should work fine on Evolution 2.12 also.</p>
+        <p>FIXME Write a new plugin for DBus Handler, instead of adding it to default-mailer plugin.</p>
+        <h4>Totem Patch against TRUNK (GNOME 2.20)</h4>
+        <p>The patch modifies the lirc plugin to DBus plugin. It adds a dbus interface to Totem for play/pause and to know if it is playing  any files.</p>
+        <p>FIXME Write a new DBUS plugin.</p>
+        <p>FIXME Clean the hack to know if totem is playing.</p>
+        <h4>Pidgin Patch against 2.02</h4>
+        <p>The patch modifies the sample DBus plugin to achieve this. Probably a new plugin has to be written to control the configuration items</p>
+        <p>FIXME Write it as a new plugin</p>
+        <p>FIXME Add DBus interface to get the previous configurations for restoring</p>
+        <h4>Notificaion Daemon Patch (Against 0.3.5)</h4>
+        <p>The patch adds an hack to the notificaion daemon to avoid popups if the popup_enabled gconf key is enabled and the urgency is less than critical. The same patch can apply to src/daemon/daemon.c on TRUNK (GNOME 2.20) instead of src/daemon.c</p>
+      </div>
+    </div>
+  </div>
+</body>

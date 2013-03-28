@@ -1,0 +1,55 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Fast installation tool</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> inProgress, YaST, Performance, Management, Rpm, Installation, judgeperf, judgeme</p>
+        <h2>Description</h2>
+        <p>Replace package metadata with easily parsable binary format. Speed up rpm database information gathering. Implement better solving algorithm. Implement nice command line interface. Convince YaST folks to port it to libzypp.</p>
+        <h2>Status</h2>
+        <p>  * Package metadata reading implemented. Understood formats are rpm database, susetags, rpmmd, helix (zypp solver test data). Still missing: suse patch format.
+          * Basic package solving works (uses SAT algorithm for solution hunting). Still missing: weak dependency support, suggestions for problem resolutions. Maybe also search for multiple solutions, but I don't know if that's really needed.
+          * Package installation ordering still todo.</p>
+        <h2>People</h2>
+        <p>Michael Schröder is implementing this.</p>
+        <h2>Related Materials</h2>
+      </div>
+    </div>
+  </div>
+</body>

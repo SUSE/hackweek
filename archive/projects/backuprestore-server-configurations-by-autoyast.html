@@ -1,0 +1,60 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>2 - Command line support for autoyast</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, YaST, Management, Network, UnixFeature, Server, LAMP</p>
+        <h2>Description</h2>
+        <p>At the end of installation there is checkbox for create autoyast profile. Also we can start Autoyast module, configure from default and export profile.</p>
+        <p>But there is no way how to create profile for particular services on running system. Read and Write buttons in Autoyast module can do that.</p>
+        <h2>Example why its cool ;-):</h2>
+        <p>We have configured dhcp server running on machine A and want to migrate to machine B. Start autoyast on machine A, select dhcp service, click Read in menu and Export. Now start autoyast on machine B, Import profile, click Write.</p>
+        <p>This could be usefull to create backup (or many) for any service configurable by YaST and restore from it.</p>
+        <h2>Example:</h2>
+        <p>autoyast http-server export=/var/lib/autoinstall/repository/module.xml</p>
+        <p>In case you want restore from profile :</p>
+        <p>autoyast http-server import=/var/lib/autoinstall/repository/module.xml</p>
+        <p>Module list for work with several modules :</p>
+        <p>autoyast modules=[http-server print-server] export=/tmp/profilename.xml</p>
+        <h2>People</h2>
+        <p>Michal Zugec originated this idea and will work on implementing this idea.</p>
+      </div>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,68 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Better API for applications using libzypp</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, Libzypp, YaST, HelpWanted, HW-Hacker</p>
+        <h2>Description</h2>
+        <p>Currently libzypp does not offer (or offers only very limited scope of) high-level functions 
+        for common package (patch, pattern) operations such as 'list all patterns','list packages
+        that belong to a pattern' 'list all objects fulfilling certain criteria' etc. </p>
+        <p>If an application (such as UI library, zypper etc.) wants to use libzypp, it needs to implement
+        these functions by itself. As a result, the same functionality is (in better case) implemented by the code that is copy-pasted n times between n applications, or (in worse case) implemented inconsistently in n different ways.</p>
+        <p>The idea is to design API that would
+        1) make libzypp functionality easily accesible to the applications by offering simple functions 
+        returning data types convenient for the application
+        2) implement these functions once only (in libzypp or in a shared library over libzypp) so that
+        applications can simply call them and do not have to care about libzypp implementation details</p>
+        <h2>People</h2>
+        <p>Katarina Machalkova originated this idea.  </p>
+        <p>Authors of applications using libzypp (HuHa - yast2-qt, Michael Meeks, Ricardo Cruz -yast2-gtk, Jano Kupec - zypper) might be interested as well</p>
+        <p>Katarina Machalkova would like to start with going through the code of y2-ncurses and y2-qt, to identify 
+        code consisting of libzypp functions only and evaluate which of this could be possibly moved to libzypp 
+        (a wrapper library over libzypp respectively). </p>
+        <p>The next step will be to suggest suitable prototypes for these 'to-be-moved' functions so that they are
+        conveniently handled by UI library.</p>
+        <p>Help of libzypp hackers wanted!</p>
+        <p>Jano Kupec is planning to implement part of this idea (see comments).</p>
+        <h2>Related Materials</h2>
+      </div>
+    </div>
+  </div>
+</body>

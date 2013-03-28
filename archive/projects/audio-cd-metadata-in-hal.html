@@ -1,0 +1,71 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Audio CD metadata in HAL</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Desktop, openSUSE, SLED, Idea, Banshee, Multimedia, PimpMyDesktop, sound</p>
+        <h2>Description</h2>
+        <p>It would be nice to have a HAL callout that is run when a CD containing audio is found. The callout would then use MusicBrainz to fetch audio CD metadata and merge it into the device properties for the disc. This way, all applications can relatively easily read the rich metadata without having to know or care about doing the heavy lifting - all the application has to do is read some HAL properties.</p>
+        <p>GNOME VFS could also read the album title from HAL and set that as the display name for the disc so it would show up in the file chooser and in Nautilus, for example. The MusicBrainz code in Banshee could also be removed, reducing complexity a little (well, more like migrating it into this callout).</p>
+        <h3>Some potential issues</h3>
+        <p>  * Network is required, so this callout may take many seconds to return, which would block HAL from showing the disc in the GDL, convincing users their disc or drive is bad ("Hey, I inserted this disc and nothing happened!"). Thus the callout itself just forks another process and returns. This would eliminate the blocking, but then any applications relying on the callout would have to listen for a signal or something to react when the out of process tool merges its metadata into the tree.</p>
+        <p>  * Character encodings - this may not actually be an issue, but it should be checked up on before implementing anything. We need to be able to store all the user readable strings in HAL. Hopefully the property values are stored in UTF8.</p>
+        <p>  * While not really a technical limitation to the purpose of this tool, there is a "design annoyance" due to the type system in HAL. HAL does not support all of the DBus supported types. For instance, structs, variants, arrays of types, etc, are not supported. The only array type is for the string type. </p>
+        <h3>Possible property layout</h3>
+        <p>Just to give an idea of what kind of data an application could expect and what this tool could support:</p>
+        <p>  * audio.metadata.artist_names (strlist)
+          * audio.metadata.album_title (string)
+          * audio.metadata.track_titles (strlist)
+          * audio.metadata.track_count (string)
+          * audio.metadata.durations (strlist - values are in milliseconds)
+          * audio.metadata.cover_art_path (string)
+          * audio.metadata.musicbrainz.album_id (int)
+          * audio.metadata.musicbrainz.track_ids (strlist - values are ints)</p>
+        <h3>Album Art</h3>
+        <p>The tool should also download album art. What is needed is a common location and naming spec to correlate file names to album/disc IDs. Currently Banshee takes a simplistic approach, but also the same approach taken by some major online music stores like Rhapsody. The cover art is saved with a filename taking the form {artist}-{album_title}.png, where {artist} and {album_title} contain only characters [a-z0-9]. A common directory for storing this data should be chosen, like ~/.config/album-art.</p>
+        <p>A problem with this common location is that because the tool runs as whatever user HAL is running as, ~ doesn't really make sense, so there would need to be a system-level directory for storing artwork.</p>
+        <p>The tool could either hard code a path to the saved album art as a property or the application can just follow the path spec above.</p>
+        <h2>People</h2>
+        <p>Aaron Bockover originated this idea and would like to work on it if no one else wants to (it's up for grabs!).</p>
+        <h2>Related Materials</h2>
+        <p>  * [[http://svn.gnome.org/viewcvs/podsleuth|PodSleuth]] is a tool implemented as a HAL callout that shares some of the basic implementation goals that this tool would require.</p>
+      </div>
+    </div>
+  </div>
+</body>

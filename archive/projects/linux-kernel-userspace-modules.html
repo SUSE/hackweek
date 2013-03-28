@@ -1,0 +1,63 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Linux kernel userspace modules</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> InProgress, Kernel</p>
+        <h2>Description</h2>
+        <p>I've been allowed to work on my diploma thesis during the hack-week. So here's my topic and short description, since all hackweek works should have one page here. Since it's my thesis, I cannot allow anyone else to directly participate in it :( However, you're free to discuss the idea, make your own implementation or, as soo as I have (publish) some code done, fork my work.</p>
+        <p>The Linux kernel has a monolithic design. This has several pros and cons. One of the cons is that a device driver runs in the kernel and therefore has a limited access to some resources (libraries, etc.) and is potentially a threat to the system (a bug in the driver can panic the whole kernel).</p>
+        <p>The goal of the thesis is to design an interface/framework which would simplify the communication between userspace and kernel and therefore rapidly simplify the development of "userspace modules".</p>
+        <p>The "userspace module" is a logical component consisting of three parts:
+        (1) Kernel module
+        (2) Userspace application
+        (3) Communication layer between (1) and (2)</p>
+        <p>The communication layer should be generic enought to cover most of the current kernel-to-driver interfaces. The usage of userspace modules will allow the developer to move most of the functionality to userspace and thus minimize potential impact of the negative aspects described above.</p>
+        <p>The thesis should consist of:
+        (a) research how userspace modules should be implemented (unified communication, tools, etc.)
+        (b) proof-of-concept implementation</p>
+        <h2>People</h2>
+        <p>Lukas Lipavsky originated this idea and is currently working on it.</p>
+        <p>Since it's my thesis, I cannot allow anyone else to directly participate in it :( However, you're free to discuss the idea, make your own implementation or, as soon as I have (publish) some code, fork my work.</p>
+        <h2>Results</h2>
+        <p>The thesis itself (text and sources) are [[http://urtax.ms.mff.cuni.cz/~lilu/thesis|here]]. Note that the source is simple proof of concept and is hard to use and have several bugs (e.g. it is possible to unload serspace module while its code is running) - but basic functionality works.</p>
+      </div>
+    </div>
+  </div>
+</body>

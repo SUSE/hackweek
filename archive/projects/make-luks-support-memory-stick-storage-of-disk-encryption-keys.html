@@ -1,0 +1,54 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Make LUKS Support Memory Stick Storage of Disk Encryption Keys</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, Security, Desktop, SLED</p>
+        <h2>Description</h2>
+        <p>SLED uses LUKS to provide volume/disk encryption. The main threat this defends against is stolen laptops; it makes it hard for the person who stole your machine to get your data.</p>
+        <p>The problem is that LUKS by default stores the disk encryption key on the disk itself, and then depends on the quality of your pass phrase to defend your data. A much more secure approach would be to store the volume encryption key on a memory stick or a server.</p>
+        <p>To make it work, LUKS and/or YaST for LUKS needs support for the key not being on the volume. E.g. when you wake the laptop up, it should demand the key, and if it isn't there, sit and wait for you to insert your memory USB stick.</p>
+        <h2>People</h2>
+        <p>Crispin Cowan originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+        <h2>Related Materials</h2>
+        <p>[[http://luks.endorphin.org/|LUKS - Linux Unified Key Setup]]</p>
+      </div>
+    </div>
+  </div>
+</body>

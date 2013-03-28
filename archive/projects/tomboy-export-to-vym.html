@@ -1,0 +1,83 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Tomboy Export to VYM</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> JudgeMe, JudgeDesktop, InProgress, Desktop, Tomboy, Mindmap, SLED, openSUSE, Mono, vym, TryMe</p>
+        <h2>Description</h2>
+        <p>Tomboy is basically a personal Wiki-Structure. Nevertheless, most users automatically create a Mindmap-Like Structure when using Tomboy. </p>
+        <p>I am missing the "big view" when having lot's of entries in Tomboy. So the idea is to implement an Export
+        plugin for VYM, which is a quite professional mindmapper.</p>
+        <p>In real world, a mindmap has no "backlinks". It only expands branches. Tomboy is a wiki, where everything can be linked to anything. The export module has to deal with that in some way. VYM is capable of xlink support, which can be used to implement backlinks.</p>
+        <p>**STATUS**</p>
+        <p>The plugin is now up and does basic export to mindmaps. The implementation is based on the existing HTML-Exporter, and transform is done via xslt and various support functions in c#. Next Step would be adding Xlink-Support, to visualize Tomboy's Wiki-functionality in vym.</p>
+        <p>**However, the main goal is already reached, the "TODO's" are all do-able with some more time. :)**</p>
+        <p>**LIGHTNING TALK**
+        <html><center>															<script type="text/javascript" src="http://blip.tv/scripts/pokkariPlayer.js?ver=2007062101"></script><script type="text/javascript" src="http://blip.tv/syndication/write_player?skin=js&posts_id=292260&source=3&autoplay=true&file_type=flv&player_width=&player_height="></script><div id="blip_movie_content_292260"><a rel="enclosure" href="http://blip.tv/file/get/Natfriedman-TomboyExportToVYMLightningTalk495.flv" onclick="play_blip_movie_292260(); return false;"><img title="Click to play" alt="Video thumbnail. Click to play"  src="http://blip.tv/file/get/Natfriedman-TomboyExportToVYMLightningTalk495.flv.jpg" border="0" title="Click To Play" /></a><br /><a rel="enclosure" href="http://blip.tv/file/get/Natfriedman-TomboyExportToVYMLightningTalk495.flv" onclick="play_blip_movie_292260(); return false;">Click To Play</a></div>										</center></html></p>
+        <p>**CREDITS**</p>
+        <p>Many thanks to the original Author(s) of the Tomboy HTML Exporter, on which ExportToMindmap is based on.</p>
+        <p>Many thanks to Uwe Drechsel; he will indroduce some changes into vym's development version which enable the plugin to provide Xlinks for the backlinks in Tomboy.</p>
+        <p>Many thanks to Thomas Schraitle, helping me surviving the xslt hell :)</p>
+        <p>Thank you Wilken for hosting ExportToVYM on www.campulation.org.</p>
+        <p>**DOWNLOAD**</p>
+        <p>[[http://www.campulation.org/ExportToVYM.tar.bz2|ExportToVYM.tar.bz2  Version 0.1]]</p>
+        <p>This tarball contains the c# source, xslt stylesheet, and a precomiled .dll.  </p>
+        <p>**INSTALL**</p>
+        <p>To try ExportToVYM, just copy the dll and the xsl file into $HOME/.tomboy/Plugins,
+        and restart Tomboy. Now enable the plugin in Tomboy's preferences dialog. </p>
+        <p>**USAGE**</p>
+        <p>Choose the note that should be the root of the mindmap you want to create. Click
+        on Tools and "Export to VYM". 
+        Load the resulting file in vym.</p>
+        <p>**TODO**</p>
+        <p>- Enable xlinks (wait for Uwe's patch in latest vym version)</p>
+        <p>- add a combobox to choose with which Icon (of vym) the pinned articles should be marked.</p>
+        <p>- improve the format tags; currently all the stuff is simply put into the text page of a mindmap node</p>
+        <p>- for VYM: integrate a mime type for .vym files, so that the plugin can start it by using a gnome function</p>
+        <p>- implement a better positioning procedure for the main branches: with large Tomboy archives, the user may have to correct the positions of the branches since they may overlap</p>
+        <p>**- get VYM into our bussiness products as it's simply the best freely available mindmapper! **</p>
+        <p>{{ideas:vym-output.png|Sample output of a Tomboy Archive as a mindmap in VYM}}</p>
+        <p>Sample output of a Tomboy Archive as a mindmap in VYM</p>
+        <h2>People</h2>
+        <p>Holger Hetterich originated this idea.  He is currently working on the implementation.</p>
+        <h2>Related Materials</h2>
+      </div>
+    </div>
+  </div>
+</body>

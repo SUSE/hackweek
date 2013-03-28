@@ -1,0 +1,65 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Easy, secure web frameworks</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> InProgress, Server, Security, SLES, openSUSE, Web20, LAMP</p>
+        <h2>Description</h2>
+        <p>There are many popular open source web servers and frameworks today: MediaWiki, DokuWiki, Joomla, WordPress, MoveableType, Drupal, PHPNuke, TWiki, PHP Forum, FlexWiki, Personal Content Manager, Small Business Suite, SugarCRM, Django, Ruby on Rails, TurboGears, Pylons, Lucene.  Thousands of applications are built on these foundations every day (including this web site).</p>
+        <p>Everyone runs into the same problems:</p>
+        <p>  * Setting these things up is hard, partly due to incompatibilities with the default apache or mysql configuration.</p>
+        <p>  * Almost everyone customizes these applications somewhat (c.f. this site) and merging in upstream changes is difficult.</p>
+        <p>  * Most of these applications regularly have security problems which can compromise the server, and so updates are released which must be incorporated.</p>
+        <p>Let's make SUSE really well-suited for all the web developers of the world by solving these problems for them.</p>
+        <p>Here are a few ways to get there:</p>
+        <p>  * Package all of these tools and make them available for openSUSE.</p>
+        <p>  * Package them side-by-side with AppArmor profiles so that security problems in these frameworks don't ever lead to serious intrusions.</p>
+        <p>  * Ship packages with two different trees in place: a master tree, indexed and versioned as a git repository, and a production tree in the web server vhost directory, which is just a 'pull' of the master tree.  This will aid people in making local changes, tracking their diffs, syncing with upstream changes, etc.  Subsequent updates would update the master tree but would not overwrite the production tree.</p>
+        <p>  * Use Kiwi to build ready-to-run appliances, e.g a bugzilla appliance that has mysql preconfigured for it.</p>
+        <p>  * Ensure that the default SUSE apache and mysql configurations support the basic things, like mod_rewrite, mod_php5; that the basic PHP configuration supports all of the PHP-based applications (e.g. short_open_tag is set on). </p>
+        <p>A good investigative step would be to go into the communities of people who set these things up regularly (e.g. #mediawiki) and figure out what would be the ideal solution for them.</p>
+        <h2>People</h2>
+        <p>Nat Friedman, Garrett LeSage, and Miguel de Icaza originated this idea.</p>
+        <p>Cristian Rodriguez is working on the implementation of this idea.</p>
+        <h2>Related Materials</h2>
+        <p>http://software.opensuse.org/download/server:/php:/applications/</p>
+      </div>
+    </div>
+  </div>
+</body>

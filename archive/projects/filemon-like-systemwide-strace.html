@@ -1,0 +1,57 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Filemon-like systemwide strace</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> InProgress, Kernel, Desktop, UnixFeature, Performance, DevTool, JudgePerf, JudgeMe, TryMe, JudgeUnixAttack</p>
+        <h2>Description</h2>
+        <p>Filemon (http://www.microsoft.com/technet/sysinternals/FileAndDisk/Filemon.mspx) is a Windows utility that works like a systemwide strace(1).  System administrators can use it like they would use strace, for example, to find why programs fail or crash if they aren't able to open a file.</p>
+        <p>Systemtap lets us do global monitoring of system calls.</p>
+        <p>Mortadelo is a quasi-clone of Filemon, based on a systemtap core and a GUI.  We can later expand the program to do more interesting analysis, not just "show me all the system calls that happen".</p>
+        <p>You can see screenshots starting with this blog entry:
+        http://primates.ximian.com/~federico/news-2007-06.html#mortadelo</p>
+        <h2>People</h2>
+        <p>Federico Mena Quintero originated this idea and is working on the implementation.</p>
+        <h2>Related Materials</h2>
+        <p>You can get the sources with:</p>
+        <p>''git-clone http://www.gnome.org/~federico/git/mortadelo''</p>
+      </div>
+    </div>
+  </div>
+</body>

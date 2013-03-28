@@ -1,0 +1,73 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>libpcap support for iptables queue target</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Done, network</p>
+        <h2>Description</h2>
+        <p>libpcap should be extended to receive packets comming from iptables NF_QUEUE target. Then
+        during firewall configuration you could watch live in wireshark or tcpdump what packets get
+        blocked. I think that would be a cool feature.</p>
+        <p>pcap already has a syntax for such targets: they could be a magic interface.</p>
+        <p>The easiest way to do this would be to use 
+        http://www.netfilter.org/projects/libnetfilter_log/index.html
+        or 
+        http://www.netfilter.org/projects/libnetfilter_queue/index.html
+        which are ready libraries for access of the netlink based kernel
+        interface for these queue targets.</p>
+        <p>These libraries are currently not packaged. An alternative
+        would be to write a direct interface to the kernel netlink
+        protocol used by the QUEUE target.</p>
+        <p>A subtle point is that if the libraries are just used by libpcap would always
+        depend on it which I wouldn't like (already too many strict dependencies
+        in the distributions). It would be better to use 
+        dlopen/dlsym to only load them on demand.</p>
+        <p>Bonus points if SuSEfirewall is also changed to insert suitable queue targets
+        for each packet drop rule.</p>
+        <p>Another bonus point if you add a button to the yast2 firewall configuration
+        that starts wireshark for the current configuration for testing
+        (and installs it as needed, don't put a depedency in) </p>
+        <h2>People</h2>
+        <p>Andi Kleen originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).
+          - Boyang is working on the idea.</p>
+        <h2>Related Materials</h2>
+      </div>
+    </div>
+  </div>
+</body>

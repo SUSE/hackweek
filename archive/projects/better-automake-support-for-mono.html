@@ -1,0 +1,68 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Better automake support for mono</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Done, JudgeMe, JudgeBest, Mono, DevTool</p>
+        <h2>Description</h2>
+        <p>[[http://www.gnu.org/software/automake|Automake]] is a widely used tool that assists with writing Makefiles.  It already has support for building native executables, libraries, and shared libraries written in C, C++, Fortran, etc., and also has support for Java class libraries.</p>
+        <p>It would be useful to add support to Automake for building and linking .NET assemblies, and to support installation into the GAC.</p>
+        <p>Existing mono based projects like gtk# and f-spot have evolved a rules.make to help them with the task.  However, it would be better to have native Automake support for mono/.NET.</p>
+        <h2>People</h2>
+        <p>Raja R Harinath originated this idea, and worked on it during the Hack Week.</p>
+        <h2>Status</h2>
+        <p><html>
+        <embed style="width:400px; height:326px;" id="VideoPlayback" type="application/x-shockwave-flash" src="http://video.google.com/googleplayer.swf?docId=7525466052747539502&hl=en" flashvars=""> </embed>
+        </html></p>
+        <p>The code is available as a series of [[http://blog.hurrynot.org/mono-in-automake/patches|patches]] to Automake  (packed conveniently in a [[http://blog.hurrynot.org/mono-in-automake/patches.tar.gz|tarball]]), and there's also an [[http://blog.hurrynot.org/mono-in-automake/test-1.0.tar.gz|example project]] that shows how to use it.</p>
+        <p>Features implemented include:</p>
+        <p>  * various kinds of assemblies and modules: .exe, .dll, .netmodule
+          * automatic handling of $(srcdir) when invoking compilers
+          * support for C#, VB, Nemerle, and Boo
+          * very easily extensible to other .NET languages
+          * support for installing DLLs to the GAC
+          * basic autoconf macro for detecting presence of compilers
+          * has documentation!!!!</p>
+        <p>Todo</p>
+        <p>  * use it in real life and find out what's missing, and what's awkward
+          * make autoconf support more extensive: maybe add support for checking if some assemblies are present or not</p>
+      </div>
+    </div>
+  </div>
+</body>

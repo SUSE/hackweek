@@ -1,0 +1,59 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Color management for desktop applications</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Desktop, Graphics, SLED, InProgress, JudgeDesktop, JudgeMe, JudgeBest</p>
+        <h2>Description</h2>
+        <p>While some of the graphics oriented linux applications already do color management, many frequently used desktop application are still missing this nice and usable feature.</p>
+        <p>It would be nice to have at least display color management in these applications. Doing color management for display means to discover input profile for displayed image/color, discover output profile - in this case device profile of the monitor, create the color transformation and use the transformation on displayed content.</p>
+        <p>For input profile it should look for embedded profile in the image or in the embedded exif info. I think it will be OK to fallback to sRGB otherwise. For output profile it should use _ICC_PROFILE X atom for given X display.</p>
+        <h2>Code</h2>
+        <p>Patches against gtkhtml 3.10.0 and evolution 2.6.0</p>
+        <p>http://rodo.foo.cz/blog/gtkhtml-cms.diff</p>
+        <p>http://rodo.foo.cz/blog/evolution-cms.diff</p>
+        <h2>People</h2>
+        <p>Radek Doulik originated this idea.  He was able to add color management for images displayed in the Evolution. It works nicely and he uses it daily on his desktop.</p>
+        <h2>Related Materials</h2>
+        <p>http://littlecms.com/</p>
+        <p>http://www.burtonini.com/computing/x-icc-profiles-spec-0.2.html</p>
+      </div>
+    </div>
+  </div>
+</body>

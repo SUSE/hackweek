@@ -1,0 +1,69 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Nike+ Support for Banshee</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, Banshee, Desktop, InProgress</p>
+        <h2>Description</h2>
+        <p>Apple and Nike teamed up to make a nifty little iPod accessory that goes into your shoe and feeds all kinds of interesting data to your iPod when you go running.  In iTunes, this data in synced automagically to nikeplus.com.  In Banshee, it is ignored.  :-(</p>
+        <p>The purpose of this project is to do 3 things:
+          - Grab the data off an iPod when it syncs with Banshee.
+          - Provide nifty graphs and statistics of your runs inside Banshee.
+          - Make it all look pretty using Moonlight.</p>
+        <h2>People</h2>
+        <p>Jonathan Pobst originated this idea and worked on it for Hack Week!</p>
+        <h2>Status</h2>
+        <p>I didn't get as far as I would have liked to during the week, as I spent a lot of time learning new stuff, but I at least got some decent screenshots:</p>
+        <p>{{ideas:marathon1.png|Banshee showing all the run files}}</p>
+        <p>{{ideas:marathon2.png|Banshee showing an individual run}}</p>
+        <p>What works:
+          - Parsing of XML run files
+          - Graphing of individual run
+          - Graphing of all runs by length</p>
+        <p>What doesn't work:
+          - Syncing with the iPod (files were manually retrieved)
+          - Runs by Week or Month
+          - Tooltip on summary graph is static
+          - Clicking on a run on a summary graph should graph the individual run
+          - Metric support for the 99% of countries who are too lazy/stubborn to convert to the US customary system.
+          - Error handling, stability, polish</p>
+      </div>
+    </div>
+  </div>
+</body>

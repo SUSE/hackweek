@@ -1,0 +1,65 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>ultra silent (economy) mode for notebooks</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, Mobile, LowPower, Desktop, Management</p>
+        <h2>Description</h2>
+        <p>While tinkering my private digital linux picture frame i recognized the need for a special silent
+        mode for this quite old and noisy hardware.  This also seems to bring at least some power savings (having
+        the harddisks spun down over very long (>>10 minutes) periods).</p>
+        <p>The biggest source of noise on my machine were its harddisk and its fan. So my strategy was to spin the
+        disk down as long as possible (preferably without risking filesystem integrity too much) and to power down the cpu as much as possible.
+        The kernel laptop_mode together with the scripts for it (in the kernel sources) brings nearly everything
+        needed (at least for experts). I additionally wrote a very small'n'lightweight daemon (based on the
+        disk-monitoring code out of the kernel source tree) monitoring if harddisk has spun up again, then it uses a
+        registered hook to again cache everything thats about to be needed in the next future and spins the harddisk
+        down again.
+        Together with other techniques (like cpufrequency scaling, cpu throttling, fan control etc.) i was able to turn a very noisy and crappy old laptop into a totally silent system.</p>
+        <p>=> What i was thinking of here is to polish this all up and integrate it so a normal user can easily set this
+        up and use this mode with a few clicks.
+        Probably there are also other occasions where users need their notebooks to be very quiet and/or to save as much power as possible. E.g. think of a student needing to read a very long pdf or textfile on his notebook, sitting in a library having no powersupply with him.</p>
+        <p>To make this most efficient the tool could ask the user what files he will probably want to access (best of course readonly) while in this ultrasilent mode (e.g. a pdf he wants to read). The tool would then cache the file and the application (and dependent libs) he needs to read this file, change the machine settings to get into ultrasilent mode, monitor for "accidental" disk wakeups (with above mentioned daemon) .. cache and spin-down again and in case of repeated disk wakeups in a short time auto-disable the ultrasilent mode and warning the user he or some app accessed not-cached/predefined files.</p>
+        <h2>People</h2>
+        <p>Frank Seidel originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+        <h2>Related Materials</h2>
+      </div>
+    </div>
+  </div>
+</body>

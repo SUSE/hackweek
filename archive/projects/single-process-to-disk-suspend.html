@@ -1,0 +1,55 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>process-to-disk suspend</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, Mobile, LowPower, UnixFeature, Kernel</p>
+        <h2>Description</h2>
+        <p>On usual suspend to disk all other userspace processes are frozen and the whole (used/allocated) memory is put to disk.
+        What i'd like to have is something similar, but with just of a finer granularity, being able to suspend-to-disk single processes or groups of processes.</p>
+        <p>The usecases i have in mind reach from making boot faster (just resuming the services processes instead of starting them from scratch - wherer possible/appropriate), over easy restoring of previous desktop sessions of apps (if they e.g. have no possibility to fully save their current state) .. to process migration between (also perhaps virtualized) machines.</p>
+        <p>For the desktop / on notebooks we already have that possibility wiht usual suspend-to-disk (coming back exactly where i left), but often i'd like to have that feature just for some specific applications.</p>
+        <p>I'm not fully sure if something similar perhaps already exists. Please tell me if you know more about this.</p>
+        <h2>People</h2>
+        <p>Frank Seidel originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+        <h2>Related Materials</h2>
+      </div>
+    </div>
+  </div>
+</body>

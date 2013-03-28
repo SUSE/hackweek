@@ -1,0 +1,59 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>FUSE-VFS-wrapper</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Kernel, Filesystem, FUSE, osx, InProgress</p>
+        <h2>Description</h2>
+        <p>The Linux kernel includes quite a broad set of filesystem drivers, most of them unique to Linux. 
+        If you'd want to access a reiserfs or ext4 on BSD / Mac OS X / Windows you're more or less lost.</p>
+        <p>An easy way to have all filesystems available on BSD / Mac OS X would be to provide an interface similar to the VFS layer in the kernel in userspace, which maps back to FUSE, which is supported in all major BSDs and OSX.</p>
+        <p>As a first milestone I would suggest to get VFAT working. As soon as that works, ext2, ext3, and at some point the whole world.</p>
+        <h2>People</h2>
+        <p>Alexander Graf originated this idea and will start working on this next week. 
+        Stefan Assmann is gettin on it as well.</p>
+        <h2>Related Materials</h2>
+        <p>http://www.gatago.com/linux/kernel/14700582.html
+        http://lxr.linux.no/source/Documentation/filesystems/vfs.txt
+        http://www.freeos.com/articles/2677/
+        http://outflux.net/projects/lfs/ </p>
+      </div>
+    </div>
+  </div>
+</body>

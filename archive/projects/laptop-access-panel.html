@@ -1,0 +1,59 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Laptop Access Panel</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> InProgress, Mobile, LowPower, Performance, openSUSE, SLED, JudgeDesktop</p>
+        <h2>Description</h2>
+        <p>**The bad:**
+        There is no central point to configure typical laptop related functions (power management, display brightness, wireless networks, wireless devices such as Bluetooth).</p>
+        <p>**The good:**
+        We can hack on some kind of a Laptop Access Panel.  It will give users:</p>
+        <p>  - the ability to control the basic functions which are currently offered by various stand-alone applications (g-p-m, nm-applet, KPowersave, KNetworkManager and so forth)
+          - a quick overview of the current system status.</p>
+        <p>The application should be as dumb as possible. It should use D-Bus for interprocess communication and HAL for data gathering. It should not poll to get any information. If a D-Bus backend is missing (e.g. xrandr) this project should get the ball rolling towards a discussion with the responsible subsystem maintainer(s)/programmer(s).</p>
+        <h2>People</h2>
+        <p>Timo Hoenig originated this idea.  Basic mockup of the GUI is done, interested parties please contact me to get this implemented.</p>
+        <h2>Related Materials</h2>
+        <p>First mockup: {{ideas:laptop-access-mockup.png|}}</p>
+        <p>Hint: While doing this I realized that someone could work several hack weeks to stabilize MonoDevelop. Sigh.</p>
+      </div>
+    </div>
+  </div>
+</body>

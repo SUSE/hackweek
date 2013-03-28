@@ -1,0 +1,58 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Extend Wacom Tablet driver to work with RandR</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> InProgress, Desktop, Mobile, openSUSE, SLED, X11</p>
+        <h2>Description</h2>
+        <p>Currently the X.org driver for wacom tablet input devices don't work with the XRandR extension. Because of this there is no automatic rotation of the related input devices if the user change the screen orientation e.g. via xrandr (or the desktop tools). The user have to change the orientation for each of the three (or more) input devices separately via a tool or via change the X.org config and restart the X server. </p>
+        <p>The automatic on-fly rotation is very important for TabletPCs. At the moment we have a workaround for KDE in KRandRTray which call xsetwacom to rotate the wacom input devices. Unfortunatly this don't fix GNOME or all the other command line tools. The wacom driver should do this automatically without any hack in other tools.</p>
+        <p>TODO:
+          * teach the wacom driver to read the current orientation of the screen from the RandR extension
+          * add a new value 'AUTO' for the "Rotate" option of the driver
+          * teach the wacom driver to change the current orientation if 'AUTO' depending on RandR
+          * remove workaround from KRandRTray and push the change upstream to the linuxwacom project</p>
+        <h2>People</h2>
+        <p>Danny Kukawka originated this idea. He is currently working on implementing this idea.</p>
+        <h2>Related Materials</h2>
+        <p>[[http://linuxwacom.sourceforge.net/|Linux Wacom Project]]</p>
+      </div>
+    </div>
+  </div>
+</body>

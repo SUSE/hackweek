@@ -1,0 +1,54 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>save modified vba macros</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> office, InProgress</p>
+        <h2>Description</h2>
+        <p>Currently with the Open Suse and Novell versions of openoffice we import vba macros and run them natively. Working on vba interop time after time I need to make minor updates to macros in excel in order to ensure the same macro works in both Excel and Openoffice. I end up modifying the document/macro in excel ( on another machine , real or virtual ), transferring it back to my linux host, opening in Openoffice, testing, returning to the excel document to make more modifications, re-importing the document etc. etc. etc. So while testing it's possible to make changes in place to the vba macros imported but you can't save those changes to the excel document you are editing, particularly this is very annoying when trying to test macros that run on document load. The idea is to be able to modify imported vba marcos and export them to excel :-) 
+        Michael Meeks did some investigation about this, produced some patches that need love and attention in order to integrate into openoffice</p>
+        <h2>People</h2>
+        <p>Noel Power originated this idea, he is planning to work on it during the Hack Week.</p>
+        <h2>Related Materials</h2>
+        <p>http://go-oo.org/
+        http://wiki.services.openoffice.org/wiki/VBA</p>
+      </div>
+    </div>
+  </div>
+</body>

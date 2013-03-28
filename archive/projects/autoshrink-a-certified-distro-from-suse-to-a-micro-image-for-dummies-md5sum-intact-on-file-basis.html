@@ -1,0 +1,84 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Autoshrink a certified distro from SUSE to a micro-image - for dummies - and KISS</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Management, Virtualization, Server, SLES, SLED, openSUSE, SLEPOS, InProgress, HelpWanted, HW-Hacker</p>
+        <h2>Description</h2>
+        <p>o Main Goal:</p>
+        <p>  Install a machine with a certified set of packages and automatically generate
+          from that a micro image and a couple of (definable) addon overlays that
+          you then can easily stack together, image and deploy on virtual instances,
+          or use for a rescue system sitting on a PXE server, USB stick or local
+          harddisk partition or image. </p>
+        <p>o Sub Goals:</p>
+        <p>  o Stay as close to the certified original as possible (like starting from
+            a SLES 10 SP1 minimal install, which is still too big for my target of a
+            small but stackable micro+addon toolkit)
+          o Keep at least the MD5SUM on a file level intact to the certified original
+          o Easy to use this auto-shrinker => a script or fully automate it
+          o Easy to develop it => My programming skills are moderate and becoming a manager
+            did not improve them either ;-) But if you give me a pool of RPMs and a UNIX
+            command line I can do interesting stuff like LISA (Caldera's text based installer) ;-)
+          o Contribute something that might be usefull for our customers and field engineers,
+            work with others in a team during hackweek who have similar/complementary ideas/skills
+            and then merge projects and create a UNIX-pipe-onliner-superthing by interfacing with
+            their projects (pre- or afterburners). If somebody builds a nice GUI frontend and
+            yet other write some documentation around it and its architecture, this would be
+            my dream of how hackfest should work ;-)
+          o KISS (those who not know what this means ask others and make friends by getting
+            closer to the community, if all that fails ask me ;-)</p>
+        <h2>People</h2>
+        <p>Ralf Flaxa originated this idea. Ralf Flaxa is working on this idea. Cornelius Schumacher, Marcus Schaefer, Nat Friedman and James Willcox seem to be interested or work on similar ideas or have created
+        similar/related projects. Ralf will contact them to see how we might want to join forces/projects.</p>
+        <h2>Related Materials</h2>
+        <p>The instsys system image on SUSE SLE or openSUSE CDs (CD1:/boot/<ARCH>/root)</p>
+        <p>The rescue system image on SUSE SLE or openSUSE CDs (CD1:/boot/<ARCH>/rescue)</p>
+        <p>Some script/tool which comes with Xen (forgot name, will look it up)
+        (I actually have a patched (unfinished) version where I tried to make it work
+        with the kernel and rescue image from any SUSE product CD1/DVD1, will try to
+        find it on my backup).</p>
+        <p>KIWI</p>
+        <p>SLEPOS</p>
+        <p>autoYaST</p>
+        <p>LISA ;-)</p>
+      </div>
+    </div>
+  </div>
+</body>

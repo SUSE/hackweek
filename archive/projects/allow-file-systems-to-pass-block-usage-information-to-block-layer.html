@@ -1,0 +1,52 @@
+<head>
+  <title>
+    SUSE Hack Week - Past Project
+  </title>
+  <link href='../../images/favicon.gif' rel='shortcut icon'>
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='navigation'>
+    <li class='logo invert' id='start-link'>
+      <a href='../../index.html'>
+        <img border='0' height='52' src='../../images/px.gif' width='112'>
+      </a>
+    </li>
+    <li class='invert' id='what-is-link'>
+      <a href='../../index.html#what-is'>
+        what is hack week?
+      </a>
+    </li>
+    <li class='invert' id='agenda-link'>
+      <a href='../../index.html#agenda'>
+        agenda
+      </a>
+    </li>
+    <li class='invert' id='projects-link'>
+      <a href='../../index.html#projects'>
+        projects
+      </a>
+    </li>
+    <li class='invert' id='where-link'>
+      <a href='../../index.html#where'>
+        where?
+      </a>
+    </li>
+  </div>
+  <div id='content'>
+    <div id='wrapper'>
+      <div id='wrapper-title'>
+        <h1>Allow file systems to pass block usage information to block layer</h1>
+      </div>
+      <div id='wrapper-content'>
+        <p><b>Tags:</b> Idea, Kernel, block-layer, filesystems</p>
+        <h2>Description</h2>
+        <p>Currently, block device abstractions such as device mapper and md have no information pertaining to which blocks on devices they manage are actually in use. For example, with a dm-snapshot device, a user can take a snapshot and then delete all the files in the snapshot. The actual number of blocks in use in the snapshot volume would be quite small, but the number of blocks kept by the snapshot would be almost equal to the number of blocks owned by the original volume.</p>
+        <p>One idea would be to allow to file systems to pass down metadata with block i/o requests indicating that the block is no longer used. Snapshots could use this information to free the block from the snapshots, while RAID devices could potentially use the information to create a more efficient map of what blocks are in use. The advantage in the latter case would be to accelerate rebuilds in the case of failure by only performing the rebuild on the blocks that are actually in use.</p>
+        <h2>People</h2>
+        <p>Jeff Mahoney originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+        <h2>Related Materials</h2>
+      </div>
+    </div>
+  </div>
+</body>
