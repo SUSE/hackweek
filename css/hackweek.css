@@ -302,6 +302,24 @@ span:hover{
     float: left;
     margin-top: 110px;
 }
+#what-is-cta a{
+    color: #00843E;
+    text-decoration: none;
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    transition:.2s;
+}
+#what-is-cta a:hover{
+    color: #FFF;
+    text-decoration: underline;
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    transition:.2s;
+}
 #what-is-cta h3{
     font-size: 24px;
 }
