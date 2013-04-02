@@ -730,12 +730,13 @@ span:hover{
     color: #7AC142;
 }
 #provo{
-    background: url('../images/pin.png');
-    width: 33px;
-    height: 38px;
+    background: url('../images/pin-small.png');
+    background-repeat: no-repeat;
+    width: 22px;
+    height: 23px;
     position: inherit;
-    margin-left: 196px;
-    margin-top: 209px;
+    margin-left: 201px;
+    margin-top: 215px;
     cursor: pointer;
 }
 #provo-zoom{
@@ -752,12 +753,13 @@ span:hover{
     z-index: 100;
 }
 #bellingham{
-    background: url('../images/pin.png');
-    width: 33px;
-    height: 38px;
+    background: url('../images/pin-small.png');
+    background-repeat: no-repeat;
+    width: 22px;
+    height: 23px;
     position: inherit;
-    margin-left: 160px;
-    margin-top: 170px;
+    margin-left: 165px;
+    margin-top: 176px;
     cursor: pointer;
 }
 #bellingham-zoom{
@@ -774,13 +776,14 @@ span:hover{
     z-index: 100;
 }
 #nuremberg{
-    background: url('../images/pin.png');
-    height: 38px;
+    background: url('../images/pin-small.png');
+    background-repeat: no-repeat;
+    height: 23px;
     left: 50%;
-    margin-left: -19px;
-    margin-top: 177px;
+    margin-left: -12px;
+    margin-top: 187px;
     position: inherit;
-    width: 33px;
+    width: 22px;
     cursor: pointer;
 }
 #nuremberg-zoom{
@@ -798,13 +801,14 @@ span:hover{
     z-index: 100;
 }
 #prague{
-    background: url('../images/pin.png');
-    height: 38px;
+    background: url('../images/pin-small.png');
+    background-repeat: no-repeat;
+    height: 23px;
     left: 50%;
-    margin-left: 10px;
-    margin-top: 180px;
+    margin-left: 17px;
+    margin-top: 190px;
     position: inherit;
-    width: 33px;
+    width: 22px;
     cursor: pointer;
 }
 #prague-zoom{
@@ -822,13 +826,14 @@ span:hover{
     z-index: 100;
 }
 #beijing{
-    background: url('../images/pin.png');
-    height: 38px;
-    margin-right: 250px;
-    margin-top: 205px;
+    background: url('../images/pin-small.png');
+    background-repeat: no-repeat;
+    height: 23px;
+    margin-right: 255px;
+    margin-top: 211px;
     position: inherit;
     right: 0;
-    width: 33px;
+    width: 22px;
     cursor: pointer;
 }
 #beijing-zoom{
@@ -846,13 +851,14 @@ span:hover{
     z-index: 100;
 }
 #singapore{
-    background: url('../images/pin.png');
-    height: 38px;
-    margin-right: 280px;
-    margin-top: 335px;
+    background: url('../images/pin-small.png');
+    background-repeat: no-repeat;
+    height: 23px;
+    margin-right: 285px;
+    margin-top: 343px;
     position: inherit;
     right: 0;
-    width: 33px;
+    width: 22px;
     cursor: pointer;
 }
 #singapore-zoom{
@@ -870,13 +876,14 @@ span:hover{
     z-index: 100;
 }
 #taipei{
-    background: url('../images/pin.png');
-    height: 38px;
-    margin-right: 220px;
-    margin-top: 265px;
+    background: url('../images/pin-small.png');
+    background-repeat: no-repeat;
+    height: 23px;
+    margin-right: 227px;
+    margin-top: 273px;
     position: inherit;
     right: 0;
-    width: 33px;
+    width: 22px;
     cursor: pointer;
 }
 #taipei-zoom{
@@ -894,13 +901,14 @@ span:hover{
     z-index: 100;
 }
 #london{
-    background: url('../images/pin.png');
-    height: 38px;
+    background: url('../images/pin-small.png');
+    background-repeat: no-repeat;
+    height: 23px;
     left: 50%;
-    margin-left: -53px;
-    margin-top: 161px;
+    margin-left: -47px;
+    margin-top: 167px;
     position: inherit;
-    width: 33px;
+    width: 22px;
     cursor: pointer;
 }
 #london-zoom{
@@ -917,14 +925,41 @@ span:hover{
     display: none;
     z-index: 100;
 }
-#barcelona{
-    background: url('../images/pin.png');
-    height: 38px;
+#paris{
+    background: url('../images/pin-small.png');
+    background-repeat: no-repeat;
+    height: 23px;
     left: 50%;
-    margin-left: -45px;
-    margin-top: 203px;
+    margin-left: -35px;
+    margin-top: 182px;
     position: inherit;
-    width: 33px;
+    width: 22px;
+    cursor: pointer;
+    z-index: 61;
+}
+#paris-zoom{
+    background: url('../images/london.png');
+    background-repeat: no-repeat;
+    background-position: 23px center;
+    background-size: 80% auto;
+    left: 50%;
+    margin-left: -139px;
+    margin-top: 47px;
+    position: inherit;
+    width: 232px;
+    height: 232px;
+    display: none;
+    z-index: 100;
+}
+#barcelona{
+    background: url('../images/pin-small.png');
+    background-repeat: no-repeat;
+    height: 23px;
+    left: 50%;
+    margin-left: -42px;
+    margin-top: 211px;
+    position: inherit;
+    width: 22px;
     cursor: pointer;
 }
 #barcelona-zoom{
@@ -938,6 +973,29 @@ span:hover{
     position: inherit;
     width: 232px;
     height: 232px;
+    display: none;
+    z-index: 100;
+}
+#curitiba{
+    background: url('../images/pin-small.png');
+    background-repeat: no-repeat;
+    width: 22px;
+    height: 23px;
+    position: inherit;
+    margin-left: 395px;
+    margin-top: 450px;
+    cursor: pointer;
+}
+#curitiba-zoom{
+    background: url('../images/curitiba.png');
+    background-repeat: no-repeat;
+    background-position: 23px center;
+    background-size: 80% auto;
+    width: 232px;
+    height: 232px;
+    position: inherit;
+    margin-left: 300px;
+    margin-top: 364px;
     display: none;
     z-index: 100;
 }
