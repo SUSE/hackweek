@@ -339,51 +339,34 @@ span:hover{
     float: left;
     margin-top: 110px;
 }
-#people{
-    background-color: #000;
-    /*background: url('../images/projects-thumbs.jpg');*/
-    background-size: 100% auto;
-    background-repeat: no-repeat;
+#news{
+    background-color: #fcfdfe;
     z-index: 20;
     position: relative;
-    padding: 5px;
-    /* Hiding people page for now */
-    height: 0px;
-    padding: 0px;
 }
-.project-instructions{
-    background-color: #000000;
-    position: absolute;
-    width: 320px;
-    height: 160px;
-    left: 50%;
-    margin-left: -160px;
-    top: 50%;
-    margin-top: -80px;
+#news-title{
+    margin: 0 auto;
+    padding-top: 20px;
+    font-family: 'Droid Sans', sans-serif;
+    color: #201f1f;
+    font-size: 25px;
     text-align: center;
-    z-index: 22;
 }
-.text-project-box {
-   color: #d4df4c;
-   font-size: 30px;
-   padding-top: 10px;
+#social-content{
+    width: 625px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    margin-left: -312.5px;
 }
-.cut-text {
-    color: #373731;
-    font-style: italic;
+#twitter-stream{
+    display: inline;
+    width: 290px;
+    height: 375px;
 }
-.people-thumb{
-    float: left;
-    opacity:0.1;
-    padding: 1px;
-}
-#project-info{
-    color: #FFF;
-    font-weight: 300;
-    text-transform: uppercase;
-    letter-spacing: 7px;
-    font-size: 13px;
-    padding-top: 10px;
+#flickr{
+    display: inline;
+    margin-left: 30px;
 }
 #agenda{
     background-color: #d4df4c;

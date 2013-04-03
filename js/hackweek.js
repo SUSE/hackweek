@@ -15,12 +15,6 @@ $(function () {
         }, 1000);
     })
 
-    $("#people-link").click(function () {
-        $('html, body').animate({
-            scrollTop: $("#people").offset().top
-        }, 1000);
-    })
-
     $("#agenda-link, #agenda-start").click(function () {
         $('html, body').animate({
             scrollTop: $("#agenda").offset().top
@@ -30,6 +24,12 @@ $(function () {
     $("#projects-link, #projects-start").click(function () {
         $('html, body').animate({
             scrollTop: $("#projects").offset().top
+        }, 1000);
+    })
+
+    $("#news-link, #news-start").click(function () {
+        $('html, body').animate({
+            scrollTop: $("#news").offset().top
         }, 1000);
     })
 
@@ -243,14 +243,6 @@ $(function () {
             $('#what-is-cta, #hackweek-logos').css({'opacity': 1 - percent_invisible($('#what-is'))})
         }
 
-
-        /* people page text scroll animation */
-        /*if ($(window).scrollTop() > $('#people').position().top - $('#people').height() &&
-            $(window).scrollTop() < $('#people').position().top + 2 * $('#people').height()) {
-            var percent_scrolled_out = Math.abs(($(window).scrollTop() - $('#people').position().top) / $('#people').height())
-            $('.project-instructions').css({'opacity': 1 - percent_scrolled_out * 3})
-        }*/
-
         /* where page text scroll animation */
         if (page_visible($('#where'))) {
             $('#where-title').css({'opacity': 1 - percent_invisible($('#where'))/2,
@@ -261,9 +253,9 @@ $(function () {
         if ($(window).scrollTop() > $('#where').position().top - $('#where').height() / 2) {
             $('#navigation li').removeClass('active')
             $('#where-link').addClass('active')
-        } else if ($(window).scrollTop() > $('#people').position().top - $('#people').height() / 2) {
+        } else if ($(window).scrollTop() > $('#news').position().top - $('#news').height() / 2) {
             $('#navigation li').removeClass('active')
-            $('#people-link').addClass('active')
+            $('#news-link').addClass('active')
         } else if ($(window).scrollTop() > $('#projects').position().top - $('#projects').height() / 2) {
             $('#navigation li').removeClass('active')
             $('#projects-link').addClass('active')
@@ -278,10 +270,6 @@ $(function () {
         /* invert navigation color */
         $('#navigation li').each(function (index) {
             $(this).removeClass('invert')
-            if (($(this).position().top + $(this).height() > $("#people").position().top - $(window).scrollTop()) &&
-                ($(this).position().top + $(this).height() < $("#people").position().top - $(window).scrollTop() + $('#people').height())) {
-                $(this).addClass('invert')
-            }
             if (($(this).position().top + $(this).height() > $("#what-is").position().top - $(window).scrollTop()) &&
                 ($(this).position().top + $(this).height() < $("#what-is").position().top - $(window).scrollTop() + $('#what-is').height())) {
                 $(this).addClass('invert')
