@@ -36,6 +36,11 @@ class DokuwikiParser
     @content = ""
   end
 
+  def on text
+    o text
+    o "\n"
+  end
+  
   def o text
     @content += text
   end
@@ -67,23 +72,47 @@ class DokuwikiParser
     return false
   end
   
+  def parse_wiki_links
+    @line.gsub! /\[\[(.*)\|(.*)\]\]/, '<a href="\1">\2</a>'
+    @line.gsub! /\[\[(.*)\]\]/, '<a href="\1.html">\1</a>'
+  end
+  
   def end_paragraph
     if !@p.empty?
       o @p.chomp + "</p>\n"
       @p = ""
     end
+    if !@ul.empty?
+      on "<ul>"
+      @ul.each do |li|
+        on "<li>#{li}</li>"
+      end
+      on "</ul>"
+      @ul.clear
+    end
+  end
+
+  def parse_list
+    if @line =~ /^\s*\*\s*(.*)/
+      @ul.push $1
+      return true
+    end
+    return false
   end
   
   def parse
     @p = ""
+    @ul = Array.new
     @text.each_line do |line|
       @line = line
+      parse_wiki_links
       next if parse_title
       next if parse_sub_title 2
       next if parse_sub_title 3
       next if parse_sub_title 4
       next if parse_sub_title 5
       next if parse_tags
+      next if parse_list
       if @line.strip.empty?
         end_paragraph
       else

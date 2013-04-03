@@ -130,6 +130,60 @@ EOT
     assert_equal "Audio CD metadata in HAL", parser.title
     assert_equal text_expected, parser.content
 
+    text_in = <<EOT
+Hello [[link]].
+
+Hello [[http://example.com|external link]].
+EOT
+    text_expected = <<EOT
+<p>Hello <a href="link.html">link</a>.</p>
+<p>Hello <a href="http://example.com">external link</a>.</p>
+EOT
+    parser = DokuwikiParser.new text_in
+    parser.parse
+    assert_equal text_expected, parser.content
+
+    text_in = <<EOT
+===== Related Ideas =====
+
+  * One
+  * Two
+  * Three
+  * and more...
+EOT
+    text_expected = <<EOT
+<h2>Related Ideas</h2>
+<ul>
+<li>One</li>
+<li>Two</li>
+<li>Three</li>
+<li>and more...</li>
+</ul>
+EOT
+    parser = DokuwikiParser.new text_in
+    parser.parse
+    assert_equal text_expected, parser.content
+
+    text_in = <<EOT
+===== Related Ideas =====
+
+  * [[nas-web-interface-for-servers]]
+  * [[useful-thinclient-image-in-less-than-70mb]]
+
+===== People =====
+EOT
+    text_expected = <<EOT
+<h2>Related Ideas</h2>
+<ul>
+<li><a href="nas-web-interface-for-servers.html">nas-web-interface-for-servers</a></li>
+<li><a href="useful-thinclient-image-in-less-than-70mb.html">useful-thinclient-image-in-less-than-70mb</a></li>
+</ul>
+<h2>People</h2>
+EOT
+    parser = DokuwikiParser.new text_in
+    parser.parse
+    assert_equal text_expected, parser.content
+
   end
   
 end
