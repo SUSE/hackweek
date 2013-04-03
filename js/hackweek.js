@@ -152,14 +152,14 @@ $(function () {
         $('#build_wheel_03').off('click');
         $("#build_wheel_01").rotate({ animateTo: 0})
         $("#build_wheel_02").rotate({ animateTo: 0})
-        $('#lock, #line_01, #line_02, #line_03').fadeIn('slow');
+        $('#lock, #line_01, #line_02, #line_03, #line_04').fadeIn('slow');
         //$('#wheel_01').fadeIn();
         //$('#wheel_02').fadeIn();
         //$('#wheel_03').fadeIn();
         //$('#build_wheel_01').fadeOut();
         //$('#build_wheel_02').fadeOut();
         //$('#build_wheel_03').fadeOut();
-        //$('#solid_wheel').fadeOut();
+        //$('#solid_wheel').fadeOut('slow');
     }
 
     /* rotate lib: http://code.google.com/p/jqueryrotate/wiki/Examples */

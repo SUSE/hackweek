@@ -559,6 +559,7 @@ span:hover{
     height: 472px;
     float: left;
     position: inherit;
+    cursor: pointer;
 }
 #solid_wheel{
     background: url('../images/projects/solid_wheel.png');
@@ -662,12 +663,37 @@ span:hover{
     width: 206px;
     display: none;
 }
+#line_04{
+    background: url('../images/projects/line_02.png');
+    background-repeat: no-repeat;
+    height: 166px;
+    margin-left: -84px;
+    margin-top: 344px;
+    position: inherit;
+    width: 377px;
+    display: none;
+    transform: rotate(1deg)
+    -ms-transform:rotate(1deg); /* IE 9 */
+    -moz-transform:rotate(1deg); /* Firefox */
+    -webkit-transform:rotate(1deg); /* Safari and Chrome */
+    -o-transform:rotate(1deg); /* Opera */
+}
 #create{
     background: url('../images/projects/create.png');
     background-repeat: no-repeat;
     height: 110px;
     margin-left: -210px;
     margin-top: 88px;
+    position: inherit;
+    width: 130px;
+
+}
+#past{
+    background: url('../images/projects/past.png');
+    background-repeat: no-repeat;
+    height: 110px;
+    margin-left: -160px;
+    margin-top: 418px;
     position: inherit;
     width: 130px;
 
