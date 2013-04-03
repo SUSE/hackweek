@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -40,27 +40,33 @@
       </div>
       <div id='wrapper-content'>
         <p><b>Tags:</b> Idea, Kernel, Performance, SLES, Server</p>
-        <h2>Description</h2>
-        <p>The number of nfsd threads that the Server launches can impact the Scalability and Performance of the NFS Server. The number of nfsd threads is currently static, though it can be changed manually from user space. Even though the Sysadmin tries his best to tune the number of threads, there will often be:</p>
-        <p>(a) too many threads wasting memory or 
-        (b) too few threads causing unwanted delays.</p>
-        <p>The idea is to have a dynamic number of nfsd threads that can follow the load. The advantage is that the Sysadmin need not decide the number of threads or worry about tuning nfsd threads based on load. Despite this he could get decent throughput all the time.</p>
-        <p>It is possible that a program from user space could monitor the thread usage from reading /proc/net/rpc/nfsd. But, the current threadstats found in /proc/net/rpc/nfsd has a few problems:</p>
-        <p>  * It is not precise
-          * Updating requires acquiring global spinlock
-          * Current histogram format is cryptic and difficult to explain and use</p>
-        <p>Greg Banks (SGI) implemented pool threads and proposed removal of threadstats. I think the decision is not to remove threadstats until a complete replacement for threadstats is written.</p>
-        <p>The elegant solution would be to report precise statistics in the kernel and have a user space program managing the number of threads dynamically.</p>
-        <p>A few considerations:</p>
-        <p>  * Slow growth when there is high load and when we have not had this many running before.
-          * Slow decay when 50% in use 
-          * Some way of measuring how much extra threads improve the throughput and feed that in to growth calculations.
-          * Would be sensible if number of threads should be able to grow quickly (but not too quickly) and should fall slowly as the demand drops. This would mean usually there are sufficient threads to manage requests.</p>
-        <h2>People</h2>
-        <p>  * Neil Brown originated this idea.
-          * Suresh Jayaraman is interested in implementing this idea.
-          * Neil Brown and Greg Banks might be interested in this idea and could provide advice.</p>
-        <h2>Related Materials</h2>
+<h2>Description</h2>
+<p>The number of nfsd threads that the Server launches can impact the Scalability and Performance of the NFS Server. The number of nfsd threads is currently static, though it can be changed manually from user space. Even though the Sysadmin tries his best to tune the number of threads, there will often be:</p>
+<p>(a) too many threads wasting memory or 
+(b) too few threads causing unwanted delays.</p>
+<p>The idea is to have a dynamic number of nfsd threads that can follow the load. The advantage is that the Sysadmin need not decide the number of threads or worry about tuning nfsd threads based on load. Despite this he could get decent throughput all the time.</p>
+<p>It is possible that a program from user space could monitor the thread usage from reading /proc/net/rpc/nfsd. But, the current threadstats found in /proc/net/rpc/nfsd has a few problems:</p>
+<ul>
+<li>It is not precise</li>
+<li>Updating requires acquiring global spinlock</li>
+<li>Current histogram format is cryptic and difficult to explain and use</li>
+</ul>
+<p>Greg Banks (SGI) implemented pool threads and proposed removal of threadstats. I think the decision is not to remove threadstats until a complete replacement for threadstats is written.</p>
+<p>The elegant solution would be to report precise statistics in the kernel and have a user space program managing the number of threads dynamically.</p>
+<p>A few considerations:</p>
+<ul>
+<li>Slow growth when there is high load and when we have not had this many running before.</li>
+<li>Slow decay when 50% in use </li>
+<li>Some way of measuring how much extra threads improve the throughput and feed that in to growth calculations.</li>
+<li>Would be sensible if number of threads should be able to grow quickly (but not too quickly) and should fall slowly as the demand drops. This would mean usually there are sufficient threads to manage requests.</li>
+</ul>
+<h2>People</h2>
+<ul>
+<li>Neil Brown originated this idea.</li>
+<li>Suresh Jayaraman is interested in implementing this idea.</li>
+<li>Neil Brown and Greg Banks might be interested in this idea and could provide advice.</li>
+</ul>
+<h2>Related Materials</h2>
       </div>
     </div>
   </div>

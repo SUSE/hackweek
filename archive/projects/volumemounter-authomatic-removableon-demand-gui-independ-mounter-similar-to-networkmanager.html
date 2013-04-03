@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -40,80 +40,94 @@
       </div>
       <div id='wrapper-content'>
         <p>I have decided to change the name from Volume Mounter to Mount Manager, as the daemon should be supposed not only to mount volumes, but e.g. network filesystems as well. Moreover, it will manage them.</p>
-        <p><b>Tags:</b> InProgress, HelpWanted, Desktop, Management, openSUSE, Usability</p>
-        <h2>Description</h2>
-        <p>The idea is inspired by 'autofs' automounter, 'ivman' volume manager and 'NetworkManager' networking server. Similarly to Networkanager, the mounter daemon would run as GUI-independent system process (started by init), and it would provide all the work on automaic mounting of removable media just inserted (like ivman) and on-demand mounting when a mountpoint was entered (like automount). All of this will be configurable system-wide - where to mount plugged device (using unique ID of the media provided by HAL and/or Mount Manager, or using fstab), which media not to mount to users, what to mount (and how) when given mounpoints are entered (which users are allowed to enter them, etc.).</p>
-        <p>Moreover, it would communicate with the user-dependent client/s through dbus. The clients will provide persistent naming of removable media (based on unique ID of the media) and user-defined mountpoints with user-defined settings (e.g. mount 'something' when the given directory is entered to, but only for me). Users can, naturally, control umounting/ejecting of volumes mounted.</p>
-        <p>In a top of that, the manager would also provide encryption/decryption handling for media with encrypted content. Also configured system-wide or user dependent (like wireless connection in NetworkManager).</p>
-        <p>The manager would also monitor mounts done by standard 'mount/umount' (though /proc) and notify users about media such mounted (if they are readable by the users, of course). In the future, the manager could also mount all the devices in /etc/fstab during system boot (and notify init daemon about the media mounted).</p>
-        <p>I thing, that it would have several advantages:</p>
-        <p>  * mounting/umounting will be handled by one specialized daemon (do one think and to it well ;-))
-          * GUI environment will not have to take care about mount/umount
-          * GUI environment will be notified about mounting/umounting and the users will have control over it
-          * persistent naming for users - when I connect my USB, it will always be mounted as XXXYYY, without the need of being root to configure this
-          * new devices/mounts can be added (or the old deleted) through GUI
-          * user can control (umount/eject) devices through GUI
-          * the device will be readable by the user which plugged it (or by all, depending on configuration)
-          * on the other hand, root can disable particular devices to be readable by user (e.g. when it contains some config data ...)
-          * root/user can define mounpoints which will be mounted/umounted on-demand (when the mountpoint is entered), e.g. floppy or shared file systems
-          * automatic media mounting will "just work" :-) (thanks to NetworkManager for this phrase)</p>
-        <h2>People</h2>
-        <p>Daniel Tihelka originated this idea. He is currently working on implementing this idea, but help with dbus and hald stuff will be really appreciated.</p>
-        <h2>Related Materials</h2>
-        <p>There is my basic idea, how the communication between Mount Manager and its GUI clients would work:</p>
-        <p>New device is plugged:</p>
-        <p>  * MM is notified about new storage device added (USB, CD, DVD, Camera, ...) by HAL daemon
-          * MM looks into config, if the particular device (identified e.g. by ID) is not disabled for users. For example in the case, when USB stick with done administrator data is plugged in. It should not be readable by users ;-)
-           * the device cannot be mounted by users: when such device is listed in the config, it will be mounted to be readable by root only
-           * the device can be mounted by users. MM looks if a user-dependent persistent mounting is required for the device (set by client/s through DBus when connected):
-             * no special requirement, MM will look to /etc/fstab if there is a record for the device
-             * no /etc/fstab record, the name of mountpoint will be chosen by MM
-             * fstab item found, the mountpoint from /etc/fstab will be used
-           * mount the device
-           * MM notifies the user-clients about new volume mounted.</p>
-        <p>Mountpoint is entered (on-demand, can be called 'autofs' mode) mounting:</p>
-        <p>  * ??? MM is notified about mounpoint enter by ???
-          * MM checks if the mountpoint is system-wide or user dependent
-            * the mounpoint is system-wide, mount it according to the configuration (enabled for all users, for particular group, etc.), use encryption specified in the config, if the device is encrypted.
-            * the mounpoint is user-dependent (user-dependent module "registered" it in MM), mount it to be accessible by the user only. If the mounpoint is encrypted, use the encryption settings provided by the user-dependent module.</p>
-        <p>Any advices/enhancement ideas are very welcome!</p>
-        <h2>Proposal of work plan:</h2>
-        <p>may be changed, if discrepancies or drawbacks in design found). Items started with (**W**) mean 'working on it', items started with (**F**) mean finished:</p>
-        <p>Version 0.1:</p>
-        <p>  * (**W**) communication with simple client (command-line python) through dbus. The step will consist of:
-            * connection to dbus from MM
-            * sending signals volume_added, volume_mounted, and others through dbus
-            * obtaining persistent naming of particular volume from client
-            * providing the list of already mounted volumes
-            * very simple command-line python client communication with MM (with hard-coded settings)
-          * (**W**) handling of hal messages
-            * listening of hald messages (through libhal)
-            * dummy mounting procedures
-          * (**W**) /etc/fstab handling
-            * looking into fstab if volumes are listed (if no persistent naming is required by clients)
-            * monitoring /proc/mounts (and /etc/mtab) if new devices were mounted not by the means of MM, and sending signal to the clients
-          * configuration
-            * list of user-disabled devices
-            * list of user-enabled persistent namings, group (and optionally user) dependent
-          * mounting control
-            * determining mountpoint - the choice among user-defined name, config-defined name, fstab-defined name, MM build name (if not any other found)
-            * handling the case of more than one user-client connected
-          * test of correct cooperation with the client.
-          * real mounting
-            * the call of 'mount' command
-            * right read/write attributes for mountpoint
-          * daemonizing
-            * syslog logger</p>
-        <p>Version 0.1.x</p>
-        <p>  * bugfixes
-          * security issues</p>
-        <p>Version 0.2:</p>
-        <p>  * not sure yet, may be on-demand mounting or suspend/resume handling, ...</p>
-        <p>Ask for help with:</p>
-        <p>  * coding
-          * GUI client for KDE, Gnome, and other window managers ...</p>
-        <h2>Source:</h2>
-        <p>The source can be found at [[http://sourceforge.net/projects/mount-manager/]].</p>
+<p><b>Tags:</b> InProgress, HelpWanted, Desktop, Management, openSUSE, Usability</p>
+<h2>Description</h2>
+<p>The idea is inspired by 'autofs' automounter, 'ivman' volume manager and 'NetworkManager' networking server. Similarly to Networkanager, the mounter daemon would run as GUI-independent system process (started by init), and it would provide all the work on automaic mounting of removable media just inserted (like ivman) and on-demand mounting when a mountpoint was entered (like automount). All of this will be configurable system-wide - where to mount plugged device (using unique ID of the media provided by HAL and/or Mount Manager, or using fstab), which media not to mount to users, what to mount (and how) when given mounpoints are entered (which users are allowed to enter them, etc.).</p>
+<p>Moreover, it would communicate with the user-dependent client/s through dbus. The clients will provide persistent naming of removable media (based on unique ID of the media) and user-defined mountpoints with user-defined settings (e.g. mount 'something' when the given directory is entered to, but only for me). Users can, naturally, control umounting/ejecting of volumes mounted.</p>
+<p>In a top of that, the manager would also provide encryption/decryption handling for media with encrypted content. Also configured system-wide or user dependent (like wireless connection in NetworkManager).</p>
+<p>The manager would also monitor mounts done by standard 'mount/umount' (though /proc) and notify users about media such mounted (if they are readable by the users, of course). In the future, the manager could also mount all the devices in /etc/fstab during system boot (and notify init daemon about the media mounted).</p>
+<p>I thing, that it would have several advantages:</p>
+<ul>
+<li>mounting/umounting will be handled by one specialized daemon (do one think and to it well ;-))</li>
+<li>GUI environment will not have to take care about mount/umount</li>
+<li>GUI environment will be notified about mounting/umounting and the users will have control over it</li>
+<li>persistent naming for users - when I connect my USB, it will always be mounted as XXXYYY, without the need of being root to configure this</li>
+<li>new devices/mounts can be added (or the old deleted) through GUI</li>
+<li>user can control (umount/eject) devices through GUI</li>
+<li>the device will be readable by the user which plugged it (or by all, depending on configuration)</li>
+<li>on the other hand, root can disable particular devices to be readable by user (e.g. when it contains some config data ...)</li>
+<li>root/user can define mounpoints which will be mounted/umounted on-demand (when the mountpoint is entered), e.g. floppy or shared file systems</li>
+<li>automatic media mounting will "just work" :-) (thanks to NetworkManager for this phrase)</li>
+</ul>
+<h2>People</h2>
+<p>Daniel Tihelka originated this idea. He is currently working on implementing this idea, but help with dbus and hald stuff will be really appreciated.</p>
+<h2>Related Materials</h2>
+<p>There is my basic idea, how the communication between Mount Manager and its GUI clients would work:</p>
+<p>New device is plugged:</p>
+<ul>
+<li>MM is notified about new storage device added (USB, CD, DVD, Camera, ...) by HAL daemon</li>
+<li>MM looks into config, if the particular device (identified e.g. by ID) is not disabled for users. For example in the case, when USB stick with done administrator data is plugged in. It should not be readable by users ;-)</li>
+<li>the device cannot be mounted by users: when such device is listed in the config, it will be mounted to be readable by root only</li>
+<li>the device can be mounted by users. MM looks if a user-dependent persistent mounting is required for the device (set by client/s through DBus when connected):</li>
+<li>no special requirement, MM will look to /etc/fstab if there is a record for the device</li>
+<li>no /etc/fstab record, the name of mountpoint will be chosen by MM</li>
+<li>fstab item found, the mountpoint from /etc/fstab will be used</li>
+<li>mount the device</li>
+<li>MM notifies the user-clients about new volume mounted.</li>
+</ul>
+<p>Mountpoint is entered (on-demand, can be called 'autofs' mode) mounting:</p>
+<ul>
+<li>??? MM is notified about mounpoint enter by ???</li>
+<li>MM checks if the mountpoint is system-wide or user dependent</li>
+<li>the mounpoint is system-wide, mount it according to the configuration (enabled for all users, for particular group, etc.), use encryption specified in the config, if the device is encrypted.</li>
+<li>the mounpoint is user-dependent (user-dependent module "registered" it in MM), mount it to be accessible by the user only. If the mounpoint is encrypted, use the encryption settings provided by the user-dependent module.</li>
+</ul>
+<p>Any advices/enhancement ideas are very welcome!</p>
+<h2>Proposal of work plan:</h2>
+<p>may be changed, if discrepancies or drawbacks in design found). Items started with (**W**) mean 'working on it', items started with (**F**) mean finished:</p>
+<p>Version 0.1:</p>
+<ul>
+<li>(**W**) communication with simple client (command-line python) through dbus. The step will consist of:</li>
+<li>connection to dbus from MM</li>
+<li>sending signals volume_added, volume_mounted, and others through dbus</li>
+<li>obtaining persistent naming of particular volume from client</li>
+<li>providing the list of already mounted volumes</li>
+<li>very simple command-line python client communication with MM (with hard-coded settings)</li>
+<li>(**W**) handling of hal messages</li>
+<li>listening of hald messages (through libhal)</li>
+<li>dummy mounting procedures</li>
+<li>(**W**) /etc/fstab handling</li>
+<li>looking into fstab if volumes are listed (if no persistent naming is required by clients)</li>
+<li>monitoring /proc/mounts (and /etc/mtab) if new devices were mounted not by the means of MM, and sending signal to the clients</li>
+<li>configuration</li>
+<li>list of user-disabled devices</li>
+<li>list of user-enabled persistent namings, group (and optionally user) dependent</li>
+<li>mounting control</li>
+<li>determining mountpoint - the choice among user-defined name, config-defined name, fstab-defined name, MM build name (if not any other found)</li>
+<li>handling the case of more than one user-client connected</li>
+<li>test of correct cooperation with the client.</li>
+<li>real mounting</li>
+<li>the call of 'mount' command</li>
+<li>right read/write attributes for mountpoint</li>
+<li>daemonizing</li>
+<li>syslog logger</li>
+</ul>
+<p>Version 0.1.x</p>
+<ul>
+<li>bugfixes</li>
+<li>security issues</li>
+</ul>
+<p>Version 0.2:</p>
+<ul>
+<li>not sure yet, may be on-demand mounting or suspend/resume handling, ...</li>
+</ul>
+<p>Ask for help with:</p>
+<ul>
+<li>coding</li>
+<li>GUI client for KDE, Gnome, and other window managers ...</li>
+</ul>
+<h2>Source:</h2>
+<p>The source can be found at <a href="http://sourceforge.net/projects/mount-manager/.html">http://sourceforge.net/projects/mount-manager/</a>.</p>
       </div>
     </div>
   </div>

@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -40,33 +40,33 @@
       </div>
       <div id='wrapper-content'>
         <p><b>Tags:</b> InProgress, InBuildService, Security</p>
-        <h2>Description</h2>
-        <p>It would be nice to have some sandbox for apps like ImageMagick, sox
-        etc. The problem is, that these apps need access to any file the user
-        gives on the command line, so it's almost impossible to create
-        meaningful policy. It should however be possible to do the following:</p>
-        <p>1) create a temporary directory in a known place, eg.
-        ~/.ImageMagick_playground/</p>
-        <p>2) find out which input files are needed and copy / link them to the temp.
-        directory</p>
-        <p>3) replace paths to real input / output files with paths to the temporary
-        directory</p>
-        <p>4) switch to a restricted profile, see below</p>
-        <p>5) run the actual conversion code, than may potentially be buggy</p>
-        <p>6) switch back to normal profile</p>
-        <p>5) move resulting output files to the original destination</p>
-        <p>Now a profile would only need to allow access to the
-        ~/.ImageMagick_playground directory. Step 1) could even be improved by
-        creating separate directories for input and output files, to that the
-        profile could deny write access to input files.</p>
-        <p>This could either be implemented by writing a small wrapper that does
-        steps 1) to 3) and executes the real app that is apparmored, or by
-        patching the app and doing change_hat in steps 4) and 6).</p>
-        <h2>People</h2>
-        <p>Michal Marek originated this idea.  If time permits, he will work on it
-        during the hack week, but if anyone wants to help / take over, he or she
-        is welcome to do so.</p>
-        <h2>Related Materials</h2>
+<h2>Description</h2>
+<p>It would be nice to have some sandbox for apps like ImageMagick, sox
+etc. The problem is, that these apps need access to any file the user
+gives on the command line, so it's almost impossible to create
+meaningful policy. It should however be possible to do the following:</p>
+<p>1) create a temporary directory in a known place, eg.
+~/.ImageMagick_playground/</p>
+<p>2) find out which input files are needed and copy / link them to the temp.
+directory</p>
+<p>3) replace paths to real input / output files with paths to the temporary
+directory</p>
+<p>4) switch to a restricted profile, see below</p>
+<p>5) run the actual conversion code, than may potentially be buggy</p>
+<p>6) switch back to normal profile</p>
+<p>5) move resulting output files to the original destination</p>
+<p>Now a profile would only need to allow access to the
+~/.ImageMagick_playground directory. Step 1) could even be improved by
+creating separate directories for input and output files, to that the
+profile could deny write access to input files.</p>
+<p>This could either be implemented by writing a small wrapper that does
+steps 1) to 3) and executes the real app that is apparmored, or by
+patching the app and doing change_hat in steps 4) and 6).</p>
+<h2>People</h2>
+<p>Michal Marek originated this idea.  If time permits, he will work on it
+during the hack week, but if anyone wants to help / take over, he or she
+is welcome to do so.</p>
+<h2>Related Materials</h2>
       </div>
     </div>
   </div>

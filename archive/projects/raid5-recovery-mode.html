@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -41,7 +41,9 @@
       <div id='wrapper-content'>
         <p><b>Tags:</b> Idea, Kernel, Storage</p>
         <h2>Description</h2>
-        <p>**A "Recovery" mode for RAID5 where I/O errors don't cause disk failures.**</p>
+        <ul>
+        <li>*A "Recovery" mode for RAID5 where I/O errors don't cause disk failures.**</li>
+        </ul>
         <p>When a RAID5 set is in degraded mode and suffers an additional disk failure, the set is taken completely offline making any data recovery impossible. Software RAID is being used increasingly in environments where hot spares aren't readily available and there may be delays in disk replacement.</p>
         <p>Example:
         With a 3 disk RAID5 set in degraded mode, a single bad sector on one of the remaining constituent disks will cause the array to go completely offline, causing any additional accesses to fail with I/O errors. In this case, the array may still be up solely to be used to recover any existing data and will ultimately be destroyed. Denying access to all the data is clearly suboptimal.</p>

@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -40,20 +40,26 @@
       </div>
       <div id='wrapper-content'>
         <p><b>Tags:</b> InProgress, Desktop, DevTool, HelpWanted, office, crossplatform, windows, JudgeFailure</p>
-        <h2>Description</h2>
-        <p>**icecream** is a distributed compilation tool that takes jobs to compile, and distributes them to remote machines.  It can save a considerable time of your build - we are able to build OOo in about 25 minutes with icecream.</p>
-        <p>On the other hand, Win32 OOo build takes ages.  The idea is to enhance icecream so that even the Win32 jobs can be sent to remote machines - to Linux machines :-)  There would they be compiled using the Win32 compiler in Wine.  It is possible - the **icecream** calls the compiler first to preprocesses the source on the machine where the build started, and on the remote machine it is then compiled without any outside dependencies.  I've tested that Visual Studio C++ 2005 Express runs in Wine and produces output - so things should be fine.</p>
-        <p>We can of course go further, and try to do a full cross-compilation - so that the build would be started on Linux, but the result would be a Win32 installation set.  This will for sure need more effort (and more people).</p>
-        <h2>People</h2>
-        <p>**Jan Holesovsky** originated this idea, and is working on implementing this idea.  For the real cross-compilation, having more people would be helpful.</p>
-        <h2>The Failure</h2>
-        <p>This task failed, and yet the output was worth the week of hacking ;-)  I succeeded in running the MSVC compiler in Wine on Linux, but then icecream betrayed me horribly.  I tried to port it to Win32 using MinGW - failed because of problems with sockets.  Then I used Cygwin.  Icecream on Cygwin was supposed to work according to what I've googled, it should have been able to distribute gcc/g++ tasks over the network of Cygwin machines, but another failure - sockets again, the thing was dying horribly when I connected it to Linux scheduler, and started an icecream monitor.</p>
-        <p>After 2 days of trying, I decided to drop it, and focused on [[http://ccache.samba.org|ccache]] instead.  And this worked - I created a patch for ccache that adds support for MSVC to ccache.  Using this, I got about 20% compilation speedup (on the 15% penalty of the initial ccache filling).</p>
-        <p>Overall - I failed, but I still believe that the icecream + wine combination is still doable & worth trying.  OTOH, icecream + cognac, eh, MSVC ccache is a fine result as well ;-)</p>
-        <h2>Related Materials</h2>
-        <p>  * The patch: [[http://artax.karlin.mff.cuni.cz/~kendy/ccache/ccache-msvc.diff|ccache-msvc.diff]]  It is a patch against [[http://ccache.samba.org/|ccache cvs]]
-          * The executable: [[http://artax.karlin.mff.cuni.cz/~kendy/ccache/ccache.exe|ccache.exe]]
-          * The lightning talk video: [[http://idea.opensuse.org/content/blog/prague-hackweek-projects-part-2|Prague Hack Week Projects #2]]</p>
+<h2>Description</h2>
+<ul>
+<li>*icecream** is a distributed compilation tool that takes jobs to compile, and distributes them to remote machines.  It can save a considerable time of your build - we are able to build OOo in about 25 minutes with icecream.</li>
+</ul>
+<p>On the other hand, Win32 OOo build takes ages.  The idea is to enhance icecream so that even the Win32 jobs can be sent to remote machines - to Linux machines :-)  There would they be compiled using the Win32 compiler in Wine.  It is possible - the **icecream** calls the compiler first to preprocesses the source on the machine where the build started, and on the remote machine it is then compiled without any outside dependencies.  I've tested that Visual Studio C++ 2005 Express runs in Wine and produces output - so things should be fine.</p>
+<p>We can of course go further, and try to do a full cross-compilation - so that the build would be started on Linux, but the result would be a Win32 installation set.  This will for sure need more effort (and more people).</p>
+<h2>People</h2>
+<ul>
+<li>*Jan Holesovsky** originated this idea, and is working on implementing this idea.  For the real cross-compilation, having more people would be helpful.</li>
+</ul>
+<h2>The Failure</h2>
+<p>This task failed, and yet the output was worth the week of hacking ;-)  I succeeded in running the MSVC compiler in Wine on Linux, but then icecream betrayed me horribly.  I tried to port it to Win32 using MinGW - failed because of problems with sockets.  Then I used Cygwin.  Icecream on Cygwin was supposed to work according to what I've googled, it should have been able to distribute gcc/g++ tasks over the network of Cygwin machines, but another failure - sockets again, the thing was dying horribly when I connected it to Linux scheduler, and started an icecream monitor.</p>
+<p>After 2 days of trying, I decided to drop it, and focused on <a href="http://ccache.samba.org">ccache</a> instead.  And this worked - I created a patch for ccache that adds support for MSVC to ccache.  Using this, I got about 20% compilation speedup (on the 15% penalty of the initial ccache filling).</p>
+<p>Overall - I failed, but I still believe that the icecream + wine combination is still doable & worth trying.  OTOH, icecream + cognac, eh, MSVC ccache is a fine result as well ;-)</p>
+<h2>Related Materials</h2>
+<ul>
+<li>The patch: <a href="http://artax.karlin.mff.cuni.cz/~kendy/ccache/ccache-msvc.diff|ccache-msvc.diff]]  It is a patch against [[http://ccache.samba.org/">ccache cvs</a></li>
+<li>The executable: <a href="http://artax.karlin.mff.cuni.cz/~kendy/ccache/ccache.exe">ccache.exe</a></li>
+<li>The lightning talk video: <a href="http://idea.opensuse.org/content/blog/prague-hackweek-projects-part-2">Prague Hack Week Projects #2</a></li>
+</ul>
       </div>
     </div>
   </div>

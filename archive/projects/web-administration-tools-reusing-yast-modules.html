@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -40,43 +40,45 @@
       </div>
       <div id='wrapper-content'>
         <p><b>Tags:</b> Idea, Management, Network, Web, HW-Hacker, HW-Designer, openSUSE</p>
-        <h2>Description</h2>
-        <p>Wireless routers etc. typically come with a web administration frontend.
-        To build something similar based on SUSE, we'd need to create a framework to expose
-        configuration stuff; one could build on PHP (like FreeNAS), perl/cgi, TurboGears,
-        ZOPE, Ruby on Rails, or even .net(mono) or Java technologies.</p>
-        <p>Rather than doing this, the idea is to reuse the comprehensive existing knowledge and
-        abstraction of system configuration that we have already: YaST.</p>
-        <p>YaST has a remote capability using VNC -- but this is //not// the goal; rather native
-        web (HTML/CSS) technology should be used.</p>
-        <p>The way YaST was designed, it actually already abstracts the user interface from the
-        logic behind; a form / dialogue is described using a tree syntax (in YCP), which
-        one of the frontends (qt, ncurses, gtk) then displays and sends the values that
-        the user has filled in back. This transactional nature and the limited widget set
-        (how can you be more restricted than ncurses?)
-        make it possible to do it via HTML/CSS with forms. Not even fancy AJAX Web2.0pre
-        technology is needed.</p>
-        <p>So the idea is to create a yast2-frontend-httpd, which serves dialogue pages.</p>
-        <h3>Goal</h3>
-        <p>Get the frontend to implement every widget, so that every YaST module works in
-        the web mode. Create a start page that implements the functionality of the YaST
-        Control Center. Demo all this!</p>
-        <h3>Bonus ideas</h3>
-        <p>  * Use https (but don't use port 443 by default)
-          * Keep a list of people that are authorized to authenticate and use this service
-          * Keep a list of modules that a user may use (subset of existing YaST modules)
-          * Possibly even further ideas how to control the access on even finer granularity
-          * Rather than using thttpd or apache, see whether a few lines in perl or python or ruby won't be the easier solution to implement the web server (the https protocol)
-          * Along the way, create a tool to actually convert the YCP based dialog tree description to XML; this way, using the existing language bindings in YaST, there's no need for someone to learn YCP.
-          * Use stylesheets, so the thing can be themed.
-          * If we get bored and are done by Wednesday, let's look into reviving the web-updater to also have a restricted web package manager.</p>
-        <h2>People</h2>
-        <p>Kurt Garloff originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
-        <p>Joachim Werner is interested in this idea.
-        Klaus Kaempf can give input to this.</p>
-        <p>Someone from the YaST team plus someone who is familiar with web technology should be able
-        to implement this.</p>
-        <h2>Related Materials</h2>
+<h2>Description</h2>
+<p>Wireless routers etc. typically come with a web administration frontend.
+To build something similar based on SUSE, we'd need to create a framework to expose
+configuration stuff; one could build on PHP (like FreeNAS), perl/cgi, TurboGears,
+ZOPE, Ruby on Rails, or even .net(mono) or Java technologies.</p>
+<p>Rather than doing this, the idea is to reuse the comprehensive existing knowledge and
+abstraction of system configuration that we have already: YaST.</p>
+<p>YaST has a remote capability using VNC -- but this is //not// the goal; rather native
+web (HTML/CSS) technology should be used.</p>
+<p>The way YaST was designed, it actually already abstracts the user interface from the
+logic behind; a form / dialogue is described using a tree syntax (in YCP), which
+one of the frontends (qt, ncurses, gtk) then displays and sends the values that
+the user has filled in back. This transactional nature and the limited widget set
+(how can you be more restricted than ncurses?)
+make it possible to do it via HTML/CSS with forms. Not even fancy AJAX Web2.0pre
+technology is needed.</p>
+<p>So the idea is to create a yast2-frontend-httpd, which serves dialogue pages.</p>
+<h3>Goal</h3>
+<p>Get the frontend to implement every widget, so that every YaST module works in
+the web mode. Create a start page that implements the functionality of the YaST
+Control Center. Demo all this!</p>
+<h3>Bonus ideas</h3>
+<ul>
+<li>Use https (but don't use port 443 by default)</li>
+<li>Keep a list of people that are authorized to authenticate and use this service</li>
+<li>Keep a list of modules that a user may use (subset of existing YaST modules)</li>
+<li>Possibly even further ideas how to control the access on even finer granularity</li>
+<li>Rather than using thttpd or apache, see whether a few lines in perl or python or ruby won't be the easier solution to implement the web server (the https protocol)</li>
+<li>Along the way, create a tool to actually convert the YCP based dialog tree description to XML; this way, using the existing language bindings in YaST, there's no need for someone to learn YCP.</li>
+<li>Use stylesheets, so the thing can be themed.</li>
+<li>If we get bored and are done by Wednesday, let's look into reviving the web-updater to also have a restricted web package manager.</li>
+</ul>
+<h2>People</h2>
+<p>Kurt Garloff originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+<p>Joachim Werner is interested in this idea.
+Klaus Kaempf can give input to this.</p>
+<p>Someone from the YaST team plus someone who is familiar with web technology should be able
+to implement this.</p>
+<h2>Related Materials</h2>
       </div>
     </div>
   </div>

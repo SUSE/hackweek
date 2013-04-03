@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -42,19 +42,23 @@
         <p><b>Tags:</b> Community, QA, Kernel, Desktop, Virtualization, Server, Performance, DevTool, Idea</p>
         <h2>Description</h2>
         <p>The test matrix for install tests is incredible large (>100 scenarios) - doing all of them manually is not feasible.</p>
-        <p>Leveraging our cool tool [[http://www.suse.com/~ug/autoyast_doc/index.html|AutoYaST]] and (on architectures where appropriate) virtualization technologies can help increasing the automation level dramatically. </p>
+        <p>Leveraging our cool tool <a href="http://www.suse.com/~ug/autoyast_doc/index.html">AutoYaST</a> and (on architectures where appropriate) virtualization technologies can help increasing the automation level dramatically. </p>
         <p>What we probably need:</p>
-        <p>1. a central repository hosting AutoYaST profiles including support for
-          * different architectures, virtual machines
-          * different partition layouts
-          * network interfaces
-          * ...</p>
-        <p>The repo definitely should make use of the full powers of AutoYaST's [[http://www.suse.com/~ug/autoyast_doc/rulesandclass.html|Rules & Classes]] concept.</p>
+        <p>1. a central repository hosting AutoYaST profiles including support for</p>
+        <ul>
+        <li>different architectures, virtual machines</li>
+        <li>different partition layouts</li>
+        <li>network interfaces</li>
+        <li>...</li>
+        </ul>
+        <p>The repo definitely should make use of the full powers of AutoYaST's <a href="http://www.suse.com/~ug/autoyast_doc/rulesandclass.html">Rules & Classes</a> concept.</p>
         <p>2. integration for XEN / kvm / ... </p>
-        <p>3. integration into the QA infrastructure
-          * CTCS   - test frame work
-          * HAMSTA - hardware scheduler
-          * ...</p>
+        <p>3. integration into the QA infrastructure</p>
+        <ul>
+        <li>CTCS   - test frame work</li>
+        <li>HAMSTA - hardware scheduler</li>
+        <li>...</li>
+        </ul>
         <p>(and finally, of course;)</p>
         <p>  4. a set of checks to validate the installed system </p>
         <h2>People</h2>

@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -40,46 +40,48 @@
       </div>
       <div id='wrapper-content'>
         <p><b>Tags:</b> TryMe, Mobile, Management, Network, Server</p>
-        <h2>Description</h2>
-        <p>NetworkManager is a great tool for setup network connection, especially for the wireless. Now is possible to use it only from KDE/GNOME session using KNetworkmanager/NetworkManager-gnome plugins.
-        I would like to have something in ncurses/CLI usable without DE neither X.</p>
-        <p>For reasons of feasibility I use Python with D-Bus to communicate with NetworkManager. </p>
-        <h3>Code Example</h3>
-        <p># create object for using system bus from d-bus
-        >>>import dbus
-        >>>bus = dbus.SystemBus()</pre>
-        # create network manager object instance
-        >>> nm = bus.get_object('org.freedesktop.NetworkManager', '/org/freedesktop/NetworkManager')
-        # call state() method of networkmanager to show status
-        >>> nm.state()
-        dbus.UInt32(3L)</p>
-        <p># show active connections (created by KNetworkManager/NetworkManager-gnome)
-        >>> nm.GetActiveConnections()
-         dbus.Array([dbus.Struct( (dbus.String(u'org.freedesktop.NetworkManagerUserSettings'),dbus.ObjectPath('/org/freedesktop/NetworkManagerSettings/Connection/1'),dbus.ObjectPath('/org/freedesktop/NetworkManagerSettings/Connection/1'),dbus.Array([dbus.ObjectPath('/org/freedesktop/Hal/devices/net_08_00_27_6b_5a_9a')],signature=dbus.Signature('o'))), signature=None)],
-        signature=dbus.Signature('(sooao)'))</p>
-        <p># What we can see there? In this case connection created by KNetworkManager</p>
-        <p># There are object identifiers for :</p>
-        <p>#           Connection ('/org/freedesktop/NetworkManagerSettings/Connection/1')</p>
-        <p>#           Device ('/org/freedesktop/Hal/devices/net_08_00_27_6b_5a_9a')</p>
-        <p># Then we can create proxy objects for them</p>
-        <p>>>> net0 = bus.get_object('org.freedesktop.NetworkManager', '/org/freedesktop/Hal/devices/net_08_00_27_6b_5a_9a')</p>
-        <p>>>> con1 = bus.get_object('org.freedesktop.NetworkManager', '/org/freedesktop/NetworkManagerSettings/Connection/1')</p>
-        <p># we can research properties of any object</p>
-        <p>>>> net0_props = dbus.Interface(net0, 'org.freedesktop.DBus.Properties')
-        >>> net0_props.Get('org.freedesktop.NetworkManager.Device', 'DeviceType')</p>
-        <p># we can disconnect net0 device and connect it again</p>
-        <p>>>> net0.Disconnect()
-        >>> nm.ActivateDevice(net0, 'org.freedesktop.NetworkManagerUserSettings', con1, con1)</p>
-        <h3>TODO</h3>
-        <p>From the example above you can see I used already existed connection. If we want remove KNetworkManager/NetworkManager-gnome applet, we should re-implement functionality from nm-plugin to create/store Connection with UserSettings data and functionality to propagate it to NetworkManager. Then we can use NetworkManager from runlevel 3!</p>
-        <h2>People</h2>
-        <p>Michal Zugec originated this idea and he is currently working on implementing this idea.</p>
-        <p>Martin Vidner is implementing the idea.</p>
-        <h2>Related Materials</h2>
-        <p>Ugh, adding comments does not work ATM.</p>
-        <p>cnetworkmanager for NM 0.7:
-          * [[http://vidner.net/martin/software/cnetworkmanager/|cnetworkmanager]]
-          * [[http://mail.gnome.org/archives/networkmanager-list/2008-May/msg00357.html|announcement]]</p>
+<h2>Description</h2>
+<p>NetworkManager is a great tool for setup network connection, especially for the wireless. Now is possible to use it only from KDE/GNOME session using KNetworkmanager/NetworkManager-gnome plugins.
+I would like to have something in ncurses/CLI usable without DE neither X.</p>
+<p>For reasons of feasibility I use Python with D-Bus to communicate with NetworkManager. </p>
+<h3>Code Example</h3>
+<p># create object for using system bus from d-bus
+>>>import dbus
+>>>bus = dbus.SystemBus()</pre>
+# create network manager object instance
+>>> nm = bus.get_object('org.freedesktop.NetworkManager', '/org/freedesktop/NetworkManager')
+# call state() method of networkmanager to show status
+>>> nm.state()
+dbus.UInt32(3L)</p>
+<p># show active connections (created by KNetworkManager/NetworkManager-gnome)
+>>> nm.GetActiveConnections()
+ dbus.Array([dbus.Struct( (dbus.String(u'org.freedesktop.NetworkManagerUserSettings'),dbus.ObjectPath('/org/freedesktop/NetworkManagerSettings/Connection/1'),dbus.ObjectPath('/org/freedesktop/NetworkManagerSettings/Connection/1'),dbus.Array([dbus.ObjectPath('/org/freedesktop/Hal/devices/net_08_00_27_6b_5a_9a')],signature=dbus.Signature('o'))), signature=None)],
+signature=dbus.Signature('(sooao)'))</p>
+<p># What we can see there? In this case connection created by KNetworkManager</p>
+<p># There are object identifiers for :</p>
+<p>#           Connection ('/org/freedesktop/NetworkManagerSettings/Connection/1')</p>
+<p>#           Device ('/org/freedesktop/Hal/devices/net_08_00_27_6b_5a_9a')</p>
+<p># Then we can create proxy objects for them</p>
+<p>>>> net0 = bus.get_object('org.freedesktop.NetworkManager', '/org/freedesktop/Hal/devices/net_08_00_27_6b_5a_9a')</p>
+<p>>>> con1 = bus.get_object('org.freedesktop.NetworkManager', '/org/freedesktop/NetworkManagerSettings/Connection/1')</p>
+<p># we can research properties of any object</p>
+<p>>>> net0_props = dbus.Interface(net0, 'org.freedesktop.DBus.Properties')
+>>> net0_props.Get('org.freedesktop.NetworkManager.Device', 'DeviceType')</p>
+<p># we can disconnect net0 device and connect it again</p>
+<p>>>> net0.Disconnect()
+>>> nm.ActivateDevice(net0, 'org.freedesktop.NetworkManagerUserSettings', con1, con1)</p>
+<h3>TODO</h3>
+<p>From the example above you can see I used already existed connection. If we want remove KNetworkManager/NetworkManager-gnome applet, we should re-implement functionality from nm-plugin to create/store Connection with UserSettings data and functionality to propagate it to NetworkManager. Then we can use NetworkManager from runlevel 3!</p>
+<h2>People</h2>
+<p>Michal Zugec originated this idea and he is currently working on implementing this idea.</p>
+<p>Martin Vidner is implementing the idea.</p>
+<h2>Related Materials</h2>
+<p>Ugh, adding comments does not work ATM.</p>
+<p>cnetworkmanager for NM 0.7:</p>
+<ul>
+<li><a href="http://vidner.net/martin/software/cnetworkmanager/">cnetworkmanager</a></li>
+<li><a href="http://mail.gnome.org/archives/networkmanager-list/2008-May/msg00357.html">announcement</a></li>
+</ul>
       </div>
     </div>
   </div>

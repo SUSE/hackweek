@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -42,18 +42,20 @@
         <p><b>Tags:</b> Idea, Kernel, UnixFeature, Server, SLES, HelpWanted, filesystem</p>
         <h2>Description</h2>
         <p>btrfs is Chris Mason's new filesystem. It offers</p>
-        <p>  * Extent based file storage (2<sup>64</sup> max file size)
-          * Space efficient packing of small files
-          * Space efficient indexed directories
-          * Dynamic inode allocation
-          * Writable snapshots
-          * Subvolumes (separate internal filesystem roots)
-          * Object level mirroring and striping
-          * Checksums on data and metadata (multiple algorithms available)
-          * Strong integration with device mapper for multiple device support
-          * Online filesystem check
-          * Very fast offline filesystem check
-          * Efficient incremental backup and FS mirroring</p>
+        <ul>
+        <li>Extent based file storage (2<sup>64</sup> max file size)</li>
+        <li>Space efficient packing of small files</li>
+        <li>Space efficient indexed directories</li>
+        <li>Dynamic inode allocation</li>
+        <li>Writable snapshots</li>
+        <li>Subvolumes (separate internal filesystem roots)</li>
+        <li>Object level mirroring and striping</li>
+        <li>Checksums on data and metadata (multiple algorithms available)</li>
+        <li>Strong integration with device mapper for multiple device support</li>
+        <li>Online filesystem check</li>
+        <li>Very fast offline filesystem check</li>
+        <li>Efficient incremental backup and FS mirroring</li>
+        </ul>
         <p>The idea is to prototype how this could be brought to clusters, by "simply" figuring out which
         locks need to be converted to DLM locks, and what additional hooks might be needed.</p>
         <p>(Combined with the OCFS2 or GFS2 DLM.)</p>

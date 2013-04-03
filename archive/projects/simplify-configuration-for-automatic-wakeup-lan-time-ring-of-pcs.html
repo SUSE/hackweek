@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -44,13 +44,17 @@
         <p>Recently, there was a c't article (German computer magazine) about different
         wakeup methods by time ("Linux aufgeweckt", "Zeit- und ereignisgesteuertes
         Starten des Rechners ersetzt den Dauerbetrieb", c't 11/07, Seite 206).</p>
-        <p>  * with ACPI (/proc/acpi/alarm)
-          * with Linux interacting with the BIOS by writing to /dev/nvram
-          * by just having a fixed wakeup time in the BIOS, and Linux changes the system time to have the effect of actually chaging the wakeup time (only works if no other operating systems are used in the meanwhile, because they would see a wrong time)</p>
+        <ul>
+        <li>with ACPI (/proc/acpi/alarm)</li>
+        <li>with Linux interacting with the BIOS by writing to /dev/nvram</li>
+        <li>by just having a fixed wakeup time in the BIOS, and Linux changes the system time to have the effect of actually chaging the wakeup time (only works if no other operating systems are used in the meanwhile, because they would see a wrong time)</li>
+        </ul>
         <p>Also useful is wake on LAN. For sending the packet we have the "wol" package.
         But the computer must be configured to</p>
-        <p>  * activate WOL, which can be done in the BIOS on some PCs or also via the Ethernet driver by "ethtool" (ethtool -s eth0 wol g)
-          * change ACPI (/proc/acpi/wakeup, finding out the network device, and enable this)</p>
+        <ul>
+        <li>activate WOL, which can be done in the BIOS on some PCs or also via the Ethernet driver by "ethtool" (ethtool -s eth0 wol g)</li>
+        <li>change ACPI (/proc/acpi/wakeup, finding out the network device, and enable this)</li>
+        </ul>
         <p>That's all no problem for experienced users. However, I would suggest a YaST
         module together with some init scripts to support the user in the task of
         setting up wakeup. For example, for WOL you need a init script that runs

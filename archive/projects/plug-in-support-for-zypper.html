@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -40,28 +40,36 @@
       </div>
       <div id='wrapper-content'>
         <p><b>Tags:</b> InProgress, SoftwareManagement, HelpWanted</p>
-        <h2>Description</h2>
-        <p>In short, the idea is to enable developers to add custom commands or even influence behavior of zypper via plug-ins. More details follow.</p>
-        <p>PURPOSE & GOALS</p>
-        <p>  * to enable writing and packaging and installing new zypper features without touching the main zypper code or package
-          * to enable adding zypper features that are specific to SUSE (or eventually other distro) flavor (e.g. webpin support is good for openSUSE, but not much so for SLE) and allow to enable them by default per-flavor.
-          * a plug-in should (at the very least) add new commands that will also appear in the main 'zypper help' and tab-completion (better than remembering commands of a few separate tools)
-          * plugin should have access to some common package management features used in zypper, like repository handling (access to the list of enabled repositories, loading repos, using a temporary repo), installation summary, common output (normal/warning/error messages, tables, progress), user prompt, etc. in order to reuse code.</p>
-        <p>TASKS</p>
-        <p>  * define what exactly should be a plug-in able to do (only add commands or even options for existing commands, or even more?)
-          * define what exactly should be a plug-in able to do (only add commands or even options for existing commands, options for existing user prompts, or even more?)
-          * identify commonly used zypper code that should be made available to plugins via the plugin API
-          * create the plugin API
-          * use the plugin API in zypper (this will probaly mean quite a bit of zypper code refactoring) and implment the plugin loading
-          * implement an example plugin (e.g. webpin search)</p>
-        <p>DEVELOPMENT</p>
-        <p>The development should be done in a separate GIT branch and the master branch should be merged into it frequently to avoid later merging headache due to massive refactoring within the branch.</p>
-        <h2>People</h2>
-        <p>  * Jano Kupec originated this idea and plans to work on it.
-          * Anyone is welcome to join the effort, esp. if he or she has experience with making a C++ application plug-in enabled.</p>
-        <h2>Related Materials</h2>
-        <p>  * http://en.opensuse.org/Zypper
-          * <nowiki>git://git.opensuse.org/projects/zypp/zypper.git</nowiki> (the plug-in branch is not yet created!)</p>
+<h2>Description</h2>
+<p>In short, the idea is to enable developers to add custom commands or even influence behavior of zypper via plug-ins. More details follow.</p>
+<p>PURPOSE & GOALS</p>
+<ul>
+<li>to enable writing and packaging and installing new zypper features without touching the main zypper code or package</li>
+<li>to enable adding zypper features that are specific to SUSE (or eventually other distro) flavor (e.g. webpin support is good for openSUSE, but not much so for SLE) and allow to enable them by default per-flavor.</li>
+<li>a plug-in should (at the very least) add new commands that will also appear in the main 'zypper help' and tab-completion (better than remembering commands of a few separate tools)</li>
+<li>plugin should have access to some common package management features used in zypper, like repository handling (access to the list of enabled repositories, loading repos, using a temporary repo), installation summary, common output (normal/warning/error messages, tables, progress), user prompt, etc. in order to reuse code.</li>
+</ul>
+<p>TASKS</p>
+<ul>
+<li>define what exactly should be a plug-in able to do (only add commands or even options for existing commands, or even more?)</li>
+<li>define what exactly should be a plug-in able to do (only add commands or even options for existing commands, options for existing user prompts, or even more?)</li>
+<li>identify commonly used zypper code that should be made available to plugins via the plugin API</li>
+<li>create the plugin API</li>
+<li>use the plugin API in zypper (this will probaly mean quite a bit of zypper code refactoring) and implment the plugin loading</li>
+<li>implement an example plugin (e.g. webpin search)</li>
+</ul>
+<p>DEVELOPMENT</p>
+<p>The development should be done in a separate GIT branch and the master branch should be merged into it frequently to avoid later merging headache due to massive refactoring within the branch.</p>
+<h2>People</h2>
+<ul>
+<li>Jano Kupec originated this idea and plans to work on it.</li>
+<li>Anyone is welcome to join the effort, esp. if he or she has experience with making a C++ application plug-in enabled.</li>
+</ul>
+<h2>Related Materials</h2>
+<ul>
+<li>http://en.opensuse.org/Zypper</li>
+<li><nowiki>git://git.opensuse.org/projects/zypp/zypper.git</nowiki> (the plug-in branch is not yet created!)</li>
+</ul>
       </div>
     </div>
   </div>

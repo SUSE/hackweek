@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -44,13 +44,19 @@
         <p>A lot of people spend their hacking lives within Emacs, and several use Gnus as their primary mail reader.  We currently have to use the IMAP and SMTP interfaces, both of which are discouraged by IS&T.</p>
         <p>It would be great if we could integrate GroupWise support into Gnus directly.  Gnus already has, albeit quirky, support for non-local mail storage (//nnimap//), and we may be able to use the abstractions in there for GroupWise support.</p>
         <p>In terms of integration, I see the following tasks:</p>
-        <p>* Add a ''groupwise-send-it'' function to send outgoing using GroupWise</p>
-        <p>* Adapt the //nnimap// backend to use the GroupWise protocol for mail viewing</p>
-        <p>* Adapt the //nndiary// backend to integrate with the GroupWise calendar</p>
+        <ul>
+        <li>Add a ''groupwise-send-it'' function to send outgoing using GroupWise</li>
+        </ul>
+        <ul>
+        <li>Adapt the //nnimap// backend to use the GroupWise protocol for mail viewing</li>
+        </ul>
+        <ul>
+        <li>Adapt the //nndiary// backend to integrate with the GroupWise calendar</li>
+        </ul>
         <h2>People</h2>
         <p>Raja R Harinath originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
         <h2>Related Materials</h2>
-        <p>[[http://www.gnus.org|Gnus]]</p>
+        <p><a href="http://www.gnus.org">Gnus</a></p>
       </div>
     </div>
   </div>

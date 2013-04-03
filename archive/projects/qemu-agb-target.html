@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -40,97 +40,99 @@
       </div>
       <div id='wrapper-content'>
         <p><b>Tags:</b> InProgress, TryMe, JudgeMe, JudgeBest, GBA, games, emulator, QEMU, AGB, ARM</p>
-        <h2>Description</h2>
-        <p>Add a GBA (Game Boy Advance) machine implementation to QEMU.</p>
-        <p>May serve as a tool for ironing out bugs in the Thumb emulation in QEMU, but probably is altogether useless. Just the way I like it.</p>
-        <h2>Progress</h2>
-        <p>People keep pestering me about screenshots. There is no video emulation yet, but maybe this VRAM hex dump should give you an impression of what's to come:</p>
-        <p><code>
-        00000000  33 00 34 00 33 00 34 00  0f 00 10 00 0f 00 10 00  |3.4.3.4.........|
-        00000010  07 00 08 00 0f 00 10 00  0f 00 10 00 0f 00 10 00  |................|
-        *
-        00000040  35 00 36 00 35 00 36 00  11 00 12 00 11 00 12 00  |5.6.5.6.........|
-        00000050  09 00 0a 00 11 00 12 00  11 00 12 00 11 00 12 00  |................|
-        *
-        00000080  0b 00 0c 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
-        00000090  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
-        *
-        000000c0  0d 00 0e 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
-        000000d0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
-        *
-        00000100  0b 00 0c 00 00 00 00 00  00 00 00 00 01 00 02 00  |................|
-        00000110  00 00 00 00 00 00 00 00  01 00 02 00 00 00 00 00  |................|
-        00000120  00 00 00 00 01 00 02 00  00 00 00 00 00 00 00 00  |................|
-        00000130  01 00 02 00 00 00 00 00  00 00 00 00 01 00 02 00  |................|
-        00000140  0d 00 0e 00 00 00 00 00  00 00 00 00 03 00 04 00  |................|
-        00000150  00 00 00 00 00 00 00 00  03 00 04 00 00 00 00 00  |................|
-        00000160  00 00 00 00 03 00 04 00  00 00 00 00 00 00 00 00  |................|
-        00000170  03 00 04 00 00 00 00 00  00 00 00 00 03 00 04 00  |................|
-        00000180  0b 00 0c 00 00 00 00 00  00 00 00 00 01 00 02 00  |................|
-        00000190  00 00 00 00 00 00 00 00  01 00 02 00 00 00 00 00  |................|
-        ...
-        </code></p>
-        <p>... and so forth. This is how it looks by now (2007-06-27, 16:51):</p>
-        <p>{{ideas:first_shot.png|}}</p>
-        <p>Keypad input is unimplemented so far, so you can't play yet ... :)</p>
-        <p>As of 2007-06-28, 14:00 or something, with input implemented and a few minor bugfixes, you can actually play my half-finished GBA game:</p>
-        <p>{{ideas:in_game.png}}</p>
-        <p>With serial EEPROM DMA implemented (15:45), Super Mario Advance starts to do something:</p>
-        <p>{{ideas:first_real_game.png}}</p>
-        <p>I actually found a Thumb bug in QEMU: R15 reads discarded the Thumb bit, causing QEMU to barf after executing some Thumb insns as ARM insns. With this fix:</p>
-        <p><code>
-        Index: target-arm/translate.c
-        RCS file: /sources/qemu/qemu/target-arm/translate.c,v
-        retrieving revision 1.53
-        diff -u -r1.53 translate.c
-        --- target-arm/translate.c      11 Jun 2007 18:59:35 -0000      1.53
-        +++ target-arm/translate.c      28 Jun 2007 15:48:59 -0000
-        @@ -307,7 +307,7 @@
-             if (reg == 15) {</p>
-        <p>         if (s->thumb)
-        -            val = (long)s->pc + 2;
-        +            val = (long)s->pc + 3;
-                 else
-                     val = (long)s->pc + 4;
-                 gen_op_movl_TN_im[t](val);
-        @@ -3062,7 +3062,10 @@
-                             gen_op_movl_T1_im(val);
-                             gen_movl_reg_T1(s, 14);
-                         }
-        -                gen_movl_T0_reg(s, rm);
-        +                if (rm == 15)
-        +                  gen_op_movl_T0_im(s->pc + 2);
-        +                else
-        +                  gen_movl_T0_reg(s, rm);
-                         gen_bx(s);
-                         break;
-                     }
-        </code></p>
-        <p>... Rockman Exe gets to the title screen, although a few unimplemented 32-bit register accesses make it less visually appealing than usual:</p>
-        <p>{{ideas:rockman_garbled.png}}</p>
-        <p>It works better by now:</p>
-        <p>{{ideas:rockman_clear.png}}</p>
-        <h2>Code</h2>
-        <p>Here's the code: [[ftp://ftp.suse.de/private/uli/qemu-agb-20070629.tar.gz]]</p>
-        <p>Build with</p>
-        <p><code>
-        ./configure --target-list=arm-softmmu --cc=/tmp/gcc33/bin/gcc
-        make
-        </code></p>
-        <p>(Yes, you **need** GCC 3.3. QEMU needs extra patches to work with GCC 4, and even then not all host/target combinations work. i386 host is particularly broken.)</p>
-        <p>Invocation:</p>
-        <p><code>
-        ./arm-softmmu/qemu-system-arm  -M agb926 -hda some_garbage.img -kernel game.gba
-        </code></p>
-        <p>(QEMU does not run if you don't give it a disk image. A BIOS image is neither required nor supported. And, yes, this emulates a Game Boy Advance with an ARM926. The most advanced GBA ever. :)</p>
-        <p>Key mapping: A -> Z, B -> X, Start -> Enter, Select -> Tab, D-Pad -> cursor keys and keypad. (I kinda sorta forgot to implement L and R...)</p>
-        <h2>People</h2>
-        <p>Ulrich Hecht originated this idea and is currently working on implementing it.</p>
-        <h2>Related Materials</h2>
-        <p>[[http://gpsp-dev.blogspot.com/|gbSP development]] blog; insights on developing a recompiling AGB emulator.</p>
-        <p>[[http://nocash.emubase.de/gbatek.htm|GBATEK]], platform reference by Martin Korth.</p>
-        <p>[[http://vba.ngemu.com/|VisualBoyAdvance]], the reference interpreting GBA emulator. Probably a good place to lift hardware emulation code from.</p>
-        <p>Stuart Brady's [[http://homepage.ntlworld.com/wholehog/stuart/qemu/z80.html|QEMU Z80 Target]], the inspiration for this, and proof that weirder things have been done.</p>
+<h2>Description</h2>
+<p>Add a GBA (Game Boy Advance) machine implementation to QEMU.</p>
+<p>May serve as a tool for ironing out bugs in the Thumb emulation in QEMU, but probably is altogether useless. Just the way I like it.</p>
+<h2>Progress</h2>
+<p>People keep pestering me about screenshots. There is no video emulation yet, but maybe this VRAM hex dump should give you an impression of what's to come:</p>
+<p><code>
+00000000  33 00 34 00 33 00 34 00  0f 00 10 00 0f 00 10 00  |3.4.3.4.........|
+00000010  07 00 08 00 0f 00 10 00  0f 00 10 00 0f 00 10 00  |................|
+00000040  35 00 36 00 35 00 36 00  11 00 12 00 11 00 12 00  |5.6.5.6.........|
+00000050  09 00 0a 00 11 00 12 00  11 00 12 00 11 00 12 00  |................|
+00000080  0b 00 0c 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+00000090  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+000000c0  0d 00 0e 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+000000d0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+00000100  0b 00 0c 00 00 00 00 00  00 00 00 00 01 00 02 00  |................|
+00000110  00 00 00 00 00 00 00 00  01 00 02 00 00 00 00 00  |................|
+00000120  00 00 00 00 01 00 02 00  00 00 00 00 00 00 00 00  |................|
+00000130  01 00 02 00 00 00 00 00  00 00 00 00 01 00 02 00  |................|
+00000140  0d 00 0e 00 00 00 00 00  00 00 00 00 03 00 04 00  |................|
+00000150  00 00 00 00 00 00 00 00  03 00 04 00 00 00 00 00  |................|
+00000160  00 00 00 00 03 00 04 00  00 00 00 00 00 00 00 00  |................|
+00000170  03 00 04 00 00 00 00 00  00 00 00 00 03 00 04 00  |................|
+00000180  0b 00 0c 00 00 00 00 00  00 00 00 00 01 00 02 00  |................|
+00000190  00 00 00 00 00 00 00 00  01 00 02 00 00 00 00 00  |................|
+...
+</code></p>
+<ul>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+<p>... and so forth. This is how it looks by now (2007-06-27, 16:51):</p>
+<p>{{ideas:first_shot.png|}}</p>
+<p>Keypad input is unimplemented so far, so you can't play yet ... :)</p>
+<p>As of 2007-06-28, 14:00 or something, with input implemented and a few minor bugfixes, you can actually play my half-finished GBA game:</p>
+<p>{{ideas:in_game.png}}</p>
+<p>With serial EEPROM DMA implemented (15:45), Super Mario Advance starts to do something:</p>
+<p>{{ideas:first_real_game.png}}</p>
+<p>I actually found a Thumb bug in QEMU: R15 reads discarded the Thumb bit, causing QEMU to barf after executing some Thumb insns as ARM insns. With this fix:</p>
+<p><code>
+Index: target-arm/translate.c
+RCS file: /sources/qemu/qemu/target-arm/translate.c,v
+retrieving revision 1.53
+diff -u -r1.53 translate.c
+--- target-arm/translate.c      11 Jun 2007 18:59:35 -0000      1.53
++++ target-arm/translate.c      28 Jun 2007 15:48:59 -0000
+@@ -307,7 +307,7 @@
+     if (reg == 15) {</p>
+<p>         if (s->thumb)
+-            val = (long)s->pc + 2;
++            val = (long)s->pc + 3;
+         else
+             val = (long)s->pc + 4;
+         gen_op_movl_TN_im[t](val);
+@@ -3062,7 +3062,10 @@
+                     gen_op_movl_T1_im(val);
+                     gen_movl_reg_T1(s, 14);
+                 }
+-                gen_movl_T0_reg(s, rm);
++                if (rm == 15)
++                  gen_op_movl_T0_im(s->pc + 2);
++                else
++                  gen_movl_T0_reg(s, rm);
+                 gen_bx(s);
+                 break;
+             }
+</code></p>
+<p>... Rockman Exe gets to the title screen, although a few unimplemented 32-bit register accesses make it less visually appealing than usual:</p>
+<p>{{ideas:rockman_garbled.png}}</p>
+<p>It works better by now:</p>
+<p>{{ideas:rockman_clear.png}}</p>
+<h2>Code</h2>
+<p>Here's the code: <a href="ftp://ftp.suse.de/private/uli/qemu-agb-20070629.tar.gz.html">ftp://ftp.suse.de/private/uli/qemu-agb-20070629.tar.gz</a></p>
+<p>Build with</p>
+<p><code>
+./configure --target-list=arm-softmmu --cc=/tmp/gcc33/bin/gcc
+make
+</code></p>
+<p>(Yes, you **need** GCC 3.3. QEMU needs extra patches to work with GCC 4, and even then not all host/target combinations work. i386 host is particularly broken.)</p>
+<p>Invocation:</p>
+<p><code>
+./arm-softmmu/qemu-system-arm  -M agb926 -hda some_garbage.img -kernel game.gba
+</code></p>
+<p>(QEMU does not run if you don't give it a disk image. A BIOS image is neither required nor supported. And, yes, this emulates a Game Boy Advance with an ARM926. The most advanced GBA ever. :)</p>
+<p>Key mapping: A -> Z, B -> X, Start -> Enter, Select -> Tab, D-Pad -> cursor keys and keypad. (I kinda sorta forgot to implement L and R...)</p>
+<h2>People</h2>
+<p>Ulrich Hecht originated this idea and is currently working on implementing it.</p>
+<h2>Related Materials</h2>
+<p><a href="http://gpsp-dev.blogspot.com/">gbSP development</a> blog; insights on developing a recompiling AGB emulator.</p>
+<p><a href="http://nocash.emubase.de/gbatek.htm">GBATEK</a>, platform reference by Martin Korth.</p>
+<p><a href="http://vba.ngemu.com/">VisualBoyAdvance</a>, the reference interpreting GBA emulator. Probably a good place to lift hardware emulation code from.</p>
+<p>Stuart Brady's <a href="http://homepage.ntlworld.com/wholehog/stuart/qemu/z80.html">QEMU Z80 Target</a>, the inspiration for this, and proof that weirder things have been done.</p>
       </div>
     </div>
   </div>

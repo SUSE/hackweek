@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -41,15 +41,21 @@
       <div id='wrapper-content'>
         <p><b>Tags:</b> Desktop, InProgress, HelpWanted, HW-Hacker</p>
         <h2>Description</h2>
-        <p>Digital hardware [[http://en.wikipedia.org/wiki/Synthesizer#The_modern_digital_synthesizer|synthesizers]] (which encompasses just about every synthesizer manufactured in the last 20 years) store their sounds as **patches** in a **patch bank**.  Synthesizers have a limited amount of space to store patches in; a Roland XP-50, for instance, only has 128 patch slots in their user-modifiable patch bank, which is where the **patch librarian** comes in.  The patch librarian is a piece of software running on a computer that takes a MIDI dump (or on very new synthesizers, a USB dump) of the patch bank, stores it to disk, and then can transmit individual patches, or an entire bank, back to the synthesizer whenever the user wants to, getting around that constraint.</p>
+        <p>Digital hardware <a href="http://en.wikipedia.org/wiki/Synthesizer#The_modern_digital_synthesizer">synthesizers</a> (which encompasses just about every synthesizer manufactured in the last 20 years) store their sounds as **patches** in a **patch bank**.  Synthesizers have a limited amount of space to store patches in; a Roland XP-50, for instance, only has 128 patch slots in their user-modifiable patch bank, which is where the **patch librarian** comes in.  The patch librarian is a piece of software running on a computer that takes a MIDI dump (or on very new synthesizers, a USB dump) of the patch bank, stores it to disk, and then can transmit individual patches, or an entire bank, back to the synthesizer whenever the user wants to, getting around that constraint.</p>
         <p>A **patch editor** is software that allows a user to modify the patches using the computer, rather than fiddling with knobs or navigating menu structures on the synthesizer itself.  This allows for a greater degree of control over the sound, and makes modifying patches much easier.</p>
         <p>I've only been able to find one patch librarian/editor that works on Linux, JSynthLib, which doesn't have a very good user interface, doesn't support many synthesizers, and doesn't appear to be very easy to extend.  All of the others exist solely in the commercial Windows/Mac worlds, so I think it's time to give the world good open source, cross-platform patch librarian/editor that can be quickly and easily extended to support any MIDI device.  I'll be writing it in C++ using wxWidgets.</p>
         <h2>People</h2>
         <p>Matt Barringer originated this idea and is working on it.  Programming help, suggestions, etc. are always welcome.</p>
         <h2>Related Materials</h2>
-        <p>    * [[http://www.jsynthlib.org/|JSynthLib]]</p>
-        <p>    * [[http://www.squest.com/Windows/MidiQuest/MidiQuest-About.html|MIDIQuest]] - Commercial Windows librarian/editor.</p>
-        <p>    * [[http://www.sonicspot.com/sounddiver/sounddiver.html|SoundDiver]] - Commercial Windows librarian/editor, now discontinued.</p>
+        <ul>
+        <li><a href="http://www.jsynthlib.org/">JSynthLib</a></li>
+        </ul>
+        <ul>
+        <li><a href="http://www.squest.com/Windows/MidiQuest/MidiQuest-About.html">MIDIQuest</a> - Commercial Windows librarian/editor.</li>
+        </ul>
+        <ul>
+        <li><a href="http://www.sonicspot.com/sounddiver/sounddiver.html">SoundDiver</a> - Commercial Windows librarian/editor, now discontinued.</li>
+        </ul>
       </div>
     </div>
   </div>

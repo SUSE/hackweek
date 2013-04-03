@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -40,22 +40,24 @@
       </div>
       <div id='wrapper-content'>
         <p><b>Tags:</b> Idea, Virtualization, Server</p>
-        <h2>Description</h2>
-        <p>Create a SUSE-based Live CD that helps create a virtual machine from the physical machine.</p>
-        <p>Sample use case:</p>
-        <p>Customer has existing server, with installed apps and data.  Customer prefers to not have to re-install to virtualize the server.  Customer puts p2v CD in server and reboots.  YaST starts (similar experience as starting an install).  YaST probes hardware (discovers # of NICs, # of drives, amount of memory, architecture, etc.)  YaST prompts user for destination (NFS, SMB/CIFS, iSCSI, or perhaps local hot-plugged disk) of where to create the VM's disk image(s).  The local disk(s) are copied to the destination and YaST also writes out a VM configuration which matches the physical machine.</p>
-        <p>Some advantages this has over other other manual tools (ghost or "dd"):
-          * VM configuration created automatically to match physical machine
-          * Can re-configure OS automatically.  Example:  The virtual NICs' MACs will not match the physical NICs' MACs; this could be fixed automatically (for some OSs)
-          * Could paravirtualize automatically (for some OSs)
-          * Can convert/compress the disk format during copying
-          * Don't have to physically move hard drive to new server
-          * Independent of what OS customer is running</p>
-        <p>YaST could use the existing vm-install code to write out the VM configuration.</p>
-        <p>Probably would only do file-backed disk images to avoid filesystem-resizing issues (for now).</p>
-        <h2>People</h2>
-        <p>Charles Coffing originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
-        <h2>Related Materials</h2>
+<h2>Description</h2>
+<p>Create a SUSE-based Live CD that helps create a virtual machine from the physical machine.</p>
+<p>Sample use case:</p>
+<p>Customer has existing server, with installed apps and data.  Customer prefers to not have to re-install to virtualize the server.  Customer puts p2v CD in server and reboots.  YaST starts (similar experience as starting an install).  YaST probes hardware (discovers # of NICs, # of drives, amount of memory, architecture, etc.)  YaST prompts user for destination (NFS, SMB/CIFS, iSCSI, or perhaps local hot-plugged disk) of where to create the VM's disk image(s).  The local disk(s) are copied to the destination and YaST also writes out a VM configuration which matches the physical machine.</p>
+<p>Some advantages this has over other other manual tools (ghost or "dd"):</p>
+<ul>
+<li>VM configuration created automatically to match physical machine</li>
+<li>Can re-configure OS automatically.  Example:  The virtual NICs' MACs will not match the physical NICs' MACs; this could be fixed automatically (for some OSs)</li>
+<li>Could paravirtualize automatically (for some OSs)</li>
+<li>Can convert/compress the disk format during copying</li>
+<li>Don't have to physically move hard drive to new server</li>
+<li>Independent of what OS customer is running</li>
+</ul>
+<p>YaST could use the existing vm-install code to write out the VM configuration.</p>
+<p>Probably would only do file-backed disk images to avoid filesystem-resizing issues (for now).</p>
+<h2>People</h2>
+<p>Charles Coffing originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+<h2>Related Materials</h2>
       </div>
     </div>
   </div>

@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -40,108 +40,118 @@
       </div>
       <div id='wrapper-content'>
         <p><b>Tags:</b> Idea, InProgress, Mono, Desktop, Web20, DevTool, Graphics, javascript, TryMe, HelpWanted, Judgeme, JudgeBest, JudgeDesktop</p>
-        <h2>Description</h2>
-        <p>OSX and Vista implements some nice small desktop applications (aka applets/docklets/gadgets/desklets). As I have been working in the past few weeks on Moonlight (Free implementation of Silverlight), and seeing as Moonlight is a perfect way to get things like OSX Dashboard or gDesklets.</p>
-        <p>Why not use gDesklets? Because Moonlight give us a way to write much more rich Desklets using animations and storylines and full access to C#</p>
-        <p>Moonlight (although Gtk# might be used in a few places) will be used to get effects and for rapid application development. </p>
-        <p>Meet us in channel #desklets in irc.gnome.org</p>
-        <p>You can find the sample desklets directory in moon/desklet</p>
-        <p>Basic goals:</p>
-        <p>  - Applications will be basic XAML shells that can use custom widgets.
-          - See moon/desklet/lameclock for a sample desklet using XAML and Moonlight.
-          - See moon/desklet/lameclock for some sample animation for configuration.
-          - To launch applications, we will use mopen, part of Moonlight.
-          - you can use mopen with the -transparent flag to get alpha blended widgets on the screen (under implementation now).
-          - Read the mopen.1 man page for details about code sharing, VM sharing, and how to launch new apps.
-          - "Gadgets" or "Widgets" will basically be simple XAML apps, see Surface for a sample of these can be done.
-          - Since we will be using "mopen" infrastructure, the entire desklet has to be stored in a directory, with an entry file called "default.xaml".</p>
-        <p>Some other features:
-          - Write a gadget launcher, this probably needs to be done once we have some gadgets, handle install ationand add desklets to desktop, this application will use mopen to share one Mono VM for all desklets. Multi domains will also needed.
-          - The entire desklet can be written with Moonlight/XAML and is preferred over Gtk# because its content can be easily animated using XAML's animation features.
-          - Create some sample desklets:
-            - Multi clock, an digital clock with multiple themes.
-            - Calendar desklet, maybe just a transluced calendar with some options like amount of months (1,3,6, year)
-            - Slide show desklet, an slide show desklet application to show images from dir, time to change images can be configured, also we can show images from picasa or flickr albums.
-            - Some other desklet ideas will accepted and implemented based on number of hackers that join with us.</p>
-        <p>Things to decide:</p>
-        <p>  - Best way to package desklets (zip, gz or bz). Zip seems to be the best option, since mono ships with SharpZip lib and that way we have no external dependencies.
-          - ...</p>
-        <p>These are the Desklets we either plan to implement or are already done:</p>
-        <p>  - Calendar - Done, in opaque and glassy versions. Calendars integreate with Google Calendar highlighting days with relevant event.
-          - Digital Clock - Done
-          - Analog Clock - Done, in opaque and glassy versions.
-          - CPU monitor - Done.
-          - Network traffic monitor - Done, very simple monitoring of the current upload/download Kbps.
-          - Calculator - Done, features only elementary math.
-          - Weather - Done, queries online data.
-          - Slideshow - Done, integrated with Picasa, it slides thru a photo set.
-          - Rule - Done, allows one to measure the whole desktop!
-          - Video Player - Done, features only simple stop/pause/start controls.</p>
-        <p>The team is using the irc channel #desklets at irc.gnome.org to meet and discuss the subject, everyone is invited to join us and chat about all our nice Desklets :)</p>
-        <h2>People (alphabetical order)</h2>
-        <p><html>
-        <a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081564855384296898"><img src="http://lh4.google.com/everaldo.canuto/RoVYUAxKTcI/AAAAAAAAAM0/thYc-LRjHpg/s144/andreia.jpg" /></a>
-        </html>
-        **Andreia Gaita** is helping in the hacking.</p>
-        <p><html>
-        <a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081556566097415538"><img src="http://lh6.google.com/everaldo.canuto/RoVQxgxKTXI/AAAAAAAAAMM/G5pznrEaua4/s144/everaldo.jpg" /></a>
-        </html>
-        **Everaldo Canuto** originated this idea and helping in the hacking.</p>
-        <p><html>
-        <a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081564043635477938"><img src="http://lh3.google.com/everaldo.canuto/RoVXkwxKTbI/AAAAAAAAAMs/HT3Lq-XnQ8A/s144/grendel.jpg" /></a>
-        </html>
-        **Marek Habersack** is helping in the hacking.</p>
-        <p>**Miguel de Icaza** is helping in the hacking.</p>
-        <p><html>
-        <a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081556566097415554"><img src="http://lh6.google.com/everaldo.canuto/RoVQxgxKTYI/AAAAAAAAAMU/ouO4Pv-I24c/s144/fumasa.jpg" /></a>
-        </html>
-        Rafael Fumasa doesn't work for Novell, but we joined us and made a great calculator!</p>
-        <p><html>
-        <a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081556566097415570"><img src="http://lh6.google.com/everaldo.canuto/RoVQxgxKTZI/AAAAAAAAAMc/nHMz3_KKJBs/s144/kumpera.jpg" /></a>
-        </html>
-        **Rodrigo Kumpera** is helping in the hacking.</p>
-        <p><html>
-        <a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081556759370943906"><img src="http://lh3.google.com/everaldo.canuto/RoVQ8wxKTaI/AAAAAAAAAMk/NihW5SQp-Qs/s144/toshok.jpg" /></a>
-        </html>
-        I also can't forget to add Chris Toshok, this amazing guy who helped us with the libraries and all the stuff, he is a genius! </p>
-        <p>Hackers, packagers, testers and designers <del>will be</del> were welcome ;)</p>
-        <p><html>
-        <center>
-        <a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081567681472777682"><img src="http://lh6.google.com/everaldo.canuto/RoVa4gxKTdI/AAAAAAAAAM8/WI6_EqdQtNY/s400/allthepeople.jpg" /></a><br/>
-        All Together
-        </center>
-        </html></p>
-        <h2>Related Materials</h2>
-        <p>OSX Dashboard: http://www.apple.com/macosx/features/dashboard/ </p>
-        <p>Vista Gadgets: http://vista.gallery.microsoft.com/vista/SideBar.aspx?mkt=en-us </p>
-        <p>gDesklets: http://www.gdesklets.org/ </p>
-        <h3>Links, mockups, screen captures, files.</h3>
-        <p>My first desklet clock:
-        http://picasaweb.google.com/everaldo.canuto/MoonLight/photo#5079539077446297602</p>
-        <p><html>
-        <center>
-        <object width="425" height="350"> <param name="movie" value="http://www.youtube.com/v/J-kweEzP9XY"> </param> <embed src="http://www.youtube.com/v/J-kweEzP9XY" type="application/x-shockwave-flash" width="425" height="350"> </embed> </object>
-        </center>
-        </html></p>
-        <p><html>
-        <center>
-        <embed style="width:400px;height:326px;" type="application/x-shockwave-flash" src="http://video.google.com/googleplayer.swf?docId=96431092841486129&hl=en" id="VideoPlayback" align="middle"  quality="best" bgcolor="#ffffff" scale="noScale" salign="TL"  FlashVars="playerMode=embedded"></embed><br />
-        It is not possible to see the clock and calendar in action in the other video, so this video is just to show that
-        </center>
-        </html></p>
-        <p><html>
-        <center>
-        <a href="http://picasaweb.google.com/everaldo.canuto/Desklets/photo#5080887826804526354"><img src="http://lh4.google.com/everaldo.canuto/RoLwjwxKTRI/AAAAAAAAALI/xX4zioVCVr0/s400/glassy-blue.jpg" /></a>
-        <a href="http://picasaweb.google.com/everaldo.canuto/Desklets/photo#5080887826804526370"><img src="http://lh4.google.com/everaldo.canuto/RoLwjwxKTSI/AAAAAAAAALQ/XDIfxz2JsPg/s400/glassy-green.jpg" /></a>
-        </center>
-        </html></p>
-        <h3>Friday pictures</h3>
-        <p><html>
-        <center>
-        <a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081556561802448210"><img src="http://lh5.google.com/everaldo.canuto/RoVQxQxKTVI/AAAAAAAAAL8/RK_TxfX_ibw/s400/desklets1.jpg" /></a>
-        <a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081556566097415522"><img src="http://lh6.google.com/everaldo.canuto/RoVQxgxKTWI/AAAAAAAAAME/KeFqp6j3uXc/s400/desklets2.jpg" /></a>
-        </center>
-        </html></p>
+<h2>Description</h2>
+<p>OSX and Vista implements some nice small desktop applications (aka applets/docklets/gadgets/desklets). As I have been working in the past few weeks on Moonlight (Free implementation of Silverlight), and seeing as Moonlight is a perfect way to get things like OSX Dashboard or gDesklets.</p>
+<p>Why not use gDesklets? Because Moonlight give us a way to write much more rich Desklets using animations and storylines and full access to C#</p>
+<p>Moonlight (although Gtk# might be used in a few places) will be used to get effects and for rapid application development. </p>
+<p>Meet us in channel #desklets in irc.gnome.org</p>
+<p>You can find the sample desklets directory in moon/desklet</p>
+<p>Basic goals:</p>
+<p>  - Applications will be basic XAML shells that can use custom widgets.
+  - See moon/desklet/lameclock for a sample desklet using XAML and Moonlight.
+  - See moon/desklet/lameclock for some sample animation for configuration.
+  - To launch applications, we will use mopen, part of Moonlight.
+  - you can use mopen with the -transparent flag to get alpha blended widgets on the screen (under implementation now).
+  - Read the mopen.1 man page for details about code sharing, VM sharing, and how to launch new apps.
+  - "Gadgets" or "Widgets" will basically be simple XAML apps, see Surface for a sample of these can be done.
+  - Since we will be using "mopen" infrastructure, the entire desklet has to be stored in a directory, with an entry file called "default.xaml".</p>
+<p>Some other features:
+  - Write a gadget launcher, this probably needs to be done once we have some gadgets, handle install ationand add desklets to desktop, this application will use mopen to share one Mono VM for all desklets. Multi domains will also needed.
+  - The entire desklet can be written with Moonlight/XAML and is preferred over Gtk# because its content can be easily animated using XAML's animation features.
+  - Create some sample desklets:
+    - Multi clock, an digital clock with multiple themes.
+    - Calendar desklet, maybe just a transluced calendar with some options like amount of months (1,3,6, year)
+    - Slide show desklet, an slide show desklet application to show images from dir, time to change images can be configured, also we can show images from picasa or flickr albums.
+    - Some other desklet ideas will accepted and implemented based on number of hackers that join with us.</p>
+<p>Things to decide:</p>
+<p>  - Best way to package desklets (zip, gz or bz). Zip seems to be the best option, since mono ships with SharpZip lib and that way we have no external dependencies.
+  - ...</p>
+<p>These are the Desklets we either plan to implement or are already done:</p>
+<p>  - Calendar - Done, in opaque and glassy versions. Calendars integreate with Google Calendar highlighting days with relevant event.
+  - Digital Clock - Done
+  - Analog Clock - Done, in opaque and glassy versions.
+  - CPU monitor - Done.
+  - Network traffic monitor - Done, very simple monitoring of the current upload/download Kbps.
+  - Calculator - Done, features only elementary math.
+  - Weather - Done, queries online data.
+  - Slideshow - Done, integrated with Picasa, it slides thru a photo set.
+  - Rule - Done, allows one to measure the whole desktop!
+  - Video Player - Done, features only simple stop/pause/start controls.</p>
+<p>The team is using the irc channel #desklets at irc.gnome.org to meet and discuss the subject, everyone is invited to join us and chat about all our nice Desklets :)</p>
+<h2>People (alphabetical order)</h2>
+<p><html>
+<a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081564855384296898"><img src="http://lh4.google.com/everaldo.canuto/RoVYUAxKTcI/AAAAAAAAAM0/thYc-LRjHpg/s144/andreia.jpg" /></a>
+</html></p>
+<ul>
+<li>*Andreia Gaita** is helping in the hacking.</li>
+</ul>
+<p><html>
+<a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081556566097415538"><img src="http://lh6.google.com/everaldo.canuto/RoVQxgxKTXI/AAAAAAAAAMM/G5pznrEaua4/s144/everaldo.jpg" /></a>
+</html></p>
+<ul>
+<li>*Everaldo Canuto** originated this idea and helping in the hacking.</li>
+</ul>
+<p><html>
+<a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081564043635477938"><img src="http://lh3.google.com/everaldo.canuto/RoVXkwxKTbI/AAAAAAAAAMs/HT3Lq-XnQ8A/s144/grendel.jpg" /></a>
+</html></p>
+<ul>
+<li>*Marek Habersack** is helping in the hacking.</li>
+</ul>
+<ul>
+<li>*Miguel de Icaza** is helping in the hacking.</li>
+</ul>
+<p><html>
+<a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081556566097415554"><img src="http://lh6.google.com/everaldo.canuto/RoVQxgxKTYI/AAAAAAAAAMU/ouO4Pv-I24c/s144/fumasa.jpg" /></a>
+</html>
+Rafael Fumasa doesn't work for Novell, but we joined us and made a great calculator!</p>
+<p><html>
+<a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081556566097415570"><img src="http://lh6.google.com/everaldo.canuto/RoVQxgxKTZI/AAAAAAAAAMc/nHMz3_KKJBs/s144/kumpera.jpg" /></a>
+</html></p>
+<ul>
+<li>*Rodrigo Kumpera** is helping in the hacking.</li>
+</ul>
+<p><html>
+<a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081556759370943906"><img src="http://lh3.google.com/everaldo.canuto/RoVQ8wxKTaI/AAAAAAAAAMk/NihW5SQp-Qs/s144/toshok.jpg" /></a>
+</html>
+I also can't forget to add Chris Toshok, this amazing guy who helped us with the libraries and all the stuff, he is a genius! </p>
+<p>Hackers, packagers, testers and designers <del>will be</del> were welcome ;)</p>
+<p><html>
+<center>
+<a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081567681472777682"><img src="http://lh6.google.com/everaldo.canuto/RoVa4gxKTdI/AAAAAAAAAM8/WI6_EqdQtNY/s400/allthepeople.jpg" /></a><br/>
+All Together
+</center>
+</html></p>
+<h2>Related Materials</h2>
+<p>OSX Dashboard: http://www.apple.com/macosx/features/dashboard/ </p>
+<p>Vista Gadgets: http://vista.gallery.microsoft.com/vista/SideBar.aspx?mkt=en-us </p>
+<p>gDesklets: http://www.gdesklets.org/ </p>
+<h3>Links, mockups, screen captures, files.</h3>
+<p>My first desklet clock:
+http://picasaweb.google.com/everaldo.canuto/MoonLight/photo#5079539077446297602</p>
+<p><html>
+<center>
+<object width="425" height="350"> <param name="movie" value="http://www.youtube.com/v/J-kweEzP9XY"> </param> <embed src="http://www.youtube.com/v/J-kweEzP9XY" type="application/x-shockwave-flash" width="425" height="350"> </embed> </object>
+</center>
+</html></p>
+<p><html>
+<center>
+<embed style="width:400px;height:326px;" type="application/x-shockwave-flash" src="http://video.google.com/googleplayer.swf?docId=96431092841486129&hl=en" id="VideoPlayback" align="middle"  quality="best" bgcolor="#ffffff" scale="noScale" salign="TL"  FlashVars="playerMode=embedded"></embed><br />
+It is not possible to see the clock and calendar in action in the other video, so this video is just to show that
+</center>
+</html></p>
+<p><html>
+<center>
+<a href="http://picasaweb.google.com/everaldo.canuto/Desklets/photo#5080887826804526354"><img src="http://lh4.google.com/everaldo.canuto/RoLwjwxKTRI/AAAAAAAAALI/xX4zioVCVr0/s400/glassy-blue.jpg" /></a>
+<a href="http://picasaweb.google.com/everaldo.canuto/Desklets/photo#5080887826804526370"><img src="http://lh4.google.com/everaldo.canuto/RoLwjwxKTSI/AAAAAAAAALQ/XDIfxz2JsPg/s400/glassy-green.jpg" /></a>
+</center>
+</html></p>
+<h3>Friday pictures</h3>
+<p><html>
+<center>
+<a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081556561802448210"><img src="http://lh5.google.com/everaldo.canuto/RoVQxQxKTVI/AAAAAAAAAL8/RK_TxfX_ibw/s400/desklets1.jpg" /></a>
+<a href="http://picasaweb.google.com/everaldo.canuto/HackWeekJun2007/photo#5081556566097415522"><img src="http://lh6.google.com/everaldo.canuto/RoVQxgxKTWI/AAAAAAAAAME/KeFqp6j3uXc/s400/desklets2.jpg" /></a>
+</center>
+</html></p>
       </div>
     </div>
   </div>

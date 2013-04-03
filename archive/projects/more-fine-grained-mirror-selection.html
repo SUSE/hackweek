@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -40,16 +40,16 @@
       </div>
       <div id='wrapper-content'>
         <p><b>Tags:</b> Idea, Done, Network, Community, openSUSE</p>
-        <h2>Description</h2>
-        <p>Spreading openSUSE is key to our success. It needs to be easy to download openSUSE. If other distros can be downloaded quicker, we have already lost. openSUSE is distributed almost exclusively through mirrors, so using the mirrors efficiently is crucial.</p>
-        <p>Okay, this is an idea that I worked on during the hackweek. Mirror selection on download.opensuse.org is currently mainly based on IP geolocation on country level via libGeoIP. There are several cases where this isn't optimal. First, if there are several mirrors in a country (which is especially true for Germany), only a random choice can be made among the mirrors of the country. Second, to assign clients to mirrors in their vicinity, the client's network prefix would be needed as well as all network prefixes local to a mirror. For mirrors in countries with poor connectivity, it may be too much already to if they get all requests from their country (I have worked with such mirrors); thus, country level is too coarse. I am working on an idea to utilize routing data for a better mirror selection and achieve net-locality based on autonomous system numbers. The required data is all available through routing protocols and could be used via an intermediate database or by querying a routing daemon directly. This week, I have made significant progress in researching this idea, analyzing logs to assess the reasonability of the approach, and doing performance tests of different ways of implementation. I have reached a state where I know the algorithms to achieve the required performance, have possible ways in mind to implement it, and I am reasonably sure that this is worth it and will be a great step forward for our users. </p>
-        <h2>People</h2>
-        <p>Peter Poeml got the initial idea from Bjoern Metzdorf, who was listening to a talk on ApacheCon about the mirror infrastructure. Peter has been researching this idea since a while and is working on implementing it.</p>
-        <h2>Related Materials</h2>
-        <p>http://mirrorbrain.org/ - our mirror framework</p>
-        <h2>Done!</h2>
-        <p>This idea became reality:</p>
-        <p>http://mirrorbrain.org/news_items/2.6_network_topological_mirror_selection</p>
+<h2>Description</h2>
+<p>Spreading openSUSE is key to our success. It needs to be easy to download openSUSE. If other distros can be downloaded quicker, we have already lost. openSUSE is distributed almost exclusively through mirrors, so using the mirrors efficiently is crucial.</p>
+<p>Okay, this is an idea that I worked on during the hackweek. Mirror selection on download.opensuse.org is currently mainly based on IP geolocation on country level via libGeoIP. There are several cases where this isn't optimal. First, if there are several mirrors in a country (which is especially true for Germany), only a random choice can be made among the mirrors of the country. Second, to assign clients to mirrors in their vicinity, the client's network prefix would be needed as well as all network prefixes local to a mirror. For mirrors in countries with poor connectivity, it may be too much already to if they get all requests from their country (I have worked with such mirrors); thus, country level is too coarse. I am working on an idea to utilize routing data for a better mirror selection and achieve net-locality based on autonomous system numbers. The required data is all available through routing protocols and could be used via an intermediate database or by querying a routing daemon directly. This week, I have made significant progress in researching this idea, analyzing logs to assess the reasonability of the approach, and doing performance tests of different ways of implementation. I have reached a state where I know the algorithms to achieve the required performance, have possible ways in mind to implement it, and I am reasonably sure that this is worth it and will be a great step forward for our users. </p>
+<h2>People</h2>
+<p>Peter Poeml got the initial idea from Bjoern Metzdorf, who was listening to a talk on ApacheCon about the mirror infrastructure. Peter has been researching this idea since a while and is working on implementing it.</p>
+<h2>Related Materials</h2>
+<p>http://mirrorbrain.org/ - our mirror framework</p>
+<h2>Done!</h2>
+<p>This idea became reality:</p>
+<p>http://mirrorbrain.org/news_items/2.6_network_topological_mirror_selection</p>
       </div>
     </div>
   </div>

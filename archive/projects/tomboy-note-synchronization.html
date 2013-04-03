@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -40,37 +40,39 @@
       </div>
       <div id='wrapper-content'>
         <p><b>Tags:</b> InProgress, Desktop, Tomboy, Network, Mono, HelpWanted, Gnome, JudgeMe, JudgeDesktop, JudgeBest, JudgeCommunity, HW-Tester, HW-Hacker, TryMe, InBuildService</p>
-        <h2>Lightning Talk / Demo</h2>
-        <p><html><embed style="width:400px;height:326px;" type="application/x-shockwave-flash" src="http://video.google.com/googleplayer.swf?docId=3281629338923781895&hl=en" id="VideoPlayback" align="middle"  quality="best" bgcolor="#ffffff" scale="noScale" salign="TL"  FlashVars="playerMode=embedded"></embed></html></p>
-        <p><html><a href="http://www.flickr.com/photos/rb3wreath/680195942/" title="Photo Sharing"><img src="http://farm2.static.flickr.com/1321/680195942_7432b672c5_o.png" width="406" height="401" alt="Synchronization Complete w/ Detalis" /></a></html></p>
-        <p>Screenshots: http://www.flickr.com/photos/rb3wreath/sets/72157600580033737/</p>
-        <p>Soundless Demo: http://151.155.4.222/~boyd/tomboy-note-sync.html (NOTE: There is a slight pause in the middle of this demo, wait patiently and you will be richly rewarded!)</p>
-        <h2>Description</h2>
-        <p>Many people begin to use Tomboy for jotting down quick notes.  Then they take their laptops to a meeting and take notes there.  When they're back in their offices, they start using their big desktop computers and also take notes there.</p>
-        <p>Then they run into a problem ...</p>
-        <p>They search for a note on one of their computers and can't find it.  It must be on the other computer.  So, essentially, they stop using Tomboy entirely or are just forced to use one computer for taking notes.</p>
-        <p>This Hack Week Project is primarily made to fix this problem.  Notes should be synchronized between all of your computers so you've always got them.  A user should be able to quickly and easy set this up.</p>
-        <h2>People</h2>
-        <p>Boyd Timothy, Sandy Armstrong, the Desktop team, and the Tomboy Community originated this idea.  Boyd Timothy and Sandy Armstrong implemented this during hack week.</p>
-        <p>We worked together with Calvin Gaisford to also provide note sharing (giving) in [[http://idea.opensuse.org/content/ideas/easy-file-sharing|Giver]].</p>
-        <h2>Where can I get it?</h2>
-        <p>Warning: Please do not try this yet with your real Tomboy notes.  Use at your own risk (i.e., make a backup of ~/.tomboy first).</p>
-        <p>[[http://build.opensuse.org/package/show?package=tomboy&project=home%3Abtimothy|build.opensuse.org project page]]</p>
-        <p>[[http://software.opensuse.org/download/home:/btimothy/openSUSE_10.2|openSUSE 10.2 Repository]]</p>
-        <p>[[http://software.opensuse.org/download/home:/btimothy/SUSE_Factory|openSUSE 10.3 Repository]]</p>
-        <h2>TODO</h2>
-        <p>See http://live.gnome.org/Tomboy/Synchronization for the latest developments.</p>
-        <h2>Status: Thu Jun 28, 7:00 AM MDT</h2>
-        <p>Basic synchronization appears to be working.  We're in debug mode now.  We've implemented synchronization so it synchronizes to a file system path for simple debugging.  The idea right now is to sync to a mounted FUSE file system.</p>
-        <p>We've had decent success synchronizing to a path mounted by wdfs (WebDav FS).  We gave GmailFS a shot yesterday without much luck.  Eventually, the idea will be to provide a drop-down list of choices in the "Synchronization Preferences" window where the user would choose which service they want to synchronize to and punch in a username, password, path (as needed) and we'd set up the path/mounts programmatically.</p>
-        <p>If you want to take a look at the code, we're working in the "tomboy-sync" branch ([[http://svn.gnome.org/viewcvs/tomboy/branches/tomboy-sync/]]).</p>
-        <p>**WARNING: If you are brave and try out the code right now, PLEASE do not try it with your real set of notes.  In other words, please first move ~/.tomboy to a new directory.  We'll give the "go-ahead" later when we feel it's "safe" to try on your real notes.**</p>
-        <h2>Status: Fri Jun 29, 7:00 AM MDT</h2>
-        <p>After almost 24 hours of straight hacking, we've got WebDAV, SSH, and local file system sync support via FUSE.  Now it's time to pretty-up a few things before we give a demo.</p>
-        <h2>Related Materials</h2>
-        <p>Additional ideas/discussion: http://live.gnome.org/Tomboy/Synchronization</p>
-        <p>Mounting a WebDav location with FUSE (wdfs):</p>
-        <p>wdfs /home/boyd/.tomboy/wdfs-sync -a {WEBDAV_URL} -u {USERNAME} -p {PASSWORD} -o fsname=tomboy</p>
+<h2>Lightning Talk / Demo</h2>
+<p><html><embed style="width:400px;height:326px;" type="application/x-shockwave-flash" src="http://video.google.com/googleplayer.swf?docId=3281629338923781895&hl=en" id="VideoPlayback" align="middle"  quality="best" bgcolor="#ffffff" scale="noScale" salign="TL"  FlashVars="playerMode=embedded"></embed></html></p>
+<p><html><a href="http://www.flickr.com/photos/rb3wreath/680195942/" title="Photo Sharing"><img src="http://farm2.static.flickr.com/1321/680195942_7432b672c5_o.png" width="406" height="401" alt="Synchronization Complete w/ Detalis" /></a></html></p>
+<p>Screenshots: http://www.flickr.com/photos/rb3wreath/sets/72157600580033737/</p>
+<p>Soundless Demo: http://151.155.4.222/~boyd/tomboy-note-sync.html (NOTE: There is a slight pause in the middle of this demo, wait patiently and you will be richly rewarded!)</p>
+<h2>Description</h2>
+<p>Many people begin to use Tomboy for jotting down quick notes.  Then they take their laptops to a meeting and take notes there.  When they're back in their offices, they start using their big desktop computers and also take notes there.</p>
+<p>Then they run into a problem ...</p>
+<p>They search for a note on one of their computers and can't find it.  It must be on the other computer.  So, essentially, they stop using Tomboy entirely or are just forced to use one computer for taking notes.</p>
+<p>This Hack Week Project is primarily made to fix this problem.  Notes should be synchronized between all of your computers so you've always got them.  A user should be able to quickly and easy set this up.</p>
+<h2>People</h2>
+<p>Boyd Timothy, Sandy Armstrong, the Desktop team, and the Tomboy Community originated this idea.  Boyd Timothy and Sandy Armstrong implemented this during hack week.</p>
+<p>We worked together with Calvin Gaisford to also provide note sharing (giving) in <a href="http://idea.opensuse.org/content/ideas/easy-file-sharing">Giver</a>.</p>
+<h2>Where can I get it?</h2>
+<p>Warning: Please do not try this yet with your real Tomboy notes.  Use at your own risk (i.e., make a backup of ~/.tomboy first).</p>
+<p><a href="http://build.opensuse.org/package/show?package=tomboy&project=home%3Abtimothy">build.opensuse.org project page</a></p>
+<p><a href="http://software.opensuse.org/download/home:/btimothy/openSUSE_10.2">openSUSE 10.2 Repository</a></p>
+<p><a href="http://software.opensuse.org/download/home:/btimothy/SUSE_Factory">openSUSE 10.3 Repository</a></p>
+<h2>TODO</h2>
+<p>See http://live.gnome.org/Tomboy/Synchronization for the latest developments.</p>
+<h2>Status: Thu Jun 28, 7:00 AM MDT</h2>
+<p>Basic synchronization appears to be working.  We're in debug mode now.  We've implemented synchronization so it synchronizes to a file system path for simple debugging.  The idea right now is to sync to a mounted FUSE file system.</p>
+<p>We've had decent success synchronizing to a path mounted by wdfs (WebDav FS).  We gave GmailFS a shot yesterday without much luck.  Eventually, the idea will be to provide a drop-down list of choices in the "Synchronization Preferences" window where the user would choose which service they want to synchronize to and punch in a username, password, path (as needed) and we'd set up the path/mounts programmatically.</p>
+<p>If you want to take a look at the code, we're working in the "tomboy-sync" branch (<a href="http://svn.gnome.org/viewcvs/tomboy/branches/tomboy-sync/.html">http://svn.gnome.org/viewcvs/tomboy/branches/tomboy-sync/</a>).</p>
+<ul>
+<li>*WARNING: If you are brave and try out the code right now, PLEASE do not try it with your real set of notes.  In other words, please first move ~/.tomboy to a new directory.  We'll give the "go-ahead" later when we feel it's "safe" to try on your real notes.**</li>
+</ul>
+<h2>Status: Fri Jun 29, 7:00 AM MDT</h2>
+<p>After almost 24 hours of straight hacking, we've got WebDAV, SSH, and local file system sync support via FUSE.  Now it's time to pretty-up a few things before we give a demo.</p>
+<h2>Related Materials</h2>
+<p>Additional ideas/discussion: http://live.gnome.org/Tomboy/Synchronization</p>
+<p>Mounting a WebDav location with FUSE (wdfs):</p>
+<p>wdfs /home/boyd/.tomboy/wdfs-sync -a {WEBDAV_URL} -u {USERNAME} -p {PASSWORD} -o fsname=tomboy</p>
       </div>
     </div>
   </div>

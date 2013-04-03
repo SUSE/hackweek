@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -41,19 +41,23 @@
       <div id='wrapper-content'>
         <p><b>Tags:</b> Idea, Community, Network, openSUSE, HelpWanted</p>
         <h2>Description</h2>
-        <p>Downloading openSUSE images successfully is still a major exercise for many people, especially when the network connection is less than optimal. There is technology which solves all the problems nicely [[http://mirrorbrain.org|metalink generator]] on download.opensuse.org and [[http://en.wikipedia.org/wiki/Metalink|metalink clients]]. However the needed client software does not exist natively in browsers, nor is it installed on users systems by default, thus requiring extra learning steps.</p>
+        <p>Downloading openSUSE images successfully is still a major exercise for many people, especially when the network connection is less than optimal. There is technology which solves all the problems nicely <a href="http://mirrorbrain.org|metalink generator]] on download.opensuse.org and [[http://en.wikipedia.org/wiki/Metalink">metalink clients</a>. However the needed client software does not exist natively in browsers, nor is it installed on users systems by default, thus requiring extra learning steps.</p>
         <p>The idea is to create a smallish standalone program (which is a small download) that users install on their machine, and which would contain a metalink client and take care of the download procedure, including</p>
-        <p>  * downloading from close mirrors
-          * parallel download from multiple mirrors
-          * deal nicely with failing mirrors
-          * automatically repair broken downloads
-          * using the segment hashes that the server provides to verify integrity of the download
-          * use the PGP signature that download.opensuse.org (can) provide(s) to verify authenticiy of the image (see https://bugzilla.novell.com/show_bug.cgi?id=381731)</p>
+        <ul>
+        <li>downloading from close mirrors</li>
+        <li>parallel download from multiple mirrors</li>
+        <li>deal nicely with failing mirrors</li>
+        <li>automatically repair broken downloads</li>
+        <li>using the segment hashes that the server provides to verify integrity of the download</li>
+        <li>use the PGP signature that download.opensuse.org (can) provide(s) to verify authenticiy of the image (see https://bugzilla.novell.com/show_bug.cgi?id=381731)</li>
+        </ul>
         <p>All this is nicely implemented in some metalink clients already. For instance, aria2c is an excellent client. The standalone downloader mainly has to make this available to the users in an easy way, and on multiple platforms (Linux, Windows, OSX).</p>
-        <p>The program could also be used 
-          * to ask users questions to find out which download they need (x86_64? gnome/kde?)
-          * to act as wubi-like client (see http://idea.opensuse.org/content/ideas/wubi-for-opensuse)
-          * to burn the image to CD/DVD (for conveniency)</p>
+        <p>The program could also be used </p>
+        <ul>
+        <li>to ask users questions to find out which download they need (x86_64? gnome/kde?)</li>
+        <li>to act as wubi-like client (see http://idea.opensuse.org/content/ideas/wubi-for-opensuse)</li>
+        <li>to burn the image to CD/DVD (for conveniency)</li>
+        </ul>
         <p>Since downloading large images is such an obstacle, making this procedure easier has a HUGE potential to make openSUSE more popular. </p>
         <h2>People</h2>
         <p>Peter Poeml originated this idea.  Josef Reidinger currently working on implementing this idea.</p>

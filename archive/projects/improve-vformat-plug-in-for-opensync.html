@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -43,21 +43,29 @@
         <h2>Description</h2>
         <p>The vformat plugin is one of the most important plugins for the OpenSync framework. You need it for synchronization with file-sync, syncml, irmc, kdepim, evolution, sunbird, etc.</p>
         <p>With the help of OpenSync and the vformat plugin you can perform the following tasks:</p>
-        <p>Contacts:
-          * convert from vcard21 to vard30
-          * convert from vcard30 to vcard21</p>
-        <p>Events:
-          * convert from vevent10 to vevent20
-          * convert from vevent20 to vevent10</p>
-        <p>Todos:
-          * convert from vtodo10 to vtodo20
-          * convert from vtodo20 to vtodo10</p>
+        <p>Contacts:</p>
+        <ul>
+        <li>convert from vcard21 to vard30</li>
+        <li>convert from vcard30 to vcard21</li>
+        </ul>
+        <p>Events:</p>
+        <ul>
+        <li>convert from vevent10 to vevent20</li>
+        <li>convert from vevent20 to vevent10</li>
+        </ul>
+        <p>Todos:</p>
+        <ul>
+        <li>convert from vtodo10 to vtodo20</li>
+        <li>convert from vtodo20 to vtodo10</li>
+        </ul>
         <p>In general you can convert every vcalendar 1.0 (vcal) and vcalendar 2.0 (ical) entry to its counterpart. First we convert from source-format to xmlformat-contact or xmlformat-event. After this is done we validate the whole xmlDoc against a xsd schema and convert it to target-format.</p>
-        <p>There are still some open tasks:
-          * add converter for xmlformat-event to vcal/ical
-          * review xsd schemas and correct them
-          * fix memory corruptions
-          * add unit tests</p>
+        <p>There are still some open tasks:</p>
+        <ul>
+        <li>add converter for xmlformat-event to vcal/ical</li>
+        <li>review xsd schemas and correct them</li>
+        <li>fix memory corruptions</li>
+        <li>add unit tests</li>
+        </ul>
         <h2>People</h2>
         <p>Christopher Stender originated this idea and is working on it.</p>
         <h2>Related Materials</h2>

@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -40,21 +40,31 @@
       </div>
       <div id='wrapper-content'>
         <p><b>Tags:</b> Idea, Kernel, wireless</p>
-        <h2>Description</h2>
-        <p>Many modern wi-fi cards need a firmware. Unfortunately, most of firmware images are under license that doesn't allow redistribution, so we cannot make a RPM with them.</p>
-        <p>To solve that, some Linux drivers have a tool for extracting firmware from a Windows driver or downloading it from a predefined set of locations. That's not ideal as you need a different tool for different hardware and automated tools (like YaST) can not reliably use it.</p>
-        <p>It would be nice to have a tool, that either scans for available wi-fi cards or is given a particular PCI or USB ID and for each card:
-          * Report a name of driver required for this card,</p>
-        <p>  * report that the card doesn't need a firmware, or</p>
-        <p>  * report the name(s) of firmware image(s) required,</p>
-        <p>  * with appropriate command line option, the attempt to download and install firmware is made,</p>
-        <p>  * with another option, a description how to get and install firmware is displayed.</p>
-        <p>The output should be usable by tools like YaST.</p>
-        <p>This can greatly improve user experience when installing wi-fi cards with YaST or similar tools.</p>
-        <h2>People</h2>
-        <p>Jiri Benc originated this idea and is able to give advices if needed.  No one is currently working on implementing this idea (it's up for grabs!).</p>
-        <h2>Related Materials</h2>
-        <p>[[http://developer.berlios.de/project/showfiles.php?group_id=4547|fwcutter for bcm43xx]]</p>
+<h2>Description</h2>
+<p>Many modern wi-fi cards need a firmware. Unfortunately, most of firmware images are under license that doesn't allow redistribution, so we cannot make a RPM with them.</p>
+<p>To solve that, some Linux drivers have a tool for extracting firmware from a Windows driver or downloading it from a predefined set of locations. That's not ideal as you need a different tool for different hardware and automated tools (like YaST) can not reliably use it.</p>
+<p>It would be nice to have a tool, that either scans for available wi-fi cards or is given a particular PCI or USB ID and for each card:</p>
+<ul>
+<li>Report a name of driver required for this card,</li>
+</ul>
+<ul>
+<li>report that the card doesn't need a firmware, or</li>
+</ul>
+<ul>
+<li>report the name(s) of firmware image(s) required,</li>
+</ul>
+<ul>
+<li>with appropriate command line option, the attempt to download and install firmware is made,</li>
+</ul>
+<ul>
+<li>with another option, a description how to get and install firmware is displayed.</li>
+</ul>
+<p>The output should be usable by tools like YaST.</p>
+<p>This can greatly improve user experience when installing wi-fi cards with YaST or similar tools.</p>
+<h2>People</h2>
+<p>Jiri Benc originated this idea and is able to give advices if needed.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+<h2>Related Materials</h2>
+<p><a href="http://developer.berlios.de/project/showfiles.php?group_id=4547">fwcutter for bcm43xx</a></p>
       </div>
     </div>
   </div>

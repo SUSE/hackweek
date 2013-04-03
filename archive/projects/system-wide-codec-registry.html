@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -40,32 +40,32 @@
       </div>
       <div id='wrapper-content'>
         <p><b>Tags:</b> InProgress, video, System, multimedia, HelpWanted, judgeMe</p>
-        <h2>Description</h2>
-        <p>SUSE Linux lacks some basic multimedia codecs like mp3, video-mpeg and others. This is mostly due to patent and licensing issues. But nevertheless the infrastructure for adding such codecs should be well prepared. We suggest to create a centralized service which</p>
-        <p>- can be queried for installed codecs,</p>
-        <p>- can be queried for existing codecs (repositories),</p>
-        <p>- shall provide wrapper framework to make one codec fit into several applications</p>
-        <p>- shall provide a default-loader plugin, that hooks into applications for API transformation.</p>
-        <p>- shall provide a codec installer, automatically called by the default-loader plugin if necessary, for downloading existing but not installed codecs. This installation tool should allow easy 'click-yes-yes-yes' installation whenever an application encounters an unknown file format.</p>
-        <p>The concept of pluggable codecs could also be extended beyond codecs and the multimedia area.
-        Any converter software that allows transformation between two file-formats (be it streaming, or file based) should register to this centralized service.</p>
-        <p>Example:</p>
-        <p>- Convert text to graphics: call imagemagick</p>
-        <p>- Convert graphics to text: call tesseract-ocr</p>
-        <p>This idea also calls for the definition of a codec interface standard. Both multimedia-codecs and converters need a standard interface. 
-        A unix style command line interface may be sufficient for simple converters or codecs, but those that want to provide progress indicators or other feedback 
-        and those that want to offer parameter settings to the user need communication channels not provided by the command line shell.
-        A standardized API (codec-vs-user, codec-vs-application) shall be defined in a GUI 
-        independent manner, allowing a codec to run in streaming, interactive, batch and other modes.
-        How far will e.g. gstreamer bring us here?</p>
-        <p>In the absence of more specialized interprocess communications, dbus could handle the queries to this service.</p>
-        <p>I believe that large distributors can best establish such integrated solutions.</p>
-        <h2>People</h2>
-        <p>Juergen Weigert and Matthias Hopf are working on this idea. Michael Löffler is interested. Ciaran Farrel is interested.</p>
-        <h2>Related Materials</h2>
-        <p>[[https://keeper.suse.de/webfate/match/id?value=302216|Fate#302216]]
-        [[https://keeper.suse.de/webfate/match/id?value=302217|Fate#302217]]
-        [[https://keeper.suse.de/webfate/match/id?value=302217|Fate#302218]]</p>
+<h2>Description</h2>
+<p>SUSE Linux lacks some basic multimedia codecs like mp3, video-mpeg and others. This is mostly due to patent and licensing issues. But nevertheless the infrastructure for adding such codecs should be well prepared. We suggest to create a centralized service which</p>
+<p>- can be queried for installed codecs,</p>
+<p>- can be queried for existing codecs (repositories),</p>
+<p>- shall provide wrapper framework to make one codec fit into several applications</p>
+<p>- shall provide a default-loader plugin, that hooks into applications for API transformation.</p>
+<p>- shall provide a codec installer, automatically called by the default-loader plugin if necessary, for downloading existing but not installed codecs. This installation tool should allow easy 'click-yes-yes-yes' installation whenever an application encounters an unknown file format.</p>
+<p>The concept of pluggable codecs could also be extended beyond codecs and the multimedia area.
+Any converter software that allows transformation between two file-formats (be it streaming, or file based) should register to this centralized service.</p>
+<p>Example:</p>
+<p>- Convert text to graphics: call imagemagick</p>
+<p>- Convert graphics to text: call tesseract-ocr</p>
+<p>This idea also calls for the definition of a codec interface standard. Both multimedia-codecs and converters need a standard interface. 
+A unix style command line interface may be sufficient for simple converters or codecs, but those that want to provide progress indicators or other feedback 
+and those that want to offer parameter settings to the user need communication channels not provided by the command line shell.
+A standardized API (codec-vs-user, codec-vs-application) shall be defined in a GUI 
+independent manner, allowing a codec to run in streaming, interactive, batch and other modes.
+How far will e.g. gstreamer bring us here?</p>
+<p>In the absence of more specialized interprocess communications, dbus could handle the queries to this service.</p>
+<p>I believe that large distributors can best establish such integrated solutions.</p>
+<h2>People</h2>
+<p>Juergen Weigert and Matthias Hopf are working on this idea. Michael Löffler is interested. Ciaran Farrel is interested.</p>
+<h2>Related Materials</h2>
+<p><a href="https://keeper.suse.de/webfate/match/id?value=302216">Fate#302216</a>
+<a href="https://keeper.suse.de/webfate/match/id?value=302217">Fate#302217</a>
+<a href="https://keeper.suse.de/webfate/match/id?value=302217">Fate#302218</a></p>
       </div>
     </div>
   </div>

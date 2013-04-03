@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -46,27 +46,51 @@
         <h2>People</h2>
         <p>Ralf Haferkamp originated this idea.</p>
         <p>Working on this feature:</p>
-        <p>    * **Ralf Haferkamp**</p>
-        <p>    * **Michael Calmer**</p>
-        <p>    * **Lars Müller**</p>
-        <p>    * **Marius Tomaschewski**</p>
-        <p>    * **Andreas Schneider**</p>
-        <p>    * **Peter Varkoly**</p>
-        <p>    * **Milisav Radmanic**</p>
+        <ul>
+        <li>**Ralf Haferkamp**</li>
+        </ul>
+        <ul>
+        <li>**Michael Calmer**</li>
+        </ul>
+        <ul>
+        <li>**Lars Müller**</li>
+        </ul>
+        <ul>
+        <li>**Marius Tomaschewski**</li>
+        </ul>
+        <ul>
+        <li>**Andreas Schneider**</li>
+        </ul>
+        <ul>
+        <li>**Peter Varkoly**</li>
+        </ul>
+        <ul>
+        <li>**Milisav Radmanic**</li>
+        </ul>
         <h2>Related Materials</h2>
         <p>Packages of xntp, dhcp and OLDS_Client are availabe in the Build Service:
-        [[http://build.opensuse.org/project/show?project=home%3Agladiac]].
+        <a href="http://build.opensuse.org/project/show?project=home%3Agladiac.html">http://build.opensuse.org/project/show?project=home%3Agladiac</a>.
         <html>
         <center>															<script type="text/javascript" src="http://blip.tv/scripts/pokkariPlayer.js?ver=2007062101"></script><script type="text/javascript" src="http://blip.tv/syndication/write_player?skin=js&posts_id=292194&source=3&autoplay=true&file_type=flv&player_width=&player_height="></script><div id="blip_movie_content_292194"><a rel="enclosure" href="http://blip.tv/file/get/Natfriedman-IntegratedSolutionForDirectoryBasedAuthenticationLightning638.flv" onclick="play_blip_movie_292194(); return false;"><img title="Click to play" alt="Video thumbnail. Click to play"  src="http://blip.tv/file/get/Natfriedman-IntegratedSolutionForDirectoryBasedAuthenticationLightning638.flv.jpg" border="0" title="Click To Play" /></a><br /><a rel="enclosure" href="http://blip.tv/file/get/Natfriedman-IntegratedSolutionForDirectoryBasedAuthenticationLightning638.flv" onclick="play_blip_movie_292194(); return false;">Click To Play</a></div>										</center></html></p>
         <h3>= Status Update</h3>
         <p>As I am currently not able to add comments to this page I put my status update here. </p>
         <p>Our main goals have been reached. We have developed a tool (written in C) that we can use to join a client into our server environment. The tool does locate all the required services (LDAP, Kerberos, NTP) via DNS SRV and TXT lookups.
         And does the following steps:</p>
-        <p>    *  Dynamically update the running ntpd via ntpdc to sync with the newly detected server. Thanks to Andreas and Lars for working on this. As I understand they already working on integrating this new mechanism into our base distribution, as it proved to be useful in other environments as well (e.g. when NTP servers are distributed via DHCP or in the Active Directory environment).</p>
-        <p>    * Contact the LDAP server to find out the Parent Object under which the principal for the machine account should be created (currently we use e.g. "ou=Computers,....").</p>
-        <p>    * Create the Kerberos Principal for the machine account and export the key to a local keytab</p>
-        <p>    * Get a TGT  for the machine account and store it into a CCACHE.</p>
-        <p>    * Adjust nss_ldap's configuration so that it uses SASL-GSSAPI authentication to securely contact the LDAP server.</p>
+        <ul>
+        <li>Dynamically update the running ntpd via ntpdc to sync with the newly detected server. Thanks to Andreas and Lars for working on this. As I understand they already working on integrating this new mechanism into our base distribution, as it proved to be useful in other environments as well (e.g. when NTP servers are distributed via DHCP or in the Active Directory environment).</li>
+        </ul>
+        <ul>
+        <li>Contact the LDAP server to find out the Parent Object under which the principal for the machine account should be created (currently we use e.g. "ou=Computers,....").</li>
+        </ul>
+        <ul>
+        <li>Create the Kerberos Principal for the machine account and export the key to a local keytab</li>
+        </ul>
+        <ul>
+        <li>Get a TGT  for the machine account and store it into a CCACHE.</li>
+        </ul>
+        <ul>
+        <li>Adjust nss_ldap's configuration so that it uses SASL-GSSAPI authentication to securely contact the LDAP server.</li>
+        </ul>
         <p>Most of the functionality is implemented in a shared library. The tool and the shared library were mostly developed my Marius, Michael and me. Andreas help us a lot to get started with CMake.</p>
         <p>Additionally, Marius wrote a tool that is able to renew or reinit the TGT when required. (This tool could e.g. be started through cron). Currently he is working to put this tool into our shared library so that it can be used be others as well.</p>
         <p>We are still working on a script that is able to automatically configure a server so that it fits the requirements the requirement of our clients. (Bringing up and initializing LDAP, Kerberos and NTP. Creating the required TXT and SRV records in DNS, and so on). This (somewhat unthankful) task is being done by our brave guys, Mili and Peter :).</p>

@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -40,280 +40,280 @@
       </div>
       <div id='wrapper-content'>
         <p><b>Tags:</b> Idea, storage, management</p>
-        <h2>Description</h2>
-        <p>The command line sg_util is useful for issuing scsi commands to disk. A gui based tool would be more helpful in verifying the contents of data at particular block address and also issuing scsi commands. The scsi commands can be issued to sg device with ioctl calls.</p>
-        <h2>People</h2>
-        <p>Jayshankar originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
-        <h2>Related Materials</h2>
-        <p>The sample code for issuing scsi commands like read capacity, read and get scsi id to disk.</p>
-        <p>#include<fcntl.h>
-        #include<errno.h>
-        #include<sys/ioctl.h>
-        #include<scsi/sg.h>
-        #include<stdio.h>
-        #include <string.h>
-        #include "scsi.h"</p>
-        <p>#define INQ_REPLY_LEN 96
-        #define INQ_CMD_CODE 0x12
-        #define INQ_CMD_LEN 6</p>
-        <p>#define READ_CAP_CMD_CODE 0x25
-        #define READ_CAP_REPLY_LEN 16 
-        #define  READ_CAP_CMD_LEN 10 </p>
-        <p>#define READ_CMD_CODE 0x28
-        #define READ_REPLY_LEN 512 
-        #define  READ_CMD_LEN 10 </p>
-        <p>static int GET_SG_SCSI_ID(char *,sg_scsi_id_t *);
-        static int SEND_INQUIRY_COMMAND(char *,sg_scsi_id_t *);
-        static int READ_CAPACITY_COMMAND(char *,sg_scsi_id_t *,disk_info_t *);</p>
-        <p>main()
-        {
-        int ret;
-        sg_scsi_id_t scsi_id; 
-        disk_info_t disk_info;</p>
-        <p>printf(" Size of sg_scsi_id=%d n",sizeof(sg_scsi_id_t));</p>
-        <p>ret = GET_SG_SCSI_ID("/dev/sg0",&scsi_id);</p>
-        <p>printf("Hostno=%d Channel=%d scsi_id =%d  lun = %d scsi_type = %d cmd_per_lun=%u    d_queue_depth =%u n",scsi_id.host_no,scsi_id.channel,scsi_id.scsi_id,scsi_id.lun,scsi_id.scsi_type,scsi_id.h_cmd_per_lun,scsi_id.d_queue_depth);</p>
-        <p>ret = SEND_INQUIRY_COMMAND("/dev/sg0",&scsi_id);
-        ret = READ_CAPACITY_COMMAND("/dev/sg0",&scsi_id,&disk_info);
-        printf("In %s: end_lba = 0x%llx  disk_size= 0x%lld n",__FUNCTION__,disk_info.end_lba,disk_info.disk_size);</p>
-        <p>ret = READ10("/dev/sg0",&scsi_id,&disk_info);</p>
-        <p>}</p>
-        <p>int GET_SG_SCSI_ID(char *dev_path,sg_scsi_id_t *scsi_id)
-        {</p>
-        <p>int sg_fd;
-        int check_val;</p>
-        <p>if ( (sg_fd = open(dev_path ,O_RDONLY)) < 0 ) 
-           {
-              perror("Error opening given file ");
-              return -1;
-           }</p>
-        <p>if ( (ioctl(sg_fd, SG_GET_VERSION_NUM,&check_val) < 0) || ( check_val < 30000 ) )
-           {
-           perror(" /dev/sg0 is not an sg device ");
-           return -1;</p>
-        <p>   }</p>
-        <p>if  ( ( ioctl(sg_fd,SG_GET_SCSI_ID,scsi_id) < 0 ) ) </p>
-        <p>{
-             perror(" Error  SG_GET_SCSI_ID");
-             return -1;
-        }</p>
-        <p>close(sg_fd);
-        return 0;</p>
-        <p>}</p>
-        <p>int SEND_INQUIRY_COMMAND(char *dev_path,sg_scsi_id_t *scsi_id)
-        {</p>
-        <p>    int sg_fd, k;
-            unsigned char inqCmdBlk[INQ_CMD_LEN] =
-                            {INQ_CMD_CODE, 0, 0, 0, INQ_REPLY_LEN, 0};
-            unsigned char inqBuff[INQ_REPLY_LEN];
-            unsigned char sense_buffer[32];
-            sg_io_hdr_t io_hdr;</p>
-        <p>    if ((sg_fd = open(dev_path, O_RDONLY)) < 0) {</p>
-        <p>        perror("error opening given file name");
-                return -1;
-            }</p>
-        <p>    if ((ioctl(sg_fd, SG_GET_VERSION_NUM, &k) < 0) || (k < 30000)) {
-                printf("/dev/sg0 is not an sg device, or old sg drivern");
-                return -1;
-            }</p>
-        <p>    memset(&io_hdr, 0, sizeof(sg_io_hdr_t));
-            io_hdr.interface_id = 'S';
-            io_hdr.cmd_len = sizeof(inqCmdBlk);</p>
-        <p>    io_hdr.mx_sb_len = sizeof(sense_buffer);
-            io_hdr.dxfer_direction = SG_DXFER_FROM_DEV;
-            io_hdr.dxfer_len = INQ_REPLY_LEN;
-            io_hdr.dxferp = inqBuff;
-            io_hdr.cmdp = inqCmdBlk;
-            io_hdr.sbp = sense_buffer;
-            io_hdr.timeout = 20000;     </p>
-        <p>    if (ioctl(sg_fd, SG_IO, &io_hdr) < 0) {
-                perror("sg_simple0: Inquiry SG_IO ioctl error");
-                return -1;
-            }</p>
-        <p>    if ((io_hdr.info & SG_INFO_OK_MASK) != SG_INFO_OK) {
-                if (io_hdr.sb_len_wr > 0) {
-                    printf("INQUIRY sense data: ");
-                    for (k = 0; k < io_hdr.sb_len_wr; ++k) {
-                        if ((k > 0) && (0 == (k % 10)))
-                            printf("n  ");
-                        printf("0x%02x ", sense_buffer[k]);
-                    }
-                    printf("n");
-                }
-                if (io_hdr.masked_status)
-                    printf("INQUIRY SCSI status=0x%xn", io_hdr.status);
-                if (io_hdr.host_status)
-                    printf("INQUIRY host_status=0x%xn", io_hdr.host_status);
-                if (io_hdr.driver_status)
-                    printf("INQUIRY driver_status=0x%xn", io_hdr.driver_status);
+<h2>Description</h2>
+<p>The command line sg_util is useful for issuing scsi commands to disk. A gui based tool would be more helpful in verifying the contents of data at particular block address and also issuing scsi commands. The scsi commands can be issued to sg device with ioctl calls.</p>
+<h2>People</h2>
+<p>Jayshankar originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+<h2>Related Materials</h2>
+<p>The sample code for issuing scsi commands like read capacity, read and get scsi id to disk.</p>
+<p>#include<fcntl.h>
+#include<errno.h>
+#include<sys/ioctl.h>
+#include<scsi/sg.h>
+#include<stdio.h>
+#include <string.h>
+#include "scsi.h"</p>
+<p>#define INQ_REPLY_LEN 96
+#define INQ_CMD_CODE 0x12
+#define INQ_CMD_LEN 6</p>
+<p>#define READ_CAP_CMD_CODE 0x25
+#define READ_CAP_REPLY_LEN 16 
+#define  READ_CAP_CMD_LEN 10 </p>
+<p>#define READ_CMD_CODE 0x28
+#define READ_REPLY_LEN 512 
+#define  READ_CMD_LEN 10 </p>
+<p>static int GET_SG_SCSI_ID(char *,sg_scsi_id_t *);
+static int SEND_INQUIRY_COMMAND(char *,sg_scsi_id_t *);
+static int READ_CAPACITY_COMMAND(char *,sg_scsi_id_t *,disk_info_t *);</p>
+<p>main()
+{
+int ret;
+sg_scsi_id_t scsi_id; 
+disk_info_t disk_info;</p>
+<p>printf(" Size of sg_scsi_id=%d n",sizeof(sg_scsi_id_t));</p>
+<p>ret = GET_SG_SCSI_ID("/dev/sg0",&scsi_id);</p>
+<p>printf("Hostno=%d Channel=%d scsi_id =%d  lun = %d scsi_type = %d cmd_per_lun=%u    d_queue_depth =%u n",scsi_id.host_no,scsi_id.channel,scsi_id.scsi_id,scsi_id.lun,scsi_id.scsi_type,scsi_id.h_cmd_per_lun,scsi_id.d_queue_depth);</p>
+<p>ret = SEND_INQUIRY_COMMAND("/dev/sg0",&scsi_id);
+ret = READ_CAPACITY_COMMAND("/dev/sg0",&scsi_id,&disk_info);
+printf("In %s: end_lba = 0x%llx  disk_size= 0x%lld n",__FUNCTION__,disk_info.end_lba,disk_info.disk_size);</p>
+<p>ret = READ10("/dev/sg0",&scsi_id,&disk_info);</p>
+<p>}</p>
+<p>int GET_SG_SCSI_ID(char *dev_path,sg_scsi_id_t *scsi_id)
+{</p>
+<p>int sg_fd;
+int check_val;</p>
+<p>if ( (sg_fd = open(dev_path ,O_RDONLY)) < 0 ) 
+   {
+      perror("Error opening given file ");
+      return -1;
+   }</p>
+<p>if ( (ioctl(sg_fd, SG_GET_VERSION_NUM,&check_val) < 0) || ( check_val < 30000 ) )
+   {
+   perror(" /dev/sg0 is not an sg device ");
+   return -1;</p>
+<p>   }</p>
+<p>if  ( ( ioctl(sg_fd,SG_GET_SCSI_ID,scsi_id) < 0 ) ) </p>
+<p>{
+     perror(" Error  SG_GET_SCSI_ID");
+     return -1;
+}</p>
+<p>close(sg_fd);
+return 0;</p>
+<p>}</p>
+<p>int SEND_INQUIRY_COMMAND(char *dev_path,sg_scsi_id_t *scsi_id)
+{</p>
+<p>    int sg_fd, k;
+    unsigned char inqCmdBlk[INQ_CMD_LEN] =
+                    {INQ_CMD_CODE, 0, 0, 0, INQ_REPLY_LEN, 0};
+    unsigned char inqBuff[INQ_REPLY_LEN];
+    unsigned char sense_buffer[32];
+    sg_io_hdr_t io_hdr;</p>
+<p>    if ((sg_fd = open(dev_path, O_RDONLY)) < 0) {</p>
+<p>        perror("error opening given file name");
+        return -1;
+    }</p>
+<p>    if ((ioctl(sg_fd, SG_GET_VERSION_NUM, &k) < 0) || (k < 30000)) {
+        printf("/dev/sg0 is not an sg device, or old sg drivern");
+        return -1;
+    }</p>
+<p>    memset(&io_hdr, 0, sizeof(sg_io_hdr_t));
+    io_hdr.interface_id = 'S';
+    io_hdr.cmd_len = sizeof(inqCmdBlk);</p>
+<p>    io_hdr.mx_sb_len = sizeof(sense_buffer);
+    io_hdr.dxfer_direction = SG_DXFER_FROM_DEV;
+    io_hdr.dxfer_len = INQ_REPLY_LEN;
+    io_hdr.dxferp = inqBuff;
+    io_hdr.cmdp = inqCmdBlk;
+    io_hdr.sbp = sense_buffer;
+    io_hdr.timeout = 20000;     </p>
+<p>    if (ioctl(sg_fd, SG_IO, &io_hdr) < 0) {
+        perror("sg_simple0: Inquiry SG_IO ioctl error");
+        return -1;
+    }</p>
+<p>    if ((io_hdr.info & SG_INFO_OK_MASK) != SG_INFO_OK) {
+        if (io_hdr.sb_len_wr > 0) {
+            printf("INQUIRY sense data: ");
+            for (k = 0; k < io_hdr.sb_len_wr; ++k) {
+                if ((k > 0) && (0 == (k % 10)))
+                    printf("n  ");
+                printf("0x%02x ", sense_buffer[k]);
             }
-            else {  
-                char * p = (char *)inqBuff;
-                printf("Some of the INQUIRY command's response:n");
-                printf("    %.8s %.16s %.4s n", p+8,p+16,p+4 );
-                printf("INQUIRY duration=%u millisecs, resid=%dn",
-                       io_hdr.duration, io_hdr.resid);
+            printf("n");
+        }
+        if (io_hdr.masked_status)
+            printf("INQUIRY SCSI status=0x%xn", io_hdr.status);
+        if (io_hdr.host_status)
+            printf("INQUIRY host_status=0x%xn", io_hdr.host_status);
+        if (io_hdr.driver_status)
+            printf("INQUIRY driver_status=0x%xn", io_hdr.driver_status);
+    }
+    else {  
+        char * p = (char *)inqBuff;
+        printf("Some of the INQUIRY command's response:n");
+        printf("    %.8s %.16s %.4s n", p+8,p+16,p+4 );
+        printf("INQUIRY duration=%u millisecs, resid=%dn",
+               io_hdr.duration, io_hdr.resid);
+    }
+    close(sg_fd);
+    return 0;
+}</p>
+<p>int READ_CAPACITY_COMMAND(char *dev_path,sg_scsi_id_t *scsi_id,disk_info_t *disk_info)
+{</p>
+<p>    int sg_fd, k;
+    uint lba;
+    uint lba_size;
+    unsigned char *ch_lba,*ch_lba_size;
+    unsigned long long int disk_size;</p>
+<p>    unsigned char readCapCmdBlk[READ_CAP_CMD_LEN] =
+                    {READ_CAP_CMD_CODE, 0, 0, 0, 0, 0,0,0,0,0};
+    unsigned char readCapBuff[READ_CAP_REPLY_LEN];
+    unsigned char sense_buffer[32];
+    sg_io_hdr_t io_hdr;</p>
+<p>    if ((sg_fd = open(dev_path, O_RDONLY)) < 0) {</p>
+<p>        perror("error opening given file name");
+        return -1;
+    }</p>
+<p>    if ((ioctl(sg_fd, SG_GET_VERSION_NUM, &k) < 0) || (k < 30000)) {
+        printf("/dev/sg0 is not an sg device, or old sg drivern");
+        return -1;
+    }</p>
+<p>    memset(&io_hdr, 0, sizeof(sg_io_hdr_t));
+    io_hdr.interface_id = 'S';
+    io_hdr.cmd_len = sizeof(readCapCmdBlk);</p>
+<p>    io_hdr.mx_sb_len = sizeof(sense_buffer);
+    io_hdr.dxfer_direction = SG_DXFER_FROM_DEV;
+    io_hdr.dxfer_len = READ_CAP_REPLY_LEN;
+    io_hdr.dxferp = readCapBuff;
+    io_hdr.cmdp = readCapCmdBlk;
+    io_hdr.sbp = sense_buffer;
+    io_hdr.timeout = 20000;     </p>
+<p>    if (ioctl(sg_fd, SG_IO, &io_hdr) < 0) {
+        perror("sg_simple0: Inquiry SG_IO ioctl error");
+        return -1;
+    }</p>
+<p>    if ((io_hdr.info & SG_INFO_OK_MASK) != SG_INFO_OK) {
+        if (io_hdr.sb_len_wr > 0) {
+            printf("INQUIRY sense data: ");
+            for (k = 0; k < io_hdr.sb_len_wr; ++k) {
+                if ((k > 0) && (0 == (k % 10)))
+                    printf("n  ");
+                printf("0x%02x ", sense_buffer[k]);
             }
-            close(sg_fd);
-            return 0;
-        }</p>
-        <p>int READ_CAPACITY_COMMAND(char *dev_path,sg_scsi_id_t *scsi_id,disk_info_t *disk_info)
-        {</p>
-        <p>    int sg_fd, k;
-            uint lba;
-            uint lba_size;
-            unsigned char *ch_lba,*ch_lba_size;
-            unsigned long long int disk_size;</p>
-        <p>    unsigned char readCapCmdBlk[READ_CAP_CMD_LEN] =
-                            {READ_CAP_CMD_CODE, 0, 0, 0, 0, 0,0,0,0,0};
-            unsigned char readCapBuff[READ_CAP_REPLY_LEN];
-            unsigned char sense_buffer[32];
-            sg_io_hdr_t io_hdr;</p>
-        <p>    if ((sg_fd = open(dev_path, O_RDONLY)) < 0) {</p>
-        <p>        perror("error opening given file name");
-                return -1;
-            }</p>
-        <p>    if ((ioctl(sg_fd, SG_GET_VERSION_NUM, &k) < 0) || (k < 30000)) {
-                printf("/dev/sg0 is not an sg device, or old sg drivern");
-                return -1;
-            }</p>
-        <p>    memset(&io_hdr, 0, sizeof(sg_io_hdr_t));
-            io_hdr.interface_id = 'S';
-            io_hdr.cmd_len = sizeof(readCapCmdBlk);</p>
-        <p>    io_hdr.mx_sb_len = sizeof(sense_buffer);
-            io_hdr.dxfer_direction = SG_DXFER_FROM_DEV;
-            io_hdr.dxfer_len = READ_CAP_REPLY_LEN;
-            io_hdr.dxferp = readCapBuff;
-            io_hdr.cmdp = readCapCmdBlk;
-            io_hdr.sbp = sense_buffer;
-            io_hdr.timeout = 20000;     </p>
-        <p>    if (ioctl(sg_fd, SG_IO, &io_hdr) < 0) {
-                perror("sg_simple0: Inquiry SG_IO ioctl error");
-                return -1;
-            }</p>
-        <p>    if ((io_hdr.info & SG_INFO_OK_MASK) != SG_INFO_OK) {
-                if (io_hdr.sb_len_wr > 0) {
-                    printf("INQUIRY sense data: ");
-                    for (k = 0; k < io_hdr.sb_len_wr; ++k) {
-                        if ((k > 0) && (0 == (k % 10)))
-                            printf("n  ");
-                        printf("0x%02x ", sense_buffer[k]);
-                    }
-                    printf("n");
-                }
-                if (io_hdr.masked_status)
-                    printf("INQUIRY SCSI status=0x%xn", io_hdr.status);
-                if (io_hdr.host_status)
-                    printf("INQUIRY host_status=0x%xn", io_hdr.host_status);
-                if (io_hdr.driver_status)
-                    printf("INQUIRY driver_status=0x%xn", io_hdr.driver_status);
+            printf("n");
+        }
+        if (io_hdr.masked_status)
+            printf("INQUIRY SCSI status=0x%xn", io_hdr.status);
+        if (io_hdr.host_status)
+            printf("INQUIRY host_status=0x%xn", io_hdr.host_status);
+        if (io_hdr.driver_status)
+            printf("INQUIRY driver_status=0x%xn", io_hdr.driver_status);
+    }
+    else {  
+        char * p = (char *)readCapBuff;
+        printf("Some of the read caacpity comman response:");
+        printf("0x%0x 0x%0x 0x%0x 0x%0x 0x%0x 0x%0x 0x%0x 0x%0x n", p[0],p[1],p[2],(char)p[3],p[4],p[5],p[6],p[7]);
+        printf("INQUIRY duration=%u millisecs, resid=%dn",
+               io_hdr.duration, io_hdr.resid);</p>
+<p>        ch_lba =  (unsigned char *)&lba;</p>
+<p>       ch_lba[0]=p[3];
+       ch_lba[1]=p[2];
+       ch_lba[2]=p[1];
+       ch_lba[3]=p[0];</p>
+<p>       ch_lba_size = (unsigned char *)&lba_size;
+       ch_lba_size[0]= p[7];
+       ch_lba_size[1] = p[6];
+       ch_lba_size[2] = p[5];
+       ch_lba_size[3] = p[4];</p>
+<p>       printf(" lba = %x  %d n",lba,lba); 
+       printf(" lba size = %x  %d n",lba_size,lba_size); </p>
+<p>        disk_size = (unsigned long long int)(lba + 1) * (unsigned long long int)lba_size;
+       disk_info->end_lba = (unsigned long long int)lba;
+       disk_info->disk_size=(unsigned long long int)disk_size; </p>
+<p>       printf(" disk_size  =   %lld bytes n",disk_size); </p>
+<p>    }</p>
+<p>    close(sg_fd);
+    return 0;</p>
+<p>}</p>
+<p>int READ10(char *dev_path,sg_scsi_id_t *scsi_id)
+{
+    int sg_fd, k;
+    uint lba;
+    uint lba_size;
+    unsigned char *ch_lba,*ch_lba_size;
+    unsigned long long int disk_size;</p>
+<p>    unsigned char readCmdBlk[READ_CMD_LEN] =
+                    {READ_CMD_CODE, 0, 0, 0x1, 0x1, 0xff,0,0,0x01,0};
+    unsigned char readBuff[READ_REPLY_LEN];
+    unsigned char sense_buffer[32];
+    sg_io_hdr_t io_hdr;</p>
+<p>    if ((sg_fd = open(dev_path, O_RDONLY)) < 0) {</p>
+<p>        perror("error opening given file name");
+        return -1;
+    }</p>
+<p>    if ((ioctl(sg_fd, SG_GET_VERSION_NUM, &k) < 0) || (k < 30000)) {
+        printf("/dev/sg0 is not an sg device, or old sg drivern");
+        return -1;
+    }</p>
+<p>    memset(&io_hdr, 0, sizeof(sg_io_hdr_t));
+    io_hdr.interface_id = 'S';
+    io_hdr.cmd_len = sizeof(readCmdBlk);</p>
+<p>    io_hdr.mx_sb_len = sizeof(sense_buffer);
+    io_hdr.dxfer_direction = SG_DXFER_FROM_DEV;
+    io_hdr.dxfer_len = READ_REPLY_LEN;
+    io_hdr.dxferp = readBuff;
+    io_hdr.cmdp = readCmdBlk;
+    io_hdr.sbp = sense_buffer;
+    io_hdr.timeout = 20000;     
+    io_hdr.flags |= SG_FLAG_DIRECT_IO;</p>
+<p>    if (ioctl(sg_fd, SG_IO, &io_hdr) < 0) {
+        perror("sg_simple0: Inquiry SG_IO ioctl error");
+        return -1;
+    }</p>
+<p>    if ((io_hdr.info & SG_INFO_OK_MASK) != SG_INFO_OK) {
+        if (io_hdr.sb_len_wr > 0) {
+            printf("INQUIRY sense data: ");
+            for (k = 0; k < io_hdr.sb_len_wr; ++k) {
+                if ((k > 0) && (0 == (k % 10)))
+                    printf("n  ");
+                printf("0x%02x ", sense_buffer[k]);
             }
-            else {  
-                char * p = (char *)readCapBuff;
-                printf("Some of the read caacpity comman response:");
-                printf("0x%0x 0x%0x 0x%0x 0x%0x 0x%0x 0x%0x 0x%0x 0x%0x n", p[0],p[1],p[2],(char)p[3],p[4],p[5],p[6],p[7]);
-                printf("INQUIRY duration=%u millisecs, resid=%dn",
-                       io_hdr.duration, io_hdr.resid);</p>
-        <p>        ch_lba =  (unsigned char *)&lba;</p>
-        <p>       ch_lba[0]=p[3];
-               ch_lba[1]=p[2];
-               ch_lba[2]=p[1];
-               ch_lba[3]=p[0];</p>
-        <p>       ch_lba_size = (unsigned char *)&lba_size;
-               ch_lba_size[0]= p[7];
-               ch_lba_size[1] = p[6];
-               ch_lba_size[2] = p[5];
-               ch_lba_size[3] = p[4];</p>
-        <p>       printf(" lba = %x  %d n",lba,lba); 
-               printf(" lba size = %x  %d n",lba_size,lba_size); </p>
-        <p>        disk_size = (unsigned long long int)(lba + 1) * (unsigned long long int)lba_size;
-               disk_info->end_lba = (unsigned long long int)lba;
-               disk_info->disk_size=(unsigned long long int)disk_size; </p>
-        <p>       printf(" disk_size  =   %lld bytes n",disk_size); </p>
-        <p>    }</p>
-        <p>    close(sg_fd);
-            return 0;</p>
-        <p>}</p>
-        <p>int READ10(char *dev_path,sg_scsi_id_t *scsi_id)
-        {
-            int sg_fd, k;
-            uint lba;
-            uint lba_size;
-            unsigned char *ch_lba,*ch_lba_size;
-            unsigned long long int disk_size;</p>
-        <p>    unsigned char readCmdBlk[READ_CMD_LEN] =
-                            {READ_CMD_CODE, 0, 0, 0x1, 0x1, 0xff,0,0,0x01,0};
-            unsigned char readBuff[READ_REPLY_LEN];
-            unsigned char sense_buffer[32];
-            sg_io_hdr_t io_hdr;</p>
-        <p>    if ((sg_fd = open(dev_path, O_RDONLY)) < 0) {</p>
-        <p>        perror("error opening given file name");
-                return -1;
-            }</p>
-        <p>    if ((ioctl(sg_fd, SG_GET_VERSION_NUM, &k) < 0) || (k < 30000)) {
-                printf("/dev/sg0 is not an sg device, or old sg drivern");
-                return -1;
-            }</p>
-        <p>    memset(&io_hdr, 0, sizeof(sg_io_hdr_t));
-            io_hdr.interface_id = 'S';
-            io_hdr.cmd_len = sizeof(readCmdBlk);</p>
-        <p>    io_hdr.mx_sb_len = sizeof(sense_buffer);
-            io_hdr.dxfer_direction = SG_DXFER_FROM_DEV;
-            io_hdr.dxfer_len = READ_REPLY_LEN;
-            io_hdr.dxferp = readBuff;
-            io_hdr.cmdp = readCmdBlk;
-            io_hdr.sbp = sense_buffer;
-            io_hdr.timeout = 20000;     
-            io_hdr.flags |= SG_FLAG_DIRECT_IO;</p>
-        <p>    if (ioctl(sg_fd, SG_IO, &io_hdr) < 0) {
-                perror("sg_simple0: Inquiry SG_IO ioctl error");
-                return -1;
-            }</p>
-        <p>    if ((io_hdr.info & SG_INFO_OK_MASK) != SG_INFO_OK) {
-                if (io_hdr.sb_len_wr > 0) {
-                    printf("INQUIRY sense data: ");
-                    for (k = 0; k < io_hdr.sb_len_wr; ++k) {
-                        if ((k > 0) && (0 == (k % 10)))
-                            printf("n  ");
-                        printf("0x%02x ", sense_buffer[k]);
-                    }
-                    printf("n");
-                }
-                if (io_hdr.masked_status)
-                    printf("INQUIRY SCSI status=0x%xn", io_hdr.status);
-                if (io_hdr.host_status)
-                    printf("INQUIRY host_status=0x%xn", io_hdr.host_status);
-                if (io_hdr.driver_status)
-                    printf("INQUIRY driver_status=0x%xn", io_hdr.driver_status);
-            }
-            else {  
-                char * p = (char *)readBuff;
-                printf("Some of the read command response:");
-                printf("0x%0x 0x%0x 0x%0x 0x%0x 0x%0x 0x%0x 0x%0x 0x%0x n", p[0],p[1],p[2],(char)p[3],p[4],p[5],p[6],p[7]);
-                printf("INQUIRY duration=%u millisecs, resid=%dn",
-                       io_hdr.duration, io_hdr.resid);</p>
-        <p>        }</p>
-        <p>}</p>
-        <p>void  set_lba32(unsigned char *lba,int bytes,uint32_t addr)
-        {
-        int l_bytes = bytes-1;</p>
-        <p>lba[l_bytes--] = ( addr & 0xFF);
-        lba[l_bytes--] = ( addr  & 0xFF00) >> 8;
-        lba[l_bytes--] = ( addr  & 0xFF0000) >> 16;
-        lba[l_bytes] = ( addr  & 0xFF000000) >> 24;</p>
-        <p>}</p>
-        <p>void  set_lba64(unsigned char *lba,int bytes,uint64_t addr)
-        {
-        int l_bytes = bytes-1;</p>
-        <p>lba[l_bytes--] = ( addr & 0xFF);
-        lba[l_bytes--] = ( addr  & 0xFF00) >> 8;
-        lba[l_bytes--] = ( addr  & 0xFF0000) >> 16;
-        lba[l_bytes--] = ( addr  & 0xFF000000) >> 24;
-        lba[l_bytes--] = ( addr  & 0xFF00000000) >> 32;
-        lba[l_bytes--] = ( addr  & 0xFF0000000000) >> 40;
-        lba[l_bytes--] = ( addr  & 0xFF000000000000) >> 48;
-        lba[l_bytes] = ( addr  & 0xFF00000000000000) >> 54;</p>
-        <p>}</p>
+            printf("n");
+        }
+        if (io_hdr.masked_status)
+            printf("INQUIRY SCSI status=0x%xn", io_hdr.status);
+        if (io_hdr.host_status)
+            printf("INQUIRY host_status=0x%xn", io_hdr.host_status);
+        if (io_hdr.driver_status)
+            printf("INQUIRY driver_status=0x%xn", io_hdr.driver_status);
+    }
+    else {  
+        char * p = (char *)readBuff;
+        printf("Some of the read command response:");
+        printf("0x%0x 0x%0x 0x%0x 0x%0x 0x%0x 0x%0x 0x%0x 0x%0x n", p[0],p[1],p[2],(char)p[3],p[4],p[5],p[6],p[7]);
+        printf("INQUIRY duration=%u millisecs, resid=%dn",
+               io_hdr.duration, io_hdr.resid);</p>
+<p>        }</p>
+<p>}</p>
+<p>void  set_lba32(unsigned char *lba,int bytes,uint32_t addr)
+{
+int l_bytes = bytes-1;</p>
+<p>lba[l_bytes--] = ( addr & 0xFF);
+lba[l_bytes--] = ( addr  & 0xFF00) >> 8;
+lba[l_bytes--] = ( addr  & 0xFF0000) >> 16;
+lba[l_bytes] = ( addr  & 0xFF000000) >> 24;</p>
+<p>}</p>
+<p>void  set_lba64(unsigned char *lba,int bytes,uint64_t addr)
+{
+int l_bytes = bytes-1;</p>
+<p>lba[l_bytes--] = ( addr & 0xFF);
+lba[l_bytes--] = ( addr  & 0xFF00) >> 8;
+lba[l_bytes--] = ( addr  & 0xFF0000) >> 16;
+lba[l_bytes--] = ( addr  & 0xFF000000) >> 24;
+lba[l_bytes--] = ( addr  & 0xFF00000000) >> 32;
+lba[l_bytes--] = ( addr  & 0xFF0000000000) >> 40;
+lba[l_bytes--] = ( addr  & 0xFF000000000000) >> 48;
+lba[l_bytes] = ( addr  & 0xFF00000000000000) >> 54;</p>
+<p>}</p>
       </div>
     </div>
   </div>

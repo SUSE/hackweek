@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -40,32 +40,36 @@
       </div>
       <div id='wrapper-content'>
         <p><b>Tags:</b> Banshee, Web20, Network, Server, Mono, InProgress, HW-Hacker, HW-Designer, TryMe, JudgeBest, JudgeMe</p>
-        <h2>Description</h2>
-        <p><html><embed style="width:400px; height:326px;" id="VideoPlayback" type="application/x-shockwave-flash" src="http://video.google.com/googleplayer.swf?docId=1383078292602807933&hl=en" flashvars=""></embed></html></p>
-        <p>I have an iPod, but it doesn't hold all of my music.  More frequently than I'd like, I really need to listen to a song which isn't on the iPod, but which is on my much larger music library at home.  There's no way for me to easily get to it, without (a) finding out my IP address, (b) ssh'ing into the gateway, (c) finding the file on the filesystem on my home machine, (d) scp'ing the file to the gateway or through the firewall and (e) playing it singly with either RealPlayer or importing it into a local Banshee library.  Yuck.</p>
-        <p>The idea is to build a web UI for the Banshee library.  At first, simply navigating your music and downloading a single MP3 file would work.</p>
-        <p>As the project progresses:</p>
-        <p>  * It would be very nice if this was AJAXy and refined my list of music as I clicked through a browse interface.
-          * We'll need to password protect the music, so that not just anyone can download music.
-          * Downloading MP3 files individually sucks; we might need to use Flash or Silverlight here to play songs one by one like Banshee's library does now.
-          * It might be nice to tie this into a [[http://idea.opensuse.org/content/ideas/suse-linux-home-server|"Home Server" product]]; ideally the server would use DAAP to discover existing music shares on the network and make them available.</p>
-        <h2>Architecture</h2>
-        <p>The current plan is to program the front end in Javascript with the [[http://jquery.com|JQuery]] library.  Requests to the backend will be simple REST requests, possibly using JSON as the serialization mechanism.  Using HTTPS and HTTP Basic auth will probably be fine for the authentication.  On the backend, we could use ASP.NET and talk with an existing running Banshee service using D-Bus.</p>
-        <h2>People</h2>
-        <p>Joe Shaw originated this idea, and is presently learning Javascript on the fly by writing the front end.  He would be happy if someone with HTML and CSS experience made a basic mockup which looked pretty and hackers interested in working on the backend -- either the server side of things or a bridge between Banshee and the server.</p>
-        <p>Jakub Steiner has been working on making the site beautiful with his icon, HTML and CSS skills.  He also hasn't been afraid to tread into Joe's terrible Javascript as necessary either.</p>
-        <h2>Related Materials</h2>
-        <p>  * [[http://idea.opensuse.org/content/ideas/suse-linux-home-server|SUSE Linux Home Server idea]]
-          * [[http://mp3tunes.com|MP3Tunes]] - An online music library</p>
-        <h2>Live Server</h2>
-        <p>You can see the code running in action here: http://joeshaw.org/banshee-web</p>
-        <p>Although the data right now is served from static JSON files, not an actual backend database.  I sure hope you like mysong.mp3!</p>
-        <h2>Code</h2>
-        <p>We decided to use git for this project also as a learning experience.  Joe's git repo is here:</p>
-        <p>  git://people.freedesktop.org/~joe/banshee-web.git</p>
-        <p>and Jakub's is here:</p>
-        <p>  git://people.freedesktop.org/~jimmac/banshee-web.git</p>
-        <p>You can pull down the code using ''git clone //uri//'' and keep it up to date with ''git pull''.</p>
+<h2>Description</h2>
+<p><html><embed style="width:400px; height:326px;" id="VideoPlayback" type="application/x-shockwave-flash" src="http://video.google.com/googleplayer.swf?docId=1383078292602807933&hl=en" flashvars=""></embed></html></p>
+<p>I have an iPod, but it doesn't hold all of my music.  More frequently than I'd like, I really need to listen to a song which isn't on the iPod, but which is on my much larger music library at home.  There's no way for me to easily get to it, without (a) finding out my IP address, (b) ssh'ing into the gateway, (c) finding the file on the filesystem on my home machine, (d) scp'ing the file to the gateway or through the firewall and (e) playing it singly with either RealPlayer or importing it into a local Banshee library.  Yuck.</p>
+<p>The idea is to build a web UI for the Banshee library.  At first, simply navigating your music and downloading a single MP3 file would work.</p>
+<p>As the project progresses:</p>
+<ul>
+<li>It would be very nice if this was AJAXy and refined my list of music as I clicked through a browse interface.</li>
+<li>We'll need to password protect the music, so that not just anyone can download music.</li>
+<li>Downloading MP3 files individually sucks; we might need to use Flash or Silverlight here to play songs one by one like Banshee's library does now.</li>
+<li>It might be nice to tie this into a <a href="http://idea.opensuse.org/content/ideas/suse-linux-home-server">"Home Server" product</a>; ideally the server would use DAAP to discover existing music shares on the network and make them available.</li>
+</ul>
+<h2>Architecture</h2>
+<p>The current plan is to program the front end in Javascript with the <a href="http://jquery.com">JQuery</a> library.  Requests to the backend will be simple REST requests, possibly using JSON as the serialization mechanism.  Using HTTPS and HTTP Basic auth will probably be fine for the authentication.  On the backend, we could use ASP.NET and talk with an existing running Banshee service using D-Bus.</p>
+<h2>People</h2>
+<p>Joe Shaw originated this idea, and is presently learning Javascript on the fly by writing the front end.  He would be happy if someone with HTML and CSS experience made a basic mockup which looked pretty and hackers interested in working on the backend -- either the server side of things or a bridge between Banshee and the server.</p>
+<p>Jakub Steiner has been working on making the site beautiful with his icon, HTML and CSS skills.  He also hasn't been afraid to tread into Joe's terrible Javascript as necessary either.</p>
+<h2>Related Materials</h2>
+<ul>
+<li><a href="http://idea.opensuse.org/content/ideas/suse-linux-home-server">SUSE Linux Home Server idea</a></li>
+<li><a href="http://mp3tunes.com">MP3Tunes</a> - An online music library</li>
+</ul>
+<h2>Live Server</h2>
+<p>You can see the code running in action here: http://joeshaw.org/banshee-web</p>
+<p>Although the data right now is served from static JSON files, not an actual backend database.  I sure hope you like mysong.mp3!</p>
+<h2>Code</h2>
+<p>We decided to use git for this project also as a learning experience.  Joe's git repo is here:</p>
+<p>  git://people.freedesktop.org/~joe/banshee-web.git</p>
+<p>and Jakub's is here:</p>
+<p>  git://people.freedesktop.org/~jimmac/banshee-web.git</p>
+<p>You can pull down the code using ''git clone //uri//'' and keep it up to date with ''git pull''.</p>
       </div>
     </div>
   </div>

@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -40,17 +40,17 @@
       </div>
       <div id='wrapper-content'>
         <p><b>Tags:</b> InProgress, Kernel, Graphics</p>
-        <h2>Description</h2>
-        <p>When X11 runs and the kernel needs to print a panic message it cannot dump this to the current screen the user is working on. Instead additional hardware (such as a serial console) needs to be in place to get information about the dump. 
-        The same is true for kdump. Here kexec doesn't run real mode to rePOST the video card. If an Xserver has been running before the screen will not show any output as the kernel has no knowledge of the video mode that had been set previously.</p>
-        <p>These problems could be remedied by using an fbdev kernel driver however this is only done on PPC platforms by default.</p>
-        <p>An alternative approach would be to load a dummy fbdev driver which would be told about a mode that has been set up by a userland utility. Since userland utilities set up more parameters than passed to fbdev drivers the interface needs to be extended to pass all parameters to the kernel to enable it to write to   data to a visible portion of the scanout buffer in the correct format.</p>
-        <p>Such a driver could be extended to obtain mode data from the kernel command line to obtain mode information from a boot loader to provide early boot dump messages without relying on a BIOS video mode initialization which is only available on PCs or an fbdev driver which is capable to initialize the underlying hardware. This may for example be beneficial for systems using LinuxBIOS without utilizing a VGA BIOS.</p>
-        <p>This project will involve modifications to the kernel to add the appropriate interfaces but also to user space programs such as the X.Org Xserver, vbetool etc. to make the kernel aware of the mode parameters.</p>
-        <h2>People</h2>
-        <p>Egbert Eich originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
-        <h2>Related Materials</h2>
-        <p>A bugzilla Entry which triggered this idea: https://bugzilla.novell.com/show_bug.cgi?id=154603</p>
+<h2>Description</h2>
+<p>When X11 runs and the kernel needs to print a panic message it cannot dump this to the current screen the user is working on. Instead additional hardware (such as a serial console) needs to be in place to get information about the dump. 
+The same is true for kdump. Here kexec doesn't run real mode to rePOST the video card. If an Xserver has been running before the screen will not show any output as the kernel has no knowledge of the video mode that had been set previously.</p>
+<p>These problems could be remedied by using an fbdev kernel driver however this is only done on PPC platforms by default.</p>
+<p>An alternative approach would be to load a dummy fbdev driver which would be told about a mode that has been set up by a userland utility. Since userland utilities set up more parameters than passed to fbdev drivers the interface needs to be extended to pass all parameters to the kernel to enable it to write to   data to a visible portion of the scanout buffer in the correct format.</p>
+<p>Such a driver could be extended to obtain mode data from the kernel command line to obtain mode information from a boot loader to provide early boot dump messages without relying on a BIOS video mode initialization which is only available on PCs or an fbdev driver which is capable to initialize the underlying hardware. This may for example be beneficial for systems using LinuxBIOS without utilizing a VGA BIOS.</p>
+<p>This project will involve modifications to the kernel to add the appropriate interfaces but also to user space programs such as the X.Org Xserver, vbetool etc. to make the kernel aware of the mode parameters.</p>
+<h2>People</h2>
+<p>Egbert Eich originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+<h2>Related Materials</h2>
+<p>A bugzilla Entry which triggered this idea: https://bugzilla.novell.com/show_bug.cgi?id=154603</p>
       </div>
     </div>
   </div>

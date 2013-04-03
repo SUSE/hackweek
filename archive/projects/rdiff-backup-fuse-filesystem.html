@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -40,14 +40,14 @@
       </div>
       <div id='wrapper-content'>
         <p><b>Tags:</b> Idea, FUSE, filesystem</p>
-        <h2>Description</h2>
-        <p>rdiff backup has many advantages over a hard link backup system like dirvish. For example, backing up large database files with rdiff just takes the space of the deltas whereas with hard link backup systems the whole file is copied.</p>
-        <p>Hard link backup systems have one feature in general that keeps people using them; the ability to easily navigate and restore files. Since hard link backup systems just use filesystem features for their backups all backups appear on the filesystem as the tree looked at the time of the backup.</p>
-        <p>This feature could be solved by creating a FUSE filesystem that presented the rdiff backups exactly how the hard link backups are presented. It would also be important to be able to simply copy from the FUSE filesystem in order to restore backups. It would be acceptable to have the filesystem be read only, which would actually have the added side affect of making it harder for users to accidentally erase their backups while browsing them.</p>
-        <h2>People</h2>
-        <p>Thomas Wiest originated this idea.  Miklos Szeredi is interested in implementing or helping out with this idea.</p>
-        <h2>Related Materials</h2>
-        <p>[[http://www.nongnu.org/rdiff-backup|Main rdiff backup site]]</p>
+<h2>Description</h2>
+<p>rdiff backup has many advantages over a hard link backup system like dirvish. For example, backing up large database files with rdiff just takes the space of the deltas whereas with hard link backup systems the whole file is copied.</p>
+<p>Hard link backup systems have one feature in general that keeps people using them; the ability to easily navigate and restore files. Since hard link backup systems just use filesystem features for their backups all backups appear on the filesystem as the tree looked at the time of the backup.</p>
+<p>This feature could be solved by creating a FUSE filesystem that presented the rdiff backups exactly how the hard link backups are presented. It would also be important to be able to simply copy from the FUSE filesystem in order to restore backups. It would be acceptable to have the filesystem be read only, which would actually have the added side affect of making it harder for users to accidentally erase their backups while browsing them.</p>
+<h2>People</h2>
+<p>Thomas Wiest originated this idea.  Miklos Szeredi is interested in implementing or helping out with this idea.</p>
+<h2>Related Materials</h2>
+<p><a href="http://www.nongnu.org/rdiff-backup">Main rdiff backup site</a></p>
       </div>
     </div>
   </div>

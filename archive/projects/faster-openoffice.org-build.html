@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -40,16 +40,18 @@
       </div>
       <div id='wrapper-content'>
         <p><b>Tags:</b> Idea, Desktop, DevTool, office, HelpWanted</p>
-        <h2>Description</h2>
-        <p>OpenOffice.org is huge piece of code. It takes many hours to get the full build on normal machines. There are lots possibilities how to make life easier:</p>
-        <p>  * Most developers are interested only into a particular module, for example into OOo Writer. They do not want to build the whole application then. It would help to split the build into more pieces, create the respective devel packages...
-          * Jam build tool handle dependencies much faster than dmake. Someone has already added support for jam into the Calc module. It would be fine to add it for more modules.
-          * The tool localize is very slow, especially when it extracts the existing translations.
-          * The SDK installation is incredibly slow. I wonder what happens there.
-          * The helpcontent build takes ages and needs a lot of memory. I wonder if it could be parallelized even using icecream.</p>
-        <h2>People</h2>
-        <p>Petr Mladek originated this idea. He improved the speed of the SDK installation, see  [[http://www.openoffice.org/issues/show_bug.cgi?id=78892|i#78892]]. He is going to work on the package splitting during his normal work days (after the end of hack week). </p>
-        <h2>Related Materials</h2>
+<h2>Description</h2>
+<p>OpenOffice.org is huge piece of code. It takes many hours to get the full build on normal machines. There are lots possibilities how to make life easier:</p>
+<ul>
+<li>Most developers are interested only into a particular module, for example into OOo Writer. They do not want to build the whole application then. It would help to split the build into more pieces, create the respective devel packages...</li>
+<li>Jam build tool handle dependencies much faster than dmake. Someone has already added support for jam into the Calc module. It would be fine to add it for more modules.</li>
+<li>The tool localize is very slow, especially when it extracts the existing translations.</li>
+<li>The SDK installation is incredibly slow. I wonder what happens there.</li>
+<li>The helpcontent build takes ages and needs a lot of memory. I wonder if it could be parallelized even using icecream.</li>
+</ul>
+<h2>People</h2>
+<p>Petr Mladek originated this idea. He improved the speed of the SDK installation, see  <a href="http://www.openoffice.org/issues/show_bug.cgi?id=78892">i#78892</a>. He is going to work on the package splitting during his normal work days (after the end of hack week). </p>
+<h2>Related Materials</h2>
       </div>
     </div>
   </div>

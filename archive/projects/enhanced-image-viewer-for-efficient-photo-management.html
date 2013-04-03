@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -40,50 +40,60 @@
       </div>
       <div id='wrapper-content'>
         <p><b>Tags:</b> Idea, Graphics, Photography, Camera, Desktop</p>
-        <h2>Description</h2>
-        <p>Use cases:</p>
-        <p>Vlada engage in macro photography. He needs
-        to take several tries of each subject and wants to select the best ones.</p>
-        <p>Vlada wants to have his photos in best possible quality, therefore
-        he shots to RAW format. He wants to have most of his photos automatically 
-        converted to JPEG. He wants to convert selected files manually.</p>
-        <p>Vlada uses a set of scripts for sorting photos, which uses symlinks and MD5s
-        He can't use move/delete/comment functions of ordinary viewer, because
-        it would break the structure maintained by scripts or at least the MD5s.</p>
-        <p>Vlada wants to burn parts of his collection on CDs and/or copy it to external
-        hard disc. That breaks meta-information maintained by ordinary viewers.</p>
-        <p>Petr collect photos from various events from his camera and also the photos 
-        from friends. He wants to see the photos on time-line and also compensate
-        time offsets in various cameras, to have displayed the pictures in correct order.</p>
-        <p>Requirements:</p>
-        <p>1. sorting photos according to quality and selecting best shots:
-          * comparison of both composition and technical quality (noise, DOF, histogram) side by side, optional connected scrolling
-          * mark photos for deletion, actually delete them at the end of session</p>
-        <p>2. tagging and commenting photos
-          * tags and comments are stored using open standards (EXIF)</p>
-        <p>3. handling of raw format
-          * possibilities: RAW with embeded JPEG, RAW + JPEG from camera, RAW + JPEG generated later
-          * in most cases it is not necessary to show RAW preview if JPEG with the same name exists
-          * correct file (RAW or JPEG, configurable) to external programs (ufraw)</p>
-        <p>4. Interoperability
-          * images can be acessed and modified by arbitrary software
-          * directory/file oriented
-          * no information is primarily stored outside image files
-          * possibility to overload write access methods by external programs / scripts
-          * almost all image modifications should be done by external programs</p>
-        <p>Implementation</p>
-        <p>Enhance gqview
-          * already implemented features are near to requirements
-          * gtk programming is easier for us</p>
-        <h2>People</h2>
-        <p>Vladimir Nadvornik and Petr Ostadal originated this idea. They want to work on it.</p>
-        <h2>Related Materials</h2>
-        <p>Here is the current status:
-        [[http://svn.opensuse.org/svn/GQViewE/trunk/README.GQViewE]]</p>
-        <p>And here are packages for testing:
-        [[http://download.opensuse.org/repositories/home:/nadvornik:/GQViewE/]]</p>
-        <h2>Update 2008-08-22</h2>
-        <p>This idea has eveolved into [[http://geeqie.sf.net]]</p>
+<h2>Description</h2>
+<p>Use cases:</p>
+<p>Vlada engage in macro photography. He needs
+to take several tries of each subject and wants to select the best ones.</p>
+<p>Vlada wants to have his photos in best possible quality, therefore
+he shots to RAW format. He wants to have most of his photos automatically 
+converted to JPEG. He wants to convert selected files manually.</p>
+<p>Vlada uses a set of scripts for sorting photos, which uses symlinks and MD5s
+He can't use move/delete/comment functions of ordinary viewer, because
+it would break the structure maintained by scripts or at least the MD5s.</p>
+<p>Vlada wants to burn parts of his collection on CDs and/or copy it to external
+hard disc. That breaks meta-information maintained by ordinary viewers.</p>
+<p>Petr collect photos from various events from his camera and also the photos 
+from friends. He wants to see the photos on time-line and also compensate
+time offsets in various cameras, to have displayed the pictures in correct order.</p>
+<p>Requirements:</p>
+<p>1. sorting photos according to quality and selecting best shots:</p>
+<ul>
+<li>comparison of both composition and technical quality (noise, DOF, histogram) side by side, optional connected scrolling</li>
+<li>mark photos for deletion, actually delete them at the end of session</li>
+</ul>
+<p>2. tagging and commenting photos</p>
+<ul>
+<li>tags and comments are stored using open standards (EXIF)</li>
+</ul>
+<p>3. handling of raw format</p>
+<ul>
+<li>possibilities: RAW with embeded JPEG, RAW + JPEG from camera, RAW + JPEG generated later</li>
+<li>in most cases it is not necessary to show RAW preview if JPEG with the same name exists</li>
+<li>correct file (RAW or JPEG, configurable) to external programs (ufraw)</li>
+</ul>
+<p>4. Interoperability</p>
+<ul>
+<li>images can be acessed and modified by arbitrary software</li>
+<li>directory/file oriented</li>
+<li>no information is primarily stored outside image files</li>
+<li>possibility to overload write access methods by external programs / scripts</li>
+<li>almost all image modifications should be done by external programs</li>
+</ul>
+<p>Implementation</p>
+<p>Enhance gqview</p>
+<ul>
+<li>already implemented features are near to requirements</li>
+<li>gtk programming is easier for us</li>
+</ul>
+<h2>People</h2>
+<p>Vladimir Nadvornik and Petr Ostadal originated this idea. They want to work on it.</p>
+<h2>Related Materials</h2>
+<p>Here is the current status:
+<a href="http://svn.opensuse.org/svn/GQViewE/trunk/README.GQViewE.html">http://svn.opensuse.org/svn/GQViewE/trunk/README.GQViewE</a></p>
+<p>And here are packages for testing:
+<a href="http://download.opensuse.org/repositories/home:/nadvornik:/GQViewE/.html">http://download.opensuse.org/repositories/home:/nadvornik:/GQViewE/</a></p>
+<h2>Update 2008-08-22</h2>
+<p>This idea has eveolved into <a href="http://geeqie.sf.net.html">http://geeqie.sf.net</a></p>
       </div>
     </div>
   </div>

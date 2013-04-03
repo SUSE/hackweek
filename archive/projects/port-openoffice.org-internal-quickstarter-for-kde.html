@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -40,19 +40,21 @@
       </div>
       <div id='wrapper-content'>
         <p><b>Tags:</b> InProgress, Desktop, office, kde, JudgePerf, JudgeMe</p>
-        <h2>Description</h2>
-        <p>OpenOffice.org includes the quickstarter for GNOME out of box. You can enable it in "Tools/Options.../OpenOffice.org/Memory/Enable systray quickstarter". It has two effects. It shows a small icon in the systray, so you can very easily open a new document. It keeps one OOo instance running on background, so any new OOo window is opened much faster even if you start it from the command line.</p>
-        <p>There exists the old standalone [[http://segfaultskde.berlios.de/index.php?content=oooqs|OOo quickstarter for KDE]] but it has bugs, it is an older code, hard to maintain, ...</p>
-        <h2>People</h2>
-        <p>**Petr Mladek** originated this idea and is working on it.</p>
-        <h2>Related Materials</h2>
-        <p>One solution is to use the current GTK systray stuff in KDE as well. We would need to intgrate the OOo and GTK main loop together even in KDE. It does not look easy...</p>
-        <p>Second solution is to create the KDE specific systray icon, menu, ... By the other words, we needed to create libvclplug_kde680lx.so. Unfortunately, there is similar problem. We need to integrate the QT main loop into the OOo main loop.</p>
-        <p>The second solution looks more clean. In addition, the QT main loop would be nice also for the Open/Save file dialog, so is the way to go.</p>
-        <p>I was not expert in these areas. I have spent a lot of time with studying and various attempts. I have been able to get a basic functionality working. The latest patches are available at</p>
-        <p>[[http://svn.gnome.org/svn/ooo-build/trunk/patches/test/vcl-add-simle-qteventloop.diff]]
-        [[http://svn.gnome.org/svn/ooo-build/trunk/patches/test/sfx2-test-kde-systray-stuff.diff]]</p>
-        <p>(The timers and SocketNotifiers are not solved, but the sample systray stuff works and does not block OOo.)</p>
+<h2>Description</h2>
+<p>OpenOffice.org includes the quickstarter for GNOME out of box. You can enable it in "Tools/Options.../OpenOffice.org/Memory/Enable systray quickstarter". It has two effects. It shows a small icon in the systray, so you can very easily open a new document. It keeps one OOo instance running on background, so any new OOo window is opened much faster even if you start it from the command line.</p>
+<p>There exists the old standalone <a href="http://segfaultskde.berlios.de/index.php?content=oooqs">OOo quickstarter for KDE</a> but it has bugs, it is an older code, hard to maintain, ...</p>
+<h2>People</h2>
+<ul>
+<li>*Petr Mladek** originated this idea and is working on it.</li>
+</ul>
+<h2>Related Materials</h2>
+<p>One solution is to use the current GTK systray stuff in KDE as well. We would need to intgrate the OOo and GTK main loop together even in KDE. It does not look easy...</p>
+<p>Second solution is to create the KDE specific systray icon, menu, ... By the other words, we needed to create libvclplug_kde680lx.so. Unfortunately, there is similar problem. We need to integrate the QT main loop into the OOo main loop.</p>
+<p>The second solution looks more clean. In addition, the QT main loop would be nice also for the Open/Save file dialog, so is the way to go.</p>
+<p>I was not expert in these areas. I have spent a lot of time with studying and various attempts. I have been able to get a basic functionality working. The latest patches are available at</p>
+<p><a href="http://svn.gnome.org/svn/ooo-build/trunk/patches/test/vcl-add-simle-qteventloop.diff.html">http://svn.gnome.org/svn/ooo-build/trunk/patches/test/vcl-add-simle-qteventloop.diff</a>
+<a href="http://svn.gnome.org/svn/ooo-build/trunk/patches/test/sfx2-test-kde-systray-stuff.diff.html">http://svn.gnome.org/svn/ooo-build/trunk/patches/test/sfx2-test-kde-systray-stuff.diff</a></p>
+<p>(The timers and SocketNotifiers are not solved, but the sample systray stuff works and does not block OOo.)</p>
       </div>
     </div>
   </div>

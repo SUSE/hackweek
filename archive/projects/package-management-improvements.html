@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -40,15 +40,15 @@
       </div>
       <div id='wrapper-content'>
         <p><b>Tags:</b> InProgress, Community, Performance, Management</p>
-        <h2>Description</h2>
-        <p>There are also issues with the default package management tool so people have been looking for alternative tools. Fortunately there are a lot of package management tools compatible with openSUSE distribution that people can use. yum, smart, rcd to name a few. The common part of all these tools is that they have to download and parse the "open-package" (also known as yum metadata) XML and consume that data. There are two items I'd like to fix there:</p>
-        <p>1. All these programs update the metadata cache serially.
-        For each repository, download the compressed metadata file, write it on disk, read it back to check the checksums, read it again for uncompressing and parsing. This can all happen in parallel: Start the download of all repositories at once and set up the streams for downloaded data. The data can be handled as it's downloading (since it's the slowest part) and once the metadata is downloaded, the whole process should be done.</p>
-        <p>2. Once the data is parsed, all these tools load it all into memory.
-        This step is mostly done because dependency resolution code does a lot of lookups into the package cache and the easiest way to make that fast is to read it all into memory. That wasn't a big deal a couple of years ago (when these tools were designed) when distros where smaller and there wasn't a whole lot of 3rd party repositories. These days though, it's easy to have 30K packages available and all that metadata takes up a lot of memory. So the suggestion here is to provide a unified package storage API layer that is able to serve packages and dependencies fast without reading them all into memory. It could be integrated with beagle (or maybe even implemented with beagle).</p>
-        <h2>People</h2>
-        <p>Tambet Ingo originated this idea and working on it.</p>
-        <h2>Related Materials</h2>
+<h2>Description</h2>
+<p>There are also issues with the default package management tool so people have been looking for alternative tools. Fortunately there are a lot of package management tools compatible with openSUSE distribution that people can use. yum, smart, rcd to name a few. The common part of all these tools is that they have to download and parse the "open-package" (also known as yum metadata) XML and consume that data. There are two items I'd like to fix there:</p>
+<p>1. All these programs update the metadata cache serially.
+For each repository, download the compressed metadata file, write it on disk, read it back to check the checksums, read it again for uncompressing and parsing. This can all happen in parallel: Start the download of all repositories at once and set up the streams for downloaded data. The data can be handled as it's downloading (since it's the slowest part) and once the metadata is downloaded, the whole process should be done.</p>
+<p>2. Once the data is parsed, all these tools load it all into memory.
+This step is mostly done because dependency resolution code does a lot of lookups into the package cache and the easiest way to make that fast is to read it all into memory. That wasn't a big deal a couple of years ago (when these tools were designed) when distros where smaller and there wasn't a whole lot of 3rd party repositories. These days though, it's easy to have 30K packages available and all that metadata takes up a lot of memory. So the suggestion here is to provide a unified package storage API layer that is able to serve packages and dependencies fast without reading them all into memory. It could be integrated with beagle (or maybe even implemented with beagle).</p>
+<h2>People</h2>
+<p>Tambet Ingo originated this idea and working on it.</p>
+<h2>Related Materials</h2>
       </div>
     </div>
   </div>

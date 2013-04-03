@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -40,39 +40,55 @@
       </div>
       <div id='wrapper-content'>
         <p><b>Tags:</b> Desktop, Server, InProgress, HelpWanted, Mono</p>
-        <h2>Description</h2>
-        <p>The idea of this project is to create a common software infrastructure for building on-line services, which can be distributed, and which are identity-aware.</p>
-        <p>The goal of this infrastructure is to make it easy to develop applications whose logic is partially or totally running on a server, allowing sharing information between users, or making information available from any location. </p>
-        <p>This infrastructure would be composed by:
-          * a development framework (which developers would use to implement the services), 
-          * a Service Host, which would be able to run services in a server,
-          * a set of standard services, which would be used by other services for common tasks such as data storage, communication with users, or whatever.</p>
-        <p>Here are some examples of applications that could use this infrastructure:</p>
-        <p>  * Tomboy: it could store notes on-line, so the user would be able to read them from any location.
-          * Calendar: a calendar service could store and keep track of events on-line. The user would be able to access the calendar from any location, and the calendar service could send notifications to the user by different ways (showing a pop-up window if the user is connected, or sending an e-mail if not, for example).
-          * Documents: storing documents in an on-line storage service would allow accessing those documents from different locations, and sharing them with other users.</p>
-        <p>**Open and Distributed**</p>
-        <p>This on-line service platform must be open and distributed. By open I mean that anyone must be able to write on-line services based on that platform, and any user must be able to subscribe any available on-line service.</p>
-        <p>So, this is not about Novell offering a central server where users can subscribe and access to their services, but it's about offering a software infrastructure which will allow providers to create their own servers and publish services which can be integrated, which can cooperate and can play together with other services from other providers.</p>
-        <p>The infrastructure has to be distributed: services don't run on a single machine. It doesn't just mean that services may interact with other services running in remote machines, but that a single service may be cooperatively running in several machines across the network.</p>
-        <p>**Identity aware?**</p>
-        <p>When a user buys a new PC the first thing he does is install the software that will help him doing the job. Every user has its own preferences on what to install, and how to configure that software to better fit their needs. The user also has a login name. To work with the PC the user enters his login name and password, and what he gets is a personalized desktop which gives access to his applications, his images, music, mail, calendar or IM contacts. The PC can contain information from different users, and even run several sessions for different users at the same time, but from the point of view of a user, after starting a session, the PC contains only his data and behaves as he as defined.</p>
-        <p>Applications running on a user session are "aware" of the user identity. They know where to store user data, or how to communicate with the user (e.g. showing windows in the user's X session). Applications can be integrated and share user data between them. For example, the desktop calendar applet can show events defined by the user in Evolution.</p>
-        <p>Now, the idea is to generalize this concept, and use the same concept for on-line services. So, all services on which a user is subscribed will also be "identity-aware", and will be able to share data and interoperate between them. What's different in this case is that services will run on-line, so the user will not need a specific piece of hardware to access them. Another difference is that on-line services are always running (the Internet is never shut down) so even if the user is not connected, services can keep doing work on his behalf.</p>
-        <p>**Core services**</p>
-        <p>A distributed and identity-aware service infrastructure only makes sense if it provides a set of core services on top of which other more complex services can be built. For example, the following two services might be part of this core set:</p>
-        <p>  * Storage service: it would provide a way of storing information on-line which has to be always available.
-          * User interaction service: it would provide a way to communicate with the user. Other services could use it for example to notify calendar events, or to notify the completion of some programed tasks.</p>
-        <p>So, the service infrastructure will define the API and the behavior of those services, but it doesn't need to provide an actual implementation. A user might choose to use one or several storage services from different providers of his choice. </p>
-        <p>More complex services would be built on top of those, in the same way layers of an operating system are built on top of other layers.</p>
-        <p>**Technology**</p>
-        <p>My idea is to use Mono to implement this infrastructure. It doesn't mean that only Mono based applications would be able to use it. The communication between services would be done using standard Web Service protocols, so it would be possible to implement services using other development platforms as long as they use the same standards.</p>
-        <p>There is a lot to define about security.</p>
-        <p>**What to do in a hack week**</p>
-        <p>This project requires a lot of work, especially design work. My idea is to spend the hack week specifying what the platform would provide and how it would work. Maybe a simple prototype with basic functionality can be implemented.</p>
-        <h2>People</h2>
-        <p>Lluis Sanchez originated this idea and is working on it.</p>
-        <h2>Related Materials</h2>
+<h2>Description</h2>
+<p>The idea of this project is to create a common software infrastructure for building on-line services, which can be distributed, and which are identity-aware.</p>
+<p>The goal of this infrastructure is to make it easy to develop applications whose logic is partially or totally running on a server, allowing sharing information between users, or making information available from any location. </p>
+<p>This infrastructure would be composed by:</p>
+<ul>
+<li>a development framework (which developers would use to implement the services), </li>
+<li>a Service Host, which would be able to run services in a server,</li>
+<li>a set of standard services, which would be used by other services for common tasks such as data storage, communication with users, or whatever.</li>
+</ul>
+<p>Here are some examples of applications that could use this infrastructure:</p>
+<ul>
+<li>Tomboy: it could store notes on-line, so the user would be able to read them from any location.</li>
+<li>Calendar: a calendar service could store and keep track of events on-line. The user would be able to access the calendar from any location, and the calendar service could send notifications to the user by different ways (showing a pop-up window if the user is connected, or sending an e-mail if not, for example).</li>
+<li>Documents: storing documents in an on-line storage service would allow accessing those documents from different locations, and sharing them with other users.</li>
+</ul>
+<ul>
+<li>*Open and Distributed**</li>
+</ul>
+<p>This on-line service platform must be open and distributed. By open I mean that anyone must be able to write on-line services based on that platform, and any user must be able to subscribe any available on-line service.</p>
+<p>So, this is not about Novell offering a central server where users can subscribe and access to their services, but it's about offering a software infrastructure which will allow providers to create their own servers and publish services which can be integrated, which can cooperate and can play together with other services from other providers.</p>
+<p>The infrastructure has to be distributed: services don't run on a single machine. It doesn't just mean that services may interact with other services running in remote machines, but that a single service may be cooperatively running in several machines across the network.</p>
+<ul>
+<li>*Identity aware?**</li>
+</ul>
+<p>When a user buys a new PC the first thing he does is install the software that will help him doing the job. Every user has its own preferences on what to install, and how to configure that software to better fit their needs. The user also has a login name. To work with the PC the user enters his login name and password, and what he gets is a personalized desktop which gives access to his applications, his images, music, mail, calendar or IM contacts. The PC can contain information from different users, and even run several sessions for different users at the same time, but from the point of view of a user, after starting a session, the PC contains only his data and behaves as he as defined.</p>
+<p>Applications running on a user session are "aware" of the user identity. They know where to store user data, or how to communicate with the user (e.g. showing windows in the user's X session). Applications can be integrated and share user data between them. For example, the desktop calendar applet can show events defined by the user in Evolution.</p>
+<p>Now, the idea is to generalize this concept, and use the same concept for on-line services. So, all services on which a user is subscribed will also be "identity-aware", and will be able to share data and interoperate between them. What's different in this case is that services will run on-line, so the user will not need a specific piece of hardware to access them. Another difference is that on-line services are always running (the Internet is never shut down) so even if the user is not connected, services can keep doing work on his behalf.</p>
+<ul>
+<li>*Core services**</li>
+</ul>
+<p>A distributed and identity-aware service infrastructure only makes sense if it provides a set of core services on top of which other more complex services can be built. For example, the following two services might be part of this core set:</p>
+<ul>
+<li>Storage service: it would provide a way of storing information on-line which has to be always available.</li>
+<li>User interaction service: it would provide a way to communicate with the user. Other services could use it for example to notify calendar events, or to notify the completion of some programed tasks.</li>
+</ul>
+<p>So, the service infrastructure will define the API and the behavior of those services, but it doesn't need to provide an actual implementation. A user might choose to use one or several storage services from different providers of his choice. </p>
+<p>More complex services would be built on top of those, in the same way layers of an operating system are built on top of other layers.</p>
+<ul>
+<li>*Technology**</li>
+</ul>
+<p>My idea is to use Mono to implement this infrastructure. It doesn't mean that only Mono based applications would be able to use it. The communication between services would be done using standard Web Service protocols, so it would be possible to implement services using other development platforms as long as they use the same standards.</p>
+<p>There is a lot to define about security.</p>
+<ul>
+<li>*What to do in a hack week**</li>
+</ul>
+<p>This project requires a lot of work, especially design work. My idea is to spend the hack week specifying what the platform would provide and how it would work. Maybe a simple prototype with basic functionality can be implemented.</p>
+<h2>People</h2>
+<p>Lluis Sanchez originated this idea and is working on it.</p>
+<h2>Related Materials</h2>
       </div>
     </div>
   </div>

@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -41,67 +41,79 @@
       <div id='wrapper-content'>
         <p><b>Tags:</b> openSUSE, SLED, Done, TryMe, InBuildService, HelpWanted, TabletPC, SaX2, Mobile, Configuration, Desktop</p>
         <h2>Description</h2>
-        <p>Currently SaX2 only supports a few TabletPCs by default. These are at the moment:
-          * ACER TravelMate C30x series (SERIAL)
-          * Fujitsu Lifebook T series (SERIAL)
-          * Fujitsu Lifebook P series (SERIAL, touchscreen)
-          * Gateway M280E (Finepoint FPI2004) 
-          * HP Compaq TC1000 (FPI2002)
-          * HP Compaq TC4200 (SERIAL)
-          * IBM X41 TABLET PC (SERIAL)
-          * Lenovo X61 TABLET PC (SERIAL)
-          * Motion M1200 (SERIAL)
-          * Motion M1400 (SERIAL)
-          * Wacom ISDV4 TABLET PC (SERIAL) (with touch support)
-          * Wacom ISDV4 TABLET PC (USB)</p>
+        <p>Currently SaX2 only supports a few TabletPCs by default. These are at the moment:</p>
+        <ul>
+        <li>ACER TravelMate C30x series (SERIAL)</li>
+        <li>Fujitsu Lifebook T series (SERIAL)</li>
+        <li>Fujitsu Lifebook P series (SERIAL, touchscreen)</li>
+        <li>Gateway M280E (Finepoint FPI2004) </li>
+        <li>HP Compaq TC1000 (FPI2002)</li>
+        <li>HP Compaq TC4200 (SERIAL)</li>
+        <li>IBM X41 TABLET PC (SERIAL)</li>
+        <li>Lenovo X61 TABLET PC (SERIAL)</li>
+        <li>Motion M1200 (SERIAL)</li>
+        <li>Motion M1400 (SERIAL)</li>
+        <li>Wacom ISDV4 TABLET PC (SERIAL) (with touch support)</li>
+        <li>Wacom ISDV4 TABLET PC (USB)</li>
+        </ul>
         <p>You can e.g. run Wacom based often with the generic "Wacom ISDV4" entries, but they don't work in every case. SaX2 should support more TabletPCs with useful default settings.</p>
         <p>An other problem is that there no good support for the Touch devices of TabletPCs with a Wacom USB Tablet. The source of the problem is that there is no persistent device name (or link) for these devices under /dev/input/.</p>
         <p>__What is to do?__
            - Support Touch devices of Wacom USB TabletPCs:
-             * fix udev to generate persistent device links for these devices
-             * extend the existing generic 'Wacom ISDV4 TABLET PC (USB)' SaX2 entry with a default config for touch
            - Support more TabletPc which uses only Touchscreen or non-Wacom Tablets:
-             * fix SaX2 Touchscreen port handling (allow other /dev/input/ paths)
-             * check, install and may update udev rules for existing touchscreen drivers
-             * collect existing touchscreen entries for TabletPCs under 'TABLET PCs'
            - Add more TabletPCs to SaX2:
-             * get in contact with TabletPC users or search for settings in the internet
-             * add new machines to SaX2 (also such which only uses Touchscreens)
-             * may extend HAL to detect machines as TabletPCs (if needed)
            - submit the patches for SaX2 and udev upstream
-           - may update [[http://en.opensuse.org/TabletPCs|openSUSE TabletPC wiki page]]</p>
+           - may update <a href="http://en.opensuse.org/TabletPCs">openSUSE TabletPC wiki page</a></p>
+        <ul>
+        <li>fix udev to generate persistent device links for these devices</li>
+        <li>extend the existing generic 'Wacom ISDV4 TABLET PC (USB)' SaX2 entry with a default config for touch</li>
+        <li>fix SaX2 Touchscreen port handling (allow other /dev/input/ paths)</li>
+        <li>check, install and may update udev rules for existing touchscreen drivers</li>
+        <li>collect existing touchscreen entries for TabletPCs under 'TABLET PCs'</li>
+        <li>get in contact with TabletPC users or search for settings in the internet</li>
+        <li>add new machines to SaX2 (also such which only uses Touchscreens)</li>
+        <li>may extend HAL to detect machines as TabletPCs (if needed)</li>
+        </ul>
         <p>__What can you do?__</p>
-        <p>Report currently not supported machines to [[http://en.opensuse.org/User:Dkukawka|Danny Kukawka]] with everything you needed to change in you xorg.conf. If you needed to calibrate your tablet (e.g. via wacomcpl), send also the calibration data/information. Also the output of lshal would help.</p>
-        <p>__Status:__
-           * patched udev to add persistent by-id links (submitted upstream)
-           * install udev rules of evtouch, added one more machine to the rules
-           * extended SaX2 cdb with new machines and updated generic entry (get upstream as soon udev patch is integrated upstream)
-           * move touchscreen based TabletPCs to a common 'TABLET PCs' entry of the SaX2 'Touchscreen' section
-           * fixed SaX2 to handle ports/device path of touchscreen devices correctly (see this [[http://dkukawka.blogspot.com/2008/08/tabletpcs-new-machines-and-fixes-for.html|post]])
-           * updated udev and SaX2 packages available in [[http://download.opensuse.org/repositories/home:/dkukawka/|openSUSE Build Service]]
-           * now SaX2 supports also these machines:
-            * Clevo TN120R (a.k.a Nexoc Osiris S621) 
-            * Gateway C-120X and E-155C (USB)
-            * Gateway C-140X and E-295C (Serial)
-            * Gateway C210X (Serial fpit)
-            * HP Compaq 2710p/2730p
-            * HP Pavilion tx2000 series (USB)
-            * HP Pavilion tx2100 series (USB)
-            * HP Pavilion tx2500 series (USB)
-            * HP TC4400 (Serial)
-            * LG LT20 Tablet PC (Serial)
-            * LG C1 (Serial, fujitouch)
-            * Panasonic Toughbook CF-18 (Serial)
-            * Samsung Q1-Ultra (evtouch)
-            * Toshiba Portégé M series Tablet PC (Serial)
-            * Toshiba Satellite R15/R20 (Serial)
-            * Toshiba Tecra M series Tablet PC (Serial)</p>
+        <p>Report currently not supported machines to <a href="http://en.opensuse.org/User:Dkukawka">Danny Kukawka</a> with everything you needed to change in you xorg.conf. If you needed to calibrate your tablet (e.g. via wacomcpl), send also the calibration data/information. Also the output of lshal would help.</p>
+        <p>__Status:__</p>
+        <ul>
+        <li>patched udev to add persistent by-id links (submitted upstream)</li>
+        <li>install udev rules of evtouch, added one more machine to the rules</li>
+        <li>extended SaX2 cdb with new machines and updated generic entry (get upstream as soon udev patch is integrated upstream)</li>
+        <li>move touchscreen based TabletPCs to a common 'TABLET PCs' entry of the SaX2 'Touchscreen' section</li>
+        <li>fixed SaX2 to handle ports/device path of touchscreen devices correctly (see this <a href="http://dkukawka.blogspot.com/2008/08/tabletpcs-new-machines-and-fixes-for.html">post</a>)</li>
+        <li>updated udev and SaX2 packages available in <a href="http://download.opensuse.org/repositories/home:/dkukawka/">openSUSE Build Service</a></li>
+        <li>now SaX2 supports also these machines:</li>
+        <li>Clevo TN120R (a.k.a Nexoc Osiris S621) </li>
+        <li>Gateway C-120X and E-155C (USB)</li>
+        <li>Gateway C-140X and E-295C (Serial)</li>
+        <li>Gateway C210X (Serial fpit)</li>
+        <li>HP Compaq 2710p/2730p</li>
+        <li>HP Pavilion tx2000 series (USB)</li>
+        <li>HP Pavilion tx2100 series (USB)</li>
+        <li>HP Pavilion tx2500 series (USB)</li>
+        <li>HP TC4400 (Serial)</li>
+        <li>LG LT20 Tablet PC (Serial)</li>
+        <li>LG C1 (Serial, fujitouch)</li>
+        <li>Panasonic Toughbook CF-18 (Serial)</li>
+        <li>Samsung Q1-Ultra (evtouch)</li>
+        <li>Toshiba Portégé M series Tablet PC (Serial)</li>
+        <li>Toshiba Satellite R15/R20 (Serial)</li>
+        <li>Toshiba Tecra M series Tablet PC (Serial)</li>
+        </ul>
         <h2>People</h2>
         <p>Danny Kukawka originated this idea. He is currently working on implementing this idea.</p>
         <h2>Related Materials</h2>
-        <p>* [[http://linuxwacom.sourceforge.net/|Linux Wacom Project]]</p>
-        <p>* [[http://en.opensuse.org/TabletPCs|openSUSE TabletPC wiki page]]</p>
-        <p>* [[http://dkukawka.blogspot.com/search/label/TabletPC|Danny's blog with status info about openSUSE TabletPC support]]</p>
+        <ul>
+        <li><a href="http://linuxwacom.sourceforge.net/">Linux Wacom Project</a></li>
+        </ul>
+        <ul>
+        <li><a href="http://en.opensuse.org/TabletPCs">openSUSE TabletPC wiki page</a></li>
+        </ul>
+        <ul>
+        <li><a href="http://dkukawka.blogspot.com/search/label/TabletPC">Danny's blog with status info about openSUSE TabletPC support</a></li>
+        </ul>
       </div>
     </div>
   </div>

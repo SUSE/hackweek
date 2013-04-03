@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -40,21 +40,23 @@
       </div>
       <div id='wrapper-content'>
         <p><b>Tags:</b> Idea</p>
-        <h2>Description</h2>
-        <p>Recent genisoimage has this support for files bigger than 2 GB:</p>
-        <p>-allow-limited-size</p>
-        <p>When processing files larger than 2GiB which cannot be easily represented in ISO9660, add them  with  a
-        shrunk  visible  file  size  to  ISO9660  and with the correct visible file size to the UDF system. The
-        result is an inconsistent filesystem and users need to make sure that they really use UDF  rather  than
-        ISO9660 driver to read a such disk. Implies enabling -udf.</p>
-        <p>This can be further improved:
-          * add option to write only the UDF filesystem
-          * implement multi-extent files (ISO9660 level 3)</p>
-        <h2>People</h2>
-        <p>Vladimir Nadvornik originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
-        <h2>Related Materials</h2>
-        <p>http://cdrkit.org/</p>
-        <p>http://en.wikipedia.org/wiki/ISO_9660</p>
+<h2>Description</h2>
+<p>Recent genisoimage has this support for files bigger than 2 GB:</p>
+<p>-allow-limited-size</p>
+<p>When processing files larger than 2GiB which cannot be easily represented in ISO9660, add them  with  a
+shrunk  visible  file  size  to  ISO9660  and with the correct visible file size to the UDF system. The
+result is an inconsistent filesystem and users need to make sure that they really use UDF  rather  than
+ISO9660 driver to read a such disk. Implies enabling -udf.</p>
+<p>This can be further improved:</p>
+<ul>
+<li>add option to write only the UDF filesystem</li>
+<li>implement multi-extent files (ISO9660 level 3)</li>
+</ul>
+<h2>People</h2>
+<p>Vladimir Nadvornik originated this idea.  No one is currently working on implementing this idea (it's up for grabs!).</p>
+<h2>Related Materials</h2>
+<p>http://cdrkit.org/</p>
+<p>http://en.wikipedia.org/wiki/ISO_9660</p>
       </div>
     </div>
   </div>

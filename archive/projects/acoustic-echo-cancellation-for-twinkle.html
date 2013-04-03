@@ -2,14 +2,14 @@
   <title>
     SUSE Hack Week - Past Project
   </title>
-  <link href='../../images/favicon.gif' rel='shortcut icon'>
-  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css'>
+  <link href='../../images/favicon.gif' rel='shortcut icon' />
+  <link href='../../css/hackweek-single-page.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
   <div id='navigation'>
     <li class='logo invert' id='start-link'>
       <a href='../../index.html'>
-        <img border='0' height='52' src='../../images/px.gif' width='112'>
+        <img border='0' height='52' src='../../images/px.gif' width='112' />
       </a>
     </li>
     <li class='invert' id='what-is-link'>
@@ -40,16 +40,16 @@
       </div>
       <div id='wrapper-content'>
         <p><b>Tags:</b> Desktop, openSUSE, SLED, Done, sound, telephony</p>
-        <h2>Description</h2>
-        <p>Twinkle, a popular and robust SIP softphone for Linux, is lacking two features that would make it much more useful in real life usage scenarios:</p>
-        <p>Acoustic echo cancellation removes echo created by local loopback between speakers and microphone, an artifact which can be very annoying in conference calls. If implemented properly, it allows a user to have loudspeakers and a desktop microphone in contrast to a headset or handset that are required without it. That then would allow for a speakerphone-like setup with multiple participants in a single room.</p>
-        <p>G.711 is an uncompressed, companded format for transferring audio data. It doesn't have any intrinsic packet loss protection and the current Twinkle implementation will simply insert silence in place of missing packets, which causes significant voice quality degradation on lossy connections. Packet loss concealment is a method that can fill-in the missing audio data based on previous packets. With packet loss the audio is degraded, but it is intelligible when packet loss concealment is enabled.</p>
-        <h2>People</h2>
-        <p>Vojtech Pavlik originated this idea. He'll also start hacking on it. People are welcome to join/help.</p>
-        <h2>Related Materials</h2>
-        <p>The Speex library includes an easy to integrate implementation of AEC.
-        The SpanDSP library includes a packet loss concealment implementation.</p>
-        <p>Both these libraries are open source.</p>
+<h2>Description</h2>
+<p>Twinkle, a popular and robust SIP softphone for Linux, is lacking two features that would make it much more useful in real life usage scenarios:</p>
+<p>Acoustic echo cancellation removes echo created by local loopback between speakers and microphone, an artifact which can be very annoying in conference calls. If implemented properly, it allows a user to have loudspeakers and a desktop microphone in contrast to a headset or handset that are required without it. That then would allow for a speakerphone-like setup with multiple participants in a single room.</p>
+<p>G.711 is an uncompressed, companded format for transferring audio data. It doesn't have any intrinsic packet loss protection and the current Twinkle implementation will simply insert silence in place of missing packets, which causes significant voice quality degradation on lossy connections. Packet loss concealment is a method that can fill-in the missing audio data based on previous packets. With packet loss the audio is degraded, but it is intelligible when packet loss concealment is enabled.</p>
+<h2>People</h2>
+<p>Vojtech Pavlik originated this idea. He'll also start hacking on it. People are welcome to join/help.</p>
+<h2>Related Materials</h2>
+<p>The Speex library includes an easy to integrate implementation of AEC.
+The SpanDSP library includes a packet loss concealment implementation.</p>
+<p>Both these libraries are open source.</p>
       </div>
     </div>
   </div>
