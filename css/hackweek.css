@@ -341,8 +341,9 @@ span:hover{
 }
 #news{
     background-color: #fcfdfe;
-    z-index: 20;
+    z-index: 45;
     position: relative;
+    min-height: 920px;
 }
 #news-title{
     margin: 0 auto;
@@ -352,21 +353,77 @@ span:hover{
     font-size: 25px;
     text-align: center;
 }
-#social-content{
-    width: 625px;
-    position: absolute;
-    bottom: 20px;
+#news-wrapper{
     left: 50%;
-    margin-left: -312.5px;
+    width: 840px;
+    position: absolute;
+    bottom: 0;
+    margin-left: -420px;
 }
-#twitter-stream{
-    display: inline;
-    width: 290px;
-    height: 375px;
+#news-content{
+    background-color: #f4f4f4;
+    color: #333333;
+    float: left;
+    font-family: 'Droid Sans',sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    margin-left: 50px;
+    margin-top: 50px;
+    min-height: 800px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: left;
+    width: 400px;
+}
+#news-content a, a:visited{
+    color: #7AC142;
+    text-decoration: none;
+}
+#news-content a:hover{
+    color: #000;
+    text-decoration: underline;
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    transition:.2s;
+}
+#news-content span{
+    display: block;
+}
+#news-content .article{
+    margin-bottom: 20px;
+}
+#news-content .date{
+    padding-top:20px;
+    font-size: 14px;
+    font-style: italic;
+}
+#news-content .title{
+    font-size: 20px;
+    padding-top:5px;
+    font-weight: bold;
+}
+#news-content .text{
+    padding-top:5px;
+    font-weight: normal;
+}
+#news-content .source{
+    padding-top:5px;
+    font-weight: bold;
+    font-size: 14px;
+}
+#social-content{
+    float: left;
+    margin-top: 50px;
+    padding-left: 60px;
 }
 #flickr{
-    display: inline;
-    margin-left: 30px;
+    padding-bottom: 36px;
+}
+#twitter-stream{
+    position: absolute;
+    bottom: 20px;
 }
 #agenda{
     background-color: #d4df4c;
