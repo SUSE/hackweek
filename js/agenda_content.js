@@ -8,7 +8,10 @@ var agenda_content = {
 ### 07:00 Start of Hack Week\n\
 * Get your keyboards ready \n\
 * Team up with your collaborators \n\
+* Put your project in the list\n\
+* Get a T-Shirt \n\
 * Start hacking \n\
+* Piece of cake\n\
 # Afternoon \n\
 ### 16:00 Surprise\n\
 * Watch out for details \n\
@@ -17,7 +20,7 @@ var agenda_content = {
 <br>\n\
 <br>\n\
 <br>\n\
-<em>subject to change and more to come...</em>\n\
+<em>subject to change ...</em>\n\
 ",
     "tuesday": "\
 <br>\n\
@@ -26,12 +29,13 @@ var agenda_content = {
 # Morning \n\
 ### 10:00 - 11:00 Breakfast\n\
 * Yummy food in the all-hands area \n\
+  (The tranditional buffet)\n\
 # All day \n\
 * Hacking like crazy \n\
 <br>\n\
 <br>\n\
 <br>\n\
-<em>subject to change and more to come...</em>\n\
+<em>subject to change, watch out...</em>\n\
 ",
     "wednesday": "\
 <br>\n\
@@ -40,12 +44,13 @@ var agenda_content = {
 # Afternoon \n\
 ### 15:00 Hacking is sweet\n\
 * Watch out for details \n\
+* Do not hide\n\
 # All day \n\
 * Hacking like crazy \n\
 <br>\n\
 <br>\n\
 <br>\n\
-<em>subject to change and more to come...</em>\n\
+<em>subject to change, check again soon ...</em>\n\
 ",
     "thursday": "\
 <br>\n\
@@ -59,14 +64,16 @@ var agenda_content = {
 <br>\n\
 <br>\n\
 <br>\n\
-<em>subject to change and more to come...</em>\n\
+<em>subject to change, as usual ...</em>\n\
 ",
     "friday": "\
 <br>\n\
 <br>\n\
 <br>\n\
+* Update your wiki entry
 # Noon \n\
 ### 12:00 Last sprint\n\
+* Snacks at the All-Hands \n\
 * Watch out for details \n\
 # Afternoon \n\
 ### 13:00 - 13:45 Lightning talks\n\
@@ -80,7 +87,7 @@ var agenda_content = {
 <br>\n\
 <br>\n\
 <br>\n\
-<em>subject to change and more to come...</em>\n\
+<em>hack on, next time...</em>\n\
   "},
   
   "provo": {
