@@ -11,10 +11,11 @@ var agenda_content = {
 * Put your project in the list\n\
 * Get a T-Shirt \n\
 * Start hacking \n\
-* Piece of cake\n\
+### 10:00 Muffins and 'Schnecken' \n\
+* Place to be: All-Hands area
 # Afternoon \n\
-### 16:00 Surprise\n\
-* Watch out for details \n\
+### 15:00 Surprise (Piece of cake!)\n\
+* Place to be: All-Hands area\n\
 # All day \n\
 * Hacking like crazy \n\
 <br>\n\
