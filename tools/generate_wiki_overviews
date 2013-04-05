@@ -86,8 +86,12 @@ Dir.entries( wiki_dir ).each do |entry|
   add_page tag_list, tags, page
 end
 
+disclaimer = "\n*This page was auto-generated on #{Time.now}.*\n"
+
 intro = "Browse projects and ideas by categories.\n"
+intro += disclaimer
 write_overview wiki_dir, "Categories", intro, category_list
 
 intro = "Browse projects and ideas by tags.\n"
+intro += disclaimer
 write_overview wiki_dir, "Tags", intro, tag_list
