@@ -12,7 +12,7 @@ var agenda_content = {
 * Get a T-Shirt \n\
 * Start hacking \n\
 ### 10:00 Muffins and 'Schnecken' \n\
-* Place to be: All-Hands area
+* Place to be: All-Hands area \n\
 # Afternoon \n\
 ### 15:00 Surprise (Piece of cake!)\n\
 * Place to be: All-Hands area\n\
@@ -29,8 +29,8 @@ var agenda_content = {
 <br>\n\
 # Morning \n\
 ### 10:00 - 11:00 Breakfast\n\
-* Yummy food in the all-hands area \n\
-  (The tranditional buffet)\n\
+* Yummy food in the all-hands area<br />\n\
+  (The traditional buffet)\n\
 # All day \n\
 * Hacking like crazy \n\
 <br>\n\
@@ -71,7 +71,7 @@ var agenda_content = {
 <br>\n\
 <br>\n\
 <br>\n\
-* Update your wiki entry
+* Update your wiki entry\n\
 # Noon \n\
 ### 12:00 Last sprint\n\
 * Snacks at the All-Hands \n\
