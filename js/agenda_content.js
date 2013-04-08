@@ -30,8 +30,10 @@ var agenda_content = {
 # Morning \n\
 ### 9:30 - 12:00 Breakfast\n\
 * Yummy food in the all-hands area<br />\n\
-  Croissaints, dazu Butterflocken und Honig/Marmelade/Nutella;\n\
-  belegte Brötchen mit Braten, Schinken, Salami, Käse.\n\
+  Croissaints, dazu Butterflocken und <br />\n\
+  Honig/Marmelade/Nutella;<br />\n\
+  belegte Br&ouml;tchen mit Braten, <br />\n\
+  Schinken, Salami, K&auml;se.\n\
 # All day \n\
 * Hacking like crazy \n\
 <br>\n\
