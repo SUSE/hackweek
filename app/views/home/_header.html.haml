@@ -1,0 +1,8 @@
+.nav
+  = link_to "Home", "/"
+  - if @current_user
+    = link_to @current_user.name, :controller => "users", :action => "me"
+    = link_to "Log out", :controller => "account", :action => "logout"
+  - else
+    = link_to "Log in", :controller => "account", :action => "login"
+    

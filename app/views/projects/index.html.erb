@@ -1,3 +1,5 @@
+<%= render :partial => "home/header" %>
+
 <h1>Listing projects</h1>
 
 <table>
@@ -12,7 +14,12 @@
 
 <% @projects.each do |project| %>
   <tr>
-    <td><%= project.originator ? project.originator.name : "<undefined>" %></td>
+    <%- if project.originator %>
+      <td><%= link_to project.originator.name, :controller => "users", :action => "show", :id => project.originator.id %></td>
+    <%- else %>
+      <td>&lt;undefined&gt;</td>
+    <%- end %>
+
     <td><%= project.title %></td>
     <td><%= project.description %></td>
     <td><%= link_to 'Show', project %></td>

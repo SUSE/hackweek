@@ -1,3 +1,5 @@
+= render :partial => "home/header"
+
 %h2 Hack Week Home
 
 %p Welcome to the Hack Week web site.
@@ -16,3 +18,4 @@
   - @current_user.projects.each do |project|
     %li
       = link_to project.title, project
+      

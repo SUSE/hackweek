@@ -1,4 +1,8 @@
 Hackweek::Application.routes.draw do
+ 
+  get "users/me"
+  match "users/:id", :to => "users#show"
+
   resources :projects
 
   get "home/index"
