@@ -12,6 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
-// Loads all Bootstrap javascripts
-//= require bootstrap
+//= require wterm.jquery.js
+//= require jquery.cookie
+//= require jquery.rotate.js
+//= require agenda_content.js
+//= require projects_content.js
+//= require other_content.js
+//= require showdown.js
+//= require hackweek.js
+//= require terminal_logic.js
+//= require preloadCssImages.jQuery_v5.js

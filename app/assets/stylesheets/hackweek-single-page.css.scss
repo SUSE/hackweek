@@ -1,0 +1,188 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,300,400italic,500,500italic,700,700italic,900,900italic|Droid+Sans:400,700|Cutive+Mono|Abril+Fatface);
+html {
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+body {
+    margin: 0px;
+    background-color: #FFF;
+    font-family: 'Roboto', Droid Sans, sans-serif;
+    background: image-url('geeko-tile.png');
+    background-color: #222222;
+    background-repeat: repeat;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+}
+
+li {
+    list-style: none;
+    line-height: 25px;
+}
+a {
+ -o-transition:.2s;
+ -ms-transition:.2s;
+ -moz-transition:.2s;
+ -webkit-transition:.2s;
+ transition:.2s;   
+ color: #7ac142;
+ text-decoration: none;
+}
+a:hover {
+ -o-transition:.2s;
+ -ms-transition:.2s;
+ -moz-transition:.2s;
+ -webkit-transition:.2s;
+ transition:.2s; 
+ text-decoration: underline;
+ color: #d4df4c;
+}
+span:hover{
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    transition:.2s;
+}
+#navigation {
+    margin-left: 20px;
+    margin-top: 20px;
+    text-align: left;
+    position: fixed;
+    z-index: 100;
+    color: #000;
+    font-size: 15px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+#navigation .active{
+    font-weight: bold;
+}
+
+#navigation .invert{
+    color: #fff;
+}
+#navigation a{
+    color: #FFF;
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    transition:.2s;
+    font-weight: bold;
+}
+#navigation a:hover{
+    color: #7ac142;
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    transition:.2s;
+    font-weight: bold;
+    text-decoration: none;
+}
+#start-link{
+    height: 80px;
+}
+.logo{
+    background: image-url('suse-logo-color.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+.logo-black{
+    background: image-url('suse-logo-black.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+.logo.invert{
+    background: image-url('suse-logo-white.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+#start{
+    
+    position: relative;
+    z-index: 1;
+}
+#start-wrapper{
+    position: absolute;
+    margin: 0 auto;
+    width:100%;
+    height:100%;
+}
+#start-menu{
+    position: inherit;
+    right: 50%;
+    display: none;
+}
+.menu-border{
+    margin-top: 0;
+    margin-right: 4px;
+    height:35px;
+    border-left: 1px solid rgba(255,255,255, 0.3);
+    border-bottom: 1px solid rgba(255,255,255, 0.3);
+    border-right: 1px solid rgba(255,255,255, 0.3);
+    float: left;
+    cursor: pointer;
+}
+.menu-black-bg{
+    background-color: #000;
+    height: 31px;
+    margin-left: 4px;
+    margin-right: 4px;
+    color: #FFF;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+.start-menu-item{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 6px;
+}
+.start-menu-item:hover{
+    color: #7ac142;
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    transition:.2s;
+}
+#wrapper{
+    color: #fff;
+    max-width: 960px;
+    margin: 0 auto 0 200px;
+}
+
+#wrapper-title {
+    background-color: #D4DF4C;
+    color: #222222;
+    float: left;
+    font-family: 'Droid Sans',sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: left;
+}
+#wrapper-title h1 {
+    font-size: 30px;
+    margin-top: 11px;
+}
+.sub-title{
+    margin-top: -18px;
+}
+#wrapper-content {
+    margin-top: 10px;
+    display: inline-block;
+    width: 100%;
+}
+#wrapper-content li {
+    line-height: 25px;
+    list-style: inherit;
+}
+h2 {
+    color:#D4DF4C;
+}
