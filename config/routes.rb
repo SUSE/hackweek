@@ -6,6 +6,9 @@ Hackweek::Application.routes.draw do
   resources :projects
 
   get "home/index"
+  get "home/awards"
+  get "home/howto"
+
 
   match '/auth/:provider/callback', :to => 'account#callback'
   match '/auth/failure', :to => 'account#failure'
