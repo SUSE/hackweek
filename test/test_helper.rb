@@ -10,4 +10,10 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  def login user
+    @request.session[:user_id] = user.id
+    @controller.instance_variable_set('@current_user', user)
+  end
+
 end

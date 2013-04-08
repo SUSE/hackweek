@@ -2,6 +2,8 @@ require 'test_helper'
 
 class ProjectsControllerTest < ActionController::TestCase
   setup do
+    login users(:one)
+    
     @project = projects(:one)
   end
 
@@ -18,8 +20,10 @@ class ProjectsControllerTest < ActionController::TestCase
 
   test "should create project" do
     assert_difference('Project.count') do
-      post :create, project: { description: @project.description, name: @project.name, title: @project.title }
+      post :create, project: { description: @project.description, title: @project.title }
     end
+    
+    assert_equal users(:one), assigns(:project).originator
 
     assert_redirected_to project_path(assigns(:project))
   end
@@ -35,7 +39,7 @@ class ProjectsControllerTest < ActionController::TestCase
   end
 
   test "should update project" do
-    put :update, id: @project, project: { description: @project.description, name: @project.name, title: @project.title }
+    put :update, id: @project, project: { description: @project.description, title: @project.title }
     assert_redirected_to project_path(assigns(:project))
   end
 

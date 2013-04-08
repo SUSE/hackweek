@@ -1,11 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  uid: MyString
-  name: MyString
-  email: MyString
-
-two:
-  uid: MyString
-  name: MyString
-  email: MyString
+  id: 1
+  uid: http://example.com/open_id_id
+  name: "Hans Wurst"
+  email: "hw@example.com"

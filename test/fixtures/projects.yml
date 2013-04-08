@@ -1,11 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
   title: MyString
   description: MyText
+  originator_id: 1
 
 two:
-  name: MyString
   title: MyString
   description: MyText
+  originator_id: 1
+  

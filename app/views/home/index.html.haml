@@ -8,3 +8,10 @@
 %p
   %em
     Logged in as #{@current_user.name} (#{@current_user.email})
+
+%h3 Projects
+
+%ul
+  - @current_user.projects.each do |project|
+    %li
+      = link_to project.title, project

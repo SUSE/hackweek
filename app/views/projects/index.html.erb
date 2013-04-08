@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>Name</th>
+    <th>Originator</th>
     <th>Title</th>
     <th>Description</th>
     <th></th>
@@ -12,7 +12,7 @@
 
 <% @projects.each do |project| %>
   <tr>
-    <td><%= project.name %></td>
+    <td><%= project.originator ? project.originator.name : "<undefined>" %></td>
     <td><%= project.title %></td>
     <td><%= project.description %></td>
     <td><%= link_to 'Show', project %></td>
