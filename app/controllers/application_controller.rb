@@ -19,7 +19,11 @@ class ApplicationController < ActionController::Base
     if !user_id
       @current_user = nil
     else
-      @current_user = 42
+      begin
+        @current_user = User.find user_id
+      rescue ActiveRecord::RecordNotFound
+        @current_user = nil
+      end
     end
   end
 end

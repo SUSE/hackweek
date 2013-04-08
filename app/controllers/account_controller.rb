@@ -16,7 +16,18 @@ class AccountController < ApplicationController
     name = auth_hash[:info][:name]
     email = auth_hash[:info][:email]
 
-    session[:user_id] = 1
+    user = User.find_by_uid uid
+
+    if user.nil?
+      user = User.new(:uid => uid)
+    end
+
+    user.name = name unless name.blank?
+    user.email = email unless email.blank?
+
+    user.save!
+
+    session[:user_id] = user.id
 
     flash[:notice] = "Welcome #{name}"
     
