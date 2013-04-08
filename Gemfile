@@ -24,22 +24,6 @@ end
 gem 'jquery-rails'
 gem 'cancan'
 gem 'haml'
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
-
-gem 'haml'
 gem 'omniauth'
 gem 'omniauth-openid'
+gem 'gravtastic'

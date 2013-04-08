@@ -6,6 +6,7 @@
   = link_to "Projects", :controller => "projects"
 
 %p
+  = image_tag @current_user.gravatar_url
   %em
     Logged in as #{@current_user.name} (#{@current_user.email})
 
