@@ -102,7 +102,7 @@
     <div id="what-is" class="page-size">
         <div id="what-is-content">
             <div id="what-is-title">
-                Hack Week is the week where SUSE engineers can experiment without limits.<br>This is the opportunity to innovate, collaborate across teams, and learn.<br><a href="howto.html">Read more...</a>
+                Hack Week is the week where SUSE engineers can experiment without limits.<br>This is the opportunity to innovate, collaborate across teams, and learn.<br><%= link_to "Read more....", :controller => "home", :action => "howto" %>
             </div>
             <div id="what-is-2row">
                 <div id="hackweek-logos">
@@ -116,7 +116,7 @@
 
                     <p>We are using this web site to coordinate our work. There is a place where you can enter and discuss your ideas, find collaborators for projects, and find inspiration. Browse through the ideas already entered, create your own, and edit, improve and discuss already existing ones.</p>
 
-                    <p>There will be <a href="awards.html">awards</a> for the best ideas, the craziest adventures, and the most valuable contributions. Stay tuned for more details.</p>
+                    <p>There will be <%= link_to 'awards', :controller => 'home', :action => 'awards' %> for the best ideas, the craziest adventures, and the most valuable contributions. Stay tuned for more details.</p>
 
                     <p>This is mostly a SUSE event but we're an open source company, and so what we do is publicly visible and available. We do invite the interest and participation of the community.</p>
                 </div>
