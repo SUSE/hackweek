@@ -268,16 +268,16 @@
               
             </div>
             <div id="lock">
-            <a href="https://github.com/SUSE/hackweek/wiki#creating-project-pages"><%= image_tag "px.gif", :width => "110", :height => "195" %></a>
+              <a href="https://github.com/SUSE/hackweek/wiki#creating-project-pages"><%= image_tag "px.gif", :width => "110", :height => "195" %></a>
             </div>
             <div id="create">
-              <a id="link" href="https://github.com/SUSE/hackweek/wiki#creating-project-pages"><%= image_tag "px.gif" %></a>
+              <%= link_to( image_tag("px.gif"), { :controller => "projects", :action => "new" }, :id => "link" ) %>
             </div>
             <div id="past">
-                <a id="link" href="http://hackweek.suse.com/archive/projects/"><%= image_tag "px.gif" %></a>
+              <a id="link" href="http://hackweek.suse.com/archive/projects/"><%= image_tag "px.gif" %></a>
             </div>
             <div id="current">
-              <a id="link" href="https://github.com/SUSE/hackweek/wiki/_pages"><%= image_tag "px.gif" %></a>
+              <%= link_to( image_tag("px.gif"), { :controller => "projects" }, :id => "link" ) %>
             </div>
             <div id="more_info">
               <a id="link" href="https://github.com/SUSE/hackweek/wiki"><%= image_tag "px.gif" %></a>
