@@ -1,0 +1,10 @@
+%h2 Hack Week Home
+
+%p Welcome to the Hack Week web site.
+
+%p
+  = link_to "Projects", :controller => "projects"
+
+%p
+  %em
+    Logged in as #{@current_user.name} (#{@current_user.email})
