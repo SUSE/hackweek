@@ -28,9 +28,10 @@ var agenda_content = {
 <br>\n\
 <br>\n\
 # Morning \n\
-### 10:00 - 11:00 Breakfast\n\
+### 9:30 - 12:00 Breakfast\n\
 * Yummy food in the all-hands area<br />\n\
-  (The traditional buffet)\n\
+  Croissaints, dazu Butterflocken und Honig/Marmelade/Nutella;\n\
+  belegte Brötchen mit Braten, Schinken, Salami, Käse.\n\
 # All day \n\
 * Hacking like crazy \n\
 <br>\n\
