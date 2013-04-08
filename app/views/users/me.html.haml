@@ -5,12 +5,12 @@
 %p Welcome to the Hack Week web site.
 
 %p
-  = link_to "Projects", :controller => "projects"
-
-%p
   = image_tag @current_user.gravatar_url
   %em
     Logged in as #{@current_user.name} (#{@current_user.email})
+
+%p
+  = link_to "Show my public page", :action => "show", :id => @current_user.id
 
 %h3 Projects
 
