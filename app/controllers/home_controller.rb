@@ -1,12 +1,13 @@
 class HomeController < ApplicationController
+  layout "home"
   def index
   end
   
   def awards
-    render :layout => "home_single"
+    render :layout => "application"
   end
 
   def howto
-    render :layout => "home_single"
+    render :layout => "application"
   end
 end

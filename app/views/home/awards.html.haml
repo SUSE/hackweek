@@ -1,48 +1,34 @@
-#navigation
-  %li#start-link.logo.invert
-    %a{:href => "index.html"}
-      = image_tag  "px.gif", :border => "0", :height => "52", :width => "112"
-  %li#what-is-link
-    = link_to "What is Hack week?", :controller => "home", :anchor => "what-is"
-  %li#agenda-link.invert
-    = link_to "Agenda", :controller => "home", :anchor => "agenda"
-  %li#projects-link.invert
-    = link_to "Projects", :controller => "home", :anchor => "projects"
-  %li#projects-link.invert
-    = link_to "News", :controller => "home", :anchor => "news"
-  %li#where-link.invert
-    = link_to "Where?", :controller => "home", :anchor => "where"
-#content
-  #wrapper
-    #wrapper-title
-      %h1 Hack Week 9 Awards
-      %p.sub-title Awards for the best projects of Hack Week 9
-    #wrapper-content
-      %p
-        The Hack Week awards recognize the greatest, most promising, or craziest
-        projects and ideas of Hack Week. At Hack Week 9 we will give awards in the
-        following categories:
-      %ul
-        %li Best overall project
-        %li Best team effort
-        %li Best upstream contribution
-        %li Best openSUSE project
-        %li Best innovation
-        %li Most glorious failure
-        %li Best non-software project
-        %li Best picture
-        %li Best video
-      %p
-        The jury deciding about the awards is formed by the SUSE distinguished
-        engineers, Olaf Kirch, Michael Meeks, and Lars Marowsky-Br&eacute;e.
-      %p
-        We will have prizes for the winners of the awards. Two winners will get a
-        Chromebook, others will get vouchers for online shopping.
-      %p
-        Finally, the most promising projects will get additional hacking time to
-        continue on their projects, and make them ready for prime time as part of a
-        SUSE or openSUSE product.
-      %p
-        To be eligible for the awards please make sure that your project is listed on
-        the Hack Week Wiki, and it contains all the information and pointers to code
-        and other material, the jury will need to judge it.
+.row
+  .span12
+  %h1
+    Hack Week 9 Awards
+    %br
+    %small Awards for the best projects of Hack Week 9
+  %p
+    The Hack Week awards recognize the greatest, most promising, or craziest
+    projects and ideas of Hack Week. At Hack Week 9 we will give awards in the
+    following categories:
+    %ul
+      %li Best overall project
+      %li Best team effort
+      %li Best upstream contribution
+      %li Best openSUSE project
+      %li Best innovation
+      %li Most glorious failure
+      %li Best non-software project
+      %li Best picture
+      %li Best video
+  %p
+    The jury deciding about the awards is formed by the SUSE distinguished
+    engineers, Olaf Kirch, Michael Meeks, and Lars Marowsky-Br&eacute;e.
+  %p
+    We will have prizes for the winners of the awards. Two winners will get a
+    Chromebook, others will get vouchers for online shopping.
+  %p
+    Finally, the most promising projects will get additional hacking time to
+    continue on their projects, and make them ready for prime time as part of a
+    SUSE or openSUSE product.
+  %p
+    To be eligible for the awards please make sure that your project is listed on
+    the Hack Week Wiki, and it contains all the information and pointers to code
+    and other material, the jury will need to judge it.
