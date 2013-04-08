@@ -1,7 +1,9 @@
 class AccountController < ApplicationController
   
   skip_before_filter :login_required
-  
+
+  protect_from_forgery :except => :callback
+
   def login
   end
 
@@ -31,7 +33,7 @@ class AccountController < ApplicationController
 
     flash[:notice] = "Welcome #{name}"
     
-    redirect_to :action => "welcome"
+    redirect_back_or_default :action => "welcome"
   end
 
   def welcome
