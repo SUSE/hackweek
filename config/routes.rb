@@ -1,8 +1,12 @@
 Hackweek::Application.routes.draw do
   resources :projects
 
-
   get "home/index"
+
+  match '/auth/:provider/callback', :to => 'account#callback'
+  match '/auth/failure', :to => 'account#failure'
+
+  match ':controller/:action' => ":controller#:action"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

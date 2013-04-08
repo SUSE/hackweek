@@ -40,3 +40,5 @@ gem 'cancan'
 # gem 'debugger'
 
 gem 'haml'
+gem 'omniauth'
+gem 'omniauth-openid'
