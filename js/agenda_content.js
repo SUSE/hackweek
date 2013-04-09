@@ -46,6 +46,10 @@ var agenda_content = {
 <br>\n\
 <br>\n\
 # Afternoon \n\
+### 14:00 Hacking is jucy\n\
+* Come to the kitchen 2nd floor,\n\
+* get a glass of healthy vitamines,\n\
+\n\
 ### 15:00 Hacking is sweet\n\
 * Watch out for details \n\
 * Do not hide\n\
