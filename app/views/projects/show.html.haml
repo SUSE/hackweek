@@ -7,7 +7,21 @@
 
 %h3 People
 
-Project is up for grabs.
+- if @project.users.empty?
+  %p
+    Project is up for grabs.
+- else
+  %ul
+    - @project.users.each do |user|
+      %li
+        = image_tag @current_user.gravatar_url
+        = link_to user.name, :controller => "users", :action => "show", :id => user.id
+
+- if @project.users.include? @current_user
+  = button_to 'Leave', :action => "leave", :id => @project.id
+- else
+  = button_to 'Join', :action => "join", :id => @project.id
+
 
 %h3 Updates
 

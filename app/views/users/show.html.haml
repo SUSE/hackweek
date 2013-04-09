@@ -4,7 +4,14 @@
 %p
   = image_tag @user.gravatar_url
 
-%h3 Projects
+%h3 Originated Projects
+
+%ul
+  - @user.originated_projects.each do |project|
+    %li
+      = link_to project.title, project
+
+%h3 Active Projects
 
 %ul
   - @user.projects.each do |project|

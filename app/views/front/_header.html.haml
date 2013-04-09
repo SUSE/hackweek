@@ -1,6 +1,8 @@
 .nav
   = link_to "Home", "/"
   |
+  = link_to "All projects", :controller => "projects"
+  |
   - if @current_user
     = link_to @current_user.name, :controller => "users", :action => "me"
     |

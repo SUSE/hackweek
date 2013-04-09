@@ -5,3 +5,6 @@
 require File.expand_path('../config/application', __FILE__)
 
 Hackweek::Application.load_tasks
+
+gem 'single_test'
+SingleTest.load_tasks

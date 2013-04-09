@@ -7,7 +7,7 @@ class ProjectTest < ActiveSupport::TestCase
     
     title = "My Title"
     
-    project = user.projects.create( :title => title )
+    project = Project.create( :title => title, :originator => user )
     
     assert_equal title, project.title
     assert_equal user, project.originator
@@ -16,5 +16,17 @@ class ProjectTest < ActiveSupport::TestCase
     assert_equal user, project.updates.last.author
     assert_match /originated/,project.updates.last.text
   end
+  
+  test "user joins project" do
+    user = users(:one)
+    project = projects(:one)
 
+    assert_equal 0, project.users.count
+
+    project.users << user
+    
+    assert_equal 1, project.users.count
+    assert_equal user, project.users.last
+  end
+  
 end

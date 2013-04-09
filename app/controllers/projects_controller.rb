@@ -43,7 +43,9 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    @project = current_user.projects.create(params[:project])
+    @project = Project.new(params[:project])
+    @project.originator = current_user
+    @project.save!
 
     respond_to do |format|
       if @project.save
@@ -82,5 +84,21 @@ class ProjectsController < ApplicationController
       format.html { redirect_to projects_url }
       format.json { head :no_content }
     end
+  end
+  
+  def join
+    project = Project.find(params[:id])
+    project.users << current_user
+    project.save!
+    
+    redirect_to project
+  end
+
+  def leave
+    project = Project.find(params[:id])
+    project.users -= [ current_user ]
+    project.save!
+    
+    redirect_to project
   end
 end
