@@ -1,0 +1,21 @@
+%h2
+  = @project.title
+  
+%h3 Description
+
+= @project.description
+
+%h3 People
+
+Project is up for grabs.
+
+%h3 Updates
+
+- @project.updates.each do |update|
+  = "#{update.created_at}: #{update.text}"
+  
+%hr
+
+= link_to 'Edit', edit_project_path(@project)
+|
+= link_to 'All Projects', projects_path

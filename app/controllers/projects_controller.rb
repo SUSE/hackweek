@@ -43,8 +43,7 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(params[:project])
-    @project.originator = current_user
+    @project = current_user.projects.create(params[:project])
 
     respond_to do |format|
       if @project.save
