@@ -1,0 +1,25 @@
+%h2 Edit user information
+
+= form_for(@current_user) do |f|
+  - if @current_user.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@current_user.errors.count, "error")
+        prohibited this project from being saved:
+
+      %ul
+      - @current_user.errors.full_messages.each do |msg|
+        %li
+          = msg
+  .field
+    = f.label :name
+    <br />
+    = f.text_field :name
+    
+  .field
+    = f.label :email
+    <br />
+    = f.text_field :email
+    
+  .actions
+    = f.submit
