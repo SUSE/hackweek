@@ -1,33 +1,6 @@
 %h2 All projects
 
-%table
-  %thead
-    %tr
-      %th Originator
-      %th Title
-      %th Description
-      %th
-      %th
-      %th
-  %tbody
-    - @projects.each do |project|
-      %tr
-        - if project.originator
-          %td
-            = link_to project.originator.name, :controller => "users", :action => "show", :id => project.originator.id
-        - else
-          %td
-            &lt;undefined&gt;
-        %td
-          = project.title
-        %td 
-          = project.description
-        %td
-          = link_to 'Show', project
-        %td
-          = link_to 'Edit', edit_project_path(project)
-        %td
-          = link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }
+= render :partial => "projects/list", :locals => {:projects => @projects }
 
 %hr
 
