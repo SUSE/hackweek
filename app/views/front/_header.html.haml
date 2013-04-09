@@ -5,7 +5,7 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to({:controller => "home"}, {:name => "top", :class => "brand"}) do
+      = link_to({:controller => "front"}, {:name => "top", :class => "brand"}) do
         %i.icon-home.icon-2x
       .nav-collapse.collapse
         %ul.nav
@@ -29,21 +29,21 @@
                 %label{:style => "text-align:center;margin-top:5px"} or
                 = link_to "Log in with Google", "/auth/google", :class => "btn btn-primary btn-block"
       - if @current_user
-        .btn-group.pull-right
-          %a.btn.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-            %i.icon-user
-            = @current_user.name
-            %span.caret
-          %ul.dropdown-menu
-            %li
-              = link_to(:controller => "users", :action => "me") do
-                %i.icon-wrench
-                = @current_user.name
-            %li.divider
-            %li
-              = link_to(:controller => "account", :action => "logout") do
-                %i.icon-share
-                Log out
+        %ul.nav.pull-right
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              = image_tag(@current_user.gravatar_url(:size => "32"), :title => "Yo #{@current_user.name}!")
+              %i.icon-angle-down
+            %ul.dropdown-menu{:style => "padding: 15px;"}
+              %li
+                = link_to(:controller => "users", :action => "me") do
+                  %i.icon-wrench
+                  = @current_user.name
+              %li.divider
+              %li
+                = link_to(:controller => "account", :action => "logout") do
+                  %i.icon-share
+                  Log out
       / /.nav-collapse
     / /.container-fluid
   / /.navbar-inner
