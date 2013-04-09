@@ -18,7 +18,7 @@
 //= require projects_content.js
 //= require other_content.js
 //= require showdown.js
-//= require hackweek.js
+//= require hackweek9.js
 //= require terminal_logic.js
 //= require preloadCssImages.jQuery_v5.js
 

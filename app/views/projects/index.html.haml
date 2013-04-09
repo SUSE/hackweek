@@ -1,7 +1,5 @@
-%h2 All projects
-
-= render :partial => "projects/list", :locals => {:projects => @projects }
-
-%hr
-
-= link_to 'New Project', new_project_path
+.row
+  .span12
+    %h2 All projects
+    = render :partial => "projects/list", :locals => {:projects => @projects }
+    = link_to 'New Project', new_project_path

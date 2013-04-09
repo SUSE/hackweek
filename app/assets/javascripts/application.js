@@ -12,4 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-hotkeys
 //= require bootstrap
+//= require bootstrap-wysiwyg
+//= require hackweek

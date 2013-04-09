@@ -12,8 +12,8 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
+    = render :partial => "front/header"
     .container
-      = render :partial => "front/header"
       = yield
       :javascript
         if(window.location.href.indexOf("hackweek.suse.com") > 0) {

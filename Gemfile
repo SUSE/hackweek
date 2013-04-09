@@ -23,6 +23,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery-hotkeys-rails'
 gem 'cancan'
 gem 'haml'
 gem 'redcarpet'

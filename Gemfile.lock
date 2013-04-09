@@ -58,6 +58,8 @@ GEM
       railties (>= 3.2.0, < 5.0)
       thor (~> 0.14)
       version (~> 1.0)
+    jquery-hotkeys-rails (0.7.9)
+      railties (~> 3.1)
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -140,6 +142,7 @@ DEPENDENCIES
   gravtastic
   haml
   jquery-cookie-rails
+  jquery-hotkeys-rails
   jquery-rails
   omniauth
   omniauth-openid
