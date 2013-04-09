@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class HomeControllerTest < ActionController::TestCase
+class FrontControllerTest < ActionController::TestCase
   
   def setup
     login users(:one)

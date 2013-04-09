@@ -13,7 +13,7 @@
     = csrf_meta_tags
   %body
     .container
-      = render :partial => "home/header"
+      = render :partial => "front/header"
       = yield
       :javascript
         if(window.location.href.indexOf("hackweek.suse.com") > 0) {

@@ -1,8 +1,8 @@
-class HomeController < ApplicationController
+class FrontController < ApplicationController
   
   skip_before_filter :login_required
   
-  layout "home"
+  layout "front"
 
   def index
   end
