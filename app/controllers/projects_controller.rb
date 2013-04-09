@@ -89,16 +89,14 @@ class ProjectsController < ApplicationController
   
   def join
     project = Project.find(params[:id])
-    project.users << current_user
-    project.save!
+    project.join! current_user
     
     redirect_to project
   end
 
   def leave
     project = Project.find(params[:id])
-    project.users -= [ current_user ]
-    project.save!
+    project.leave! current_user
     
     redirect_to project
   end

@@ -7,14 +7,14 @@ class ProjectTest < ActiveSupport::TestCase
     
     title = "My Title"
     
-    project = Project.create( :title => title, :originator => user )
+    project = Project.create!( :title => title, :originator => user, :description => "text" )
     
     assert_equal title, project.title
     assert_equal user, project.originator
     
     assert_equal 1, project.updates.count
     assert_equal user, project.updates.last.author
-    assert_match /originated/,project.updates.last.text
+    assert_match /originated/, project.updates.last.text
   end
   
   test "user joins project" do
@@ -23,10 +23,31 @@ class ProjectTest < ActiveSupport::TestCase
 
     assert_equal 0, project.users.count
 
-    project.users << user
+    project.join! user
     
     assert_equal 1, project.users.count
     assert_equal user, project.users.last
+
+    assert_equal 1, project.updates.count
+    assert_equal user, project.updates.last.author
+    assert_match /joined/, project.updates.last.text
+  end
+
+  test "user leaves project" do
+    user = users(:one)
+    project = projects(:one)
+
+    project.join! user
+    
+    assert_equal 1, project.users.count
+    
+    project.leave! user
+
+    assert_equal 0, project.users.count
+
+    assert_equal 2, project.updates.count
+    assert_equal user, project.updates.last.author
+    assert_match /left/, project.updates.last.text
   end
   
 end

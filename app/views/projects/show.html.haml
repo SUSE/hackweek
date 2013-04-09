@@ -25,8 +25,9 @@
 
 %h3 Updates
 
-- @project.updates.each do |update|
-  = "#{update.created_at}: #{update.text}"
+- @project.updates.reverse_each do |update|
+  %p
+    = "#{time_ago_in_words update.created_at} ago: #{update.text}"
   
 %hr
 
