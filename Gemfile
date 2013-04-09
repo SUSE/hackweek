@@ -25,6 +25,7 @@ end
 gem 'jquery-rails'
 gem 'cancan'
 gem 'haml'
+gem 'redcarpet'
 gem 'omniauth'
 gem 'omniauth-openid'
 gem 'gravtastic'
