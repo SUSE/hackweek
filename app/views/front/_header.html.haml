@@ -1,10 +1,51 @@
-.nav
-  = link_to "Home", "/"
-  |
-  - if @current_user
-    = link_to @current_user.name, :controller => "users", :action => "me"
-    |
-    = link_to "Log out", :controller => "account", :action => "logout"
-  - else
-    = link_to "Log in", :controller => "account", :action => "login"
-    
+.navbar.navbar-inverse
+  .navbar-inner
+    .container-fluid
+      %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to({:controller => "home"}, {:name => "top", :class => "brand"}) do
+        %i.icon-home.icon-2x
+      .nav-collapse.collapse
+        %ul.nav
+          %li
+            = link_to(:controller => "projects", :action => "index") do
+              %i.icon-file-alt.icon-2x
+              Projects
+          %li.divider-vertical
+      - unless @current_user
+        %ul.nav.pull-right
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              %i.icon-user.icon-2x
+              Sign In
+              %i.icon-angle-down
+            .dropdown-menu{:style => "padding: 15px; padding-bottom: 0px;"}
+              %form{"accept-charset" => "UTF-8", :action => "login", :method => "post"}
+                %input#username{:name => "username", :placeholder => "Username", :style => "margin-bottom: 15px;", :type => "text"}/
+                %input#password{:name => "password", :placeholder => "Password", :style => "margin-bottom: 15px;", :type => "password"}/
+                %input#sign-in.btn.btn-primary.btn-block{:type => "submit", :value => "Sign In"}/
+                %label{:style => "text-align:center;margin-top:5px"} or
+                = link_to "Log in with Google", "/auth/google", :class => "btn btn-primary btn-block"
+      - if @current_user
+        .btn-group.pull-right
+          %a.btn.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            %i.icon-user
+            = @current_user.name
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              = link_to(:controller => "users", :action => "me") do
+                %i.icon-wrench
+                = @current_user.name
+            %li.divider
+            %li
+              = link_to(:controller => "account", :action => "logout") do
+                %i.icon-share
+                Log out
+      / /.nav-collapse
+    / /.container-fluid
+  / /.navbar-inner
+/ /.navbar
+
