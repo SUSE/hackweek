@@ -1,0 +1,14 @@
+%h3
+  Works on the projects
+%ul
+  - user.projects.each do |project|
+    %li
+      = link_to({:controller => 'projects', :action => 'show', :id => project.id}) do
+        = project.title
+%h3
+  Originated the ideas
+%ul
+  - user.originated_projects.each do |project|
+    %li
+      = link_to({:controller => 'projects', :action => 'show', :id => project.id}) do
+        = project.title

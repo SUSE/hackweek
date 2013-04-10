@@ -4,19 +4,19 @@
     = flash[:notice]
 
 .row
-  .span12
-  %h3 Personal info
-  .profile-line
-    Name: #{@current_user.name}
-  .profile-line
-    Email: #{@current_user.email}
-  .profile-line
-    Profile image:
-    = image_tag @current_user.gravatar_url
-    (Taken from #{link_to "Gravatar", "http://gravatar.com"})
-    
-  = button_to "Edit", :action => "edit"
-  
-  %h3 Projects you're doing
-  = render :partial => "projects/list", :locals => {:projects => @current_user.projects }
+  .span12.sticky
+    .paper
+      %h3 Personal info
+      .profile-line
+        Name: #{@current_user.name}
+      .profile-line
+        Email: #{@current_user.email}
+      .profile-line
+        Profile image:
+        = image_tag @current_user.gravatar_url
+        (Taken from #{link_to "Gravatar", "http://gravatar.com"})
+        
+      = button_to "Edit", :action => "edit"
+
+      = render :partial => "projects", :locals => { :user => @current_user }
 
