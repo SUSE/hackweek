@@ -9,7 +9,7 @@ class ProjectImporterTest < ActiveSupport::TestCase
     end
   end
   
-  test "import" do
+  test "import projects" do
     
     json = <<EOT
 {
@@ -93,4 +93,91 @@ EOT
     end
   end
 
+  test "import users" do
+
+    json = <<EOT
+{
+  "people": [
+    {
+      "name": "Adam Spiers"
+    },
+    {
+      "name": "Adrian Schroeter"
+    },
+    {
+      "name": "Al Cho"
+    },
+    {
+      "name": "Alexander Bergmann"
+    }
+  ]
+}
+EOT
+    
+    assert_difference "User.count", +4 do
+      ProjectImporter.import json
+  
+      assert_equal "Alexander Bergmann", User.last.name
+    end
+  end
+  
+  test "import project with users" do
+
+    json = <<EOT
+{
+  "projects": [
+    {
+      "title": "Kill-YCP-by-Mechanical-Translation",
+      "categories": [
+        "yast"
+      ],
+      "tags": [
+        "yast",
+        "ycp",
+        "ruby",
+        "transpiler",
+        "inprogress",
+        "helpwanted"
+      ],
+      "description": "Our famous [YaST]",
+      "originator": "David Majda",
+      "members": [
+        "David Majda",
+        "Josef Reidinger",
+        "Martin Vidner",
+        "Ladislav Slezak"
+      ]
+    }
+  ],
+  "people": [
+    {
+      "name": "David Majda"
+    },
+    {
+      "name": "Josef Reidinger"
+    },
+    {
+      "name": "Martin Vidner"
+    },
+    {
+      "name": "Ladislav Slezak"
+    }
+  ]
+}
+EOT
+
+    assert_difference "User.count", +4 do
+      ProjectImporter.import json
+    end
+
+    dmajda = User.find_by_name "David Majda"
+    assert_not_nil dmajda
+    
+    project = Project.last
+    assert_equal project.title, "Kill-YCP-by-Mechanical-Translation"
+    assert_equal dmajda, project.originator
+    assert_equal 4, project.users.count
+
+  end
+  
 end
