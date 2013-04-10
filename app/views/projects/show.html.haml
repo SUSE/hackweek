@@ -25,11 +25,11 @@
                 = image_tag user.gravatar_url(:size => "256")
               = user.name
 
-        %p
-          - if @project.users.include? @current_user
-            = button_to 'Leave Project', :action => "leave", :id => @project.id
-          - else
-            = button_to 'Join Project', :action => "join", :id => @project.id
+      %p
+        - if @project.users.include? @current_user
+          = button_to 'Leave Project', :action => "leave", :id => @project.id
+        - else
+          = button_to 'Join Project', :action => "join", :id => @project.id
 
       %h3 Updates
       
