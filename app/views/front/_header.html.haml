@@ -1,4 +1,4 @@
-.navbar.navbar-inverse.navbar-fixed-top
+.navbar.navbar-fixed-top
   .navbar-inner
     .container-fluid
       %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
@@ -6,12 +6,12 @@
         %span.icon-bar
         %span.icon-bar
       = link_to({:controller => "front"}, {:name => "top", :class => "brand"}) do
-        = image_tag("suse_mark_reverse.png", :width => '64', :alt => "Home", :title => 'Hack Week')
+        = image_tag("suse-logo-sketch.png", :width => "48px", :alt => "Home", :title => 'Hack Week')
       .nav-collapse.collapse
         %ul.nav
           %li
             = link_to(:controller => "projects", :action => "index") do
-              %i.icon-file-alt.icon-2x
+              %i.icon-list.icon-2x
               Projects
           %li.divider-vertical
           %li

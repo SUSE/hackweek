@@ -1,36 +1,35 @@
-%h2
-  = @project.title
-  
-%h3 Description
+.row
+  .span12.sticky
+    %span.scratch
+    = link_to({:controller => "users", :action => "show", :id => @project.originator.id}, {:class => "pull-right originator-link"}) do
+      by
+      = image_tag(@project.originator.gravatar_url(:size => "32"), :class => "img-rounded originator-img", :title => "#{@project.originator.name} had this idea", :alt => @project.originator.name, )
+    .paper
+      %h2
+        = @project.title
+      %p
+        :markdown
+          #{@project.description}
+      %h3 People
+      - if @project.users.empty?
+        %p
+          Project is up for grabs.
+      - else
+        .row
+          - @project.users.each do |user|
+            .span2
+              - if @project.users.include? @current_user
+                = link_to(:action => "leave", :id => @project.id) do
+                  %i.icon-minus.pull-right{:style=>"position:relative; top:20px; z-index:1;", :title=>"Leave this project"}
+              = link_to(:controller => "users", :action => "show", :id => user.id) do
+                = image_tag @current_user.gravatar_url(:size => "256")
 
-= @project.description
+      %h3 Updates
+      
+      - @project.updates.reverse_each do |update|
+        %p
+          = "#{time_ago_in_words update.created_at} ago: #{update.text}"
 
-%h3 People
+      = link_to(edit_project_path(@project)) do
+        %i.icon-edit.icon-3x.pull-right
 
-- if @project.users.empty?
-  %p
-    Project is up for grabs.
-- else
-  %ul
-    - @project.users.each do |user|
-      %li
-        = image_tag @current_user.gravatar_url
-        = link_to user.name, :controller => "users", :action => "show", :id => user.id
-
-- if @project.users.include? @current_user
-  = button_to 'Leave', :action => "leave", :id => @project.id
-- else
-  = button_to 'Join', :action => "join", :id => @project.id
-
-
-%h3 Updates
-
-- @project.updates.reverse_each do |update|
-  %p
-    = "#{time_ago_in_words update.created_at} ago: #{update.text}"
-  
-%hr
-
-= link_to 'Edit', edit_project_path(@project)
-|
-= link_to 'All Projects', projects_path

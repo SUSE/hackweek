@@ -24,10 +24,10 @@ end
 
 gem 'jquery-rails'
 gem 'jquery-hotkeys-rails'
-gem 'cancan'
 gem 'haml'
 gem 'redcarpet'
 gem 'omniauth'
 gem 'omniauth-openid'
 gem 'gravtastic'
 gem 'single_test'
+gem 'pagedown-rails'

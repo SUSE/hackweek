@@ -1,12 +1,22 @@
 .row
-  .span4
-    = image_tag @user.gravatar_url
-    %h2
-      = @user.name
-  .span8
-    %h3 Works on these projects
-    = render :partial => "projects/list", :locals => {:projects => @user.projects }
-    %h3 Originated these ideas
-    = render :partial => "projects/list", :locals => {:projects => @user.originated_projects }
-
+  .span12.sticky
+    %span.scratch
+    .paper
+      = image_tag(@user.gravatar_url(:size => "48"), :class => "img-rounded pull-left", :title => "#{@user.name}", :alt => @user.name)
+      %h2
+        = @user.name
+      %h3
+        Works on the projects
+      %ul
+        - @user.projects.each do |project|
+          %li
+            = link_to({:controller => 'projects', :action => 'show', :id => project.id}) do
+              = project.title
+      %h3
+        Originated the ideas
+      %ul
+        - @user.originated_projects.each do |project|
+          %li
+            = link_to({:controller => 'projects', :action => 'show', :id => project.id}) do
+              = project.title
 

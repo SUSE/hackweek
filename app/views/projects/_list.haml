@@ -1,9 +1,10 @@
-.row-fluid
+.row
   - projects.each do |project|
-    .span4.sticky.pull-left
+    .span12.sticky
       %span.scratch
-      = link_to(:controller => "users", :action => "show", :id => project.originator.id) do
-        = image_tag(project.originator.gravatar_url(:size => "32"), :class => "img-rounded pull-right originator", :title => "#{project.originator.name} had this idea", :alt=>project.originator.name, )
+      = link_to({:controller => "users", :action => "show", :id => project.originator.id}, {:class => "pull-right"}) do
+        by
+        = image_tag(project.originator.gravatar_url(:size => "32"), :class => "img-rounded originator", :title => "#{project.originator.name} had this idea", :alt=>project.originator.name, )
       .paper
         = link_to({:controller => 'projects', :action => 'show', :id => project.id}) do
           = project.title
