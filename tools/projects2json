@@ -1,0 +1,103 @@
+#!/usr/bin/ruby
+
+require "json"
+
+def extract_tags string
+  tags = string.split(/[, ]/).reject { |t| t.empty? }
+  tags.map { |t| t.strip }
+end
+
+def add_page list, tags, page, default = nil
+  if default && tags.empty?
+    list[default] ||= []
+    list[default].push page
+  else
+    tags.each do |tag|
+      list[tag] ||= []
+      list[tag].push page
+    end
+  end
+end
+
+def write_overview_section file, category, projects
+  category_map = {
+    "helpwanted" => "Help Wanted",
+    "inprogress" => "In Progress"
+  }
+  display_category = category.capitalize
+  if category_map.has_key? category
+    display_category = category_map[category]
+  end
+  
+  file.puts
+  file.puts "## #{display_category}"
+  file.puts
+  projects.sort.each do |project|
+    file.puts "* [[#{project.gsub(/-/, " ")}]]"
+  end
+end
+
+def write_overview wiki_dir, name, intro, list
+  default = "uncategorized"
+  
+  filename = "'#{name}'.md"
+  File.open( wiki_dir + "/" + filename, "w" ) do |file|
+    file.puts intro
+    list.keys.sort.each do |category|
+      next if category == default
+      projects = list[category]
+      write_overview_section file, category, projects      
+    end
+    if list.has_key? default
+      write_overview_section file, default, list[default]
+    end
+  end
+end
+
+wiki_dir = ARGV[0]
+
+if !wiki_dir
+  STDERR.puts "Usage: projects2json <wiki-directory>"
+  exit 1
+end
+
+if !File.exists? wiki_dir
+  STDERR.puts "Error: wiki directory '#{wiki_dir}' doesn't exist."
+  exit 1
+end
+
+category_list = Hash.new
+tag_list = Hash.new
+
+projects = Array.new
+
+Dir.entries( wiki_dir ).each do |entry|
+  entry =~ /(.*)\.md$/
+  page = $1
+  next unless page
+  next if ["Home","'Categories'","'Tags'","'Template'"].include? page
+  
+  project = Hash.new
+
+  project[:title] = page
+
+  description = ""
+  File.open( wiki_dir + "/" + entry ).each_line do |line|
+    if line =~ /\*\*Categories.?\*\*(.*)/
+      project[:categories] = extract_tags $1
+    elsif line =~ /\*\*Tags.?\*\*(.*)/
+      project[:tags] = extract_tags $1
+    else
+      description += line
+    end
+  end
+  
+  project[:description] = description
+    
+  projects.push project
+end
+
+output = Hash.new
+output[ :projects ] = projects
+
+puts JSON.pretty_generate output
