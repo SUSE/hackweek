@@ -1,9 +1,11 @@
 Hackweek::Application.routes.draw do
  
   get "users/me"
-  match "users/:id", :to => "users#show"
 
+  resources :users
   resources :projects
+
+#  match "users/:id", :to => "users#show"
 
   get "front/index"
   get "front/awards"
