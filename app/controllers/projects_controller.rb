@@ -46,7 +46,6 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(params[:project])
     @project.originator = current_user
-    @project.save!
 
     respond_to do |format|
       if @project.save
