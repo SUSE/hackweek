@@ -40,3 +40,10 @@
       = link_to(edit_project_path(@project)) do
         %i.icon-edit.icon-3x.pull-right
 
+      %h3 Comments
+      
+      %ul.comments
+        = render :partial => 'comments/comment', :collection => @project.comments
+
+      %p
+        = link_to 'Add a comment', new_project_comment_path( @project )

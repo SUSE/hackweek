@@ -1,0 +1,22 @@
+.row
+  .span12.sticky
+    %span.scratch
+    .paper
+      %h2 Add a comment
+      - if @comment.errors.any?
+        #error_explanation
+          %h3
+            = pluralize(@comment.errors.count, "error")
+            prohibited this project from being saved:
+
+          %ul
+          - @comment.errors.full_messages.each do |msg|
+            %li
+              = msg
+
+      = form_for [@parent, @comment] do |f|
+        %p
+          = f.text_area :text
+          
+        %p
+          = f.submit 'Add comment'

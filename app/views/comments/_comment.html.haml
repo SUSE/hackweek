@@ -1,0 +1,16 @@
+%li.comment
+  %p
+    = comment.text
+
+  %p
+    %em
+      by
+      = link_to comment.commenter.name, user_path( comment.commenter )
+      on
+      = comment.created_at
+      |
+      = link_to 'Reply', new_comment_comment_path( comment )
+
+  - if !comment.comments.empty?
+    %ul.comments
+      = render :partial => 'comments/comment', :collection => comment.comments

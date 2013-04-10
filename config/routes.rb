@@ -3,19 +3,26 @@ Hackweek::Application.routes.draw do
   get "users/me"
 
   resources :users
-  resources :projects
-
 #  match "users/:id", :to => "users#show"
+
+  resources :projects do
+    resources :comments
+  end
+  
+  resources :comments do
+    resources :comments
+  end
 
   get "front/index"
   get "front/awards"
   get "front/howto"
 
-
   match '/auth/:provider/callback', :to => 'account#callback'
   match '/auth/failure', :to => 'account#failure'
 
   match ':controller/:action' => ":controller#:action"
+
+  root :to => 'front#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -66,7 +73,6 @@ Hackweek::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'front#index'
 
   # See how all your routes lay out with "rake routes"
 
