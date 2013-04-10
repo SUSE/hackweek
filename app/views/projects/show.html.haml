@@ -45,9 +45,13 @@
       %ul.comments
         = render :partial => 'comments/comment', :collection => @project.comments
 
-      = form_for [ @project, @new_comment ] do |f|
-        %p
-          = f.text_area :text, :cols => 80, :rows => 10
-          
-        %p
-          = f.submit 'Add comment'
+      %p
+      - if @current_user
+        = form_for [ @project, @new_comment ] do |f|
+          %p
+            = f.text_area :text, :cols => 80, :rows => 10
+            
+          %p
+            = f.submit 'Add comment'
+      - else
+        = link_to 'Add a comment', new_project_comment_path( @project )

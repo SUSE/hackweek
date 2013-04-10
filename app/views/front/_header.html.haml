@@ -27,8 +27,6 @@
               %i.icon-angle-down
             .dropdown-menu{:style => "padding: 15px; padding-bottom: 0px;"}
               %form{"accept-charset" => "UTF-8", :action => "login", :method => "post"}
-                %input#username{:name => "username", :placeholder => "Username", :style => "margin-bottom: 15px;", :type => "text"}/
-                %input#password{:name => "password", :placeholder => "Password", :style => "margin-bottom: 15px;", :type => "password"}/
                 %input#sign-in.btn.btn-primary.btn-block{:type => "submit", :value => "Sign In"}/
                 %label{:style => "text-align:center;margin-top:5px"} or
                 = link_to "Log in with Google", "/auth/google", :class => "btn btn-primary btn-block"
