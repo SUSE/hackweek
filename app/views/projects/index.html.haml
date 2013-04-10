@@ -1,6 +1,4 @@
 .row
   .span12
-    %h2 All projects
-    %p #{@projects.count} projects listed.
     = render :partial => "projects/list", :locals => {:projects => @projects }
-    = link_to 'New Project', new_project_path
+

@@ -1,18 +1,52 @@
 body {
-  background:
-  radial-gradient(black 15%, transparent 16%) 0 0,
-  radial-gradient(black 15%, transparent 16%) 8px 8px,
-  radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
-  radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
-  background-color:#282828;
-  background-size:16px 16px;
+  background-color:#269;
+  background-image: linear-gradient(white 2px, transparent 2px),
+  linear-gradient(90deg, white 2px, transparent 2px),
+  linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px);
+  background-size:100px 100px, 100px 100px, 20px 20px, 20px 20px;
+  background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px;
 }
 
-.blah a {
-  color: white;
-  text-decoration: none;
+.content{
+  padding: 100px 0 0 0;
 }
 
-.blah  a:hover {
-  color: magenta;
+.sticky {
+  margin: 10px 0 40px 0;
+  box-shadow: 2px 2px 5px #000000;
 }
+
+.sticky .originator {
+  padding: 4px 4px 0 0;
+}
+
+.scratch {
+  z-index:1;
+  display:block;
+  background-color:rgba(255,255,255,0.4);
+  width:45%;
+  height:33px;
+  margin:-20px 0 0 28%;
+  float:left;
+  transform: rotate(-2deg);
+  -ms-transform: rotate(-2deg); /* IE 9 */
+  -webkit-transform: rotate(-2deg); /* Safari and Chrome */
+  -o-transform: rotate(-2deg); /* Opera */
+  -moz-transform: rotate(-2deg); /* Firefox */
+  box-shadow: 1px 2px 2px -1px rgba(0, 0, 0, 0.1);
+}
+
+.sticky .paper {
+  background-color: #fff; 
+  background-image: 
+  linear-gradient(90deg, transparent 30px, #abced4 30px, #abced4 33px, transparent 33px),
+  linear-gradient(#eee .1em, transparent .1em);
+  background-size: 100% 1.2em;
+  font-size: 21px;
+  color: #494949;
+  padding: 30px 10px 20px 37px;
+  line-height: 0.9em;
+}
+
+

@@ -1,19 +1,12 @@
-%h2
-  = @user.name
+.row
+  .span4
+    = image_tag @user.gravatar_url
+    %h2
+      = @user.name
+  .span8
+    %h3 Works on these projects
+    = render :partial => "projects/list", :locals => {:projects => @user.projects }
+    %h3 Originated these ideas
+    = render :partial => "projects/list", :locals => {:projects => @user.originated_projects }
 
-%p
-  = image_tag @user.gravatar_url
 
-%h3 Originated Projects
-
-%ul
-  - @user.originated_projects.each do |project|
-    %li
-      = link_to project.title, project
-
-%h3 Active Projects
-
-%ul
-  - @user.projects.each do |project|
-    %li
-      = link_to project.title, project
