@@ -1,4 +1,4 @@
-.navbar.navbar-inverse
+.navbar.navbar-inverse.navbar-fixed-top
   .navbar-inner
     .container-fluid
       %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
@@ -6,7 +6,7 @@
         %span.icon-bar
         %span.icon-bar
       = link_to({:controller => "front"}, {:name => "top", :class => "brand"}) do
-        %i.icon-home.icon-2x
+        = image_tag("suse_mark_reverse.png", :width => '64', :alt => "Home", :title => 'Hack Week')
       .nav-collapse.collapse
         %ul.nav
           %li
@@ -14,6 +14,10 @@
               %i.icon-file-alt.icon-2x
               Projects
           %li.divider-vertical
+          %li
+            = link_to(new_project_path) do
+              %i.icon-plus-sign-alt.icon-2x
+              Add Project
       - unless @current_user
         %ul.nav.pull-right
           %li.dropdown
@@ -37,12 +41,12 @@
             %ul.dropdown-menu{:style => "padding: 15px;"}
               %li
                 = link_to(:controller => "users", :action => "me") do
-                  %i.icon-wrench
+                  %i.icon-home
                   = @current_user.name
               %li
                 = link_to(:controller => "users", :action => "show", :id => @current_user.id) do
                   %i.icon-globe
-                  Show my public profile
+                  My Public Profile
               %li.divider
               %li
                 = link_to(:controller => "account", :action => "logout") do

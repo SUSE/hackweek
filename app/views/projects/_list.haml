@@ -1,31 +1,16 @@
-- projects.each do |project|
-  .row-fluid
-    .span12
-      .row-fluid
-        .span2
-          %h4
-            Hackers
-          - if project.users.empty?
-            %p
-              Project is up for grabs.
-          - else
-            - project.users.each do |user|
-              = link_to(:controller => "users", :action => "show", :id => user.id) do
-                = image_tag(user.gravatar_url(:size => "32"), :class => "img-circle")
-              
-        .span10.blah
-          .btn-toolbar
-            .btn-group.pull-right
-              %a{:href => "#", :class => "btn btn-inverse disabled"}
-                %i.icon-white.icon-thumbs-up
-              = link_to({:controller => 'projects', :id => project.id}, {:method => :delete, :confirm => 'Are you sure? This will delete the project!', :class => "btn btn-inverse disabled"}) do
-                %i.icon-white.icon-trash
-              = link_to({:controller => 'projects', :id => project.id, :action => 'edit'}, {:class => "btn btn-inverse disabled"}) do
-                %i.icon-white.icon-wrench
-          = link_to({:controller => 'projects', :action => 'show', :id => project.id}) do
-            %h2= project.title
-            %p
-              :markdown
-                #{project.description}
-      %hr
+.row-fluid
+  - projects.each do |project|
+    .span4.sticky.pull-left
+      %span.scratch
+      = link_to(:controller => "users", :action => "show", :id => project.originator.id) do
+        = image_tag(project.originator.gravatar_url(:size => "32"), :class => "img-rounded pull-right originator", :title => "#{project.originator.name} had this idea", :alt=>project.originator.name, )
+      .paper
+        = link_to({:controller => 'projects', :action => 'show', :id => project.id}) do
+          = project.title
+        %p
+          :markdown
+            #{truncate(project.description, :omission => "...", :length => 200)}
+
+
+
 
