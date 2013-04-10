@@ -18,11 +18,18 @@
         .row
           - @project.users.each do |user|
             .span2
-              - if @project.users.include? @current_user
-                = link_to(:action => "leave", :id => @project.id) do
+              - if user == @current_user
+                = link_to( { :action => "leave", :id => @project.id }, :method => :post) do
                   %i.icon-minus.pull-right{:style=>"position:relative; top:20px; z-index:1;", :title=>"Leave this project"}
               = link_to(:controller => "users", :action => "show", :id => user.id) do
-                = image_tag @current_user.gravatar_url(:size => "256")
+                = image_tag user.gravatar_url(:size => "256")
+              = user.name
+
+        %p
+          - if @project.users.include? @current_user
+            = button_to 'Leave Project', :action => "leave", :id => @project.id
+          - else
+            = button_to 'Join Project', :action => "join", :id => @project.id
 
       %h3 Updates
       
