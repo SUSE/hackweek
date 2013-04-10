@@ -5,8 +5,13 @@ class ProjectImporter
     
     data = JSON.parse json
     data["projects"].each do |p|
-      project = Project.new :title => p["title"], :description => p["description"]
-      project.originator = import_user
+      project = Project.find_by_title p["title"]
+      if !project
+        project = Project.new
+        project.originator = import_user
+      end
+      project.title = p["title"]
+      project.description = p["description"]
       project.save!
     end
   end
