@@ -7,6 +7,26 @@ def extract_tags string
   tags.map { |t| t.strip }
 end
 
+def extract_person string
+  name = string
+  if name =~ /(.*) \(/
+    name = $1
+  end
+  if name =~ /(.*) </
+    name = $1
+  end  
+  if name =~ /\[(.*)\]/
+    name = $1
+  elsif string =~ /\* (.*)/
+    name = $1
+  end
+  if name.empty?
+    STDERR "ERROR: empty name '#{string}'"
+    exit 1
+  end
+  name
+end
+
 wiki_dir = ARGV[0]
 
 if !wiki_dir
@@ -19,10 +39,10 @@ if !File.exists? wiki_dir
   exit 1
 end
 
-category_list = Hash.new
-tag_list = Hash.new
+missing_originator_count = 0
 
 projects = Array.new
+people = Hash.new
 
 Dir.entries( wiki_dir ).each do |entry|
   entry =~ /(.*)\.md$/
@@ -35,22 +55,84 @@ Dir.entries( wiki_dir ).each do |entry|
   project[:title] = page
 
   description = ""
+  members = Array.new
+  originator = nil
+  section = :none
   File.open( wiki_dir + "/" + entry ).each_line do |line|
     if line =~ /\*\*Categories.?\*\*(.*)/
       project[:categories] = extract_tags $1
     elsif line =~ /\*\*Tags.?\*\*(.*)/
       project[:tags] = extract_tags $1
+    elsif line =~ /^## (.*)/
+      subtitle = $1
+      if subtitle == "People"
+        section = :people
+      elsif subtitle == "Description"
+        # skip subtitle from output
+      else
+        section = :none
+        description += line
+      end
     else
-      description += line
+      if section == :people
+        if line =~ /(.*) originated/
+          originator = extract_person $1
+        elsif line =~ /(.*) will work/
+          members.push extract_person $1
+        elsif line =~ /(.*) will join/
+          members.push extract_person $1
+        elsif line =~ /(.*) will hopefully find time/
+          members.push extract_person $1
+        elsif line =~ /(.*) is really invited to participate/
+          members.push extract_person $1
+        elsif line =~ /(.*) is working/
+          members.push extract_person $1
+        elsif line =~ /^\* (.*)/
+          members.push extract_person $1
+        end
+      else
+        description += line
+      end
     end
   end
   
   project[:description] = description
-    
+
+  if originator
+    people[ originator ] = true
+  end
+  members.each do |person|
+    people[ person ] = true
+  end
+  
+  if !originator && !members.empty?
+    originator = members.first
+  end
+
+  if !originator && members.empty?
+    STDERR.puts page
+    STDERR.puts "  missing people"
+  end
+
+  project[:originator] = originator
+  project[:members] = members
+  
   projects.push project
+end
+
+STDERR.puts "\n#{missing_originator_count} missing originators"
+
+STDERR.puts "PEOPLE"
+output_people = Array.new
+people.keys.sort.each do |person|
+  p = Hash.new
+  p[:name] = person
+  output_people.push p
+  STDERR.puts "  #{person}"
 end
 
 output = Hash.new
 output[ :projects ] = projects
+output[ :people ] = output_people
 
 puts JSON.pretty_generate output
