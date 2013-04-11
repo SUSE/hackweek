@@ -1,17 +1,26 @@
 .row
   - projects.each do |project|
-    .span12.sticky
-      %span.scratch
-      = link_to({:controller => "users", :action => "show", :id => project.originator.id}, {:class => "pull-right"}) do
-        by
-        = image_tag(project.originator.gravatar_url(:size => "32"), :class => "img-rounded originator", :title => "#{project.originator.name} had this idea", :alt=>project.originator.name, )
-      .paper
+    .span11.project
+      %h2
         = link_to({:controller => 'projects', :action => 'show', :id => project.id}) do
-          = project.title
-        %p
-          :markdown
-            #{truncate(project.description, :omission => "...", :length => 200)}
-
+          #{truncate(project.title, :length => 90)}
+      %br
+      originated by
+      = link_to({:controller => "users", :action => "show", :id => project.originator.id}) do
+        = project.originator.name
+      %br
+      worked on by
+      - if project.users.empty?
+        no one. This project is up for
+        = link_to 'grabs!', :controller => 'projects', :action => "join", :id => project.id
+      - else
+        - project.users.each_with_index do |user, index|
+          = link_to(:controller => "users", :action => "show", :id => user.id) do
+            - if not index == project.users.size - 1
+              = user.name + ', '
+            - else
+              = user.name
+      %hr
 
 
 

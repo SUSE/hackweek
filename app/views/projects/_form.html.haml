@@ -10,14 +10,10 @@
         %li
           = msg
   .field
-    = f.label :title
-    <br />
-    = f.text_field :title
+    = f.text_field :title, :placeholder => "The projects title"
     
   .field
-    = f.label :description
-    <br />
-    = f.text_area :description
+    = f.text_area :description, :placeholder => "Add a detailed description of what you want to hack on. You can use markdown."
     
   .actions
     = f.submit

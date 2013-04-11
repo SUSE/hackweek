@@ -1,22 +1,8 @@
-.row
-  .span12
-  %h2
-    = flash[:notice]
-
-.row
-  .span12.sticky
-    .paper
-      %h3 Personal info
-      .profile-line
-        Name: #{@current_user.name}
-      .profile-line
-        Email: #{@current_user.email}
-      .profile-line
-        Profile image:
-        = image_tag @current_user.gravatar_url
-        (Taken from #{link_to "Gravatar", "http://gravatar.com"})
-        
-      = button_to "Edit", :action => "edit"
-
-      = render :partial => "projects", :locals => { :user => @current_user }
+.row.paper
+  .span12.scratch
+  .span11.project
+    = image_tag(@current_user.gravatar_url(:size => "48"), :class => "img-rounded pull-left", :title => "#{@current_user.name}", :alt => @current_user.name)
+    %h2
+      = @current_user.name
+    = render :partial => "projects", :locals => { :user => @current_user }
 

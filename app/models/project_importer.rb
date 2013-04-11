@@ -52,7 +52,7 @@ class ProjectImporter
     user_name = "Project Importer"
     user = User.find_by_name "Project Importer"
     if ( !user )
-      user = User.create! :name => user_name
+      user = User.create! :name => user_name, :email => "pi@example.com", :uid => "project_importer"
     end
     user
   end

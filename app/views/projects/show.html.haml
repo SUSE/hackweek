@@ -1,57 +1,75 @@
-.row
-  .span12.sticky
-    %span.scratch
-    = link_to({:controller => "users", :action => "show", :id => @project.originator.id}, {:class => "pull-right originator-link"}) do
-      by
-      = image_tag(@project.originator.gravatar_url(:size => "32"), :class => "img-rounded originator-img", :title => "#{@project.originator.name} had this idea", :alt => @project.originator.name, )
-    .paper
-      %h2
-        = @project.title
-      %p
-        :markdown
-          #{@project.description}
-      %h3 People
-      - if @project.users.empty?
+.row.paper
+  .span12.scratch
+  .span11.project
+    = link_to(edit_project_path(@project)) do
+      %i.icon-thumbs-up.icon-2x.pull-right
+    = link_to(edit_project_path(@project)) do
+      %i.icon-pencil.icon-2x.pull-right
+    %h2
+      = @project.title
+    %p{:style=>"margin-top:-10px;"}
+      a nice idea by
+      = link_to(:controller => "users", :action => "show", :id => @project.originator.id) do
+        #{@project.originator.name}
+    .row
+      .span6
         %p
-          Project is up for grabs.
-      - else
-        .row
-          - @project.users.each do |user|
-            .span2
-              - if user == @current_user
-                = link_to( { :action => "leave", :id => @project.id }, :method => :post) do
-                  %i.icon-minus.pull-right{:style=>"position:relative; top:20px; z-index:1;", :title=>"Leave this project"}
-              = link_to(:controller => "users", :action => "show", :id => user.id) do
-                = image_tag user.gravatar_url(:size => "256")
-              = user.name
-
-      %p
-        - if @project.users.include? @current_user
-          = button_to 'Leave Project', :action => "leave", :id => @project.id
+          :markdown
+            #{@project.description}
+      .span5
+        - if @project.users.empty?
+          %h4 Project is up for grabs.
         - else
-          = button_to 'Join Project', :action => "join", :id => @project.id
-
-      %h3 Updates
-      
-      - @project.updates.reverse_each do |update|
+          %h4 Hackers
+          - @project.users.each do |user|
+            = link_to(:controller => "users", :action => "show", :id => user.id) do
+              = image_tag user.gravatar_url(:size => "64")
         %p
-          = "#{time_ago_in_words update.created_at} ago: #{update.text}"
-
-      = link_to(edit_project_path(@project)) do
-        %i.icon-edit.icon-3x.pull-right
-
-      %h3 Comments
-      
-      %ul.comments
-        = render :partial => 'comments/comment', :collection => @project.comments
-
-      %p
-      - if @current_user
-        = form_for [ @project, @new_comment ] do |f|
+        - if @project.users.include? @current_user
+          = button_to 'Leave this project', {:action => "leave", :id => @project.id}, :class=>"btn btn-danger btn-large pull-right"
+        - else
+          = button_to 'Join this project', {:action => "join", :id => @project.id}, :class=>"btn btn-success btn-large pull-right"
+    .row
+      .span6.material
+        %h4 Material
+        %ul
+          %li
+            =link_to "Ruby on Rails", "http://www.rubyonrails.org/"
+          %li
+            =link_to "Google", "http://www.google.com"
+          %li
+            =link_to "SUSE", "http://www.suse.com"
+          
+      .span5.looking
+        %h4 Looking for
+        %ul
+          %li Ruby Developer
+          %li Packager
+          %li Graphic Designer
+    .row
+      .span6.updates
+        %h4 Updates
+        - @project.updates.reverse_each do |update|
           %p
-            = f.text_area :text, :cols => 80, :rows => 10
-            
-          %p
-            = f.submit 'Add comment'
-      - else
-        = link_to 'Add a comment', new_project_comment_path( @project )
+            = "#{time_ago_in_words update.created_at} ago: #{update.text}"
+      .span5.agenda
+        %h4 Agenda
+        %ul
+          %li 11:00 Coffee
+          %li 15:00 Lightning Talk
+          %li 18:00 We meet for beer at the NBG main entrance
+    .row
+      .span11.comments
+        %h4 Comments
+        %ul.comments
+          = render :partial => 'comments/comment', :collection => @project.comments
+        %p
+        - if @current_user
+          = form_for [ @project, @new_comment ] do |f|
+            %p
+              = f.text_area :text, :cols => 80, :rows => 10, :witdh => "100%"
+              
+            %p
+              = f.submit 'Add comment'
+        - else
+          = link_to 'Add a comment', new_project_comment_path( @project )

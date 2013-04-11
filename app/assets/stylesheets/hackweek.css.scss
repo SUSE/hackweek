@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Patrick+Hand+SC);
+
 body {
   background-color:#269;
   background-image: linear-gradient(white 2px, transparent 2px),
@@ -8,17 +10,30 @@ body {
   background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px;
 }
 
+#coffee {
+  position: relative;
+  bottom: 70px;
+  right: 33%%;
+  overflow: hidden;
+}
+
+#pencil {
+  position: absolute;
+  top: 100px;
+  right: 0px;
+  overflow: hidden;
+  display: none;
+}
+
+@media (min-width: 1460px) {
+  #pencil {
+    display: block;
+  }
+}
+
+
 .content{
   padding: 100px 0 0 0;
-}
-
-.sticky {
-  margin: 10px 0 40px 0;
-  box-shadow: 2px 2px 5px #000000;
-}
-
-.sticky .originator-img {
-  padding: 4px 4px 0 0;
 }
 
 .scratch {
@@ -27,7 +42,7 @@ body {
   background-color:rgba(255,255,255,0.4);
   width:45%;
   height:33px;
-  margin:-20px 0 0 28%;
+  margin:-52px 0 0 28%;
   float:left;
   transform: rotate(-2deg);
   -ms-transform: rotate(-2deg); /* IE 9 */
@@ -37,16 +52,29 @@ body {
   box-shadow: 1px 2px 2px -1px rgba(0, 0, 0, 0.1);
 }
 
-.sticky .paper {
+.paper {
   background-color: #fff; 
   background-image: 
-  linear-gradient(90deg, transparent 30px, #abced4 30px, #abced4 33px, transparent 33px),
-  linear-gradient(#eee .1em, transparent .1em);
+  linear-gradient(90deg, transparent 30px, #abced4 30px, #abced4 34px, transparent 34px);
   background-size: 100% 1.2em;
-  font-size: 21px;
   color: #494949;
-  padding: 30px 10px 20px 37px;
-  line-height: 0.9em;
+  padding: 40px 0 40px 40px;
+  margin: 0 0 100px 0;
 }
 
+.paper .project h2 {
+  font-family: 'Patrick Hand SC', cursive;
+  line-height: 1em;
+}
 
+.paper .project hr {
+  padding: 0 0 -10px 0;
+}
+
+textarea {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+
+	width: 100%;
+}
