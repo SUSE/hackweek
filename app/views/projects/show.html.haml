@@ -1,8 +1,12 @@
 .row.paper
   .span12.scratch
   .span11.project
-    = link_to(edit_project_path(@project)) do
-      %i.icon-thumbs-up.icon-2x.pull-right
+    - if @project.kudos.include? @current_user
+      = link_to({:action => "dislike", :id => @project.id}, :class=>"pull-right", :title=>'Dislike again', :method => :post) do
+        %i.icon-star.icon-2x.pull-right
+    - else
+      = link_to({:action => "like", :id => @project.id}, :class=>"pull-right", :title=>'I like this', :method => :post) do
+        %i.icon-thumbs-up.icon-2x.pull-right
     = link_to(edit_project_path(@project)) do
       %i.icon-pencil.icon-2x.pull-right
     %h2

@@ -5,10 +5,12 @@ class User < ActiveRecord::Base
   has_many :updates, :foreign_key => 'author_id'
   
   has_many :memberships
-  has_many :projects, :through => :memberships
-  
   has_many :comments
+  has_many :likes
   
+  has_many :projects, :through => :memberships
+  has_many :favourites, :through => :likes, :source => :project
+
   include Gravtastic
   has_gravatar
 end

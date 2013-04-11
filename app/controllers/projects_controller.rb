@@ -100,4 +100,19 @@ class ProjectsController < ApplicationController
     
     redirect_to project
   end
+  
+  def like
+    project = Project.find(params[:id])
+    project.like! current_user
+    
+    redirect_to project
+  end
+
+  def dislike
+    project = Project.find(params[:id])
+    project.dislike! current_user
+    
+    redirect_to project
+  end
+  
 end

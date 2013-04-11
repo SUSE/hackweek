@@ -5,11 +5,13 @@ class Project < ActiveRecord::Base
   validates :originator_id, :presence => true
   
   belongs_to :originator, :class_name => User
-  
-  has_many :updates
 
-  has_many :memberships
   has_many :users, :through => :memberships
+  has_many :kudos, :through => :likes, :source => :user
+  
+  has_many :memberships
+  has_many :likes
+  has_many :updates
 
   has_many :comments, :as => :commentable
 
@@ -39,4 +41,21 @@ class Project < ActiveRecord::Base
                    :project => self)
   end
   
+  def like! user
+    self.kudos << user
+    self.save!
+
+    Update.create!(:author => user,
+                   :text => "#{user.name} likes this project.",
+                   :project => self)
+  end
+  
+  def dislike! user
+    self.kudos -= [ user ]
+    self.save!
+
+    Update.create!(:author => user,
+                   :text => "#{user.name} dislikes this project.",
+                   :project => self)
+  end
 end
