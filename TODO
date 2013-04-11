@@ -8,6 +8,8 @@
 * Deploy to Heroku
 * Get SUSE log in to work on Heroku
 
+* Import email addresses, so that proper Gravatar images are shown.
+
 * Add support for adding links
 * Import links from additional material section
 
