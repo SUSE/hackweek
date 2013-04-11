@@ -53,7 +53,7 @@ var agenda_content = {
 ### 14:00 Hacking is sweet\n\
 * Candy Shop on wheels coming to your offices\n\
 * More: big kitchen, 2nd floor, later\n\
-\n\
+<br>\n\
 # All day \n\
 * Hacking like crazy \n\
 <br>\n\
@@ -66,8 +66,17 @@ var agenda_content = {
 <br>\n\
 <br>\n\
 # Noon \n\
-### 12:00 Lunch & Hack\n\
-* Watch out for details \n\
+### 12:00 Lunch & Hack, all hands area\n\
+* this can only be said in German:
+ - ofenfrischer Leberkäse, Nürnberger 
+ - Bratwürste und Fleischküchle\n\
+ - hausgemachter Kartoffel- und Krautsalat\n\
+ - frankisches Bauernbrot & Brötchen\n\
+<br>\n\
+### 15:00 fresh juice, \n\
+* kitchen 2nd floor.\n\
+* get your dose of vitamines again!\n\
+<br>\n\
 # All day \n\
 * Hacking like crazy \n\
 <br>\n\
