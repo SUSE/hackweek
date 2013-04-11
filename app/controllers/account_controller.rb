@@ -35,7 +35,7 @@ class AccountController < ApplicationController
     greetings << "#{dude}! Supdawg!" << "Whats doin #{dude}?" << "Yo #{dude}, what's craicalackin?"
     flash[:notice] = greetings.sample
     
-    redirect_to :controller => "users", :action => "me"
+    redirect_back_or_default :controller => "users", :action => "me"
   end
 
   private

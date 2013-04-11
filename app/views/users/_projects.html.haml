@@ -1,34 +1,34 @@
 .row
   .span6
-    - if @user.projects.empty?
+    - if user.projects.empty?
       %h4 No Projects
     - else
       %h4
         Works on the projects
       %ul
-      - @user.projects.each do |project|
+      - user.projects.each do |project|
         %li
           = link_to({:controller => 'projects', :action => 'show', :id => project.id}) do
             = project.title
   .span5
-    - if @user.projects.empty?
+    - if user.projects.empty?
       %h4 No Ideas
     - else
       %h4
         Originated the ideas
       %ul
-        - @user.originated_projects.each do |project|
+        - user.originated_projects.each do |project|
           %li
             = link_to({:controller => 'projects', :action => 'show', :id => project.id}) do
               = project.title
   .span6
-    - if @user.favourites.empty?
+    - if user.favourites.empty?
       %h4 No Favourites
     - else
       %h4
         Favourites
       %ul
-        - @user.favourites.each do |project|
+        - user.favourites.each do |project|
           %li
             = link_to({:controller => 'projects', :action => 'show', :id => project.id}) do
               = project.title
