@@ -67,11 +67,11 @@ var agenda_content = {
 <br>\n\
 # Noon \n\
 ### 12:00 Lunch & Hack, all hands area\n\
-* this can only be said in German:
- - ofenfrischer Leberkäse, Nürnberger 
- - Bratwürste und Fleischküchle\n\
+* this can only be said in German:\n\
+ - ofenfrischer Leberk&auml;se, N&uuml;rnberger\n\
+ - Bratw&uuml;rste und Fleischk&uuml;chle\n\
  - hausgemachter Kartoffel- und Krautsalat\n\
- - frankisches Bauernbrot & Brötchen\n\
+ - frankisches Bauernbrot & Br&ouml;tchen\n\
 <br>\n\
 ### 15:00 fresh juice, \n\
 * kitchen 2nd floor.\n\
