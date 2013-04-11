@@ -30,6 +30,7 @@ gem 'omniauth-openid'
 gem 'gravtastic'
 gem 'single_test'
 gem 'pagedown-rails'
+gem 'unicorn'
 
 group :test do
   gem 'capybara'
