@@ -31,3 +31,8 @@ gem 'omniauth-openid'
 gem 'gravtastic'
 gem 'single_test'
 gem 'pagedown-rails'
+
+group :test do
+  gem 'capybara'
+  gem 'debugger'
+end

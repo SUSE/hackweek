@@ -12,8 +12,6 @@ class AccountController < ApplicationController
   end
   
   def callback
-    auth_hash = request.env['omniauth.auth']
-
     uid = auth_hash[:uid]
     name = auth_hash[:info][:name]
     email = auth_hash[:info][:email]
@@ -42,6 +40,11 @@ class AccountController < ApplicationController
 
   private
 
+  def auth_hash
+    puts "AUTH HASH"
+    request.env['omniauth.auth']
+  end
+  
   def clear_login
     session[:user_id] = nil
     @current_user = nil
