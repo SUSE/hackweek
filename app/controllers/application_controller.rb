@@ -40,4 +40,9 @@ class ApplicationController < ActionController::Base
     session[:return_to] = request.fullpath
   end
 
+  def keyword_tokens
+    required_parameters :q
+    render json: Keyword.find_keyword(params[:q])
+  end
+
 end

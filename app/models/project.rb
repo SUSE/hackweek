@@ -61,4 +61,5 @@ class Project < ActiveRecord::Base
                    :text => "#{user.name} dislikes this project.",
                    :project => self)
   end
+  
 end

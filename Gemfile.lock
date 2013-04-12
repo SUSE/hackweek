@@ -110,6 +110,8 @@ GEM
       activesupport (= 3.2.13)
       bundler (~> 1.0)
       railties (= 3.2.13)
+    rails_tokeninput (1.6.1.rc1)
+      railties (>= 3.1.0)
     railties (3.2.13)
       actionpack (= 3.2.13)
       activesupport (= 3.2.13)
@@ -166,6 +168,7 @@ DEPENDENCIES
   omniauth-openid
   pagedown-rails
   rails (= 3.2.13)
+  rails_tokeninput
   redcarpet
   sass-rails (~> 3.2)
   single_test

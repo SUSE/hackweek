@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-hotkeys
+//= require jquery.tokeninput
 //= require bootstrap
 //= require markdown.converter
 //= require markdown.sanitizer

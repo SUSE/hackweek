@@ -13,6 +13,8 @@ Hackweek::Application.routes.draw do
     resources :comments
   end
 
+  get "keyword/tokens"
+
   get "front/index"
   get "front/awards"
   get "front/howto"

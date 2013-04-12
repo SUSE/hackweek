@@ -52,13 +52,23 @@
       .span5.looking
         %h4 Looking for
         - if @project.keywords.empty?
-          Add some keywords what you are looking for.
+          = form_for(@project) do |f|
+            .field
+              = f.text_field :keywords, :placeholder => "The projects title", :style=>"display: none;"
+            .actions
+              = f.submit
+          :javascript
+            $(document).ready(function() {
+            $("#project_keywords").tokenInput("#{ url_for :controller => 'keyword', :action => 'tokens'}" ,{
+                        theme: "facebook",
+                        tokenValue: "name",
+              });
+            });
         - else
           %ul
           - @project.keywords.each do |keyword|
             %li
               = keyword.name
-
     .row
       .span6.updates
         %h4 Updates
