@@ -1,20 +1,24 @@
 .row.paper
   .span12.scratch
   .span11.project
-    - if @project.kudos.include? @current_user
-      = link_to({:action => "dislike", :id => @project.id}, :class=>"pull-right", :title=>'Dislike again', :method => :post) do
-        %i.icon-star.icon-2x.pull-right
-    - else
-      = link_to({:action => "like", :id => @project.id}, :class=>"pull-right", :title=>'I like this', :method => :post) do
-        %i.icon-thumbs-up.icon-2x.pull-right
-    = link_to(edit_project_path(@project)) do
-      %i.icon-pencil.icon-2x.pull-right
-    %h2
-      = @project.title
-    %p{:style=>"margin-top:-10px;"}
-      a nice idea by
-      = link_to(:controller => "users", :action => "show", :id => @project.originator.id) do
-        #{@project.originator.name}
+    .row
+      .span10
+        %h2
+          = @project.title
+        %p{:style=>"margin-top:-10px;"}
+          an idea by
+          = link_to(:controller => "users", :action => "show", :id => @project.originator.id) do
+            #{@project.originator.name}
+          - if @project.kudos.include? @current_user
+            = link_to({:action => "dislike", :id => @project.id}, :title=>'You like this Idea. Dislike?', :method => :post) do
+              %i.icon-heart
+          - else
+            = link_to({:action => "like", :id => @project.id}, :title=>'I like this', :method => :post) do
+              %i.icon-thumbs-up
+
+      .span1
+        = link_to(edit_project_path(@project), :title=>"Edit Project") do
+          %i.icon-pencil.icon-2x
     .row
       .span6
         %p
@@ -28,6 +32,7 @@
           - @project.users.each do |user|
             = link_to(:controller => "users", :action => "show", :id => user.id) do
               = image_tag user.gravatar_url(:size => "64")
+              %br
         %p
         - if @project.users.include? @current_user
           = button_to 'Leave this project', {:action => "leave", :id => @project.id}, :class=>"btn btn-danger btn-large pull-right"
@@ -57,9 +62,25 @@
     .row
       .span6.updates
         %h4 Updates
-        - @project.updates.reverse_each do |update|
+        - @project.updates.reverse.last(5).each do |update|
           %p
             = "#{time_ago_in_words update.created_at} ago: #{update.text}"
+        %a{:href=>"#UpdatesModal", :role=>"button", :class=>"btn btn-info btn-mini pull-right", "data-toggle"=>"modal"}
+          %i.icon-pushpin
+          All
+        .modal.hide.fade{:id=>"UpdatesModal", :tabindex=>"-1", :role=>"dialog", "aria-labelledby"=>"UpdatesModalLabel", "aria-hidden"=>"true"}
+          .modal-header
+            %button{:type=>"button", :class=>"close", "data-dismiss"=>"modal", "aria-hidden"=>"true"}×
+            %h3{:id=>"UpdatesModal"}
+              All Updates for
+              = @project.title
+          .modal-body
+            - @project.updates.reverse_each do |update|
+              %p
+                = "#{time_ago_in_words update.created_at} ago: #{update.text}"
+          .modal-footer
+            %button{:class=>"btn btn-primary", "data-dismiss"=>"modal", "aria-hidden"=>"true"}Close
+
       .span5.agenda
         %h4 Agenda
         %ul

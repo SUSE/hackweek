@@ -33,7 +33,7 @@ class AccountController < ApplicationController
     greetings = Array.new
     greetings << "Sup, G, hows your moma?" << "What up, cheese doodle?" << "Hey #{dude}, whats poppin?"
     greetings << "#{dude}! Supdawg!" << "Whats doin #{dude}?" << "Yo #{dude}, what's craicalackin?"
-    flash[:notice] = greetings.sample
+    flash[:success] = greetings.sample
     
     redirect_back_or_default :controller => "users", :action => "me"
   end
