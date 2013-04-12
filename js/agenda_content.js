@@ -89,10 +89,13 @@ var agenda_content = {
 <br>\n\
 <br>\n\
 * Update your wiki entry\n\
-# Noon \n\
-### 12:00 Last sprint\n\
-* Snacks at the All-Hands \n\
-* Watch out for details \n\
+# Morning\n\
+### 10:30 Last sprint\n\
+* Breakfast-Snacks in the All-Hands\n\
+- Canapees mit Braten, Schinken, Salami, Käse\n\
+- Käse- ,Frischkäse- und Schinkenstangen\n\
+- Croissaints, Butter, Honig/Marmelade/Nutella\n\
+<br>\n\
 # Afternoon \n\
 ### 13:00 - 13:45 Lightning talks\n\
 * 9 slots for showing project results\n\
@@ -100,7 +103,7 @@ var agenda_content = {
 * 9 slots for showing project results\n\
 ### 15:00 - 15:45 Lightning talks\n\
 * 9 slots for showing project results\n\
-# All day \n\
+# All rest of the day \n\
 * Hacking like crazy \n\
 <br>\n\
 <br>\n\
