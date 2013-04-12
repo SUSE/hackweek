@@ -115,4 +115,10 @@ class ProjectsController < ApplicationController
     redirect_to project
   end
   
+  def add_keyword
+    project = Project.find(params[:id])
+    project.add_keyword! params[:new_keyword]
+    
+    redirect_to project
+  end
 end

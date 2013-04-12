@@ -62,4 +62,16 @@ class Project < ActiveRecord::Base
                    :project => self)
   end
   
+  def add_keyword! name
+    name.downcase!
+    name.gsub! /\s/, "" 
+    keyword = Keyword.find_by_name name
+    if !keyword
+      keyword = Keyword.create! :name => name
+    end
+    if !self.keywords.include? keyword
+      self.keywords << keyword
+      save!
+    end
+  end
 end
