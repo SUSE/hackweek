@@ -2,22 +2,23 @@
   .span12.scratch
   .span11.project
     .row
-      .span6
+      .span10
         %h2
           = @project.title
-          - if @project.kudos.include? @current_user
-            = link_to({:action => "dislike", :id => @project.id}, :title=>'Dislike this', :method => :post) do
-              %i.icon-star.pull-right
-          - else
-            = link_to({:action => "like", :id => @project.id}, :title=>'I like this', :method => :post) do
-              %i.icon-thumbs-up.pull-right
         %p{:style=>"margin-top:-10px;"}
-          a nice idea by
+          an idea by
           = link_to(:controller => "users", :action => "show", :id => @project.originator.id) do
             #{@project.originator.name}
-      .span5
+          - if @project.kudos.include? @current_user
+            = link_to({:action => "dislike", :id => @project.id}, :title=>'You like this Idea. Dislike?', :method => :post) do
+              %i.icon-heart
+          - else
+            = link_to({:action => "like", :id => @project.id}, :title=>'I like this', :method => :post) do
+              %i.icon-thumbs-up
+
+      .span1
         = link_to(edit_project_path(@project), :title=>"Edit Project") do
-          %i.icon-pencil.icon-2x.pull-right
+          %i.icon-pencil.icon-2x
     .row
       .span6
         %p
@@ -31,6 +32,7 @@
           - @project.users.each do |user|
             = link_to(:controller => "users", :action => "show", :id => user.id) do
               = image_tag user.gravatar_url(:size => "64")
+              %br
         %p
         - if @project.users.include? @current_user
           = button_to 'Leave this project', {:action => "leave", :id => @project.id}, :class=>"btn btn-danger btn-large pull-right"
