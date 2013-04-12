@@ -179,5 +179,61 @@ EOT
     assert_equal 4, project.users.count
 
   end
+
+  test "import keywords" do
+
+    json = <<EOT
+{
+  "projects": [
+    {
+      "title": "Kill-YCP-by-Mechanical-Translation",
+      "categories": [
+        "yast"
+      ],
+      "tags": [
+        "yast",
+        "ycp",
+        "ruby",
+        "transpiler",
+        "InProgress",
+        "helpwanted"
+      ],
+      "description": "Our famous [YaST]",
+      "originator": "David Majda",
+      "members": [
+        "David Majda",
+        "Josef Reidinger",
+        "Martin Vidner",
+        "Ladislav Slezak"
+      ]
+    }
+  ],
+  "people": [
+    {
+      "name": "David Majda"
+    },
+    {
+      "name": "Josef Reidinger"
+    },
+    {
+      "name": "Martin Vidner"
+    },
+    {
+      "name": "Ladislav Slezak"
+    }
+  ]
+}
+EOT
+
+    assert_difference "Keyword.count", +6 do
+      ProjectImporter.import json
+    end
+
+    project = Project.last
+
+    assert_equal 6, project.keywords.count
+    assert_not_nil project.keywords.include? "yast"
+    assert_not_nil project.keywords.include? "inprogress"
+  end
   
 end

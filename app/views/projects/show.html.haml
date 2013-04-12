@@ -46,10 +46,14 @@
           
       .span5.looking
         %h4 Looking for
-        %ul
-          %li Ruby Developer
-          %li Packager
-          %li Graphic Designer
+        - if @project.keywords.empty?
+          Add some keywords what you are looking for.
+        - else
+          %ul
+          - @project.keywords.each do |keyword|
+            %li
+              = keyword.name
+
     .row
       .span6.updates
         %h4 Updates
