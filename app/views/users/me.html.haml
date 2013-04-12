@@ -14,6 +14,7 @@
         = @current_user.keywords.map { |k| k.name }.join ", "
     = form_tag :action => "add_keyword" do |f|
       = text_field_tag :new_keyword
+      = submit_tag "Add keyword"
         
   .span11.recommendations
     %h3 Recommended Projects

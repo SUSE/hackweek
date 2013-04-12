@@ -1,17 +1,12 @@
 require 'test_helper'
 
-AccountController.send( :define_method, :auth_hash ) do
-  {
-    :uid => "fake:123",
-    :info => { :name => "Hans Wurst", :email => "hw@example.com" }
-  }
-end
-
 class LoginTest < ActionDispatch::IntegrationTest
 
   def login_with_google user
     assert find( ".container.content" ).find_link('Log in with Google')
+    Stubber.fake_authentication user
     visit "/account/callback"
+    Stubber.unfake_authentication
   end
   
   test "show public project page" do    
@@ -22,6 +17,15 @@ class LoginTest < ActionDispatch::IntegrationTest
     assert find_link('Add a comment').visible?
   end
 
+  test "log in" do
+    user = users(:one)
+
+    visit "/account/login"
+    login_with_google user
+    
+    assert page.find(".navbar").has_content?( user.name ), "User name '#{user.name}' not shown."
+  end
+  
   test "commenting needs login" do
     project = projects(:one)
     
@@ -36,13 +40,16 @@ class LoginTest < ActionDispatch::IntegrationTest
     
     visit project_path( project )
     click_link 'Add a comment'
-    login_with_google users(:one)
+    assert find( ".container.content" ).find_link('Log in with Google')
+
+    assume_user_logged_in users(:one)
+
     assert_equal new_project_comment_path( project ), current_path
     fill_in :comment_text, :with => "My comment."
     click_button 'Add comment'
     assert_equal project_path( project ), current_path
     assert page.has_content?( "My comment." )    
-    assert page.has_content?( "Hans Wurst" )
+    assert page.has_content?( "Hans Eberhard Wurst" )
   end
   
 end
