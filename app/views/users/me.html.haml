@@ -4,5 +4,6 @@
     = image_tag(@current_user.gravatar_url(:size => "48"), :class => "img-rounded pull-left", :title => "#{@current_user.name}", :alt => @current_user.name)
     %h2
       = @current_user.name
-    = render :partial => "projects", :locals => { :user => @current_user }
+    - @user = @current_user
+    = render :partial => "projects", :object => @user
 

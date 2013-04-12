@@ -10,16 +10,39 @@
       .nav-collapse.collapse
         %ul.nav
           %li
-            = link_to(:controller => "projects", :action => "index") do
+            = link_to(projects_path, {:alt=>"Projects", :title=>"Projects"}) do
               %i.icon-list.icon-2x
               Projects
           %li.divider-vertical
           %li
-            = link_to(new_project_path) do
+            = link_to(new_project_path, {:alt=>"Add Project", :title=>"Add Project"}) do
               %i.icon-plus-sign-alt.icon-2x
               Add Project
+          %li.divider-vertical
+          / Simple login button only visible on phones/tablets.
+          / On desktop login is handled as dropdown below.
+          - unless @current_user
+            %li.hidden-desktop
+              = link_to("/auth/google") do
+                %i.icon-signin.icon-2x
+                Sign In
+          - if @current_user
+            %li.hidden-desktop
+              = link_to(:controller => "users", :action => "me") do
+                %i.icon-home.icon-2x
+                = @current_user.name
+            %li.divider-vertical
+            %li.hidden-desktop
+              = link_to(:controller => "users", :action => "show", :id => @current_user.id) do
+                %i.icon-globe.icon-2x
+                My Public Profile
+            %li.divider-vertical
+            %li.hidden-desktop
+              = link_to(:controller => "account", :action => "logout") do
+                %i.icon-signout.icon-2x
+                Sign Out
       - unless @current_user
-        %ul.nav.pull-right
+        %ul.nav.pull-right.visible-desktop
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
               %i.icon-user.icon-2x
@@ -31,7 +54,7 @@
                 %label{:style => "text-align:center;margin-top:5px"} or
                 = link_to "Log in with Google", "/auth/google", :class => "btn btn-primary btn-block"
       - if @current_user
-        %ul.nav.pull-right
+        %ul.nav.pull-right.visible-desktop
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
               = image_tag(@current_user.gravatar_url(:size => "32"), :title => "Yo #{@current_user.name}!")

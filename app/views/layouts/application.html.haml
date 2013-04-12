@@ -12,7 +12,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    = render :partial => "front/header"
+    = render :partial => "layouts/header"
     .container.content
       - if flash
         = render partial: "layouts/alert", flash: flash
