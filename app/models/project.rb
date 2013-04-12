@@ -8,6 +8,9 @@ class Project < ActiveRecord::Base
 
   has_many :users, :through => :memberships
   has_many :kudos, :through => :likes, :source => :user
+
+  has_many :project_interests
+  has_many :keywords, :through => :project_interests
   
   has_many :memberships
   has_many :likes

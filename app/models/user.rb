@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
   has_many :projects, :through => :memberships
   has_many :favourites, :through => :likes, :source => :project
 
+  has_many :user_interests
+  has_many :keywords, :through => :user_interests
+
   include Gravtastic
   has_gravatar
 end

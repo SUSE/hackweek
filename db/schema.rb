@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130411152323) do
+ActiveRecord::Schema.define(:version => 20130412091534) do
 
   create_table "comments", :force => true do |t|
     t.text     "text"
@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(:version => 20130411152323) do
     t.integer  "commenter_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+  end
+
+  create_table "keywords", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "likes", :force => true do |t|
@@ -36,6 +42,13 @@ ActiveRecord::Schema.define(:version => 20130411152323) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "project_interests", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "keyword_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "projects", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -48,6 +61,13 @@ ActiveRecord::Schema.define(:version => 20130411152323) do
     t.text     "text"
     t.integer  "author_id"
     t.integer  "project_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "user_interests", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "keyword_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
