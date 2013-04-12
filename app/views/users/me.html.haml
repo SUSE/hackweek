@@ -5,5 +5,13 @@
     %h2
       = @current_user.name
     - @user = @current_user
-    = render :partial => "projects", :object => @user
+    = render :partial => "projects", :locals => { :user => @current_user }
 
+  .span11.keyword
+    %h3 Keywords
+    - if !@current_user.keywords.empty?
+      %p
+        = @current_user.keywords.map { |k| k.name }.join ", "
+    = form_tag :action => "add_keyword" do |f|
+      = text_field_tag :new_keyword
+        
