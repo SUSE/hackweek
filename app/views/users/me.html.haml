@@ -15,3 +15,11 @@
     = form_tag :action => "add_keyword" do |f|
       = text_field_tag :new_keyword
         
+  .span11.recommendations
+    %h3 Recommended Projects
+    
+    %ul
+    - @current_user.recommended_projects.each do |project|
+      %li
+        = project.title
+        

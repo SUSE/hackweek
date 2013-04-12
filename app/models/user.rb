@@ -29,4 +29,13 @@ class User < ActiveRecord::Base
       save!
     end
   end
+  
+  def recommended_projects
+    if self.keywords.empty?
+      return Array.new
+    end
+    
+    self.keywords.last.projects
+  end
+
 end
