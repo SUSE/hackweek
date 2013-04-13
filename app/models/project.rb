@@ -8,6 +8,9 @@ class Project < ActiveRecord::Base
 
   has_many :users, :through => :memberships
   has_many :kudos, :through => :likes, :source => :user
+
+  has_many :project_interests
+  has_many :keywords, :through => :project_interests
   
   has_many :memberships
   has_many :likes
@@ -57,5 +60,18 @@ class Project < ActiveRecord::Base
     Update.create!(:author => user,
                    :text => "#{user.name} dislikes this project.",
                    :project => self)
+  end
+  
+  def add_keyword! name
+    name.downcase!
+    name.gsub! /\s/, "" 
+    keyword = Keyword.find_by_name name
+    if !keyword
+      keyword = Keyword.create! :name => name
+    end
+    if !self.keywords.include? keyword
+      self.keywords << keyword
+      save!
+    end
   end
 end

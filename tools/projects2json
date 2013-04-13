@@ -1,6 +1,7 @@
 #!/usr/bin/ruby
 
 require "json"
+require "yaml"
 
 def extract_tags string
   tags = string.split(/[, ]/).reject { |t| t.empty? }
@@ -27,10 +28,21 @@ def extract_person string
   name
 end
 
+def create_people_map wiki_dir
+  result = Hash.new
+  emails = `cd #{wiki_dir}; git log --pretty=format:"%an <%ae>"|sort|uniq`
+  emails.each_line do |line|
+    line =~ /(.*) <(.*)>/
+    result[$1] = $2
+  end
+  result
+end
+
 wiki_dir = ARGV[0]
+name_map_file = ARGV[1]
 
 if !wiki_dir
-  STDERR.puts "Usage: projects2json <wiki-directory>"
+  STDERR.puts "Usage: projects2json <wiki-directory> [name-map-file]"
   exit 1
 end
 
@@ -122,14 +134,36 @@ end
 
 STDERR.puts "\n#{missing_originator_count} missing originators"
 
+
+missing_emails_count = 0
+
+people_map = create_people_map wiki_dir
+
+if name_map_file
+  name_map = YAML.load_file name_map_file
+  STDERR.puts "NAMEMAP #{name_map.inspect}"
+end
+
 STDERR.puts "PEOPLE"
 output_people = Array.new
 people.keys.sort.each do |person|
   p = Hash.new
   p[:name] = person
   output_people.push p
-  STDERR.puts "  #{person}"
+  email = people_map[person]
+  if !email
+    if name_map[person]
+      email = people_map[name_map[person]]
+    end
+  end
+  if !email
+    STDERR.puts "  #{person}"
+    missing_emails_count += 1
+  end
 end
+
+STDERR.puts "#{missing_emails_count} missing emails"
+
 
 output = Hash.new
 output[ :projects ] = projects

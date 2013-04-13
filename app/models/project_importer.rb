@@ -8,6 +8,17 @@ class ProjectImporter
     user
   end
   
+  def self.add_keyword project, name
+    name.downcase!
+    keyword = Keyword.find_by_name name
+    if !keyword
+      keyword = Keyword.create! :name => name
+    end
+    if !project.keywords.include? keyword
+      project.keywords << keyword
+    end
+  end
+  
   def self.import json
     data = JSON.parse json
     
@@ -41,6 +52,17 @@ class ProjectImporter
           end
         end
 
+        if p["categories"]
+          p["categories"].each do |category|
+            add_keyword project, category
+          end
+        end
+        if p["tags"]
+          p["tags"].each do |tag|
+            add_keyword project, tag
+          end
+        end
+        
         project.title = p["title"]
         project.description = p["description"]
         project.save!

@@ -19,4 +19,10 @@ class UsersController < ApplicationController
       render :action => "edit"
     end
   end
+  
+  def add_keyword
+    current_user.add_keyword! params[:new_keyword]
+    
+    redirect_to :action => "me", notice: "Keyword '#{params[:new_keyword]}' added."
+  end
 end

@@ -1,4 +1,4 @@
 - flash.each do |type, message|
-  %div{:class=>"alert #{bootstrap_class_for(type)}.fade.in"}
+  %div{:class=>"alert alert-block #{bootstrap_class_for(type)}.fade.in"}
     .button.close{"data-dismiss" => "alert"}×
     = message
