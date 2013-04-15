@@ -1,22 +1,25 @@
 # To do
 
+* Show names for people on project page
+* Show first sentence of description as summary of project on project list page
+
+* Fix that some projects are not shown on user page
+
+* Editing of profile data on "me" page
+
 * After posting a comment go back to correct position on the page, where the comment
   was added.
 * Add "public update" checkbox to comment form and show result
 * Add "+1" checkbox to comment form and show result
 
-* Deploy to Heroku
 * Get SUSE log in to work on Heroku
-
-* Import email addresses, so that proper Gravatar images are shown.
 
 * Add support for adding links
 * Import links from additional material section
 
-* Use tags and categories as initial "project is looking for" data
-* Make looking for data editable
-* Add "user is looking for" form on user page
-* Show matching projects on user page
+* Make looking for data editable on project page
+* Support removing of "looking for" keywords on user page.
+* Show recommendations for all keywords, not only the last one
 
 * Save number of hackweek as attribute for projects
 * Import projects from previous hack weeks
@@ -25,3 +28,6 @@
 * Add form to add agenda items
 * Show agenda on project page
 * Show global agenda
+
+* Import comments
+* Import additional material
