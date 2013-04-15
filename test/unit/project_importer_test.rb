@@ -99,7 +99,8 @@ EOT
 {
   "people": [
     {
-      "name": "Adam Spiers"
+      "name": "Adam Spiers",
+      "email": "email@example.com"
     },
     {
       "name": "Adrian Schroeter"
@@ -108,7 +109,8 @@ EOT
       "name": "Al Cho"
     },
     {
-      "name": "Alexander Bergmann"
+      "name": "Alexander Bergmann",
+      "email": "email2@example.com"
     }
   ]
 }
@@ -118,6 +120,7 @@ EOT
       ProjectImporter.import json
   
       assert_equal "Alexander Bergmann", User.last.name
+      assert_equal "email2@example.com", User.last.email
     end
   end
   
@@ -151,13 +154,15 @@ EOT
   ],
   "people": [
     {
-      "name": "David Majda"
+      "name": "David Majda",
+      "email": "email@example.com"
     },
     {
       "name": "Josef Reidinger"
     },
     {
-      "name": "Martin Vidner"
+      "name": "Martin Vidner",
+      "email": "email2@example.com"
     },
     {
       "name": "Ladislav Slezak"
@@ -210,13 +215,15 @@ EOT
   ],
   "people": [
     {
-      "name": "David Majda"
+      "name": "David Majda",
+      "email": "email@example.com"
     },
     {
       "name": "Josef Reidinger"
     },
     {
-      "name": "Martin Vidner"
+      "name": "Martin Vidner",
+      "email": "email2@example.com"
     },
     {
       "name": "Ladislav Slezak"

@@ -141,6 +141,7 @@ people_map = create_people_map wiki_dir
 
 if name_map_file
   name_map = YAML.load_file name_map_file
+  name_map = name_map.invert
   STDERR.puts "NAMEMAP #{name_map.inspect}"
 end
 
@@ -156,7 +157,9 @@ people.keys.sort.each do |person|
       email = people_map[name_map[person]]
     end
   end
-  if !email
+  if email
+    p[:email] = email
+  else
     STDERR.puts "  #{person}"
     missing_emails_count += 1
   end

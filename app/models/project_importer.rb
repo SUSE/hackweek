@@ -29,6 +29,7 @@ class ProjectImporter
           user = User.new
         end
         user.name = u["name"]
+        user.email = u["email"]
         user.save!
       end
     end
