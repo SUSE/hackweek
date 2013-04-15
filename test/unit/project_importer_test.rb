@@ -183,6 +183,18 @@ EOT
     assert_equal dmajda, project.originator
     assert_equal 4, project.users.count
 
+    
+    assert_difference "User.count", 0 do
+      ProjectImporter.import json
+    end
+    
+    dmajda = User.find_by_name "David Majda"
+    assert_not_nil dmajda
+    
+    project = Project.last
+    assert_equal project.title, "Kill-YCP-by-Mechanical-Translation"
+    assert_equal dmajda, project.originator
+    assert_equal 4, project.users.count    
   end
 
   test "import keywords" do

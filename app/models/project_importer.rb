@@ -49,7 +49,10 @@ class ProjectImporter
         end
         if p["members"]
           p["members"].each do |member|
-            project.users.push find_or_create_user( member )
+            user = find_or_create_user member
+            if !project.users.include? user
+              project.users.push user
+            end
           end
         end
 
