@@ -1,33 +1,85 @@
 # To do
 
+## Projects
+
 * Show names for people on project page
 * Show first sentence of description as summary of project on project list page
 
 * Fix that some projects are not shown on user page
-
-* Editing of profile data on "me" page
 
 * After posting a comment go back to correct position on the page, where the comment
   was added.
 * Add "public update" checkbox to comment form and show result
 * Add "+1" checkbox to comment form and show result
 
-* Get SUSE log in to work on Heroku
-
 * Add support for adding links
 * Import links from additional material section
-
-* Make looking for data editable on project page
-* Support removing of "looking for" keywords on user page.
-* Show recommendations for all keywords, not only the last one
-
-* Save number of hackweek as attribute for projects
-* Import projects from previous hack weeks
-* Add controls to show previous hack weeks
 
 * Add form to add agenda items
 * Show agenda on project page
 * Show global agenda
 
+## Users
+
+* Editing of profile data on "me" page
+
+## Infrastructure
+
+* Get SUSE log in to work on Heroku
+
+## Recommendations
+
+* Make looking for data editable on project page
+* Support removing of "looking for" keywords on user page.
+* Show recommendations for all keywords, not only the last one
+
+## Hack Week Archive
+
+* Save number of hackweek as attribute for projects
+* Import projects from previous hack weeks
+* Add controls to show previous hack weeks
+* Show page for each Hack Week with general information like date, awards winners, etc.
+
+## Import of existing data
+
+### Hack Week 9
+
 * Import comments
 * Import additional material
+
+### Idea Pool
+
+* Import comments
+* Import bold text
+* Import internal links
+* Import tags
+
+### FATE
+
+* Add links to FATE entries
+
+## Front page
+
+### General
+
+* News feed
+* HTML snippets of banners for people to put on their sites, blogs, repos etc.
+* Show photos
+* Show videos
+* Fix on iPad
+* Check on other form factors
+* Explain what hacking means (hacker howto, dictionary definition)
+
+### What is Hackweek
+
+* Pages for previous hack weeks with more information (e.g. award winners)
+
+### Terminal
+
+* Tab completion
+* Access to projects
+
+### Static project archive
+
+* Check index page page
+* List alphabetically
