@@ -52,4 +52,21 @@ class LoginTest < ActionDispatch::IntegrationTest
     assert page.has_content?( "Hans Eberhard Wurst" )
   end
   
+  test "can't join projects when notlogged in" do
+    project = projects(:one)
+    
+    visit project_path( project )
+    assert_raise Capybara::ElementNotFound do
+      find_button( "Join this project" )
+    end
+
+    visit "/account/login"
+    assert find( ".container.content" ).find_link('Log in with Google')
+    
+    assume_user_logged_in users(:one)
+    
+    assert_equal project_path( project ), current_path
+    assert find_button( "Join this project" ), "Join button should be there"
+  end
+  
 end
