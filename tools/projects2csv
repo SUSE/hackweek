@@ -1,0 +1,59 @@
+#!/usr/bin/ruby
+
+def extract_tags string
+  tags = string.split(/[, ]/).reject { |t| t.empty? }
+  tags.map { |t| t.strip }
+end
+
+wiki_dir = ARGV[0]
+
+if !wiki_dir
+  STDERR.puts "Usage: projects2csv <wiki-directory>"
+  exit 1
+end
+
+if !File.exists? wiki_dir
+  STDERR.puts "Error: wiki directory '#{wiki_dir}' doesn't exist."
+  exit 1
+end
+
+projects = Array.new
+
+Dir.entries( wiki_dir ).each do |entry|
+  entry =~ /(.*)\.md$/
+  page = $1
+  next unless page
+  next if ["Home","'Categories'","'Tags'","'Template'"].include? page
+  
+  project = Hash.new
+
+  project[:title] = page
+
+  description = ""
+  members = Array.new
+  originator = nil
+  section = :none
+  File.open( wiki_dir + "/" + entry ).each_line do |line|
+    if line =~ /\*\*Tags.?\*\*(.*)/
+      project[:tags] = extract_tags $1
+    end
+  end
+  
+  projects.push project
+end
+
+puts "Title;URL;Status"
+projects.each do |project|
+  print project[:title].gsub(/-/," ")
+  print ";"
+  print "https://github.com/SUSE/hackweek/wiki/#{project[:title]}"
+  print ";"
+  if project[:tags]
+    if project[:tags].include? "done"
+      print "done"
+    elsif project[:tags].include? "inprogress"
+      print "inprogress"
+    end
+  end
+  puts
+end
