@@ -186,3 +186,31 @@ span:hover{
 h2 {
     color:#D4DF4C;
 }
+#news-content span {
+    display: block;
+}
+#news-content span:first-child {
+    margin-top: 12px;
+}
+#news-content .article {
+    margin-bottom: 20px;
+}
+#news-content.date {
+    padding-top:20px;
+    font-size: 14px;
+    font-style: italic;
+}
+#news-content .title {
+    font-size: 20px;
+    padding-top:5px;
+    font-weight: bold;
+}
+#news-content .text {
+    padding-top:5px;
+    font-weight: normal;
+}
+#news-content .source {
+    padding-top:5px;
+    font-weight: bold;
+    font-size: 14px;
+}
