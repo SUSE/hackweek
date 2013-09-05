@@ -1,6 +1,4 @@
 class Keyword < ActiveRecord::Base
-  attr_accessible :name
-
   scope :find_keyword, lambda {|str| where('lower(name) like ?', "#{str.downcase}%")
   }
 
@@ -9,7 +7,5 @@ class Keyword < ActiveRecord::Base
 
   has_many :user_interests
   has_many :users, :through => :user_interests
-
-
 
 end

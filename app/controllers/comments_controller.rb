@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   end
  
   def create
-    @comment = @parent.comments.build(params[:comment])
+    @comment = @parent.comments.build(comment_params)
     @comment.commenter = current_user
      
     if @comment.save
@@ -15,6 +15,10 @@ class CommentsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def comment_params
+    params.require(:comment).permit(:commentable_id, :commentable_type, :commenter_id, :text, :commenter)
   end
  
   protected

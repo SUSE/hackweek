@@ -1,11 +1,23 @@
 Hackweek::Application.routes.draw do
  
-  get "users/me"
 
-  resources :users
-#  match "users/:id", :to => "users#show"
+  resources :users do
+    collection do
+      get 'me'
+    end
+    member do
+      post 'add_keyword'
+    end
+  end
 
   resources :projects do
+    member do
+      post 'like'
+      post 'dislike'
+      get 'join'
+      get 'leave'
+      post 'add_keyword'
+    end
     resources :comments
   end
   
@@ -19,12 +31,13 @@ Hackweek::Application.routes.draw do
   get "front/awards"
   get "front/howto"
 
-  match '/auth/:provider/callback', :to => 'account#callback'
-  match '/auth/failure', :to => 'account#failure'
+  post '/auth/:provider/callback', :to => 'account#callback'
+  get '/auth/failure', :to => 'account#failure'
+  get '/account/login', :to => 'account#login', as: :login
+  get '/account/logout', :to => 'account#logout', as: :logout
+  
+  root 'front#index'
 
-  match ':controller/:action' => ":controller#:action"
-
-  root :to => 'front#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -8,7 +8,7 @@
       %ul
       - user.projects.each do |project|
         %li
-          = link_to({:controller => 'projects', :action => 'show', :id => project.id}) do
+          = link_to(project_path(project.id)) do
             = project.title
   .span5
     - if user.projects.empty?
@@ -19,7 +19,7 @@
       %ul
         - user.originated_projects.each do |project|
           %li
-            = link_to({:controller => 'projects', :action => 'show', :id => project.id}) do
+            = link_to(project_path(project.id)) do
               = project.title
   .span6
     - if user.favourites.empty?
@@ -30,6 +30,6 @@
       %ul
         - user.favourites.each do |project|
           %li
-            = link_to({:controller => 'projects', :action => 'show', :id => project.id}) do
+            = link_to(project_path(project.id)) do
               = project.title
 

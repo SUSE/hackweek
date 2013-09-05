@@ -1,21 +1,21 @@
 {
   "projects": [
     {
-      "title": "Nanoc-based-gallery",
+      "title": "Nanoc based gallery",
       "categories": [
         "nanoc"
       ],
       "tags": [
         "somecode"
       ],
-      "description": "## Nanoc based gallery\n\nNanoc is a static website compiler. The project will add a gallery handler to it that will also render out exif data.\n\n## Status\n\nSome initial code is there.\n\n\n\n## Related material\n\nNanoc\n\n## Comments",
+      "description": "Nanoc based gallery\n\nNanoc is a static website compiler. The project will add a gallery handler to it that will also render out exif data.\n\nSome initial code is there.",
       "originator": "darix",
       "members": [
         "darix"
       ]
     },
     {
-      "title": "Pass-memory-regions-to-kdump-via-e820-and-best-also-as-EFI-memory-map-instead-of-memmap=-boot-parameters",
+      "title": "Pass memory regions to kdump via e820 and best also as EFI memory map instead of memmap= boot parameters",
       "categories": [
         "Debugging",
         "Kernel"
@@ -24,14 +24,14 @@
         "In",
         "Progress"
       ],
-      "description": "\nPass memory regions to kdump via e820 and best also as EFI memory map instead of memmap= boot parameters\n\nmmconf (extended PCIe address space) is currently broken, because not all reserved\nregions are passed to the kdump kernel.\n\nPassing all regions via memmap= boot parameter is a bad idea, the kernel command line\nis limited in size.\n\nBetter pass a modified e820 table (usable memory is the one where the crash kernel lives in, etc)\nor even better create a EFI memory map dynamically and pass a pointer (and size) to it via boot\nloader structures (zero page).\n\n## Status\n\nWork in progress... I have most of the code (efi map still missing), the hard part is testing, especially kdump on Xen needs testing sooner or later...\n\n\n## Related material\n\nThis has been discussed already on lkml, but still needs implementation:\n\nhttp://comments.gmane.org/gmane.linux.kernel.kexec/7582\n\nhttp://permalink.gmane.org/gmane.linux.kernel.kexec/7726\n\n## Comments\n\nQuite some cleanup (avoid duplicate code, etc) is/was necessary.\n",
+      "description": "Pass memory regions to kdump via e820 and best also as EFI memory map instead of memmap= boot parameters\n\nmmconf (extended PCIe address space) is currently broken, because not all reserved\nregions are passed to the kdump kernel.\n\nPassing all regions via memmap= boot parameter is a bad idea, the kernel command line\nis limited in size.\n\nBetter pass a modified e820 table (usable memory is the one where the crash kernel lives in, etc)\nor even better create a EFI memory map dynamically and pass a pointer (and size) to it via boot\nloader structures (zero page).\n\nWork in progress... I have most of the code (efi map still missing), the hard part is testing, especially kdump on Xen needs testing sooner or later...\n\n\## Related material\n\nThis has been discussed already on lkml, but still needs implementation:\n\nhttp://comments.gmane.org/gmane.linux.kernel.kexec/7582\n\nhttp://permalink.gmane.org/gmane.linux.kernel.kexec/7726\n\n## Comments\n\nQuite some cleanup (avoid duplicate code, etc) is/was necessary.\n",
       "originator": "Thomas Renninger",
       "members": [
         "Thomas Renninger"
       ]
     },
     {
-      "title": "Add-virt-man-config-for-PCI-pass-through-&-SRIOV-to-YES-Cert-SCK7.2-for-SP3--PXE-install-of-pv-guests",
+      "title": "Add virt man config for PCI pass through & SRIOV to YES Cert SCK7.2 for SP3  PXE install of pv guests",
       "categories": [
         "virtualization"
       ],
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "title": "NetworkManager-OR-Code-WLAN-Setup",
+      "title": "NetworkManager OR Code WLAN Setup",
       "categories": [
         "distribution"
       ],
@@ -63,7 +63,7 @@
       ]
     },
     {
-      "title": "Github-Pages-Jekyll-Templates",
+      "title": "Github Pages Jekyll Templates",
       "categories": [
         "web"
       ],
@@ -78,7 +78,7 @@
       ]
     },
     {
-      "title": "make-git-check-ignore-streamable",
+      "title": "make git check ignore streamable",
       "categories": [
         "tools"
       ],
@@ -92,7 +92,7 @@
       ]
     },
     {
-      "title": "Gtg-on-Android",
+      "title": "Gtg on Android",
       "categories": [
         "distribution"
       ],
@@ -107,7 +107,7 @@
       ]
     },
     {
-      "title": "Package-Tilemill-for-openSUSE",
+      "title": "Package Tilemill for openSUSE",
       "categories": [
         "packaging"
       ],
@@ -122,7 +122,7 @@
       ]
     },
     {
-      "title": "Create-and-convert-a-set-of-interesting-photoshop-curves-presets-into-digiKam",
+      "title": "Create and convert a set of interesting photoshop curves presets into digiKam",
       "categories": [
         "image",
         "processing",
@@ -143,7 +143,7 @@
       ]
     },
     {
-      "title": "Control-Motoduino-by-bluetooth-on-openSUSE",
+      "title": "Control Motoduino by bluetooth on openSUSE",
       "description": "\nMake a small toy by Motoduino and control though bluetooth module.\nBase on openSUSE 12.3 to write a small control tool.\nMotoduino provide one android app (and source codes )\n\nThis is a great project to achieve world domination in just a few steps:\n\n1. Research bluetooth module control on arduino , and learn Android develop.\n2. write a app on openSUSE.\n3. make a funny toy and control it on openSUSE.\n4. More ambitious works...\n\n## Status\n\nI plan to work on this project.\n\n## Comments",
       "originator": "Al Cho",
       "members": [
@@ -163,7 +163,7 @@
       ]
     },
     {
-      "title": "Hack-Week-archaeology",
+      "title": "Hack Week archaeology",
       "categories": [
         "hackweek"
       ],
@@ -178,7 +178,7 @@
       ]
     },
     {
-      "title": "Intel-SMBus-Performance-Optimizations",
+      "title": "Intel SMBus Performance Optimizations",
       "categories": [
         "hardware",
         "kernel"
@@ -193,7 +193,7 @@
       ]
     },
     {
-      "title": "AABill-rewrite",
+      "title": "AABill rewrite",
       "description": "AAbill is a local web-tool for workmates to balance their money.\n\nrewrite aabill to support more features such as \"lunch history\", \"average price of some place\"\n\n\n\n\n## Status\n\n## Comments\nIs it possible to add the function of inputting \"decimal\"?",
       "originator": "dmzhang",
       "members": [
@@ -201,7 +201,7 @@
       ]
     },
     {
-      "title": "Collaborative-budgeting",
+      "title": "Collaborative budgeting",
       "description": "## On-line collaborative budgeting\n\nSuppose an organization wants to decide what projects to undertake given a budget. It could be useful to have a web application that said organization can use to survey its members. Each person could submit their preference as to how they would spend the budget, and the site would score each item based on the survey results and propose a budget. If item A cost $2,000 and is selected by three people and item B would cost $1,500 and is selected by five people, then item A would score $2,000 * 3 = 6,000, and item B would score $1,500 * 5 = 7500, so B would receive a higher score, and the site should propose a budget with the highest possible score, as computed by adding the scores of all of its items. For this to be useful, it should be possible for participants to add comments to proposed items / to use the site for on-line discussion.\n\n\n## Status\n\n<!---\nDescribe status of idea or project. Examples below.\n-->\n\nI plan to work on this project. COllaborators welcome.\n\n\n## Related material\n\n<!---\nAdd links to related material here. Example below\n-->\n\n* [Source Code](http://github.com/mgorse/finechoice)\n\n\n## Comments\n\n<!---\nAdd comments here. Start the comment with a line containing *by <your name>* so\nit's easy to see who is talking.\n-->",
       "originator": "Mike Gorse",
       "members": [
@@ -209,7 +209,7 @@
       ]
     },
     {
-      "title": "Reduce-time-and-I-O-needed-to-start-OBS-build-job",
+      "title": "Reduce time and I O needed to start OBS build job",
       "categories": [
         "buildservice"
       ],
@@ -226,7 +226,7 @@
       ]
     },
     {
-      "title": "Link-Fate-and-Testopia",
+      "title": "Link Fate and Testopia",
       "categories": [
         "Tools"
       ],
@@ -243,7 +243,7 @@
       ]
     },
     {
-      "title": "An-Incomplete-Guide-To-Suse",
+      "title": "An Incomplete Guide To Suse",
       "categories": [
         "documentation"
       ],
@@ -259,7 +259,7 @@
       ]
     },
     {
-      "title": "hack-the-build-of-OpenStack",
+      "title": "hack the build of OpenStack",
       "categories": [
         "cloud"
       ],
@@ -274,7 +274,7 @@
       ]
     },
     {
-      "title": "Measure-Operating-System-in-EFI-OS-Loader-by-means-of-EFI-TCG-Protocol",
+      "title": "Measure Operating System in EFI OS Loader by means of EFI TCG Protocol",
       "categories": [
         "distribution"
       ],
@@ -289,7 +289,7 @@
       ]
     },
     {
-      "title": "Getting-SMB-Traffic-Analyzer-further-to-release",
+      "title": "Getting SMB Traffic Analyzer further to release",
       "categories": [
         "networking"
       ],
@@ -304,7 +304,7 @@
       ]
     },
     {
-      "title": "Changelog-Analytics",
+      "title": "Changelog Analytics",
       "categories": [
         "analytics"
       ],
@@ -345,7 +345,7 @@
       ]
     },
     {
-      "title": "The-road-to-AppStream:-software.opensuse.org-goes-social",
+      "title": "The road to AppStream: software.opensuse.org goes social",
       "categories": [
         "distribution",
         "web"
@@ -362,7 +362,7 @@
       ]
     },
     {
-      "title": "Packaging-qtile,-a-pure-Python-tiling-window-manager",
+      "title": "Packaging qtile, a pure Python tiling window manager",
       "categories": [
         "distribution"
       ],
@@ -377,7 +377,7 @@
       ]
     },
     {
-      "title": "colt-(A-simple-blog-engine-for-Scheme-language)",
+      "title": "colt (A simple blog engine for Scheme language)",
       "categories": [
         "web"
       ],
@@ -393,7 +393,7 @@
       ]
     },
     {
-      "title": "Rewrite-SWAMP",
+      "title": "Rewrite SWAMP",
       "categories": [
         "web"
       ],
@@ -410,7 +410,7 @@
       ]
     },
     {
-      "title": "Per-subvolume-mount-options-for-btrfs",
+      "title": "Per subvolume mount options for btrfs",
       "categories": [
         "filesystem",
         "kernel"
@@ -426,7 +426,7 @@
       ]
     },
     {
-      "title": "QuantumSupport-for-VXLAN-on-LinuxBridge-Plugin",
+      "title": "QuantumSupport for VXLAN on LinuxBridge Plugin",
       "categories": [
         "networking"
       ],
@@ -453,7 +453,7 @@
       ]
     },
     {
-      "title": "Pebble-hacking",
+      "title": "Pebble hacking",
       "categories": [
         "mobile"
       ],
@@ -468,7 +468,7 @@
       ]
     },
     {
-      "title": "Continue-working-on-'lock-free'-libzypp",
+      "title": "Continue working on 'lock free' libzypp",
       "categories": [
         "distribution"
       ],
@@ -482,7 +482,7 @@
       ]
     },
     {
-      "title": "Admin-Dashboard",
+      "title": "Admin Dashboard",
       "categories": [
         "web",
         "studio"
@@ -501,7 +501,7 @@
       ]
     },
     {
-      "title": "dracut,-the-revenge",
+      "title": "dracut, the revenge",
       "categories": [
         "distribution"
       ],
@@ -516,7 +516,7 @@
       ]
     },
     {
-      "title": "Push-Weblate-further",
+      "title": "Push Weblate further",
       "categories": [
         "web",
         "i18n"
@@ -554,7 +554,7 @@
       ]
     },
     {
-      "title": "Percpu-command-for-crash",
+      "title": "Percpu command for crash",
       "categories": [
         "distribution"
       ],
@@ -569,7 +569,7 @@
       ]
     },
     {
-      "title": "Improve-E17-integration-to-openSUSE-12.3-and-Factory",
+      "title": "Improve E17 integration to openSUSE 12.3 and Factory",
       "categories": [
         "distribution",
         "packaging"
@@ -586,7 +586,7 @@
       ]
     },
     {
-      "title": "Mapping-my-home",
+      "title": "Mapping my home",
       "categories": [
         "distribution"
       ],
@@ -601,7 +601,7 @@
       ]
     },
     {
-      "title": "play-with-kvm-features-(especially-nesting-and-non-x86)",
+      "title": "play with kvm features (especially nesting and non x86)",
       "categories": [
         "virtualization"
       ],
@@ -616,7 +616,7 @@
       ]
     },
     {
-      "title": "Cubieboard-Linux-system",
+      "title": "Cubieboard Linux system",
       "categories": [
         "Embedded",
         "system"
@@ -633,7 +633,7 @@
       ]
     },
     {
-      "title": "Release-GFXprim-library",
+      "title": "Release GFXprim library",
       "categories": [
         "graphics"
       ],
@@ -651,7 +651,7 @@
       ]
     },
     {
-      "title": "add-wireshark-plugin-to-support-protocol-of-cmirrord",
+      "title": "add wireshark plugin to support protocol of cmirrord",
       "categories": [
         "networking"
       ],
@@ -662,7 +662,7 @@
       ]
     },
     {
-      "title": "Project-CIABatta:-Building-a-virtual-datacenter-in-a-box-on-a-high-end-laptop",
+      "title": "Project CIABatta: Building a virtual datacenter in a box on a high end laptop",
       "categories": [
         "buildservice",
         "cloud",
@@ -683,7 +683,7 @@
       ]
     },
     {
-      "title": "Rename-Pullermann",
+      "title": "Rename Pullermann",
       "categories": [
         "web",
         "ruby",
@@ -700,7 +700,7 @@
       ]
     },
     {
-      "title": "Network-Simulation-(NS-3)-tool-on-SUSE",
+      "title": "Network Simulation (NS 3) tool on SUSE",
       "description": "\n<!---\nDescription of the idea goes into this section. All text is formatted with markdown. Example below.\n-->\n\n\nNS-3 software is free software and is distributed under the GNU GPL v2 license. \n\nNS-3 separate the Network to 4 parts: 1.Node , 2.NetDevice , 3.Channel ,4.Application. The advantage of NS-3 is that we can write the script via C++ or Python.  It is a discrete-event network simulator for Internet systems, and is free software, licensed under the GNU GPLv2 license, and is publicly available for research, development, and use.\n\nNS-3 tool can be used to write some script and parameter to simulate the environment which we don't have. Such as Network ,Wireless,LTE ...etc.\n\nPS. NS2 is the previous Network Simulation build version. \n\n## Status\n\n<!---\nDescribe status of idea or project. Examples below.\n-->\n\nRecent version:\nns-3.16 was released on 21 December 2012. \nUpcoming release:\nns-3.17 is scheduled for April 24, 2013. \n\nI plan to work on this project. http://www.nsnam.org/wiki/index.php/Main_Page\n\nBuild/Install NS3 tool under openSUSE. http://www.nsnam.org/wiki/index.php/Installation\n\nThere is ONLY the installation way of Ubuntu/Debian ; Fedora/RedHat ; Gentoo on official website. I will try to make some progress on it.\n\n\n<!---\nAdd also categories and tags, if you want, so the page gets listed on the\noverview page. Categories and tags are comma-separated lists of lower-case\nwords without spaces.\nPopular categories: distribution,web,hardware\nPopular tags: idea,inprogress,done,helpwanted\n-->\n\n\n\n\n\nSend mail to NS-3 AUTHORS about the building status under openSUSE 12.2 platform. \n\nJoin ns-3-users@googlegroups.com to join the NS-3 community.  https://groups.google.com/forum/#!forum/ns-3-users\n\n\n\n## Related material\n\n<!---\nAdd links to related material here. Example below\n-->\n\n* [Source Code]( http://www.nsnam.org/release/ns-allinone-3.16.tar.bz2)\n\nRelease source:\nhttp://www.nsnam.org/release/\n\nDocument:\nhttp://www.nsnam.org/ns-3-16/documentation/\n\n## Comments\n\n<!---\nAdd comments here. Start the comment with a line containing *by <your name>* so\nit's easy to see who is talking.\n-->\n\n",
       "originator": "Ben Chou",
       "members": [
@@ -708,7 +708,7 @@
       ]
     },
     {
-      "title": "read---The-beauty-of-mathematics-",
+      "title": "read   The beauty of mathematics ",
       "categories": [
         "learning"
       ],
@@ -723,7 +723,7 @@
       ]
     },
     {
-      "title": "Investigate-ESX-and-Hyper-v-support-in-OpenStack-Grizzly",
+      "title": "Investigate ESX and Hyper v support in OpenStack Grizzly",
       "categories": [
         "cloud",
         "virtualization"
@@ -739,7 +739,7 @@
       ]
     },
     {
-      "title": "Ceph-Appliance",
+      "title": "Ceph Appliance",
       "categories": [
         "storage",
         "cloud"
@@ -757,7 +757,7 @@
       ]
     },
     {
-      "title": "dv2switch:-dvswitch-for-two-video-sources-on-the-one-machine",
+      "title": "dv2switch: dvswitch for two video sources on the one machine",
       "description": "Base on the video setup from : [Recording presentation](http://en.opensuse.org/openSUSE:Recording_presentation)\n  I`d like to create a small script all to use two video source on the one machine. Then We  don't need \"Mixer Laptop (with Fire-wire & Gbit)\" and can connect all in one machine.\n\nThe script should be user friendly and allow to start recording without deep knowledge of fire-ware and dvswitch.  \n\nsteps to do\n* setup a machine with at least two fire-ware connectors\nvia [Recording presentation](http://en.opensuse.org/openSUSE:Recording_presentation) and  [Dvswitch_howto](http://en.opensuse.org/Dvswitch_howto)\n* Testing how are video devices recognized in the system (dmesg, messages etc) If there is a address (like MAC in eth cards), or something else.\n* create *.conf file where users can add video devices,\n\n* the script will work in this way:\n\n* recognize video input 1\n* recognize video input 2 \n* setup path to save video stream\n* run dvswitch gui.\n* run post processing tools like Openshot or encode video\n\n",
       "originator": "mcaj",
       "members": [
@@ -765,7 +765,7 @@
       ]
     },
     {
-      "title": "Allow-GNOME-applications-to-access-documents-on-CMIS-servers",
+      "title": "Allow GNOME applications to access documents on CMIS servers",
       "categories": [
         "desktop"
       ],
@@ -780,7 +780,7 @@
       ]
     },
     {
-      "title": "ARM-QVM-compiler",
+      "title": "ARM QVM compiler",
       "categories": [
         "games",
         "hardware"
@@ -795,7 +795,7 @@
       ]
     },
     {
-      "title": "De-Googling-my-life.",
+      "title": "De Googling my life.",
       "categories": [
         "privacy"
       ],
@@ -811,7 +811,7 @@
       ]
     },
     {
-      "title": "Building-an-ARM-thermal-probe",
+      "title": "Building an ARM thermal probe",
       "categories": [
         "hardware"
       ],
@@ -825,7 +825,7 @@
       ]
     },
     {
-      "title": "SELinux-policy-for-a-minimal-openSUSE-system",
+      "title": "SELinux policy for a minimal openSUSE system",
       "description": "\nLast weeks I worked on updating userspace tools and policy.<br/>\nI'd like to create a suitable policy for a minimal server system.\n\n",
       "originator": "Vitezslav Cizek",
       "members": [
@@ -834,7 +834,7 @@
       ]
     },
     {
-      "title": "System-V-init-for-OpenSuSE",
+      "title": "System V init for OpenSuSE",
       "categories": [
         "distribution",
         "packaging"
@@ -865,7 +865,7 @@
       ]
     },
     {
-      "title": "hack-on-qemu-kvm-cpu-definitions",
+      "title": "hack on qemu kvm cpu definitions",
       "categories": [
         "virtualization"
       ],
@@ -876,7 +876,7 @@
       ]
     },
     {
-      "title": "Encryption-SSL-support-for-VNC-Websockets-in-QEMU",
+      "title": "Encryption SSL support for VNC Websockets in QEMU",
       "categories": [
         "Virtualization"
       ],
@@ -894,7 +894,7 @@
       ]
     },
     {
-      "title": "osc3:-port-osc-to-Python3",
+      "title": "osc3: port osc to Python3",
       "categories": [
         "distribution",
         "buildservice"
@@ -910,7 +910,7 @@
       ]
     },
     {
-      "title": "Chef-zypper-cookbook",
+      "title": "Chef zypper cookbook",
       "categories": [
         "systemsmanagement"
       ],
@@ -926,7 +926,7 @@
       ]
     },
     {
-      "title": "BIOS-NumLock-sync",
+      "title": "BIOS NumLock sync",
       "categories": [
         "distribution"
       ],
@@ -955,7 +955,7 @@
       ]
     },
     {
-      "title": "No-'dd'-please,-add-live-linux-to-my-existing-stick-data",
+      "title": "No 'dd' please, add live linux to my existing stick data",
       "categories": [
         "distribution"
       ],
@@ -969,7 +969,7 @@
       ]
     },
     {
-      "title": "Improved-Factory-devel-project-submission-workflow",
+      "title": "Improved Factory devel project submission workflow",
       "categories": [
         "distribution",
         "buildservice"
@@ -986,7 +986,7 @@
       ]
     },
     {
-      "title": "Snoek-improvement",
+      "title": "Snoek improvement",
       "categories": [
         "web"
       ],
@@ -1002,7 +1002,7 @@
       ]
     },
     {
-      "title": "Generic-Cloud-Support-in-Open-Build-Service-(OBS)",
+      "title": "Generic Cloud Support in Open Build Service (OBS)",
       "categories": [
         "cloud",
         "obs"
@@ -1018,7 +1018,7 @@
       ]
     },
     {
-      "title": "SUSE-Manager-Client-Manager",
+      "title": "SUSE Manager Client Manager",
       "description": "\nThis is a project that will allow management/control of clients for SUSE Manager for testing purposes\n\n* Bring up clients\n* Clone clients\n* Clean up clients after time\n* Execute tests\n* Maybe tie into HAMSTA(QA Automation/System Management)\n\n\n\n## Status\n\nStarted!",
       "originator": "mseidl",
       "members": [
@@ -1026,7 +1026,7 @@
       ]
     },
     {
-      "title": "openSUSE-&-SLE-support-for-upstream-Puppet-modules",
+      "title": "openSUSE & SLE support for upstream Puppet modules",
       "categories": [
         "systemsmanagement"
       ],
@@ -1043,7 +1043,7 @@
       ]
     },
     {
-      "title": "Kill-YCP-by-Mechanical-Translation",
+      "title": "Kill YCP by Mechanical Translation",
       "categories": [
         "yast"
       ],
@@ -1065,7 +1065,7 @@
       ]
     },
     {
-      "title": "Chumby-hacking",
+      "title": "Chumby hacking",
       "categories": [
         "hardware"
       ],
@@ -1081,7 +1081,7 @@
       ]
     },
     {
-      "title": "generate-user-analysis-report-for-cloud",
+      "title": "generate user analysis report for cloud",
       "description": "\n<!---\nDescription of the idea goes into this section. All text is formatted with markdown. Example below.\n-->\n\nThis idea comes from website recommendation system. Some websites give their customers recommendations according to their buying record or clicking habit. \n\nIn a cloud environment, usually user can choose which kind of VMs, small, medium or large, with corresponding price. But users may not know how much resources they actually use, maybe a medium VM user actually use little resources, a small VM is enough for him, or maybe a small VM user actually use resources with heavy load, so if we can generate user analysis report for each VM periodically and give a recommendation which kind of VM is proper for him, it will be very kind for uses. \n\n## Status\n\n<!---\nDescribe status of idea or project. Examples below.\n-->\n\nIdea looking for takers.\n\nI don't have time to work on this project this hackweek.",
       "originator": "cyliu",
       "members": [
@@ -1089,7 +1089,7 @@
       ]
     },
     {
-      "title": "Novell-Groupwise-support-in-akonadi",
+      "title": "Novell Groupwise support in akonadi",
       "categories": [
         "desktop"
       ],
@@ -1104,7 +1104,7 @@
       ]
     },
     {
-      "title": "Storage-motion-for-xen",
+      "title": "Storage motion for xen",
       "description": "## Describackption\nStorage motion is an existing feature of VMware but absent in Xen, it allows you to lively change backend storge devices of a running VM without data loss. It could be very useful in some cases, for example: the original storage device is in a risky status you want to replace, or the original storage is too small you want a larger one.\n\n## Status\n\n<!---\nDescribe status of idea or project. Examples below.\n-->\n\nI plan to work on this project.\n",
       "originator": "cyliu",
       "members": [
@@ -1112,7 +1112,7 @@
       ]
     },
     {
-      "title": "A-parted-shell-in-Lua",
+      "title": "A parted shell in Lua",
       "description": "   The shell in the title means the language not an interactive interface.\n  \n   Shell is doing best at the functions about file system and IO Stream direction.\n\n   When what you do is complex manipulations of string and more complicated data type\n   a dynamic languages is the better choice.\n\n   Using a function like system() to call a command is less handy then the way used in shell.\n\n   Lua has a very good feature called long string which can be used to embedded a language in itself.\n   Besides one can use handy syntax to call a command in a dynamic language, one can also use the variables\n   from the code of Lua in the code of the embedded shell. \n\n### Example 1, execute commands\n    parted_shell_eval([=[\n    cmd01 -opt11 | cmd02 -opt21 | cmd03 -opt31\n    ]=])\n\n### Example 2, use variable from Lua code\n    var = 'Hello World'  ---- code in Lua\n    parted_shell_eval([=[\n    #the embedded code\n    echo $var\n    ]=])\n\n### Q & A\n\n   Q: How dose call a function defined in Lua in the embedded shell.\n\n   A: [To be done]\n\n   Q: Can it be to define a variable or a function in the embedded shell.\n\n   A: Currently I say no. Because it is not a real complete language.\n\n   Q: what types are supported in the embedded shell.\n\n   A: only string. all data of other types in Lua should be converted to a string or strings.\n\n   Q: what functions of shell are supported in the embedded shell.\n\n   A: IO stream redirection. I think this is one of the best parts of shell.\n\n   Q: what is the return value of parted_shell_eval()\n\n   A: [To be done]\n\n   Q: the function name parted_shell_eval is too long.\n\n   A: Yes a better shorter name is needed.\n\n   More Qs to be asked\n\n   More As to be give.\n\n",
       "originator": "Lance Wang",
       "members": [
@@ -1136,7 +1136,7 @@
       ]
     },
     {
-      "title": "Air-Quality-Index-extension-for-gnome-shell",
+      "title": "Air Quality Index extension for gnome shell",
       "categories": [
         "gnome-shell"
       ],
@@ -1151,7 +1151,7 @@
       ]
     },
     {
-      "title": "Lightweight-KDE-based-desktop",
+      "title": "Lightweight KDE based desktop",
       "categories": [
         "desktop",
         "distribution"
@@ -1168,7 +1168,7 @@
       ]
     },
     {
-      "title": "Optimize-libfontconfig",
+      "title": "Optimize libfontconfig",
       "categories": [
         "gui"
       ],
@@ -1183,7 +1183,7 @@
       ]
     },
     {
-      "title": "Robot-car-driving-by-Xbox360-controller",
+      "title": "Robot car driving by Xbox360 controller",
       "categories": [
         "desktop"
       ],
@@ -1199,7 +1199,7 @@
       ]
     },
     {
-      "title": "Learning-clojure-by-building-a-MMO-game-backend",
+      "title": "Learning clojure by building a MMO game backend",
       "categories": [
         "web"
       ],
@@ -1218,7 +1218,7 @@
       ]
     },
     {
-      "title": "Better-arranged-graphic-style-for-Bugzilla-pages-and-prints",
+      "title": "Better arranged graphic style for Bugzilla pages and prints",
       "categories": [
         "web"
       ],
@@ -1233,7 +1233,7 @@
       ]
     },
     {
-      "title": "Add-collaboration-into-gems-status",
+      "title": "Add collaboration into gems status",
       "categories": [
         "ruby",
         "security"
@@ -1248,7 +1248,7 @@
       ]
     },
     {
-      "title": "trello2wr-\"generate-a-weekly-work-report-(A&O)-from-a-Trello-board\"",
+      "title": "trello2wr \"generate a weekly work report (A&O) from a Trello board\"",
       "categories": [
         "Tools"
       ],
@@ -1264,7 +1264,7 @@
       ]
     },
     {
-      "title": "enhance-pacemaker-gui-performance",
+      "title": "enhance pacemaker gui performance",
       "description": "\ncrm_gui is slow.\nPlan to add some c-binding to speed-up the performance of crm_gui\n\n\n## Status\n\n",
       "originator": "dmzhang",
       "members": [
@@ -1272,7 +1272,7 @@
       ]
     },
     {
-      "title": "docker.io-and-openSUSE",
+      "title": "docker.io and openSUSE",
       "categories": [
         "cloud"
       ],
@@ -1286,7 +1286,7 @@
       ]
     },
     {
-      "title": "System-Web-Security-Wargame",
+      "title": "System Web Security Wargame",
       "categories": [
         "security",
         "web"
@@ -1303,7 +1303,7 @@
       ]
     },
     {
-      "title": "I-want-ice-cream-for-hackweek",
+      "title": "I want ice cream for hackweek",
       "description": "\nThere should be a good supply of delicious ice-cream duing the Hackweek to lure people away from their offices, towards the kitchen area.\n\n\n## Status\n\nProject in progress\n\n## Related material\n\n*Put references to additional material here.*\n\n## Comments\n\n*by J. W.*\n\nAnd also sunshine, please. Icecream in the rain sucks.\n\n\n*by D. H.*\n\nand all the sweets we got last time...\n\n\n*by M. S.*\n\nThis feature is a bit cloudy (because of the theme of hackweek IV?).\n\nWhat flavor do you want? Is there anywhere in Nürnberg/Erlangen an ice-cream-delivery that has ice cream of pae or desktop flavor? Or only vanilla?\nAnd where should we no-hackers should tell the delivery to deliver the I-scream?\n\npuzzled\npistazienfresser\n(P.S.: Or is it raining in your office so that the feature is now obsolete?)\n\n\n*by J. W.*\n\nIt is snowing outside - one of the clouds there seems to be overly full.\n\nI am not activly participating this week, but the feature is not at all obsolete!\nPlease coordinate any deliveries with Melanie, so that all the hackers get their share :-)\n\n\n",
       "originator": "Clark Kent",
       "members": [
@@ -1311,7 +1311,7 @@
       ]
     },
     {
-      "title": "Elasto-Cloud-Storage-Improvements",
+      "title": "Elasto Cloud Storage Improvements",
       "categories": [
         "storage",
         "cloud"
@@ -1327,7 +1327,7 @@
       ]
     },
     {
-      "title": "Fixing-CPK-data-model-and-adding-features",
+      "title": "Fixing CPK data model and adding features",
       "categories": [
         "security"
       ],
@@ -1344,7 +1344,7 @@
       ]
     },
     {
-      "title": "Big-Data-Challenge",
+      "title": "Big Data Challenge",
       "categories": [
         "data"
       ],
@@ -1358,7 +1358,7 @@
       ]
     },
     {
-      "title": "Cloud-Security-Alliance-(CSA)-template-hacking",
+      "title": "Cloud Security Alliance (CSA) template hacking",
       "categories": [
         "security"
       ],
@@ -1373,7 +1373,7 @@
       ]
     },
     {
-      "title": "mfile-(Ancient,-dirt-simple-DB-app-gets-new-lease-on-life)",
+      "title": "mfile (Ancient, dirt simple DB app gets new lease on life)",
       "categories": [
         "web"
       ],
@@ -1388,7 +1388,7 @@
       ]
     },
     {
-      "title": "SUSE-Manager-for-Android-Jelly-Bean-refresh",
+      "title": "SUSE Manager for Android Jelly Bean refresh",
       "categories": [
         "systemsmanagement"
       ],
@@ -1403,7 +1403,7 @@
       ]
     },
     {
-      "title": "Try-SUSE-Manager",
+      "title": "Try SUSE Manager",
       "description": "I am PM and rare to do the programming, so I would like to try SUSE Manager to see how to monitor and manage the linux machine.\n\n",
       "originator": "JeffreyCheung",
       "members": [
@@ -1411,7 +1411,7 @@
       ]
     },
     {
-      "title": "Improve-native-lttng-trace-gui",
+      "title": "Improve native lttng trace gui",
       "categories": [
         "tracing"
       ],
@@ -1422,7 +1422,7 @@
       ]
     },
     {
-      "title": "Some-Suse-related-pygame...",
+      "title": "Some Suse related pygame...",
       "categories": [
         "game",
         "python"
@@ -1438,7 +1438,7 @@
       ]
     },
     {
-      "title": "A-comparison-of-SUSE-Target-Software",
+      "title": "A comparison of SUSE Target Software",
       "categories": [
         "distribution"
       ],
@@ -1453,7 +1453,7 @@
       ]
     },
     {
-      "title": "RSA-private-key-parser-in-kernel",
+      "title": "RSA private key parser in kernel",
       "categories": [
         "distribution"
       ],
@@ -1468,7 +1468,7 @@
       ]
     },
     {
-      "title": "Productivity-Desktop-for-Unexperienced-Users",
+      "title": "Productivity Desktop for Unexperienced Users",
       "categories": [
         "distribution",
         "desktop"
@@ -1484,7 +1484,7 @@
       ]
     },
     {
-      "title": "Add-breadcrumbs-in-make-menuconfig",
+      "title": "Add breadcrumbs in make menuconfig",
       "categories": [
         "kernel"
       ],
@@ -1498,7 +1498,7 @@
       ]
     },
     {
-      "title": "Anroid-app-for-Bursa-municipal-bus-timeline",
+      "title": "Anroid app for Bursa municipal bus timeline",
       "categories": [
         "android"
       ],
@@ -1512,7 +1512,7 @@
       ]
     },
     {
-      "title": "Hamsta-Enhancement",
+      "title": "Hamsta Enhancement",
       "categories": [
         "distribution"
       ],
@@ -1527,7 +1527,7 @@
       ]
     },
     {
-      "title": "Add-a-parallel-deployment-method-in-the-openSUSE-installer",
+      "title": "Add a parallel deployment method in the openSUSE installer",
       "categories": [
         "distribution"
       ],
@@ -1545,7 +1545,7 @@
       ]
     },
     {
-      "title": "openSUSE-and-SLES-boot-from-GPT-under-PowerVM",
+      "title": "openSUSE and SLES boot from GPT under PowerVM",
       "categories": [
         "distribution"
       ],
@@ -1559,7 +1559,7 @@
       ]
     },
     {
-      "title": "Integrate-Fedora-Collections-technology-in-openSUSE",
+      "title": "Integrate Fedora Collections technology in openSUSE",
       "categories": [
         "distribution"
       ],
@@ -1574,7 +1574,7 @@
       ]
     },
     {
-      "title": "Geeko-Pumping-Iron-(ARM)-Session",
+      "title": "Geeko Pumping Iron (ARM) Session",
       "categories": [
         "distribution"
       ],
@@ -1604,7 +1604,7 @@
       ]
     },
     {
-      "title": "Bioloid---Dynamixel-hacking",
+      "title": "Bioloid   Dynamixel hacking",
       "categories": [
         "hardware"
       ],
@@ -1621,7 +1621,7 @@
       ]
     },
     {
-      "title": "rapport----Work-report-generator-for-the-lazy",
+      "title": "rapport    Work report generator for the lazy",
       "categories": [
         "distribution"
       ],
@@ -1657,7 +1657,7 @@
       ]
     },
     {
-      "title": "Update-git-review",
+      "title": "Update git review",
       "categories": [
         "web",
         "ruby",
@@ -1674,7 +1674,7 @@
       ]
     },
     {
-      "title": "create-test-cases-with-selenium-to-test-web-application",
+      "title": "create test cases with selenium to test web application",
       "categories": [
         "web"
       ],

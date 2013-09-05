@@ -2,26 +2,26 @@
   - projects.each do |project|
     .span11.project
       %h2
-        = link_to({:controller => 'projects', :action => 'show', :id => project.id}) do
+        = link_to(project_path(project.id)) do
           #{truncate(project.title, :length => 80)}
       %p{:style=>"margin-top:-10px;"}
         an idea by
-        = link_to(:controller => "users", :action => "show", :id => project.originator.id) do
+        = link_to(user_path(project.originator.id)) do
           #{project.originator.name}
         - if project.kudos.include? @current_user
-          = link_to({:action => "dislike", :id => project.id}, :title=>'You like this Idea. Dislike?', :method => :post) do
+          = link_to(dislike_project_path(project.id), :title=>'You like this Idea. Dislike?', :method => :post) do
             %i.icon-heart
         - else
-          = link_to({:action => "like", :id => project.id}, :title=>'I like this Idea', :method => :post) do
+          = link_to(like_project_path(project.id), :title=>'I like this Idea', :method => :post) do
             %i.icon-thumbs-up
       %br
       worked on by
       - if project.users.empty?
         no one. This project is up for
-        = link_to 'grabs!', :controller => 'projects', :action => "join", :id => project.id
+        = link_to 'grabs!', join_project_path(project.id)
       - else
         - project.users.each_with_index do |user, index|
-          = link_to(:controller => "users", :action => "show", :id => user.id) do
+          = link_to(user_path(user.id)) do
             - if not index == project.users.size - 1
               = user.name + ', '
             - else

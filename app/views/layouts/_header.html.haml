@@ -5,7 +5,7 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to({:controller => "front"}, {:name => "top", :class => "brand"}) do
+      = link_to(root_path, {:name => "top", :class => "brand"}) do
         = image_tag("suse-logo-sketch.png", :width => "48px", :alt => "Home", :title => 'Hack Week')
       .nav-collapse.collapse
         %ul.nav
@@ -28,17 +28,17 @@
                 Sign In
           - if @current_user
             %li.hidden-desktop
-              = link_to(:controller => "users", :action => "me") do
+              = link_to(me_users_path) do
                 %i.icon-home.icon-2x
                 = @current_user.name
             %li.divider-vertical
             %li.hidden-desktop
-              = link_to(:controller => "users", :action => "show", :id => @current_user.id) do
+              = link_to(user_path(@current_user.id)) do
                 %i.icon-globe.icon-2x
                 My Public Profile
             %li.divider-vertical
             %li.hidden-desktop
-              = link_to(:controller => "account", :action => "logout") do
+              = link_to(logout_path) do
                 %i.icon-signout.icon-2x
                 Sign Out
       - unless @current_user
@@ -61,16 +61,16 @@
               %i.icon-angle-down
             %ul.dropdown-menu{:style => "padding: 15px;"}
               %li
-                = link_to(:controller => "users", :action => "me") do
+                = link_to(me_users_path) do
                   %i.icon-home
                   = @current_user.name
               %li
-                = link_to(:controller => "users", :action => "show", :id => @current_user.id) do
+                = link_to(user_path(@current_user.id)) do
                   %i.icon-globe
                   My Public Profile
               %li.divider
               %li
-                = link_to(:controller => "account", :action => "logout") do
+                = link_to(logout_path) do
                   %i.icon-share
                   Log out
       / /.nav-collapse

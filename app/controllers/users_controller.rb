@@ -25,4 +25,11 @@ class UsersController < ApplicationController
     
     redirect_to :action => "me", notice: "Keyword '#{params[:new_keyword]}' added."
   end
+
+  def user_params
+    params.require(:user).permit(:email, :name, :uid)
+  end
+  def user_interest_params
+    params.require(:user_interest).permit(:keyword_id, :user_id)
+  end
 end

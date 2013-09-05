@@ -121,4 +121,24 @@ class ProjectsController < ApplicationController
     
     redirect_to project
   end
+
+  def project_params
+    params.require(:project).permit(:description, :title, :originator)
+  end
+
+  def like_params
+    params.require(:like).permit(:project_id, :user_id)
+  end
+
+  def member_params
+    params.require(:member).permit(:project_id, :user_id)
+  end
+
+  def update_params
+    params.require(:update).permit(:author_id, :author, :project_id, :project, :text)
+  end
+
+  def project_interest_params
+    params.require(:project_interest).permit(:keyword_id, :project_id)
+  end
 end

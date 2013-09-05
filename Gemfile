@@ -1,39 +1,38 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails', '4.0.0'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+# Use sqlite3 as the database for Active Record
+gem 'sqlite3'
+# Use postgresql for production
 gem 'pg'
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2'
-  gem 'coffee-rails', '~> 3.2'
-  gem 'bootstrap-sass', '~> 2.3.1.0'
-  gem 'font-awesome-sass-rails'
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-  gem 'jquery-cookie-rails'
-  gem 'rails_tokeninput'
-
-  gem 'uglifier', '>= 1.0.3'
-end
-
+# Use SCSS for stylesheets
+gem 'sass-rails',   '~> 4.0.0'
+# Use CoffeeScript for .js.coffee assets and views
+gem 'coffee-rails', '~> 4.0.0'
+# Use bootstrap as the front-end framework
+gem 'bootstrap-sass'
+# Use font-awesome as scalable vector icons
+gem 'font-awesome-sass-rails'
+# Use Uglifier as compressor for JavaScript assets
+gem 'uglifier', '>= 1.3.0'
+# Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-hotkeys-rails'
-gem 'haml'
-gem 'redcarpet'
+gem 'jquery-cookie-rails'
+# Use haml as templating language
+gem 'haml-rails'
+# Use omniauth as as authentification framework
 gem 'omniauth'
 gem 'omniauth-openid'
+# Use gravtastic for user avatars
 gem 'gravtastic'
+# dunno
 gem 'single_test'
 gem 'pagedown-rails'
 gem 'unicorn'
+gem 'redcarpet'
+gem 'rails_tokeninput'
 
-group :test do
-  gem 'capybara'
-  gem 'debugger'
-end
+gem 'capybara', group: [:test]
+gem 'debugger', group: [:test] 

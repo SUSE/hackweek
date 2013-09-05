@@ -7,13 +7,13 @@
           = @project.title
         %p{:style=>"margin-top:-10px;"}
           an idea by
-          = link_to(:controller => "users", :action => "show", :id => @project.originator.id) do
+          = link_to(user_path(@project.originator.id)) do
             #{@project.originator.name}
           - if @project.kudos.include? @current_user
-            = link_to({:action => "dislike", :id => @project.id}, :title=>'You like this Idea. Dislike?', :method => :post) do
+            = link_to(dislike_project_path(@project.id), :title=>'You like this Idea. Dislike?', :method => :post) do
               %i.icon-heart
           - else
-            = link_to({:action => "like", :id => @project.id}, :title=>'I like this', :method => :post) do
+            = link_to(like_project_path(@project.id), :title=>'I like this', :method => :post) do
               %i.icon-thumbs-up
 
       .span1
@@ -30,15 +30,15 @@
         - else
           %h4 Hackers
           - @project.users.each do |user|
-            = link_to(:controller => "users", :action => "show", :id => user.id) do
+            = link_to(user_path(user.id)) do
               = image_tag user.gravatar_url(:size => "64")
               %br
         - if @current_user
           %p
             - if @project.users.include? @current_user
-              = button_to 'Leave this project', {:action => "leave", :id => @project.id}, :class=>"btn btn-danger btn-large pull-right"
+              = button_to 'Leave this project', leave_project_path(@project.id), :class=>"btn btn-danger btn-large pull-right"
             - else
-              = button_to 'Join this project', {:action => "join", :id => @project.id}, :class=>"btn btn-success btn-large pull-right"
+              = button_to 'Join this project', join_project_path(@project.id), :class=>"btn btn-success btn-large pull-right"
     .row
       .span6.material
         %h4 Material
@@ -64,7 +64,7 @@
           /, :style=>"display: none;"
         :javascript
           $(document).ready(function() {
-          $("#1new_keyword").tokenInput("#{ url_for :controller => 'keyword', :action => 'tokens'}" ,{
+          $("#1new_keyword").tokenInput("#{keyword_tokens_url}" ,{
                       theme: "facebook",
                       tokenValue: "name",
                       prePopulate: #{raw(@project.keywords.to_json)}
