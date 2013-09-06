@@ -1,6 +1,6 @@
 .row.paper
-  .span12.scratch
-  .span11.project
+  .col-sm-12.scratch
+  .col-sm-11.project
     = image_tag(@user.gravatar_url(:size => "48"), :class => "img-rounded pull-left", :title => "#{@user.name}", :alt => @user.name)
     %h2
       = @user.name

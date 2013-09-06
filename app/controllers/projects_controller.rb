@@ -45,7 +45,7 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(params[:project])
+    @project = Project.new(project_params)
     @project.originator = current_user
 
     respond_to do |format|
@@ -65,7 +65,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
 
     respond_to do |format|
-      if @project.update_attributes(params[:project])
+      if @project.update_attributes(project_params)
         format.html { redirect_to @project }
         format.json { head :no_content }
       else
@@ -117,8 +117,7 @@ class ProjectsController < ApplicationController
   
   def add_keyword
     project = Project.find(params[:id])
-    project.add_keyword! params[:new_keyword]
-    
+    project.add_keyword! keyword_params
     redirect_to project
   end
 
@@ -126,19 +125,8 @@ class ProjectsController < ApplicationController
     params.require(:project).permit(:description, :title, :originator)
   end
 
-  def like_params
-    params.require(:like).permit(:project_id, :user_id)
+  def keyword_params
+    params.require(:new_keyword).permit(:name)
   end
 
-  def member_params
-    params.require(:member).permit(:project_id, :user_id)
-  end
-
-  def update_params
-    params.require(:update).permit(:author_id, :author, :project_id, :project, :text)
-  end
-
-  def project_interest_params
-    params.require(:project_interest).permit(:keyword_id, :project_id)
-  end
 end

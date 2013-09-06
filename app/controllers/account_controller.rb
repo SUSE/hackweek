@@ -9,6 +9,7 @@ class AccountController < ApplicationController
 
   def logout
     clear_login
+    redirect_to projects_path, notice: 'Have a good one and come back soon!'
   end
   
   def callback
@@ -31,8 +32,8 @@ class AccountController < ApplicationController
 
     dude = name.split(' ')[0]
     greetings = Array.new
-    greetings << "Sup, G, hows your moma?" << "What up, cheese doodle?" << "Hey #{dude}, whats poppin?"
-    greetings << "#{dude}! Supdawg!" << "Whats doin #{dude}?" << "Yo #{dude}, what's craicalackin?"
+    greetings << "Sup, #{dude}, how's it going?" << "What up cheese doodle?" << "Hey #{dude}, whats poppin?"
+    greetings << "#{dude}! Supdawg!" << "What's doin #{dude}?" << "Yo #{dude}, what's craicalackin?"
     flash[:success] = greetings.sample
     
     redirect_back_or_default :controller => "users", :action => "me"

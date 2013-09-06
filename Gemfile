@@ -11,9 +11,9 @@ gem 'sass-rails',   '~> 4.0.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 # Use bootstrap as the front-end framework
-gem 'bootstrap-sass'
+gem 'bootstrap-sass-rails'
 # Use font-awesome as scalable vector icons
-gem 'font-awesome-sass-rails'
+gem "font-awesome-rails"
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use jquery as the JavaScript library
@@ -27,11 +27,11 @@ gem 'omniauth'
 gem 'omniauth-openid'
 # Use gravtastic for user avatars
 gem 'gravtastic'
+# Use redcarpet for markdown rendering
+gem 'redcarpet'
 # dunno
 gem 'single_test'
-gem 'pagedown-rails'
 gem 'unicorn'
-gem 'redcarpet'
 gem 'rails_tokeninput'
 
 gem 'capybara', group: [:test]

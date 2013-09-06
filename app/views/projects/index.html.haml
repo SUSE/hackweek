@@ -1,9 +1,9 @@
 .row.paper
-  .span12.scratch
+  .col-sm-12.scratch
   - if @projects.length > 0
     = render :partial => "projects/list", :locals => {:projects => @projects }
   - else
     .row
-      .span11.project
+      .col-sm-11.project
         %h3 No projects here, sorry!
 

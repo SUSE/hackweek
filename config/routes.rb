@@ -12,10 +12,10 @@ Hackweek::Application.routes.draw do
 
   resources :projects do
     member do
-      post 'like'
-      post 'dislike'
-      get 'join'
-      get 'leave'
+      match 'like', via: :all
+      match 'dislike', via: :all
+      match 'join', via: :all
+      match 'leave', via: :all
       post 'add_keyword'
     end
     resources :comments
@@ -33,9 +33,9 @@ Hackweek::Application.routes.draw do
 
   post '/auth/:provider/callback', :to => 'account#callback'
   get '/auth/failure', :to => 'account#failure'
-  get '/account/login', :to => 'account#login', as: :login
-  get '/account/logout', :to => 'account#logout', as: :logout
-  
+  get '/login', :to => 'account#login', as: :login
+  get '/logout', :to => 'account#logout', as: :logout
+ 
   root 'front#index'
 
 

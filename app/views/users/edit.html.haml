@@ -1,6 +1,6 @@
 .row.paper
-  .span12.scratch
-  .span11.project
+  .col-sm-12.scratch
+  .col-sm-11.project
     %h2 Edit user information
     = form_for(@current_user) do |f|
       - if @current_user.errors.any?

@@ -10,8 +10,7 @@
  *
  *= require_self
  *= require strap-on.css.scss
- *= require _font-awesome
- *= require markdown
+ *= require font-awesome
  *= require token-input
  *= require token-input-facebook
  *= require hackweek.css.scss

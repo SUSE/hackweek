@@ -14,8 +14,5 @@
 //= require jquery_ujs
 //= require jquery-hotkeys
 //= require jquery.tokeninput
-//= require bootstrap
-//= require markdown.converter
-//= require markdown.sanitizer
-//= require markdown.editor
+//= require twitter/bootstrap
 //= require hackweek

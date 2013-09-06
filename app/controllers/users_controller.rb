@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @current_user.update_attributes(params[:user])
+    if @current_user.update_attributes(user_params)
       redirect_to :action => "me", notice: 'User profile was successfully updated.'
     else
       render :action => "edit"
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
   
   def add_keyword
-    current_user.add_keyword! params[:new_keyword]
+    current_user.add_keyword! keyword_params
     
     redirect_to :action => "me", notice: "Keyword '#{params[:new_keyword]}' added."
   end
@@ -29,7 +29,9 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :name, :uid)
   end
-  def user_interest_params
-    params.require(:user_interest).permit(:keyword_id, :user_id)
+
+  def keyword_params
+    params.require(:new_keyword).permit(:name)
   end
+
 end

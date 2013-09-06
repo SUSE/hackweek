@@ -1,13 +1,13 @@
 .row.paper
-  .span12.scratch
-  .span11.project
+  .col-sm-12.scratch
+  .col-sm-11.project
     = image_tag(@current_user.gravatar_url(:size => "48"), :class => "img-rounded pull-left", :title => "#{@current_user.name}", :alt => @current_user.name)
     %h2
       = @current_user.name
     - @user = @current_user
     = render :partial => "projects", :locals => { :user => @current_user }
 
-  .span11.keyword
+  .col-sm-11.keyword
     %h3 Keywords
     - if !@current_user.keywords.empty?
       %p
@@ -16,7 +16,7 @@
       = text_field_tag :new_keyword
       = submit_tag "Add keyword"
         
-  .span11.recommendations
+  .col-sm-11.recommendations
     %h3 Recommended Projects
     
     %ul

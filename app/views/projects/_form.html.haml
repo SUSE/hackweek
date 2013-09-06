@@ -13,7 +13,29 @@
     = f.text_field :title, :placeholder => "The projects title"
     
   .field
-    = f.text_area :description, :placeholder => "Add a detailed description of what you want to hack on. You can use markdown."
-    
+    = f.text_area :description, size: "20x20", :placeholder => "Add a detailed description of what you want to hack on. You can use markdown."
+  .link.pull-right
+    %i.icon-question-sign
+    %a{:type=>"button", "data-toggle"=>"collapse", "data-target"=>"#help"}
+      Markdown Help
   .actions
     = f.submit
+
+#help{:class=>"collapse"}
+  %pre
+    :preserve
+      # A First Level Header
+      ## A Second Level Header
+      
+      Use one asterisk to *emphasize*
+      
+      Use two asterisks for **strong emphasis**
+      
+      * Use asterisks
+      * for lists
+      
+      This is an [example link](http://example.com/)
+      
+      This is an ![example image](http://paste.opensuse.org/view/raw/68957446)
+  %p.pull-right
+    = link_to "More Complex Markdown Help", "http://daringfireball.net/projects/markdown/syntax", target: "_blank"

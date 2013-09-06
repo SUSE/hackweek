@@ -1,6 +1,6 @@
 .row
   - projects.each do |project|
-    .span11.project
+    .col-sm-11.project
       %h2
         = link_to(project_path(project.id)) do
           #{truncate(project.title, :length => 80)}
@@ -9,24 +9,23 @@
         = link_to(user_path(project.originator.id)) do
           #{project.originator.name}
         - if project.kudos.include? @current_user
-          = link_to(dislike_project_path(project.id), :title=>'You like this Idea. Dislike?', :method => :post) do
+          = button_to(dislike_project_path(project.id), :title=>'Dislike this idea?', :class=> "btn btn-primary btn-sm") do
             %i.icon-heart
         - else
-          = link_to(like_project_path(project.id), :title=>'I like this Idea', :method => :post) do
-            %i.icon-thumbs-up
+          = button_to(like_project_path(project.id), :title=>'I like this Idea') do
+            %i.icon-thumbs-up-alt
       %br
-      worked on by
       - if project.users.empty?
-        no one. This project is up for
+        Holy moly! This project has no developer yet and is up for
         = link_to 'grabs!', join_project_path(project.id)
       - else
+        worked on by
         - project.users.each_with_index do |user, index|
           = link_to(user_path(user.id)) do
             - if not index == project.users.size - 1
               = user.name + ', '
             - else
               = user.name
-        last
         = "#{time_ago_in_words project.updates.last.created_at}"
         ago
       %hr

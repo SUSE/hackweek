@@ -27,8 +27,9 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.0)
     atomic (1.1.13)
-    bootstrap-sass (2.3.2.2)
-      sass (~> 3.2)
+    bootstrap-sass-rails (3.0.0.2)
+      railties (>= 3.1.0)
+      sass-rails (>= 3.1.0)
     builder (3.1.4)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -50,11 +51,12 @@ GEM
       debugger-ruby_core_source (~> 1.2.3)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.3)
+    epiceditor (0.2.2.1)
+      rails (~> 4.0.0)
     erubis (2.7.0)
     execjs (2.0.1)
-    font-awesome-sass-rails (3.0.2.2)
-      railties (>= 3.1.1)
-      sass-rails (>= 3.1.1)
+    font-awesome-rails (3.2.1.3)
+      railties (>= 3.2, < 5.0)
     gravtastic (3.2.6)
     haml (4.0.3)
       tilt
@@ -92,8 +94,6 @@ GEM
     omniauth-openid (1.0.1)
       omniauth (~> 1.0)
       rack-openid (~> 1.3.1)
-    pagedown-rails (1.1.3)
-      railties (> 3.1)
     pg (0.16.0)
     polyglot (0.3.3)
     rack (1.5.2)
@@ -161,11 +161,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass
+  bootstrap-sass-rails
   capybara
   coffee-rails (~> 4.0.0)
   debugger
-  font-awesome-sass-rails
+  epiceditor (~> 0.2.2)
+  font-awesome-rails
   gravtastic
   haml-rails
   jquery-cookie-rails
@@ -173,7 +174,6 @@ DEPENDENCIES
   jquery-rails
   omniauth
   omniauth-openid
-  pagedown-rails
   pg
   rails (= 4.0.0)
   rails_tokeninput
