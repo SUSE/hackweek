@@ -6,7 +6,13 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    if params.include? "by_kudos"
+      @projects = Project.order("likes_count DESC")
+    elsif params.include? "by_devs"
+      @projects = Project.order("memberships_count DESC")
+    else
+      @projects = Project.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -91,28 +97,28 @@ class ProjectsController < ApplicationController
     project = Project.find(params[:id])
     project.join! current_user
     
-    redirect_to project
+    redirect_back_or_default project
   end
 
   def leave
     project = Project.find(params[:id])
     project.leave! current_user
     
-    redirect_to project
+    redirect_back_or_default project
   end
   
   def like
     project = Project.find(params[:id])
     project.like! current_user
     
-    redirect_to project
+    redirect_back_or_default project
   end
 
   def dislike
     project = Project.find(params[:id])
     project.dislike! current_user
     
-    redirect_to project
+    redirect_back_or_default project
   end
   
   def add_keyword

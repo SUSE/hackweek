@@ -1,26 +1,3 @@
-= form_for(@project) do |f|
-  - if @project.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@project.errors.count, "error")
-        prohibited this project from being saved:
-
-      %ul
-      - @project.errors.full_messages.each do |msg|
-        %li
-          = msg
-  .field
-    = f.text_field :title, :placeholder => "The projects title"
-    
-  .field
-    = f.text_area :description, size: "20x20", :placeholder => "Add a detailed description of what you want to hack on. You can use markdown."
-  .link.pull-right
-    %i.icon-question-sign
-    %a{:type=>"button", "data-toggle"=>"collapse", "data-target"=>"#help"}
-      Markdown Help
-  .actions
-    = f.submit
-
 #help{:class=>"collapse"}
   %pre
     :preserve
@@ -37,5 +14,26 @@
       This is an [example link](http://example.com/)
       
       This is an ![example image](http://paste.opensuse.org/view/raw/68957446)
-  %p.pull-right
-    = link_to "More Complex Markdown Help", "http://daringfireball.net/projects/markdown/syntax", target: "_blank"
+  = link_to "More Complex Markdown Help", "http://daringfireball.net/projects/markdown/syntax", target: "_blank", :class => 'pull-right'
+.clearfix
+= form_for @project, html: { role: "form"} do |f|
+  - if @project.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@project.errors.count, "error")
+        prohibited this project from being saved:
+
+      %ul
+      - @project.errors.full_messages.each do |msg|
+        %li
+          = msg
+  .field
+    = f.text_field :title, :placeholder => "The projects title", :class => 'form-control input-lg'
+    
+  .field
+    = f.text_area :description, :rows => "20", :placeholder => "Add a detailed description of what you want to hack on. You can use markdown.", :class => 'form-control input-lg'
+  .actions
+    = f.submit :class=> 'btn'
+    %a{:type=>"button", "data-toggle"=>"collapse", "data-target"=>"#help", :class=>"pull-right"}
+      %i.icon-question-sign
+      Markdown Help
