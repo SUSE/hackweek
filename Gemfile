@@ -4,8 +4,8 @@ gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
-# Use postgresql for production
-gem 'pg'
+# Use mysql for production
+gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails',   '~> 4.0.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -31,8 +31,6 @@ gem 'gravtastic'
 gem 'redcarpet'
 # dunno
 gem 'single_test'
-gem 'unicorn'
 gem 'rails_tokeninput'
 
 gem 'capybara', group: [:test]
-gem 'debugger', group: [:test] 
