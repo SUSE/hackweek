@@ -1,20 +1,4 @@
 body {
-  padding-top: 0px;
-}
-
-@media screen and (min-width: 980px) {
-  body { padding-top: 100px; }
-}
-
-.paper {
-  background-color: grey;
-}
-
-.paper .project h2 {
-  line-height: 1em;
-  margin-top: 5px;
-}
-
-.paper .project hr {
-  padding: 0 0 -10px 0;
+  padding-top: 60px;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNjY2MiPjwvcmVjdD4KPC9zdmc+");
 }

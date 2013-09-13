@@ -2,10 +2,16 @@ class UsersController < ApplicationController
   
   skip_before_filter :login_required, :only => [ :show ]
   
-  def show
+  def show      
+      @user = User.find_by id: params[:id]
+      if not @user
+        flash["alert-warning"] = "User not found"
+        redirect_to projects_path
+      end
   end
 
   def me
+    redirect_to user_path(current_user)
   end
   
   def edit
@@ -30,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def keyword_params
-    params.require(:new_keyword).permit(:name)
+    params.require(:new_keyword)
   end
 
 end

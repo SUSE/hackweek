@@ -1,41 +1,131 @@
 .col-sm-12
-  = image_tag(current_user.gravatar_url(:size => "48"), :class => "img-rounded pull-left", :title => "#{current_user.name}", :alt => current_user.name)
-  %h2
-    = current_user.name
-.row
-  .col-sm-4
-    - if current_user.projects.empty?
-      %h4 No Projects
-    - else
-      %h4
-        Works on the projects
-      %ul
-      - current_user.projects.each do |project|
+  .row
+    .col-sm-12
+      .page-header
+        %h1
+          = @user.name
+          %small
+            = @user.email
+  .row
+    .col-sm-2
+      = image_tag(@user.gravatar_url(:size => "150"), :class => "img-rounded", :title => "#{@user.name}", :alt => @user.name)
+    .col-sm-6
+      %p
+        %h4 #{@user.name} is looking for projects around:
+        - if @user.keywords.empty?
+          %p Nothing at the moment
+        - else 
+          %p
+            = @user.keywords.map { |k| k.name }.join ", "
+        -if current_user == @user
+          %p
+            = form_tag :action => "add_keyword", :id => @user.id do |f|
+              = text_field_tag :new_keyword
+              = submit_tag "Add keyword"
+    .col-sm-4
+      %h4 Stats
+      %ul.list-group
+        %li.list-group-item
+          %i.icon-lightbulb
+          Ideas
+          .span.badge
+            = @user.originated_projects.length
+        %li.list-group-item
+          %i.icon-puzzle-piece
+          Projects
+          .span.badge
+            = @user.projects.length
+        %li.list-group-item
+          %i.icon-comments
+          Comments
+          .span.badge
+            0
+        %li.list-group-item
+          %i.icon-heart
+          Favourites
+          .span.badge
+            = @user.likes.length
+  .row
+    .col-sm-8
+      %ul.nav.nav-tabs
+        -if current_user == @user and @user.projects.empty?
+          %li.active
+            %a{:href=>"#recommended", "data-toggle"=>"tab"}
+              Opportunities
+        -else
+          %li.active
+            %a{:href=>"#projects", "data-toggle"=>"tab"}
+              Works on
         %li
-          = link_to(project_path(project.id)) do
-            = project.title
-  .col-sm-4
-    - if current_user.projects.empty?
-      %h4 No Ideas
-    - else
-      %h4
-        Originated the ideas
-      %ul
-        - current_user.originated_projects.each do |project|
+          %a{:href=>"#ideas", "data-toggle"=>"tab"}
+            Originated
+        %li
+          %a{:href=>"#likes", "data-toggle"=>"tab"}
+            Likes
+        - unless @user.projects.empty?
           %li
-            = link_to(project_path(project.id)) do
-              = project.title
-  .col-sm-4
-    - if current_user.favourites.empty?
-      %h4 No Favourites
-    - else
-      %h4
-        Favourites
-      %ul
-        - current_user.favourites.each do |project|
-          %li
-            = link_to(project_path(project.id)) do
-              = project.title
-
-
-  = render :partial => "projects", :locals => { :user => current_user }
+            %a{:href=>"#recommended", "data-toggle"=>"tab"}
+              Opportunities
+      .tab-content{:style=>"padding-top: 10px"}
+        -if current_user == @user and @user.projects.empty?
+          .tab-pane.active#recommended
+            - if @user.recommended_projects.empty?
+              %h4 No project matching your keywords yet, try adding something else.
+              %p
+                = form_tag :action => "add_keyword", :id => @user.id do |f|
+                  = text_field_tag :new_keyword
+                  = submit_tag "Add keyword"
+            - else
+              - @user.recommended_projects.each_with_index do |project, index|
+                - if index % 3 == 2 or index == 0
+                  .row
+                .col-sm-6
+                  = render :partial => "projects/tile", :locals => {:project => project }
+        - else
+          .tab-pane.active#projects
+            - if @user.projects.empty?
+              %p No Projects
+            - else
+              - @user.projects.each_with_index do |project, index|
+                - if index % 3 == 2 or index == 0
+                  .row
+                .col-sm-6
+                  = render :partial => "projects/tile", :locals => {:project => project }
+        .tab-pane#ideas
+          - if @user.originated_projects.empty?
+            %p No Ideas
+          - else
+            - @user.originated_projects.each_with_index do |project, index|
+              - if index % 3 == 2 or index == 0
+                .row
+              .col-sm-6
+                = render :partial => "projects/tile", :locals => {:project => project }
+        .tab-pane#likes
+          - if @user.favourites.empty?
+            %p No Favourites
+          - else
+            - @user.favourites.each_with_index do |project, index|
+              - if index % 3 == 2 or index == 0
+                .row
+              .col-sm-6
+                = render :partial => "projects/tile", :locals => {:project => project }
+        -unless @user.projects.empty?
+          .tab-pane#recommended
+            - if @user.recommended_projects.empty?
+              %p No Opportunities
+            - else
+              - @user.recommended_projects.each_with_index do |project, index|
+                - if index % 3 == 2 or index == 0
+                  .row
+                .col-sm-6
+                  = render :partial => "projects/tile", :locals => {:project => project }
+    .col-sm-4
+      .row
+        .col-sm-12
+          %h4 Activity
+          %ul
+          - @user.updates.reverse.first(5).each do |update|
+            %li
+              = "#{time_ago_in_words update.created_at} ago: #{update.text} project"
+              = link_to project_path(update.project) do
+                = update.project.id

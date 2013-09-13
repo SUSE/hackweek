@@ -1,7 +1,31 @@
-- if @projects.length > 0
-  = render :partial => "projects/list", :locals => {:projects => @projects }
-- else
-  .row
-    .col-sm-11.project
-      %h3 No projects here, sorry!
+.row
+  .col-sm-12
+    %ul.nav.nav-tabs
+      - id_class = "active" if !params.include? :by_kudos and !params.include? :by_devs
+      %li{:class=> id_class}
+        = link_to projects_path do
+          %i.icon-file
+          By ID
+      - kudos_class = "active" if params.include? :by_kudos
+      %li{:class=> kudos_class}
+        = link_to(projects_path(by_kudos: '1')) do
+          %i.icon-star
+          Most Liked
+      - devs_class = "active" if params.include? :by_devs
+      %li{:class=> devs_class}
+        = link_to(projects_path(by_devs: '1')) do
+          %i.icon-group
+          Most People
+    .tab-content{:style => "padding-top: 10px;"}
+      .tab-pane.active
+        - if @projects.length > 0
+          - @projects.each_with_index do |project, index|
+            - if index % 3 == 2 or index == 0
+              .row
+            .col-sm-6
+              = render :partial => "projects/tile", :locals => {:project => project }
+        - else
+          .row
+            .col-sm-11.project
+              %h3 No projects here, sorry!
 

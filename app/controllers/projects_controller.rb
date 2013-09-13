@@ -132,7 +132,7 @@ class ProjectsController < ApplicationController
   end
 
   def keyword_params
-    params.require(:new_keyword).permit(:name)
+    params.require(:new_keyword)
   end
 
 end

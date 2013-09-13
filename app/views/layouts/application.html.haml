@@ -16,7 +16,8 @@
     .container.content
       - if flash
         = render partial: "layouts/alert", flash: flash
-      = yield
+      .row
+        = yield
     :javascript
       if(window.location.href.indexOf("hackweek.suse.com") > 0) {
         var _paq = _paq || [];

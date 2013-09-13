@@ -21,7 +21,7 @@ class Project < ActiveRecord::Base
   
   def create_initial_update
     Update.create!(:author => self.originator,
-                   :text => "#{self.originator.name} originated this idea.",
+                   :text => "originated",
                    :project => self)
   end
   
@@ -30,7 +30,7 @@ class Project < ActiveRecord::Base
     self.save!
 
     Update.create!(:author => user,
-                   :text => "#{user.name} joined this project.",
+                   :text => "joined",
                    :project => self)
   end
   
@@ -39,7 +39,7 @@ class Project < ActiveRecord::Base
     self.save!
 
     Update.create!(:author => user,
-                   :text => "#{user.name} left this project.",
+                   :text => "left",
                    :project => self)
   end
   
@@ -48,7 +48,7 @@ class Project < ActiveRecord::Base
     self.save!
 
     Update.create!(:author => user,
-                   :text => "#{user.name} likes this project.",
+                   :text => "liked",
                    :project => self)
   end
   
@@ -57,7 +57,7 @@ class Project < ActiveRecord::Base
     self.save!
 
     Update.create!(:author => user,
-                   :text => "#{user.name} dislikes this project.",
+                   :text => "disliked",
                    :project => self)
   end
   
