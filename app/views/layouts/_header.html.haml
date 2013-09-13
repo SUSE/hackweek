@@ -31,7 +31,7 @@
                 %i.icon-home
                 = current_user.name
             %li
-              = link_to(destroy_user_session_path) do
+              = link_to(destroy_user_session_path, :method => :delete) do
                 %i.icon-off
                 Log out
       %ul.nav.navbar-nav.navbar-right.visible-xs
@@ -40,7 +40,7 @@
             %i.icon-home
             = current_user.name
         %li
-          = link_to(destroy_user_session_path) do
+          = link_to(destroy_user_session_path, :method => :delete) do
             %i.icon-off
             Log out
     - else

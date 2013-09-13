@@ -33,8 +33,8 @@ Hackweek::Application.routes.draw do
   get "front/awards"
   get "front/howto"
 
+  get 'user_root' => 'users#me'
   root 'front#index'
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

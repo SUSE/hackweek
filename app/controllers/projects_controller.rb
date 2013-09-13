@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
 
   skip_before_filter :authenticate_user!, :only => [ :index, :show ]
+  skip_before_filter :store_location, :only => [:join, :leave, :like, :dislike ]
 
   # GET /projects
   # GET /projects.json
