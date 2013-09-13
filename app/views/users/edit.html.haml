@@ -1,23 +1,18 @@
-.row.paper
-  .col-sm-12.scratch
-  .col-sm-11.project
-    %h2 Edit user information
-    = form_for(@current_user) do |f|
-      - if @current_user.errors.any?
-        #error_explanation
-          %h2
-            = pluralize(@current_user.errors.count, "error")
-            prohibited this project from being saved:
-
-          %ul
-          - @current_user.errors.full_messages.each do |msg|
-            %li
-              = msg
-      .field
-        = f.text_field :name, :placeholder => "Name"
-        
-      .field
-        = f.text_field :email, :placeholder => "Email"
-        
-      .actions
-        = f.submit :class => "btn"
+.col-sm-11.project
+  %h2 Edit user information
+  = form_for(current_user) do |f|
+    - if current_user.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(current_user.errors.count, "error")
+          prohibited this project from being saved:
+        %ul
+        - current_user.errors.full_messages.each do |msg|
+          %li
+            = msg
+    .field
+      = f.text_field :name, :placeholder => "Name"
+    .field
+      = f.text_field :email, :placeholder => "Email"
+    .actions
+      = f.submit :class => "btn"

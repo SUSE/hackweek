@@ -1,6 +1,8 @@
 Hackweek::Application.routes.draw do
  
 
+  devise_for :users
+
   resources :users do
     collection do
       get 'me'
@@ -31,11 +33,6 @@ Hackweek::Application.routes.draw do
   get "front/awards"
   get "front/howto"
 
-  post '/auth/:provider/callback', :to => 'account#callback'
-  get '/auth/failure', :to => 'account#failure'
-  get '/login', :to => 'account#login', as: :login
-  get '/logout', :to => 'account#logout', as: :logout
- 
   root 'front#index'
 
 

@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   skip_before_filter :login_required, :only => [ :show ]
   
   def show
-    @user = User.find params[:id]
   end
 
   def me
@@ -13,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @current_user.update_attributes(user_params)
+    if current_user.update_attributes(user_params)
       redirect_to :action => "me", notice: 'User profile was successfully updated.'
     else
       render :action => "edit"

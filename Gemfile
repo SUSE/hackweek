@@ -22,9 +22,9 @@ gem 'jquery-hotkeys-rails'
 gem 'jquery-cookie-rails'
 # Use haml as templating language
 gem 'haml-rails'
-# Use omniauth as as authentification framework
-gem 'omniauth'
-gem 'omniauth-openid'
+# Use devise as as authentification framework
+gem 'devise'
+gem 'devise_ichain_authenticatable'
 # Use gravtastic for user avatars
 gem 'gravtastic'
 # Use redcarpet for markdown rendering

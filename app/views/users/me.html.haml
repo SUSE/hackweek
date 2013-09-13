@@ -1,26 +1,20 @@
-.row.paper
-  .col-sm-12.scratch
-  .col-sm-11.project
-    = image_tag(@current_user.gravatar_url(:size => "48"), :class => "img-rounded pull-left", :title => "#{@current_user.name}", :alt => @current_user.name)
-    %h2
-      = @current_user.name
-    - @user = @current_user
-    = render :partial => "projects", :locals => { :user => @current_user }
-
-  .col-sm-11.keyword
-    %h3 Keywords
-    - if !@current_user.keywords.empty?
-      %p
-        = @current_user.keywords.map { |k| k.name }.join ", "
-    = form_tag :action => "add_keyword", :id => @current_user.id do |f|
-      = text_field_tag :new_keyword
-      = submit_tag "Add keyword"
-        
-  .col-sm-11.recommendations
-    %h3 Recommended Projects
-    
-    %ul
-    - @current_user.recommended_projects.each do |project|
-      %li
-        = project.title
-        
+.col-sm-12
+  = image_tag(current_user.gravatar_url(:size => "48"), :class => "img-rounded", :title => "#{current_user.name}", :alt => current_user.name)
+  %h2
+    = current_user.name
+    Blah
+  .clearfix
+= render :partial => "projects", :locals => { :user => current_user }
+.col-sm-12
+  - if !current_user.keywords.empty?
+    %p
+      = current_user.keywords.map { |k| k.name }.join ", "
+  = form_tag :action => "add_keyword", :id => current_user.id do |f|
+    = text_field_tag :new_keyword
+    = submit_tag "Add keyword"
+.col-sm-12
+  %h3 Recommended Projects
+  %ul
+  - current_user.recommended_projects.each do |project|
+    %li
+      = project.title

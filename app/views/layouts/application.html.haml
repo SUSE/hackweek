@@ -17,8 +17,6 @@
       - if flash
         = render partial: "layouts/alert", flash: flash
       = yield
-      = image_tag "coffee.png", :id=>"coffee", :class=>"coffee"
-    = image_tag "pencil.png", :id=>"pencil", :class=>"pencil"
     :javascript
       if(window.location.href.indexOf("hackweek.suse.com") > 0) {
         var _paq = _paq || [];

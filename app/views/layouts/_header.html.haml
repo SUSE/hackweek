@@ -19,34 +19,34 @@
         = link_to(new_project_path, {:alt=>"Add Project", :title=>"Add Project"}) do
           %i.icon-plus-sign-alt.icon
           Add Project
-    - if @current_user
+    - if current_user
       %ul.nav.navbar-nav.navbar-right.hidden-xs
         %li.dropdown
           %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-            = image_tag(@current_user.gravatar_url(:size => "22"), :title => "Yo #{@current_user.name}!")
+            = image_tag(current_user.gravatar_url(:size => "22"), :title => "Yo #{current_user.name}!")
             %b.caret
           %ul.dropdown-menu
             %li
               = link_to(me_users_path) do
                 %i.icon-home
-                = @current_user.name
+                = current_user.name
             %li
-              = link_to(logout_path) do
+              = link_to(destroy_user_session_path) do
                 %i.icon-off
                 Log out
       %ul.nav.navbar-nav.navbar-right.visible-xs
         %li
           = link_to(me_users_path) do
             %i.icon-home
-            = @current_user.name
+            = current_user.name
         %li
-          = link_to(logout_path) do
+          = link_to(destroy_user_session_path) do
             %i.icon-off
             Log out
     - else
       %ul.nav.navbar-nav.navbar-right
         %li
-          = link_to("/auth/google") do
+          = link_to(new_user_session_path) do
             %i.icon-signin
             Sign In
     %form.navbar-form.navbar-right{:role => "search"}

@@ -1,6 +1,6 @@
 class FrontController < ApplicationController
   
-  skip_before_filter :login_required
+  skip_before_filter :authenticate_user! 
   
   layout "front"
 

@@ -1,117 +1,111 @@
-.row.paper
-  .col-sm-12.scratch
-  .col-sm-12.project
-    .row
-      .col-sm-10
-        %h2
-          = @project.title
-        %p{:style=>"margin-top:-10px;"}
-          an idea by
-          = link_to(user_path(@project.originator.id)) do
-            #{@project.originator.name}
-          - if @project.kudos.include? @current_user
-            = link_to(dislike_project_path(@project.id), :title=>'You like this Idea. Dislike?', :method => :post) do
-              %i.icon-heart
+.col-sm-12.project
+  .row
+    .col-sm-10
+      %h2
+        = @project.title
+      %p{:style=>"margin-top:-10px;"}
+        an idea by
+        = link_to(user_path(@project.originator.id)) do
+          #{@project.originator.name}
+        - if @project.kudos.include? current_user
+          = link_to(dislike_project_path(@project.id), :title=>'You like this Idea. Dislike?', :method => :post) do
+            %i.icon-heart
+        - else
+          = button_to(like_project_path(@project.id)) do
+            %i.icon-thumbs-up-alt
+    .col-sm-1
+      = link_to(edit_project_path(@project), :title=>"Edit Project") do
+        %i.icon-pencil.icon-2x
+  .row
+    .col-sm-6
+      %p
+        :markdown
+          #{@project.description}
+    .col-sm-5
+      - if @project.users.empty?
+        %h4 Project is up for grabs.
+      - else
+        %h4 Hackers
+        - @project.users.each do |user|
+          = link_to(user_path(user.id)) do
+            = image_tag user.gravatar_url(:size => "64")
+            %br
+      - if current_user
+        %p
+          - if @project.users.include? current_user
+            = button_to 'Leave this project', leave_project_path(@project.id), :class=>"btn btn-danger btn-large pull-right"
           - else
-            = button_to(like_project_path(@project.id)) do
-              %i.icon-thumbs-up-alt
-
-      .col-sm-1
-        = link_to(edit_project_path(@project), :title=>"Edit Project") do
-          %i.icon-pencil.icon-2x
-    .row
-      .col-sm-6
-        %p
-          :markdown
-            #{@project.description}
-      .col-sm-5
-        - if @project.users.empty?
-          %h4 Project is up for grabs.
-        - else
-          %h4 Hackers
-          - @project.users.each do |user|
-            = link_to(user_path(user.id)) do
-              = image_tag user.gravatar_url(:size => "64")
-              %br
-        - if @current_user
-          %p
-            - if @project.users.include? @current_user
-              = button_to 'Leave this project', leave_project_path(@project.id), :class=>"btn btn-danger btn-large pull-right"
-            - else
-              = button_to 'Join this project', join_project_path(@project.id), :class=>"btn btn-success btn-large pull-right"
-    .row
-      .col-sm-6.material
-        %h4 Material
+            = button_to 'Join this project', join_project_path(@project.id), :class=>"btn btn-success btn-large pull-right"
+  .row
+    .col-sm-6.material
+      %h4 Material
+      %ul
+        %li
+          =link_to "Ruby on Rails", "http://www.rubyonrails.org/"
+        %li
+          =link_to "Google", "http://www.google.com"
+        %li
+          =link_to "SUSE", "http://www.suse.com"
+    .col-sm-5.looking
+      %h4 Looking for
+      - if @project.keywords.empty?
+        Add some keywords
+      - else
         %ul
+        - @project.keywords.each do |keyword|
           %li
-            =link_to "Ruby on Rails", "http://www.rubyonrails.org/"
-          %li
-            =link_to "Google", "http://www.google.com"
-          %li
-            =link_to "SUSE", "http://www.suse.com"
-          
-      .col-sm-5.looking
-        %h4 Looking for
-        - if @project.keywords.empty?
-          Add some keywords
-        - else
-          %ul
-          - @project.keywords.each do |keyword|
-            %li
-              = keyword.name
-        = form_tag :action => "add_keyword", :id => @project.id do |f|
-          = text_field_tag :new_keyword, nil, :placeholder => "keywords"
-          /, :style=>"display: none;"
-        :javascript
-          $(document).ready(function() {
-          $("#1new_keyword").tokenInput("#{keyword_tokens_url}" ,{
-                      theme: "facebook",
-                      tokenValue: "name",
-                      prePopulate: #{raw(@project.keywords.to_json)}
-            });
+            = keyword.name
+      = form_tag :action => "add_keyword", :id => @project.id do |f|
+        = text_field_tag :new_keyword, nil, :placeholder => "keywords"
+        /, :style=>"display: none;"
+      :javascript
+        $(document).ready(function() {
+        $("#1new_keyword").tokenInput("#{keyword_tokens_url}" ,{
+                    theme: "facebook",
+                    tokenValue: "name",
+                    prePopulate: #{raw(@project.keywords.to_json)}
           });
-    .row
-      .col-sm-6.updates
-        %h4 Updates
-        - @project.updates.reverse.last(5).each do |update|
-          %p
-            = "#{time_ago_in_words update.created_at} ago: #{update.text}"
-        %a{:href=>"#UpdatesModal", :role=>"button", :class=>"btn btn-info btn-mini pull-right", "data-toggle"=>"modal"}
-          %i.icon-pushpin
-          All
-        .modal.fade{:id=>"UpdatesModal", :tabindex=>"-1", :role=>"dialog", "aria-labelledby"=>"UpdatesModalLabel", "aria-hidden"=>"true"}
-          .modal-dialog
-            .modal-content
-              .modal-header
-                %button{:type=>"button", :class=>"close", "data-dismiss"=>"modal", "aria-hidden"=>"true"}×
-                %h3{:id=>"UpdatesModal"}
-                  All Updates for
-                  = @project.title
-              .modal-body
-                - @project.updates.reverse_each do |update|
-                  %p
-                    = "#{time_ago_in_words update.created_at} ago: #{update.text}"
-              .modal-footer
-                %button{:class=>"btn btn-primary", "data-dismiss"=>"modal", "aria-hidden"=>"true"}Close
-
-      .col-sm-5.agenda
-        %h4 Agenda
-        %ul
-          %li 11:00 Coffee
-          %li 15:00 Lightning Talk
-          %li 18:00 We meet for beer at the NBG main entrance
-    .row
-      .col-sm-11.comments
-        %h4 Comments
-        %ul.comments
-          = render :partial => 'comments/comment', :collection => @project.comments
+        });
+  .row
+    .col-sm-6.updates
+      %h4 Updates
+      - @project.updates.reverse.last(5).each do |update|
         %p
-        - if @current_user
-          = form_for [ @project, @new_comment ] do |f|
-            %p
-              = f.text_area :text, :cols => 80, :rows => 10, :witdh => "100%"
-              
-            %p
-              = f.submit 'Add comment'
-        - else
-          = link_to 'Add a comment', new_project_comment_path( @project )
+          = "#{time_ago_in_words update.created_at} ago: #{update.text}"
+      %a{:href=>"#UpdatesModal", :role=>"button", :class=>"btn btn-info btn-mini pull-right", "data-toggle"=>"modal"}
+        %i.icon-pushpin
+        All
+      .modal.fade{:id=>"UpdatesModal", :tabindex=>"-1", :role=>"dialog", "aria-labelledby"=>"UpdatesModalLabel", "aria-hidden"=>"true"}
+        .modal-dialog
+          .modal-content
+            .modal-header
+              %button{:type=>"button", :class=>"close", "data-dismiss"=>"modal", "aria-hidden"=>"true"}×
+              %h3{:id=>"UpdatesModal"}
+                All Updates for
+                = @project.title
+            .modal-body
+              - @project.updates.reverse_each do |update|
+                %p
+                  = "#{time_ago_in_words update.created_at} ago: #{update.text}"
+            .modal-footer
+              %button{:class=>"btn btn-primary", "data-dismiss"=>"modal", "aria-hidden"=>"true"}Close
+    .col-sm-5.agenda
+      %h4 Agenda
+      %ul
+        %li 11:00 Coffee
+        %li 15:00 Lightning Talk
+        %li 18:00 We meet for beer at the NBG main entrance
+  .row
+    .col-sm-11.comments
+      %h4 Comments
+      %ul.comments
+        = render :partial => 'comments/comment', :collection => @project.comments
+      %p
+      - if current_user
+        = form_for [ @project, @new_comment ] do |f|
+          %p
+            = f.text_area :text, :cols => 80, :rows => 10, :witdh => "100%"
+          %p
+            = f.submit 'Add comment'
+      - else
+        = link_to 'Add a comment', new_project_comment_path( @project )

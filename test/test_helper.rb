@@ -44,7 +44,7 @@ class ActiveSupport::TestCase
 
   def login user
     @request.session[:user_id] = user.id
-    @controller.instance_variable_set('@current_user', user)
+    @controller.instance_variable_set('current_user', user)
   end
 
 end

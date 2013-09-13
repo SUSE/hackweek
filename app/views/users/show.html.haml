@@ -1,8 +1,41 @@
-.row.paper
-  .col-sm-12.scratch
-  .col-sm-11.project
-    = image_tag(@user.gravatar_url(:size => "48"), :class => "img-rounded pull-left", :title => "#{@user.name}", :alt => @user.name)
-    %h2
-      = @user.name
-    = render :partial => "projects", :locals => { :user => @user }
-    
+.col-sm-12
+  = image_tag(current_user.gravatar_url(:size => "48"), :class => "img-rounded pull-left", :title => "#{current_user.name}", :alt => current_user.name)
+  %h2
+    = current_user.name
+.row
+  .col-sm-4
+    - if user.projects.empty?
+      %h4 No Projects
+    - else
+      %h4
+        Works on the projects
+      %ul
+      - user.projects.each do |project|
+        %li
+          = link_to(project_path(project.id)) do
+            = project.title
+  .col-sm-4
+    - if user.projects.empty?
+      %h4 No Ideas
+    - else
+      %h4
+        Originated the ideas
+      %ul
+        - user.originated_projects.each do |project|
+          %li
+            = link_to(project_path(project.id)) do
+              = project.title
+  .col-sm-4
+    - if user.favourites.empty?
+      %h4 No Favourites
+    - else
+      %h4
+        Favourites
+      %ul
+        - user.favourites.each do |project|
+          %li
+            = link_to(project_path(project.id)) do
+              = project.title
+
+
+  = render :partial => "projects", :locals => { :user => current_user }

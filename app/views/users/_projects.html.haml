@@ -1,5 +1,5 @@
 .row
-  .col-sm-6
+  .col-sm-4
     - if user.projects.empty?
       %h4 No Projects
     - else
@@ -10,7 +10,7 @@
         %li
           = link_to(project_path(project.id)) do
             = project.title
-  .col-sm-5
+  .col-sm-4
     - if user.projects.empty?
       %h4 No Ideas
     - else
@@ -21,7 +21,7 @@
           %li
             = link_to(project_path(project.id)) do
               = project.title
-  .col-sm-6
+  .col-sm-4
     - if user.favourites.empty?
       %h4 No Favourites
     - else
