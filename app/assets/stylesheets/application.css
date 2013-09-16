@@ -11,8 +11,8 @@
  *= require_self
  *= require strap-on.css.scss
  *= require font-awesome
- *= require token-input
- *= require token-input-facebook
  *= require hackweek.css.scss
+ *= require selectize
+ *= require selectize.bootstrap3
  */
 

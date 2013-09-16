@@ -4,6 +4,7 @@
       .page-header
         %h1
           = @project.title
+          %br
           %small
             an idea of
             = @project.originator.name
@@ -20,14 +21,16 @@
           %h4 Hackers
           - @project.users.each do |user|
             = link_to(user_path(user.id)) do
-              = image_tag user.gravatar_url(:size => "64")
+              = image_tag user.gravatar_url(:size => "64"), alt: user.name, title: user.name, class: "img-thumbnail"
         .col-sm-12
           %h4 Looking for mad skills in:
           - if @project.keywords.empty?
             %p Nothing at the moment
           - else 
             %p
-              = @project.keywords.map { |k| k.name }.join ", "
+              - @project.keywords.each do |word|
+                %span.badge
+                  = word.name
           -if  @project.originator == current_user or @project.users.include? current_user
             %p
               = render :partial => "keywords/new", :locals => {:what => @project }

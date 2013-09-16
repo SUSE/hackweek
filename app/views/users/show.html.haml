@@ -5,6 +5,7 @@
         %h1
           = image_tag(@user.gravatar_url(:size => "64"), :class => "img-thumbnail", :title => "#{@user.name}", :alt => @user.name)
           = @user.name
+          %br
           %small
             = @user.email
   .row
@@ -33,10 +34,6 @@
           .tab-pane.active#recommended
             - if @user.recommended_projects.empty?
               %h4 No project matching your keywords yet, try adding something else.
-              %p
-                = form_tag :action => "add_keyword", :id => @user.id do |f|
-                  = text_field_tag :new_keyword
-                  = submit_tag "Add keyword", class: "btn btn-default"
             - else
               - @user.recommended_projects.each_with_index do |project, index|
                 - if index % 3 == 2 or index == 0
@@ -92,7 +89,9 @@
             %p Nothing at the moment
           - else 
             %p
-              = @user.keywords.map { |k| k.name }.join ", "
+              - @user.keywords.each do |word|
+                %span.badge
+                  = word.name
           -if current_user == @user
             %p
               = render :partial => "keywords/new", :locals => {:what => @user }

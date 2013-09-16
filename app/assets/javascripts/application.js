@@ -13,6 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-hotkeys
-//= require jquery.tokeninput
 //= require twitter/bootstrap
+//= require selectize
 //= require hackweek

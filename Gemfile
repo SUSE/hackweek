@@ -29,8 +29,9 @@ gem 'devise_ichain_authenticatable'
 gem 'gravtastic'
 # Use redcarpet for markdown rendering
 gem 'redcarpet'
+# Use selectize.js for token input
+gem 'selectize-rails'
 # dunno
 gem 'single_test'
-gem 'rails_tokeninput'
 
 gem 'capybara', group: [:test]

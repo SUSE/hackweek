@@ -1,13 +1,14 @@
 .btn-group
-  .btn.btn-default
+  .btn.btn-default{:title=>"#{user.name} had #{user.originated_projects.length} ideas"}
     = user.originated_projects.length
     %i.icon-lightbulb
-  .btn.btn-default
+  .btn.btn-default{:title=>"#{user.name} works on #{user.projects.length} projects"}
     = user.projects.length
     %i.icon-puzzle-piece
-  .btn.btn-default
+  / FIXME. Use real count
+  .btn.btn-default{:title=>"#{user.name} wrote #{user.projects.length} comments"}
     0
     %i.icon-comments
-  .btn.btn-default
+  .btn.btn-default{:title=>"#{user.name} likes #{user.likes.length} projects"}
     = user.likes.length
     %i.icon-heart
