@@ -26,8 +26,10 @@ class UsersController < ApplicationController
   end
   
   def add_keyword
-    current_user.add_keyword! keyword_params
-    
+    keywords = keyword_params.split(',')
+    keywords.each do |word|
+      current_user.add_keyword! word
+    end
     redirect_to :action => "me", notice: "Keyword '#{params[:new_keyword]}' added."
   end
 

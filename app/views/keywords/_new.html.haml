@@ -8,11 +8,39 @@ $(document).ready(function() {
   $('#keywords').selectize({
       delimiter: ',',
       persist: false,
-      create: function(input) {
-          return {
-              value: input,
-              text: input
+      valueField: 'name',
+      labelField: 'name',
+      searchField: 'name',
+      options: [],
+      create: true,
+      render: {
+        option: function(item, escape) {
+          return '<p>' +
+          escape(item.name) + 
+          '</p>';
           }
+        },
+      load: function(query, callback) {
+        console.log("load function");
+          if (!query.length) return callback();
+          $.ajax({
+              url: "#{keyword_tokens_path}.json",
+              type: 'GET',
+              dataType: 'json',
+              data: {
+                  q: query,
+              },
+              error: function(res) {
+                  console.log("error");
+                  console.log(res);
+                  callback();
+              },
+              success: function(res) {
+                  console.log("success");
+                  console.log(res);
+                  callback(res.keywords);
+              }
+          });
       }
   });
 });

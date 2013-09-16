@@ -123,7 +123,10 @@ class ProjectsController < ApplicationController
   
   def add_keyword
     project = Project.find(params[:id])
-    project.add_keyword! keyword_params
+    keywords = keyword_params.split(',')
+    keywords.each do |word|
+      project.add_keyword! word
+    end
     redirect_to project
   end
 
