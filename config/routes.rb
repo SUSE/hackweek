@@ -8,7 +8,8 @@ Hackweek::Application.routes.draw do
       get 'me'
     end
     member do
-      post 'add_keyword'
+      post 'keyword', to: "users#add_keyword"
+      delete ':keyword', to: "users#delete_keyword", as: "keyword_delete"
     end
   end
 
@@ -18,7 +19,8 @@ Hackweek::Application.routes.draw do
       match 'dislike', via: :all
       match 'join', via: :all
       match 'leave', via: :all
-      post 'add_keyword'
+      post 'keyword', to: "projects#add_keyword"
+      delete ':keyword', to: "projects#delete_keyword", as: "keyword_delete"
     end
     resources :comments
   end

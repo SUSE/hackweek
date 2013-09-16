@@ -61,7 +61,7 @@ class Project < ActiveRecord::Base
                    :project => self)
   end
   
-  def add_keyword! name
+  def add_keyword! name, user
     name.downcase!
     name.gsub! /\s/, "" 
     keyword = Keyword.find_by_name name
@@ -72,5 +72,21 @@ class Project < ActiveRecord::Base
       self.keywords << keyword
       save!
     end
+
+    Update.create!(:author => user,
+                   :text => "added keyword \"#{name}\" to",
+                   :project => self)
+  end
+
+  def remove_keyword! name, user
+    keyword = Keyword.find_by_name name
+    if self.keywords.include? keyword
+      self.keywords.delete(keyword)
+      save!
+    end
+
+    Update.create!(:author => user,
+                   :text => "removed keyword #{name} from",
+                   :project => self)
   end
 end

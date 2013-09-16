@@ -28,9 +28,7 @@
             %p Nothing at the moment
           - else 
             %p
-              - @project.keywords.each do |word|
-                %span.badge
-                  = word.name
+              = render :partial => "keywords/show", :locals => {:keywords =>  @project.keywords }
           -if  @project.originator == current_user or @project.users.include? current_user
             %p
               = render :partial => "keywords/new", :locals => {:what => @project }

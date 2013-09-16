@@ -125,7 +125,16 @@ class ProjectsController < ApplicationController
     project = Project.find(params[:id])
     keywords = keyword_params.split(',')
     keywords.each do |word|
-      project.add_keyword! word
+      project.add_keyword! word, current_user
+    end
+    redirect_to project
+  end
+
+  def delete_keyword
+    project = Project.find(params[:id])
+    keywords = keyword_params.split(',')
+    keywords.each do |word|
+      project.remove_keyword! word, current_user
     end
     redirect_to project
   end
@@ -135,7 +144,7 @@ class ProjectsController < ApplicationController
   end
 
   def keyword_params
-    params.require(:new_keyword)
+    params.require(:keyword)
   end
 
 end

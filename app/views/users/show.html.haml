@@ -89,9 +89,7 @@
             %p Nothing at the moment
           - else 
             %p
-              - @user.keywords.each do |word|
-                %span.badge
-                  = word.name
+              = render :partial => "keywords/show", :locals => {:keywords =>  @user.keywords }
           -if current_user == @user
             %p
               = render :partial => "keywords/new", :locals => {:what => @user }

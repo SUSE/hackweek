@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def store_location
     if current_user
-      unless request.fullpath == user_session_path and request.method == :get
+      if not request.fullpath === user_session_path and request.method == "GET"
         session["user_return_to"] = request.fullpath
       end
     end

@@ -31,7 +31,15 @@ class User < ActiveRecord::Base
       save!
     end
   end
-  
+
+def remove_keyword! name
+    keyword = Keyword.find_by_name name
+    if self.keywords.include? keyword
+      self.keywords.delete(keyword)
+      save!
+    end
+  end
+
   def recommended_projects
     if self.keywords.empty?
       return Array.new

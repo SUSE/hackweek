@@ -30,7 +30,15 @@ class UsersController < ApplicationController
     keywords.each do |word|
       current_user.add_keyword! word
     end
-    redirect_to :action => "me", notice: "Keyword '#{params[:new_keyword]}' added."
+    redirect_to :action => "me", notice: "Keyword '#{params[:keyword]}' added."
+  end
+
+  def delete_keyword
+    keywords = keyword_params.split(',')
+    keywords.each do |word|
+      current_user.remove_keyword! word
+    end
+    redirect_to :action => "me", notice: "Keyword '#{params[:keyword]}' removed."
   end
 
   def user_params
@@ -38,7 +46,7 @@ class UsersController < ApplicationController
   end
 
   def keyword_params
-    params.require(:new_keyword)
+    params.require(:keyword)
   end
 
 end
