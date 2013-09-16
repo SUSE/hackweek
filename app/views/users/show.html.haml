@@ -3,48 +3,10 @@
     .col-sm-12
       .page-header
         %h1
+          = image_tag(@user.gravatar_url(:size => "64"), :class => "img-thumbnail", :title => "#{@user.name}", :alt => @user.name)
           = @user.name
           %small
             = @user.email
-  .row
-    .col-sm-2
-      = image_tag(@user.gravatar_url(:size => "150"), :class => "img-rounded", :title => "#{@user.name}", :alt => @user.name)
-    .col-sm-6
-      %p
-        %h4 #{@user.name} is looking for projects around:
-        - if @user.keywords.empty?
-          %p Nothing at the moment
-        - else 
-          %p
-            = @user.keywords.map { |k| k.name }.join ", "
-        -if current_user == @user
-          %p
-            = form_tag :action => "add_keyword", :id => @user.id do |f|
-              = text_field_tag :new_keyword
-              = submit_tag "Add keyword"
-    .col-sm-4
-      %h4 Stats
-      %ul.list-group
-        %li.list-group-item
-          %i.icon-lightbulb
-          Ideas
-          .span.badge
-            = @user.originated_projects.length
-        %li.list-group-item
-          %i.icon-puzzle-piece
-          Projects
-          .span.badge
-            = @user.projects.length
-        %li.list-group-item
-          %i.icon-comments
-          Comments
-          .span.badge
-            0
-        %li.list-group-item
-          %i.icon-heart
-          Favourites
-          .span.badge
-            = @user.likes.length
   .row
     .col-sm-8
       %ul.nav.nav-tabs
@@ -74,7 +36,7 @@
               %p
                 = form_tag :action => "add_keyword", :id => @user.id do |f|
                   = text_field_tag :new_keyword
-                  = submit_tag "Add keyword"
+                  = submit_tag "Add keyword", class: "btn btn-default"
             - else
               - @user.recommended_projects.each_with_index do |project, index|
                 - if index % 3 == 2 or index == 0
@@ -84,7 +46,7 @@
         - else
           .tab-pane.active#projects
             - if @user.projects.empty?
-              %p No Projects
+              %p no projects currently
             - else
               - @user.projects.each_with_index do |project, index|
                 - if index % 3 == 2 or index == 0
@@ -93,7 +55,7 @@
                   = render :partial => "projects/tile", :locals => {:project => project }
         .tab-pane#ideas
           - if @user.originated_projects.empty?
-            %p No Ideas
+            %p no ideas yet
           - else
             - @user.originated_projects.each_with_index do |project, index|
               - if index % 3 == 2 or index == 0
@@ -102,7 +64,7 @@
                 = render :partial => "projects/tile", :locals => {:project => project }
         .tab-pane#likes
           - if @user.favourites.empty?
-            %p No Favourites
+            %p no projects yet
           - else
             - @user.favourites.each_with_index do |project, index|
               - if index % 3 == 2 or index == 0
@@ -112,7 +74,7 @@
         -unless @user.projects.empty?
           .tab-pane#recommended
             - if @user.recommended_projects.empty?
-              %p No Opportunities
+              %p no opportunities yet
             - else
               - @user.recommended_projects.each_with_index do |project, index|
                 - if index % 3 == 2 or index == 0
@@ -120,12 +82,26 @@
                 .col-sm-6
                   = render :partial => "projects/tile", :locals => {:project => project }
     .col-sm-4
-      .row
-        .col-sm-12
-          %h4 Activity
-          %ul
-          - @user.updates.reverse.first(5).each do |update|
-            %li
-              = "#{time_ago_in_words update.created_at} ago: #{update.text} project"
-              = link_to project_path(update.project) do
-                = update.project.id
+      .col-sm-12
+        .text-center
+          = render :partial => "users/buttons", :locals => {:user =>  @user }
+      .col-sm-12
+        %p
+          %h4 Looking for projects around:
+          - if @user.keywords.empty?
+            %p Nothing at the moment
+          - else 
+            %p
+              = @user.keywords.map { |k| k.name }.join ", "
+          -if current_user == @user
+            %p
+              = render :partial => "keywords/new", :locals => {:what => @user }
+      .col-sm-12
+        %h4
+          Activity
+          %span.pull-right
+            = render :partial => "updates/show_all_modal", :locals => { :updates => @user.updates }
+        %ul
+        - @user.updates.reverse.first(5).each do |update|
+          %li
+            = render :partial => "updates/show", :locals => { :update => update }

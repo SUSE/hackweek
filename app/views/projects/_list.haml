@@ -1,0 +1,48 @@
+- projects.each do |project|
+  .col-sm-12.project
+    .row
+      .col-sm-8
+        %h2
+          = link_to(project_path(project.id)) do
+            = project.title
+      .col-sm-4
+        .btn-group.pull-right
+          - if project.users.include? current_user
+            = link_to(leave_project_path(project.id), :title => 'Stop working on this idea?', :class => 'btn btn-default') do
+              %i.icon-stop
+          - else
+            = link_to(join_project_path(project.id), :title => 'Work on this idea?', :class=>'btn btn-default') do
+              %i.icon-play
+
+          - if project.kudos.include? current_user
+            = link_to(dislike_project_path(project.id), :title=>'Dislike this idea?', :class=> "btn btn-default") do
+              %i.icon-heart
+          - else
+            =link_to(like_project_path(project.id), :title=>'I like this Idea', :class=> "btn btn-default") do
+              %i.icon-heart-empty
+
+          - if project.users.include? current_user or current_user === project.originator
+            = link_to(edit_project_path(project), :title=>'Edit this idea?', :class=> "btn btn-default") do
+              %i.icon-pencil
+    %p
+      an idea by
+      = link_to(user_path(project.originator.id)) do
+        #{project.originator.name}
+    %br
+    - if project.users.empty?
+      Holy moly! This project has no developer yet and is up for
+      = link_to 'grabs!', join_project_path(project.id)
+    - else
+      worked on by
+      - project.users.each_with_index do |user, index|
+        = link_to(user_path(user.id)) do
+          - if not index == project.users.size - 1
+            = user.name + ', '
+          - else
+            = user.name
+      = "#{time_ago_in_words project.updates.last.created_at}"
+      ago
+    %hr
+
+
+

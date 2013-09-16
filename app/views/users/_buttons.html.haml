@@ -1,0 +1,13 @@
+.btn-group
+  .btn.btn-default
+    = user.originated_projects.length
+    %i.icon-lightbulb
+  .btn.btn-default
+    = user.projects.length
+    %i.icon-puzzle-piece
+  .btn.btn-default
+    0
+    %i.icon-comments
+  .btn.btn-default
+    = user.likes.length
+    %i.icon-heart

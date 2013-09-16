@@ -1,0 +1,6 @@
+= form_tag :action => "add_keyword", :id => what.id do |f|
+  .input-group
+    = text_field_tag :new_keyword, nil, class: "form-control", placeholder: "Keyword"
+    %span.input-group-btn
+      = button_tag(type: 'submit', class: "btn btn-default") do
+        = content_tag(:strong, 'Add Keyword')

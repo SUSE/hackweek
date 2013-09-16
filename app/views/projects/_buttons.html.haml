@@ -1,0 +1,21 @@
+.btn-group
+  - if project.users.include? current_user
+    = link_to(leave_project_path(project.id), :title => 'Stop working on this project?', :class => 'btn btn-default') do
+      = project.users.length
+      %i.icon-stop
+  - else
+    = link_to(join_project_path(project.id), :title => 'Work on this project?', :class=>'btn btn-default') do
+      = project.users.length
+      %i.icon-play
+  - if project.kudos.include? current_user
+    = link_to(dislike_project_path(project.id), :title=>'Dislike this project?', :class=> "btn btn-default") do
+      = project.kudos.length
+      %i.icon-heart
+  - else
+    =link_to(like_project_path(project.id), :title=>'Like this project', :class=> "btn btn-default") do
+      = project.kudos.length
+      %i.icon-heart-empty
+  - if project.users.include? current_user or current_user === project.originator
+    = link_to(edit_project_path(project), :title=>'Edit this project?', :class=> "btn btn-default") do
+      &nbsp;
+      %i.icon-pencil

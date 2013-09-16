@@ -1,0 +1,16 @@
+%a{:href=>"#UpdatesModal", :role=>"button", :class=>"btn btn-default btn-xs", "data-toggle"=>"modal"}
+  %i.icon-pushpin
+  All
+.modal.fade{:id=>"UpdatesModal", :tabindex=>"-1", :role=>"dialog", "aria-labelledby"=>"UpdatesModalLabel", "aria-hidden"=>"true"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button{:type=>"button", :class=>"close", "data-dismiss"=>"modal", "aria-hidden"=>"true"}×
+        %h3{:id=>"UpdatesModal"}
+          All Updates
+      .modal-body
+        - updates.reverse_each do |update|
+          %p
+            = render :partial => "updates/show", :locals => { :update => update }
+      .modal-footer
+        %button{:class=>"btn btn-primary", "data-dismiss"=>"modal", "aria-hidden"=>"true"}Close

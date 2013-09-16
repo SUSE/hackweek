@@ -1,16 +1,15 @@
 %li.comment
   %p
     = comment.text
-
   %p
     %em
       by
-      = link_to comment.commenter.name, user_path( comment.commenter )
+      = link_to user_path(comment.commenter) do
+        = image_tag(comment.commenter.gravatar_url(:size => "22"), alt: comment.commenter.name, title: comment.commenter.name)
       on
       = comment.created_at
       |
       = link_to 'Reply', new_comment_comment_path( comment )
-
   - if !comment.comments.empty?
     %ul.comments
       = render :partial => 'comments/comment', :collection => comment.comments
