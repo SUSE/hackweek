@@ -1,0 +1,16 @@
+%h2 Sign in
+= form_tag(@login_url, :method => :post, :enctype => 'application/x-www-form-urlencoded') do
+  = hidden_field_tag :url, @back_url
+  = hidden_field_tag :context, @context
+  = hidden_field_tag :proxypath, @proxypath
+  %div
+    = label_tag :username,  "Username"
+    %br/
+    = text_field_tag :username, "", :autofocus => true
+  %div
+    = label_tag :Password,  "Password"
+    %br/
+    = text_field_tag :password, ""
+  %div= submit_tag "Sign in"
+- if devise_mapping.ichain_registerable?
+  = link_to "Sign up", new_ichain_registration_path(resource_name)
