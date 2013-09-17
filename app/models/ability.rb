@@ -15,6 +15,9 @@ class Ability
       can :edit, Project do |project|
         project.users.include? user
       end
+      can :add_keyword, Project do |project|
+        project.users.include? user
+      end
 
       can :manage, User, :id => user.id
     end

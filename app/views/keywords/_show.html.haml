@@ -5,6 +5,6 @@
       - if @project
         = link_to(keyword_delete_project_path(keyword: word.name), :method => :delete) do
           %i.icon-remove-sign{:style=>"color: #fff"}
-      -if can? :remove_keyword, @user
+      -if can? :add_keyword, @user
         = link_to(keyword_delete_user_path(keyword: word.name), :method => :delete) do
           %i.icon-remove-sign{:style=>"color: #fff"}
