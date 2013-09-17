@@ -24,11 +24,11 @@
         document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
 
       :javascript
-       try {
+        try {
          var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 23);
          piwikTracker.trackPageView();
          piwikTracker.enableLinkTracking();
-       } catch( err ) {}
+        } catch( err ) {}
 
       %noscript
         %p
