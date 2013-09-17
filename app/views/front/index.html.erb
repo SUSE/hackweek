@@ -264,19 +264,19 @@
               
             </div>
             <div id="lock">
-              <%= link_to( image_tag("px.gif", :width => "110", :height => "195"), { :controller => "front", :action => "howto" }, :id => "link" ) %>
+              <%= link_to( image_tag("px.gif", :width => "110", :height => "195"), front_howto_path, :id => "link" ) %>
             </div>
             <div id="create">
-              <%= link_to( image_tag("px.gif"), { :controller => "projects", :action => "new" }, :id => "link" ) %>
+              <%= link_to( image_tag("px.gif"), new_user_ichain_session_path, :id => "link" ) %>
             </div>
             <div id="past">
               <a id="link" href="https://github.com/SUSE/hackweek/wiki/%27Categories%27"><%= image_tag "px.gif" %></a>
             </div>
             <div id="current">
-              <%= link_to( image_tag("px.gif"), { :controller => "projects" }, :id => "link" ) %>
+              <%= link_to( image_tag("px.gif"), projects_path, :id => "link" ) %>
             </div>
             <div id="more_info">
-              <%= link_to( image_tag("px.gif", :width => "110", :height => "195"), { :controller => "front", :action => "howto" }, :id => "link" ) %>
+              <%= link_to( image_tag("px.gif", :width => "110", :height => "195"), front_howto_path, :id => "link" ) %>
             </div>
         </div>
         <!--<div id="break_apart">

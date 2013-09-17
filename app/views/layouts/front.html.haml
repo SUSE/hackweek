@@ -12,7 +12,9 @@
     = javascript_include_tag "front"
     = csrf_meta_tags
   %body
-    = yield
+    - if flash
+      = render partial: "layouts/alert", flash: flash
+      = yield
     :javascript
       if(window.location.href.indexOf("hackweek.suse.com") > 0) {
         var _paq = _paq || [];
@@ -24,5 +26,3 @@
         var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.defer=true; g.async=true; g.src=u+'piwik.js';
         s.parentNode.insertBefore(g,s); })();
       }
-
-
