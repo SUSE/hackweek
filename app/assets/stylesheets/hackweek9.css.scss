@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,300,400italic,500,500italic,700,700italic,900,900italic|Droid+Sans:400,700|Cutive+Mono|Abril+Fatface);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300,400italic,500,500italic,700,700italic,900,900italic|Droid+Sans:400,700|Cutive+Mono|Abril+Fatface);
 html {
     margin: 0px;
     width: 100%;
@@ -27,7 +27,7 @@ span:hover{
 .page-size {
     width: 100%;
     height: 100%;
-    min-width: 1150px; 
+    min-width: 960px; 
 }
 .bolder{
     font-weight: 900;
@@ -188,6 +188,7 @@ span:hover{
     float: left;
     margin-top: -132px;
     position: relative;
+    visibility: hidden;
 }
 #pay-off{
     background-color: #D4DF4C;
@@ -1259,3 +1260,98 @@ span:hover{
 }
 
 }
+
+#hackweek10{
+    width: 100%;
+    position: inherit;
+    top: 40%;
+    margin: 0
+}
+#hackweek10 img[src*="hackweek-logo-10"]{
+    width: 65%;
+    display: inline-block;
+    position: absolute;
+    left: 5%
+}
+
+#hackweek10 img[src*="dates-hw-10"]{
+    width: 20%;
+    display: inline-block;
+    vertical-align: middle;
+    position: absolute;
+    right: 0;
+    margin: -7% 0 0 0
+}
+#hackweek10 #dates-hw-10{
+    visibility: hidden;
+    margin: 5% 0;
+    position: relative;
+    width: 100%
+}
+#dates-hw-10 .green,
+#dates-hw-10 .pink,
+#dates-hw-10 .blue{
+    color: #ffffff;
+    font-size: 1.8em;
+    padding: 11px 45px;
+    margin: 10px 0;
+    border-radius: 4px;
+    font-weight: 300;
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    transition: width 1.5s;
+    -webkit-transition: width 1.5s; /* Safari */
+}
+#dates-hw-10 .green:hover,
+#dates-hw-10 .pink:hover,
+#dates-hw-10 .blue:hover{
+    width:100%;
+}
+#dates-hw-10 .green{
+    background: #61b01c;
+    text-align: right;
+    width: 70%;
+}
+#dates-hw-10 .pink{
+    background: #b0346b;
+    width: 80%;
+    margin: 0 0 0 auto;
+    text-align: left;
+}
+#dates-hw-10 .blue{
+    background: #3495b5;
+    text-align: right;
+    width: 65%
+}
+#dates-hw-10 .place{
+    font-weight: 700;
+}
+#dates-hw-10 .place:before{
+    content: " : "
+}
+
+
+@media screen and (max-width: 1050px){
+    #hackweek10 img[src*="hackweek-logo-10"]{
+        width: 90%;
+        position: static;
+        margin: auto
+    }
+    #hackweek10 img[src*="hackweek-logo-10"]:after{
+        content: "";
+        clear: both;
+    }
+    #hackweek10 img[src*="dates-hw-10"]{
+        visibility: hidden;
+    }
+    #hackweek10 #dates-hw-10{
+        visibility: visible;
+    }
+    #hackweek10{
+        top:25%;
+        text-align: center;
+    }
+
+}
+
