@@ -1,8 +1,5 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :ichain_authenticatable, :ichain_registerable
   has_many :originated_projects, :foreign_key => 'originator_id', :class_name => Project
   has_many :updates, :foreign_key => 'author_id'
 
@@ -48,8 +45,13 @@ def remove_keyword! name
     self.keywords.last.projects
   end
 
-  def is_member? project
-    project.users.include? self
+  def self.for_ichain_username(username, attributes)
+    if user = find_or_create_by(name: username)
+      update_all({:email => attributes[:email]}, {:id => user.id}) if user.email != attributes[:email]
+    else
+      user = create(nickname: username, email: attributes[:email])
+    end
+    user
   end
 
 end
