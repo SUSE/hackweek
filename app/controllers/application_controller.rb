@@ -3,7 +3,13 @@ class ApplicationController < ActionController::Base
 
   before_filter :store_location
   before_filter :authenticate_user!
-  
+
+  before_filter do
+    resource = controller_name.singularize.to_sym
+    method = "#{resource}_params"
+    params[resource] &&= send(method) if respond_to?(method, true)
+  end
+
   protected
 
   def after_sign_out_path_for(resource_or_scope)

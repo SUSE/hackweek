@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
 
+  load_and_authorize_resource
   skip_before_filter :authenticate_user!, :only => [ :index, :show ]
   skip_before_filter :store_location, :only => [:join, :leave, :like, :dislike ]
 
@@ -140,7 +141,7 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:description, :title, :originator)
+    params.require(:project).permit(:description, :title)
   end
 
   def keyword_params

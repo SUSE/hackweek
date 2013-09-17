@@ -22,9 +22,11 @@ gem 'jquery-hotkeys-rails'
 gem 'jquery-cookie-rails'
 # Use haml as templating language
 gem 'haml-rails'
-# Use devise as as authentification framework
+# Use devise as authentification framework
 gem 'devise'
 gem 'devise_ichain_authenticatable'
+# Use cancan as authorization framework
+gem 'cancan'
 # Use gravtastic for user avatars
 gem 'gravtastic'
 # Use redcarpet for markdown rendering
