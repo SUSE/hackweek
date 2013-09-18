@@ -14,7 +14,7 @@
   - else
     =link_to(like_project_path(project.id), :title=>'Like this project', :class=> "btn btn-default") do
       = project.kudos.length
-      %i.icon-heart-empty
+      %i.icon-thumbs-up 
   - if can? :edit, project
     = link_to(edit_project_path(project), :title=>'Edit this project?', :class=> "btn btn-default") do
       &nbsp;
