@@ -52,7 +52,7 @@
 /* Themes */
 .wterm_theme_green_on_black { 
   background: rgba(0,0,0,0.90); 
-  background-image: url(<%= asset_path 'term-bg.png' %>); 
+  background-image: image-url("term-bg.png"); 
   background-repeat: no-repeat; 
   background-position: center; 
   color: #00a54f; 
@@ -157,7 +157,7 @@
   float: left;
   width: 22px;
   height: 16px;
-  background-image: url(<%= asset_path 'utilities-terminal.png' %>); 
+  background-image: image-url("utilities-terminal.png");
   background-repeat: no-repeat; 
   background-position: 6px 1px;
 }
@@ -166,13 +166,13 @@
   float: right;
   width: 22px;
   height: 16px;
-  background-image: url(<%= asset_path 'close.png' %>); 
+  background-image: image-url("close.png"); 
   background-repeat: no-repeat; 
   background-position: 0px 0px;
 }
 
 #terminal-bottom-bar-tab-close:hover {
-  background-image: url(<%= asset_path 'close-hover.png' %>); 
+  background-image: image-url("close-hover.png"); 
   background-repeat: no-repeat; 
   background-position: 0px 0px;
 }
