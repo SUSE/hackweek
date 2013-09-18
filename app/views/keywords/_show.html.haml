@@ -2,9 +2,9 @@
   %span.badge
     = word.name
     - if current_user
-      - if @project
+      - if @project and can? :remove_keyword, @project
         = link_to(keyword_delete_project_path(keyword: word.name), :method => :delete) do
           %i.icon-remove-sign{:style=>"color: #fff"}
-      -if can? :add_keyword, @user
+      - if can? :remove_keyword, @user
         = link_to(keyword_delete_user_path(keyword: word.name), :method => :delete) do
           %i.icon-remove-sign{:style=>"color: #fff"}

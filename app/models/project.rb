@@ -19,12 +19,6 @@ class Project < ActiveRecord::Base
 
   after_create :create_initial_update
   
-  def create_initial_update
-    Update.create!(:author => self.originator,
-                   :text => "originated",
-                   :project => self)
-  end
-  
   def join! user
     self.users << user
     self.save!
@@ -87,6 +81,12 @@ class Project < ActiveRecord::Base
 
     Update.create!(:author => user,
                    :text => "removed keyword #{name} from",
+                   :project => self)
+  end
+
+    def create_initial_update
+    Update.create!(:author => self.originator,
+                   :text => "originated",
                    :project => self)
   end
 end

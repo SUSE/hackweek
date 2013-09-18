@@ -5,21 +5,15 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user
       can :read, :all
-      can :join, Project
-      can :leave, Project
-      can :like, Project
-      can :dislike, Project
-      can :create, Project
+      can [:join, :leave, :like, :dislike, :create], Project
 
       can :manage, Project, :originator_id => user.id
-      can :edit, Project do |project|
-        project.users.include? user
-      end
-      can :add_keyword, Project do |project|
+      can :manage, User, :id => user.id
+
+      can [:edit, :update, :add_keyword, :delete_keyword], Project do |project|
         project.users.include? user
       end
 
-      can :manage, User, :id => user.id
     end
 
     
