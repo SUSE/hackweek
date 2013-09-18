@@ -80,13 +80,13 @@
           </div>
 
         <div id="hackweek10">
-            <%= image_tag "hackweek-logo-10.png" %>
+            <%= image_tag "hackweek-logo-10.png" %>            
 	    <%= image_tag "dates-hw-10.png" %>
             <div id="dates-hw-10">
                 <div class="green">7 - 11 October <span class="place">Nuremberg, Prague</span></div>
                 <div class="pink">3 - 4 / 7 - 9 October <span class="place">Provo, Taipei</span></div>
                 <div class="blue">8 - 12 October <span class="place">Beijing</span></div>
-	    </div>
+            </div>
         </div>
 
         </div>
@@ -98,21 +98,21 @@
     <div id="what-is" class="page-size">
         <div id="what-is-content">
             <div id="what-is-title">
-                Hack Week is the week where SUSE engineers can experiment without limits.<br>This is the opportunity to innovate, collaborate across teams, and learn.<br><%= link_to "Read more....", :controller => "front", :action => "howto" %>
+                Hack Week is the week where SUSE engineers can experiment without limits.<br>This is the opportunity to innovate, collaborate across teams, and learn.<br><%= link_to "Read more...", front_howto_path %>
             </div>
             <div id="what-is-2row">
                 <div id="hackweek-logos">
-                    <%= image_tag "what-is-hackweek.png" %>
+	    	    <%= image_tag "what-is-hackweek.png" %>
                 </div>
                 <div id="what-is-cta">
                     <h3>
-                        Hack Week 10 
+                        Hack Week 10
                     </h3>
                     <p>From October 7th - 11th, SUSE's hundreds of Linux engineers will spend five days working alone or on teams on projects of their own choice.  Some will contribute to existing open source projects. Some will forge new paths. This event is occurring in all main engineering sites around the globe.</p>
 
                     <p>We are using this web site to coordinate our work. There is a place where you can enter and discuss your ideas, find collaborators for projects, and find inspiration. Browse through the ideas already entered, create your own, and edit, improve and discuss already existing ones.</p>
 
-                    <p>There will be <%= link_to 'awards', :controller => 'front', :action => 'awards' %> for the best ideas, the craziest adventures, and the most valuable contributions. Stay tuned for more details.</p>
+                    <p>There will be <%= link_to "awards", front_awards_path %> for the best ideas, the craziest adventures, and the most valuable contributions. Stay tuned for more details.</p>
 
                     <p>This is mostly a SUSE event but we're an open source company, and so what we do is publicly visible and available. We do invite the interest and participation of the community.</p>
                 </div>
@@ -264,19 +264,19 @@
               
             </div>
             <div id="lock">
-              <%= link_to( image_tag("px.gif", :width => "110", :height => "195"), front_howto_path, :id => "link" ) %>
+                <%= link_to( image_tag("px.gif", :width => "110", :height => "195"), front_howto_path, :id => "link" ) %>
             </div>
             <div id="create">
-              <%= link_to( image_tag("px.gif"), new_project_path, :id => "link" ) %>
+	        <%= link_to( image_tag("px.gif"), new_project_path, :id => "link" ) %>
             </div>
             <div id="past">
-              <a id="link" href="https://github.com/SUSE/hackweek/wiki/%27Categories%27"><%= image_tag "px.gif" %></a>
+                <a id="link" href="https://github.com/SUSE/hackweek/wiki/%27Categories%27"><%= image_tag "px.gif" %></a>
             </div>
             <div id="current">
-              <%= link_to( image_tag("px.gif"), projects_path, :id => "link" ) %>
+                <%= link_to( image_tag("px.gif"), projects_path, :id => "link" ) %>
             </div>
             <div id="more_info">
-              <%= link_to( image_tag("px.gif", :width => "110", :height => "195"), front_howto_path, :id => "link" ) %>
+                <%= link_to( image_tag("px.gif", :width => "110", :height => "195"), front_howto_path, :id => "link" ) %>
             </div>
         </div>
         <!--<div id="break_apart">
@@ -290,6 +290,7 @@
         </div>
         <div id="news-wrapper">
             <div id="news-content">
+                <div class="article">
                 <div class="article">
                     <span class="date">28th Jun 2013</span>
                     <span class="title">Hack Week 9 awards winners announced</span>
@@ -325,11 +326,11 @@
                     <a href="http://www.flickr.com/groups/hackweek/pool/" target="_blank"><%= image_tag "flickr.png" %></a>
                 </div>
                 <div id="twitter-stream">
-                    <a class="twitter-timeline" width="290" height="420" data-border-color="#cc0000" href="https://twitter.com/search?q=%23hackweek9"  data-widget-id="319460073040642048">Tweet su "#hackweek9"</a>
-                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                    <a class="twitter-timeline" width="290" height="420" data-border-color="#cc0000" href="https://twitter.com/search?q=%23hackweek10"  data-widget-id="319460073040642048">Tweet su "#hackweek10"</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                 </div>
             </div>
-            </div>
+        </div>
     </div>
 
     <div id="where" class="page-size">

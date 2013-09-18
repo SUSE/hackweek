@@ -235,7 +235,7 @@ $(function () {
         /* start page text scroll animation */
         if (page_visible($('#start'))) {
             $('#start').css({'top': $(window).scrollTop()/2})
-            $('#hackweek9, #pay-off, #start-menu').css({'opacity': 1 - percent_invisible($('#start'))*2})
+            $('#hackweek10, .pay-off, #start-menu').css({'opacity': 1 - percent_invisible($('#start'))*2})
         }
 
         /* what-is page transition */
@@ -291,13 +291,13 @@ $(function () {
 
     /* start page text initial animation */
     if ($(window).scrollTop() == 0) {
-        $("#hackweek9-text").css({ top: - 600 })
-        $("#hackweek9-text").animate({
+        $(".logo-hw-10").css({ top: - 600 })
+        $(".logo-hw-10").animate({
             top: 0
         }, 800);
 
-        $("#hackweek9-img").css({ left: $(window).width() })
-        $("#hackweek9-img").delay(200).animate({
+        $(".dates-hw-10").css({ left: $(window).width() })
+        $(".dates-hw-10").delay(200).animate({
             left: 0, top: 0
         }, 600);
 
