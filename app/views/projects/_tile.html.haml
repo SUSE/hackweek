@@ -4,15 +4,18 @@
       = link_to project_path(project) do
         = project.title
   .panel-body
-    = truncate(project.description, length: 140)
+    :markdown
+      #{truncate(project.description, length: 140)}
     .user-list{:style=>"padding-top: 10px;"}
       - if project.users.empty?
-        Holy moly! This project has no developer yet and is up for
-        = link_to 'grabs!', join_project_path(project.id)
+        .alert.alert-warning
+          Holy moly! This project has no developer yet and is up for
+          = link_to 'grabs!', join_project_path(project.id), :class => "alert-link"
       - else
-        - project.users.each do |user|
-          = link_to user_path(user) do
-            = image_tag(user.gravatar_url(:size => "48"), :class => "img-thumbnail pull-left", :title => "#{user.name}", :alt => user.name)
+        .well.well-sm
+          - project.users.each do |user|
+            = link_to user_path(user) do
+              = image_tag(user.gravatar_url(:size => "24"), :class => "img-thumbnail", :title => "#{user.name}", :alt => user.name)
   .panel-footer
     .row
       .pull-left{:style=>"padding-left: 5px;"}
