@@ -46,16 +46,14 @@
       %h4
         Comments
         = "(#{@project.comments.length})"
-      %ul.comments
+      %ul.media-list
         = render :partial => 'comments/comment', :collection => @project.comments
       %p
         - if current_user
-          = form_for [ @project, @new_comment ] do |f|
+          = form_for [ @project, @new_comment ], html: {role: "form"} do |f|
             %p
-            = f.text_area :text, :cols => 80, :rows => 10, :witdh => "100%"
+            = f.text_area :text, :placeholder => "Your comment...", :class => 'form-control input-lg'
             %p
-            = f.submit 'Add comment'
+            = f.submit 'Add comment', :class=> 'btn pull-right'
         - else
-          = link_to 'Add a comment', new_project_comment_path( @project )
-
-
+          = link_to 'Add a comment', new_project_comment_path( @project ), :class => 'btn pull-right'

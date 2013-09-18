@@ -1,15 +1,14 @@
-%li.comment
-  %p
-    = comment.text
-  %p
-    %em
-      by
-      = link_to user_path(comment.commenter) do
-        = image_tag(comment.commenter.gravatar_url(:size => "22"), alt: comment.commenter.name, title: comment.commenter.name)
-      on
-      = comment.created_at
+%li.media
+  = link_to user_path(comment.commenter), :class => 'pull-left' do
+    = image_tag(comment.commenter.gravatar_url(:size => "40"), class: "media-object img-rounded", alt: comment.commenter.name, title: comment.commenter.name)
+  .media-body
+    %h6.media-heading
+      = time_ago_in_words(comment.created_at)
+      ago
       |
       = link_to 'Reply', new_comment_comment_path( comment )
-  - if !comment.comments.empty?
-    %ul.comments
-      = render :partial => 'comments/comment', :collection => comment.comments
+    %p
+      = simple_format(comment.text)
+    - if !comment.comments.empty?
+      %ul.media-list
+        = render :partial => 'comments/comment', :collection => comment.comments, object: comment
