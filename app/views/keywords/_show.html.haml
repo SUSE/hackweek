@@ -1,5 +1,5 @@
 - keywords.each do |word|
-  %span.badge
+  %span.badge.keyword
     = word.name
     - if current_user
       - if @project and can? :remove_keyword, @project
