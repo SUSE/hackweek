@@ -34,7 +34,9 @@ Hackweek::Application.routes.draw do
   get "front/index"
   get "front/awards"
   get "front/howto"
+  get "front/news"
   get "index.html", to: "front#index"
+  get "news.html", to: "front#news"
 
   get 'user_root' => 'users#me'
   root 'front#index'

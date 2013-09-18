@@ -14,4 +14,8 @@ class FrontController < ApplicationController
   def howto
     render :layout => "application"
   end
+
+  def news
+    render :layout => "application"
+  end
 end
