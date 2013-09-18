@@ -10,6 +10,8 @@ class ApplicationController < ActionController::Base
     params[resource] &&= send(method) if respond_to?(method, true)
   end
 
+  rescue_from ActionController::ParameterMissing , with: :parameter_empty
+
   protected
 
   def after_sign_out_path_for(resource_or_scope)
@@ -32,6 +34,11 @@ class ApplicationController < ActionController::Base
   def keyword_tokens
     required_parameters :q
     render json: Keyword.find_keyword(params[:q])
+  end
+
+  def parameter_empty
+    redirect_back_or_default
+    flash["alert-warning"] = 'Parameter missing...'
   end
 
 end

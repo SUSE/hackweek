@@ -52,7 +52,7 @@
         - if current_user
           = form_for [ @project, @new_comment ], html: {role: "form"} do |f|
             %p
-            = f.text_area :text, :placeholder => "Your comment...", :class => 'form-control input-lg'
+            = f.text_area :text, :placeholder => "Your comment...", :class => 'form-control input-lg', :required => "required"
             %p
             = f.submit 'Add comment', :class=> 'btn pull-right'
         - else

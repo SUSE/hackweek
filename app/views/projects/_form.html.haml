@@ -28,7 +28,7 @@
         %li
           = msg
   .field
-    = f.text_field :title, :placeholder => "The projects title", :class => 'form-control input-lg'
+    = f.text_field :title, :placeholder => "The projects title", :class => 'form-control input-lg', :required => "required"
     
   .field
     = f.text_area :description, :rows => "20", :placeholder => "Add a detailed description of what you want to hack on. You can use markdown.", :class => 'form-control input-lg'
