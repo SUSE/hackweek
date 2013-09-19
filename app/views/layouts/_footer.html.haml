@@ -9,13 +9,7 @@
           %strong SUSE
           engineers can experiment without limits. It's your opportunity to innovate, collaborate across teams, and learn.
           Do what you want, but do it!
-      .col-sm-3.text-center.hidden-xs
-        %hr
-        %ul.nav.nav-pills.nav-stacked
-          %li
-            = link_to(root_path) do
-              %i.icon-anchor
-              About
+        %ul.nav.nav-pills
           %li
             = link_to(front_news_path) do
               %i.icon-bullhorn
@@ -28,7 +22,7 @@
             = link_to(front_awards_path) do
               %i.icon-certificate
               Awards
-      .col-sm-3.text-center.hidden-xs
+      .col-sm-9.text-right.hidden-xs
         %hr
         %ul.nav.nav-pills.nav-stacked
           - if current_user
@@ -53,7 +47,4 @@
             = link_to(destroy_user_ichain_session_path, :method => :delete) do
               %i.icon-off
               Log out
-      .col-sm-3
-        %hr
-        = link_to("http://www.suse.com") do
-          = image_tag "suse-logo-color.png"
+

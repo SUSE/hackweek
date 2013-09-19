@@ -19,13 +19,17 @@
             = render :partial => "projects/buttons", :locals => {:project =>  @project }
         .col-sm-12
           %h4 Hackers
-          - @project.users.each do |user|
-            = link_to(user_path(user.id)) do
-              = image_tag user.gravatar_url(:size => "64"), alt: user.name, title: user.name, class: "img-thumbnail"
+          - if @project.users.empty?
+            = link_to(join_project_path(@project), :class => "btn btn-default btn-lg") do
+              No one? Join this project!
+          - else
+            - @project.users.each do |user|
+              = link_to(user_path(user.id)) do
+                = image_tag user.gravatar_url(:size => "64"), alt: user.name, title: user.name, class: "img-thumbnail"
         .col-sm-12
           %h4 Looking for mad skills in:
           - if @project.keywords.empty?
-            %p Nothing at the moment
+            %p Nothing? Add some keywords!
           - else 
             %p
               = render :partial => "keywords/show", :locals => {:keywords =>  @project.keywords }
@@ -45,7 +49,6 @@
     .col-sm-12
       %h4
         Comments
-        = "(#{@project.comments.length})"
       %ul.media-list
         = render :partial => 'comments/comment', :collection => @project.comments
       %p
@@ -56,4 +59,4 @@
             %p
             = f.submit 'Add comment', :class=> 'btn pull-right'
         - else
-          = link_to 'Add a comment', new_project_comment_path( @project ), :class => 'btn pull-right'
+          = link_to 'Add a comment', new_project_comment_path( @project ), :class => 'btn btn-default'
