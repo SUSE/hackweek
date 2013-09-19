@@ -3,8 +3,8 @@
     = text_field_tag :keyword, nil, class: "form-control", id: "keywords", placeholder: "Keyword"
     = button_tag(type: 'submit', class: "btn btn-default pull-right") do
       = content_tag(:strong, 'Save Keywords')
-  %p
-    %small Separate keywords by comma.
+  %span.help-block
+    Separate keywords by comma.
 :javascript
 $(document).ready(function() {
   $('#keywords').selectize({

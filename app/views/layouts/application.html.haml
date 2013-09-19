@@ -12,24 +12,13 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    = render :partial => "layouts/header"
-    .container.content
-      - if flash
-        = render partial: "layouts/alert", flash: flash
-      .row
-        = yield
-
-      :javascript
-        var pkBaseURL = (("https:" == document.location.protocol) ? "https://beans.opensuse.org/piwik/" : "http://beans.opensuse.org/piwik/");
-        document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-
-      :javascript
-        try {
-         var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 23);
-         piwikTracker.trackPageView();
-         piwikTracker.enableLinkTracking();
-        } catch( err ) {}
-
-      %noscript
-        %p
-          %img{:src=>"http://beans.opensuse.org/piwik/piwik.php?idsite=23", :style=>"border:0", :alt=>''}
+    .wrap
+      = render :partial => "layouts/header"
+      .content.clear-top
+        .container
+          - if flash
+            = render partial: "layouts/alert", flash: flash
+          .row
+            = yield
+    = render :partial => "layouts/footer"
+    = render :partial => "layouts/scripts"

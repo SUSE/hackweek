@@ -1,0 +1,59 @@
+%footer
+  .container
+    .row
+      .col-sm-3
+        %h3
+          About Hack Week
+        %p{:style=>"text-align: justify;"}
+          Hack Week is the week where
+          %strong SUSE
+          engineers can experiment without limits. It's your opportunity to innovate, collaborate across teams, and learn.
+          Do what you want, but do it!
+      .col-sm-3.text-center.hidden-xs
+        %hr
+        %ul.nav.nav-pills.nav-stacked
+          %li
+            = link_to(root_path) do
+              %i.icon-anchor
+              About
+          %li
+            = link_to(front_news_path) do
+              %i.icon-bullhorn
+              News
+          %li
+            = link_to(front_howto_path) do
+              %i.icon-question
+              Help
+          %li
+            = link_to(front_awards_path) do
+              %i.icon-certificate
+              Awards
+      .col-sm-3.text-center.hidden-xs
+        %hr
+        %ul.nav.nav-pills.nav-stacked
+          - if current_user
+            %li
+              = link_to(current_user) do
+                %i.icon-home
+                = current_user.name
+          - else 
+            %li
+              = link_to(new_user_ichain_session_path) do
+                %i.icon-signin
+                Sign In
+          %li
+            = link_to(projects_path) do
+              %i.icon-list
+              Projects
+          %li
+            = link_to(new_project_path) do
+              %i.icon-plus-sign-alt
+              Add Project
+          %li
+            = link_to(destroy_user_ichain_session_path, :method => :delete) do
+              %i.icon-off
+              Log out
+      .col-sm-3
+        %hr
+        = link_to("http://www.suse.com") do
+          = image_tag "suse-logo-color.png"
