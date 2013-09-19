@@ -15,10 +15,12 @@ Hackweek::Application.routes.draw do
 
   resources :projects do
     member do
-      match 'like', via: :all
-      match 'dislike', via: :all
-      match 'join', via: :all
-      match 'leave', via: :all
+      match 'like', via: :post
+      match 'dislike', via: :post
+      match 'join', via: :post
+      match 'leave', via: :post
+      match 'discard', via: :post
+      match 'revive', via: :post
       post 'keyword', to: "projects#add_keyword"
       delete ':keyword', to: "projects#delete_keyword", as: "keyword_delete"
     end

@@ -33,6 +33,8 @@ gem 'gravtastic'
 gem 'redcarpet'
 # Use selectize.js for token input
 gem 'selectize-rails'
+# Use AASM as state machine
+gem 'aasm'
 # dunno
 gem 'single_test'
 

@@ -93,12 +93,33 @@ class ProjectsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
+  def discard
+    project = Project.find(params[:id])
+    project.discard!
+
+    redirect_back_or_default project
+    flash[:notice] = "Discarded project. Wasn't good enough huh?"
+  end
+
+  def revive
+    project = Project.find(params[:id])
+    project.revive!
+    if params.include? :join
+      project.join! current_user
+    end
+
+    redirect_back_or_default project
+    flash[:notice] = "Revived project. Back from the dead!"
+  end
+
+
   def join
     project = Project.find(params[:id])
     project.join! current_user
     
     redirect_back_or_default project
+    flash[:notice] = "Welcome to the project #{current_user.name}!"
   end
 
   def leave
@@ -106,6 +127,7 @@ class ProjectsController < ApplicationController
     project.leave! current_user
     
     redirect_back_or_default project
+    flash[:notice] = "Goodbye #{current_user.name}!"
   end
   
   def like
@@ -113,6 +135,7 @@ class ProjectsController < ApplicationController
     project.like! current_user
     
     redirect_back_or_default project
+    flash[:notice] = "Thank you for your love #{current_user.name}!"
   end
 
   def dislike
@@ -120,6 +143,7 @@ class ProjectsController < ApplicationController
     project.dislike! current_user
     
     redirect_back_or_default project
+    flash[:notice] = "Aaww Snap!"
   end
   
   def add_keyword

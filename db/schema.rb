@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130912160959) do
+ActiveRecord::Schema.define(version: 20130919165239) do
 
   create_table "comments", force: true do |t|
     t.text     "text"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20130912160959) do
     t.integer  "originator_id"
     t.integer  "likes_count"
     t.integer  "memberships_count"
+    t.string   "aasm_state"
   end
 
   create_table "updates", force: true do |t|

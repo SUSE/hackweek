@@ -1,4 +1,6 @@
 class Project < ActiveRecord::Base
+  include AASM
+
   validates :title, :presence => true
   validates :description, :presence => true
   validates :originator_id, :presence => true
@@ -18,19 +20,58 @@ class Project < ActiveRecord::Base
   has_many :comments, :as => :commentable
 
   after_create :create_initial_update
+
+  aasm do
+    state :new, :initial => true
+    state :live
+    state :done
+    state :quashed
+    
+    event :change_status do
+      transitions :from => [:new], :to => :live
+      transitions :from => [:live], :to => :done
+      transitions :to => :quashed,  :from => [:new]
+    end
+    event :abandon do 
+      transitions :from => [:live], :to => :new
+    end
+    event :discard do
+      transitions :from => [:new], :to => :quashed
+      transitions :from => [:live], :to => :quashed
+    end
+    event :revive do
+      transitions :from => [:quashed], :to => :new
+    end
+  end
   
   def join! user
+    if self.users.empty?
+      started = true
+    end
+
     self.users << user
     self.save!
 
-    Update.create!(:author => user,
-                   :text => "joined",
-                   :project => self)
+    if started
+      self.change_status!
+      Update.create!(:author => user,
+                     :text => "started",
+                     :project => self)
+    else
+      Update.create!(:author => user,
+                     :text => "joined",
+                     :project => self)
+    end
   end
   
   def leave! user
     self.users -= [ user ]
     self.save!
+    
+    # If the last user has left...
+    if self.users.empty?
+      self.abandon!
+    end
 
     Update.create!(:author => user,
                    :text => "left",
