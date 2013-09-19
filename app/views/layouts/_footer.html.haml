@@ -43,8 +43,9 @@
             = link_to(new_project_path) do
               %i.icon-plus-sign-alt
               Add Project
-          %li
-            = link_to(destroy_user_ichain_session_path, :method => :delete) do
-              %i.icon-off
-              Log out
+          - if current_user
+            %li
+              = link_to(destroy_user_ichain_session_path, :method => :delete) do
+                %i.icon-off
+                Log out
 
