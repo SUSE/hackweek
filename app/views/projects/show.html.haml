@@ -20,7 +20,7 @@
         .col-sm-12
           %h4 Hackers
           - if @project.users.empty?
-            = link_to(join_project_path(@project), :class => "btn btn-default btn-lg") do
+            = link_to(join_project_path(@project), :class => "btn btn-warning btn-lg") do
               No one? Join this project!
           - else
             - @project.users.each do |user|
@@ -57,6 +57,8 @@
             %p
             = f.text_area :text, :placeholder => "Your comment...", :class => 'form-control input-lg', :required => "required"
             %p
-            = f.submit 'Add comment', :class=> 'btn pull-right'
+            = button_tag(type: 'submit', class: "btn btn-success pull-right") do
+              %i.icon-plus-sign
+              Add Comment
         - else
           = link_to 'Add a comment', new_project_comment_path( @project ), :class => 'btn btn-default'

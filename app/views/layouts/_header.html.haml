@@ -8,18 +8,18 @@
         %span.icon-bar
         %span.icon-bar
       = link_to(root_path, {:name => "top", :class => "navbar-brand"}) do
-        = image_tag("suse-logo-sketch.png", :width => "32px", :alt => "Home", :title => 'Hack Week')
+        = image_tag("suse-logo-sketch.png", :width => "32px", :alt => "Home", :title => 'Hack Week Front Page')
     / Collect the nav links, forms, and other content for toggling
     .collapse.navbar-collapse.navbar-ex1-collapse
       %ul.nav.navbar-nav
         %li
-          = link_to(projects_path, {:alt=>"Projects", :title=>"Projects"}) do
+          = link_to(projects_path, {:alt=>"Projects", :title=>"List all Projects"}) do
             %i.icon-list.icon
-            Projects
+            List Projects
         %li
           = link_to(new_project_path, {:alt=>"Add Project", :title=>"Add Project"}) do
             %i.icon-plus-sign-alt.icon
-            Add Project
+            Create Project
       - if current_user
         %ul.nav.navbar-nav.navbar-right.hidden-xs
           %li.dropdown

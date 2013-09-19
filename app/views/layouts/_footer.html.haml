@@ -1,7 +1,7 @@
 %footer
   .container
     .row
-      .col-sm-3
+      .col-sm-5
         %h3
           About Hack Week
         %p{:style=>"text-align: justify;"}
@@ -22,7 +22,7 @@
             = link_to(front_awards_path) do
               %i.icon-certificate
               Awards
-      .col-sm-9.text-right.hidden-xs
+      .col-sm-2.col-sm-offset-5.text-right.hidden-xs
         %hr
         %ul.nav.nav-pills.nav-stacked
           - if current_user

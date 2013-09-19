@@ -14,8 +14,13 @@
       This is an [example link](http://example.com/)
       
       This is an ![example image](http://paste.opensuse.org/view/raw/68957446)
-  = link_to "More Complex Markdown Help", "http://daringfireball.net/projects/markdown/syntax", target: "_blank", :class => 'pull-right'
-.clearfix
+  %p.text-right{:style=>"margin-bottom: 10px;"}
+    = link_to "More Complex Markdown Help", "http://daringfireball.net/projects/markdown/syntax", target: "_blank"
+%p.text-right
+  %a{:type=>"button", "data-toggle"=>"collapse", "data-target"=>"#help", :class=>"btn btn-default btn-xs"}
+    %i.icon-question-sign
+    Help
+
 = form_for @project, html: { role: "form"} do |f|
   - if @project.errors.any?
     #error_explanation
@@ -31,9 +36,9 @@
     = f.text_field :title, :placeholder => "The projects title", :class => 'form-control input-lg', :required => "required"
     
   .field
-    = f.text_area :description, :rows => "20", :placeholder => "Add a detailed description of what you want to hack on. You can use markdown.", :class => 'form-control input-lg'
+    = f.text_area :description, :rows => "20", :placeholder => "Add a detailed description of your idea. You can use markdown.", :class => 'form-control input-lg'
   .actions
-    = f.submit :class=> 'btn'
-    %a{:type=>"button", "data-toggle"=>"collapse", "data-target"=>"#help", :class=>"pull-right"}
-      %i.icon-question-sign
-      Markdown Help
+    %p
+      = f.submit :class => "btn btn-success pull-right"
+
+
