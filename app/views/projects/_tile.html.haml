@@ -3,6 +3,7 @@
     %h3.panel-title
       = link_to project_path(project) do
         = project.title
+        = render :partial => "projects/like_button", :locals => {:project => project }
   .panel-body
     :markdown
       #{truncate(project.description, length: 140)}
@@ -17,15 +18,10 @@
             = link_to user_path(user) do
               = image_tag(user.gravatar_url(:size => "24"), :class => "img-thumbnail", :title => "#{user.name}", :alt => user.name)
   .panel-footer
-    .row
-      .pull-left{:style=>"padding-left: 5px;"}
-        = render :partial => "projects/buttons", :locals => {:project => project }
-      .pull-right
-        %p.text-right{:style=>"font-size: 0.8em; padding-right: 5px;"}
-          an idea by
-          = link_to(user_path(project.originator.id)) do
-            #{project.originator.name},
-          %br
-          updated
-          = "#{time_ago_in_words project.updates.last.created_at}"
-          ago
+    %small
+      an idea by
+      = link_to(user_path(project.originator.id)) do
+        #{project.originator.name},
+      updated
+      = "#{time_ago_in_words project.updates.last.created_at}"
+      ago

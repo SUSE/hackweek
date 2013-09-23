@@ -26,7 +26,9 @@
                   - if user.projects.empty?
                     - user_class = "free"
                   %td{:class => user_class }
-                    = user.name
+                    = link_to user_path(user) do
+                      = image_tag(user.gravatar_url(:size => "24"), :class => "img-thumbnail", :title => "#{user.name}", :alt => user.name)
+                      = user.name
     - else
       .row
         .col-sm-11.project
