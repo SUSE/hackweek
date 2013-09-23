@@ -8,7 +8,7 @@
           %small
             an idea of
             = @project.originator.name
-        = @project.aasm_state
+            = render :partial => "projects/like_button", :locals => {:project =>  @project }
   .row
     .col-sm-8
       :markdown
@@ -16,17 +16,23 @@
     .col-sm-4
       .row
         .col-sm-12
-          .text-center
-            = render :partial => "projects/buttons", :locals => {:project =>  @project }
+          .text-right
+            = render :partial => "projects/file_buttons", :locals => {:project =>  @project }
         .col-sm-12
-          %h4 Hackers
-          - if @project.users.empty?
-            = link_to(join_project_path(@project), :class => "btn btn-warning btn-lg") do
-              No one? Join this project!
-          - else
-            - @project.users.each do |user|
+          %h4
+            - if @project.users.empty?
+              No
+            Hackers
+          - @project.users.each do |user|
+            .well.well-sm
               = link_to(user_path(user.id)) do
                 = image_tag user.gravatar_url(:size => "64"), alt: user.name, title: user.name, class: "img-thumbnail"
+          - if @project.users.empty? or !@project.users.include? current_user
+            = link_to(join_project_path(@project), :method => :post, :class => "btn btn-success") do
+              Join this project
+          - if @project.users.include? current_user
+            = link_to(leave_project_path(@project), :method => :post, :class => "btn btn-warning") do
+              Leave this project
         .col-sm-12
           %h4 Looking for mad skills in:
           - if @project.keywords.empty?

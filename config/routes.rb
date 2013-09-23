@@ -14,6 +14,9 @@ Hackweek::Application.routes.draw do
   end
 
   resources :projects do
+    collection do
+	get 'archive'
+    end
     member do
       match 'like', via: :post
       match 'dislike', via: :post

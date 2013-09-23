@@ -1,7 +1,7 @@
 %footer
   .container
     .row
-      .col-sm-5
+      .col-sm-4
         %h3
           About Hack Week
         %p{:style=>"text-align: justify;"}
@@ -22,30 +22,8 @@
             = link_to(front_awards_path) do
               %i.icon-certificate
               Awards
-      .col-sm-2.col-sm-offset-5.text-right.hidden-xs
-        %hr
-        %ul.nav.nav-pills.nav-stacked
-          - if current_user
-            %li
-              = link_to(current_user) do
-                %i.icon-home
-                = current_user.name
-          - else 
-            %li
-              = link_to(new_user_ichain_session_path) do
-                %i.icon-signin
-                Sign In
-          %li
-            = link_to(projects_path) do
-              %i.icon-list
-              Projects
-          %li
-            = link_to(new_project_path) do
-              %i.icon-plus-sign-alt
-              Add Project
-          - if current_user
-            %li
-              = link_to(destroy_user_ichain_session_path, :method => :delete) do
-                %i.icon-off
-                Log out
+      .col-sm-2.col-sm-offset-6.hidden-xs.text-center
+        %h3 &nbsp;
+        = link_to "http://www.suse.com" do
+          = image_tag  "suse_logo_w-tag_black.png", :class => "img-responsive", :alt => "SUSE logo" , :title => "Enterprise Linux you can rely on"
 

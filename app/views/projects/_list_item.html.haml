@@ -1,0 +1,27 @@
+%h4
+  .pull-right
+    = render :partial => "projects/like_button", :locals => {:project => project }
+  .cleafix
+  = link_to project_path(project) do
+    = project.title
+%p{:style=>"margin-top: -10px"}
+  %small
+    an idea by
+    = link_to(user_path(project.originator.id)) do
+      #{project.originator.name}
+:markdown
+  #{truncate(project.description, length: 140)}
+- unless project.users.empty?
+  .well.well-sm
+    - project.users.each do |user|
+      = link_to user_path(user) do
+        = image_tag(user.gravatar_url(:size => "24"), :class => "img-thumbnail", :title => "#{user.name}", :alt => user.name)
+%p
+  %span.help-block
+    %small
+      Last updated
+      = "#{time_ago_in_words project.updates.last.created_at}"
+      ago.
+      - if project.users.empty?
+        No one works on this yet. How about you
+        = link_to 'grab it!', join_project_path(project.id), :method => :post

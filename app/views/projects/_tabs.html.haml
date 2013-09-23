@@ -1,0 +1,16 @@
+%ul.nav.nav-tabs
+  - index_state = "active" if controller_name == "projects" and action_name == "index"
+  %li{:class => index_state}
+    = link_to projects_path do
+      %i.icon-file
+      Projects
+  - archive_state = "active" if controller_name == "projects" and action_name == "archive"
+  %li{:class => archive_state}
+    = link_to archive_projects_path do
+      %i.icon-archive
+      Archive
+  - users_state = "active" if controller_name == "users" and action_name == "index"
+  %li{:class => users_state}
+    = link_to users_path do
+      %i.icon-user
+      People

@@ -7,19 +7,19 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    if params.include? "by_kudos"
-      @projects = Project.order("likes_count DESC")
-    elsif params.include? "by_devs"
-      @projects = Project.order("memberships_count DESC")
-    else
-      @projects = Project.all
-    end
+    @projects = Project.where.not(aasm_state: "record")
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @projects }
     end
   end
+
+  def archive
+    @projects = Project.where(aasm_state: "record")
+    render "index"
+  end
+
 
   # GET /projects/1
   # GET /projects/1.json
@@ -99,7 +99,7 @@ class ProjectsController < ApplicationController
     project.discard!
 
     redirect_back_or_default project
-    flash[:notice] = "Discarded project. Wasn't good enough huh?"
+    flash[:notice] = "Project archived. Collecting dust now."
   end
 
   def revive
@@ -110,7 +110,7 @@ class ProjectsController < ApplicationController
     end
 
     redirect_back_or_default project
-    flash[:notice] = "Revived project. Back from the dead!"
+    flash[:notice] = "Project revived. Back from the dead!"
   end
 
 

@@ -15,4 +15,5 @@
 //= require jquery-hotkeys
 //= require twitter/bootstrap
 //= require selectize
+//= require jquery.table-filter.js
 //= require hackweek

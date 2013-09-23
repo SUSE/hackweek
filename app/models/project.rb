@@ -22,25 +22,25 @@ class Project < ActiveRecord::Base
   after_create :create_initial_update
 
   aasm do
-    state :new, :initial => true
-    state :live
+    state :idea, :initial => true
+    state :project
     state :done
-    state :quashed
+    state :record
     
     event :change_status do
-      transitions :from => [:new], :to => :live
-      transitions :from => [:live], :to => :done
-      transitions :to => :quashed,  :from => [:new]
+      transitions :from => [:idea], :to => :project
+      transitions :from => [:project], :to => :done
+      transitions :to => :record,  :from => [:idea]
     end
     event :abandon do 
-      transitions :from => [:live], :to => :new
+      transitions :from => [:project], :to => :idea
     end
     event :discard do
-      transitions :from => [:new], :to => :quashed
-      transitions :from => [:live], :to => :quashed
+      transitions :from => [:idea], :to => :record
+      transitions :from => [:project], :to => :record
     end
     event :revive do
-      transitions :from => [:quashed], :to => :new
+      transitions :from => [:record], :to => :idea
     end
   end
   
