@@ -1,9 +1,10 @@
 require 'test_helper'
 
 class ApiControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
 
   def setup
-    login users(:one)
+    sign_in :user, User.find('1')
   end
   
   test "import" do

@@ -35,6 +35,7 @@ Hackweek::Application.routes.draw do
   end
 
   get "keyword/tokens"
+  post "api/import", to: "api#import" 
 
   get "front/index"
   get "front/awards"

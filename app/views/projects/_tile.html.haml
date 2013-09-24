@@ -23,5 +23,5 @@
       = link_to(user_path(project.originator.id)) do
         #{project.originator.name},
       updated
-      = "#{time_ago_in_words project.updates.last.created_at}"
+      = "#{time_ago_in_words project.updated_at}"
       ago

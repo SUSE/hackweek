@@ -33,4 +33,7 @@ Hackweek::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  # Enable authentification test mode
+  config.devise.ichain_test_mode = true
 end

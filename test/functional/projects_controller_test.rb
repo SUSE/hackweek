@@ -1,9 +1,10 @@
 require 'test_helper'
 
 class ProjectsControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+  
   setup do
-    login users(:one)
-    
+    sign_in :user, User.find('1')
     @project = projects(:one)
   end
 

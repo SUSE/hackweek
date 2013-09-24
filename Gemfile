@@ -35,7 +35,8 @@ gem 'redcarpet'
 gem 'selectize-rails'
 # Use AASM as state machine
 gem 'aasm'
-# dunno
+# Use single_test to run single tests via rake
 gem 'single_test'
 
 gem 'capybara', group: [:test]
+gem 'capybara-webkit', group: [:test]

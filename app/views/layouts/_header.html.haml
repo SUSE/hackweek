@@ -23,7 +23,7 @@
       - if current_user
         %ul.nav.navbar-nav.navbar-right.hidden-xs
           %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", :id => "user-dropdown"}
               = image_tag(current_user.gravatar_url(:size => "22"), :title => "Yo #{current_user.name}!")
               %b.caret
             %ul.dropdown-menu
@@ -32,7 +32,7 @@
                   %i.icon-home
                   = current_user.name
               %li
-                = link_to(destroy_user_ichain_session_path, :method => :delete) do
+                = link_to(destroy_user_ichain_session_path, :method => :delete, :id => "logout-link-md") do
                   %i.icon-off
                   Log out
         %ul.nav.navbar-nav.navbar-right.visible-xs
@@ -41,7 +41,7 @@
               %i.icon-home
               = current_user.name
           %li
-            = link_to(destroy_user_ichain_session_path, :method => :delete) do
+            = link_to(destroy_user_ichain_session_path, :method => :delete, :id => "logout-link-xs") do
               %i.icon-off
               Log out
       - else

@@ -1,36 +1,46 @@
-ENV["RAILS_ENV"] = "test"
+ENV["RAILS_ENV"] ||= "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'capybara/rails'
+Capybara.default_driver = :webkit
 
 class ActionDispatch::IntegrationTest
   # Make the Capybara DSL available in all integration tests
   include Capybara::DSL
+  self.use_transactional_fixtures = false
 
-  class Stubber
-
-    def self.fake_authentication user
-      AccountController.send :alias_method, :orig_auth_hash, :auth_hash
-
-      AccountController.send :define_method, :auth_hash do
-        {
-          :uid => "fake:123",
-          :info => { :name => user.name, :email => user.email }
-        }
-      end
+  def login_user(user)
+    visit new_user_ichain_session_path
+    within('#session') do
+      fill_in 'Username', with: user.name
+      fill_in 'Email', with: user.email
+      click_button 'Sign In'
     end
-
-    def self.unfake_authentication
-        AccountController.send :alias_method, :auth_hash, :orig_auth_hash
-    end
-
   end
 
-  def assume_user_logged_in user
-    Stubber.fake_authentication user
-    visit "/account/callback"
-    Stubber.unfake_authentication
+  def logout_user(hard=false)
+    if hard
+      visit projects_path
+    end
+    click_link("user-dropdown")
+    click_link('Log out')
   end
+
+  setup do
+  end
+
+  teardown do
+    dirpath = Rails.root.join("tmp", "capybara")
+    htmlpath = dirpath.join(self.__name__ + ".html")
+    if !passed?
+      Dir.mkdir(dirpath) unless Dir.exists? dirpath
+      save_page(htmlpath)
+    elsif File.exists?(htmlpath)
+      File.unlink(htmlpath)
+    end
+    Capybara.reset_sessions!
+  end
+
 end
 
 class ActiveSupport::TestCase
@@ -39,12 +49,8 @@ class ActiveSupport::TestCase
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
   # -- they do not yet inherit this setting
   fixtures :all
+end
 
-  # Add more helper methods to be used by all tests here...
-
-  def login user
-    @request.session[:user_id] = user.id
-    @controller.instance_variable_set('current_user', user)
-  end
-
+class ActionController::TestCase
+  include Devise::TestHelpers
 end

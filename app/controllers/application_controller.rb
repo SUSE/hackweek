@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   end
 
   def store_location
-    if current_user
+    if user_signed_in?
       if not request.fullpath === new_user_ichain_session_path and request.method == "GET"
         session["user_return_to"] = request.fullpath
       end

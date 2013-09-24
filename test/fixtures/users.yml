@@ -2,6 +2,10 @@
 
 one:
   id: 1
-  uid: http://example.com/open_id_id
-  name: "Hans Eberhard Wurst"
-  email: "hw@example.com"
+  name: "hennevogel"
+  email: "hvogel@suse.com"
+
+two:
+  id: 2
+  name: "cschum"
+  email: "cschum@suse.com"

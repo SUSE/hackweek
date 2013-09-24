@@ -2,7 +2,7 @@
   %h3 Sign In (TEST MODE)
   %p.text-muted
     Just fill out all the details and you're logged in.
-  = form_tag(@login_url, :method => :post, :enctype => 'application/x-www-form-urlencoded',:role => 'form') do
+  = form_tag(@login_url, :method => :post, :enctype => 'application/x-www-form-urlencoded',:role => 'form', :id => "session") do
     .form-group
       = label_tag :username, "Username"
       = text_field_tag :username, "", :autofocus => true, :placeholder => 'Username', :class => 'form-control', :required => "required"

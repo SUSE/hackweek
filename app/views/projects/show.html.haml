@@ -23,8 +23,8 @@
             - if @project.users.empty?
               No
             Hackers
-          - @project.users.each do |user|
-            .well.well-sm
+          .well.well-sm
+            - @project.users.each do |user|
               = link_to(user_path(user.id)) do
                 = image_tag user.gravatar_url(:size => "64"), alt: user.name, title: user.name, class: "img-thumbnail"
           - if @project.users.empty? or !@project.users.include? current_user

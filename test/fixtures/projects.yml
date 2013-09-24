@@ -1,12 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
 one:
-  title: MyString
-  description: MyText
+  title: Hurd
+  description: A very cool project nobody picks up
   originator_id: 1
+  aasm_state: idea
+  id: 1
 
 two:
-  title: MyString
-  description: MyText
+  title: XNU
+  description: A project worked on by one user
   originator_id: 1
-  
+  aasm_state: project
+  id: 2
+
+three:
+  title: Linux
+  description: A project worked on by multiple users
+  originator_id: 2
+  aasm_state: project
+  id: 3

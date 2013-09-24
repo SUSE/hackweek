@@ -1,72 +1,40 @@
 require 'test_helper'
 
 class LoginTest < ActionDispatch::IntegrationTest
-
-  def login_with_google user
-    assert find( ".container.content" ).find_link('Log in with Google')
-    Stubber.fake_authentication user
-    visit "/account/callback"
-    Stubber.unfake_authentication
-  end
-  
-  test "show public project page" do    
-    project = projects(:one)
-    
-    visit project_path( project )
-    assert page.has_content?( "Sign In" )
-    assert find_link('Add a comment').visible?
-  end
-
-  test "log in" do
+  test "log in and browse the page" do
     user = users(:one)
-
-    visit "/account/login"
-    login_with_google user
-    
-    assert page.find(".navbar").has_content?( user.name ), "User name '#{user.name}' not shown."
-  end
-  
-  test "commenting needs login" do
     project = projects(:one)
-    
-    visit project_path( project )
-    click_link 'Add a comment'
-    
-    assert_equal "/account/login", current_path
-  end
-  
-  test "add comment as not logged in user" do
-    project = projects(:one)
-    
-    visit project_path( project )
-    click_link 'Add a comment'
-    assert find( ".container.content" ).find_link('Log in with Google')
 
-    assume_user_logged_in users(:one)
+    # The front page should have content and a projects-link
+    visit root_path
+    assert page.has_content?( "Hack Week is the week where SUSE engineers can experiment without limits." ), "Front page not shown?"
+    click_link ("list-link")
 
-    assert_equal new_project_comment_path( project ), current_path
-    fill_in :comment_text, :with => "My comment."
-    click_button 'Add comment'
-    assert_equal project_path( project ), current_path
-    assert page.has_content?( "My comment." )    
-    assert page.has_content?( "Hans Eberhard Wurst" )
-  end
-  
-  test "can't join projects when notlogged in" do
-    project = projects(:one)
-    
-    visit project_path( project )
-    assert_raise Capybara::ElementNotFound do
-      find_button( "Join this project" )
-    end
+    # The project list should have these 3 entries.
+    assert page.has_content?( "Hurd" ), "Project overview is missing 'Hurd'"
+    assert page.has_content?( "XNU" ), "Project overview is missing 'XNU'"
+    assert page.has_content?( "Linux" ), "Project overview is missing 'Linux'"
 
-    visit "/account/login"
-    assert find( ".container.content" ).find_link('Log in with Google')
-    
-    assume_user_logged_in users(:one)
-    
-    assert_equal project_path( project ), current_path
-    assert find_button( "Join this project" ), "Join button should be there"
+    login_user user
+    # Log in redirects to the users page
+    assert page.find(".page-header").has_content?( user.name ), "User name '#{user.name}' not shown."
+
+    # The project list should have these 3 entries.
+    click_link("List")
+    assert page.has_content?( "Hurd" ), "Project overview is missing 'Hurd'"
+    assert page.has_content?( "XNU" ), "Project overview is missing 'XNU'"
+    assert page.has_content?( "Linux" ), "Project overview is missing 'Linux'"
+
+    # The project page for project one should have this content
+    click_link("Hurd")
+    assert page.has_content?( "Looking for mad skills in" ), "Project view not shown?"
+    assert page.has_content?( "Hurd" ), "Project title 'Hurd' not shown."
+
+    # Joining this project should flash an alert
+    click_link "Join this project"
+    assert page.find(".alert h3").has_content?( "Welcome to the project hennevogel! " ), "Join alert not shown."
+
+    logout_user
   end
-  
+
 end

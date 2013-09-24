@@ -30,7 +30,7 @@ class ProjectTest < ActiveSupport::TestCase
 
     assert_equal 1, project.updates.count
     assert_equal user, project.updates.last.author
-    assert_match /joined/, project.updates.last.text
+    assert_match /started/, project.updates.last.text
   end
 
   test "user leaves project" do

@@ -20,7 +20,7 @@
   %span.help-block
     %small
       Last updated
-      = "#{time_ago_in_words project.updates.last.created_at}"
+      = "#{time_ago_in_words project.created_at}"
       ago.
       - if project.users.empty?
         No one works on this yet. How about you

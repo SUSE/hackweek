@@ -218,7 +218,7 @@ Devise.setup do |config|
 
   # Activate the test mode, useful when no real iChain is present, like in
   # testing and development environments
-  config.ichain_test_mode = true 
+  # config.ichain_test_mode = true 
 
   # ==> Scopes configuration
   # Turn scoped views on. Before rendering "sessions/new", it will first check for

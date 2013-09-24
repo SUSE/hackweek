@@ -1,11 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
 one:
-  text: MyText
+  text: joined
   author_id: 1
-  project_id: 1
+  project_id: 2
 
 two:
-  text: MyText
+  text: joined
   author_id: 1
-  project_id: 1
+  project_id: 3
+
+three:
+  text: joined
+  author_id: 2
+  project_id: 3
