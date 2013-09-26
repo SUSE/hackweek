@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for development/testing 
-gem 'sqlite3', group: [:development, :test]
+gem 'sqlite3'
 # Use mysql as the database for production
 gem 'mysql2'
 # Use SCSS for stylesheets
