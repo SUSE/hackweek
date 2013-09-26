@@ -56,15 +56,12 @@ task :deploy => :environment do
     invoke :notify_errbit
 
     to :launch do
-      queue "touch #{deploy_to}/tmp/restart.txt"
+      queue "/etc/init.d/apache2 restart"
     end
   end
 end
 
-task :restart do
-  queue 'rcapache restart'
-end
-
+desc "Notifies the exception handler of the deploy."
 task :notify_errbit do
   revision = `git rev-parse HEAD`.strip
   user = ENV['USER']
