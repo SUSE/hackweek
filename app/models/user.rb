@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   devise :ichain_authenticatable, :ichain_registerable
   has_many :originated_projects, :foreign_key => 'originator_id', :class_name => Project
-  has_many :updates, :foreign_key => 'author_id'
+  has_many :updates, :foreign_key => 'author_id', dependent: :destroy
 
   has_many :memberships
   has_many :comments
