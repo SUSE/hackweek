@@ -68,7 +68,7 @@ end
 task :notify_errbit do
   revision = `git rev-parse HEAD`.strip
   user = ENV['USER']
-  queue "rake hoptoad:deploy TO=production REVISION=#{revision} USER=#{user}"
+  queue "rake hoptoad:deploy TO=#{rails_env} REVISION=#{revision} REPO=#{repository} USER=#{user}"
 end
 
 # For help in making your deploy script, see the Mina documentation:
