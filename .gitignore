@@ -15,8 +15,8 @@
 /tmp
 
 # Ignore the configuration files
-config/database.yml
-config/environments/development.*.rb
+/config/database.yml
+/config/application.yml
 
 # All the other crap that fits nowhere specifically
 *~

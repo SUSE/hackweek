@@ -1,0 +1,4 @@
+# Add application configuration variables here, as shown below.
+#
+HACKWEEK_ERRBIT_KEY: 7381a978f7dd7f9a1117
+HACKWEEK_ERRBIT_HOST: errbit.example.com
