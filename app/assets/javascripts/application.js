@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require mousetrap
 //= require jquery-hotkeys
 //= require twitter/bootstrap
 //= require selectize

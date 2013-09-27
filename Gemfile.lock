@@ -95,6 +95,7 @@ GEM
     mime-types (1.25)
     mini_portile (0.5.1)
     minitest (4.7.5)
+    mousetrap-rails (0.0.12)
     multi_json (1.8.0)
     mysql2 (0.3.13)
     nokogiri (1.6.0)
@@ -174,6 +175,7 @@ DEPENDENCIES
   jquery-cookie-rails
   jquery-hotkeys-rails
   jquery-rails
+  mousetrap-rails
   mysql2
   rails (= 4.0.0)
   redcarpet

@@ -41,6 +41,8 @@ gem 'single_test'
 gem 'hoptoad_notifier', "~> 2.3"
 # Use figaro to set the env variables
 gem 'figaro'
+# Use mousetrap for keyboard shortcuts
+gem 'mousetrap-rails'
 
 gem 'capybara', group: [:test]
 gem 'capybara-webkit', group: [:test]
