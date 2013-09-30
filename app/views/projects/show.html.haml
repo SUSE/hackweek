@@ -12,6 +12,9 @@
             an idea of
             = @project.originator.name
             = render :partial => "projects/like_button", :locals => {:project =>  @project }
+        %span.help-block
+          %small
+            = render :partial => "projects/info", :locals => {:project => @project }
   .row
     .col-sm-8
       :markdown

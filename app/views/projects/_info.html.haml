@@ -1,0 +1,11 @@
+Last updated
+= "#{time_ago_in_words project.created_at}"
+ago.
+- if project.kudos.length > 0
+  Captured
+  = pluralize(project.kudos.length, "hackers heart.", "hacker hearts.")
+-else 
+  No love.
+- if project.users.empty?
+  No hacker. How about you
+  = link_to 'grab it!', join_project_path(project.id), :method => :post
