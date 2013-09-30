@@ -1,6 +1,11 @@
 %html{:xmlns => "http://www.w3.org/1999/html"}
   %head
-    %title Hackweek 
+    %title
+      - if content_for?(:title)
+        Hack Week:
+        = yield(:title)
+      -else
+        Hack Week
     %meta{:charset=> "utf-8"}
     %meta{:name => "viewport", :content =>"width=device-width, initial-scale=1.0"}
     = favicon_link_tag 'favicon.gif'

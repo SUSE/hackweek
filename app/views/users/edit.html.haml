@@ -1,3 +1,7 @@
+- content_for :title do
+  Edit
+  = current_user.name
+
 .col-sm-11.project
   %h2 Edit user information
   = form_for(current_user) do |f|
