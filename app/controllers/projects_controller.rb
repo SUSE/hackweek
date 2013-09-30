@@ -8,7 +8,6 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     @projects = Project.where.not(aasm_state: "record")
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @projects }
@@ -20,6 +19,20 @@ class ProjectsController < ApplicationController
     render "index"
   end
 
+  def newest
+    @projects = Project.where.not(aasm_state: "record").order("created_at DESC LIMIT 10")
+    render "index"
+  end
+
+  def popular
+    @projects = Project.where("likes_count > 0").where.not(aasm_state: "record").order("likes_count DESC")
+    render 'index'
+  end
+
+  def biggest
+    @projects = Project.where("memberships_count > 0").where.not(aasm_state: "record").order("memberships_count DESC")
+    render 'index'
+  end
 
   # GET /projects/1
   # GET /projects/1.json

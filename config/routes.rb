@@ -16,6 +16,9 @@ Hackweek::Application.routes.draw do
   resources :projects do
     collection do
 	get 'archive'
+	get 'newest'
+	get 'popular'
+	get 'biggest'
     end
     member do
       match 'like', via: :post

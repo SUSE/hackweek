@@ -15,7 +15,11 @@
         %li
           = link_to(projects_path, {:alt=>"Projects", :title=>"List all Projects"}) do
             %i.icon-list.icon
-            List
+            Projects
+        %li
+          = link_to users_path do
+            %i.icon-user
+            People
         %li
           = link_to(new_project_path, {:alt=>"Add Project", :title=>"Add Project"}) do
             %i.icon-plus-sign-alt.icon

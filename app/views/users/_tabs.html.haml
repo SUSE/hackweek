@@ -1,0 +1,5 @@
+%ul.nav.nav-tabs
+  - all_state = "active" if action_name == "index"
+  %li{:class => all_state}
+    =link_to projects_path, :title => "All projects" do
+      All

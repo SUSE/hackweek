@@ -1,16 +1,21 @@
 %ul.nav.nav-tabs
-  - index_state = "active" if controller_name == "projects" and action_name == "index"
-  %li{:class => index_state}
-    = link_to projects_path do
-      %i.icon-file
-      Projects
-  - archive_state = "active" if controller_name == "projects" and action_name == "archive"
+  - all_state = "active" if action_name == "index"
+  %li{:class => all_state}
+    =link_to projects_path, :title => "All projects" do
+      All
+  - newest_state = "active" if action_name == "newest"
+  %li{:class => newest_state}
+    =link_to newest_projects_path, :title => "Most recent projects" do
+      Newest
+  - popular_state = "active" if action_name == "popular"
+  %li{:class => popular_state}
+    =link_to popular_projects_path, :title => "Most liked projects" do
+      Popular
+  - biggest_state = "active" if action_name == "biggest"
+  %li{:class => biggest_state}
+    =link_to biggest_projects_path, :title => "Most active projects" do
+      Biggest
+  - archive_state = "active" if action_name == "archive"
   %li{:class => archive_state}
-    = link_to archive_projects_path do
-      %i.icon-archive
+    =link_to archive_projects_path, :title => "Dismissed projects" do
       Archive
-  - users_state = "active" if controller_name == "users" and action_name == "index"
-  %li{:class => users_state}
-    = link_to users_path do
-      %i.icon-user
-      People
