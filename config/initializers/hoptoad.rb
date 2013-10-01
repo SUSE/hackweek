@@ -16,7 +16,7 @@ HoptoadNotifier.configure do |config|
     ret=false
     if exception_data[:error_class] == "ActionController::RoutingError" 
       message = exception_data[:error_message]
-      ret=true if message =~ %r{\[BLAH\]}
+      ret=true if message =~ %r{\[GET\]}
     end
     ret
   end

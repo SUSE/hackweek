@@ -39,15 +39,18 @@ Hackweek::Application.routes.draw do
 
   get "keyword/tokens"
   post "api/import", to: "api#import" 
+  get "gallery", to: "gallery#index"
 
   get "front/index"
-  get "front/awards"
-  get "front/howto"
-  get "front/news"
   get "index.html", to: "front#index"
+  get "front/awards"
+  get "awards.html", to: "front#awards"
+  get "front/howto"
+  get "howto.html", to: "front#howto"
+  get "front/news"
   get "news.html", to: "front#news"
+  
 
-  get 'user_root' => 'users#me'
   root 'front#index'
 
   # The priority is based upon order of creation:
