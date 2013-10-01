@@ -19,11 +19,11 @@
   %body
     .wrap
       = render :partial => "layouts/header"
-      .content.clear-top
+      .clear-top
         .container
           - if flash
             = render partial: "layouts/alert", flash: flash
-          .row
+          .row.content
             = yield
     = render :partial => "layouts/footer"
     = render :partial => "layouts/scripts"
