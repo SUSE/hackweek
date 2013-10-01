@@ -3,19 +3,29 @@
   %li{:class => all_state}
     =link_to projects_path, :title => "All projects" do
       All
+      - if all_state === "active"
+        =  "(#{@projects.length})"
   - newest_state = "active" if action_name == "newest"
   %li{:class => newest_state}
     =link_to newest_projects_path, :title => "Most recent projects" do
       Newest
+      - if newest_state === "active"
+        =  "(#{@projects.length})"
   - popular_state = "active" if action_name == "popular"
   %li{:class => popular_state}
     =link_to popular_projects_path, :title => "Most liked projects" do
       Popular
+      - if popular_state === "active"
+        =  "(#{@projects.length})"
   - biggest_state = "active" if action_name == "biggest"
   %li{:class => biggest_state}
     =link_to biggest_projects_path, :title => "Most active projects" do
       Biggest
+      - if biggest_state === "active"
+        =  "(#{@projects.length})"
   - archive_state = "active" if action_name == "archive"
   %li{:class => archive_state}
     =link_to archive_projects_path, :title => "Dismissed projects" do
       Archive
+      - if archive_state === "active"
+        =  "(#{@projects.length})"

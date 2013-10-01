@@ -1,5 +1,7 @@
 - content_for :title do
+  = action_name.humanize unless action_name === "index"
   Projects
+  = "(#{@projects.length})"
 
 .col-sm-12
   = render :partial => "projects/tabs"
