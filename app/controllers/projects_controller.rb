@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
   load_and_authorize_resource
-  skip_before_filter :authenticate_user!, :only => [ :index, :show, :archive ]
+  skip_before_filter :authenticate_user!, :only => [ :index, :show, :archive, :newest, :popular, :biggest ]
   skip_before_filter :store_location, :only => [:join, :leave, :like, :dislike ]
 
   # GET /projects
