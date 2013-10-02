@@ -5,17 +5,18 @@
   .row
     .col-sm-12
       - if @project.previous
-        =   button_to 'Previous', @project.previous, :id => "previous_link", :method => :get, :class => "btn btn-default btn-xs pull-left"
+        =   button_to 'Previous', @project.previous, :id => "previous_link", :method => :get, :class => "btn btn-default btn-xs pull-left", :title=> "Try pressing 'j' on your keyboard.."
       - if @project.next
-        = button_to 'Next', @project.next, :id => "next_link", :method => :get, :class => "btn btn-default btn-xs pull-right"
+        = button_to 'Next', @project.next, :id => "next_link", :method => :get, :class => "btn btn-default btn-xs pull-right", :title => "Try pressing 'k' on your keyboard.."
       .clearfix
       .page-header
         %h1
           = @project.title
           %br
           %small
-            an idea of
-            = @project.originator.name
+            an idea by
+            = link_to user_path(@project.originator) do
+              = @project.originator.name
             = render :partial => "projects/like_button", :locals => {:project =>  @project }
         %span.help-block
           %small
