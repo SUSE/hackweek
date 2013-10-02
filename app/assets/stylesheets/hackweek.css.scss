@@ -30,9 +30,16 @@ footer {
   margin-top: 4px;
 }
 
+.project-list-pills {
+  position: relative; 
+  z-index: 1;
+}
+
 .project-list-item:before {
     display:block; 
+    position: relative; 
     content:""; 
     height:70px; 
     margin:-70px 0 0; 
+    z-index: -1;
 }
