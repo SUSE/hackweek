@@ -11,12 +11,15 @@
 /db/*.sqlite3
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
+/log/*
 /tmp
 
 # Ignore the configuration files
 /config/database.yml
 /config/application.yml
+
+# Ignore solr
+solr
 
 # All the other crap that fits nowhere specifically
 *~

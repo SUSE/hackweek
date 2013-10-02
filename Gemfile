@@ -46,3 +46,8 @@ gem 'mousetrap-rails'
 
 gem 'capybara', group: [:test]
 gem 'capybara-webkit', group: [:test]
+
+# search engine
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+gem 'progress_bar', group: [:development]
