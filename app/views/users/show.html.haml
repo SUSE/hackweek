@@ -38,49 +38,54 @@
             - if @user.recommended_projects.empty?
               %p no project is matching your keywords yet, try adding some more.
             - else
-              - @user.recommended_projects.each_with_index do |project, index|
-                - if index % 3 == 2 or index == 0
-                  .row
-                .col-sm-6
-                  = render :partial => "projects/tile", :locals => {:project => project }
+              %table.table
+                %thead
+                - @user.recommended_projects.each_with_index do |project, index|
+                  %tr
+                    %td{:class => "#{project.aasm_state}"}
+                      = render :partial => "projects/list_item", :locals => {:project => project, :index => index }
         - else
           .tab-pane.active#projects
             - if @user.projects.empty?
               %p no projects currently
             - else
-              - @user.projects.each_with_index do |project, index|
-                - if index % 3 == 2 or index == 0
-                  .row
-                .col-sm-6
-                  = render :partial => "projects/tile", :locals => {:project => project }
+              %table.table
+                %thead
+                - @user.projects.each_with_index do |project, index|
+                  %tr
+                    %td{:class => "#{project.aasm_state}"}
+                      = render :partial => "projects/list_item", :locals => {:project => project, :index => index }
         .tab-pane#ideas
           - if @user.originated_projects.empty?
             %p no ideas yet
           - else
-            - @user.originated_projects.each_with_index do |project, index|
-              - if index % 3 == 2 or index == 0
-                .row
-              .col-sm-6
-                = render :partial => "projects/tile", :locals => {:project => project }
+            %table.table
+              %thead
+              - @user.originated_projects.each_with_index do |project, index|
+                %tr
+                  %td{:class => "#{project.aasm_state}"}
+                    = render :partial => "projects/list_item", :locals => {:project => project, :index => index }
         .tab-pane#likes
           - if @user.favourites.empty?
             %p no projects yet
           - else
-            - @user.favourites.each_with_index do |project, index|
-              - if index % 3 == 2 or index == 0
-                .row
-              .col-sm-6
-                = render :partial => "projects/tile", :locals => {:project => project }
+            %table.table
+              %thead
+              - @user.favourites.each_with_index do |project, index|
+                %tr
+                  %td{:class => "#{project.aasm_state}"}
+                    = render :partial => "projects/list_item", :locals => {:project => project, :index => index }
         -unless @user.projects.empty?
           .tab-pane#recommended
             - if @user.recommended_projects.empty?
               %p no opportunities yet
             - else
-              - @user.recommended_projects.each_with_index do |project, index|
-                - if index % 3 == 2 or index == 0
-                  .row
-                .col-sm-6
-                  = render :partial => "projects/tile", :locals => {:project => project }
+              %table.table
+                %thead
+                - @user.recommended_projects.each_with_index do |project, index|
+                  %tr
+                    %td{:class => "#{project.aasm_state}"}
+                      = render :partial => "projects/list_item", :locals => {:project => project, :index => index }
     .col-sm-4
       .col-sm-12
         .text-center

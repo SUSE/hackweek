@@ -1,4 +1,4 @@
-- @project = project unless @project
+- project = @project if @project
 - dislike = "display: none;" unless project.kudos.include? current_user
 = link_to(dislike_project_path(project.id), :method => :post, :title=>'Dislike this project?', :class=> "btn btn-default btn-xs", :id => "dislike-#{project.id}", :style => "#{dislike}", :remote=>true) do
   %i.icon-heart{:style => "color: #73ba25;"}
