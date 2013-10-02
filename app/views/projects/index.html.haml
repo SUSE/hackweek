@@ -8,11 +8,11 @@
   .tab-content{:style => "padding-top: 10px;"}
     - if @projects.length > 0
       .tab-pane.active
-        .row{:style=> "padding-bottom: 10px;"}
+        .row.project-list-pills{:style=> "padding-bottom: 10px;"}
           .col-sm-6
             #table_search
           .col-sm-6
-            %ul.nav.nav-pills.pull-right.project-list-pills
+            %ul.nav.nav-pills.pull-right
               %li.active#all-pill
                 %a{:href =>"#", :id=>"all", :title=> "All Projects"}
                   All
