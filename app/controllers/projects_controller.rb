@@ -137,7 +137,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       format.html{ redirect_to project, notice: "Thank you for your love #{current_user.name}!" }
-      format.js {}
+      format.js { render :partial => "like_toggle" }
     end
   end
 
@@ -148,7 +148,7 @@ class ProjectsController < ApplicationController
     
     respond_to do |format|
       format.html{ redirect_to project, notice: "Aaww Snap! You don't love me anymore?" }
-      format.js {}
+      format.js { render :partial => "like_toggle" }
     end
   end
 

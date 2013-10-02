@@ -1,9 +1,0 @@
-- if project.users.include? current_user
-  = link_to(leave_project_path(project.id), :method => :post, :title => 'Stop working on this project?', :class => 'btn btn-default') do
-    %i.icon-stop
-- elsif project.may_change_status?
-  = link_to(join_project_path(project.id), :method => :post, :title => 'Work on this project?', :class=>'btn btn-default') do
-    %i.icon-play
--elsif !project.may_change_status? and project.may_revive?
-    = link_to(revive_project_path(project, join: "true"), :method => :post, :title => 'Work on this project?', :class=>'btn btn-default', confirm: 'This project is archived. Revive it? do
-    %i.icon-play

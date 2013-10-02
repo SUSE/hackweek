@@ -1,6 +1,7 @@
-- if project.kudos.include? current_user
-  = link_to(dislike_project_path(project.id), :method => :post, :title=>'Dislike this project?', :class=> "btn btn-default btn-xs") do
-    %i.icon-heart{:style => "color: #73ba25;"}
-- else
-  =link_to(like_project_path(project.id), :method => :post,:title=>'Like this project', :class=> "btn btn-default btn-xs") do
-    %i.icon-heart-empty
+- @project = project unless @project
+- dislike = "display: none;" unless project.kudos.include? current_user
+= link_to(dislike_project_path(project.id), :method => :post, :title=>'Dislike this project?', :class=> "btn btn-default btn-xs", :id => "dislike-#{project.id}", :style => "#{dislike}", :remote=>true) do
+  %i.icon-heart{:style => "color: #73ba25;"}
+- like = "display: none;" if project.kudos.include? current_user
+=link_to(like_project_path(project.id), :method => :post,:title=>'Like this project', :class=> "btn btn-default btn-xs", :id => "like-#{project.id}", :style => "#{like}", :remote => true) do
+  %i.icon-heart-empty
