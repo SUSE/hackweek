@@ -130,4 +130,13 @@ class Project < ActiveRecord::Base
                    :text => "originated",
                    :project => self)
   end
+
+  def previous
+    Project.where('id < ?', self.id).last
+  end
+
+  def next
+    Project.where('id > ?', self.id).first
+  end
+
 end

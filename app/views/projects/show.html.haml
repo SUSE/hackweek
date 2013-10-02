@@ -4,6 +4,11 @@
 .col-sm-12
   .row
     .col-sm-12
+      - if @project.previous
+        =   button_to 'Previous', @project.previous, :id => "previous_link", :method => :get, :class => "btn btn-default btn-xs pull-left"
+      - if @project.next
+        = button_to 'Next', @project.next, :id => "next_link", :method => :get, :class => "btn btn-default btn-xs pull-right"
+      .clearfix
       .page-header
         %h1
           = @project.title
@@ -76,3 +81,8 @@
               Add Comment
         - else
           = link_to 'Add a comment', new_project_comment_path( @project ), :class => 'btn btn-default'
+
+- content_for :script do
+  :javascript
+    Mousetrap.bind('j', function() { $('#previous_link').click(); });
+    Mousetrap.bind('k', function() { $('#next_link').click(); })

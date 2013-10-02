@@ -28,8 +28,8 @@
               %thead
               - @projects.each_with_index do |project, index|
                 %tr
-                  %td{:class => "#{project.aasm_state}", :id=> "project-#{index}", :name => "project-#{index}"}
-                    = render :partial => "projects/list_item", :locals => {:project => project }
+                  %td{:class => "#{project.aasm_state}"}
+                    = render :partial => "projects/list_item", :locals => {:project => project, :index => index }
     - else
       .row
         .col-sm-12
@@ -37,30 +37,61 @@
             No projects. How about you
             = link_to "add one!", new_project_path
 
-:javascript
-  $( "#ideas" ).click(function() {
-    console.log ("show only ideas");
-    $( ".project" ).hide();
-    $( ".idea" ).show();
-    $( "#ideas-pill").addClass( "active" );
-    $( "#all-pill, #projects-pill").removeClass( "active" );
-  });
+- content_for :script do
+  :javascript
+    $( "#ideas" ).click(function() {
+      console.log ("show only ideas");
+      $( ".project" ).hide();
+      $( ".idea" ).show();
+      $( "#ideas-pill").addClass( "active" );
+      $( "#all-pill, #projects-pill").removeClass( "active" );
+    });
+    $( "#projects" ).click(function() {
+      console.log ("show only projects");
+      $( ".idea" ).hide();
+      $( ".project" ).show();
+      $( "#projects-pill").addClass( "active" );
+      $( "#all-pill, #ideas-pill").removeClass( "active" );
+    });
+    $( "#all" ).click(function() {
+      console.log ("show everything");
+      $( ".idea" ).show();
+      $( ".project" ).show();
+      $( "#all-pill").addClass( "active" );
+      $( "#projects-pill, #ideas-pill").removeClass( "active" );
+    });
+    $("table").addTableFilter({
+    });
 
-  $( "#projects" ).click(function() {
-    console.log ("show only projects");
-    $( ".idea" ).hide();
-    $( ".project" ).show();
-    $( "#projects-pill").addClass( "active" );
-    $( "#all-pill, #ideas-pill").removeClass( "active" );
-  });
+    Mousetrap.bind('j', function() { ProjectNext(); });
+    Mousetrap.bind('k', function() { ProjectPrevious(); });
 
-  $( "#all" ).click(function() {
-    console.log ("show everything");
-    $( ".idea" ).show();
-    $( ".project" ).show();
-    $( "#all-pill").addClass( "active" );
-    $( "#projects-pill, #ideas-pill").removeClass( "active" );
-  });
+    function ProjectPrevious() {  
+        hash = window.location.hash
+        all = $("h4[id^='project-']").length
+        if (hash == "")
+          window.location.hash = "#project-0";
+        else
+          var blah = hash.split('-')
+        next = parseInt(blah[1])
+        if(next > 0)
+          next--
+        else
+          next = all - 1
+        window.location.hash = "#project-" + next;
+      }
 
-  $("table").addTableFilter({
-  });
+    function ProjectNext() {  
+      hash = window.location.hash
+      all = $("h4[id^='project-']").length
+      if (hash == "")
+        window.location.hash = "#project-0";
+      else
+        var blah = hash.split('-')
+      next = parseInt(blah[1])
+      if(next == (all - 1))
+        next = 0
+      else
+        next++
+      window.location.hash = "#project-" + next;
+    }

@@ -50,7 +50,7 @@ Hackweek::Application.routes.draw do
   get "front/news"
   get "news.html", to: "front#news"
   
-
+  get 'user_root' => 'users#me'
   root 'front#index'
 
   # The priority is based upon order of creation:

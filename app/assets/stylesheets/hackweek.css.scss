@@ -29,3 +29,10 @@ footer {
 .keyword {
   margin-top: 4px;
 }
+
+.project-list-item:before {
+    display:block; 
+    content:""; 
+    height:70px; 
+    margin:-70px 0 0; 
+}

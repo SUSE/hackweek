@@ -5,56 +5,43 @@ class ProjectsController < ApplicationController
   skip_before_filter :store_location, :only => [:join, :leave, :like, :dislike ]
 
   # GET /projects
-  # GET /projects.json
   def index
     @projects = Project.where.not(aasm_state: "record")
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @projects }
-    end
   end
 
+  # GET /projects/archive
   def archive
     @projects = Project.where(aasm_state: "record")
     render "index"
   end
 
+  # GET /projects/newest
   def newest
     @projects = Project.where.not(aasm_state: "record").order("created_at DESC LIMIT 10")
     render "index"
   end
 
+  # GET /projects/popular
   def popular
     @projects = Project.where("likes_count > 0").where.not(aasm_state: "record").order("likes_count DESC")
     render 'index'
   end
 
+  # GET /projects/biggest
   def biggest
     @projects = Project.where("memberships_count > 0").where.not(aasm_state: "record").order("memberships_count DESC")
     render 'index'
   end
 
   # GET /projects/1
-  # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
     @new_comment = Comment.new
-    
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @project }
-    end
   end
 
   # GET /projects/new
-  # GET /projects/new.json
   def new
     @project = Project.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @project }
-    end
   end
 
   # GET /projects/1/edit
@@ -63,58 +50,51 @@ class ProjectsController < ApplicationController
   end
 
   # POST /projects
-  # POST /projects.json
   def create
     @project = Project.new(project_params)
     @project.originator = current_user
 
-    respond_to do |format|
-      if @project.save
-        format.html { redirect_to @project }
-        format.json { render json: @project, status: :created, location: @project }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
-      end
+    if @project.save
+      redirect_to @project
+    else
+      render action: "new"
     end
   end
 
   # PUT /projects/1
-  # PUT /projects/1.json
   def update
     @project = Project.find(params[:id])
 
-    respond_to do |format|
-      if @project.update_attributes(project_params)
-        format.html { redirect_to @project }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
-      end
+    if @project.update_attributes(project_params)
+      redirect_to @project
+    else
+      render action: "edit" 
     end
   end
 
   # DELETE /projects/1
-  # DELETE /projects/1.json
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
 
     respond_to do |format|
-      format.html { redirect_to projects_url }
-      format.json { head :no_content }
+      format.html { redirect_to projects_path }
+      format.js { }
     end
   end
 
+  # PUT /projects/1/discard
   def discard
     project = Project.find(params[:id])
     project.discard!
 
-    redirect_back_or_default project
-    flash[:notice] = "Project archived. Collecting dust now."
+    respond_to do |format|
+      format.html { redirect_to project, notice: "Project archived. Collecting dust now." }
+      format.js { }
+    end
   end
 
+  # PUT /projects/1/revive
   def revive
     project = Project.find(params[:id])
     project.revive!
@@ -122,59 +102,82 @@ class ProjectsController < ApplicationController
       project.join! current_user
     end
 
-    redirect_back_or_default project
-    flash[:notice] = "Project revived. Back from the dead!"
+    respond_to do |format|
+      format.html { redirect_to project, notice: "Project revived. Back from the dead!" }
+      format.js { }
+    end
   end
 
-
+  # PUT /projects/1/join
   def join
     project = Project.find(params[:id])
     project.join! current_user
-    
-    redirect_back_or_default project
-    flash[:notice] = "Welcome to the project #{current_user.name}!"
+
+    respond_to do |format|
+      format.html{ redirect_to project, notice: "Welcome to the project #{current_user.name}!" }
+      format.js {}
+    end
   end
 
+  # PUT /projects/1/leave
   def leave
     project = Project.find(params[:id])
     project.leave! current_user
-    
-    redirect_back_or_default project
-    flash[:notice] = "Goodbye #{current_user.name}!"
+
+    respond_to do |format|
+      format.html{ redirect_to project, notice: "Goodbye #{current_user.name}..." }
+      format.js {}
+    end
   end
-  
+
+  # PUT /projects/1/like
   def like
     project = Project.find(params[:id])
     project.like! current_user
-    
-    redirect_back_or_default project
-    flash[:notice] = "Thank you for your love #{current_user.name}!"
+
+    respond_to do |format|
+      format.html{ redirect_to project, notice: "Thank you for your love #{current_user.name}!" }
+      format.js {}
+    end
   end
 
+  # PUT /projects/1/dislike
   def dislike
     project = Project.find(params[:id])
     project.dislike! current_user
     
-    redirect_back_or_default project
-    flash[:notice] = "Aaww Snap!"
+    respond_to do |format|
+      format.html{ redirect_to project, notice: "Aaww Snap! You don't love me anymore?" }
+      format.js {}
+    end
   end
-  
+
+  # PUT /projects/1/add_keyword
   def add_keyword
     project = Project.find(params[:id])
     keywords = keyword_params.split(',')
     keywords.each do |word|
       project.add_keyword! word, current_user
     end
-    redirect_to project
+
+    respond_to do |format|
+      format.html{ redirect_to project }
+      format.js {}
+    end
   end
 
+  # PUT /projects/1/delete_keyword
   def delete_keyword
     project = Project.find(params[:id])
     keywords = keyword_params.split(',')
     keywords.each do |word|
       project.remove_keyword! word, current_user
     end
-    redirect_to project
+
+    respond_to do |format|
+      format.html{ redirect_to project }
+      format.js {}
+    end
   end
 
   def project_params

@@ -20,16 +20,11 @@ class ApplicationController < ActionController::Base
 
   def store_location
     if user_signed_in?
-      if not request.fullpath === new_user_ichain_session_path and request.method == "GET"
+      if not request.fullpath === new_user_ichain_session_path and request.get?
         session["user_return_to"] = request.fullpath
       end
     end
   end
-
-  def redirect_back_or_default default = "/"
-    redirect_to session['user_return_to'] || default
-    session['user_return_to'] = nil
-  end 
 
   def keyword_tokens
     required_parameters :q
@@ -37,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   def parameter_empty
-    redirect_back_or_default
+    redirect(:back)
     flash["alert-warning"] = 'Parameter missing...'
   end
 
