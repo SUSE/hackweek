@@ -6,4 +6,12 @@ one:
 
 two:
   project_id: 1
-  keyword_id: 1
+  keyword_id: 2
+
+three:
+  project_id: 1
+  keyword_id: 3 
+
+four:
+  project_id: 1
+  keyword_id: 4

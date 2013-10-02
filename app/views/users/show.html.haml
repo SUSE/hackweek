@@ -78,7 +78,7 @@
         -unless @user.projects.empty?
           .tab-pane#recommended
             - if @user.recommended_projects.empty?
-              %p no opportunities yet
+              %p no project is matching your keywords yet, try adding some more.
             - else
               %table.table
                 %thead

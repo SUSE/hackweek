@@ -1,14 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
+  name: html 
+  id: 1
 
 two:
-  name: MyString
+  name: css
+  id: 2
 
 rails:
-  name: rails
+  name: javascript
+  id: 3
   
 web:
-  name: web
-  
+  name: rails
+  id: 4

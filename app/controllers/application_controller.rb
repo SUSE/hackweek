@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   def parameter_empty
-    redirect(:back)
+    redirect_to(:back)
     flash["alert-warning"] = 'Parameter missing...'
   end
 

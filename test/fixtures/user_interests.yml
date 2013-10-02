@@ -2,8 +2,16 @@
 
 one:
   user_id: 1
-  keyword_id: 1
+  keyword_id: 1 
 
 two:
   user_id: 1
-  keyword_id: 1
+  keyword_id: 2
+
+three:
+  user_id: 1
+  keyword_id: 3
+
+four:
+  user_id: 1
+  keyword_id: 4

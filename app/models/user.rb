@@ -42,7 +42,13 @@ def remove_keyword! name
       return Array.new
     end
     
-    self.keywords.last.projects
+    projects = []
+    self.keywords.each do |word|
+      word.projects.each do |p|
+        projects << p unless projects.include? p
+      end
+    end
+    projects
   end
 
   def self.for_ichain_username(username, attributes)
