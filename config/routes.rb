@@ -6,6 +6,7 @@ Hackweek::Application.routes.draw do
   resources :users do
     collection do
       get 'me'
+      get 'search'
     end
     member do
       post 'keyword', to: "users#add_keyword"
