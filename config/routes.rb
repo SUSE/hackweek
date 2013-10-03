@@ -19,6 +19,7 @@ Hackweek::Application.routes.draw do
       get 'newest'
       get 'popular'
       get 'biggest'
+      get 'search'
     end
     member do
       match 'like', via: :post
