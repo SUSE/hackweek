@@ -1,9 +1,11 @@
+.col-sm-12
+  - @projects.each_with_index do |project, index|
+    = render :partial => "projects/list_item", :locals => {:project => project, :index => index }
 
-projects
-- @projects.each do |pr|
-  = pr.title
 
-users
-- @users.each do |u|
-  = u.name
-
+  - content_for :title do
+    Users
+  - @users.each do |user|
+    = link_to user_path(user) do
+      = image_tag(user.gravatar_url(:size => "24"), :class => "img-thumbnail", :title => "#{user.name}", :alt => user.name)
+      = user.name
