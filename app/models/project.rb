@@ -24,24 +24,26 @@ class Project < ActiveRecord::Base
   aasm do
     state :idea, :initial => true
     state :project
-    state :done
+    state :invention
     state :record
     
-    event :change_status do
+    event :advance do
       transitions :from => [:idea], :to => :project
-      transitions :from => [:project], :to => :done
-      transitions :to => :record,  :from => [:idea]
-    end
-    event :abandon do 
-      transitions :from => [:project], :to => :idea
-    end
-    event :discard do
-      transitions :from => [:idea], :to => :record
-      transitions :from => [:project], :to => :record
-    end
-    event :revive do
+      transitions :from => [:project], :to => :invention
       transitions :from => [:record], :to => :idea
     end
+
+    event :recess do 
+      transitions :from => [:project], :to => :idea
+      transitions :from => [:idea], :to => :record
+      transitions :from => [:invention], :to => :project
+    end
+
+    event :abandon do 
+      transitions :from => [:project], :to => :idea
+      transitions :from => [:invention], :to => :invention
+    end
+
   end
 
   # solr configuration
@@ -60,7 +62,7 @@ class Project < ActiveRecord::Base
     self.save!
 
     if started
-      self.change_status!
+      self.advance!
       Update.create!(:author => user,
                      :text => "started",
                      :project => self)

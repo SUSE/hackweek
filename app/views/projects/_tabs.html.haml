@@ -23,9 +23,15 @@
       Biggest
       - if biggest_state === "active"
         =  "(#{@projects.length})"
-  - archive_state = "active" if action_name == "archive"
-  %li{:class => archive_state}
-    =link_to archive_projects_path, :title => "Dismissed projects" do
-      Archive
-      - if archive_state === "active"
+  - archived_state = "active" if action_name == "archived"
+  %li{:class => archived_state}
+    =link_to archived_projects_path, :title => "Dismissed projects" do
+      Archived
+      - if archived_state === "active"
+        =  "(#{@projects.length})"
+  - finished_state = "active" if action_name == "finished"
+  %li{:class => finished_state}
+    =link_to finished_projects_path, :title => "Finished projects" do
+      Finished
+      - if finished_state === "active"
         =  "(#{@projects.length})"

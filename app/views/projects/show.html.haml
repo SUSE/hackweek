@@ -14,7 +14,8 @@
           = @project.title
           %br
           %small
-            an idea by
+            = render :partial => "projects/state_name", :locals => {:project =>  @project }
+            by
             = link_to user_path(@project.originator) do
               = @project.originator.name
             = render :partial => "projects/like_button", :locals => {:project =>  @project }
@@ -39,12 +40,13 @@
             - @project.users.each do |user|
               = link_to(user_path(user.id)) do
                 = image_tag user.gravatar_url(:size => "64"), alt: user.name, title: user.name, class: "img-thumbnail"
-          - if @project.users.empty? or !@project.users.include? current_user
-            = link_to(join_project_path(@project), :method => :post, :class => "btn btn-success") do
-              Join this project
-          - if @project.users.include? current_user
-            = link_to(leave_project_path(@project), :method => :post, :class => "btn btn-warning") do
-              Leave this project
+          - unless @project.aasm_state == "invention"
+            - if @project.users.empty? or !@project.users.include? current_user
+              = link_to(join_project_path(@project), :method => :post, :class => "btn btn-success") do
+                Join this project
+            - if @project.users.include? current_user
+              = link_to(leave_project_path(@project), :method => :post, :class => "btn btn-warning") do
+                Leave this project
         .col-sm-12
           %h4 Looking for mad skills in:
           - if @project.keywords.empty?

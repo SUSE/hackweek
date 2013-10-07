@@ -7,12 +7,18 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    @projects = Project.where.not(aasm_state: "record")
+    @projects = Project.where.not(aasm_state: "record").where.not(aasm_state: "invention")
   end
 
-  # GET /projects/archive
-  def archive
+  # GET /projects/archived
+  def archived
     @projects = Project.where(aasm_state: "record")
+    render "index"
+  end
+
+  # GET /projects/finished
+  def finished
+    @projects = Project.where(aasm_state: "invention").order("updated_at DESC")
     render "index"
   end
 
@@ -84,27 +90,24 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # PUT /projects/1/discard
-  def discard
+  # PUT /projects/1/advance
+  def advance
     project = Project.find(params[:id])
-    project.discard!
+    project.advance!
 
     respond_to do |format|
-      format.html { redirect_to project, notice: "Project archived. Collecting dust now." }
+      format.html { redirect_to project }
       format.js { }
     end
   end
 
-  # PUT /projects/1/revive
-  def revive
+  # PUT /projects/1/recess
+  def recess
     project = Project.find(params[:id])
-    project.revive!
-    if params.include? :join
-      project.join! current_user
-    end
+    project.recess!
 
     respond_to do |format|
-      format.html { redirect_to project, notice: "Project revived. Back from the dead!" }
+      format.html { redirect_to project }
       format.js { }
     end
   end
@@ -112,6 +115,9 @@ class ProjectsController < ApplicationController
   # PUT /projects/1/join
   def join
     project = Project.find(params[:id])
+    if project.aasm_state == "invention"
+      redirect_to project, error: "You can't join this project as it's finished."
+    end
     project.join! current_user
 
     respond_to do |format|
@@ -123,6 +129,9 @@ class ProjectsController < ApplicationController
   # PUT /projects/1/leave
   def leave
     project = Project.find(params[:id])
+    if project.aasm_state == "invention"
+      redirect_to project, error: "You can't leave this project as it's finished."
+    end
     project.leave! current_user
 
     respond_to do |format|

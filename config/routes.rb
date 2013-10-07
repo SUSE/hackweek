@@ -16,7 +16,8 @@ Hackweek::Application.routes.draw do
 
   resources :projects do
     collection do
-      get 'archive'
+      get 'archived'
+      get 'finished'
       get 'newest'
       get 'popular'
       get 'biggest'
@@ -27,8 +28,8 @@ Hackweek::Application.routes.draw do
       match 'dislike', via: :post
       match 'join', via: :post
       match 'leave', via: :post
-      match 'discard', via: :post
-      match 'revive', via: :post
+      match 'advance', via: :post
+      match 'recess', via: :post
       post 'keyword', to: "projects#add_keyword"
       delete ':keyword', to: "projects#delete_keyword", as: "keyword_delete", constraints: { keyword: /[^\/]+/ }
     end

@@ -3,7 +3,8 @@
     = project.title
 %p{:style=>"margin-top: -10px"}
   %small
-    an idea by
+    = render :partial => "projects/state_name", :locals => {:project => project }
+    by
     = link_to(user_path(project.originator.id)) do
       #{project.originator.name}
       = render :partial => "projects/like_button", :locals => {:project => project }

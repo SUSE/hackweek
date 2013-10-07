@@ -2,12 +2,22 @@
   - if can? :edit, project
     = link_to(edit_project_path(project), :title=>'Edit this project?', :class=> "btn btn-default") do
       %i.icon-pencil
-    - if project.may_revive?
-      =link_to(revive_project_path(project), :method => :post,:title=>'Revive this project', :class=> "btn btn-default") do
-        %i.icon-bolt
-    - if project.may_discard?
-      =link_to(discard_project_path(project.id), :method => :post,:title=>'Archive this project', :class=> "btn btn-default") do
-        %i.icon-archive
+    - if project.may_advance?
+      - case project.aasm_state
+        - when "project"
+          =link_to(advance_project_path(project), :method => :post,:title=>'Finish this project', :class=> "btn btn-default") do
+            %i.icon-check
+        - when "record"
+          =link_to(advance_project_path(project), :method => :post,:title=>'Revive this project', :class=> "btn btn-default") do
+            %i.icon-bolt
+    - if project.may_recess?
+      - case project.aasm_state
+        - when "idea"
+          =link_to(recess_project_path(project), :method => :post,:title=>'Archive this project', :class=> "btn btn-default") do
+            %i.icon-archive
+        - when "invention"
+          =link_to(recess_project_path(project), :method => :post,:title=>"Restart this project", :class=> "btn btn-default") do
+            %i.icon-lightbulb
   -if can? :destroy, project
     = link_to(project_path(project), :title=>'Delete this project?', :class=> "btn btn-default", :method => :delete, data: { confirm: "Are you sure you want to delete this project? This can't be undone!" }) do
       %i.icon-remove
