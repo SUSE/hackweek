@@ -26,3 +26,6 @@ and learn.
 * There are some tools in the tool directory.
 * Data of past hackweeks is in the archive directory.
 * The source of the [old webpage](http://suse.github.io/hackweek/) is in the gh-pages branch.
+
+## Requirements
+Because of sunspot solr, it requires java. We have installed java-1_7_0-ibm.
