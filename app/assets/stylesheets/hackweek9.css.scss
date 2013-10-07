@@ -1062,6 +1062,31 @@ span:hover{
     display: none;
     z-index: 100;
 }
+#hobart{
+    background: url('pin-small.png');
+    background-repeat: no-repeat;
+    height: 23px;
+    margin-right: 144px;
+    margin-top: 500px;
+    position: inherit;
+    right: 0;
+    width: 22px;
+    cursor: pointer;
+}
+#hobart-zoom{
+    background: image-url('taipei.png');  /* TODO: need real hobart image */
+    background-repeat: no-repeat;
+    background-position: 23px center;
+    background-size: 80% auto;
+    margin-right: 38px;
+    margin-top: 399px;
+    position: inherit;
+    right: 0;
+    width: 232px;
+    height: 232px;
+    display: none;
+    z-index: 100;
+}
 .office-location {
     color: #7C817F;
     font-size: 25px;
