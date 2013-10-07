@@ -1,12 +1,12 @@
 Hackweek::Application.routes.draw do
  
 
+  get "search/result"
   devise_for :users
 
   resources :users do
     collection do
       get 'me'
-      get 'search'
     end
     member do
       post 'keyword', to: "users#add_keyword"
@@ -21,7 +21,6 @@ Hackweek::Application.routes.draw do
       get 'newest'
       get 'popular'
       get 'biggest'
-      get 'search'
     end
     member do
       match 'like', via: :post
