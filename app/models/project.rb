@@ -43,6 +43,13 @@ class Project < ActiveRecord::Base
       transitions :from => [:record], :to => :idea
     end
   end
+
+  # solr configuration
+  searchable do
+    text :title
+    text :description
+  end
+
   
   def join! user
     if self.users.empty?
@@ -125,7 +132,7 @@ class Project < ActiveRecord::Base
                    :project => self)
   end
 
-    def create_initial_update
+  def create_initial_update
     Update.create!(:author => self.originator,
                    :text => "originated",
                    :project => self)
