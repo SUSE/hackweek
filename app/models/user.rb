@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
 
   include Gravtastic
   has_gravatar
+
+  searchable do
+    text :name
+  end
   
   def add_keyword! name
     name.downcase!

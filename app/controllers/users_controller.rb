@@ -54,4 +54,11 @@ class UsersController < ApplicationController
     params.require(:keyword)
   end
 
+  # GET users/search
+  def search
+    search_result = User.search { fulltext params[:search_string] }
+    @users = search_result.results
+    render 'index'
+  end
+
 end

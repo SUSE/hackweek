@@ -21,7 +21,7 @@ set :branch, 'master'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, ['config/database.yml', 'config/application.yml', 'log', 'public/gallery']
+set :shared_paths, ['config/database.yml', 'config/application.yml', 'log', 'public/gallery', 'solr']
 
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
@@ -43,6 +43,9 @@ task :setup => :environment do
 
   queue! %[touch "#{deploy_to}/shared/config/application.yml"]
   queue  %[echo "-----> Be sure to edit 'shared/config/application.yml'."]
+
+  queue! %[mkdir -p "#{deploy_to}/shared/solr"]
+  queue! %[chmod g+rx,u+rws "#{deploy_to}/shared/solr"]
 end
 
 desc "Deploys the current version to the server."
@@ -53,6 +56,7 @@ task :deploy => :environment do
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
+    invoke :solr_restart
     invoke :notify_errbit
 
     to :launch do
@@ -66,6 +70,27 @@ task :notify_errbit do
   revision = `git rev-parse HEAD`.strip
   user = ENV['USER']
   queue "rake hoptoad:deploy TO=#{rails_env} REVISION=#{revision} REPO=#{repository} USER=#{user}"
+end
+
+desc "Start solr."
+task :solr_start do
+  queue "rake sunspot:solr:start"
+end
+
+desc "Stop solr."
+task :solr_stop do
+  queue "rake sunspot:solr:stop"
+end
+
+desc "Restart solr."
+task :solr_restart do
+  invoke :solr_stop
+  invoke :solr_start
+end
+
+desc "Reindex solr."
+task :solr_reindex do
+  queue "rake sunspot:reindex"
 end
 
 # For help in making your deploy script, see the Mina documentation:
