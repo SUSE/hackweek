@@ -74,12 +74,12 @@ end
 
 desc "Start solr."
 task :solr_start do
-  queue "cd #{deploy_to!}/#{current_path!} && rake sunspot:solr:start"
+  queue "cd #{deploy_to!}/#{current_path!} && RAILS_ENV=production rake sunspot:solr:start"
 end
 
 desc "Stop solr."
 task :solr_stop do
-  queue "cd #{deploy_to!}/#{current_path!} && rake sunspot:solr:stop"
+  queue "cd #{deploy_to!}/#{current_path!} && RAILS_ENV=production rake sunspot:solr:stop"
 end
 
 desc "Restart solr."
