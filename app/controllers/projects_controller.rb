@@ -2,7 +2,8 @@ class ProjectsController < ApplicationController
 
   load_and_authorize_resource
   skip_before_filter :authenticate_user!, :only => [ :index, :show, :archive, :newest, :popular, :biggest ]
-  skip_before_filter :store_location, :only => [:join, :leave, :like, :dislike ]
+  skip_before_filter :store_location, :only => [:join, :leave, :like, :dislike, :add_keyword, :delete_keyword ]
+  skip_before_action :verify_authenticity_token, :only => [:add_keyword, :delete_keyword ]
 
   # GET /projects
   def index

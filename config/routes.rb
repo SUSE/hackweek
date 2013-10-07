@@ -10,7 +10,7 @@ Hackweek::Application.routes.draw do
     end
     member do
       post 'keyword', to: "users#add_keyword"
-      delete ':keyword', to: "users#delete_keyword", as: "keyword_delete"
+      delete ':keyword', to: "users#delete_keyword", as: "keyword_delete", constraints: { keyword: /[^\/]+/ }
     end
   end
 
@@ -30,7 +30,7 @@ Hackweek::Application.routes.draw do
       match 'discard', via: :post
       match 'revive', via: :post
       post 'keyword', to: "projects#add_keyword"
-      delete ':keyword', to: "projects#delete_keyword", as: "keyword_delete"
+      delete ':keyword', to: "projects#delete_keyword", as: "keyword_delete", constraints: { keyword: /[^\/]+/ }
     end
     resources :comments
   end

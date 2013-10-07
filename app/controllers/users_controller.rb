@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   
   load_and_authorize_resource
   skip_before_filter :authenticate_user!, :only => [ :index, :show ]
+  skip_before_action :verify_authenticity_token, :only => [:add_keyword, :delete_keyword ]
 
   def index
     @users = User.all
@@ -33,6 +34,7 @@ class UsersController < ApplicationController
   def add_keyword
     keywords = keyword_params.split(',')
     keywords.each do |word|
+      logger.debug "Deleting keyword \"#{word}\" from user #{@user.id}"
       current_user.add_keyword! word
     end
     redirect_to :action => "me", notice: "Keyword '#{params[:keyword]}' added."
@@ -41,6 +43,7 @@ class UsersController < ApplicationController
   def delete_keyword
     keywords = keyword_params.split(',')
     keywords.each do |word|
+      logger.debug "Adding keyword \"#{word}\" to user #{@user.id}"
       current_user.remove_keyword! word
     end
     redirect_to :action => "me", notice: "Keyword '#{params[:keyword]}' removed."
