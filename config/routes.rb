@@ -1,7 +1,5 @@
 Hackweek::Application.routes.draw do
- 
 
-  get "search/result"
   devise_for :users
 
   resources :users do
@@ -42,6 +40,7 @@ Hackweek::Application.routes.draw do
   get "keyword/tokens"
   post "api/import", to: "api#import" 
   get "gallery", to: "gallery#index"
+  get "search", to: "search#result", as: "search"
 
   get "front/index"
   get "index.html", to: "front#index"
