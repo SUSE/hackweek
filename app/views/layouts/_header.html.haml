@@ -54,6 +54,6 @@
             = link_to(new_user_ichain_session_path) do
               %i.icon-signin
               Sign In
-      %form.navbar-form.navbar-right{:role => "search"}
+      %form.navbar-form.navbar-right{:role => "search", :metod => "get", :action => "/search/result"}
         .form-group
-          %input.form-control{:placeholder => "Search", :type => "text"}
+          %input.form-control{:placeholder => "Search", :type => "text", :name => "search_string"}

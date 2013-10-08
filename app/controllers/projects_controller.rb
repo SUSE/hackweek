@@ -190,13 +190,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # GET projects/search
-  def search
-    search_result = Project.search { fulltext params[:search_string] }
-    @projects = search_result.results
-    render 'index'
-  end
-
   def project_params
     params.require(:project).permit(:description, :title)
   end
