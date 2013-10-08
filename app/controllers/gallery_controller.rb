@@ -12,6 +12,7 @@ skip_before_filter :authenticate_user!, :only => [ :index ]
     full.each do |file|
       @pictures << file if File.file?(thumbs + file)
     end
+    @pictures.sort!.reverse!
   end
 
 end
