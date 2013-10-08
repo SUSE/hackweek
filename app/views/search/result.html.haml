@@ -25,16 +25,15 @@
         %h4 No projects found
     .tab-pane#users
       - unless @users.empty?
-        - @users.each do |user|
-          %table.table#users_table
-            - @users.each do |user|
-              %tr
-                - user_class = "busy"
-                - if user.projects.empty?
-                  - user_class = "free"
-                %td{:class => user_class }
-                  = link_to user_path(user) do
-                    = image_tag(user.gravatar_url(:size => "24"), :class => "img-thumbnail", :title => "#{user.name}", :alt => user.name)
-                    = user.name
+        %table.table#users_table
+          - @users.each do |user|
+            %tr
+              - user_class = "busy"
+              - if user.projects.empty?
+                - user_class = "free"
+              %td{:class => user_class }
+                = link_to user_path(user) do
+                  = image_tag(user.gravatar_url(:size => "24"), :class => "img-thumbnail", :title => "#{user.name}", :alt => user.name)
+                  = user.name
       - else
         %h4 No users found
