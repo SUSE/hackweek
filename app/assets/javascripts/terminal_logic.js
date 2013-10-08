@@ -128,9 +128,7 @@ $(function () {
   },
     'date': function( tokens ) {
       var now = new Date();
-      return "<span class='welcome-message'>" + now.getDate() + '-' +
-      now.getMonth() + '-' +
-      ( 1900 + now.getYear() ) + "</span>"
+      return "<span class='welcome-message'>" + now.toDateString() + "</span>"
     },
     'cap': function( tokens ) {
       tokens.shift();
