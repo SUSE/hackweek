@@ -4,7 +4,9 @@
   .media-body
     %h6.media-heading
       = time_ago_in_words(comment.created_at)
-      ago
+      ago by
+      = link_to user_path(comment.commenter) do
+        = comment.commenter.name
       |
       = link_to 'Reply', new_comment_comment_path( comment )
     %p
