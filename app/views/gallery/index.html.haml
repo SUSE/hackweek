@@ -3,5 +3,11 @@
 
 - @pictures.each do |pic|
   .col-sm-6.col-md-3
-    = link_to "/gallery/#{pic}", :class => "thumbnail" do
+    = link_to "/gallery/#{pic}", :class => "thumbnail swipebox" do
       = image_tag "/gallery/.thumbnails/#{pic}"
+
+- content_for :script do
+  :javascript
+    jQuery(function($) {
+      $(".swipebox").swipebox();
+    });

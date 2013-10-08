@@ -17,4 +17,5 @@
 //= require twitter/bootstrap
 //= require selectize
 //= require jquery.table-filter.js
+//= require jquery.swipebox.min.js
 //= require hackweek

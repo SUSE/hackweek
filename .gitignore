@@ -21,6 +21,11 @@
 # Ignore solr
 solr
 
+# Ignore the gallery files
+/public/gallery/*
+/public/gallery/.thumbnails/*
+
+
 # All the other crap that fits nowhere specifically
 *~
 *.bak
