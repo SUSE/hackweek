@@ -1,17 +1,29 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: html 
+c:
+  name: c
   id: 1
 
-two:
-  name: css
+git:
+  name: git
   id: 2
 
-rails:
-  name: javascript
+assembler:
+  name: assembler
   id: 3
-  
-web:
-  name: rails
+
+project:
+  name: "project management"  
   id: 4
+
+dot:
+  name: "angular.js"
+  id: 5
+
+utf8:
+  name: "üöäß"
+  id: 6
+
+foss:
+  name: "foss"
+  id: 7

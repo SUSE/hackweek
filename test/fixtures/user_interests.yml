@@ -1,17 +1,25 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
+utf82linus:
   user_id: 1
+  keyword_id: 5
+
+git2linus:
+  user_id: 1
+  keyword_id: 6
+
+c2rms:
+  user_id: 2
   keyword_id: 1 
 
-two:
-  user_id: 1
-  keyword_id: 2
-
-three:
-  user_id: 1
+assembler2rms:
+  user_id: 2
   keyword_id: 3
 
-four:
-  user_id: 1
+project2jobs:
+  user_id: 3
+  keyword_id: 4
+
+porject2ian:
+  user_id: 5
   keyword_id: 4

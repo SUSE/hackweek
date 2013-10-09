@@ -12,7 +12,3 @@
   .btn.btn-default{:title=>"#{user.name} likes #{user.likes.length} projects"}
     = user.likes.length
     %i.icon-heart
-  - if can? :edit, user
-    = link_to(edit_user_path(user), :title=>'Edit this user?', :class=> "btn btn-default") do
-      &nbsp;
-      %i.icon-pencil

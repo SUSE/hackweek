@@ -3,7 +3,7 @@ require 'test_helper'
 class ProjectTest < ActiveSupport::TestCase
 
   test "create" do
-    user = users(:one)
+    user = users(:linus)
     
     title = "My Title"
     
@@ -18,8 +18,8 @@ class ProjectTest < ActiveSupport::TestCase
   end
   
   test "user joins project" do
-    user = users(:one)
-    project = projects(:one)
+    user = users(:linus)
+    project = projects(:git)
 
     assert_equal 0, project.users.count
 
@@ -34,8 +34,8 @@ class ProjectTest < ActiveSupport::TestCase
   end
 
   test "user leaves project" do
-    user = users(:one)
-    project = projects(:one)
+    user = users(:linus)
+    project = projects(:git)
 
     project.join! user
     

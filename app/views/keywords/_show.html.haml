@@ -3,8 +3,8 @@
     = word.name
     - if current_user
       - if @project and can? :remove_keyword, @project
-        = link_to(keyword_delete_project_path(keyword: word.name), :method => :delete) do
+        = link_to(keyword_delete_project_path(keyword: word.name), :method => :delete, :id => "remove-#{word.id}") do
           %i.icon-remove-sign{:style=>"color: #fff"}
       - if @user and can? :remove_keyword, @user
-        = link_to(keyword_delete_user_path(keyword: word.name), :method => :delete) do
+        = link_to(keyword_delete_user_path(keyword: word.name), :method => :delete, :id => "remove-#{word.id}") do
           %i.icon-remove-sign{:style=>"color: #fff"}

@@ -1,17 +1,26 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
+c2linux:
   project_id: 1
   keyword_id: 1
 
-two:
+git2linux:
   project_id: 1
   keyword_id: 2
 
-three:
+assembler2hurd:
   project_id: 1
   keyword_id: 3 
 
-four:
-  project_id: 1
-  keyword_id: 4
+foss2windows:
+  project_id: 6
+  keyword_id: 7
+
+dot2openSUSE:
+  project_id: 4
+  keyword_id: 5 
+
+utf82openSUSE:
+  project_id: 4
+  keyword_id: 6 
+

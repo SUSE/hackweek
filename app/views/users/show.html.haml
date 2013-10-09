@@ -18,20 +18,25 @@
           %li.active
             %a{:href=>"#recommended", "data-toggle"=>"tab"}
               Opportunities
+              = "(#{@user.recommended_projects.length})" unless @user.recommended_projects.empty?
         -else
           %li.active
             %a{:href=>"#projects", "data-toggle"=>"tab"}
               Works on
+              = "(#{@user.projects.length})" unless @user.projects.empty?
         %li
           %a{:href=>"#ideas", "data-toggle"=>"tab"}
             Originated
+            = "(#{@user.originated_projects.length})" unless @user.originated_projects.empty?
         %li
           %a{:href=>"#likes", "data-toggle"=>"tab"}
             Likes
+            = "(#{@user.favourites.length})" unless @user.favourites.empty?
         - unless @user.projects.empty?
           %li
             %a{:href=>"#recommended", "data-toggle"=>"tab"}
               Opportunities
+              = "(#{@user.recommended_projects.length})" unless @user.recommended_projects.empty?
       .tab-content{:style=>"padding-top: 10px"}
         -if current_user == @user and @user.projects.empty?
           .tab-pane.active#recommended
@@ -90,17 +95,14 @@
       .col-sm-12
         .text-center
           = render :partial => "users/buttons", :locals => {:user =>  @user }
-      .col-sm-12
-        %p
-          %h4 Looking for projects around:
-          - if @user.keywords.empty?
-            %p Nothing at the moment
-          - else 
-            %p
-              = render :partial => "keywords/show", :locals => {:keywords =>  @user.keywords }
+      .col-sm-12#keywords
+        %h4 Looking for projects around:
+        - if @user.keywords.empty?
+          %p Nothing at the moment
+        - else 
+          = render :partial => "keywords/show", :locals => {:keywords =>  @user.keywords }
           -if can? :add_keyword, @user
-            %p
-              = render :partial => "keywords/new", :locals => {:what => @user }
+            = render :partial => "keywords/new", :locals => {:what => @user }
       .col-sm-12
         %h4
           Activity

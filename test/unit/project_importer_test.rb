@@ -32,7 +32,7 @@ EOT
     
     ProjectImporter.import json
     
-    assert_equal 6, Project.count
+    assert_equal 10, Project.count
     assert_equal "Dashoid", Project.last.title
     assert_equal ProjectImporter.get_import_user, Project.last.originator
   end

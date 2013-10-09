@@ -10,9 +10,9 @@ class KeywordTest < ActiveSupport::TestCase
   end
 
   test "project has interests" do
-    project = projects(:one)
-    keyword1 = keywords(:rails)
-    keyword2 = keywords(:web)
+    project = projects(:linux)
+    keyword1 = keywords(:c)
+    keyword2 = keywords(:git)
     
     project.keywords << keyword1 << keyword2
     
@@ -21,9 +21,9 @@ class KeywordTest < ActiveSupport::TestCase
   end
   
   test "user has interests" do
-    user = users(:one)
+    user = users(:linus)
     
-    keyword = keywords(:rails)
+    keyword = keywords(:dot)
     
     user.keywords << keyword
     

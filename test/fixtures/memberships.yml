@@ -1,12 +1,29 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-one:
-  project_id: 2
+linus2linux:
+  project_id: 1
   user_id: 1
 
-two:
-  project_id: 3
-  user_id: 1
+ralf2linux:
+  project_id: 1
+  user_id: 4
 
-three:
+ian2linux:
+  project_id: 1
+  user_id: 5 
+
+jobs2xnu:
   project_id: 3
-  user_id: 2
+  user_id: 3
+
+ian2debian:
+  project_id: 5 
+  user_id: 5
+
+bill2windows:
+  project_id: 6
+  user_id: 6
+
+jobs2windows:
+  project_id: 6
+  user_id: 3 
+

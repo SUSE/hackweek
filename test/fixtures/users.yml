@@ -1,11 +1,31 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
+linus:
   id: 1
-  name: "hennevogel"
-  email: "hvogel@suse.com"
+  name: "linus"
+  email: "torvalds@klaava.helsinki.fi"
 
-two:
+rms:
   id: 2
-  name: "cschum"
-  email: "cschum@suse.com"
+  name: "rms"
+  email: "rms@gnu.org"
+
+steve:
+  id: 3
+  name: "jobs"
+  email: "sjobs@heaven.org"
+
+ralf:
+  id: 4
+  name: "ralf"
+  email: "rf@suse.com"
+
+ian:
+  id: 5
+  name: "ian"
+  email: "imurdock@shell.portal.com"
+
+bill:
+  id: 6
+  name: "bill"
+  email: "gates@micosoft.com"

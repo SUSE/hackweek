@@ -3,8 +3,8 @@ require 'test_helper'
 class CommentTest < ActiveSupport::TestCase
 
   test "comment on project" do
-    project = projects(:one)
-    user = users(:one)
+    project = projects(:debian)
+    user = users(:linus)
     
     text = "Cool stuff!"
     
@@ -15,14 +15,14 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   test "reply to comment" do
-    project = projects(:one)
-    user = users(:one)
+    project = projects(:debian)
+    user = users(:rms)
     
     assert_difference "Comment.count", +2 do
       text1 = "Cool stuff!"
       comment = project.comments.create! :text => text1, :commenter => user
 
-      text2 = "More cool stuff!"
+      text2 = "Indeed!"
       comment.comments.create! :text => text2, :commenter => user
       
       assert_equal 1, project.comments.count
@@ -33,8 +33,8 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   test "find parent" do
-    project = projects(:one)
-    user = users(:one)
+    project = projects(:debian)
+    user = users(:linus)
 
     comment1 = project.comments.create! :text => "Comment One", :commenter => user
     assert_equal project, comment1.project

@@ -6,11 +6,11 @@ class UpdateTest < ActiveSupport::TestCase
   # end
   
   test "create" do
-    user = users(:one)
+    user = users(:linus)
     
     text = "New Stuff"
     
-    project = projects(:one)
+    project = projects(:linux)
     update = project.updates.create(:text => text, :author => user)
     
     assert_equal text, update.text

@@ -5,7 +5,7 @@ class ProjectsControllerTest < ActionController::TestCase
   
   setup do
     sign_in :user, User.find('1')
-    @project = projects(:one)
+    @project = projects(:linux)
   end
 
   test "should get index" do
@@ -24,7 +24,7 @@ class ProjectsControllerTest < ActionController::TestCase
       post :create, project: { description: @project.description, title: @project.title }
     end
     
-    assert_equal users(:one), assigns(:project).originator
+    assert_equal users(:linus), assigns(:project).originator
 
     assert_redirected_to project_path(assigns(:project))
   end
@@ -51,4 +51,20 @@ class ProjectsControllerTest < ActionController::TestCase
 
     assert_redirected_to projects_path
   end
+
+  test "should have three users" do
+    assert_equal @project.users.count, 3
+  end
+
+  test "should have two comments" do
+    # The project has one comment
+    assert_equal @project.comments.count, 1
+    # The comment has one reply
+    assert_equal @project.comments[0].comments.count, 1
+  end
+
+  test "should have three keywords" do
+    assert_equal @project.keywords.count, 3
+  end
+
 end
