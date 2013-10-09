@@ -19,7 +19,8 @@
 /config/application.yml
 
 # Ignore solr
-solr
+solr/data
+solr/index
 
 # All the other crap that fits nowhere specifically
 *~
