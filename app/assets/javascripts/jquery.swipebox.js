@@ -476,7 +476,7 @@
 					title = elements[index].title;
 				
 				if(title){
-					$('#swipebox-caption').append(title);
+					$('#swipebox-caption').append('<a href="/gallery/' + title + '">Download Original</a>');
 				}
 			},
 
