@@ -136,6 +136,10 @@ GEM
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
     selectize-rails (0.7.7)
+    simplecov (0.7.1)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.7.1)
+    simplecov-html (0.7.1)
     single_test (0.6.0)
       rake
     sprockets (2.10.0)
@@ -199,6 +203,7 @@ DEPENDENCIES
   redcarpet
   sass-rails (~> 4.0.0)
   selectize-rails
+  simplecov
   single_test
   sqlite3
   sunspot_rails

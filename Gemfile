@@ -43,11 +43,12 @@ gem 'hoptoad_notifier', "~> 2.3"
 gem 'figaro'
 # Use mousetrap for keyboard shortcuts
 gem 'mousetrap-rails'
-
-gem 'capybara', group: [:test]
-gem 'capybara-webkit', group: [:test]
-
-# search engine
+# Use sunspot/solr as search engine
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'progress_bar', group: [:development]
+# Use capybara as test framework
+gem 'capybara', group: :test
+gem 'capybara-webkit', group: :test
+# Use simplecov for measuring test coverage
+gem 'simplecov', :require => false, :group => :test

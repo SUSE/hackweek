@@ -25,6 +25,8 @@ solr
 /public/gallery/*
 /public/gallery/.thumbnails/*
 
+# Ignore the coverage files
+/coverage
 
 # All the other crap that fits nowhere specifically
 *~
