@@ -21,7 +21,7 @@ set :branch, 'master'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, ['config/database.yml', 'config/application.yml', 'log', 'public/gallery', 'solr']
+set :shared_paths, ['config/database.yml', 'config/application.yml', 'log', 'public/gallery', 'solr/data', 'solr/pids']
 
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
