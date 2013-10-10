@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :store_location
   before_filter :authenticate_user!
+  before_filter :load_news
 
   before_filter do
     resource = controller_name.singularize.to_sym
@@ -22,6 +23,17 @@ class ApplicationController < ActionController::Base
     if user_signed_in?
       if not request.fullpath === new_user_ichain_session_path and request.get?
         session["user_return_to"] = request.fullpath
+      end
+    end
+  end
+
+  def load_news
+    if user_signed_in?
+      a = Announcement.last
+      if a and not a.users.include? current_user
+        @news = a
+      else
+        @news = nil
       end
     end
   end

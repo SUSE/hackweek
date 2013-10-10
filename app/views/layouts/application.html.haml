@@ -23,6 +23,8 @@
         .container
           - if flash
             = render partial: "layouts/alert", flash: flash
+          - if @news
+            = render partial: "layouts/news"
           .row.content
             = yield
     = render :partial => "layouts/footer"

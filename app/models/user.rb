@@ -6,8 +6,10 @@ class User < ActiveRecord::Base
   has_many :memberships
   has_many :comments
   has_many :likes
+  has_many :enrollments
 
   has_many :projects, :through => :memberships
+  has_many :announcements, :through => :enrollments
   has_many :favourites, :through => :likes, :source => :project
 
   has_many :user_interests

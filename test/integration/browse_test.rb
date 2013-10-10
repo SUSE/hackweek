@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class LoginTest < ActionDispatch::IntegrationTest
+class BrowseTest < ActionDispatch::IntegrationTest
   test "log in and browse the page" do
     user = users(:linus)
     project = projects(:linux)
@@ -15,12 +15,25 @@ class LoginTest < ActionDispatch::IntegrationTest
     assert page.has_content?( "XNU" ), "Project overview is missing 'XNU'"
     assert page.has_content?( "Linux" ), "Project overview is missing 'Linux'"
 
+    # There shouldn't be an announcement
+    assert page.has_no_selector?("#announcement-1"), "An announcement is shown but non one is logged in."
+
     login_user user
+
     # Log in redirects to the users page
     assert page.find(".page-header").has_content?( user.name ), "User name '#{user.name}' not shown."
 
+    # After login there should be an announcement
+    assert page.has_selector?("#announcement-1"), "No announcement is shown."
+
+    # Announcements should go away if you dismiss them
+    click_button("Got it!")
+    assert page.has_no_selector?("#announcement-1"), "The announcement is still shown after dimissal."
+    click_link("Projects")
+    assert page.has_no_selector?("#announcement-1"), "The announcement popped up again after dimissal."
+
     # The project list should have these 3 entries
-    click_link("List")
+    click_link("Projects")
     assert page.has_content?( "Hurd" ), "Project overview is missing 'Hurd'"
     assert page.has_content?( "XNU" ), "Project overview is missing 'XNU'"
     assert page.has_content?( "Linux" ), "Project overview is missing 'Linux'"

@@ -37,6 +37,12 @@ Hackweek::Application.routes.draw do
     resources :comments
   end
 
+  resources :announcements do
+    member do
+      get "enroll" 
+    end
+  end
+
   get "keyword/tokens"
   post "api/import", to: "api#import" 
   get "gallery", to: "gallery#index"

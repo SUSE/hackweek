@@ -1,0 +1,8 @@
+%div{:class=>"alert alert-info", :id=> "announcement-#{@news.id}"}
+  .media.text-center
+    = render :partial => "announcements/file_buttons", :locals => {:announcement =>  @news }
+    .media-body
+      %h3.media-heading
+        = @news.title
+      = simple_format(@news.text)
+      = button_to 'Got it!', enroll_announcement_path(@news), :method => :get, :remote=>true, :class => "btn btn-success pull-right", :title=> "Dismiss this announcement"

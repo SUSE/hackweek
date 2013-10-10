@@ -6,20 +6,13 @@ class ProjectSetupTest < ActionDispatch::IntegrationTest
     project = projects(:linux)
 
     login_user user
-    # Log in redirects to the users page
-    assert page.find(".page-header").has_content?( user.name ), "User name '#{user.name}' not shown."
 
-    # The project list should have this entry
+    # Navigate to the project
     click_link("Projects")
-    assert page.has_content?( "Linux" ), "Project overview is missing 'Linux'"
-
-    # The project page for :linux should have this content
     click_link("Linux")
-    assert page.has_content?( "assembler" ), "Project view not shown?"
-
-    # Joining this project should flash an alert
+    # Joining the project should flash an alert
     click_link "Join this project"
-    assert page.find(".alert h3").has_content?( "Welcome to the project #{user.name}!" ), "Join alert not shown."
+    assert page.find("#flash h3").has_content?( "Welcome to the project #{user.name}!" ), "Join alert not shown."
 
     logout_user
   end

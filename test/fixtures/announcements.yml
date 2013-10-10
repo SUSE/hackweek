@@ -1,0 +1,5 @@
+one:
+  id: 1
+  title: This is an Announcement
+  text: Click the button and it's gone
+  originator_id: 1

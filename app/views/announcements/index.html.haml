@@ -1,0 +1,31 @@
+- content_for :title do
+  Announcements
+  = "(#{@announcements.length})"
+
+.col-sm-12
+  %h2 Announcements
+  %table.table.table-striped
+    %thead
+      %tr
+        %th{:width=>"10%"} Author
+        %th{:width=>"75%"} Content
+        %th{:width=>"10%"} ACK'd by
+        %th{:width=>"5%"} Actions
+    - @announcements.each do |announcement|
+      %tr
+        %td
+          = link_to announcement.originator do
+            = announcement.originator.name
+          %small
+            = announcement.updated_at
+        %td
+          %h3
+            = announcement.title
+          = simple_format(announcement.text)
+        %td
+          = pluralize(announcement.users.length, "user")
+        %td
+          = render :partial => "announcements/file_buttons", :locals => {:announcement => announcement }
+  %p
+    - if can? :write, Announcement
+      = link_to "New announcement", new_announcement_path, :class => "btn btn-success pull-right"

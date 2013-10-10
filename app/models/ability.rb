@@ -6,6 +6,12 @@ class Ability
     if user
       can :read, :all
       can [:join, :leave, :like, :dislike, :create], Project
+      can :enroll, Announcement
+      # FIXME: This should go away if we implement 
+      # https://github.com/SUSE/hackweek/issues/33
+      if user.id == 1
+        can :manage, Announcement
+      end
 
       can :manage, Project, :originator_id => user.id
       can :manage, User, :id => user.id
