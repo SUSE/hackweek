@@ -53,6 +53,7 @@ Hackweek::Application.routes.draw do
   
   get 'user_root' => 'users#me'
   root 'front#index'
+  get "archive" => redirect("http://suse.github.io/hackweek/archive/projects/")
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
