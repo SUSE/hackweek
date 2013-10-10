@@ -52,3 +52,4 @@ gem 'capybara', group: :test
 gem 'capybara-webkit', group: :test
 # Use simplecov for measuring test coverage
 gem 'simplecov', :require => false, :group => :test
+gem 'sunspot_test', :group => :test
