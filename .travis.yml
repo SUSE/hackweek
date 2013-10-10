@@ -12,6 +12,8 @@ before_install:
   - "cp config/database.yml.example config/database.yml"
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
-before_script: RAILS_ENV=test rake sunspot:solr:start
+before_script: 
+  - RAILS_ENV=test rake sunspot:solr:start
+  - script/wait_for_solr.sh 8981
 after_script: RAILS_ENV=test rake sunspot:solr:stop
 
