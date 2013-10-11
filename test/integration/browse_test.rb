@@ -29,11 +29,11 @@ class BrowseTest < ActionDispatch::IntegrationTest
     # Announcements should go away if you dismiss them
     click_button("Got it!")
     assert page.has_no_selector?("#announcement-1"), "The announcement is still shown after dimissal."
-    click_link("Projects")
+    click_link("users_path")
     assert page.has_no_selector?("#announcement-1"), "The announcement popped up again after dimissal."
 
     # The project list should have these 3 entries
-    click_link("Projects")
+    click_link("projects_path")
     assert page.has_content?( "Hurd" ), "Project overview is missing 'Hurd'"
     assert page.has_content?( "XNU" ), "Project overview is missing 'XNU'"
     assert page.has_content?( "Linux" ), "Project overview is missing 'Linux'"

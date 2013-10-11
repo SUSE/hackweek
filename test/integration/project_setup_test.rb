@@ -8,7 +8,7 @@ class ProjectSetupTest < ActionDispatch::IntegrationTest
     login_user user
 
     # Navigate to the project
-    click_link("Projects")
+    click_link("projects_path")
     click_link("Linux")
     # Joining the project should flash an alert
     click_link "Join this project"

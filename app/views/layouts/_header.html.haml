@@ -13,21 +13,21 @@
     .collapse.navbar-collapse.navbar-ex1-collapse
       %ul.nav.navbar-nav
         %li
-          = link_to(projects_path, {:alt=>"Projects", :title=>"List all Projects"}) do
+          = link_to(projects_path, {:id=>"projects_path", :alt=>"Projects", :title=>"List all Projects"}) do
             %i.icon-puzzle-piece
             Projects
         %li
-          = link_to users_path do
+          = link_to(users_path, :id=>"users_path") do
             %i.icon-user
             People
         - if user_signed_in?
           - if current_user.role? :organizer
             %li
-              = link_to(announcements_path) do
+              = link_to(announcements_path, :id=>"announcements_path") do
                 %i.icon-bullhorn
                 Announcements
             %li
-              = link_to(events_path) do
+              = link_to(events_path, :id => "events_path") do
                 %i.icon-calendar
                 Events
             %ul.nav.navbar-nav.navbar-right
@@ -38,20 +38,20 @@
                   %b.caret
                 %ul.dropdown-menu
                   %li
-                    = link_to(new_project_path) do
+                    = link_to(new_project_path, :id => "new_project_path") do
                       %i.icon-puzzle-piece
                       Project
                   %li
-                    = link_to(new_announcement_path) do
+                    = link_to(new_announcement_path, :id => "new_announcement_path") do
                       %i.icon-bullhorn
                       Announcement
                   %li
-                    = link_to(new_event_path) do
+                    = link_to(new_event_path, :id => "new_event_path") do
                       %i.icon-calendar
                       Event
           - else 
             %li
-              = link_to(new_project_path, {:alt=>"Add Project", :title=>"Add Project"}) do
+              = link_to(new_project_path, {:id=>"new_project_path",:alt=>"Add Project", :title=>"Add Project"}) do
                 %i.icon-plus-sign-alt.icon
                 Create
       - if user_signed_in?
@@ -62,11 +62,11 @@
               %b.caret
             %ul.dropdown-menu
               %li
-                = link_to(me_users_path) do
+                = link_to(me_users_path, :id => "me_users_path") do
                   %i.icon-home
                   = current_user.name
               %li
-                = link_to(destroy_user_ichain_session_path, :method => :delete, :id => "logout-link-md") do
+                = link_to(destroy_user_ichain_session_path, :method => :delete, :id => "logout-link") do
                   %i.icon-off
                   Log out
         %ul.nav.navbar-nav.navbar-right.visible-xs
@@ -75,13 +75,13 @@
               %i.icon-home
               = current_user.name
           %li
-            = link_to(destroy_user_ichain_session_path, :method => :delete, :id => "logout-link-xs") do
+            = link_to(destroy_user_ichain_session_path, :method => :delete, :id => "logout-link") do
               %i.icon-off
               Log out
       - else
         %ul.nav.navbar-nav.navbar-right
           %li
-            = link_to(new_user_ichain_session_path) do
+            = link_to(new_user_ichain_session_path, :id => "login-link") do
               %i.icon-signin
               Sign In
       %form{:role=>"search", :method=>"get", :class=>"navbar-form navbar-right", :action=>"#{search_path}", "accept-charset"=>"UTF-8"}
