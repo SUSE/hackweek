@@ -22,20 +22,34 @@
             People
         - if user_signed_in?
           - if current_user.role? :organizer
-            -if can? :write, Announcement 
-              %li
-                = link_to(announcements_path) do
-                  %i.icon-bullhorn
-                  Announcements
-            -if can? :write, Event
-              %li
-                = link_to(events_path) do
-                  %i.icon-calendar
-                  Events
-        %li
-          = link_to(new_project_path, {:alt=>"Add Project", :title=>"Add Project"}) do
-            %i.icon-plus-sign-alt.icon
-            Create
+            %li
+              = link_to(announcements_path) do
+                %i.icon-bullhorn
+                Announcements
+            %li
+              = link_to(events_path) do
+                %i.icon-calendar
+                Events
+            %ul.nav.navbar-nav.navbar-right
+              %li.dropdown
+                %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", :id => "user-dropdown"}
+                  %i.icon-plus-sign-alt.icon
+                  Create
+                  %b.caret
+                %ul.dropdown-menu
+                  %li
+                    = link_to(new_announcement_path) do
+                      %i.icon-bullhorn
+                      Announcement
+                  %li
+                    = link_to(new_event_path) do
+                      %i.icon-calendar
+                      Event
+          - else 
+            %li
+              = link_to(new_project_path, {:alt=>"Add Project", :title=>"Add Project"}) do
+                %i.icon-plus-sign-alt.icon
+                Create
       - if user_signed_in?
         %ul.nav.navbar-nav.navbar-right.hidden-xs
           %li.dropdown
@@ -56,11 +70,6 @@
             = link_to(me_users_path) do
               %i.icon-home
               = current_user.name
-          -if can? :write, Announcement
-            %li
-              = link_to(announcements_path) do
-                %i.icon-bullhorn
-                Announcements
           %li
             = link_to(destroy_user_ichain_session_path, :method => :delete, :id => "logout-link-xs") do
               %i.icon-off
