@@ -14,7 +14,7 @@
       %ul.nav.navbar-nav
         %li
           = link_to(projects_path, {:alt=>"Projects", :title=>"List all Projects"}) do
-            %i.icon-list.icon
+            %i.icon-puzzle-piece
             Projects
         %li
           = link_to users_path do
@@ -37,6 +37,10 @@
                   Create
                   %b.caret
                 %ul.dropdown-menu
+                  %li
+                    = link_to(new_project_path) do
+                      %i.icon-puzzle-piece
+                      Project
                   %li
                     = link_to(new_announcement_path) do
                       %i.icon-bullhorn
