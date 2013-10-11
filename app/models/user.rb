@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   has_many :user_interests
   has_many :keywords, :through => :user_interests
 
+  has_and_belongs_to_many :roles
+
   include Gravtastic
   has_gravatar
 
@@ -22,6 +24,10 @@ class User < ActiveRecord::Base
     text :name
   end
   
+  def role?(role)
+    return !!self.roles.find_by_name(role)
+  end
+
   def add_keyword! name
     name.downcase!
     name.gsub! /\s/, "" 
