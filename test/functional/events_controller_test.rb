@@ -3,6 +3,7 @@ require 'test_helper'
 class EventsControllerTest < ActionController::TestCase
   setup do
     @event = events(:one)
+    sign_in :user, User.find_by(name: "hennevogel")
   end
 
   test "should get index" do
@@ -18,10 +19,10 @@ class EventsControllerTest < ActionController::TestCase
 
   test "should create event" do
     assert_difference('Event.count') do
-      post :create, event: {  }
+      post :create, event: { name: "hackweek0", start: "1992-09-02", end: "3000-01-01" }
     end
 
-    assert_redirected_to event_path(assigns(:event))
+    assert_redirected_to events_path
   end
 
   test "should show event" do
@@ -35,8 +36,8 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   test "should update event" do
-    patch :update, id: @event, event: {  }
-    assert_redirected_to event_path(assigns(:event))
+    patch :update, id: @event, event: { name: "hackweek0", start: "1992-09-02", end: "4000-01-01"  }
+    assert_redirected_to events_path
   end
 
   test "should destroy event" do
