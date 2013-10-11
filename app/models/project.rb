@@ -19,6 +19,8 @@ class Project < ActiveRecord::Base
 
   has_many :comments, :as => :commentable
 
+  has_and_belongs_to_many :events
+
   after_create :create_initial_update
 
   aasm do

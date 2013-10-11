@@ -11,9 +11,8 @@
  *= require_self
  *= require strap-on.css.scss
  *= require font-awesome
- *= require hackweek.css.scss
  *= require selectize
  *= require selectize.bootstrap3
  *= require swipebox.css.scss
+ *= require hackweek.css.scss
  */
-
