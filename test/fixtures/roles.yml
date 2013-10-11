@@ -1,7 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 admin:
+  id: 1
   name: admin
 
 organizer:
+  id: 2
   name: organizer

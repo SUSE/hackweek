@@ -1,0 +1,16 @@
+= form_for @event do |f|
+  - if @event.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@event.errors.count, "error")} prohibited this event from being saved:"
+      %ul
+        - @event.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.text_field :name, :placeholder => "Name", :class => 'form-control input-lg'
+  .field
+    = f.date_field :start, :placeholder => "Start Date (YYYY-MM-DD)", :required => "required", :class => 'form-control input-lg'
+  .field
+    = f.date_field :end, :placeholder => "End Date (YYYY-MM-DD)", :required => "required", :class => 'form-control input-lg'
+  .actions
+    %p
+      = f.submit :class => "btn btn-success pull-right"

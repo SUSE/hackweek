@@ -29,3 +29,8 @@ bill:
   id: 6
   name: "bill"
   email: "gates@micosoft.com"
+
+hennevogel:
+  id: 7
+  name: "hennevogel"
+  email: "hvogel@suse.com"

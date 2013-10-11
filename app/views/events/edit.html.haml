@@ -1,0 +1,9 @@
+- content_for :title do
+  Edit
+  = @event.name
+
+.col-sm-12
+  %h2
+    Edit
+    = @event.name
+  = render 'form'
