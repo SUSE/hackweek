@@ -69,17 +69,17 @@ desc "Notifies the exception handler of the deploy."
 task :notify_errbit do
   revision = `git rev-parse HEAD`.strip
   user = ENV['USER']
-  queue "rake hoptoad:deploy TO=#{rails_env} REVISION=#{revision} REPO=#{repository} USER=#{user}"
+  queue "bundle exec rake hoptoad:deploy TO=#{rails_env} REVISION=#{revision} REPO=#{repository} USER=#{user}"
 end
 
 desc "Start solr."
 task :solr_start do
-  queue "cd #{deploy_to!}/#{current_path!} && sudo -u wwwrun RAILS_ENV=production rake sunspot:solr:start"
+  queue "cd #{deploy_to!}/#{current_path!} && sudo -u wwwrun RAILS_ENV=production bundle exec rake sunspot:solr:start"
 end
 
 desc "Stop solr."
 task :solr_stop do
-  queue "cd #{deploy_to!}/#{current_path!} && sudo -u wwwrun RAILS_ENV=production rake sunspot:solr:stop"
+  queue "cd #{deploy_to!}/#{current_path!} && sudo -u wwwrun RAILS_ENV=production bundle exec rake sunspot:solr:stop"
 end
 
 desc "Restart solr."
@@ -90,7 +90,7 @@ end
 
 desc "Reindex solr."
 task :solr_reindex do
-  queue "cd #{deploy_to!}/#{current_path!} && sudo -u wwwrun RAILS_ENV=production rake sunspot:solr:reindex"
+  queue "cd #{deploy_to!}/#{current_path!} && sudo -u wwwrun RAILS_ENV=production bundle exec rake sunspot:solr:reindex"
 end
 
 # For help in making your deploy script, see the Mina documentation:
