@@ -13,7 +13,7 @@ before_install:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
 before_script: 
-  - RAILS_ENV=test rake sunspot:solr:start
+  - RAILS_ENV=test bundle exec rake sunspot:solr:start
   - script/wait_for_solr.sh 8981
-after_script: RAILS_ENV=test rake sunspot:solr:stop
+after_script: RAILS_ENV=test bundle exec rake sunspot:solr:stop
 

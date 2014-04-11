@@ -44,8 +44,8 @@ gem 'figaro'
 # Use mousetrap for keyboard shortcuts
 gem 'mousetrap-rails'
 # Use sunspot/solr as search engine
-gem 'sunspot_rails'
-gem 'sunspot_solr'
+gem 'sunspot_rails', "~> 2.0.0"
+gem 'sunspot_solr', "~> 2.0.0"
 gem 'progress_bar', group: [:development]
 # Use capybara as test framework
 gem 'capybara', group: :test
