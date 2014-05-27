@@ -21,8 +21,8 @@ Hackweek::Application.routes.draw do
       get 'biggest'
     end
     member do
-      match 'like', via: :post
-      match 'dislike', via: :post
+      get 'like'
+      get 'dislike'
       match 'join', via: :post
       match 'leave', via: :post
       match 'advance', via: :post
