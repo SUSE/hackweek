@@ -33,7 +33,7 @@ class ActionDispatch::IntegrationTest
 
   teardown do
     dirpath = Rails.root.join("tmp", "capybara")
-    htmlpath = dirpath.join(self.__name__ + ".html")
+    htmlpath = dirpath.join(self.name + ".html")
     if !passed?
       Dir.mkdir(dirpath) unless Dir.exists? dirpath
       save_page(htmlpath)

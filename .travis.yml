@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.0.0
+  - 2.1.1
 branches:
   only:
     - master
@@ -9,11 +9,13 @@ notifications:
     on_success: change
     on_failure: change
 before_install:
-  - "cp config/database.yml.example config/database.yml"
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
 before_script: 
+  - cp config/database.yml.example config/database.yml
+  - cp config/application.yml.example config/application.yml
+  - cp config/secrets.yml.example config/secrets.yml
+  - RAILS_ENV=test bundle exec rake db:migrate --trace  
   - RAILS_ENV=test bundle exec rake sunspot:solr:start
   - script/wait_for_solr.sh 8981
 after_script: RAILS_ENV=test bundle exec rake sunspot:solr:stop
-

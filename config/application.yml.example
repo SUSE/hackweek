@@ -8,5 +8,5 @@ HACKWEEK_SECRET_KEY_BASE: '12345'
 HACKWEEK_DEVISE_SECRET_KEY: '12345'
 
 # Errbit (https://github.com/errbit/errbit) configuration
-HACKWEEK_ERRBIT_API_KEY: '12345' 
-HACKWEEK_ERRBIT_HOST: errbit.example.com
+# HACKWEEK_ERRBIT_API_KEY: '12345' 
+# HACKWEEK_ERRBIT_HOST: errbit.example.com
