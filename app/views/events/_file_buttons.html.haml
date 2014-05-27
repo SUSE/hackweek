@@ -1,7 +1,7 @@
 .btn-group.pull-right
   - if can? :edit, event
     = link_to(edit_event_path(event), :title=>'Edit this event?', :class=> "btn btn-default btn-xs") do
-      %i.icon-pencil
+      %i.fa.fa-pencil
   -if can? :destroy, event
     = link_to(event_path(event), :title=>'Delete this event?', :class=> "btn btn-default btn-xs", :method => :delete, data: { confirm: "Are you sure you want to delete this event? This can't be undone!" }) do
-      %i.icon-remove
+      %i.fa.fa-trash-o

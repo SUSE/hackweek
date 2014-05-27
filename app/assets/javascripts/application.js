@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require mousetrap
 //= require jquery-hotkeys
-//= require twitter/bootstrap
+//= require bootstrap
 //= require selectize
 //= require jquery.table-filter.js
 //= require jquery.swipebox.js

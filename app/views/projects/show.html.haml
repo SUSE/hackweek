@@ -80,7 +80,7 @@
             = f.text_area :text, :placeholder => "Your comment. You can use markdown.", :class => 'form-control input-lg', :required => "required"
             %p
             = button_tag(type: 'submit', class: "btn btn-success pull-right") do
-              %i.icon-plus-sign
+              %i.fa.fa-plus
               Add Comment
         - else
           = link_to 'Add a comment', new_project_comment_path( @project ), :class => 'btn btn-default'

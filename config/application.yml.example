@@ -1,4 +1,12 @@
 # Add application configuration variables here, as shown below.
-#
-HACKWEEK_ERRBIT_KEY: 7381a978f7dd7f9a1117
+# Be sure to restart your server when you modify this file.
+
+# Make sure your secrets are at least 30 characters and all random,
+# no regular words or you'll be exposed to dictionary attacks.
+# You can use `rake secret` to generate a secure secret key.
+HACKWEEK_SECRET_KEY_BASE: '12345'
+HACKWEEK_DEVISE_SECRET_KEY: '12345'
+
+# Errbit (https://github.com/errbit/errbit) configuration
+HACKWEEK_ERRBIT_API_KEY: '12345' 
 HACKWEEK_ERRBIT_HOST: errbit.example.com

@@ -1,17 +1,17 @@
 source 'http://rubygems.org'
 
-gem 'rails', '4.0.4'
+gem 'rails', '~> 4.1.0'
 
 # Use sqlite3 as the database for development/testing 
 gem 'sqlite3'
 # Use mysql as the database for production
 gem 'mysql2'
 # Use SCSS for stylesheets
-gem 'sass-rails',   '~> 4.0.0'
+gem 'sass-rails',   '~> 4.0.3'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 # Use bootstrap as the front-end framework
-gem 'bootstrap-sass-rails'
+gem 'bootstrap-sass'
 # Use font-awesome as scalable vector icons
 gem "font-awesome-rails"
 # Use Uglifier as compressor for JavaScript assets

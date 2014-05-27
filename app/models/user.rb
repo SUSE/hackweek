@@ -65,9 +65,9 @@ def remove_keyword! name
 
   def self.for_ichain_username(username, attributes)
     if user = find_or_create_by(name: username)
-      update_all({:email => attributes[:email]}, {:id => user.id}) if user.email != attributes[:email]
+      user.update_columns(email: attributes[:email]) if user.email != attributes[:email]
     else
-      user = create(nickname: username, email: attributes[:email])
+      user = create(name: username, email: attributes[:email])
     end
     user
   end

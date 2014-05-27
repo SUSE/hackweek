@@ -17,6 +17,7 @@
 # Ignore the configuration files
 /config/database.yml
 /config/application.yml
+/config/secrets.yml
 
 # Ignore solr
 solr/data

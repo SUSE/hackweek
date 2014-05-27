@@ -1,6 +1,6 @@
 HoptoadNotifier.configure do |config|
   # Change this to some sensible data for your errbit instance
-  config.api_key = ENV["HACKWEEK_ERRBIT_KEY"] || ""
+  config.api_key = Rails.application.secrets.errbit_api_key || ""
   config.host    = ENV["HACKWEEK_ERRBIT_HOST"] || ""
   if config.api_key.blank? || config.host.blank?
     config.development_environments = "production development test"
