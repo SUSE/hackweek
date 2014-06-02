@@ -18,4 +18,5 @@ before_script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace  
   - RAILS_ENV=test bundle exec rake sunspot:solr:start
   - script/wait_for_solr.sh 8981
-after_script: RAILS_ENV=test bundle exec rake sunspot:solr:stop
+after_script:
+  - RAILS_ENV=test bundle exec rake sunspot:solr:stop

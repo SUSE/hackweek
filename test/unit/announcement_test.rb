@@ -16,7 +16,7 @@ class AnnouncementTest < ActiveSupport::TestCase
 
   test "user dismisses announcement" do
     user = users(:linus)
-    announcement = announcements(:one)
+    announcement = Announcement.create(:title=> "Keep Calm...", :text => "...and carry on!", :originator_id => user.id)
 
     assert_equal 0, announcement.users.count
 
