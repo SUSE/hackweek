@@ -5,6 +5,8 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'capybara/rails'
 Capybara.default_driver = :webkit
+require 'database_cleaner'
+DatabaseCleaner.strategy = :truncation
 
 class ActionDispatch::IntegrationTest
   # Make the Capybara DSL available in all integration tests
@@ -29,6 +31,7 @@ class ActionDispatch::IntegrationTest
   end
 
   setup do
+    DatabaseCleaner.start
   end
 
   teardown do
@@ -41,6 +44,7 @@ class ActionDispatch::IntegrationTest
       File.unlink(htmlpath)
     end
     Capybara.reset_sessions!
+    DatabaseCleaner.clean
   end
 
 end

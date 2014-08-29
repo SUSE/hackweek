@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 gem 'rails', '~> 4.1.0'
 
@@ -52,3 +52,5 @@ gem 'capybara', group: :test
 gem 'capybara-webkit', group: :test
 # Use simplecov for measuring test coverage
 gem 'simplecov', :require => false, :group => :test
+# Use 'database_cleaner' for cleaning the test DB
+gem 'database_cleaner', :group => :test
