@@ -7,37 +7,31 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    @projects = Project.where.not(aasm_state: "record").where.not(aasm_state: "invention")
-  end
-
-  # GET /projects/archived
-  def archived
-    @projects = Project.where(aasm_state: "record")
-    render "index"
-  end
-
-  # GET /projects/finished
-  def finished
-    @projects = Project.where(aasm_state: "invention").order("updated_at DESC")
-    render "index"
-  end
-
-  # GET /projects/newest
-  def newest
-    @projects = Project.where.not(aasm_state: "record").order("created_at DESC LIMIT 10")
-    render "index"
+    @projects = Project.active
   end
 
   # GET /projects/popular
   def popular
-    @projects = Project.where("likes_count > 0").where.not(aasm_state: "record").order("likes_count DESC")
+    @projects = Project.active.liked.order("likes_count DESC")
     render 'index'
+  end
+
+  # GET /projects/archived
+  def archived
+    @projects = Project.archived
+    render "index"
   end
 
   # GET /projects/biggest
   def biggest
-    @projects = Project.where("memberships_count > 0").where.not(aasm_state: "record").order("memberships_count DESC")
+    @projects = Project.projects.order("memberships_count DESC")
     render 'index'
+  end
+
+  # GET /projects/finished
+  def finished
+    @projects = Project.finished
+    render "index"
   end
 
   # GET /projects/1

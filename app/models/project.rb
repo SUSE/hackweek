@@ -28,24 +28,31 @@ class Project < ActiveRecord::Base
     state :project
     state :invention
     state :record
-    
+
     event :advance do
       transitions :from => [:idea], :to => :project
       transitions :from => [:project], :to => :invention
       transitions :from => [:record], :to => :idea
     end
-
     event :recess do 
       transitions :from => [:project], :to => :idea
       transitions :from => [:idea], :to => :record
       transitions :from => [:invention], :to => :project
     end
-
     event :abandon do 
       transitions :from => [:project], :to => :idea
       transitions :from => [:invention], :to => :invention
     end
+  end
 
+  scope :ideas, -> { where(aasm_state: "idea") }
+  scope :projects, -> { where(aasm_state: "project") }
+  scope :finished, -> { where(aasm_state: "invention") }
+  scope :archived, -> { where(aasm_state: "record") }
+  scope :liked, -> { where("likes_count > 0") }
+
+  def self.active
+    self.where.not(aasm_state: "record").where.not(aasm_state: "invention")
   end
 
   # solr configuration
@@ -54,7 +61,6 @@ class Project < ActiveRecord::Base
     text :description
   end
 
-  
   def join! user
     if self.users.empty?
       started = true

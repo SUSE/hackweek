@@ -6,6 +6,7 @@ linux:
   originator_id: 1
   aasm_state: project
   id: 1
+  memberships_count: 3
 
 hurd:
   title: Hurd
@@ -20,6 +21,7 @@ xnu:
   originator_id: 3 
   aasm_state: project
   id: 3
+  memberships_count: 1
 
 openSUSE:
   title: openSUSE
@@ -34,6 +36,8 @@ debian:
   originator_id: 5
   aasm_state: project
   id: 5
+  likes_count: 1
+  memberships_count: 1
 
 windows:
   title: Windows 
@@ -41,6 +45,7 @@ windows:
   originator_id: 6
   aasm_state: project
   id: 6
+  memberships_count: 2
 
 git:
   title: git

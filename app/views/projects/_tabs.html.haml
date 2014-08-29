@@ -5,33 +5,27 @@
       All
       - if all_state === "active"
         =  "(#{@projects.length})"
-  - newest_state = "active" if action_name == "newest"
-  %li{:class => newest_state}
-    =link_to newest_projects_path, :title => "Most recent projects" do
-      Newest
-      - if newest_state === "active"
-        =  "(#{@projects.length})"
   - popular_state = "active" if action_name == "popular"
   %li{:class => popular_state}
-    =link_to popular_projects_path, :title => "Most liked projects" do
+    =link_to popular_projects_path, :title => "Projects with many likes" do
       Popular
       - if popular_state === "active"
         =  "(#{@projects.length})"
   - biggest_state = "active" if action_name == "biggest"
   %li{:class => biggest_state}
-    =link_to biggest_projects_path, :title => "Most active projects" do
+    =link_to biggest_projects_path, :title => "Projects with many users" do
       Biggest
       - if biggest_state === "active"
         =  "(#{@projects.length})"
-  - archived_state = "active" if action_name == "archived"
-  %li{:class => archived_state}
-    =link_to archived_projects_path, :title => "Dismissed projects" do
-      Archived
-      - if archived_state === "active"
-        =  "(#{@projects.length})"
   - finished_state = "active" if action_name == "finished"
   %li{:class => finished_state}
-    =link_to finished_projects_path, :title => "Finished projects" do
+    =link_to finished_projects_path, :title => "Projects that are done" do
       Finished
       - if finished_state === "active"
+        =  "(#{@projects.length})"
+  - archived_state = "active" if action_name == "archived"
+  %li{:class => archived_state}
+    =link_to archived_projects_path, :title => "Projects that are dismissed" do
+      Archived
+      - if archived_state === "active"
         =  "(#{@projects.length})"

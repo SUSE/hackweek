@@ -36,8 +36,10 @@
       .row
         .col-sm-12
           %h3
-            No projects. How about you
-            = link_to "add one!", new_project_path
+            No projects.
+            - unless action_name == :finished or :archived
+              How about you
+              = link_to "add one!", new_project_path
 
 - content_for :script do
   :javascript
