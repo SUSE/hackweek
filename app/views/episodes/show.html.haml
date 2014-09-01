@@ -1,0 +1,11 @@
+- content_for :title do
+  = @episode.name
+
+.col-sm-12
+  %h2
+    = @episode.name
+  %p
+    From
+    = @episode.start
+    to
+    = @episode.end

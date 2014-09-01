@@ -19,9 +19,10 @@ class Project < ActiveRecord::Base
 
   has_many :comments, :as => :commentable
 
-  has_and_belongs_to_many :events
+  has_and_belongs_to_many :episodes
 
   after_create :create_initial_update
+  after_create :assign_episode
 
   aasm do
     state :idea, :initial => true
@@ -142,12 +143,6 @@ class Project < ActiveRecord::Base
                    :project => self)
   end
 
-  def create_initial_update
-    Update.create!(:author => self.originator,
-                   :text => "originated",
-                   :project => self)
-  end
-
   def previous
     Project.where('id < ?', self.id).last
   end
@@ -156,4 +151,15 @@ class Project < ActiveRecord::Base
     Project.where('id > ?', self.id).first
   end
 
+  private
+
+    def create_initial_update
+      Update.create!(:author => self.originator,
+                     :text => "originated",
+                     :project => self)
+    end
+
+    def assign_episode
+      self.episodes << Episode.where(active: true).first if Episode.where(active: true).first
+    end
 end

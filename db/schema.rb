@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131011123206) do
+ActiveRecord::Schema.define(version: 20140829151952) do
 
   create_table "announcements", force: true do |t|
     t.string   "title"
@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 20131011123206) do
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.integer  "commenter_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "enrollments", force: true do |t|
@@ -37,51 +37,52 @@ ActiveRecord::Schema.define(version: 20131011123206) do
     t.datetime "updated_at"
   end
 
-  create_table "events", force: true do |t|
+  create_table "episodes", force: true do |t|
     t.string   "name"
     t.date     "start"
     t.date     "end"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active",     default: false
   end
 
-  create_table "events_projects", id: false, force: true do |t|
-    t.integer "event_id"
+  create_table "episodes_projects", id: false, force: true do |t|
+    t.integer "episode_id"
     t.integer "project_id"
   end
 
   create_table "keywords", force: true do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "likes", force: true do |t|
     t.integer  "project_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "memberships", force: true do |t|
     t.integer  "project_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "project_interests", force: true do |t|
     t.integer  "project_id"
     t.integer  "keyword_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "projects", force: true do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "originator_id"
     t.integer  "likes_count"
     t.integer  "memberships_count"
@@ -103,23 +104,23 @@ ActiveRecord::Schema.define(version: 20131011123206) do
     t.text     "text"
     t.integer  "author_id"
     t.integer  "project_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "user_interests", force: true do |t|
     t.integer  "user_id"
     t.integer  "keyword_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
     t.string   "uid"
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"

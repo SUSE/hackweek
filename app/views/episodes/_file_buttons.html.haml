@@ -1,0 +1,15 @@
+.btn-group.pull-right
+  -if can? :activate, episode
+    - if episode.active
+      - color = "green"
+      - link_target = '#'
+    - else
+      - link_target = activate_episode_path(episode)
+    = link_to(link_target, :title=>'Activate this hackweek?', :class=> "btn btn-default btn-xs") do
+      %i.fa.fa-check.fa-2x{style: "color: #{color}"}
+  - if can? :edit, episode
+    = link_to(edit_episode_path(episode), :title=>'Edit this hackweek?', :class=> "btn btn-default btn-xs") do
+      %i.fa.fa-pencil.fa-2x
+  -if can? :destroy, episode
+    = link_to(episode_path(episode), :title=>'Delete this hackweek?', :class=> "btn btn-default btn-xs", :method => :delete, data: { confirm: "Are you sure you want to delete this episode? This can't be undone!" }) do
+      %i.fa.fa-trash-o.fa-2x

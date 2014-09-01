@@ -43,7 +43,11 @@ Hackweek::Application.routes.draw do
     end
   end
 
-  resources :events
+  resources :episodes do
+    member do
+      get "activate"
+    end
+  end
 
   get "keyword/tokens"
   post "api/import", to: "api#import" 

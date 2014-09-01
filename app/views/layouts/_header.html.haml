@@ -27,9 +27,9 @@
                 %i.fa.fa-bullhorn
                 Announcements
             %li
-              = link_to(events_path, :id => "events_path") do
+              = link_to(episodes_path, :id => "episodes_path") do
                 %i.fa.fa-calendar
-                Events
+                Hackweeks
             %ul.nav.navbar-nav.navbar-right
               %li.dropdown
                 %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", :id => "user-dropdown"}
@@ -46,9 +46,9 @@
                       %i.fa.fa-bullhorn
                       Announcement
                   %li
-                    = link_to(new_event_path, :id => "new_event_path") do
+                    = link_to(new_episode_path, :id => "new_episode_path") do
                       %i.fa.fa-calendar
-                      Event
+                      Episode
           - else 
             %li
               = link_to(new_project_path, {:id=>"new_project_path",:alt=>"Add Project", :title=>"Add Project"}) do
