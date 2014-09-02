@@ -6,6 +6,3 @@ require File.expand_path('../config/application', __FILE__)
 require 'sunspot/solr/tasks'
 
 Hackweek::Application.load_tasks
-
-gem 'single_test'
-require 'single_test/tasks'

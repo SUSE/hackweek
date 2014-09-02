@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
-hennevogel2admin:
-  user_id: 7
-  role_id: 1
-
-hennevogel2organizer: 
-  user_id: 7
-  role_id: 2
