@@ -4,39 +4,39 @@ class ProjectsController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [ :index, :show, :archived, :finished, :newest, :popular, :biggest ]
   skip_before_filter :store_location, :only => [:join, :leave, :like, :dislike, :add_keyword, :delete_keyword ]
   skip_before_action :verify_authenticity_token, :only => [:add_keyword, :delete_keyword ]
+  before_action :set_episode_id, :only => [:add_episode, :delete_episode]
 
   # GET /projects
   def index
-    @projects = Project.active
+    @projects = Project.current(@episode).active
   end
 
   # GET /projects/popular
   def popular
-    @projects = Project.active.liked.order("likes_count DESC")
+    @projects = Project.current(@episode).liked.order("likes_count DESC")
     render 'index'
   end
 
   # GET /projects/archived
   def archived
-    @projects = Project.archived
+    @projects = Project.current(@episode).archived
     render "index"
   end
 
   # GET /projects/biggest
   def biggest
-    @projects = Project.projects.order("memberships_count DESC")
+    @projects = Project.current(@episode).populated.order("memberships_count DESC")
     render 'index'
   end
 
   # GET /projects/finished
   def finished
-    @projects = Project.finished
+    @projects = Project.current(@episode).finished
     render "index"
   end
 
   # GET /projects/1
   def show
-    @project = Project.find(params[:id])
     @new_comment = Comment.new
   end
 
@@ -47,7 +47,6 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
-    @project = Project.find(params[:id])
   end
 
   # POST /projects
@@ -56,7 +55,7 @@ class ProjectsController < ApplicationController
     @project.originator = current_user
 
     if @project.save
-      redirect_to @project
+      redirect_to project_path(@episode, @project)
     else
       render action: "new"
     end
@@ -64,10 +63,8 @@ class ProjectsController < ApplicationController
 
   # PUT /projects/1
   def update
-    @project = Project.find(params[:id])
-
     if @project.update_attributes(project_params)
-      redirect_to @project
+      redirect_to project_path(@episode, @project)
     else
       render action: "edit" 
     end
@@ -75,121 +72,111 @@ class ProjectsController < ApplicationController
 
   # DELETE /projects/1
   def destroy
-    @project = Project.find(params[:id])
     @project.destroy
-
-    respond_to do |format|
-      format.html { redirect_to projects_path }
-      format.js { }
-    end
+    redirect_to projects_path(@episode)
   end
 
   # PUT /projects/1/advance
   def advance
-    project = Project.find(params[:id])
-    project.advance!
-
-    respond_to do |format|
-      format.html { redirect_to project }
-      format.js { }
-    end
+    @project.advance!
+    redirect_to project_path(@episode, @project)
   end
 
   # PUT /projects/1/recess
   def recess
-    project = Project.find(params[:id])
-    project.recess!
-
-    respond_to do |format|
-      format.html { redirect_to project }
-      format.js { }
-    end
+    @project.recess!
+    redirect_to project_path(@episode, @project)
   end
 
   # PUT /projects/1/join
   def join
-    project = Project.find(params[:id])
-    if project.aasm_state == "invention"
+    # FIXME: This is a validation
+    if @project.aasm_state == "invention"
       redirect_to project, error: "You can't join this project as it's finished."
     end
-    project.join! current_user
 
-    respond_to do |format|
-      format.html{ redirect_to project, notice: "Welcome to the project #{current_user.name}!" }
-      format.js {}
-    end
+    @project.join! current_user
+    redirect_to project_path(@episode, @project), notice: "Welcome to the project #{current_user.name}!"
   end
 
   # PUT /projects/1/leave
   def leave
-    project = Project.find(params[:id])
-    if project.aasm_state == "invention"
+    # FIXME: This is a validation
+    if @project.aasm_state == "invention"
       redirect_to project, error: "You can't leave this project as it's finished."
     end
-    project.leave! current_user
 
-    respond_to do |format|
-      format.html{ redirect_to project, notice: "Goodbye #{current_user.name}..." }
-      format.js {}
-    end
+    @project.leave! current_user
+    redirect_to project_path(@episode, @project), notice: "Goodbye #{current_user.name}..."
   end
 
   # PUT /projects/1/like
   def like
-    project = Project.find(params[:id])
-    project.like! current_user
+    @project.like! current_user
 
     respond_to do |format|
-      format.html{ redirect_to project, notice: "Thank you for your love #{current_user.name}!" }
+      format.html{ redirect_to project_path(@episode, @project), notice: "Thank you for your love #{current_user.name}!" }
       format.js { render :partial => "like_toggle" }
     end
   end
 
   # PUT /projects/1/dislike
   def dislike
-    project = Project.find(params[:id])
-    project.dislike! current_user
+    @project.dislike! current_user
     
     respond_to do |format|
-      format.html{ redirect_to project, notice: "Aaww Snap! You don't love me anymore?" }
+      format.html{ redirect_to project_path(@episode, @project), notice: "Aaww Snap! You don't love me anymore?" }
       format.js { render :partial => "like_toggle" }
     end
   end
 
   # PUT /projects/1/add_keyword
   def add_keyword
-    project = Project.find(params[:id])
     keywords = keyword_params.split(',')
     keywords.each do |word|
-      project.add_keyword! word, current_user
+      @project.add_keyword! word, current_user
     end
 
-    respond_to do |format|
-      format.html{ redirect_to project }
-      format.js {}
-    end
+    redirect_to project_path(@episode, @project)
   end
 
   # PUT /projects/1/delete_keyword
   def delete_keyword
-    project = Project.find(params[:id])
     keywords = keyword_params.split(',')
     keywords.each do |word|
-      project.remove_keyword! word, current_user
+      @project.remove_keyword! word, current_user
     end
 
-    respond_to do |format|
-      format.html{ redirect_to project }
-      format.js {}
+    redirect_to project_path(@episode, @project)
+  end
+
+  # PUT /projects/1/add_hackweek/1
+  def add_episode
+    unless @project.episodes.include? @subject
+      @project.episodes << @subject
     end
+
+    redirect_to project_path(@episode, @project)
   end
 
-  def project_params
-    params.require(:project).permit(:description, :title)
+  # DELETE /projects/1/delete_hackweek/2
+  def delete_episode
+    @project.episodes.delete(@subject)
+    redirect_to project_path(@episode, @project)
   end
 
-  def keyword_params
-    params.require(:keyword)
-  end
+  private
 
+    def project_params
+      params.require(:project).permit(:description, :title)
+    end
+  
+    def keyword_params
+      params.require(:keyword)
+    end
+    
+    def set_episode_id
+      @subject = Episode.find(params[:episode_id])
+    end
+ 
 end

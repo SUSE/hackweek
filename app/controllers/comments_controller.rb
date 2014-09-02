@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
   before_filter :get_parent
-   
+ 
   def new
     @comment = @parent.comments.build
   end

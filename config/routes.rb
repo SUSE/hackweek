@@ -12,27 +12,31 @@ Hackweek::Application.routes.draw do
     end
   end
 
-  resources :projects do
-    collection do
-      get 'archived'
-      get 'finished'
-      get 'newest'
-      get 'popular'
-      get 'biggest'
+  scope '(:episode)' do
+    resources :projects do
+      collection do
+        get 'archived'
+        get 'finished'
+        get 'newest'
+        get 'popular'
+        get 'biggest'
+      end
+      member do
+        get 'like'
+        get 'dislike'
+        match 'join', via: :post
+        match 'leave', via: :post
+        match 'advance', via: :post
+        match 'recess', via: :post
+        post 'episode', to: "projects#add_episode"
+        delete 'episode', to: "projects#delete_episode"
+        post 'keyword', to: "projects#add_keyword"
+        delete 'keyword', to: "projects#delete_keyword", constraints: { keyword: /[^\/]+/ }
+      end
+      resources :comments
     end
-    member do
-      get 'like'
-      get 'dislike'
-      match 'join', via: :post
-      match 'leave', via: :post
-      match 'advance', via: :post
-      match 'recess', via: :post
-      post 'keyword', to: "projects#add_keyword"
-      delete ':keyword', to: "projects#delete_keyword", as: "keyword_delete", constraints: { keyword: /[^\/]+/ }
-    end
-    resources :comments
   end
-  
+
   resources :comments do
     resources :comments
   end

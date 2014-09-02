@@ -47,13 +47,21 @@ class Project < ActiveRecord::Base
   end
 
   scope :ideas, -> { where(aasm_state: "idea") }
-  scope :projects, -> { where(aasm_state: "project") }
   scope :finished, -> { where(aasm_state: "invention") }
   scope :archived, -> { where(aasm_state: "record") }
   scope :liked, -> { where("likes_count > 0") }
+  scope :populated, -> { where("memberships_count > 0") }
+
+  def self.current(episode = nil)
+    if !episode.nil?
+      joins(:episodes).where(episodes:{ id: episode.id })
+    else
+      self.all
+    end
+  end
 
   def self.active
-    self.where.not(aasm_state: "record").where.not(aasm_state: "invention")
+    where.not(aasm_state: "record").where.not(aasm_state: "invention")
   end
 
   # solr configuration
@@ -160,6 +168,6 @@ class Project < ActiveRecord::Base
     end
 
     def assign_episode
-      self.episodes << Episode.where(active: true).first if Episode.where(active: true).first
+      self.episodes << Episode.active if Episode.active
     end
 end

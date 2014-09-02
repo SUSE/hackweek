@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   before_filter :store_location
   before_filter :authenticate_user!
   before_filter :load_news
+  before_filter :set_episode
+
 
   before_filter do
     resource = controller_name.singularize.to_sym
@@ -48,4 +50,13 @@ class ApplicationController < ActionController::Base
     flash["alert-warning"] = 'Parameter missing...'
   end
 
+  def set_episode
+    if !params[:episode].blank?
+      @episode = Episode.find_by(id: params[:episode])
+    elsif session[:episode]
+      @episode = Episode.find_by(id: session[:episode])
+    end
+    # and then we save the ID to the session
+    session[:episode] = @episode
+  end
 end

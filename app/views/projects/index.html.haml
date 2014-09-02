@@ -14,14 +14,14 @@
           .col-sm-6
             %ul.nav.nav-pills.pull-right
               %li.active#all-pill
-                %a{:href =>"#", :id=>"all", :title=> "All Projects"}
+                %a{:href =>"#", :id=>"all", :title=> "Show everything"}
                   All
               %li#ideas-pill
-                %a{:href =>"#", :id=>"ideas", :title => "Projects nobody is working on"}
+                %a{:href =>"#", :id=>"ideas", :title => "Show only ideas nobody is working on"}
                   %i.fa.fa-lightbulb-o
                   Ideas
               %li#projects-pill
-                %a{:href =>"#", :id=>"projects", :title => "Projects people are working on"}
+                %a{:href =>"#", :id=>"projects", :title => "Show only projects people are working on"}
                   %i.fa.fa-puzzle-piece
                   Projects
         .row
@@ -45,6 +45,8 @@
   :javascript
     $( "#ideas" ).click(function() {
       console.log ("show only ideas");
+      $( ".invention" ).hide();
+      $( ".record" ).hide();
       $( ".project" ).hide();
       $( ".idea" ).show();
       $( "#ideas-pill").addClass( "active" );
@@ -52,6 +54,8 @@
     });
     $( "#projects" ).click(function() {
       console.log ("show only projects");
+      $( ".invention" ).hide();
+      $( ".record" ).hide();
       $( ".idea" ).hide();
       $( ".project" ).show();
       $( "#projects-pill").addClass( "active" );
@@ -59,6 +63,8 @@
     });
     $( "#all" ).click(function() {
       console.log ("show everything");
+      $( ".invention" ).show();
+      $( ".record" ).show();
       $( ".idea" ).show();
       $( ".project" ).show();
       $( "#all-pill").addClass( "active" );

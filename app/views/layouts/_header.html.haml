@@ -7,53 +7,29 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to(root_path, {:name => "top", :class => "navbar-brand"}) do
-        = image_tag("suse-logo-sketch.png", :width => "32px", :alt => "Home", :title => 'Hack Week Front Page')
+      %ul.nav.navbar-nav.hidden-xs
+        %li.dropdown
+          = link_to(projects_path(@episode), {class: "navbar-brand"}) do
+            = @episode.name if @episode
+            = "All Hackweeks" unless @episode
+          = link_to('#', {class: "dropdown-toggle navbar-brand", "data-toggle"=>"dropdown"} ) do
+            %i.fa.fa-caret-square-o-down
+          %ul.dropdown-menu{:role => "menu"}
+            %li{:role => "presentation"}
+              = link_to(projects_path('all'), {title: "Projects for all hackweeks"}) do
+                All Hackweeks
+            - Episode.all.reverse.each do |episode|
+              %li{:role => "presentation"}
+                = link_to(projects_path(episode), {title: "Projects for #{episode.name}"}) do
+                  = episode.name
     / Collect the nav links, forms, and other content for toggling
     .collapse.navbar-collapse.navbar-ex1-collapse
-      %ul.nav.navbar-nav
-        %li
-          = link_to(projects_path, {:id=>"projects_path", :alt=>"Projects", :title=>"List all Projects"}) do
-            %i.fa.fa-puzzle-piece
-            Projects
-        %li
-          = link_to(users_path, :id=>"users_path") do
-            %i.fa.fa-user
-            People
-        - if user_signed_in?
-          - if current_user.role? :organizer
-            %li
-              = link_to(announcements_path, :id=>"announcements_path") do
-                %i.fa.fa-bullhorn
-                Announcements
-            %li
-              = link_to(episodes_path, :id => "episodes_path") do
-                %i.fa.fa-calendar
-                Hackweeks
-            %ul.nav.navbar-nav.navbar-right
-              %li.dropdown
-                %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", :id => "user-dropdown"}
-                  %i.fa.fa-plus
-                  Create
-                  %b.caret
-                %ul.dropdown-menu
-                  %li
-                    = link_to(new_project_path, :id => "new_project_path") do
-                      %i.fa.fa-puzzle-piece
-                      Project
-                  %li
-                    = link_to(new_announcement_path, :id => "new_announcement_path") do
-                      %i.fa.fa-bullhorn
-                      Announcement
-                  %li
-                    = link_to(new_episode_path, :id => "new_episode_path") do
-                      %i.fa.fa-calendar
-                      Episode
-          - else 
-            %li
-              = link_to(new_project_path, {:id=>"new_project_path",:alt=>"Add Project", :title=>"Add Project"}) do
-                %i.fa.fa-plus
-                Create
+      - if user_signed_in?
+        %ul.nav.navbar-nav
+          %li
+            = link_to(new_project_path(@episode), {:id=>"new_project_path",:alt=>"Add Project", :title=>"Add Project"}) do
+              %i.fa.fa-plus
+              Create
       - if user_signed_in?
         %ul.nav.navbar-nav.navbar-right.hidden-xs
           %li.dropdown
@@ -69,15 +45,29 @@
                 = link_to(destroy_user_ichain_session_path, :method => :delete, :id => "logout-link") do
                   %i.fa.fa-power-off
                   Log out
+              - if current_user.role? :organizer
+                = render partial: 'layouts/admin_menu'
         %ul.nav.navbar-nav.navbar-right.visible-xs
+          %li{role: "presentation", class: "divider"}
+          %li{role: "presentation", class: "dropdown-header"}
+            Hackweeks
+          - Episode.all.reverse.each do |episode|
+            %li
+              = link_to(projects_path(episode), {title: "Projects for #{episode}"}) do
+                = episode.name
+          %li{role: "presentation", class: "divider"}
+          %li{role: "presentation", class: "dropdown-header"}
+            = current_user.name
           %li
             = link_to(me_users_path) do
               %i.fa.fa-home
-              = current_user.name
+              Home
           %li
             = link_to(destroy_user_ichain_session_path, :method => :delete, :id => "logout-link") do
               %i.fa.fa-power-off
               Log out
+          - if current_user.role? :organizer
+            = render partial: 'layouts/admin_menu'
       - else
         %ul.nav.navbar-nav.navbar-right
           %li
