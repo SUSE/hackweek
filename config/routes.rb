@@ -26,8 +26,8 @@ Hackweek::Application.routes.draw do
         get 'dislike'
         match 'join', via: :post
         match 'leave', via: :post
-        match 'advance', via: :post
-        match 'recess', via: :post
+        post 'advance'
+        post 'recess'
         post 'episode', to: "projects#add_episode"
         delete 'episode', to: "projects#delete_episode"
         post 'keyword', to: "projects#add_keyword"

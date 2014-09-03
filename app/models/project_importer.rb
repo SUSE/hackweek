@@ -1,38 +1,7 @@
 class ProjectImporter
 
-  def self.find_or_create_user name
-    user = User.find_by_name name
-    if !user
-      user = User.create :name => name
-    end
-    user
-  end
-  
-  def self.add_keyword project, name
-    name.downcase!
-    keyword = Keyword.find_by_name name
-    if !keyword
-      keyword = Keyword.create! :name => name
-    end
-    if !project.keywords.include? keyword
-      project.keywords << keyword
-    end
-  end
-  
   def self.import json
     data = JSON.parse json
-    
-    if data["people"]
-      data["people"].each do |u|
-        user = User.find_by_name u["name"]
-        if !user
-          user = User.new
-        end
-        user.name = u["name"]
-        user.email = u["email"]
-        user.save!
-      end
-    end
     
     if data["projects"]
       data["projects"].each do |p|
@@ -74,13 +43,34 @@ class ProjectImporter
     end
   end
   
-  def self.get_import_user
-    user_name = "Project Importer"
-    user = User.find_by_name "Project Importer"
-    if ( !user )
-      user = User.create! :name => user_name, :email => "pi@example.com", :uid => "project_importer"
+  private
+
+    def self.find_or_create_user name
+      user = User.find_by_name name
+      if !user
+        user = User.create :name => name
+      end
+      user
     end
-    user
-  end
+
+    def self.get_import_user
+      user_name = "Project Importer"
+      user = User.find_by_name "Project Importer"
+      if ( !user )
+        user = User.create! :name => user_name, :email => "pi@example.com", :uid => "project_importer"
+      end
+      user
+    end
+
+    def self.add_keyword project, name
+      name.downcase!
+      keyword = Keyword.find_by_name name
+      if !keyword
+        keyword = Keyword.create! :name => name
+      end
+      if !project.keywords.include? keyword
+        project.keywords << keyword
+      end
+    end
 
 end

@@ -103,7 +103,7 @@ class ProjectsController < ApplicationController
   def leave
     # FIXME: This is a validation
     if @project.aasm_state == "invention"
-      redirect_to project, error: "You can't leave this project as it's finished."
+      redirect_to @project, error: "You can't leave this project as it's finished."
     end
 
     @project.leave! current_user

@@ -44,6 +44,7 @@ gem 'sunspot_rails', "~> 2.0.0"
 gem 'sunspot_solr', "~> 2.0.0"
 # for seeds
 gem 'factory_girl_rails', :group => [:development, :test]
+gem 'faker', :group => [:development, :test]
 # as test framework
 gem 'rspec-rails', :group => [:development, :test]
 gem 'capybara', :group => [:development, :test]
@@ -54,6 +55,8 @@ group :development do
 end
 
 group :test do
+  # for measuring test coverage
+  gem 'coveralls', require: false
   # for cleaning the test DB
   gem 'database_cleaner'
   # for measuring test coverage

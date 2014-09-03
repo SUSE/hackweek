@@ -1,6 +1,7 @@
 class Episode < ActiveRecord::Base
   has_and_belongs_to_many :projects
-
+  validates :name, presence: true
+  
   def self.active
     Episode.where(active: true).first
   end

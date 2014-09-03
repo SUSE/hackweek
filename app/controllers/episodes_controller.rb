@@ -5,7 +5,7 @@ class EpisodesController < ApplicationController
 
   # GET /episodes
   def index
-    @episodes = Episode.all.order("start DESC")
+    @episodes = Episode.all.order("start_date DESC")
   end
 
   # GET /episodes/1
@@ -26,7 +26,7 @@ class EpisodesController < ApplicationController
     @episode = Episode.new(episode_params)
 
     if @episode.save
-      redirect_to episodes_path, notice: 'Episode was successfully created.'
+      redirect_to episode_path(@episode), notice: 'Episode was successfully created.'
     else
       render action: 'new'
     end
@@ -35,7 +35,7 @@ class EpisodesController < ApplicationController
   # PATCH/PUT /episodes/1
   def update
     if @episode.update(episode_params)
-      redirect_to episodes_path, notice: 'Episode was successfully updated.'
+      redirect_to episode_path(@episode), notice: 'Episode was successfully updated.'
     else
       render action: 'edit'
     end
@@ -44,13 +44,13 @@ class EpisodesController < ApplicationController
   # DELETE /episodes/1
   def destroy
     @episode.destroy
-    redirect_to episodes_url, notice: 'Episode was successfully destroyed.'
+    redirect_to episodes_path, notice: 'Episode was successfully destroyed.'
   end
 
   # PUT /episodes/1/activate
   def activate
     @episode.active=true
-    redirect_to episodes_url, notice: "#{@episode.name} is now active"
+    redirect_to episodes_path, notice: "#{@episode.name} is now active"
   end
 
   private
@@ -61,6 +61,6 @@ class EpisodesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def episode_params
-      params.require(:episode).permit(:name, :start, :end)
+      params.require(:episode).permit(:name, :start_date, :end_date)
     end
 end

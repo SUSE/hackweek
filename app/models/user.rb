@@ -1,5 +1,11 @@
 class User < ActiveRecord::Base
   devise :ichain_authenticatable, :ichain_registerable
+
+  validates :name, :presence => true
+  validates :email, :presence => true
+  validates_uniqueness_of :name
+  validates_uniqueness_of :email
+
   has_many :originated_projects, :foreign_key => 'originator_id', :class_name => Project
   has_many :updates, :foreign_key => 'author_id', dependent: :destroy
 
@@ -41,7 +47,7 @@ class User < ActiveRecord::Base
     end
   end
 
-def remove_keyword! name
+  def remove_keyword! name
     keyword = Keyword.find_by_name name
     if self.keywords.include? keyword
       self.keywords.delete(keyword)

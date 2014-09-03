@@ -9,8 +9,7 @@ notifications:
     on_success: change
     on_failure: change
 before_install:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
+  - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
 before_script: 
   - cp config/database.yml.example config/database.yml
   - cp config/application.yml.example config/application.yml
@@ -18,5 +17,7 @@ before_script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace  
   - RAILS_ENV=test bundle exec rake sunspot:solr:start
   - script/wait_for_solr.sh 8981
+script:
+  - 'bundle exec rspec --color --format documentation'
 after_script:
   - RAILS_ENV=test bundle exec rake sunspot:solr:stop
