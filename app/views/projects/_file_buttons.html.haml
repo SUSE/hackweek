@@ -1,23 +1,23 @@
 .btn-group
   - if can? :edit, project
-    = link_to(edit_project_path(@episode, project), :title=>'Edit this project?', :class=> "btn btn-default") do
+    = link_to(edit_project_path(@episode, project), :title=>'Edit this project?', :class=> "btn btn-default", id: "project#{project.to_param}-edit-link") do
       %i.fa.fa-pencil
     - if project.may_advance?
       - case project.aasm_state
         - when "project"
-          =link_to(advance_project_path(@episode, project), :method => :post,:title=>'Finish this project', :class=> "btn btn-default") do
+          =link_to(advance_project_path(@episode, project), :method => :post,:title=>'Finish this project', :class=> "btn btn-default", id: "project#{project.to_param}-advance-link") do
             %i.fa.fa-check
         - when "record"
-          =link_to(advance_project_path(@episode, project), :method => :post,:title=>'Revive this project', :class=> "btn btn-default") do
+          =link_to(advance_project_path(@episode, project), :method => :post,:title=>'Revive this project', :class=> "btn btn-default", id: "project#{project.to_param}-advance-link") do
             %i.fa.fa-bolt
     - if project.may_recess?
       - case project.aasm_state
         - when "idea"
-          =link_to(recess_project_path(@episode, project), :method => :post,:title=>'Archive this project', :class=> "btn btn-default") do
+          =link_to(recess_project_path(@episode, project), :method => :post,:title=>'Archive this project', :class=> "btn btn-default", id: "project#{project.to_param}-recess-link") do
             %i.fa.fa-archive
         - when "invention"
-          =link_to(recess_project_path(@episode, project), :method => :post,:title=>"Restart this project", :class=> "btn btn-default") do
+          =link_to(recess_project_path(@episode, project), :method => :post,:title=>"Restart this project", :class=> "btn btn-default", id: "project#{project.to_param}-recess-link") do
             %i.fa.fa-lightbulb-o
   -if can? :destroy, project
-    = link_to(project_path(@episode, project), :title=>'Delete this project?', :class=> "btn btn-default", :method => :delete, data: { confirm: "Are you sure you want to delete this project? This can't be undone!" }) do
+    = link_to(project_path(@episode, project), :title=>'Delete this project?', :class=> "btn btn-default", id: "project#{project.to_param}-delete-link", :method => :delete, data: { confirm: "Are you sure you want to delete this project? This can't be undone!" }) do
       %i.fa.fa-trash-o

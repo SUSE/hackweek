@@ -37,10 +37,10 @@
             - if @project.users.empty?
               No
             Hackers:
-          .well.well-sm
+          .well.well-sm#hackers
             - @project.users.each do |user|
               = link_to(user_path(user.id)) do
-                = image_tag user.gravatar_url(:size => "64"), alt: user.name, title: user.name, class: "img-thumbnail"
+                = image_tag user.gravatar_url(:size => "64"), alt: user.name, title: user.name, class: "img-thumbnail", id: "user#{user.id}-gravatar"
           - unless @project.aasm_state == "invention"
             %p.pull-right
               - if @project.users.empty? or !@project.users.include? current_user

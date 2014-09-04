@@ -13,9 +13,11 @@ FactoryGirl.define do
     end
     factory :project, class: Project do
       aasm_state 'project'
+      after(:create) { |project| project.users << create(:user) }
     end
     factory :invention, class: Project do
       aasm_state 'invention'
+      after(:create) { |project| project.users << create(:user) }
     end
     factory :record, class: Project do
       aasm_state 'record'
