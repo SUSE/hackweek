@@ -55,8 +55,6 @@ group :development do
 end
 
 group :test do
-  # for measuring test coverage
-  gem 'coveralls', require: false
   # for cleaning the test DB
   gem 'database_cleaner'
   # for measuring test coverage
