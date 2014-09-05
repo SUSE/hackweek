@@ -1,4 +1,4 @@
-%div{:class=>"alert alert-info", :id=> "announcement-#{@news.id}"}
+%div{:class=>"alert alert-warning", :id=> "announcement-#{@news.id}"}
   .media.text-center
     = render :partial => "announcements/file_buttons", :locals => {:announcement =>  @news }
     .media-body

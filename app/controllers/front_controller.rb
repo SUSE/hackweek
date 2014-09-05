@@ -7,15 +7,12 @@ class FrontController < ApplicationController
   def index
   end
   
-  def awards
-    render :layout => "application"
-  end
-
   def howto
     render :layout => "application"
   end
 
-  def news
+  def awards
     render :layout => "application"
   end
+
 end

@@ -1,6 +1,7 @@
 class AnnouncementsController < ApplicationController
 
   load_and_authorize_resource
+  skip_before_filter :authenticate_user!, :only => [ :index ]
   skip_before_filter :store_location, :only => [ :enroll ]
 
   # GET /announcements
@@ -29,7 +30,7 @@ class AnnouncementsController < ApplicationController
     @announcement.originator = current_user
 
     if @announcement.save
-      redirect_to announcements_path
+      redirect_to announcements_path, notice: "Announcement was successfully created."
     else
       render action: "new"
     end
@@ -40,7 +41,7 @@ class AnnouncementsController < ApplicationController
     @announcement = Announcement.find(params[:id])
 
     if @announcement.update_attributes(announcement_params)
-      redirect_to announcements_path
+      redirect_to announcements_path, notice: "Announcement was successfully updated."
     else
       render action: "edit" 
     end
@@ -52,7 +53,7 @@ class AnnouncementsController < ApplicationController
     @announcement.destroy
 
     respond_to do |format|
-      format.html { redirect_to announcements_path }
+      format.html { redirect_to announcements_path, notice: "Announcement was successfully deleted." }
       format.js { }
     end
   end

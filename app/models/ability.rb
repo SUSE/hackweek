@@ -25,11 +25,10 @@ class Ability
       # Everyone can:
       can :read, :all
       can [:join, :leave, :like, :dislike, :create], Project
-      can :enroll, Announcement
       # ...manage things they own
       can :manage, Project, :originator_id => user.id
       can :manage, User, :id => user.id
-      can [:edit, :update, :add_keyword, :delete_keyword, :advance, :recess], Project do |project|
+      can [:edit, :update, :add_keyword, :delete_keyword, :advance, :recess, :add_episode, :delete_episode], Project do |project|
         project.users.include? user
       end
 

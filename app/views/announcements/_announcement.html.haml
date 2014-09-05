@@ -1,0 +1,17 @@
+.media
+  = image_tag  "pin.png", :class => "media-object pull-left"
+  = render :partial => "announcements/file_buttons", :locals => {:announcement => announcement }
+  .media-body
+    %h4.media-heading
+      = announcement.title
+      %br
+      %small
+        = announcement.updated_at
+        by
+        = announcement.originator.name
+        - if can? :write, Announcement
+          %span.label.label-info
+            = pluralize(announcement.users.length, "user")
+            read this
+    %p
+      = simple_format(announcement.text)
