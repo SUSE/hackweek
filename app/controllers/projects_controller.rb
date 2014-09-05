@@ -55,7 +55,7 @@ class ProjectsController < ApplicationController
     @project.originator = current_user
 
     if @project.save
-      redirect_to project_path(@episode, @project)
+      redirect_to project_path(@episode, @project), notice: "Project was successfully created."
     else
       render action: "new"
     end

@@ -4,4 +4,4 @@
       %i.fa.fa-pencil
   -if can? :destroy, announcement
     = link_to(announcement_path(announcement), :title=>'Delete this announcement?', :class=> "btn btn-default btn-xs", :method => :delete, data: { confirm: "Are you sure you want to delete this announcement for all users? This can't be undone!" }) do
-      %i.fa.fa-remove
+      %i.fa.fa-times
