@@ -68,6 +68,9 @@ class Project < ActiveRecord::Base
   searchable do
     text :title
     text :description
+    text :comments do
+      comments.map { |comment| comment.text }
+    end
   end
 
   def join! user

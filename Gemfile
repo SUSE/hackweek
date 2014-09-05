@@ -42,6 +42,8 @@ gem 'mousetrap-rails'
 # as search engine
 gem 'sunspot_rails', "~> 2.0.0"
 gem 'sunspot_solr', "~> 2.0.0"
+# https://github.com/sunspot/sunspot/issues/600
+gem 'activerecord-deprecated_finders', require: 'active_record/deprecated_finders'
 # for seeds
 gem 'factory_girl_rails', :group => [:development, :test]
 gem 'faker', :group => [:development, :test]
@@ -59,4 +61,6 @@ group :test do
   gem 'database_cleaner'
   # for measuring test coverage
   gem 'coveralls', :require => false
+  # for testing the search
+  gem 'sunspot_test'
 end

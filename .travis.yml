@@ -15,9 +15,5 @@ before_script:
   - cp config/application.yml.example config/application.yml
   - cp config/secrets.yml.example config/secrets.yml
   - RAILS_ENV=test bundle exec rake db:migrate --trace  
-  - RAILS_ENV=test bundle exec rake sunspot:solr:start
-  - script/wait_for_solr.sh 8981
 script:
   - 'bundle exec rspec --color --format documentation'
-after_script:
-  - RAILS_ENV=test bundle exec rake sunspot:solr:stop
