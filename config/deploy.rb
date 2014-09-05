@@ -65,15 +65,15 @@ desc "Notifies the exception handler of the deploy."
 task :notify_errbit do
   revision = `git rev-parse HEAD`.strip
   user = ENV['USER']
-  queue "bundle exec rake hoptoad:deploy TO=#{rails_env} REVISION=#{revision} REPO=#{repository} USER=#{user}"
+  queue "RAILS_ENV=#{rails_env} bundle exec rake hoptoad:deploy TO=#{rails_env} REVISION=#{revision} REPO=#{repository} USER=#{user}"
 end
 
 desc "Restart solr."
 task :solr_restart do
-  queue "cd #{deploy_to!}/#{current_path!} && sudo -u wwwrun RAILS_ENV=production bundle exec rake sunspot:solr:force_restart"
+  queue "cd #{deploy_to!}/#{current_path!} && sudo -u wwwrun RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:force_restart"
 end
 
 desc "Reindex solr."
 task :solr_reindex do
-  queue "cd #{deploy_to!}/#{current_path!} && sudo -u wwwrun RAILS_ENV=production bundle exec rake sunspot:solr:reindex"
+  queue "cd #{deploy_to!}/#{current_path!} && sudo -u wwwrun RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:reindex"
 end
