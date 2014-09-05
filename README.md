@@ -21,6 +21,38 @@ and learn.
 * Ideas/Projects "needs" are matched to Users "haves"
 * Admins can rate project results
 
+## Hack it
+* [Fork this repository](https://help.github.com/articles/fork-a-repo)
+* Configure the rails app
+```shell
+cp config/database.yml.example config/database.yml
+cp config/application.yml.example config/application.yml
+cp config/secrets.yml.example config/secrets.yml
+```
+* Install the ruby gem bundle
+```shell
+bundle install
+```
+* Create the database
+```shell
+rake db:setup
+```
+* Run the search server
+```shell
+rake sunspot:solr:start
+```
+* Run the rails server
+```shell
+rails server
+```
+* Open http://0.0.0.0:3000 in your browser
+* [Start hacking](http://railsforzombies.org/)
+* [Test your changes](https://www.relishapp.com/rspec/rspec-core/docs)
+```shell
+rspec spec
+```
+* [Send pull requesst](https://help.github.com/articles/using-pull-requests)
+
 ## Resources
 * Design mockups of the rails app are in the design directory.
 * The project list for HackWeek9 is in the [Wiki](http://github.com/SUSE/hackweek/wiki).
