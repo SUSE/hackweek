@@ -137,7 +137,7 @@ class ProjectsController < ApplicationController
       @project.add_keyword! word, current_user
     end
 
-    redirect_to project_path(@episode, @project)
+    redirect_to project_path(@episode, @project), notice: "Added keywords #{keywords.join(', ')}"
   end
 
   # PUT /projects/1/delete_keyword
@@ -147,7 +147,7 @@ class ProjectsController < ApplicationController
       @project.remove_keyword! word, current_user
     end
 
-    redirect_to project_path(@episode, @project)
+    redirect_to project_path(@episode, @project), notice: "Removed keywords #{keywords.join(', ')}"
   end
 
   # PUT /projects/1/add_hackweek/1
@@ -156,13 +156,13 @@ class ProjectsController < ApplicationController
       @project.episodes << @subject
     end
 
-    redirect_to project_path(@episode, @project)
+    redirect_to project_path(@episode, @project), notice: "Added hackweek #{@subject.name}"
   end
 
   # DELETE /projects/1/delete_hackweek/2
   def delete_episode
     @project.episodes.delete(@subject)
-    redirect_to project_path(@episode, @project)
+    redirect_to project_path(@episode, @project), notice: "Removed hackweek #{@subject.name}"
   end
 
   private
