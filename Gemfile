@@ -2,8 +2,9 @@ source 'https://rubygems.org'
 
 # as framework
 gem 'rails', '~> 4.1.0'
-# as database
+# as databases
 gem 'mysql2'
+gem 'sqlite3'
 # for stylesheets
 gem 'sass-rails',   '~> 4.0.3'
 # for .js.coffee assets
@@ -50,11 +51,6 @@ gem 'faker', :group => [:development, :test]
 # as test framework
 gem 'rspec-rails', :group => [:development, :test]
 gem 'capybara', :group => [:development, :test]
-
-group :development do
-  # as the database
-  gem 'sqlite3'
-end
 
 group :test do
   # for cleaning the test DB

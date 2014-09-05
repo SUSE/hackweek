@@ -1,22 +1,18 @@
 require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
-# require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
-# require 'mina/rvm'    # for rvm support. (http://rvm.io)
 
-# Basic settings:
-#   domain       - The hostname to SSH to.
-#   port         - SSH port number.
-#   user         - Username in the server to SSH to.
-#   deploy_to    - Path to deploy into.
-#   repository   - Git repo to clone from. (needed by mina/git)
-#   branch       - Branch name to deploy. (needed by mina/git)
-
+# The hostname to SSH to
 set :domain, 'proxy-opensuse.suse.de'
+# SSH port number
 set :port, '2211'
+# Username in the server to SSH to
 set :user, 'root'
+# Path to deploy into
 set :deploy_to, '/srv/www/vhosts/suse.com/hackweek'
+# Git repo to clone from
 set :repository, 'https://github.com/SUSE/hackweek.git'
+# Branch name to deploy
 set :branch, 'master'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
@@ -56,11 +52,11 @@ task :deploy => :environment do
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
-    invoke :solr_restart
     invoke :notify_errbit
 
     to :launch do
       queue "/etc/init.d/apache2 restart"
+      invoke :solr_restart
     end
   end
 end
@@ -72,31 +68,12 @@ task :notify_errbit do
   queue "bundle exec rake hoptoad:deploy TO=#{rails_env} REVISION=#{revision} REPO=#{repository} USER=#{user}"
 end
 
-desc "Start solr."
-task :solr_start do
-  queue "cd #{deploy_to!}/#{current_path!} && sudo -u wwwrun RAILS_ENV=production bundle exec rake sunspot:solr:start"
-end
-
-desc "Stop solr."
-task :solr_stop do
-  queue "cd #{deploy_to!}/#{current_path!} && sudo -u wwwrun RAILS_ENV=production bundle exec rake sunspot:solr:stop"
-end
-
 desc "Restart solr."
 task :solr_restart do
-  invoke :solr_stop
-  invoke :solr_start
+  queue "cd #{deploy_to!}/#{current_path!} && sudo -u wwwrun RAILS_ENV=production bundle exec rake sunspot:solr:force_restart"
 end
 
 desc "Reindex solr."
 task :solr_reindex do
   queue "cd #{deploy_to!}/#{current_path!} && sudo -u wwwrun RAILS_ENV=production bundle exec rake sunspot:solr:reindex"
 end
-
-# For help in making your deploy script, see the Mina documentation:
-#
-#  - http://nadarei.co/mina
-#  - http://nadarei.co/mina/tasks
-#  - http://nadarei.co/mina/settings
-#  - http://nadarei.co/mina/helpers
-
