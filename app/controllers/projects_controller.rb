@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [ :index, :show, :archived, :finished, :newest, :popular, :biggest ]
   skip_before_filter :store_location, :only => [:join, :leave, :like, :dislike, :add_keyword, :delete_keyword ]
   skip_before_action :verify_authenticity_token, :only => [:add_keyword, :delete_keyword ]
+  skip_load_and_authorize_resource :only => :old_archived
   before_action :set_episode_id, :only => [:add_episode, :delete_episode]
 
   # GET /projects
@@ -38,6 +39,17 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   def show
     @new_comment = Comment.new
+  end
+
+  # GET /archive/projects/:id
+  def old_archived
+    begin
+      @project = Project.find_by!(title: params[:id])
+      redirect_to @project
+    rescue ActiveRecord::RecordNotFound
+      flash[:notice] = "Can't find project with title #{params[:id]}"
+      redirect_to :action => :archived
+    end
   end
 
   # GET /projects/new
