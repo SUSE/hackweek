@@ -14,5 +14,9 @@
  *= require selectize
  *= require selectize.bootstrap3
  *= require swipebox.css.scss
- *= require hackweek.css.scss
+ *= require background
+ *= require layout
+ *= require splash
+ *= require menues
+ *= require screenlocker
  */

@@ -1,0 +1,26 @@
+#splash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9000;
+  overflow: hidden;
+  .upper-gate {
+    background: image-url("door_up.png");
+    top: 0;
+    background-size: cover
+  }
+  .lower-gate {
+    background: image-url("door_down.png");
+    bottom: 0;
+    background-size: cover
+  }
+  .upper-gate, .lower-gate {
+    width: 100%;
+    background-position: top center;
+    background-repeat: no-repeat;
+    position: absolute;
+    background-size: cover;
+  }
+}

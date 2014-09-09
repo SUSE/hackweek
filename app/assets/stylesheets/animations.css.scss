@@ -1,0 +1,90 @@
+@mixin keyframes( $name ) {
+  @-webkit-keyframes #{$name} { @content }
+  @-moz-keyframes #{$name} { @content }
+  @-o-keyframes #{$name} { @content }
+  @-ms-keyframes #{$name} { @content }
+  @keyframes #{$name} { @content }
+}
+
+@include keyframes( circle ) {
+  0%{
+    transform:rotate(0deg)
+              translate(-185px)
+              rotate(0deg);
+  }
+  100%{
+    transform:rotate(360deg)
+              translate(-185px)
+              rotate(-360deg);
+  }
+}
+@include keyframes( circle ) {
+  0%{
+    transform:rotate(0deg)
+              translate(-185px)
+              rotate(0deg);
+  
+  }
+  100%{
+    transform:rotate(360deg)
+              translate(-185px)
+              rotate(-360deg);
+  }
+}
+
+@include keyframes( circleA ) {
+  0%{
+    transform:rotate(0deg)
+              translate(-170px)
+              rotate(0deg);
+  }
+  25%{
+    transform:rotate(90deg)
+              translate(-255px)
+              rotate(-90deg);
+  }
+  50%{
+    transform:rotate(180deg)
+              translate(-170px)
+              rotate(-180deg);
+  }
+  75%{
+    transform:rotate(270deg)
+              translate(-255px)
+              rotate(-270deg);
+  }
+  100%{
+    transform:rotate(360deg)
+              translate(-170px)
+              rotate(-360deg);
+  }
+}
+
+
+@include keyframes( circleB ) {
+  0%{
+    transform:rotate(0deg)
+              translate(130px)
+              rotate(-0deg);
+  }
+  25%{
+    transform:rotate(90deg)
+              translate(90px)
+              rotate(-90deg);
+  }
+  50%{
+    transform:rotate(180deg)
+              translate(130px)
+              rotate(-180deg);
+  }
+  75%{
+    transform:rotate(270deg)
+              translate(90px)
+              rotate(-270deg);
+  }
+  100%{
+    transform:rotate(360deg)
+              translate(130px)
+              rotate(-360deg);
+  }  
+}

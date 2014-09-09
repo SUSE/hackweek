@@ -1,0 +1,37 @@
+// style for menues
+@import 'variables';
+
+$distance-menu: 12px;
+
+#left-menu {
+  left: $distance-menu;
+}
+#right-menu {
+  right: $distance-menu;
+}
+#home-menu-contact {
+  color: $light-blue;
+  text-align: center;
+  position: absolute;
+  font-size: 11px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 200;
+  width: 100%;
+  bottom: -450px;
+  a {
+    color: $light-blue;
+  }
+  .info-footer, .home-console {
+    display: inline-block;
+  }
+  .home-console {
+    background: image-url("console-off.png");
+    width: 409px;
+    height: 78px
+  }
+} 
+#left-menu, #right-menu {
+  position: absolute;
+  bottom: $distance-menu;
+  display: none;
+}
