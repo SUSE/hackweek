@@ -61,12 +61,11 @@ Hackweek::Application.routes.draw do
   get "gallery", to: "gallery#index"
   get "search", to: "search#result", as: "search"
 
-  get "front", to: "front#index"
-  get "awards", to: "front#awards"
-  get "howto", to: "front#howto"
+  get "awards", to: "application#awards"
+  get "howto", to: "application#howto"
   get "news", to: "announcements#index"
   
   get 'user_root' => 'users#me'
-  root 'front#index'
+  root 'projects#index'
 
 end

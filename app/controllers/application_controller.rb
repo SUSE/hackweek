@@ -17,6 +17,14 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def howto
+    render :layout => "application"
+  end
+
+  def awards
+    render :layout => "application"
+  end
+
   def after_sign_out_path_for(resource_or_scope)
     projects_path
   end
