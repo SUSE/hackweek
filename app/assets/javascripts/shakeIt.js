@@ -105,7 +105,7 @@ function screenShaker() {
 	setTimeout(function() {
 		$.each(rotationObj, function(index, val) {
 			 setTimeout(function() {
-			 	$(".container").css({
+			 	$(".wrap").css({
 			 		"transform": "rotate("+val[0]+"deg)",
 		      "-ms-transform": "rotate("+val[0]+"deg)",
 		      "-webkit-transform": "rotate("+val[0]+"deg)",
