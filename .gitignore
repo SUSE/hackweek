@@ -26,6 +26,7 @@ solr/index
 # Ignore the gallery files
 /public/gallery/*
 /public/gallery/.thumbnails/*
+/public/system/*
 
 # Ignore the coverage files
 /coverage

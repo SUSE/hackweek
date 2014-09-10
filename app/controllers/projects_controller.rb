@@ -10,6 +10,8 @@ class ProjectsController < ApplicationController
   # GET /projects
   def index
     @projects = Project.current(@episode).active
+    @popular = Project.current(@episode).liked.order("likes_count DESC").first(5)
+    @new= Project.current(@episode).active.order("created_at ASC").first(5)
   end
 
   # GET /projects/popular
@@ -180,7 +182,7 @@ class ProjectsController < ApplicationController
   private
 
     def project_params
-      params.require(:project).permit(:description, :title)
+      params.require(:project).permit(:description, :title, :avatar)
     end
   
     def keyword_params

@@ -11,6 +11,7 @@
       .clearfix
       .page-header
         %h1
+          = image_tag @project.avatar.url(:thumb)
           = @project.title
           %br
           %small

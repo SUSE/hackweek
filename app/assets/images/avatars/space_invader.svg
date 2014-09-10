@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   sodipodi:docname="space_invader.svg"
+   inkscape:export-filename="/home/hvogel/Development/Apps/hackweek/app/assets/images/avatars/space_invader_small.png"
+   viewBox="0 0 256 256"
+   sodipodi:version="0.32"
+   inkscape:export-xdpi="22.5"
+   version="1.0"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:export-ydpi="22.5"
+   inkscape:version="0.48.4 r9939"
+   width="100%"
+   height="100%">
+  <defs
+     id="defs7" />
+  <sodipodi:namedview
+     id="base"
+     inkscape:zoom="1.4142136"
+     borderopacity="1.0"
+     inkscape:current-layer="svg2"
+     inkscape:cx="-18.643931"
+     inkscape:guide-bbox="true"
+     fill="#ef2929"
+     inkscape:window-maximized="0"
+     showgrid="false"
+     showguides="true"
+     bordercolor="#666666"
+     inkscape:window-x="50"
+     guidetolerance="10.0"
+     objecttolerance="10.0"
+     inkscape:window-y="27"
+     inkscape:window-width="1280"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     pagecolor="#ffffff"
+     gridtolerance="10.0"
+     inkscape:cy="24.591918"
+     inkscape:window-height="969" />
+  <path
+     id="rect1389"
+     sodipodi:nodetypes="ccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+     style="fill:#00ffff"
+     d="M 102.39835,59.663443 V 76.946222 H 64.531295 V 93.646308 H 52.066992 V 144.96517 H 203.93301 V 93.646308 H 190.99387 V 76.946222 H 153.60166 V 59.663443 H 102.40045 z M 89.934045,111.56502 h 24.927905 v 16.70007 H 89.934045 v -16.70007 z m 51.201205,0 h 24.9279 v 16.70007 h -24.9279 v -16.70007 z m -51.241126,32.57722 v 18.15823 H 76.994899 v 16.70008 H 52.066992 v 17.33601 h 25.363529 v -16.7526 h 24.927909 v -17.28278 h 12.93914 V 144.14294 H 89.894824 z m 25.402746,18.15823 v 17.28278 h 25.36353 v -17.28278 h -25.36353 z m 25.36353,0 h 12.50352 v 16.70008 h 25.36354 V 161.71778 H 166.06315 V 144.14224 H 140.6604 v 18.15823 z m 37.86706,16.70008 v 17.33601 h 25.40275 v -17.33601 h -25.40275 z"
+     inkscape:connector-curvature="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>space invaders</dc:title>
+        <dc:date>2010-09-16T21:33:09</dc:date>
+        <dc:description>well known space invaders monster</dc:description>
+        <dc:source>https://openclipart.org/detail/85117/space-invaders-by-fzap</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>fzap</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>game</rdf:li>
+            <rdf:li>monster</rdf:li>
+            <rdf:li>space invaders</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
