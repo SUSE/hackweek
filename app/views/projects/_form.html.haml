@@ -15,6 +15,9 @@
     
   .field
     = f.text_area :description, :rows => "20", :placeholder => "Add a detailed description of your idea. You can use markdown.", :class => 'form-control input-lg'
+  .field
+    = f.label(:avatar)
+    = f.file_field :avatar
   .actions
     %p
       = f.submit :class => "btn btn-success pull-right"

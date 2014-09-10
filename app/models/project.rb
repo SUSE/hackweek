@@ -21,6 +21,9 @@ class Project < ActiveRecord::Base
 
   has_and_belongs_to_many :episodes
 
+  has_attached_file :avatar, styles: { thumb: '64x64>' }, :default_url => :random_avatar
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
   after_create :create_initial_update
   after_create :assign_episode
 
@@ -172,5 +175,10 @@ class Project < ActiveRecord::Base
 
     def assign_episode
       self.episodes << Episode.active if Episode.active
+    end
+
+    def random_avatar
+      avatars = %w( space_alien space_raygun space_shuttle space_suit space_invader space_ship space_station )
+      "/assets/avatars/#{avatars.sample}_:style.png"
     end
 end
