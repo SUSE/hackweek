@@ -17,11 +17,10 @@
 //= require bootstrap
 //= require selectize
 //= require jquery.swipebox.js
-//= require screenLocker.js
+
+//= require openDaGate.js
 //= require shakeIt.js
 //= require spaceSurf.js
-
-
 // fix incompatibility of bootstraps .hidden class with jquery show()
 var show = $.fn.show;
 $.fn.show = function() {
@@ -29,3 +28,5 @@ $.fn.show = function() {
   this.removeClass('hide');
   return show.call(this);
 };
+
+
