@@ -6,33 +6,30 @@
   @keyframes #{$name} { @content }
 }
 
-@include keyframes( circle ) {
+
+// Element rotates on its own vertice
+@include keyframes (centercircular) {
   0%{
     transform:rotate(0deg)
-              translate(-185px)
-              rotate(0deg);
   }
   100%{
     transform:rotate(360deg)
-              translate(-185px)
-              rotate(-360deg);
-  }
-}
-@include keyframes( circle ) {
-  0%{
-    transform:rotate(0deg)
-              translate(-185px)
-              rotate(0deg);
-  
-  }
-  100%{
-    transform:rotate(360deg)
-              translate(-185px)
-              rotate(-360deg);
   }
 }
 
-@include keyframes( circleA ) {
+// Element rotates on its own vertice - inverse movement
+@include keyframes (centercircularreverse) {
+  0%{
+    transform:rotate(0deg)
+  }
+  100%{
+    transform:rotate(-360deg)
+  }
+}
+
+
+// menu with orbits
+@include keyframes (circleA) {
   0%{
     transform:rotate(0deg)
               translate(-170px)
@@ -61,7 +58,7 @@
 }
 
 
-@include keyframes( circleB ) {
+@include keyframes (circleB) {
   0%{
     transform:rotate(0deg)
               translate(130px)
