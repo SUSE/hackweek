@@ -36,6 +36,7 @@ bundle install
 * Create the database
 ```shell
 rake db:setup
+rake db:seed
 ```
 * Run the search server
 ```shell

@@ -33,16 +33,16 @@
 
       #left-menu.menu
         %ul.list-unstyled
-          - unless @user
+          - unless @current_user
             %li.menu-btn-login
               %a{:href => new_user_ichain_session_path}
                 .outerCircle
                 .innerCircle
           - else
             %li
-              = "Logged in as #{@user.name}"
-              My projects
-              Logout
+              = 'Logged in as '
+              = link_to @current_user.name, me_users_path
+              = link_to 'Log out', destroy_user_ichain_session_path, :method => :delete
 
           %li.menu-btn-twitter.row
             .col-xs-4
@@ -58,6 +58,14 @@
 
       / Right Menu - navigation
       %nav#right-menu.menu
+        %ul
+          - if @current_episode
+            %li
+              = link_to @current_episode.name, episode_path(@current_episode)
+
+          %li= link_to 'Announcements', announcements_path
+          %li= link_to 'All Episodes', episodes_path
+          %li= link_to 'All Projects', projects_path
 
       / Go Home button and contact
       #home-menu-contact

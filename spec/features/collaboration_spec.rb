@@ -12,7 +12,7 @@ feature "Collaboration" do
       click_link "Join this project"
     }.to change(Project.populated, :count).by(1)
     expect(page).to have_css("#user#{user.id}-gravatar")
-    expect(page).to have_text("Welcome to the project #{user.name}!")
+    expect(page).to have_text("Leave this project")
   end
 
   scenario "User leaves a project" do
