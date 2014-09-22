@@ -1,0 +1,79 @@
+!!!
+%html
+  %head
+    %title= content_for?(:title) ? "Hack Week: #{yield(:title)}" : 'Hack Week'
+    %meta{:content => 'initial-scale=1', :name => 'viewport'}
+    = favicon_link_tag 'favicon.gif'
+    = stylesheet_link_tag 'application', :media => 'all'
+    = javascript_include_tag 'application'
+    - if request.path == root_path
+      = javascript_include_tag 'intro'
+    - else
+      = javascript_include_tag 'show_menu'
+    = csrf_meta_tags
+
+  %body
+    #screenLock
+      .screenLockAligned
+        = image_tag('screen-lock/devices.png', class: 'devices')
+        .lockMessage
+          = image_tag('screen-lock/icons.png')
+          %h5
+            Please turn your screen into a Landscape position to see this website properly
+      %p.copyright www.hackweek.suse.com
+
+    #splash
+      .lower-gate
+      .upper-gate
+
+    .wrap
+      .container
+        .mainScreen
+          = yield
+
+      #left-menu.menu
+        %ul.list-unstyled
+          - unless @user
+            %li.menu-btn-login
+              %a{:href => new_user_ichain_session_path}
+                .outerCircle
+                .innerCircle
+          - else
+            %li
+              = "Logged in as #{@user.name}"
+              My projects
+              Logout
+
+          %li.menu-btn-twitter.row
+            .col-xs-4
+              = image_tag('menu-bar-twitter.png')
+
+            .col-xs-8
+              %p
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla dui,
+                vestibulum ut leo pellentesque, vestibulum pellentesque diam. Ut
+
+          %li.menu-btn-countdown
+            %p.counter= days_to_launch
+
+      / Right Menu - navigation
+      %nav#right-menu.menu
+
+      / Go Home button and contact
+      #home-menu-contact
+        .info-footer
+          EMAIL: HACKWEEK@SUSE.DE
+        .home-console
+        .info-footer
+          IRC: #HACKWEEK on Freenode
+
+    / asteroids for the background go here
+    = image_tag('asteroid.png', id: 'asteroid1', class: 'asteroid1')
+    / layered background -->
+    .nebula-down
+    .nebula-up
+    .bg-small-stars
+    .bg-stars
+
+    = render :partial => 'layouts/scripts'
+    = yield( :script )
