@@ -20,3 +20,12 @@
 //= require screenLocker.js
 //= require shakeIt.js
 //= require spaceSurf.js
+
+
+// fix incompatibility of bootstraps .hidden class with jquery show()
+var show = $.fn.show;
+$.fn.show = function() {
+  this.removeClass('hidden');
+  this.removeClass('hide');
+  return show.call(this);
+};
