@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.current(@episode).active
     @popular = Project.current(@episode).liked.order("likes_count DESC").first(5)
-    @new= Project.current(@episode).active.order("created_at ASC").first(5)
+    @new = Project.current(@episode).active.order("created_at ASC").first(5)
   end
 
   # GET /projects/popular

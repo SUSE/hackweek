@@ -60,9 +60,9 @@ class ApplicationController < ActionController::Base
 
   def set_current_episode
     if params[:episode].kind_of? String
-      @current_episode = Episode.find(params[:episode])
+      @current_episode = Episode.find_by(:id => params[:episode])
     elsif session[:episode]
-      @current_episode = Episode.find(session[:episode])
+      @current_episode = Episode.find_by(:id => session[:episode])
     end
     @current_episode = Episode.last unless @current_episode
     # and then we save the ID to the session
