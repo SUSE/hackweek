@@ -9,14 +9,15 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require strap-on.css.scss
+ *= require strap-on
  *= require font-awesome
  *= require selectize
  *= require selectize.bootstrap3
- *= require swipebox.css.scss
+ *= require swipebox
  *= require background
  *= require layout
  *= require splash
+ *= require general
  *= require menues
  *= require screenlocker
  */
