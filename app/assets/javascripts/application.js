@@ -17,7 +17,7 @@
 //= require bootstrap
 //= require selectize
 //= require jquery.swipebox.js
-
+//= require screenLocker.js
 //= require openDaGate.js
 //= require shakeIt.js
 //= require spaceSurf.js

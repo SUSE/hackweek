@@ -35,7 +35,7 @@ $(window).resize(function() {
 });
 
 function shakeTimeInterval() {
-	var valueTime = Math.floor((Math.random() * 2000) + 1500);
+	var valueTime = Math.floor((Math.random() * 20000) + 15000);
 	return valueTime;
 }
 
