@@ -21,6 +21,10 @@ class ApplicationController < ActionController::Base
     render :layout => "application"
   end
 
+  def frontpage
+    render :layout => "application"
+  end
+
   def awards
     render :layout => "application"
   end
