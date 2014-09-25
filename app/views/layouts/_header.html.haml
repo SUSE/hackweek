@@ -7,21 +7,7 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %ul.nav.navbar-nav.hidden-xs
-        %li.dropdown
-          = link_to(projects_path(@episode), {class: "navbar-brand"}) do
-            = @episode.name if @episode
-            = "All Hackweeks" unless @episode
-          = link_to('#', {class: "dropdown-toggle navbar-brand", "data-toggle"=>"dropdown"} ) do
-            %i.fa.fa-caret-square-o-down
-          %ul.dropdown-menu{:role => "menu"}
-            %li{:role => "presentation"}
-              = link_to(projects_path('all'), {title: "Projects for all hackweeks"}) do
-                All Hackweeks
-            - Episode.all.reverse.each do |episode|
-              %li{:role => "presentation"}
-                = link_to(projects_path(episode), {title: "Projects for #{episode.name}"}) do
-                  = episode.name
+      = image_tag "hackweek-logo.jpg", :class => "hackweek-logo"
     / Collect the nav links, forms, and other content for toggling
     .collapse.navbar-collapse.navbar-ex1-collapse
       - if user_signed_in?

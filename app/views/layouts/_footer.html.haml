@@ -2,13 +2,6 @@
   .container
     .row
       .col-sm-4
-        %h3
-          About Hack Week
-        %p{:style=>"text-align: justify;"}
-          Hack Week is the week where
-          %strong SUSE
-          engineers can experiment without limits. It's your opportunity to innovate, collaborate across teams, and learn.
-          Do what you want, but do it!
         %ul.nav.nav-pills
           %li
             = link_to(announcements_path) do
@@ -27,7 +20,6 @@
               %i.fa.fa-picture-o
               Pictures
       .col-sm-2.col-sm-offset-6.hidden-xs.text-center
-        %h3 &nbsp;
         = link_to "http://www.suse.com" do
           = image_tag  "suse_logo_w-tag_black.png", :class => "img-responsive", :alt => "SUSE logo" , :title => "Enterprise Linux you can rely on"
     .row
