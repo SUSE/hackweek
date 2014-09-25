@@ -13,7 +13,7 @@ set :deploy_to, '/srv/www/vhosts/suse.com/hackweek'
 # Git repo to clone from
 set :repository, 'https://github.com/SUSE/hackweek.git'
 # Branch name to deploy
-set :branch, 'master'
+set :branch, 'hackweek11frontpage'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
