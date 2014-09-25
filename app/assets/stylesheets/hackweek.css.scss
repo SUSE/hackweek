@@ -1,24 +1,27 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:500,300);
+
 html, body {
   height: 100%;
 }
-
+$green-interstellar: #00998f;
+@mixin Raleway {
+  font-family: 'Raleway', sans-serif;
+}
 .wrap{
   min-height: 100%;
   padding-top: 58px;
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNjY2MiPjwvcmVjdD4KPC9zdmc+");
+  background-image: url("landing-pg-bg.jpg");
 }
 
 .content {
   overflow:auto;
-  padding-bottom: 270px; /* this needs to be bigger than footer height*/
-  background: rgb(246, 246, 246); /* The Fallback */
-  background-color:rgba(246,246,246,0.7);
+  padding-bottom: 100px; /* this needs to be bigger than footer height*/
 }
 
 footer {
   position: relative;
-  margin-top: -250px; /* negative value of footer height */
-  height: 250px;
+  margin-top: -80px; /* negative value of footer height */
+  height: 80px;
   clear:both;
   padding-top:20px;
   padding-bottom: 50px;
@@ -37,10 +40,67 @@ footer {
 }
 
 .project-list-item:before {
-    display:block; 
-    position: relative; 
-    content:""; 
-    height:70px; 
-    margin:-70px 0 0; 
-    z-index: -1;
+  display:block; 
+  position: relative; 
+  content:""; 
+  height:70px; 
+  margin:-70px 0 0; 
+  z-index: -1;
 }
+.hackweek-logo {
+  margin-top: 13px;
+}
+.navbar-default {
+  background: #231f20;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #fff
+}
+.navbar-default .navbar-nav > li > a:hover {
+  color: $green-interstellar
+}
+.landingpage {
+  text-align: center;
+  background: url("landingpage/spaceship.png") no-repeat bottom right;
+  padding-top: 50px;
+  .create-new {
+    border-radius: 100px;
+    height: 130px;
+    width: 130px;
+    background: $green-interstellar;
+    color: #fff;
+    margin: 30px auto;
+    a {
+      color: #fff;
+      @include Raleway;
+      font-weight: 300;
+      font-size: 20px;
+      text-transform: uppercase;
+      padding: 35px 20px 20px 20px;
+      display: block
+    }
+    a:hover {
+      text-decoration: none
+    }
+  }
+  .create-new:hover {
+    background: #00514c
+  }
+  h4 {
+    width: 480px;
+    color: $green-interstellar;
+    font-weight: 300;
+    @include Raleway;
+    font-size: 21px;
+    text-transform: uppercase;
+    margin: auto
+  }
+  h4.labeled {
+    background: $green-interstellar;
+    color: #fff;
+    padding: 10px 0;
+    font-weight: 500;
+    margin-top: 8px;
+  }
+}
+
