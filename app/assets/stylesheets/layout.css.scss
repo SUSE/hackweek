@@ -1,11 +1,6 @@
 /* Starwars Hackweek */
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,200,700);
 
-@mixin raleway {
-  font-family: 'Raleway', sans-serif;
-  font-weight: 200
-}
-
 body, html {
   margin: 0;
   padding: 0;
@@ -36,7 +31,7 @@ ul {
   z-index: 6000;
   position: absolute;
   overflow: hidden;
-  min-height: 450px;
+  min-height: 580px;
   min-width: 900px;
 }
 .mainScreen {
@@ -44,6 +39,45 @@ ul {
   text-align: center;
   margin-right: auto;
   margin-left: auto;
+  .homepage-logo {
+    margin: 50px 0 20px 0
+  }
+  .social-objects-group {
+    display: inline-block;
+    margin: 5px 20px 0 0;
+    @include orange-text;
+  }
+  .top-new-projects {
+    overflow: hidden;
+    position: relative;
+    height: 400px;
+    background: rgba(24,154,153,0.08);
+    box-sizing: border-box;
+    border-top: 1px solid #00fffc;
+    border-bottom: 1px solid #00fffc;
+    .img-wrapper {
+      background: image-url("project-img-border.png") no-repeat;
+      width: 77px;
+      height: 77px;
+      img.media-object {
+        background: rgba(0, 255, 255, 0.5);
+        border-radius: 100px;
+        margin: 6px 0 0 7px;
+        display: inline
+      }  
+    }
+    .img-wrapper:hover {
+      -webkit-animation: centercircularreverse 10s linear infinite;
+      animation: centercircularreverse 10s linear infinite;
+    }
+    h3.orange-text {
+      text-transform: uppercase;
+      margin: 20px;
+    }
+    .media {
+      padding: 0 20px;
+    }
+  }
 }
 .menuGPS {
   background: url("../img/GPS-orbits.png") no-repeat center;

@@ -2,3 +2,21 @@
 $light-blue: #00fffc;
 
 $distance-menu: 12px;
+
+// also mixings go here
+@mixin orange-text {
+  color: #ffc55c;
+  //glow effect
+  text-shadow: 0px 0px 5px #eb5c1d;
+  @include raleway;
+}
+
+@mixin raleway {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 200
+}
+
+.orange-text {
+	@include orange-text;
+}
+

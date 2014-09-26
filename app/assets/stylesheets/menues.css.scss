@@ -1,22 +1,5 @@
 // style for menues
 
-@mixin orange-gradient {
-  background: #ffae1b; /* Old browsers */
-  background: -moz-linear-gradient(top,  #ffae1b 0%, #ffdb8f 99%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffae1b), color-stop(99%,#ffdb8f)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  #ffae1b 0%,#ffdb8f 99%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  #ffae1b 0%,#ffdb8f 99%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  #ffae1b 0%,#ffdb8f 99%); /* IE10+ */
-  background: linear-gradient(to bottom,  #ffae1b 0%,#ffdb8f 99%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffae1b', endColorstr='#ffdb8f',GradientType=0 ); /* IE6-9 */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  //glow effect
-  text-shadow: 0px 0px 5px #cf3f00;
-  @include raleway;
-  font-weight: 400
-}
-
 .menu {
   background: url("menu/menu-side-bg.png") no-repeat;
   height: 314px;
@@ -96,7 +79,7 @@
       position: absolute;
       top: 29px;
       right: 35px;
-      @include orange-gradient;
+      @include orange-text;
       font-size: 25px;
     }
   }

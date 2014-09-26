@@ -28,7 +28,9 @@
 
     .container
       .mainScreen
-        = yield
+        .row
+          .col-xs-8.col-xs-offset-2
+            = yield
 
       #left-menu.menu
         %ul.list-unstyled
