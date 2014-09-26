@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :store_location
   before_filter :authenticate_user!
+  skip_before_filter :authenticate_user!, :only => [:frontpage]
   #before_filter :load_news
   before_filter :set_episode
 
