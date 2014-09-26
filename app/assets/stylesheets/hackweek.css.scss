@@ -10,7 +10,7 @@ $green-interstellar: #00998f;
 .wrap{
   min-height: 100%;
   padding-top: 58px;
-  background-image: url("landing-pg-bg.jpg");
+  background: image-url("landing-pg-bg.jpg");
 }
 
 .content {
@@ -61,7 +61,7 @@ footer {
 }
 .landingpage {
   text-align: center;
-  background: url("landingpage/spaceship.png") no-repeat bottom right;
+  background: image-url("landingpage/spaceship.png") no-repeat bottom right;
   padding-top: 50px;
   .create-new {
     border-radius: 100px;
