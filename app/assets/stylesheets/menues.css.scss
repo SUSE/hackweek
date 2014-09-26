@@ -29,7 +29,6 @@
     height: 100%;
   }
   .menu-btn-login {
-    background: url("menu/menu-bar-login.png") no-repeat 0px 25px;
     height: 100px;
     width: 189px;
     margin-top: 7px;
@@ -40,8 +39,8 @@
       height: 89px;
       top: 13px;
       right: 1px;
-      // -webkit-animation: centercircular 80s linear infinite;
-      // animation: centercircular 80s linear infinite;
+      -webkit-animation: centercircularreverse 80s linear infinite;
+      animation: centercircularreverse 80s linear infinite;
     }
     .innerCircle {
       background: url("menu/menu-bar-login-inner.png") no-repeat ;
@@ -49,18 +48,26 @@
       height: 89px;
       top: 13px;
       right: 1px;
-      // -webkit-animation: centercircularreverse 80s linear infinite;
-      // animation: centercircularreverse 80s linear infinite;
+      -webkit-animation: centercircular 80s linear infinite;
+      animation: centercircular 80s linear infinite;
     }
     .outerCircle, .innerCircle {
       position: absolute;
     }
-    
+  }
+  .login-bg {
+    background: url("menu/menu-bar-login.png") no-repeat 0px 25px;
   }
   .menu-btn-login:hover {
-    .outerCircle, .innerCircle {
+    .outerCircle {
       -webkit-animation: centercircular 10s linear infinite;
       animation: centercircular 10s linear infinite;
+    }
+  }
+  .menu-btn-login:hover {
+    .innerCircle {
+      -webkit-animation: centercircularreverse 10s linear infinite;
+      animation: centercircularreverse 10s linear infinite;
     }
   }
   .menu-btn-twitter {

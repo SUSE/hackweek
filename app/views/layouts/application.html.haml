@@ -33,7 +33,7 @@
       #left-menu.menu
         %ul.list-unstyled
           - unless @current_user
-            %li.menu-btn-login
+            %li.menu-btn-login.login-bg
               %a{:href => new_user_ichain_session_path}
                 .outerCircle
                 .innerCircle
