@@ -1,15 +1,16 @@
 // style for menues
 
 .menu {
-  background: url("menu/menu-side-bg.png") no-repeat;
-  height: 314px;
-  width: 218px;
-  padding: 0 15px;
+  @include make-sm-column(2);
+  height: 100%;
   box-sizing: border-box;
   ul li a {
     display: block;
     width: 100%;
     height: 100%;
+  }
+  li {
+    padding-left: 10px;
   }
   .menu-btn-login {
     height: 100px;
@@ -85,12 +86,6 @@
   }
 }
 
-#left-menu {
-  left: $distance-menu;
-}
-#right-menu {
-  right: $distance-menu;
-}
 #home-menu-contact {
   color: $light-blue;
   text-align: center;
@@ -122,4 +117,7 @@
   position: absolute;
   bottom: $distance-menu;
   display: none;
+  height: 314px;
+  background: url("menu/menu-side-bg.png") no-repeat;
+  width: 218px;
 }

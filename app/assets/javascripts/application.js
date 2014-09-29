@@ -23,6 +23,7 @@
 //= require spaceSurf.js
 //= require ScrollBar.js
 //= require perfect-scrollbar.js
+//= require responsiveDashboard.js
 // fix incompatibility of bootstraps .hidden class with jquery show()
 var show = $.fn.show;
 $.fn.show = function() {

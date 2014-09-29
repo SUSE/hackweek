@@ -27,46 +27,47 @@
       .upper-gate
 
     .container
-      .mainScreen
+      .menu
+        #left-menu
+          %ul.list-unstyled
+            - unless @current_user
+              %li.menu-btn-login.login-bg
+                %a{:href => new_user_ichain_session_path}
+                  .outerCircle
+                  .innerCircle
+            - else
+              %li
+                = 'Logged in as '
+                = link_to @current_user.name, me_users_path
+                = link_to 'Log out', destroy_user_ichain_session_path, :method => :delete
+
+            %li.menu-btn-twitter.row
+              .col-xs-4
+                = image_tag('menu-bar-twitter.png')
+
+              .col-xs-8
+                %p
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla dui,
+                  vestibulum ut leo pellentesque, vestibulum pellentesque diam. Ut
+
+            %li.menu-btn-countdown
+              %p.counter= days_to_launch
+
+      .mainScreen.scrollbar
         .row
-          .col-xs-8.col-xs-offset-2
-            = yield
-
-      #left-menu.menu
-        %ul.list-unstyled
-          - unless @current_user
-            %li.menu-btn-login.login-bg
-              %a{:href => new_user_ichain_session_path}
-                .outerCircle
-                .innerCircle
-          - else
-            %li
-              = 'Logged in as '
-              = link_to @current_user.name, me_users_path
-              = link_to 'Log out', destroy_user_ichain_session_path, :method => :delete
-
-          %li.menu-btn-twitter.row
-            .col-xs-4
-              = image_tag('menu-bar-twitter.png')
-
-            .col-xs-8
-              %p
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla dui,
-                vestibulum ut leo pellentesque, vestibulum pellentesque diam. Ut
-
-          %li.menu-btn-countdown
-            %p.counter= days_to_launch
-
+          = yield
+      
       / Right Menu - navigation
-      %nav#right-menu.menu
-        %ul
-          - if @current_episode
-            %li
-              = link_to @current_episode.name, episode_path(@current_episode)
+      .menu
+        %nav#right-menu
+          %ul
+            - if @current_episode
+              %li
+                = link_to @current_episode.name, episode_path(@current_episode)
 
-          %li= link_to 'Announcements', announcements_path
-          %li= link_to 'All Episodes', episodes_path
-          %li= link_to 'All Projects', projects_path
+            %li= link_to 'Announcements', announcements_path
+            %li= link_to 'All Episodes', episodes_path
+            %li= link_to 'All Projects', projects_path
 
       / Go Home button and contact
       #home-menu-contact

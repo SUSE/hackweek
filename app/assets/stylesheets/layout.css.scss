@@ -33,14 +33,25 @@ ul {
   overflow: hidden;
   min-height: 580px;
   min-width: 900px;
+  padding: 0;
+}  
+.scrollbar {
+  overflow: hidden;
+  height: 700px;
 }
 .mainScreen {
   display: none;
+  background: rgba(24,154,153,0.08);
+  box-sizing: border-box;
+  border-top: 1px solid #00fffc;
+  border-bottom: 1px solid #00fffc;
+  @include make-sm-column(8);
   text-align: center;
   margin-right: auto;
   margin-left: auto;
+  margin-top: 20px;
   .homepage-logo {
-    margin: 50px 0 20px 0
+    margin: 30px 0 20px 0
   }
   .social-objects-group {
     display: inline-block;
@@ -48,19 +59,14 @@ ul {
     @include orange-text;
   }
   .top-new-projects {
-    overflow: hidden;
     position: relative;
-    height: 400px;
-    background: rgba(24,154,153,0.08);
-    box-sizing: border-box;
-    border-top: 1px solid #00fffc;
-    border-bottom: 1px solid #00fffc;
+    padding-bottom: 20px;
     .img-wrapper {
       background: image-url("project-img-border.png") no-repeat;
       width: 77px;
       height: 77px;
       img.media-object {
-        background: rgba(0, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 1);
         border-radius: 100px;
         margin: 6px 0 0 7px;
         display: inline
