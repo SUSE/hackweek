@@ -52,28 +52,32 @@
 
             %li.menu-btn-countdown
               %p.counter= days_to_launch
-
-      .mainScreen.scrollbar
-        .row
-          = yield
+      .mainscreen-wraper
+        .mainScreen.scrollbar
+          .row
+            = yield
+          / Go Home button and contact
+        #home-menu-contact
+          .info-footer
+            EMAIL: HACKWEEK@SUSE.DE
+          .home-console
+            .homeText Go Home
+            %a{ :href => "https://hackweek.suse.com/"}
+          .info-footer
+            IRC: #HACKWEEK on Freenode
       
       / Right Menu - navigation
       .menu
         %nav#right-menu
           %ul
-            %li= link_to 'Announcements', announcements_path
-            %li= link_to 'All Episodes', episodes_path
-            %li= link_to 'All Projects', projects_path
+            %li.menu-btn-mainMenu
+              //= link_to 'Announcements', announcements_path
+            %li.menu-btn-joinproject
+              = link_to '', projects_path 
+            %li.menu-btn-createproject
+              = link_to '', new_project_path
 
-      / Go Home button and contact
-      #home-menu-contact
-        .info-footer
-          EMAIL: HACKWEEK@SUSE.DE
-        .home-console
-          .homeText Go Home
-          %a{ :href => "https://hackweek.suse.com/"}
-        .info-footer
-          IRC: #HACKWEEK on Freenode
+
 
     / asteroids for the background go here
     = image_tag('asteroid.png', id: 'asteroid1', class: 'asteroid1')

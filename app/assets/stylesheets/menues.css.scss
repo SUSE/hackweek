@@ -9,9 +9,72 @@
     width: 100%;
     height: 100%;
   }
-  li {
+  ul {
     padding-left: 10px;
   }
+}
+
+#home-menu-contact {
+  color: $light-blue;
+  text-align: center;
+  position: absolute;
+  font-size: 11px;
+  @include raleway;
+  width: 100%;
+  bottom: 0px;
+  height: 78px;
+  a {
+    color: $light-blue;
+    text-align: center;
+    position: absolute;
+    font-size: 11px;
+    @include raleway;
+    width: 100%;
+    bottom: 0px;
+  }
+  .info-footer, .home-console {
+    display: inline-block;
+    vertical-align: bottom;
+  }
+  .home-console {
+    background: image-url("menu/console-off.png");
+    width: 409px;
+    height: 78px;
+    cursor: pointer;
+    a {
+      width: 409px;
+      height: 100%;
+      display: block;
+    }
+    .homeText {
+      border: 1px solid #00fffc;
+      background: rgba(24,154,153,0.08);
+      padding: 3px 6px;
+      text-transform: uppercase;
+      display: inline-block;
+      font-size: 16px;
+      visibility: hidden;
+      margin-top: 20px;
+    }
+  }
+  .home-console:hover {
+    background: image-url("menu/console-on.png");
+    .homeText {
+      visibility: visible
+    }
+  }
+} 
+
+#left-menu, #right-menu {
+  position: absolute;
+  bottom: $distance-menu;
+  display: none;
+  height: 314px;
+  background: image-url("menu/menu-side-bg.png") no-repeat;
+  width: $menuWidth;
+}
+
+#left-menu {
   .menu-btn-login {
     height: 100px;
     width: 189px;
@@ -56,7 +119,7 @@
   }
   .menu-btn-twitter {
     height: 96px;
-    width: 100%;
+    width: $menuWidth - 25px;
     padding-top: 10px;
     overflow: hidden;
     &.row {
@@ -86,62 +149,25 @@
   }
 }
 
-#home-menu-contact {
-  color: $light-blue;
-  text-align: center;
-  position: absolute;
-  font-size: 11px;
-  @include raleway;
-  width: 100%;
-  bottom: -450px;
-  height: 78px;
-  a {
-    color: $light-blue;
-    text-align: center;
-    position: absolute;
-    font-size: 11px;
-    @include raleway;
+#right-menu {
+  .menu-btn-mainMenu, 
+  .menu-btn-joinproject,
+  .menu-btn-createproject {
     width: 100%;
-    bottom: 0px;
+    height: 100px;
+    margin-top: 10px;
   }
-  .info-footer, .home-console {
-    display: inline-block;
-    vertical-align: bottom;
-  }
-  .home-console {
-    background: image-url("menu/console-off.png");
-    width: 409px;
-    height: 78px;
+  .menu-btn-mainMenu {
+    background: image-url("menu/menu-bar-menu-btn.png") 0 20px no-repeat;
     cursor: pointer;
-    a {
-      width: 409px;
-      height: 100%;
-      display: block;
-    }
-    .homeText {
-      border: 1px solid #00fffc;
-      background: rgba(24,154,153,0.08);
-      padding: 3px 6px;
-      text-transform: uppercase;
-      display: inline-block;
-      font-size: 16px;
-      visibility: hidden;
-      margin-top: 20px;
-    }
   }
-  .home-console:hover {
-    background: image-url("menu/console-on.png");
-    .homeText {
-      visibility: visible
-    }
+  .menu-btn-joinproject {
+    background: image-url("menu/menu-bar-join-a-project.png") no-repeat;
+    height: 90px;
   }
-  
-} 
-#left-menu, #right-menu {
-  position: absolute;
-  bottom: $distance-menu;
-  display: none;
-  height: 314px;
-  background: url("menu/menu-side-bg.png") no-repeat;
-  width: 218px;
+  .menu-btn-createproject {
+    background: image-url("menu/menu-bar-create-a-project.png") no-repeat;
+    margin-top: 0
+  }
 }
+
