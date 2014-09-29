@@ -20,7 +20,7 @@
     .wrap
       = render :partial => "layouts/header"
       .clear-top
-        .container
+        .container-fluid
           - if flash
             = render partial: "layouts/alert", flash: flash
           - if @news

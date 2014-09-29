@@ -60,10 +60,20 @@ footer {
 .navbar-default .navbar-nav > li > a:hover {
   color: $green-interstellar
 }
+.paceship-draw {
+  position: absolute;
+  bottom: 80px;
+  right: 20px;
+  text-align: right;
+  z-index: 50
+}
+
 .landingpage {
   text-align: center;
-  background: image-url("landingpage/spaceship.png") no-repeat bottom right;
-  padding-top: 50px;
+  padding-top: 10%;
+  width: 100%;
+  z-index: 100;
+  position: relative;
   .create-new {
     border-radius: 100px;
     height: 130px;
@@ -105,3 +115,36 @@ footer {
   }
 }
 
+@media (max-width: 580px) {
+  img[src*="hw-interstellar-logo"] {
+    width: 80%;
+  }
+  .landingpage h4 {
+    width: 80%;
+    font-size: 18px
+  }
+
+}
+@media (max-height: 700px) {
+  .landingpage {
+    padding-top: 6%;
+  }
+}
+@media (max-height: 800px) and (max-width: 1000px) {
+  .paceship-draw {
+    display: none;
+  }
+  .paceship-draw img {
+    width: 80%;
+  }
+}
+@media (max-width: 680px) {
+  .paceship-draw img {
+    width: 80%;
+  }
+}
+@media (max-height: 750px) and (max-width: 1000px) {
+  .paceship-draw {
+    display: none;
+  }
+}
