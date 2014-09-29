@@ -94,6 +94,7 @@
   @include raleway;
   width: 100%;
   bottom: -450px;
+  height: 78px;
   a {
     color: $light-blue;
     text-align: center;
@@ -105,11 +106,34 @@
   }
   .info-footer, .home-console {
     display: inline-block;
+    vertical-align: bottom;
   }
   .home-console {
     background: image-url("menu/console-off.png");
     width: 409px;
-    height: 78px
+    height: 78px;
+    cursor: pointer;
+    a {
+      width: 409px;
+      height: 100%;
+      display: block;
+    }
+    .homeText {
+      border: 1px solid #00fffc;
+      background: rgba(24,154,153,0.08);
+      padding: 3px 6px;
+      text-transform: uppercase;
+      display: inline-block;
+      font-size: 16px;
+      visibility: hidden;
+      margin-top: 20px;
+    }
+  }
+  .home-console:hover {
+    background: image-url("menu/console-on.png");
+    .homeText {
+      visibility: visible
+    }
   }
   
 } 

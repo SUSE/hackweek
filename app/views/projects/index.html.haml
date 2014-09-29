@@ -8,7 +8,7 @@
 .row.text-left
   .col-md-6
     .top-new-projects
-      %h3.orange-text Popular
+      %h3.orange-text Popular projects
       - @popular.each do |p|
         .media
           = link_to project_path(p), class: "pull-left" do
@@ -26,7 +26,7 @@
               = p.likes.count
   .col-md-6
     .top-new-projects
-      %h3.orange-text New
+      %h3.orange-text New projects
       - @new.each do |p|
         .media
           = link_to project_path(p), class: "pull-left" do
