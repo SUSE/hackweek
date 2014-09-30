@@ -21,7 +21,7 @@
   font-size: 11px;
   @include raleway;
   width: 100%;
-  bottom: 0px;
+  bottom: -450px;
   height: 78px;
   a {
     color: $light-blue;
@@ -47,8 +47,8 @@
       display: block;
     }
     .homeText {
-      border: 1px solid #00fffc;
-      background: rgba(24,154,153,0.08);
+      border: 1px solid $light-blue;
+      background: $light-blue-transparent;
       padding: 3px 6px;
       text-transform: uppercase;
       display: inline-block;

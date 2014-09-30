@@ -1,11 +1,16 @@
 // variables
 $light-blue: #00fffc;
+$light-blue-transparent: rgba(24,154,153,0.08);
+$orange: #ffc55c;
+$white: #F6F6F6;
+$black: #000;
 
 $distance-menu: 12px;
 
 $menuWidth: 218px;
 
-$orange: #ffc55c;
+$main-text-colour: $white;
+$website-background: $black;
 
 // also mixings go here
 @mixin orange-text {

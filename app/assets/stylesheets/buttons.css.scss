@@ -1,0 +1,9 @@
+.mainscreen-wraper {
+  .btn.btn-default, 
+	.btn.btn-success {
+	  border-color: $light-blue;
+	  background-color: $light-blue-transparent;
+	  color: $light-blue;
+	  font-weight: normal;
+	}	
+}

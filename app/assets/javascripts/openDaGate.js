@@ -16,11 +16,6 @@ $(window).on("load", function(){
 $(window).on("resize", function(){
   gatesSize();
 })
-$(document).on("ready", function(){
-  $("#home-menu-contact").css({
-    bottom: "-450px"
-  });
-})
 
 var gateSize = 450;
 var gatesOpened = false;

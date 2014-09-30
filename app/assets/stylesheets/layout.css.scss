@@ -10,8 +10,8 @@ body, html {
 }
 
 body {
-  color: #fff;
-  background: #000;
+  color: $main-text-colour;
+  background: $website-background;
   position: relative;
 }
 
@@ -22,6 +22,10 @@ h1, h2, h3, h4, h5, h6 {
 
 h1, h2, h3 {
   @include orange-text;
+}
+
+p {
+  color: $main-text-colour;
 }
 
 ul {
@@ -38,7 +42,8 @@ a {
     text-decoration: underline;
 }
 
-a:hover, a:focus {
+a:hover, 
+a:focus {
     color: darken($light-blue, 10);
 }
 
@@ -71,6 +76,7 @@ a:hover, a:focus {
   margin-left: auto;
   margin-top: 20px;
   position: relative;
+  padding-top: 20px;
   .homepage-logo {
     margin: 30px 0 20px 0
   }

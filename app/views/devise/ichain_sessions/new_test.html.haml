@@ -1,6 +1,6 @@
-.col-md-6.col-md-offset-3.content-box
+.col-md-6.col-md-offset-3
   %h3 Sign In (TEST MODE)
-  %p.text-muted
+  %p
     Just fill out all the details and you're logged in.
   = form_tag(@login_url, :method => :post, :enctype => 'application/x-www-form-urlencoded',:role => 'form', :id => "session") do
     .form-group
@@ -12,4 +12,4 @@
         = text_field_tag "attributes[#{field}]", nil, :class => 'form-control', :required => "required"
     .form-group
       = button_tag(type: 'submit', class: "btn btn-success pull-right") do
-        = content_tag(:strong, 'Sign In')
+        Sign In
