@@ -3,7 +3,7 @@
   %head
     %title= content_for?(:title) ? "Hack Week: #{yield(:title)}" : 'Hack Week'
     %meta{:content => 'initial-scale=1', :name => 'viewport'}
-    = favicon_link_tag 'favicon.gif'
+    = favicon_link_tag 'favicon.png'
     = stylesheet_link_tag 'application', :media => 'all'
     = javascript_include_tag 'application'
     - if request.path == root_path
