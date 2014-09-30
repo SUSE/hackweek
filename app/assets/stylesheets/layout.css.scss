@@ -8,21 +8,38 @@ body, html {
   width: 100%;
   overflow: hidden;
 }
+
 body {
   color: #fff;
   background: #000;
   position: relative;
 }
+
 h1, h2, h3, h4, h5, h6 {
   @include raleway;
-  margin: 0
+  margin: 0;
 }
+
+h1, h2, h3 {
+  @include orange-text;
+}
+
 ul {
   margin: 0;
   padding: 0;
   li {
     list-style: none;
   }
+}
+
+a {
+    color: $light-blue;
+    text-decoration: none;
+    text-decoration: underline;
+}
+
+a:hover, a:focus {
+    color: darken($light-blue, 10);
 }
 
 .container {
@@ -65,22 +82,7 @@ ul {
   .top-new-projects {
     position: relative;
     padding-bottom: 20px;
-    .img-wrapper {
-      background: image-url("project-img-border.png") no-repeat;
-      width: 77px;
-      height: 77px;
-      img.media-object {
-        background: rgba(255, 255, 255, 1);
-        border-radius: 100px;
-        margin: 6px 0 0 7px;
-        display: inline
-      }  
-    }
-    .img-wrapper:hover {
-      -webkit-animation: centercircularreverse 10s linear infinite;
-      animation: centercircularreverse 10s linear infinite;
-    }
-    h3.orange-text {
+    h3 {
       text-transform: uppercase;
       margin: 20px;
     }
@@ -89,6 +91,23 @@ ul {
     }
   }
 }
+
+.img-wrapper {
+  background: image-url("project-img-border.png") no-repeat;
+  width: 77px;
+  height: 77px;
+  img.media-object {
+    background: rgba(255, 255, 255, 1);
+    border-radius: 100px;
+    margin: 6px 0 0 7px;
+    display: inline
+  }  
+}
+.img-wrapper:hover {
+  -webkit-animation: centercircularreverse 10s linear infinite;
+  animation: centercircularreverse 10s linear infinite;
+}
+
 .menuGPS {
   background: url("../img/GPS-orbits.png") no-repeat center;
   background-size: 520px 520px;

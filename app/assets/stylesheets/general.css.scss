@@ -1,16 +1,5 @@
 
-a {
-    color: $light-blue;
-    text-decoration: none;
-}
-
-a:hover, a:focus {
-    color: $light-blue;
-    text-decoration: underline;
-}
-
 .content-box {
-    background: image-url("menu-side-bg.png") repeat-x;
     padding: 15px;
     box-sizing: border-box;
 }

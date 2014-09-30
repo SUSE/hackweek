@@ -8,7 +8,7 @@
 .row.text-left
   .col-md-6
     .top-new-projects
-      %h3.orange-text Popular projects
+      %h3 Popular projects
       - @popular.each do |p|
         .media
           = link_to project_path(p), class: "pull-left" do

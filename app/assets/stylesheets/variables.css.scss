@@ -5,9 +5,18 @@ $distance-menu: 12px;
 
 $menuWidth: 218px;
 
+$orange: #ffc55c;
+
 // also mixings go here
 @mixin orange-text {
-  color: #ffc55c;
+  color: $orange;
+  //glow effect
+  text-shadow: 0px 0px 5px #eb5c1d;
+  @include raleway;
+}
+
+@mixin orange-text-hover {
+  color: darken ($orange, 10);
   //glow effect
   text-shadow: 0px 0px 5px #eb5c1d;
   @include raleway;
