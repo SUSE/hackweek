@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
   load_and_authorize_resource
-  skip_before_filter :authenticate_user!, :only => [ :index, :show, :archived, :finished, :newest, :popular, :biggest ]
+  skip_before_filter :authenticate_user!, :only => [ :index, :show, :archived, :finished, :newest, :popular, :biggest, :overview ]
   skip_before_filter :store_location, :only => [:join, :leave, :like, :dislike, :add_keyword, :delete_keyword ]
   skip_before_action :verify_authenticity_token, :only => [:add_keyword, :delete_keyword ]
   skip_load_and_authorize_resource :only => :old_archived
@@ -9,6 +9,11 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
+    @projects = Project.current(@episode).active
+  end
+
+  # GET /projects/overview
+  def overview
     @projects = Project.current(@episode).active
     @popular = Project.current(@episode).liked.order("likes_count DESC").first(5)
     @new = Project.current(@episode).active.order("created_at ASC").first(5)

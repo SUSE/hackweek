@@ -6,10 +6,10 @@
   = image_tag "homepage-logo.png"
 
 .row.text-left
-  .col-md-12
+  .col-md-6
     .top-new-projects
-      %h3 All projects
-      - @projects.each do |p|
+      %h3 Popular projects
+      - @popular.each do |p|
         .media
           = link_to project_path(p), class: "pull-left" do
             .img-wrapper
@@ -24,4 +24,21 @@
             .social-objects-group
               %i.fa.fa-thumbs-up
               = p.likes.count
-
+  .col-md-6
+    .top-new-projects
+      %h3.orange-text New projects
+      - @new.each do |p|
+        .media
+          = link_to project_path(p), class: "pull-left" do
+            .img-wrapper
+              = image_tag p.avatar.url(:thumb), class: "media-object"
+          .media-body
+            = link_to project_path(p) do
+              %h5.media-heading
+                = p.title
+            .social-objects-group
+              %i.fa.fa-group
+              = pluralize(p.memberships.count, 'dev')
+            .social-objects-group
+              %i.fa.fa-thumbs-up
+              = p.likes.count
