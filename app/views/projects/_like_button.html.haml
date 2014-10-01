@@ -2,8 +2,8 @@
 - dislike = "display: none;" unless project.kudos.include? current_user
 .social-objects-group
   = link_to(dislike_project_path(project.id), :title => 'Dislike this project?', :class => "btn btn-default btn-xs", :id => "dislike-#{project.id}", :style => "#{dislike}", :remote => true) do
-    %i.fa.fa-thumbs-down 14
+    %i.fa.fa-thumbs-down Dislike
 - like = "display: none;" if project.kudos.include? current_user
 .social-objects-group
   =link_to(like_project_path(project.id), :title => 'Like this project', :id => "like-#{project.id}", :style => "#{like}", :remote => true) do
-    %i.fa.fa-thumbs-up 15
+    %i.fa.fa-thumbs-up Like

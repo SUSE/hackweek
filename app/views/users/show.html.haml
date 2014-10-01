@@ -93,20 +93,22 @@
       %aside
         .text-center
           = render :partial => "users/buttons", :locals => {:user =>  @user }
-        #keywords
-          %h4 Looking for projects around:
-          - if @user.keywords.empty?
-            %p Nothing at the moment
-          - else 
-            = render :partial => "keywords/show", :locals => {:keywords =>  @user.keywords }
-            -if can? :add_keyword, @user
-              = render :partial => "keywords/new", :locals => {:what => @user }
-        .col-sm-12
+        .wrap
+          #keywords
+            %h4 Looking for projects around:
+            - if @user.keywords.empty?
+              %p Nothing at the moment
+            - else 
+              = render :partial => "keywords/show", :locals => {:keywords =>  @user.keywords }
+              -if can? :add_keyword, @user
+                = render :partial => "keywords/new", :locals => {:what => @user }
+        .wrap
           %h4
             Activity
-            %span.pull-right
-              = render :partial => "updates/show_all_modal", :locals => { :updates => @user.updates }
+          %span.pull-right
+            = render :partial => "updates/show_all_modal", :locals => { :updates => @user.updates }
           %ul
           - @user.updates.reverse.first(5).each do |update|
             %li
               = render :partial => "updates/show", :locals => { :update => update }
+

@@ -88,7 +88,7 @@
               %span.label.label-primary{style: 'display: inline-block'}
                 = truncate(episode.name, length: 50)
                 = link_to(episode_project_path(:episode_id => episode.id), method: :delete) do
-                  %i.fa.fa-times{:style=>"color: #fff"}
+                  %i.fa.fa-times
           .btn-group.pull-right
             %button.btn.btn-success.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
               %i.fa.fa-plus

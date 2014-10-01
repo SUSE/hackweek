@@ -17,5 +17,32 @@
   background: transparent;
   border: 0px
 }
-
+.modal-open .modal {
+	background: rgba(0,0,0,0.5);
+	font-size: 13px;
+	p, h3 {
+		color: $gray;
+		text-shadow: none;
+	}
+	a {
+		color: darken($light-blue, 30%);
+	}
+	.modal-content {
+		overflow: hidden;
+		position: relative
+	}
+	.modal-body {
+		height: 500px;
+	}
+}
+.label.label-primary {
+  background-color: $orange;
+  color: darken($orange, 40%);
+  margin-bottom: 5px;
+}
+.label {
+	.fa.fa-times {
+		color: darken($orange, 40%);
+	}
+}
 

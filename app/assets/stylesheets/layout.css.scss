@@ -51,9 +51,18 @@ a:focus {
 aside {
   background-color: $light-blue-transparent;
   padding: 0 10px 10px;
+  font-size: 13px;
   .wrap {
     @include dotted-top-border;
-    padding: 15px 0
+    padding: 15px 0;
+  }
+  .btn-group {
+    margin: 15px auto;
+  }
+  .badge {
+    background-color: $orange;
+    color: darken($orange, 40%);
+    margin-bottom: 5px;
   }
 }
 
@@ -78,7 +87,6 @@ hr {
 .mainscreen-wraper {
   @include make-sm-column(8);
   height: 100%;
-  position: relative
 }
 .mainScreen {
   display: none;

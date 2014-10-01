@@ -8,7 +8,7 @@
         %button{:type=>"button", :class=>"close", "data-dismiss"=>"modal", "aria-hidden"=>"true"}×
         %h3{:id=>"UpdatesModal"}
           All Updates
-      .modal-body
+      .modal-body.scrollbar
         - updates.reverse_each do |update|
           %p
             = render :partial => "updates/show", :locals => { :update => update }
