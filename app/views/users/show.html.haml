@@ -1,16 +1,14 @@
 - content_for :title do
   = @user.name
 
-.col-sm-12
-  .row
-    .col-sm-12
-      .page-header
-        = image_tag(@user.gravatar_url(:size => "64"), :class => "img-thumbnail pull-left", :title => "#{@user.name}", :alt => @user.name)
-        %h1
-          = @user.name
-          %br
-          %small
-            = @user.email
+.col-sm-12.text-left
+  .page-header.media
+    .pull-left
+      = image_tag(@user.gravatar_url(:size => "64"), :class => "img-thumbnail", :title => "#{@user.name}", :alt => @user.name)
+    %h1
+      = @user.name
+    %small
+      = @user.email
   .row
     .col-sm-8
       %ul.nav.nav-tabs
@@ -92,23 +90,23 @@
                     %td{:class => "#{project.aasm_state}"}
                       = render :partial => "projects/list_item", :locals => {:project => project, :index => index }
     .col-sm-4
-      .col-sm-12
+      %aside
         .text-center
           = render :partial => "users/buttons", :locals => {:user =>  @user }
-      .col-sm-12#keywords
-        %h4 Looking for projects around:
-        - if @user.keywords.empty?
-          %p Nothing at the moment
-        - else 
-          = render :partial => "keywords/show", :locals => {:keywords =>  @user.keywords }
-          -if can? :add_keyword, @user
-            = render :partial => "keywords/new", :locals => {:what => @user }
-      .col-sm-12
-        %h4
-          Activity
-          %span.pull-right
-            = render :partial => "updates/show_all_modal", :locals => { :updates => @user.updates }
-        %ul
-        - @user.updates.reverse.first(5).each do |update|
-          %li
-            = render :partial => "updates/show", :locals => { :update => update }
+        #keywords
+          %h4 Looking for projects around:
+          - if @user.keywords.empty?
+            %p Nothing at the moment
+          - else 
+            = render :partial => "keywords/show", :locals => {:keywords =>  @user.keywords }
+            -if can? :add_keyword, @user
+              = render :partial => "keywords/new", :locals => {:what => @user }
+        .col-sm-12
+          %h4
+            Activity
+            %span.pull-right
+              = render :partial => "updates/show_all_modal", :locals => { :updates => @user.updates }
+          %ul
+          - @user.updates.reverse.first(5).each do |update|
+            %li
+              = render :partial => "updates/show", :locals => { :update => update }

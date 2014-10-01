@@ -1,0 +1,21 @@
+// Bootstrap overrides 
+.help-block {
+	color: darken($white, 24%);
+}
+.page-header {
+  border-bottom: 0px;	
+  h1 {
+  	margin-bottom: 0;
+  }
+}
+.well {
+	background: transparent;
+	@include dotted-border;
+}
+.img-thumbnail {
+  border-radius: 100px;
+  background: transparent;
+  border: 0px
+}
+
+

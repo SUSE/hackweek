@@ -37,7 +37,7 @@
     vertical-align: bottom;
   }
   .home-console {
-    background: image-url("menu/console-off.png");
+    background: image-url("menu/console.png") top;
     width: 409px;
     height: 78px;
     cursor: pointer;
@@ -58,7 +58,7 @@
     }
   }
   .home-console:hover {
-    background: image-url("menu/console-on.png");
+    background: image-url("menu/console.png") bottom;
     .homeText {
       visibility: visible
     }

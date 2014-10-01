@@ -18,6 +18,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   @include raleway;
   margin: 0;
+  margin-bottom: 10px;
 }
 
 h1, h2, h3 {
@@ -37,15 +38,29 @@ ul {
 }
 
 a {
-    color: $light-blue;
-    text-decoration: none;
-    text-decoration: underline;
+  color: $light-blue;
+  text-decoration: none;
+  text-decoration: underline;
 }
 
 a:hover, 
 a:focus {
-    color: darken($light-blue, 10);
+  color: darken($light-blue, 10%);
 }
+
+aside {
+  background-color: $light-blue-transparent;
+  padding: 0 10px 10px;
+  .wrap {
+    @include dotted-top-border;
+    padding: 15px 0
+  }
+}
+
+hr {
+  height: 0;
+  @include dotted-top-border;
+} 
 
 .container {
   width: 100%;
@@ -76,7 +91,7 @@ a:focus {
   margin-left: auto;
   margin-top: 20px;
   position: relative;
-  padding-top: 20px;
+  padding: 20px;
   .homepage-logo {
     margin: 30px 0 20px 0
   }
@@ -84,6 +99,9 @@ a:focus {
     display: inline-block;
     margin: 5px 20px 0 0;
     @include orange-text;
+    a {
+      @include orange-text;
+    }
   }
   .top-new-projects {
     position: relative;
@@ -102,7 +120,7 @@ a:focus {
   background: image-url("project-img-border.png") no-repeat;
   width: 77px;
   height: 77px;
-  img.media-object {
+  img.media-object, img {
     background: rgba(255, 255, 255, 1);
     border-radius: 100px;
     margin: 6px 0 0 7px;
