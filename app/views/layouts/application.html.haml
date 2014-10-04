@@ -47,8 +47,8 @@
 
               .col-xs-8
                 %p
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla dui,
-                  vestibulum ut leo pellentesque, vestibulum pellentesque diam. Ut
+                  %a{:href => 'https://twitter.com/hashtag/HWinterstellar?src=hash', :class => "hashtag"}
+                    = '#HWinterstellar'
 
             %li.menu-btn-countdown
               %p.counter= days_to_launch
@@ -56,7 +56,7 @@
         .mainScreen.scrollbar
           .row
             = yield
-          / Go Home button and contact
+        / Go Home button and contact
         #home-menu-contact
           .info-footer
             EMAIL: HACKWEEK@SUSE.DE

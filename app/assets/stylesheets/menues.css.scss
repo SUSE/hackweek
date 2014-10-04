@@ -1,7 +1,7 @@
 // style for menues
-
 .menu {
-  @include make-sm-column(2);
+  //@include make-sm-column(2);
+  width: 200px;
   height: 100%;
   box-sizing: border-box;
   ul li a {
@@ -12,6 +12,18 @@
   ul {
     padding-left: 10px;
   }
+}
+
+.menu:first-of-type {
+  padding-right: 0;
+  float: left;
+  padding-left: 15px;
+}
+
+.menu:last-of-type {
+  padding-left: 0;
+  float: right;
+  padding-right: 15px;
 }
 
 #home-menu-contact {
@@ -128,10 +140,19 @@
         padding: 0;
       }
     }
+    img[src*="menu-bar-twitter"] {
+      margin-top: 20px;
+    }
     p {
       font-size: 10px;
       color: $light-blue;
       font-weight: normal;
+    }
+    a.hashtag {
+      @include raleway;
+      font-size: 17px;
+      text-decoration: none;
+      margin-top: 30px;
     }
   }
   .menu-btn-countdown {
