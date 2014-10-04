@@ -115,7 +115,10 @@
     }
   }
   .login-bg {
-    background: url("menu/menu-bar-login.png") no-repeat 0px 25px;
+    background: image-url("menu/menu-bar-login.png") no-repeat 0px 25px;
+  }
+  .login-bg:hover {
+    background: image-url("menu/menu-bar-login.png") no-repeat 0px -68px;
   }
   .menu-btn-login:hover {
     .outerCircle {
@@ -140,23 +143,32 @@
         padding: 0;
       }
     }
-    img[src*="menu-bar-twitter"] {
-      margin-top: 20px;
+    .twitter-logo {
+      margin-top: 15px;
+      background: image-url("menu/menu-bar-twitter.png") top no-repeat;
+      height: 55px;
+      width: 59px;
     }
     p {
       font-size: 10px;
       color: $light-blue;
       font-weight: normal;
     }
-    a.hashtag {
+    p.hashtag {
       @include raleway;
       font-size: 17px;
       text-decoration: none;
       margin-top: 30px;
     }
+    a:hover .hashtag {
+      @include orange-text;
+    }
+    a:hover .twitter-logo {
+      background: image-url("menu/menu-bar-twitter.png") bottom no-repeat;
+    }
   }
   .menu-btn-countdown {
-    background: url("menu/menu-bar-days-to-launch.png") no-repeat;
+    background: image-url("menu/menu-bar-days-to-launch.png") no-repeat;
     height: 96px;
     width: 189px;
     position: relative;
@@ -175,20 +187,30 @@
   .menu-btn-joinproject,
   .menu-btn-createproject {
     width: 100%;
-    height: 100px;
     margin-top: 10px;
-  }
-  .menu-btn-mainMenu {
-    background: image-url("menu/menu-bar-menu-btn.png") 0 20px no-repeat;
     cursor: pointer;
   }
+  .menu-btn-mainMenu {
+    background: image-url("menu/menu-bar-menu-btn.png") top no-repeat;
+    height: 78px;
+    margin-top: 30px;
+  }
+  .menu-btn-mainMenu:hover {
+    background: image-url("menu/menu-bar-menu-btn.png") bottom no-repeat;
+  }
   .menu-btn-joinproject {
-    background: image-url("menu/menu-bar-join-a-project.png") no-repeat;
-    height: 90px;
+    background: image-url("menu/menu-bar-join-a-project.png") top no-repeat;
+    height: 83px;
+  }
+  .menu-btn-joinproject:hover {
+    background: image-url("menu/menu-bar-join-a-project.png") bottom no-repeat;
   }
   .menu-btn-createproject {
-    background: image-url("menu/menu-bar-create-a-project.png") no-repeat;
-    margin-top: 0
+    background: image-url("menu/menu-bar-create-a-project.png") top no-repeat;
+    height: 89px;
+  }
+  .menu-btn-createproject:hover {
+    background: image-url("menu/menu-bar-create-a-project.png") bottom no-repeat;
   }
 }
 

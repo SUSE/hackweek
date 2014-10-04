@@ -42,12 +42,11 @@
                 = link_to 'Log out', destroy_user_ichain_session_path, :method => :delete
 
             %li.menu-btn-twitter.row
-              .col-xs-4
-                = image_tag('menu-bar-twitter.png')
-
-              .col-xs-8
-                %p
-                  %a{:href => 'https://twitter.com/hashtag/HWinterstellar?src=hash', :class => "hashtag"}
+              %a{:href => 'https://twitter.com/hashtag/HWinterstellar?src=hash', :target => "_blank"}
+                .col-xs-4
+                  .twitter-logo
+                .col-xs-8
+                  %p.hashtag
                     = '#HWinterstellar'
 
             %li.menu-btn-countdown
