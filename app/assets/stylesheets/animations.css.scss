@@ -85,3 +85,58 @@
               rotate(-360deg);
   }  
 }
+
+@include keyframes (circleC) {
+  0%{
+    transform:rotate(0deg)
+              translate(230px)
+              rotate(-0deg);
+  }
+  25%{
+    transform:rotate(90deg)
+              translate(170px)
+              rotate(-90deg);
+  }
+  50%{
+    transform:rotate(180deg)
+              translate(230px)
+              rotate(-180deg);
+  }
+  75%{
+    transform:rotate(270deg)
+              translate(170px)
+              rotate(-270deg);
+  }
+  100%{
+    transform:rotate(360deg)
+              translate(230px)
+              rotate(-360deg);
+  }  
+}
+@include keyframes (circleD) {
+  0%{
+    transform:rotate(0deg)
+              translate(230px)
+              rotate(-0deg);
+  }
+  25%{
+    transform:rotate(90deg)
+              translate(170px)
+              rotate(-90deg);
+  }
+  50%{
+    transform:rotate(180deg)
+              translate(230px)
+              rotate(-180deg);
+  }
+  75%{
+    transform:rotate(270deg)
+              translate(170px)
+              rotate(-270deg);
+  }
+  100%{
+    transform:rotate(360deg)
+              translate(230px)
+              rotate(-360deg);
+  }  
+}

@@ -88,3 +88,18 @@
 
     = render :partial => 'layouts/scripts'
     = yield( :script )
+
+    / menu to general information
+    #gps-menu
+      .gps-message
+        Press the key ESC to exit the GPS or 
+        %span.close-gps clic here
+      .menu-gps
+        .circle.news
+          = link_to 'news', announcements_path
+        .circle.photos
+          = link_to 'Photos', gallery_path
+        .circle.about
+          = link_to 'About', howto_path
+
+
