@@ -81,6 +81,11 @@ hr {
   min-width: 900px;
   padding: 0;
 }  
+
+.modal-backdrop {
+  z-index: 90;
+}
+ 
 .scrollbar {
   overflow: hidden;
 }
