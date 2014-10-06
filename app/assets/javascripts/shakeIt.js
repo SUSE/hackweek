@@ -21,7 +21,7 @@ $(window).on("load", function() {
 	//get initial screen resolution
   screenWidth = $(window).width();
 	screenHeight = $(window).height();
-	$("#asteroid1").css({
+	$(".asteroid").css({
     "top": initialX,
     "right": initialY,
     "display": "block"
@@ -105,7 +105,7 @@ function screenShaker() {
 	setTimeout(function() {
 		$.each(rotationObj, function(index, val) {
 			 setTimeout(function() {
-			 	$(".wrap").css({
+			 	$(".container").css({
 			 		"transform": "rotate("+val[0]+"deg)",
 		      "-ms-transform": "rotate("+val[0]+"deg)",
 		      "-webkit-transform": "rotate("+val[0]+"deg)",
@@ -119,12 +119,12 @@ function screenShaker() {
 //function that makes the asteroid show on screen
 function asteroidPassing() {
 	screenShaker();
-	$("#asteroid1").animate({
+	$(".asteroid").animate({
 		top: screenHeight-200,
 		right: screenWidth+250},
 		5000, function() {
 		  setTimeout(asteroidPassing, shakeTimeInterval());
-		  $("#asteroid1").css({
+		  $(".asteroid").css({
 		    "top": initialX,
 		    "right": initialY
 			});
