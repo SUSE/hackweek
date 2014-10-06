@@ -65,7 +65,7 @@
             EMAIL: HACKWEEK@SUSE.DE
           .home-console
             .homeText Go Home
-            %a{ :href => "https://hackweek.suse.com/"}
+            = link_to '', root_path
           .info-footer
             IRC: #HACKWEEK on Freenode
       
@@ -74,7 +74,7 @@
         %nav#right-menu
           %ul
             %li.menu-btn-mainMenu
-              //= link_to 'Announcements', announcements_path
+            /= link_to 'Announcements', announcements_path
             %li.menu-btn-joinproject
               = link_to '', projects_path 
             %li.menu-btn-createproject
@@ -97,7 +97,7 @@
     #gps-menu
       .gps-message
         Press the key ESC to exit the GPS or 
-        %span.close-gps clic here
+        %span.close-gps click here
       .menu-gps
         .circle.news
           = link_to 'News', announcements_path
@@ -105,5 +105,3 @@
           = link_to 'Photos', gallery_path
         .circle.about
           = link_to 'About', howto_path
-
-
