@@ -89,9 +89,11 @@ hr {
 .scrollbar {
   overflow: hidden;
 }
+
 .mainscreen-wraper {
-  @include make-sm-column(8);
+  @include make-md-column(8);
   height: 100%;
+  float: left;
 }
 .mainScreen {
   display: none;
@@ -159,6 +161,7 @@ hr {
     display: inline
   }  
 }
+
 .img-wrapper:hover {
   -webkit-animation: centercircularreverse 10s linear infinite;
   animation: centercircularreverse 10s linear infinite;

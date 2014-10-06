@@ -25,6 +25,7 @@
 //= require perfect-scrollbar.js
 //= require responsiveDashboard.js
 //= require GPS.js
+//= require mainscreen-risizer.js
 // fix incompatibility of bootstraps .hidden class with jquery show()
 var show = $.fn.show;
 $.fn.show = function() {
