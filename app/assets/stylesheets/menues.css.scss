@@ -92,7 +92,7 @@
     margin-top: 7px;
     position: relative;
     .outerCircle {
-      background: url("menu/menu-bar-login-outer.png") no-repeat;
+      background: image-url("menu/menu-bar-login-outer.png") no-repeat;
       width: 89px;
       height: 89px;
       top: 13px;
@@ -101,7 +101,7 @@
       animation: centercircularreverse 80s linear infinite;
     }
     .innerCircle {
-      background: url("menu/menu-bar-login-inner.png") no-repeat ;
+      background: image-url("menu/menu-bar-login-inner.png") no-repeat ;
       width: 89px;
       height: 89px;
       top: 13px;
