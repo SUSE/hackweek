@@ -6,10 +6,6 @@
     = favicon_link_tag 'favicon.png'
     = stylesheet_link_tag 'application', :media => 'all'
     = javascript_include_tag 'application'
-    - if request.path == root_path
-      = javascript_include_tag 'intro'
-    - else
-      = javascript_include_tag 'show_menu'
     = csrf_meta_tags
 
   %body

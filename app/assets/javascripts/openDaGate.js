@@ -9,13 +9,6 @@
 ╱╱╱╰━━╯http://cynt.co.nf////////////////////
 ////////////////////////////////////////////
 */
-// javascript to open the gates as a splash screen
-$(window).on("load", function(){
-  gatesSize();
-})
-$(window).on("resize", function(){
-  gatesSize();
-})
 
 var gateSize = 450;
 var gatesOpened = false;

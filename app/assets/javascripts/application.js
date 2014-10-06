@@ -25,7 +25,9 @@
 //= require perfect-scrollbar.js
 //= require responsiveDashboard.js
 //= require GPS.js
+//= require openDaGate.js
 //= require mainscreen-risizer.js
+
 // fix incompatibility of bootstraps .hidden class with jquery show()
 var show = $.fn.show;
 $.fn.show = function() {
@@ -35,3 +37,21 @@ $.fn.show = function() {
 };
 
 
+// javascript to open the gates as a splash screen
+$(document).ready(function () {
+  if (window.location.pathname == '/') {
+    gatesSize()
+  } else {
+    $("#splash").remove();
+    $("#home-menu-contact").css({bottom: "0px"});
+    $("#left-menu").show();
+    $("#right-menu").show();
+    $(".mainScreen").show();
+  }
+})
+
+$(window).on("resize", function(){
+  if (window.location.pathname == '/') {
+    gatesSize();
+  }
+})
