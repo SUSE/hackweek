@@ -113,6 +113,18 @@
       position: absolute;
     }
   }
+  .welcomeMsg {
+    padding-top: 35px;
+    @include raleway;
+    .row {
+      margin-right: 0;
+      margin-left: 0;
+    }
+    a.username {
+      display: inline-block;
+      height: auto
+    }
+  }
   .login-bg {
     background: image-url("menu/menu-bar-login.png") no-repeat 0px 25px;
   }

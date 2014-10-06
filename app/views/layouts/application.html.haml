@@ -29,17 +29,21 @@
     .container
       .menu
         #left-menu
-          %ul.list-unstyled
+          %ul
             - unless @current_user
               %li.menu-btn-login.login-bg
                 %a{:href => new_user_ichain_session_path}
                   .outerCircle
                   .innerCircle
             - else
-              %li
-                = 'Logged in as '
-                = link_to @current_user.name, me_users_path
-                = link_to 'Log out', destroy_user_ichain_session_path, :method => :delete
+              %li.menu-btn-login.welcomeMsg
+                .row
+                  .col-xs-12
+                    = 'Welcome Agent'
+                  .col-xs-9
+                    = link_to @current_user.name, me_users_path, :class => "username"
+                  .col-xs-3.text-right
+                    = link_to "<i class='fa fa-sign-out'></i>".html_safe, destroy_user_ichain_session_path, :method => :delete
 
             %li.menu-btn-twitter.row
               %a{:href => 'https://twitter.com/hashtag/HWinterstellar?src=hash', :target => "_blank"}
