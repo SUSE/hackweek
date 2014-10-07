@@ -14,9 +14,9 @@ class ProjectsController < ApplicationController
 
   # GET /projects/overview
   def overview
-    @projects = Project.current(@episode).active
-    @popular = Project.current(@episode).liked.order("likes_count DESC").first(5)
-    @new = Project.current(@episode).active.order("created_at ASC").first(5)
+    @projects = Project.current(Episode.active).active
+    @popular = Project.current(Episode.active).liked.order("likes_count DESC").first(5)
+    @new = Project.current(Episode.active).active.order("created_at ASC").last(5)
   end
 
   # GET /projects/popular

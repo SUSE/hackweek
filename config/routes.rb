@@ -23,6 +23,7 @@ Hackweek::Application.routes.draw do
         get 'newest'
         get 'popular'
         get 'biggest'
+        get 'overview'
       end
       member do
         get 'like'

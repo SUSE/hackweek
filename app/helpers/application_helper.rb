@@ -16,8 +16,8 @@ module ApplicationHelper
   end
 
   def days_to_launch
-    if @current_episode
-      @current_episode.start_date.mjd - DateTime.now.mjd
+    if @episode
+      @episode.start_date.mjd - DateTime.now.mjd
     else
      '//'
     end

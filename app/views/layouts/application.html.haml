@@ -72,9 +72,9 @@
             %li.menu-btn-mainMenu
             /= link_to 'Announcements', announcements_path
             %li.menu-btn-joinproject
-              = link_to '', projects_path 
+              = link_to '', projects_path(@episode)
             %li.menu-btn-createproject
-              = link_to '', new_project_path
+              = link_to '', new_project_path(@episode)
 
 
 
