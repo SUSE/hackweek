@@ -1,5 +1,5 @@
-// Bootstrap
-@import "bootstrap";
+@import "bootstrap/mixins";
+@import "bootstrap/variables";
 
 // Include of all necessary files
 @import "variables";
@@ -13,4 +13,3 @@
 @import "scrollbar";
 @import "buttons";
 @import "bootstrap-overrides";
-
