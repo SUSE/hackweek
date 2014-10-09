@@ -1,114 +1,114 @@
 - content_for :title do
   = @project.title
 
-.col-sm-12.text-left
-  .row
-    .col-xs-6
-      - if @project.previous
-        =   button_to 'Previous', @project.previous, :id => "previous_link", :method => :get, :class => "btn btn-default btn-xs pull-left", :title=> "Try pressing 'j' on your keyboard.."
-    .col-xs-6
-      - if @project.next
-        = button_to 'Next', @project.next, :id => "next_link", :method => :get, :class => "btn btn-default btn-xs pull-right", :title => "Try pressing 'k' on your keyboard.."
-  .page-header.media
-    .pull-left
-      .img-wrapper
-        = image_tag @project.avatar.url(:thumb)
-    %h1
-      = @project.title
-    %small
-      = render :partial => "projects/state_name", :locals => {:project =>  @project }
-      by
-      = link_to user_path(@project.originator) do
-        = @project.originator.name
-      = render :partial => "projects/like_button", :locals => {:project =>  @project }
-    %span.help-block
+.row
+  .col-sm-12.text-left
+    .row
+      .col-xs-6
+        - if @project.previous
+          =   button_to 'Previous', @project.previous, :id => "previous_link", :method => :get, :class => "btn btn-default btn-xs pull-left", :title=> "Try pressing 'j' on your keyboard.."
+      .col-xs-6
+        - if @project.next
+          = button_to 'Next', @project.next, :id => "next_link", :method => :get, :class => "btn btn-default btn-xs pull-right", :title => "Try pressing 'k' on your keyboard.."
+    .page-header.media
+      .pull-left
+        .img-wrapper
+          = image_tag @project.avatar.url(:thumb)
+      %h1
+        = @project.title
       %small
-        = render :partial => "projects/info", :locals => {:project => @project }
-  .row
-    .col-sm-8
-      :markdown
-        #{@project.description}
-      %hr
-        %h3
-          Comments
-        %ul.media-list
-          = render :partial => 'comments/comment', :collection => @project.comments
-        %p
-          - if current_user
-            = render :partial => 'comments/help'
-            = form_for [ @project, @new_comment ], url: project_comments_url(@project), html: {role: "form"} do |f|
-              %p
-              = f.text_area :text, :placeholder => "Your comment. You can use markdown.", :class => 'form-control input-lg', :required => "required"
-              %p
-              = button_tag(type: 'submit', class: "btn btn-success pull-right") do
-                %i.fa.fa-plus
-                Add Comment
-          - else
-            = link_to 'Add a comment', new_project_comment_path(@episode, @project ), :class => 'btn btn-default'
-    
-    .col-sm-4
-      %aside
-        = render :partial => "projects/file_buttons", :locals => {:project =>  @project }
-        %h4
-          - if @project.users.empty?
-            No
-          Hackers:
-        .well.well-sm#hackers
-          - @project.users.each do |user|
-            = link_to(user_path(user.id)) do
-              = image_tag user.gravatar_url(:size => "64"), alt: user.name, title: user.name, class: "img-thumbnail", id: "user#{user.id}-gravatar"
-        - unless @project.aasm_state == "invention"
-          %p.pull-right
-            - if @project.users.empty? or !@project.users.include? current_user
-              = link_to(join_project_path(@episode, @project), :method => :post, :class => "btn btn-success") do
-                %i.fa.fa-plus
-                Join this project
-            - if @project.users.include? current_user
-              = link_to(leave_project_path(@episode, @project), :method => :post, :class => "btn btn-warning") do
-                %i.fa.fa-minus
-                Leave this project
-          .clearfix
-        .wrap
-          %h4
-            Looking for mad skills in:
+        = render :partial => "projects/state_name", :locals => {:project =>  @project }
+        by
+        = link_to user_path(@project.originator) do
+          = @project.originator.name
+        = render :partial => "projects/like_button", :locals => {:project =>  @project }
+      %span.help-block
+        %small
+          = render :partial => "projects/info", :locals => {:project => @project }
+    .row
+      .col-sm-8
+        :markdown
+          #{@project.description}
+        %hr
+          %h3
+            Comments
+          %ul.media-list
+            = render :partial => 'comments/comment', :collection => @project.comments
           %p
-            - if @project.keywords.empty?
-              Nothing? Add some keywords!
-            - else 
-              = render :partial => "keywords/show", :locals => {:keywords =>  @project.keywords }
-            -if  @project.originator == current_user or @project.users.include? current_user
-              = render :partial => "keywords/new", :locals => {:what => @project }
-        .wrap
+            - if current_user
+              = render :partial => 'comments/help'
+              = form_for [ @project, @new_comment ], url: project_comments_url(@project), html: {role: "form"} do |f|
+                %p
+                = f.text_area :text, :placeholder => "Your comment. You can use markdown.", :class => 'form-control input-lg', :required => "required"
+                %p
+                = button_tag(type: 'submit', class: "btn btn-success pull-right") do
+                  %i.fa.fa-plus
+                  Add Comment
+            - else
+              = link_to 'Add a comment', new_project_comment_path(@episode, @project ), :class => 'btn btn-default'
+      
+      .col-sm-4
+        %aside
+          = render :partial => "projects/file_buttons", :locals => {:project =>  @project }
           %h4
-            This project is part of:
-          %p
-            - unless @project.episodes.any?
-              No hackweek. How about you add one...
-            - @project.episodes.each do |episode|
-              %span.label.label-primary{style: 'display: inline-block'}
-                = truncate(episode.name, length: 50)
-                = link_to(episode_project_path(:episode_id => episode.id), method: :delete) do
-                  %i.fa.fa-times
-          .btn-group.pull-right
-            %button.btn.btn-success.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
-              %i.fa.fa-plus
-              Add Hackweek
-              %span.caret
-            %ul.dropdown-menu{:role => "menu"}
-              - Episode.all.reverse.each do |episode|
-                %li{:role => "presentation"}
-                  = link_to(truncate(episode.name, length: 50), episode_project_path(:episode_id => episode.id), method: :post)
-          .clearfix
-        .wrap
-          %h4
-            Activity
-            %span.pull-right
-              = render :partial => "updates/show_all_modal", :locals => { :updates => @project.updates }
-          %ul
-          - @project.updates.reverse.first(5).each do |update|
-            %li
-              = render :partial => "updates/show", :locals => { :update => update }
-  
+            - if @project.users.empty?
+              No
+            Hackers:
+          .well.well-sm#hackers
+            - @project.users.each do |user|
+              = link_to(user_path(user.id)) do
+                = image_tag user.gravatar_url(:size => "64"), alt: user.name, title: user.name, class: "img-thumbnail", id: "user#{user.id}-gravatar"
+          - unless @project.aasm_state == "invention"
+            %p.pull-right
+              - if @project.users.empty? or !@project.users.include? current_user
+                = link_to(join_project_path(@episode, @project), :method => :post, :class => "btn btn-success") do
+                  %i.fa.fa-plus
+                  Join this project
+              - if @project.users.include? current_user
+                = link_to(leave_project_path(@episode, @project), :method => :post, :class => "btn btn-warning") do
+                  %i.fa.fa-minus
+                  Leave this project
+            .clearfix
+          .wrap
+            %h4
+              Looking for mad skills in:
+            %p
+              - if @project.keywords.empty?
+                Nothing? Add some keywords!
+              - else 
+                = render :partial => "keywords/show", :locals => {:keywords =>  @project.keywords }
+              -if  @project.originator == current_user or @project.users.include? current_user
+                = render :partial => "keywords/new", :locals => {:what => @project }
+          .wrap
+            %h4
+              This project is part of:
+            %p
+              - unless @project.episodes.any?
+                No hackweek. How about you add one...
+              - @project.episodes.each do |episode|
+                %span.label.label-primary{style: 'display: inline-block'}
+                  = truncate(episode.name, length: 50)
+                  = link_to(episode_project_path(:episode_id => episode.id), method: :delete) do
+                    %i.fa.fa-times
+            .btn-group.pull-right
+              %button.btn.btn-success.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+                %i.fa.fa-plus
+                Add Hackweek
+                %span.caret
+              %ul.dropdown-menu{:role => "menu"}
+                - Episode.all.reverse.each do |episode|
+                  %li{:role => "presentation"}
+                    = link_to(truncate(episode.name, length: 50), episode_project_path(:episode_id => episode.id), method: :post)
+            .clearfix
+          .wrap
+            %h4
+              Activity
+              %span.pull-right
+                = render :partial => "updates/show_all_modal", :locals => { :updates => @project.updates }
+            %ul
+            - @project.updates.reverse.first(5).each do |update|
+              %li
+                = render :partial => "updates/show", :locals => { :update => update }
 
 - content_for :script do
   :javascript

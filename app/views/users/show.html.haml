@@ -1,114 +1,115 @@
 - content_for :title do
   = @user.name
 
-.col-sm-12.text-left
-  .page-header.media
-    .pull-left
-      = image_tag(@user.gravatar_url(:size => "64"), :class => "img-thumbnail", :title => "#{@user.name}", :alt => @user.name)
-    %h1
-      = @user.name
-    %small
-      = @user.email
-  .row
-    .col-sm-8
-      %ul.nav.nav-tabs
-        -if current_user == @user and @user.projects.empty?
-          %li.active
-            %a{:href=>"#recommended", "data-toggle"=>"tab"}
-              Opportunities
-              = "(#{@user.recommended_projects.length})" unless @user.recommended_projects.empty?
-        -else
-          %li.active
-            %a{:href=>"#projects", "data-toggle"=>"tab"}
-              Works on
-              = "(#{@user.projects.length})" unless @user.projects.empty?
-        %li
-          %a{:href=>"#ideas", "data-toggle"=>"tab"}
-            Originated
-            = "(#{@user.originated_projects.length})" unless @user.originated_projects.empty?
-        %li
-          %a{:href=>"#likes", "data-toggle"=>"tab"}
-            Likes
-            = "(#{@user.favourites.length})" unless @user.favourites.empty?
-        - unless @user.projects.empty?
+.row
+  .col-sm-12.text-left
+    .page-header.media
+      .pull-left
+        = image_tag(@user.gravatar_url(:size => "64"), :class => "img-thumbnail", :title => "#{@user.name}", :alt => @user.name)
+      %h1
+        = @user.name
+      %small
+        = @user.email
+    .row
+      .col-sm-8
+        %ul.nav.nav-tabs
+          -if current_user == @user and @user.projects.empty?
+            %li.active
+              %a{:href=>"#recommended", "data-toggle"=>"tab"}
+                Opportunities
+                = "(#{@user.recommended_projects.length})" unless @user.recommended_projects.empty?
+          -else
+            %li.active
+              %a{:href=>"#projects", "data-toggle"=>"tab"}
+                Works on
+                = "(#{@user.projects.length})" unless @user.projects.empty?
           %li
-            %a{:href=>"#recommended", "data-toggle"=>"tab"}
-              Opportunities
-              = "(#{@user.recommended_projects.length})" unless @user.recommended_projects.empty?
-      .tab-content{:style=>"padding-top: 10px"}
-        -if current_user == @user and @user.projects.empty?
-          .tab-pane.active#recommended
-            - if @user.recommended_projects.empty?
-              %p no project is matching your keywords yet, try adding some more.
-            - else
-              %table.table
-                %thead
-                - @user.recommended_projects.each_with_index do |project, index|
-                  %tr
-                    %td{:class => "#{project.aasm_state}"}
-                      = render :partial => "projects/list_item", :locals => {:project => project, :index => index }
-        - else
-          .tab-pane.active#projects
-            - if @user.projects.empty?
-              %p no projects currently
-            - else
-              %table.table
-                %thead
-                - @user.projects.each_with_index do |project, index|
-                  %tr
-                    %td{:class => "#{project.aasm_state}"}
-                      = render :partial => "projects/list_item", :locals => {:project => project, :index => index }
-        .tab-pane#ideas
-          - if @user.originated_projects.empty?
-            %p no ideas yet
-          - else
-            %table.table
-              %thead
-              - @user.originated_projects.each_with_index do |project, index|
-                %tr
-                  %td{:class => "#{project.aasm_state}"}
-                    = render :partial => "projects/list_item", :locals => {:project => project, :index => index }
-        .tab-pane#likes
-          - if @user.favourites.empty?
-            %p no projects yet
-          - else
-            %table.table
-              %thead
-              - @user.favourites.each_with_index do |project, index|
-                %tr
-                  %td{:class => "#{project.aasm_state}"}
-                    = render :partial => "projects/list_item", :locals => {:project => project, :index => index }
-        -unless @user.projects.empty?
-          .tab-pane#recommended
-            - if @user.recommended_projects.empty?
-              %p no project is matching your keywords yet, try adding some more.
-            - else
-              %table.table
-                %thead
-                - @user.recommended_projects.each_with_index do |project, index|
-                  %tr
-                    %td{:class => "#{project.aasm_state}"}
-                      = render :partial => "projects/list_item", :locals => {:project => project, :index => index }
-    .col-sm-4
-      %aside
-        .text-center
-          = render :partial => "users/buttons", :locals => {:user =>  @user }
-        .wrap
-          #keywords
-            %h4 Looking for projects around:
-            - if @user.keywords.empty?
-              %p Nothing at the moment
-            - else 
-              = render :partial => "keywords/show", :locals => {:keywords =>  @user.keywords }
-              -if can? :add_keyword, @user
-                = render :partial => "keywords/new", :locals => {:what => @user }
-        .wrap
-          %h4
-            Activity
-          %span.pull-right
-            = render :partial => "updates/show_all_modal", :locals => { :updates => @user.updates }
-          %ul
-          - @user.updates.reverse.first(5).each do |update|
+            %a{:href=>"#ideas", "data-toggle"=>"tab"}
+              Originated
+              = "(#{@user.originated_projects.length})" unless @user.originated_projects.empty?
+          %li
+            %a{:href=>"#likes", "data-toggle"=>"tab"}
+              Likes
+              = "(#{@user.favourites.length})" unless @user.favourites.empty?
+          - unless @user.projects.empty?
             %li
-              = render :partial => "updates/show", :locals => { :update => update }
+              %a{:href=>"#recommended", "data-toggle"=>"tab"}
+                Opportunities
+                = "(#{@user.recommended_projects.length})" unless @user.recommended_projects.empty?
+        .tab-content{:style=>"padding-top: 10px"}
+          -if current_user == @user and @user.projects.empty?
+            .tab-pane.active#recommended
+              - if @user.recommended_projects.empty?
+                %p no project is matching your keywords yet, try adding some more.
+              - else
+                %table.table
+                  %thead
+                  - @user.recommended_projects.each_with_index do |project, index|
+                    %tr
+                      %td{:class => "#{project.aasm_state}"}
+                        = render :partial => "projects/list_item", :locals => {:project => project, :index => index }
+          - else
+            .tab-pane.active#projects
+              - if @user.projects.empty?
+                %p no projects currently
+              - else
+                %table.table
+                  %thead
+                  - @user.projects.each_with_index do |project, index|
+                    %tr
+                      %td{:class => "#{project.aasm_state}"}
+                        = render :partial => "projects/list_item", :locals => {:project => project, :index => index }
+          .tab-pane#ideas
+            - if @user.originated_projects.empty?
+              %p no ideas yet
+            - else
+              %table.table
+                %thead
+                - @user.originated_projects.each_with_index do |project, index|
+                  %tr
+                    %td{:class => "#{project.aasm_state}"}
+                      = render :partial => "projects/list_item", :locals => {:project => project, :index => index }
+          .tab-pane#likes
+            - if @user.favourites.empty?
+              %p no projects yet
+            - else
+              %table.table
+                %thead
+                - @user.favourites.each_with_index do |project, index|
+                  %tr
+                    %td{:class => "#{project.aasm_state}"}
+                      = render :partial => "projects/list_item", :locals => {:project => project, :index => index }
+          -unless @user.projects.empty?
+            .tab-pane#recommended
+              - if @user.recommended_projects.empty?
+                %p no project is matching your keywords yet, try adding some more.
+              - else
+                %table.table
+                  %thead
+                  - @user.recommended_projects.each_with_index do |project, index|
+                    %tr
+                      %td{:class => "#{project.aasm_state}"}
+                        = render :partial => "projects/list_item", :locals => {:project => project, :index => index }
+      .col-sm-4
+        %aside
+          .text-center
+            = render :partial => "users/buttons", :locals => {:user =>  @user }
+          .wrap
+            #keywords
+              %h4 Looking for projects around:
+              - if @user.keywords.empty?
+                %p Nothing at the moment
+              - else 
+                = render :partial => "keywords/show", :locals => {:keywords =>  @user.keywords }
+                -if can? :add_keyword, @user
+                  = render :partial => "keywords/new", :locals => {:what => @user }
+          .wrap
+            %h4
+              Activity
+            %span.pull-right
+              = render :partial => "updates/show_all_modal", :locals => { :updates => @user.updates }
+            %ul
+            - @user.updates.reverse.first(5).each do |update|
+              %li
+                = render :partial => "updates/show", :locals => { :update => update }
 

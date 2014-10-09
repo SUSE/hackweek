@@ -2,23 +2,29 @@
   Projects
   = "(#{@projects.length})"
 
-.col-md-12.text-left
-  .top-new-projects
-    %h3 All projects
-    %hr
-    - @projects.each do |p|
-      .media.projects
-        = link_to project_path(p) do
-          .img-wrapper
-            = image_tag p.avatar.url(:thumb), class: "media-object"
-        .media-body
-          = link_to project_path(p) do
-            %h5.media-heading
-              = p.title
-          .social-objects-group
-            %i.fa.fa-group
-            = pluralize(p.memberships.count, 'dev')
-          .social-objects-group
-            %i.fa.fa-thumbs-up
-            = p.likes.count
+.row
+  .projects-index-header
+    .col-sm-3.col-md-3.text-left
+      %h3 PROJECTS
+    .col-sm-9.col-md-9
+      = render :partial => "projects/tabs"
+.row
+  %hr
+  - @projects.in_groups_of(4, false) do |group|
+    .row
+      - group.each do |p|
+        .col-md-3
+          .project
+            = link_to project_path(p) do
+              .img-wrapper
+                = image_tag p.avatar.url(:thumb)
+            = link_to project_path(p) do
+              %h5
+                = p.title
+            .social-objects-group
+              %i.fa.fa-group
+              = pluralize(p.memberships.count, 'dev')
+            .social-objects-group
+              %i.fa.fa-thumbs-up
+              = p.likes.count
 

@@ -1,4 +1,4 @@
-%ul.nav.nav-tabs
+%ul.nav.nav-pills.pull-right
   - all_state = "active" if action_name == "index"
   %li{:class => all_state}
     =link_to projects_path(@episode), :title => "All projects" do
@@ -7,24 +7,24 @@
   - popular_state = "active" if action_name == "popular"
   %li{:class => popular_state}
     =link_to popular_projects_path(@episode), :title => "Projects with many likes" do
-      %span.hidden-xs
+      %span.hidden-xs.hidden-sm
         Popular
-      %i.fa.fa-star.visible-xs
+      %i.fa.fa-star.visible-xs.visible-sm
   - biggest_state = "active" if action_name == "biggest"
   %li{:class => biggest_state}
     =link_to biggest_projects_path(@episode), :title => "Projects with many users" do
-      %span.hidden-xs
+      %span.hidden-xs.hidden-sm
         Populous
-      %i.fa.fa-user.visible-xs
+      %i.fa.fa-user.visible-xs.visible-sm
   - finished_state = "active" if action_name == "finished"
   %li{:class => finished_state}
     =link_to finished_projects_path(@episode), :title => "Projects that are done" do
-      %span.hidden-xs
+      %span.hidden-xs.hidden-sm
         Finished
-      %i.fa.fa-check.visible-xs
+      %i.fa.fa-check.visible-xs.visible-sm
   - archived_state = "active" if action_name == "archived"
   %li{:class => archived_state}
     =link_to archived_projects_path(@episode), :title => "Projects that are dismissed" do
-      %span.hidden-xs
+      %span.hidden-xs.hidden-sm
         Archived
-      %i.fa.fa-archive.visible-xs
+      %i.fa.fa-archive.visible-xs.visible-sm
