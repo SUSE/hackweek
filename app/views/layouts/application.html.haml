@@ -52,6 +52,10 @@
             %li.menu-btn-countdown
               %p.counter= days_to_launch
       .mainscreen-wraper
+        - if flash
+          = render partial: "layouts/alert", flash: flash
+        - if @news
+          = render partial: "layouts/news"
         .mainScreen.scrollbar
           = yield
         / Go Home button and contact

@@ -7,6 +7,11 @@
     piwikTracker.trackPageView();
     piwikTracker.enableLinkTracking();
   } catch( err ) {}
+:javascript
+  $('#flash').on('closed.bs.alert', function () {
+    layoutResponsive();
+  })
+
 %noscript
   %p
     %img{:src=>"http://beans.opensuse.org/piwik/piwik.php?idsite=23", :style=>"border:0", :alt=>''}
