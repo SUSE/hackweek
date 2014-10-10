@@ -2,12 +2,11 @@
   Projects
   = "(#{@projects.length})"
 
-.row
-  .projects-index-header
-    .col-sm-3.col-md-3.text-left
-      %h3 PROJECTS
-    .col-sm-9.col-md-9
-      = render :partial => "projects/tabs"
+.row.projects-index-header
+  .col-sm-3.col-md-3.text-left
+    %h3 PROJECTS
+  .col-sm-9.col-md-9
+    = render :partial => "projects/tabs"
 .row
   %hr
   - @projects.in_groups_of(4, false) do |group|

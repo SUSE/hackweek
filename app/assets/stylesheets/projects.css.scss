@@ -1,5 +1,4 @@
 .projects-index-header {
-  margin-bottom: 50px;
   .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
       border: 1px solid transparent;
       background-color: rgba(24, 154, 153, 0.08);
@@ -7,9 +6,26 @@
       color: #00fffc;
       font-weight: normal;
   }
-  .nav > li > a:hover, .nav > li > a:focus {
-    background-color: rgba(24, 154, 153, 0.08);
-    text-decoration: none;
+  .nav {
+    li {
+      a {
+        padding: 3px 6px;
+        text-decoration: none;
+        font-weight: normal;
+        font-size: 13px;
+        &:hover,
+        &:focus {
+          background-color: rgba(24, 154, 153, 0.08);
+        }
+      }
+      &.active {
+        a,
+        a:hover {
+          border:0;
+          color: $white
+        }
+      }
+    }
   }
 }
 
@@ -17,6 +33,7 @@
   margin: 0 20px 50px 0;
   .img-wrapper {
     margin: 0 auto;
+    text-align: left;
   }
 }
 
