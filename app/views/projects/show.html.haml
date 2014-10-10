@@ -107,7 +107,15 @@
           = render :partial => 'comments/help'
           = form_for [ @project, @new_comment ], url: project_comments_url(@project), html: {role: "form"} do |f|
             %p
-            = f.text_area :text, :placeholder => "Your comment. You can use markdown.", :class => 'form-control input-lg', :required => "required"
+              - if @project.keywords.empty?
+                Nothing? Add some keywords!
+              - else 
+                = render :partial => "keywords/show", :locals => {:keywords =>  @project.keywords }
+              -if @project.originator == current_user or @project.users.include? current_user
+                = render :partial => "keywords/new", :locals => {:what => @project }
+          .wrap
+            %h4
+              This project is part of:
             %p
             = button_tag(type: 'submit', class: "btn btn-success pull-right") do
               %i.fa.fa-plus
