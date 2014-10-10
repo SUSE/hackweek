@@ -1,22 +1,22 @@
 .bg-stars {
-  background: image-url("bg-main.jpg");
+  background: image-url("background/bg-main.jpg");
   z-index: 0;
   height: 100%;
   background-size: cover;
 }
 .bg-small-stars {
-  background: image-url("bg-stars.png") no-repeat;
+  background: image-url("background/bg-stars.png") no-repeat;
   z-index: 5;
   height: 100%;
   background-size: cover;
 }
 .nebula-up {
-  background: image-url("bg-nebula-1.png") center top no-repeat;
+  background: image-url("background/bg-nebula-1.png") center top no-repeat;
   z-index: 8;
   height: 100%
 }
 .nebula-down {
-  background: image-url("bg-nebula-2.png") center bottom no-repeat;
+  background: image-url("background/bg-nebula-2.png") center bottom no-repeat;
   z-index: 10;
   height: 100%
 }
@@ -27,3 +27,21 @@
   width: 2732px;
   max-width: 4000px;
 }
+
+@media (max-width: 600px) {
+  .bg-stars {
+    background: image-url("background-mobile/bg-main.jpg");
+  }
+  .bg-small-stars {
+    background: image-url("background-mobile/bg-stars.png") no-repeat;
+  }
+  .nebula-up {
+    background: image-url("background-mobile/bg-nebula-1.png") center top no-repeat;
+  }
+  .nebula-down {
+    background: image-url("background-mobile/bg-nebula-2.png") center bottom no-repeat;
+  }
+}
+
+
+
