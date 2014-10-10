@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   def add_keyword
     keywords = keyword_params.split(',')
     keywords.each do |word|
-      logger.debug "Deleting keyword \"#{word}\" from user #{@user.id}"
+      logger.debug "Adding keyword \"#{word}\" from user #{@user.id}"
       current_user.add_keyword! word
     end
     redirect_to :action => "me", notice: "Keyword '#{params[:keyword]}' added."
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   def delete_keyword
     keywords = keyword_params.split(',')
     keywords.each do |word|
-      logger.debug "Adding keyword \"#{word}\" to user #{@user.id}"
+      logger.debug "Deleting keyword \"#{word}\" to user #{@user.id}"
       current_user.remove_keyword! word
     end
     redirect_to :action => "me", notice: "Keyword '#{params[:keyword]}' removed."

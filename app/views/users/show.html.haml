@@ -101,8 +101,8 @@
                 %p Nothing at the moment
               - else 
                 = render :partial => "keywords/show", :locals => {:keywords =>  @user.keywords }
-                -if can? :add_keyword, @user
-                  = render :partial => "keywords/new", :locals => {:what => @user }
+              -if can? :add_keyword, @user
+                = render :partial => "keywords/new", :locals => {:what => @user }
           .wrap
             %h4
               Activity

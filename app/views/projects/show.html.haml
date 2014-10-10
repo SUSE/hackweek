@@ -77,7 +77,7 @@
                 Nothing? Add some keywords!
               - else 
                 = render :partial => "keywords/show", :locals => {:keywords =>  @project.keywords }
-              -if  @project.originator == current_user or @project.users.include? current_user
+              -if @project.originator == current_user or @project.users.include? current_user
                 = render :partial => "keywords/new", :locals => {:what => @project }
           .wrap
             %h4
