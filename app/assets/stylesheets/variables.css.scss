@@ -10,8 +10,10 @@ $distance-menu: 12px;
 
 $menuWidth: 218px;
 
-$main-text-colour: $white;
-$website-background: $black;
+$main-text-colour:       $white;
+$website-background:     $black;
+$border-color:           $light-blue;
+$link-colour:            $light-blue;
 
 // also mixings go here
 @mixin orange-text {
@@ -38,9 +40,9 @@ $website-background: $black;
 }
 
 @mixin dotted-top-border {
-	border-top: 1px dotted $light-blue;
+	border-top: 1px dotted $border-color;
 }
 @mixin dotted-border {
-  border: 1px dotted $light-blue;
+  border: 1px dotted $border-color;
 }
 

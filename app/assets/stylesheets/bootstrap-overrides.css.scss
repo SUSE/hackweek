@@ -1,6 +1,6 @@
 // Bootstrap overrides 
 .help-block {
-	color: darken($white, 24%);
+	color: darken($main-text-colour, 24%);
 }
 .page-header {
   border-bottom: 0px;	
@@ -25,7 +25,7 @@
 		text-shadow: none;
 	}
 	a {
-		color: darken($light-blue, 30%);
+		color: darken($link-colour, 30%);
 	}
 	.modal-content {
 		overflow: hidden;
@@ -62,4 +62,9 @@ h6 .small,
   font-weight: normal;
   line-height: 1;
   color: inherit;
+}
+
+.thumbnail {
+	background: transparent;
+	@include dotted-border;
 }
