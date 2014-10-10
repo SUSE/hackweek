@@ -55,18 +55,28 @@ class User < ActiveRecord::Base
     end
   end
 
-  def recommended_projects
+  def recommended_projects(episode = nil)
     if self.keywords.empty?
       return Array.new
     end
     
-    projects = []
+    recommended = []
     self.keywords.each do |word|
-      word.projects.each do |p|
-        projects << p unless projects.include? p
+      if episode
+        projects = word.projects.select { |p| p.episodes.include?(episode)  }
+      else
+        projects = word.projects
+      end
+      projects.each do |p|
+        next unless p.active?
+        if episode
+          recommended << p if p.episodes.include?(episode)
+        else
+          recommended << p
+        end
       end
     end
-    projects
+    recommended.uniq
   end
 
   def self.for_ichain_username(username, attributes)

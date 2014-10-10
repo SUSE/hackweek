@@ -67,6 +67,13 @@ class Project < ActiveRecord::Base
     where.not(aasm_state: "record").where.not(aasm_state: "invention")
   end
 
+  def active?
+    ret = false
+    ret = true if self.idea?
+    ret = true if self.project?
+    return ret
+  end
+
   # solr configuration
   searchable do
     text :title
