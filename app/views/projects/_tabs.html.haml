@@ -28,3 +28,8 @@
       %span.hidden-xs.hidden-sm
         Archived
       %i.fa.fa-archive.visible-xs.visible-sm
+  %li
+    .btn.btn-success.btn-xs.show-search-btn
+      %i.fa.fa-search
+    %form{:role=>"search", :method=>"get", :class=>"navbar-form navbar-right projects-search-form", :action=>"#{search_path}", "accept-charset"=>"UTF-8"}
+      = search_field_tag(:q, nil, {:class => "form-control input-sm", :placeholder => "Search", :type => "search", :name => "q"})

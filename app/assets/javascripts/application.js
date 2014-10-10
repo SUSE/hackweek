@@ -27,6 +27,7 @@
 //= require GPS.js
 //= require openDaGate.js
 //= require mainscreen-risizer.js
+//= require generalActions.js
 
 // fix incompatibility of bootstraps .hidden class with jquery show()
 var show = $.fn.show;
