@@ -30,7 +30,7 @@ $(window).on("load", function(){
 });
 
 $(document).mousemove(function(event){
-	moveElementsBg();
+	moveElementsBg(event);
 });
 
 var currentElementLastX = 0;
@@ -48,7 +48,7 @@ function movementParallax (element, speed) {
 	})
 
 }
-function moveElementsBg() {
+function moveElementsBg(event) {
 	$.each(movementParallaxElements, function(index,val){
 		// the element has properties saved in the object
     if (val.lastXposition != event.pageX) {
