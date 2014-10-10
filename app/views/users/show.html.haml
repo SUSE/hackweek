@@ -17,7 +17,7 @@
             %li.active
               %a{:href=>"#recommended", "data-toggle"=>"tab"}
                 Opportunities
-                = "(#{@user.recommended_projects.length})" unless @user.recommended_projects.empty?
+                = "(#{@user.recommended_projects(@episode).length})" unless @user.recommended_projects(@episode).empty?
           -else
             %li.active
               %a{:href=>"#projects", "data-toggle"=>"tab"}
@@ -35,16 +35,16 @@
             %li
               %a{:href=>"#recommended", "data-toggle"=>"tab"}
                 Opportunities
-                = "(#{@user.recommended_projects.length})" unless @user.recommended_projects.empty?
+                = "(#{@user.recommended_projects(@episode).length})" unless @user.recommended_projects(@episode).empty?
         .tab-content{:style=>"padding-top: 10px"}
           -if current_user == @user and @user.projects.empty?
             .tab-pane.active#recommended
-              - if @user.recommended_projects.empty?
+              - if @user.recommended_projects(@episode).empty?
                 %p no project is matching your keywords yet, try adding some more.
               - else
                 %table.table
                   %thead
-                  - @user.recommended_projects.each_with_index do |project, index|
+                  - @user.recommended_projects(@episode).each_with_index do |project, index|
                     %tr
                       %td{:class => "#{project.aasm_state}"}
                         = render :partial => "projects/list_item", :locals => {:project => project, :index => index }
@@ -81,12 +81,12 @@
                       = render :partial => "projects/list_item", :locals => {:project => project, :index => index }
           -unless @user.projects.empty?
             .tab-pane#recommended
-              - if @user.recommended_projects.empty?
+              - if @user.recommended_projects(@episode).empty?
                 %p no project is matching your keywords yet, try adding some more.
               - else
                 %table.table
                   %thead
-                  - @user.recommended_projects.each_with_index do |project, index|
+                  - @user.recommended_projects(@episode).each_with_index do |project, index|
                     %tr
                       %td{:class => "#{project.aasm_state}"}
                         = render :partial => "projects/list_item", :locals => {:project => project, :index => index }
