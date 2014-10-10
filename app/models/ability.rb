@@ -25,6 +25,7 @@ class Ability
       # Everyone can:
       can :read, :all
       can [:join, :leave, :like, :dislike, :create], Project
+      can [:enroll], Announcement
       # ...manage things they own
       can :manage, Project, :originator_id => user.id
       can :manage, User, :id => user.id
