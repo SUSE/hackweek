@@ -297,4 +297,12 @@ describe ProjectsController do
     end
   end
 
+  describe "GET old_archived" do
+    it "lists the requested project in search results" do
+      project = create(:project)
+      get :old_archived, :id => project.id
+      expect(assigns(:project)).to eq(project)
+    end
+  end
+
 end

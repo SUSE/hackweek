@@ -53,7 +53,7 @@ class ProjectsController < ApplicationController
   # GET /archive/projects/:id
   def old_archived
     begin
-      @project = Project.find_by!(title: params[:id])
+      @project = Project.find(params[:id].to_i)
       redirect_to @project
     rescue ActiveRecord::RecordNotFound
       flash[:notice] = "Can't find project with title #{params[:id]}"
