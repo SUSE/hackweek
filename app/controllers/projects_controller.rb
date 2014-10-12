@@ -56,7 +56,7 @@ class ProjectsController < ApplicationController
       @project = Project.find(params[:id].to_i)
       redirect_to @project
     rescue ActiveRecord::RecordNotFound
-      flash[:notice] = "Can't find project with title #{params[:id]}"
+      flash[:notice] = "Can't find project with id #{params[:id]}"
       redirect_to :action => :archived
     end
   end
