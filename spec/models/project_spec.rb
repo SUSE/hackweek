@@ -89,6 +89,26 @@ describe Project do
     context "when project has a user (state == project)" do
       it { expect(@project.updates.last.text).to eq("joined") }
     end
+  end
 
+  describe "leave!" do
+    before do
+      @project = FactoryGirl.create(:project)
+      @user = @project.users.first
+      @project.leave!(@user)
+    end
+
+    it "removes a user from the project" do
+      expect(@project.users).not_to include(@user)
+    end
+
+    it "creates an Update for the user with text 'left'" do
+      expect(@project.updates.last.author).to eq(@user)
+      expect(@project.updates.last.text).to eq("left")
+    end
+
+    context "when the removed user was the last one" do
+      it { expect(@project.idea?).to eq(true) }
+    end
   end
 end
