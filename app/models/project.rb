@@ -86,23 +86,19 @@ class Project < ActiveRecord::Base
   end
 
   def join! user
-    if self.users.empty?
-      started = true
+    type = if self.users.empty?
+      self.advance!
+      "started"
+    else
+      "joined"
     end
 
     self.users << user
     self.save!
 
-    if started
-      self.advance!
-      Update.create!(:author => user,
-                     :text => "started",
+    Update.create!(:author => user,
+                     :text => type,
                      :project => self)
-    else
-      Update.create!(:author => user,
-                     :text => "joined",
-                     :project => self)
-    end
   end
   
   def leave! user
