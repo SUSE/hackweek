@@ -6,10 +6,10 @@
     .row
       .col-xs-6
         - if @project.previous(@episode)
-          =   button_to 'Previous', @project.previous(@episode), :id => "previous_link", :method => :get, :class => "btn btn-default btn-xs pull-left", :title=> "Try pressing 'j' on your keyboard.."
+          =   button_to 'Previous', project_path(@episode, @project.previous(@episode)), :id => "previous_link", :method => :get, :class => "btn btn-default btn-xs pull-left", :title=> "Try pressing 'j' on your keyboard.."
       .col-xs-6
         - if @project.next(@episode)
-          = button_to 'Next', @project.next(@episode), :id => "next_link", :method => :get, :class => "btn btn-default btn-xs pull-right", :title => "Try pressing 'k' on your keyboard.."
+          = button_to 'Next', project_path(@episode, @project.next(@episode)), :id => "next_link", :method => :get, :class => "btn btn-default btn-xs pull-right", :title => "Try pressing 'k' on your keyboard.."
     .page-header.media
       .pull-left
         .img-wrapper
