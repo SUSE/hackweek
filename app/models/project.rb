@@ -73,10 +73,7 @@ class Project < ActiveRecord::Base
   end
 
   def active?
-    ret = false
-    ret = true if self.idea?
-    ret = true if self.project?
-    return ret
+    self.idea? || self.project?
   end
 
   # solr configuration
