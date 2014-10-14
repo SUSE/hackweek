@@ -45,4 +45,19 @@ describe Project do
       expect(@third.previous(episode)).to eq(@first)
     end
   end
+  
+  describe 'active?' do
+    it "returns true for ideas" do
+      expect(FactoryGirl.create(:idea).active?).to eq(true)
+    end
+
+    it "it returns true for projects" do
+      expect(FactoryGirl.create(:project).active?).to eq(true)
+    end
+
+    it "returns false for anything that is not an idea or project" do
+      expect(FactoryGirl.create(:invention).active?).to eq(false)
+      expect(FactoryGirl.create(:record).active?).to eq(false)
+    end
+  end
 end
