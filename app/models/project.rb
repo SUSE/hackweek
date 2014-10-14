@@ -54,6 +54,11 @@ class Project < ActiveRecord::Base
   scope :archived, -> { where(aasm_state: "record") }
   scope :liked, -> { where("likes_count > 0") }
   scope :populated, -> { where("memberships_count > 0") }
+  scope :by_episode, lambda { |episode|
+    if episode
+      joins(:episodes).where(episodes: { id: episode.id })
+    end
+  }
 
   def self.current(episode = nil)
     if !episode.nil?
@@ -164,12 +169,12 @@ class Project < ActiveRecord::Base
                    :project => self)
   end
 
-  def previous
-    Project.where('id < ?', self.id).last
+  def previous(episode = nil)
+    Project.by_episode(episode).where('projects.id < ?', self.id).last
   end
 
-  def next
-    Project.where('id > ?', self.id).first
+  def next(episode = nil)
+    Project.by_episode(episode).where('projects.id > ?', self.id).first
   end
 
   private
