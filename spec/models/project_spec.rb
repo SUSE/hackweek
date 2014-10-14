@@ -60,4 +60,35 @@ describe Project do
       expect(FactoryGirl.create(:record).active?).to eq(false)
     end
   end
+
+  describe "join!" do
+    before do
+      @project = FactoryGirl.create(:project)
+      @idea = FactoryGirl.create(:idea)
+      @user = FactoryGirl.create(:user)
+      @project.join!(@user)
+      @idea.join!(@user)
+    end
+
+    it "converts a project state from 'idea' to 'project' " do
+      expect(@idea.project?).to eq(true)
+    end
+
+    it "adds a user to the project" do
+      expect(@project.users).to include(@user)
+    end
+
+    it "creates an Update object assigned to the user" do
+      expect(@project.updates.last.author).to eq(@user)
+    end
+
+    context "when project has no users (state == idea)" do
+      it { expect(@idea.updates.last.text).to eq("started") }
+    end
+
+    context "when project has a user (state == project)" do
+      it { expect(@project.updates.last.text).to eq("joined") }
+    end
+
+  end
 end
