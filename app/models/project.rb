@@ -102,13 +102,10 @@ class Project < ActiveRecord::Base
   end
   
   def leave! user
-    self.users -= [ user ]
-    self.save!
+    self.users.delete(user)
     
     # If the last user has left...
-    if self.users.empty?
-      self.abandon!
-    end
+    self.abandon! if self.users.empty?
 
     Update.create!(:author => user,
                    :text => "left",
