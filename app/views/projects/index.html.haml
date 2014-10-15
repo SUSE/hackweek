@@ -14,10 +14,10 @@
     - group.each do |p|
       .col-md-3
         .project
-          = link_to project_path(p) do
+          = link_to project_path(@episode, p) do
             .img-wrapper
               = image_tag p.avatar.url(:thumb)
-          = link_to project_path(p) do
+          = link_to project_path(@episode, p) do
             %h5
               = p.title
           .social-objects-group

@@ -19,6 +19,18 @@ describe ProjectsController do
       project = create(:project)
       get :show, {:id => project.to_param}
       expect(assigns(:project)).to eq(project)
+      expect(assigns(:previous_project)).to eq(nil)
+      expect(assigns(:next_project)).to eq(nil)
+    end
+
+    it "assigns next and previous project if they exist" do
+      previous_project = create(:project)
+      project = create(:project)
+      next_project =create(:project)
+
+      get :show, {:id => project.to_param}
+      expect(assigns(:previous_project)).to eq(previous_project)
+      expect(assigns(:next_project)).to eq(next_project)
     end
   end
 

@@ -45,6 +45,8 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
+    @previous_project = @project.previous(@episode)
+    @next_project = @project.next(@episode)
     @new_comment = Comment.new
   end
 
