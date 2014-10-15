@@ -89,6 +89,18 @@ describe Project do
     context "when project has a user (state == project)" do
       it { expect(@project.updates.last.text).to eq("joined") }
     end
+
+    context "when a user already joined a project" do
+      before do
+        @updates_before = @project.updates.count
+        @project.join!(@user)
+      end
+
+      it "does not add the user again" do
+        expect(@project.users.where(:id => @user.id).count).to eq(1)
+        expect(@project.updates.count).to eq(@updates_before)
+      end
+    end
   end
 
   describe "leave!" do
