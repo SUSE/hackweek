@@ -60,10 +60,6 @@ class Project < ActiveRecord::Base
     end
   }
 
-  def self.current(episode = nil)
-    by_episode(episode)
-  end
-
   def self.active
     where.not(aasm_state: "record").where.not(aasm_state: "invention")
   end
