@@ -45,4 +45,70 @@ describe Project do
       expect(@third.previous(episode)).to eq(@first)
     end
   end
+  
+  describe 'active?' do
+    it "returns true for ideas" do
+      expect(FactoryGirl.create(:idea).active?).to eq(true)
+    end
+
+    it "it returns true for projects" do
+      expect(FactoryGirl.create(:project).active?).to eq(true)
+    end
+
+    it "returns false for anything that is not an idea or project" do
+      expect(FactoryGirl.create(:invention).active?).to eq(false)
+      expect(FactoryGirl.create(:record).active?).to eq(false)
+    end
+  end
+
+  describe "join!" do
+    before do
+      @project = FactoryGirl.create(:project)
+      @idea = FactoryGirl.create(:idea)
+      @user = FactoryGirl.create(:user)
+      @project.join!(@user)
+      @idea.join!(@user)
+    end
+
+    it "converts a project state from 'idea' to 'project' " do
+      expect(@idea.project?).to eq(true)
+    end
+
+    it "adds a user to the project" do
+      expect(@project.users).to include(@user)
+    end
+
+    it "creates an Update object assigned to the user" do
+      expect(@project.updates.last.author).to eq(@user)
+    end
+
+    context "when project has no users (state == idea)" do
+      it { expect(@idea.updates.last.text).to eq("started") }
+    end
+
+    context "when project has a user (state == project)" do
+      it { expect(@project.updates.last.text).to eq("joined") }
+    end
+  end
+
+  describe "leave!" do
+    before do
+      @project = FactoryGirl.create(:project)
+      @user = @project.users.first
+      @project.leave!(@user)
+    end
+
+    it "removes a user from the project" do
+      expect(@project.users).not_to include(@user)
+    end
+
+    it "creates an Update for the user with text 'left'" do
+      expect(@project.updates.last.author).to eq(@user)
+      expect(@project.updates.last.text).to eq("left")
+    end
+
+    context "when the removed user was the last one" do
+      it { expect(@project.idea?).to eq(true) }
+    end
+  end
 end

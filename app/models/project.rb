@@ -73,10 +73,7 @@ class Project < ActiveRecord::Base
   end
 
   def active?
-    ret = false
-    ret = true if self.idea?
-    ret = true if self.project?
-    return ret
+    self.idea? || self.project?
   end
 
   # solr configuration
@@ -89,33 +86,26 @@ class Project < ActiveRecord::Base
   end
 
   def join! user
-    if self.users.empty?
-      started = true
+    type = if self.users.empty?
+      self.advance!
+      "started"
+    else
+      "joined"
     end
 
     self.users << user
     self.save!
 
-    if started
-      self.advance!
-      Update.create!(:author => user,
-                     :text => "started",
+    Update.create!(:author => user,
+                     :text => type,
                      :project => self)
-    else
-      Update.create!(:author => user,
-                     :text => "joined",
-                     :project => self)
-    end
   end
   
   def leave! user
-    self.users -= [ user ]
-    self.save!
+    self.users.delete(user)
     
     # If the last user has left...
-    if self.users.empty?
-      self.abandon!
-    end
+    self.abandon! if self.users.empty?
 
     Update.create!(:author => user,
                    :text => "left",
