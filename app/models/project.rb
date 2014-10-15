@@ -61,11 +61,7 @@ class Project < ActiveRecord::Base
   }
 
   def self.current(episode = nil)
-    if !episode.nil?
-      joins(:episodes).where(episodes:{ id: episode.id })
-    else
-      self.all
-    end
+    by_episode(episode)
   end
 
   def self.active
