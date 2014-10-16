@@ -9,37 +9,37 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    @projects = Project.current(@episode).active
+    @projects = Project.by_episode(@episode).active
   end
 
   # GET /projects/overview
   def overview
-    @projects = Project.current(Episode.active).active
-    @popular = Project.current(Episode.active).liked.order("likes_count DESC").first(5)
-    @new = Project.current(Episode.active).active.order("created_at ASC").last(5)
+    @projects = Project.by_episode(Episode.active).active
+    @popular = Project.by_episode(Episode.active).liked.order("likes_count DESC").first(5)
+    @new = Project.by_episode(Episode.active).active.order("created_at ASC").last(5)
   end
 
   # GET /projects/popular
   def popular
-    @projects = Project.current(@episode).liked.order("likes_count DESC")
+    @projects = Project.by_episode(@episode).liked.order("likes_count DESC")
     render 'index'
   end
 
   # GET /projects/archived
   def archived
-    @projects = Project.current(@episode).archived
+    @projects = Project.by_episode(@episode).archived
     render "index"
   end
 
   # GET /projects/biggest
   def biggest
-    @projects = Project.current(@episode).populated.order("memberships_count DESC")
+    @projects = Project.by_episode(@episode).populated.order("memberships_count DESC")
     render 'index'
   end
 
   # GET /projects/finished
   def finished
-    @projects = Project.current(@episode).finished
+    @projects = Project.by_episode(@episode).finished
     render "index"
   end
 

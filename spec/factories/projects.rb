@@ -14,6 +14,10 @@ FactoryGirl.define do
     factory :project, class: Project do
       aasm_state 'project'
       after(:create) { |project| project.users << create(:user) }
+
+      factory :project_with_episode do
+        after(:create) { |project| project.episodes << create(:episode) }
+      end
     end
     factory :invention, class: Project do
       aasm_state 'invention'

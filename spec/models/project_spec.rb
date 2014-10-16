@@ -2,6 +2,33 @@ require 'rails_helper'
 
 describe Project do
 
+  describe "by_episode scope" do
+    before do
+      3.times { create(:project) }
+      create(:project_with_episode)
+    end
+
+    it "returns all projects if episode is 'nil'" do
+      expect(Project.by_episode(nil)).to eq(Project.all)
+    end
+
+    context "when called with episode parameter" do
+      before do
+        @episode = create(:episode)
+        2.times {
+          project = create(:project)
+          project.episodes << @episode
+        }
+      end
+
+      it "returns all projects of that episode" do
+        expect(Project.by_episode(@episode)).to eq(
+          Project.joins(:episodes).where(:episodes => { :id => @episode.id })
+        )
+      end
+    end
+  end
+
   describe "next" do
     before do
       @first  = create(:project)

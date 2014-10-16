@@ -60,14 +60,6 @@ class Project < ActiveRecord::Base
     end
   }
 
-  def self.current(episode = nil)
-    if !episode.nil?
-      joins(:episodes).where(episodes:{ id: episode.id })
-    else
-      self.all
-    end
-  end
-
   def self.active
     where.not(aasm_state: "record").where.not(aasm_state: "invention")
   end
