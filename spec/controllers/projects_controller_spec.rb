@@ -297,4 +297,20 @@ describe ProjectsController do
     end
   end
 
+  describe "GET old_archived" do
+    before do
+      @project = create(:project)
+    end
+
+    it "lists the requested project in search results" do
+      get :old_archived, :id => @project.id
+      expect(assigns(:project)).to eq(@project)
+    end
+
+    it "redirects searches with invalid id to /projects/archived" do
+      get :old_archived, :id => "invalid_id"
+      expect(response).to redirect_to(archived_projects_url)
+    end
+  end
+
 end
