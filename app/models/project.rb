@@ -96,38 +96,30 @@ class Project < ActiveRecord::Base
     self.users << user
     self.save!
 
-    Update.create!(:author => user,
-                     :text => type,
-                     :project => self)
+    create_update_for(user, type)
   end
-  
+ 
   def leave! user
     self.users.delete(user)
     
     # If the last user has left...
     self.abandon! if self.users.empty?
 
-    Update.create!(:author => user,
-                   :text => "left",
-                   :project => self)
+    create_update_for(user, "left")
   end
   
   def like! user
     self.kudos << user
     self.save!
 
-    Update.create!(:author => user,
-                   :text => "liked",
-                   :project => self)
+    create_update_for(user, "liked")
   end
   
   def dislike! user
     self.kudos -= [ user ]
     self.save!
 
-    Update.create!(:author => user,
-                   :text => "disliked",
-                   :project => self)
+    create_update_for(user, "disliked")
   end
   
   def add_keyword! name, user
@@ -142,9 +134,7 @@ class Project < ActiveRecord::Base
       save!
     end
 
-    Update.create!(:author => user,
-                   :text => "added keyword \"#{name}\" to",
-                   :project => self)
+    create_update_for(user, "added keyword \"#{name}\" to")
   end
 
   def remove_keyword! name, user
@@ -154,9 +144,7 @@ class Project < ActiveRecord::Base
       save!
     end
 
-    Update.create!(:author => user,
-                   :text => "removed keyword #{name} from",
-                   :project => self)
+    create_update_for(user, "removed keyword #{name} from")
   end
 
   def previous(episode = nil)
@@ -169,10 +157,15 @@ class Project < ActiveRecord::Base
 
   private
 
+    def create_update_for user, text
+      self.updates.create!(
+        :author => user,
+        :text => text
+      )
+    end
+
     def create_initial_update
-      Update.create!(:author => self.originator,
-                     :text => "originated",
-                     :project => self)
+      create_update_for(self.originator, "originated")
     end
 
     def assign_episode
