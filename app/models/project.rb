@@ -7,7 +7,7 @@ class Project < ActiveRecord::Base
   
   belongs_to :originator, :class_name => User
 
-  has_many :users, :through => :memberships
+  has_many :users, :through => :memberships, :uniq => true
   has_many :kudos, :through => :likes, :source => :user
 
   has_many :project_interests
@@ -86,6 +86,9 @@ class Project < ActiveRecord::Base
   end
 
   def join! user
+    # Prevent users from joining twice
+    return if self.users.include?(user)
+
     type = if self.users.empty?
       self.advance!
       "started"
