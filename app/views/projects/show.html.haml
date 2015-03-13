@@ -120,8 +120,6 @@
             = button_tag(type: 'submit', class: "btn btn-success pull-right") do
               %i.fa.fa-plus
               Add Comment
-        - else
-          = link_to 'Add a comment', new_project_comment_path(@episode, @project ), :class => 'btn btn-default'
 
 - content_for :script do
   :javascript
