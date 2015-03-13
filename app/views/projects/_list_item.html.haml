@@ -1,6 +1,8 @@
 %h4.project-list-item{:id => "project-#{index}"}
   = link_to project_path(@episode, project) do
+    = image_tag(project.avatar.url(:thumb), width: '20')
     = project.title
+
 %p{:style=>"margin-top: -10px"}
   %small
     = render :partial => "projects/state_name", :locals => {:project => project }
