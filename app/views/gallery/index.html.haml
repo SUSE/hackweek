@@ -1,10 +1,11 @@
 - content_for :title do
   Gallery
 
-- @pictures.each do |pic|
-  .col-sm-6.col-md-3
-    = link_to "/gallery/.display/#{pic}", :class => "thumbnail swipebox", :title =>"#{pic}" do
-      = image_tag "/gallery/.thumbnails/#{pic}"
+.row
+  - @pictures.each do |pic|
+    .col-sm-6.col-md-3
+      = link_to "/gallery/.display/#{pic}", :class => "thumbnail swipebox", :title =>"#{pic}" do
+        = image_tag "/gallery/.thumbnails/#{pic}"
 
 - content_for :script do
   :javascript

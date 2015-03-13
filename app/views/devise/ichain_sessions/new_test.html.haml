@@ -1,18 +1,19 @@
-.col-md-6.col-md-offset-3
-  %h3 Sign In (TEST MODE)
-  %p.text-muted
-    Just fill out all the details and you're logged in.
-  = form_tag(@login_url, :method => :post, :enctype => 'application/x-www-form-urlencoded',:role => 'form', :id => "session") do
-    .form-group
-      = label_tag :username, "Username"
-      = text_field_tag :username, "", :autofocus => true, :placeholder => 'Username', :class => 'form-control', :required => "required"
-    .form-group
-      - @fields.each do |field|
-        = label_tag "attributes[#{field}]",  field.to_s.humanize
-        = text_field_tag "attributes[#{field}]", nil, :class => 'form-control', :required => "required"
-    .form-group
-      = button_tag(type: 'submit', class: "btn btn-success pull-right") do
-        = content_tag(:strong, 'Sign In')
-
-  - if devise_mapping.ichain_registerable?
-    = link_to "Sign up", new_ichain_registration_path(resource_name)
+.row
+  .col-md-6.col-md-offset-3
+    %h3 Sign In (TEST MODE)
+    %p.text-muted
+      Just fill out all the details and you're logged in.
+    = form_tag(@login_url, :method => :post, :enctype => 'application/x-www-form-urlencoded',:role => 'form', :id => "session") do
+      .form-group
+        = label_tag :username, "Username"
+        = text_field_tag :username, "", :autofocus => true, :placeholder => 'Username', :class => 'form-control', :required => "required"
+      .form-group
+        - @fields.each do |field|
+          = label_tag "attributes[#{field}]",  field.to_s.humanize
+          = text_field_tag "attributes[#{field}]", nil, :class => 'form-control', :required => "required"
+      .form-group
+        = button_tag(type: 'submit', class: "btn btn-success pull-right") do
+          = content_tag(:strong, 'Sign In')
+  
+    - if devise_mapping.ichain_registerable?
+      = link_to "Sign up", new_ichain_registration_path(resource_name)

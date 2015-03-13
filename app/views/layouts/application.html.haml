@@ -17,16 +17,15 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    .wrap
-      = render :partial => "layouts/header"
-      .clear-top
-        .container
-          - if flash
-            = render partial: "layouts/alert", flash: flash
-          - if @news
-            = render partial: "layouts/news"
-          .row.content
-            = yield
+    = render :partial => "layouts/header"
+    .container
+      #content
+        - if flash
+          = render partial: "layouts/alert", flash: flash
+        - if @news
+          = render partial: "layouts/news"
+        = yield
     = render :partial => "layouts/footer"
+
     = render :partial => "layouts/scripts"
     = yield :script

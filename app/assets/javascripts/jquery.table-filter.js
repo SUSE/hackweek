@@ -31,8 +31,8 @@
       // label = $("<label class=\"control-label\" />").attr({
       //  "for": id
       // }).append(o.labelText);
-      label = "<span class=\"input-group-addon\"><i class=\"icon-file\"></i></span>"
-      input = $("<input type=\"search\" class=\"form-control\" placeholder=\"Search Ideas\" />").attr({
+      label = "<span class=\"input-group-addon\"><i class=\"fa fa-search\"></i></span>"
+      input = $("<input type=\"search\" class=\"form-control\" placeholder=\"Search\" />").attr({
         id:   id,
         size: o.size
       });

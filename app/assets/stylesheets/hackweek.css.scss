@@ -1,29 +1,31 @@
-html, body {
-  height: 100%;
-}
-
-.wrap{
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
   min-height: 100%;
-  padding-top: 58px;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 250px;
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNjY2MiPjwvcmVjdD4KPC9zdmc+");
 }
 
-.content {
-  overflow:auto;
-  padding-bottom: 270px; /* this needs to be bigger than footer height*/
+#content {
+  margin: 80px 0 60px;
+  padding: 20px 15px 20px;
   background: rgb(246, 246, 246); /* The Fallback */
   background-color:rgba(246,246,246,0.7);
 }
 
 footer {
-  position: relative;
-  margin-top: -250px; /* negative value of footer height */
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
   height: 250px;
-  clear:both;
-  padding-top:20px;
-  padding-bottom: 50px;
-  background-color: #F8F8F8;
+  background-color: #f5f5f5;
   border-top: 1px solid #E5E5E5;
+  margin-top: 60px;
 }
 
 .keyword {

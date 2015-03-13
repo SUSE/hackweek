@@ -1,11 +1,12 @@
 - content_for :title do
   = @episode.name
 
-.col-sm-12
-  %h2
-    = @episode.name
-  %p
-    From
-    = @episode.start_date
-    to
-    = @episode.end_date
+.row
+  .col-sm-12
+    %h2
+      = @episode.name
+    %p
+      From
+      = @episode.start_date
+      to
+      = @episode.end_date

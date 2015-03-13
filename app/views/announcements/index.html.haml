@@ -2,11 +2,12 @@
   Announcements
   = "(#{@announcements.length})"
 
-.col-sm-12
-  %h2
-    Announcements
-  - @announcements.each do |announcement|
-    = render :partial => "announcements/announcement", :locals => {:announcement => announcement }
-  %p
-    - if can? :write, Announcement
-      = link_to "New announcement", new_announcement_path, :class => "btn btn-success pull-right"
+.row
+  .col-sm-12
+    %h2
+      Announcements
+    - @announcements.each do |announcement|
+      = render :partial => "announcements/announcement", :locals => {:announcement => announcement }
+    %p
+      - if can? :write, Announcement
+        = link_to "New announcement", new_announcement_path, :class => "btn btn-success pull-right"

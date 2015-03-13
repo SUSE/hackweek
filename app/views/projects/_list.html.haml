@@ -1,0 +1,7 @@
+-if projects
+  %table.table
+    %thead
+    - projects.each_with_index do |project, index|
+      %tr
+        %td{:class => "#{project.aasm_state}"}
+          = render :partial => "projects/list_item", :locals => {:project => project, :index => index }
