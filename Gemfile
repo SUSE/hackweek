@@ -61,4 +61,5 @@ group :test do
   gem 'coveralls', :require => false
   # for testing the search
   gem 'sunspot_test'
+  gem 'rubocop'
 end

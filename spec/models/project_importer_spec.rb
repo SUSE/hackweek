@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 describe ProjectImporter do
-  
   describe '#import' do
-    pending "no tests"
+    pending 'no tests'
   end
   # import projects
   # don't duplicate entries

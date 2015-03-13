@@ -1,13 +1,12 @@
 require 'rails_helper'
 
 describe ApiController do
-
   before :each do
     sign_in create(:admin)
   end
 
-  describe "POST api_import" do
-    it "imports projects" do
+  describe 'POST api_import' do
+    it 'imports projects' do
       json = <<EOT
 {
   "projects": [
@@ -26,11 +25,7 @@ describe ApiController do
   ]
 }
 EOT
-      expect {
-        post :import, json
-      }.to change(Project, :count).by(3)
+      expect { post :import, json }.to change(Project, :count).by(3)
     end
   end
-
 end
-

@@ -1,10 +1,10 @@
 class Ability
-# The first argument to `can` is the action you are giving the user 
+# The first argument to `can` is the action you are giving the user
 # permission to do.
 # If you pass :manage it will apply to every action. Other common actions
 # here are :read, :create, :update and :destroy.
 #
-# The second argument is the resource the user can perform the action on. 
+# The second argument is the resource the user can perform the action on.
 # If you pass :all it will apply to every resource. Otherwise pass a Ruby
 # class of the resource.
 #
@@ -27,8 +27,8 @@ class Ability
       can [:join, :leave, :like, :dislike, :create], Project
       can [:enroll], Announcement
       # ...manage things they own
-      can :manage, Project, :originator_id => user.id
-      can :manage, User, :id => user.id
+      can :manage, Project, originator_id: user.id
+      can :manage, User, id: user.id
       can [:edit, :update, :add_keyword, :delete_keyword, :advance, :recess, :add_episode, :delete_episode], Project do |project|
         project.users.include? user
       end
@@ -44,7 +44,5 @@ class Ability
       end
 
     end
-
   end
-
 end
