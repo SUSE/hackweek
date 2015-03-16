@@ -181,6 +181,6 @@ class Project < ActiveRecord::Base
 
     def random_avatar
       avatars = %w( space_alien space_raygun space_shuttle space_suit space_invader space_ship space_station )
-      "/assets/avatars/#{avatars.sample}_:style.png"
+      "avatars/#{avatars.sample}_:style.png"
     end
 end
