@@ -1,14 +1,14 @@
 source 'https://rubygems.org'
 
 # as framework
-gem 'rails', '~> 4.1.0'
+gem 'rails', '~> 4.2'
 # as databases
 gem 'mysql2'
 gem 'sqlite3'
 # for stylesheets
-gem 'sass-rails',   '~> 4.0.3'
+gem 'sass-rails',   '~> 5.0'
 # for .js.coffee assets
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.1.0'
 # as the front-end framework
 gem 'bootstrap-sass'
 # as vector icons
@@ -41,8 +41,8 @@ gem 'figaro'
 # for keyboard shortcuts
 gem 'mousetrap-rails'
 # as search engine
-gem 'sunspot_rails', "~> 2.0.0"
-gem 'sunspot_solr', "~> 2.0.0"
+gem 'sunspot_rails', "~> 2.1"
+gem 'sunspot_solr', "~> 2.1"
 # https://github.com/sunspot/sunspot/issues/600
 gem 'activerecord-deprecated_finders', require: 'active_record/deprecated_finders'
 # for seeds
@@ -61,5 +61,8 @@ group :test do
   gem 'coveralls', :require => false
   # for testing the search
   gem 'sunspot_test'
+  # as style hound
   gem 'rubocop'
+  # as interactive debugger in error pages
+  gem 'web-console', '~> 2.0'
 end

@@ -24,13 +24,6 @@ describe 'Search result', search: true do
     expect(search.results.first).to eq(project)
   end
 
-  it 'can be found by substring' do
-    project = create(:project, title: 'Supercalifragilisticexpialidocious')
-    Sunspot.commit
-    search = Project.search { fulltext 'ilistic'}
-    expect(search.results.first).to eq(project)
-  end
-
   it 'can be found by stemming' do
     # stemming means that different forms of the verb are treated the as the same word.
     # For example, reading and read are considered the same word.

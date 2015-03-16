@@ -21,7 +21,11 @@
 
 # Ignore solr
 solr/data
-solr/index
+solr/default/
+solr/development/
+solr/test/
+
+
 
 # Ignore the gallery files
 /public/gallery/*
