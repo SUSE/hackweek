@@ -17,7 +17,7 @@ class Project < ActiveRecord::Base
   has_many :likes
   has_many :updates, dependent: :destroy
 
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
 
   has_and_belongs_to_many :episodes
 
