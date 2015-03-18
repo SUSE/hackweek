@@ -302,12 +302,10 @@ describe ProjectsController do
 
       # We are creating our helpers eagerly, so they are in the DB at the request time
       let!(:episode) { create :episode }
-      let!(:old_projects) { 12.times { create :project, episodes: [episode], created_at: 1.year.ago } }
-      let!(:new_projects) { 12.times { create :project, episodes: [episode] } }
+      let!(:old_projects) { (1..12).map { create :project, episodes: [episode], created_at: 1.year.ago } }
+      let!(:new_projects) { (1..10).map { create :project, episodes: [episode] } }
 
       before :example do
-        episode = create :episode
-        12.times { create :project, episodes: [episode] }
         get :newest, format: :rss
       end
 
@@ -320,6 +318,7 @@ describe ProjectsController do
       it 'returns 10 last items' do
         xml = Nokogiri::XML(response.body)
         expect(xml.xpath('//item').count).to eq 10
+        expect(xml.xpath('//item/title').map &:text).to match_array(new_projects.map &:title)
       end
 
       it 'is scoped to an episode'

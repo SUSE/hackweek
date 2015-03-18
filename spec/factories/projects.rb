@@ -1,8 +1,9 @@
 # This will guess the User class
 FactoryGirl.define do
   factory :all_states, class: Project do
-    title Faker::Lorem.sentence
-    description Faker::Lorem.paragraph
+    sequence(:title) { Faker::Lorem.sentence }
+    sequence(:description) { Faker::Lorem.paragraph }
+    
     likes_count 0
     memberships_count 0
     aasm_state 'idea'

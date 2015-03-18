@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
   # GET /projects/newest.rss
 
   def newest
-    @newest = Project.current(@episode).first(10)
+    @newest = Project.current(@episode).active.order("created_at DESC").first(10)
     respond_to do |format|
       format.rss { render :layout => false }
     end
