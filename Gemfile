@@ -7,6 +7,15 @@ gem 'rails', '~> 4.2'
 gem 'spring', group: [:development, :test]
 gem 'spring-commands-rspec', group: [:development, :test]
 
+# Misc tools for fancy development
+group :development, :test do
+  gem 'better_errors'
+
+  gem 'pry-byebug'
+  gem 'pry-rails'
+  gem 'hirb'
+end
+
 # as databases
 gem 'mysql2'
 gem 'sqlite3'
