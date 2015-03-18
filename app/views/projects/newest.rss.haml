@@ -2,3 +2,13 @@
 %rss(version="2.0"
      xmlns:content="http://purl.org/rss/1.0/modules/content/"
      xmlns:atom="http://www.w3.org/2005/Atom")
+  %channel
+
+    -@newest.each do |project|
+      %item
+        %title #{ project.title }
+        %link  #{ project_url(project) }
+        %description #{ project.description }
+        %author #{ project.originator.name }
+        %pubDate #{ project.created_at }
+        %link  #{ project_url(project) }

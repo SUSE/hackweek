@@ -297,10 +297,13 @@ describe ProjectsController do
   describe 'GET /:episode/projects/newest' do
     context '.rss' do
 
+      # We want to parse the outputted XML, so let's turn off rendering stubbing
+      render_views
+
       # We are creating our helpers eagerly, so they are in the DB at the request time
       let!(:episode) { create :episode }
       let!(:old_projects) { 12.times { create :project, episodes: [episode], created_at: 1.year.ago } }
-      let!(:new_projects) { 12.times { reate :project, episodes: [episode] } }
+      let!(:new_projects) { 12.times { create :project, episodes: [episode] } }
 
       before :example do
         episode = create :episode
@@ -314,5 +317,13 @@ describe ProjectsController do
         expect(response.content_type).to eq 'application/rss+xml'
       end
 
+      it 'returns 10 last items' do
+        xml = Nokogiri::XML(response.body)
+        expect(xml.xpath('//item').count).to eq 10
+      end
+
+      it 'is scoped to an episode'
+      it 'is updated when the project is added to an episode'
+    end
   end
 end
