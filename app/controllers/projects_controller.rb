@@ -14,6 +14,14 @@ class ProjectsController < ApplicationController
     @new= Project.current(@episode).active.order("created_at ASC").first(5)
   end
 
+  # GET /projects/newest.rss
+
+  def newest
+    respond_to do |format|
+      format.rss { render :layout => false }
+    end
+  end
+
   # GET /projects/popular
   def popular
     @projects = Project.current(@episode).liked.order("likes_count DESC")

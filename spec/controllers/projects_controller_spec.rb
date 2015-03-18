@@ -293,4 +293,26 @@ describe ProjectsController do
       expect(response).to redirect_to(project)
     end
   end
+
+  describe 'GET /:episode/projects/newest' do
+    context '.rss' do
+
+      # We are creating our helpers eagerly, so they are in the DB at the request time
+      let!(:episode) { create :episode }
+      let!(:old_projects) { 12.times { create :project, episodes: [episode], created_at: 1.year.ago } }
+      let!(:new_projects) { 12.times { reate :project, episodes: [episode] } }
+
+      before :example do
+        episode = create :episode
+        12.times { create :project, episodes: [episode] }
+        get :newest, format: :rss
+      end
+
+      it 'returns an RSS feed' do
+        expect(response).to be_success
+        expect(response).to render_template("projects/newest")
+        expect(response.content_type).to eq 'application/rss+xml'
+      end
+
+  end
 end
