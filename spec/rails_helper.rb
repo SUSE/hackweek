@@ -59,4 +59,8 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  # Enable colored output
+  config.tty = true
+  config.color = true
 end
