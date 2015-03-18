@@ -2,6 +2,11 @@ source 'https://rubygems.org'
 
 # as framework
 gem 'rails', '~> 4.2'
+
+# To speedup app startup
+gem 'spring', group: [:development, :test]
+gem 'spring-commands-rspec', group: [:development, :test]
+
 # as databases
 gem 'mysql2'
 gem 'sqlite3'
