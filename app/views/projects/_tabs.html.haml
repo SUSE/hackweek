@@ -28,3 +28,10 @@
       %span.hidden-xs
         Archived
       %i.fa.fa-archive.visible-xs
+
+  %li.pull-right
+    =link_to newest_projects_path(@episode, @project, format: :rss), title: 'New projects feed' do
+      %i.fa.fa-rss
+      %span
+        RSS
+
