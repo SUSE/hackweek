@@ -263,14 +263,14 @@ describe ProjectsController do
       project = create(:idea)
       episode = create(:episode)
       expect {
-          post :add_episode, id: project, episode_id: episode
+          post :add_episode, id: project, episode_id: episode.id
       }.to change(project.episodes, :count).by(1)
     end
 
     it 'redirects to the project' do
       project = create(:idea)
       episode = create(:episode)
-      post :add_episode, id: project, episode_id: episode
+      post :add_episode, id: project, episode_id: episode.id
       expect(response).to redirect_to(project_url(episode, project))
     end
   end
@@ -279,17 +279,17 @@ describe ProjectsController do
     it 'deletes an episode from the project' do
       project = create(:idea)
       episode = create(:episode)
-      post :add_episode, id: project, episode_id: episode
+      post :add_episode, id: project, episode_id: episode.id
       expect {
-          post :delete_episode, id: project, episode_id: episode
+          post :delete_episode, id: project, episode_id: episode.id
       }.to change(project.episodes, :count).by(-1)
     end
 
     it 'redirects to the project' do
       project = create(:idea)
       episode = create(:episode)
-      post :add_episode, id: project, episode_id: episode
-      post :delete_episode, id: project, episode_id: episode
+      post :add_episode, id: project, episode_id: episode.id
+      post :delete_episode, id: project, episode_id: episode.id
       expect(response).to redirect_to(project)
     end
   end
@@ -335,14 +335,27 @@ describe ProjectsController do
       it 'is updated when the project is added to an episode' do
         project = create :project, created_at: 1.year.ago
 
-        post :add_episode, id: project, episode_id: episode
-        get :newest, episode_id: episode, format: :rss
+        post :add_episode, id: project, episode_id: episode.id
+        get :newest, episode_id: episode.id, format: :rss
 
         xml = Nokogiri::XML(response.body)
-        expect(xml.xpath('//item/title')[0].text).to eq project.title
+        expect(xml.xpath('//item/title').first.text).to eq project.title
       end
 
-      it 'works when there are EpisodeProductAssociations without timestamp'
+      it 'works when there are EpisodeProductAssociations without timestamp' do
+        Project.all.each do |project|
+          project.episode_project_associations.update_all(created_at: nil)
+        end
+
+        project = create :project, episodes: [episode]
+        project.episode_project_associations.update_all(created_at: 1.year.ago)
+
+        get :newest, episode_id: episode.id, format: :rss
+
+        xml = Nokogiri::XML(response.body)
+        expect(xml.xpath('//item').count).to eq 10
+        expect(xml.xpath('//item/title').first.text).to eq project.title
+      end
     end
   end
 end
