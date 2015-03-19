@@ -271,7 +271,7 @@ describe ProjectsController do
       project = create(:idea)
       episode = create(:episode)
       post :add_episode, id: project, episode_id: episode
-      expect(response).to redirect_to(project)
+      expect(response).to redirect_to(project_url(episode, project))
     end
   end
 
@@ -311,7 +311,7 @@ describe ProjectsController do
 
       it 'returns an RSS feed' do
         expect(response).to be_success
-        expect(response).to render_template("projects/newest")
+        expect(response).to render_template('projects/newest')
         expect(response.content_type).to eq 'application/rss+xml'
       end
 
@@ -321,8 +321,28 @@ describe ProjectsController do
         expect(xml.xpath('//item/title').map &:text).to match_array(new_projects.map &:title)
       end
 
-      it 'is scoped to an episode'
-      it 'is updated when the project is added to an episode'
+      it 'is scoped to an episode' do
+        another_episode = create :episode
+        the_only_project = create :project, episodes: [another_episode]
+
+        get :newest, episode_id: another_episode, format: :rss
+
+        xml = Nokogiri::XML(response.body)
+        expect(xml.xpath('//item').count).to eq 1
+        expect(xml.xpath('//item/title').map &:text).to contain_exactly(the_only_project.title)
+      end
+
+      it 'is updated when the project is added to an episode' do
+        project = create :project, created_at: 1.year.ago
+
+        post :add_episode, id: project, episode_id: episode
+        get :newest, episode_id: episode, format: :rss
+
+        xml = Nokogiri::XML(response.body)
+        expect(xml.xpath('//item/title')[0].text).to eq project.title
+      end
+
+      it 'works when there are EpisodeProductAssociations without timestamp'
     end
   end
 end

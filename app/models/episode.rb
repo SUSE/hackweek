@@ -1,5 +1,8 @@
 class Episode < ActiveRecord::Base
-  has_and_belongs_to_many :projects
+
+  has_many :episode_project_associations
+  has_many :projects, through: :episode_project_associations
+
   validates :name, presence: true
 
   def self.active
