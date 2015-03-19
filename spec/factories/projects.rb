@@ -22,5 +22,11 @@ FactoryGirl.define do
     factory :record, class: Project do
       aasm_state 'record'
     end
+
+    trait :with_comments do
+      after :create do |project|
+        2.times { project.comments << create(:comment, commentable: project) }
+      end
+    end
   end
 end

@@ -110,4 +110,12 @@ describe Project do
       it { expect(@project.idea?).to eq(true) }
     end
   end
+
+  describe 'destroy' do
+    it 'deletes associated comments' do
+      project = create :project, :with_comments
+      project.destroy!
+      expect(Comment.count).to be 0
+    end
+  end
 end
