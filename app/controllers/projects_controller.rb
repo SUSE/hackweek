@@ -5,13 +5,23 @@ class ProjectsController < ApplicationController
   skip_before_filter :store_location, :only => [:join, :leave, :like, :dislike, :add_keyword, :delete_keyword ]
   skip_before_action :verify_authenticity_token, :only => [:add_keyword, :delete_keyword ]
   skip_load_and_authorize_resource :only => :old_archived
-  before_action :set_episode_id, :only => [:add_episode, :delete_episode]
+  before_action :load_episode
 
   # GET /projects
   def index
     @projects = Project.current(@episode).active
     @popular = Project.current(@episode).liked.order("likes_count DESC").first(5)
     @new= Project.current(@episode).active.order("created_at ASC").first(5)
+  end
+
+  # GET /projects/newest.rss
+
+  def newest
+    @newest = Project.current(@episode).active.includes(:episode_project_associations).
+        order('episodes_projects.created_at DESC').references(:episodes_projects).first(10)
+    respond_to do |format|
+      format.rss { render :layout => false }
+    end
   end
 
   # GET /projects/popular
@@ -71,7 +81,7 @@ class ProjectsController < ApplicationController
     @project.originator = current_user
 
     if @project.save
-      redirect_to project_path(@episode, @project), notice: "Project was successfully created."
+      redirect_to project_path(@episode, @project), notice: 'Project was successfully created.'
     else
       render action: "new"
     end
@@ -82,7 +92,7 @@ class ProjectsController < ApplicationController
     if @project.update_attributes(project_params)
       redirect_to project_path(@episode, @project)
     else
-      render action: "edit" 
+      render action: "edit"
     end
   end
 
@@ -139,7 +149,7 @@ class ProjectsController < ApplicationController
   # PUT /projects/1/dislike
   def dislike
     @project.dislike! current_user
-    
+
     respond_to do |format|
       format.html{ redirect_to project_path(@episode, @project), notice: "Aaww Snap! You don't love me anymore?" }
       format.js { render :partial => "like_toggle" }
@@ -168,17 +178,17 @@ class ProjectsController < ApplicationController
 
   # PUT /projects/1/add_hackweek/1
   def add_episode
-    unless @project.episodes.include? @subject
-      @project.episodes << @subject
+    unless @project.episodes.include? @episode
+      @project.episodes << @episode
     end
 
-    redirect_to project_path(@episode, @project), notice: "Added hackweek #{@subject.name}"
+    redirect_to project_path(@episode, @project), notice: "Added hackweek #{@episode.name}"
   end
 
   # DELETE /projects/1/delete_hackweek/2
   def delete_episode
-    @project.episodes.delete(@subject)
-    redirect_to project_path(@episode, @project), notice: "Removed hackweek #{@subject.name}"
+    @project.episodes.delete(@episode)
+    redirect_to project_path(nil, @project), notice: "Removed hackweek #{@episode.name}"
   end
 
   private
@@ -186,13 +196,13 @@ class ProjectsController < ApplicationController
     def project_params
       params.require(:project).permit(:description, :title, :avatar)
     end
-  
+
     def keyword_params
       params.require(:keyword)
     end
-    
-    def set_episode_id
-      @subject = Episode.find(params[:episode_id])
+
+    def load_episode
+      @episode = Episode.find(params[:episode_id]) if params[:episode_id]
     end
- 
+
 end

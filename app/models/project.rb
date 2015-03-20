@@ -19,7 +19,8 @@ class Project < ActiveRecord::Base
 
   has_many :comments, as: :commentable, dependent: :destroy
 
-  has_and_belongs_to_many :episodes
+  has_many :episode_project_associations
+  has_many :episodes, through: :episode_project_associations
 
   has_attached_file :avatar, styles: { thumb: '64x64>' }, default_url: :random_avatar
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/

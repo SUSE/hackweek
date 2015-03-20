@@ -263,15 +263,15 @@ describe ProjectsController do
       project = create(:idea)
       episode = create(:episode)
       expect {
-          post :add_episode, id: project, episode_id: episode
+          post :add_episode, id: project, episode_id: episode.id
       }.to change(project.episodes, :count).by(1)
     end
 
     it 'redirects to the project' do
       project = create(:idea)
       episode = create(:episode)
-      post :add_episode, id: project, episode_id: episode
-      expect(response).to redirect_to(project)
+      post :add_episode, id: project, episode_id: episode.id
+      expect(response).to redirect_to(project_url(episode, project))
     end
   end
 
@@ -279,18 +279,83 @@ describe ProjectsController do
     it 'deletes an episode from the project' do
       project = create(:idea)
       episode = create(:episode)
-      post :add_episode, id: project, episode_id: episode
+      post :add_episode, id: project, episode_id: episode.id
       expect {
-          post :delete_episode, id: project, episode_id: episode
+          post :delete_episode, id: project, episode_id: episode.id
       }.to change(project.episodes, :count).by(-1)
     end
 
     it 'redirects to the project' do
       project = create(:idea)
       episode = create(:episode)
-      post :add_episode, id: project, episode_id: episode
-      post :delete_episode, id: project, episode_id: episode
+      post :add_episode, id: project, episode_id: episode.id
+      post :delete_episode, id: project, episode_id: episode.id
       expect(response).to redirect_to(project)
+    end
+  end
+
+  describe 'GET /:episode/projects/newest' do
+    context '.rss' do
+
+      # We want to parse the outputted XML, so let's turn off rendering stubbing
+      render_views
+
+      # We are creating our helpers eagerly, so they are in the DB at the request time
+      let!(:episode) { create :episode }
+      let!(:old_projects) { (1..12).map { create :project, episodes: [episode], created_at: 1.year.ago } }
+      let!(:new_projects) { (1..10).map { create :project, episodes: [episode] } }
+
+      before :example do
+        get :newest, format: :rss
+      end
+
+      it 'returns an RSS feed' do
+        expect(response).to be_success
+        expect(response).to render_template('projects/newest')
+        expect(response.content_type).to eq 'application/rss+xml'
+      end
+
+      it 'returns 10 last items' do
+        xml = Nokogiri::XML(response.body)
+        expect(xml.xpath('//item').count).to eq 10
+        expect(xml.xpath('//item/title').map &:text).to match_array(new_projects.map &:title)
+      end
+
+      it 'is scoped to an episode' do
+        another_episode = create :episode
+        the_only_project = create :project, episodes: [another_episode]
+
+        get :newest, episode_id: another_episode, format: :rss
+
+        xml = Nokogiri::XML(response.body)
+        expect(xml.xpath('//item').count).to eq 1
+        expect(xml.xpath('//item/title').map &:text).to contain_exactly(the_only_project.title)
+      end
+
+      it 'is updated when the project is added to an episode' do
+        project = create :project, created_at: 1.year.ago
+
+        post :add_episode, id: project, episode_id: episode.id
+        get :newest, episode_id: episode.id, format: :rss
+
+        xml = Nokogiri::XML(response.body)
+        expect(xml.xpath('//item/title').first.text).to eq project.title
+      end
+
+      it 'works when there are EpisodeProductAssociations without timestamp' do
+        Project.all.each do |project|
+          project.episode_project_associations.update_all(created_at: nil)
+        end
+
+        project = create :project, episodes: [episode]
+        project.episode_project_associations.update_all(created_at: 1.year.ago)
+
+        get :newest, episode_id: episode.id, format: :rss
+
+        xml = Nokogiri::XML(response.body)
+        expect(xml.xpath('//item').count).to eq 10
+        expect(xml.xpath('//item/title').first.text).to eq project.title
+      end
     end
   end
 end
