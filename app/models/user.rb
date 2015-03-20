@@ -26,9 +26,9 @@ class User < ActiveRecord::Base
   include Gravtastic
   has_gravatar
 
-  searchable do
-    text :name
-  end
+  #searchable do
+  #  text :name
+  #end
 
   def role?(role)
     return !!self.roles.find_by_name(role)

@@ -1,5 +1,6 @@
 production:
   solr:
+    disabled: true
     hostname: localhost
     port: 8983
     log_level: WARNING

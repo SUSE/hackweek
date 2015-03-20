@@ -78,13 +78,13 @@ class Project < ActiveRecord::Base
   end
 
   # solr configuration
-  searchable do
-    text :title
-    text :description
-    text :comments do
-      comments.map { |comment| comment.text }
-    end
-  end
+  #searchable do
+  #  text :title
+  #  text :description
+  #  text :comments do
+  #    comments.map { |comment| comment.text }
+  #  end
+  #end
 
   def join! user
     if self.users.empty?
