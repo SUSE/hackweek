@@ -10,8 +10,10 @@
       %ul.nav.navbar-nav.hidden-xs
         %li.dropdown
           = link_to(projects_path(@episode), {class: "navbar-brand"}) do
-            = @episode.name if @episode
-            = "All Hackweeks" unless @episode
+            - if @episode == 'all'
+              = "All Hackweeks"
+            - else
+              = @episode.name if @episode
           = link_to('#', {class: "dropdown-toggle navbar-brand", "data-toggle"=>"dropdown"} ) do
             %i.fa.fa-caret-square-o-down
           %ul.dropdown-menu{:role => "menu"}

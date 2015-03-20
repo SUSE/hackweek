@@ -6,33 +6,32 @@ class ApplicationController < ActionController::Base
   before_filter :load_news
   before_filter :set_episode
 
-
   before_filter do
     resource = controller_name.singularize.to_sym
     method = "#{resource}_params"
     params[resource] &&= send(method) if respond_to?(method, true)
   end
 
-  rescue_from ActionController::ParameterMissing , with: :parameter_empty
+  rescue_from ActionController::ParameterMissing, with: :parameter_empty
 
   protected
 
   def howto
-    render :layout => "application"
+    render layout: 'application'
   end
 
   def awards
-    render :layout => "application"
+    render layout: 'application'
   end
 
-  def after_sign_out_path_for(resource_or_scope)
+  def after_sign_out_path_for(*)
     projects_path
   end
 
   def store_location
     if user_signed_in?
-      if not request.fullpath === new_user_ichain_session_path and request.get?
-        session["user_return_to"] = request.fullpath
+      if !request.fullpath == new_user_ichain_session_path && request.get?
+        session['user_return_to'] = request.fullpath
       end
     end
   end
@@ -55,16 +54,19 @@ class ApplicationController < ActionController::Base
 
   def parameter_empty
     redirect_to(:back)
-    flash["alert-warning"] = 'Parameter missing...'
+    flash['warn'] = 'Parameter missing...'
   end
 
   def set_episode
-    if !params[:episode].blank?
-      @episode = Episode.find_by(id: params[:episode])
-    elsif session[:episode]
-      @episode = Episode.find_by(id: session[:episode])
+    if params[:episode].blank?
+      @episode = Episode.active
+    else
+      if params[:episode] == 'all'
+        @episode = 'all'
+      else
+        @episode = Episode.find_by(id: params[:episode])
+      end
     end
-    # and then we save the ID to the session
-    session[:episode] = @episode
+    logger.debug("\n\nEpisode: #{@episode}\n\n")
   end
 end

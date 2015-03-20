@@ -56,13 +56,13 @@ class Project < ActiveRecord::Base
   scope :liked, -> { where('likes_count > 0') }
   scope :populated, -> { where('memberships_count > 0') }
   scope :by_episode, lambda { |episode|
-    if episode
+    if episode && episode.kind_of?(Episode)
       joins(:episodes).where(episodes: { id: episode.id })
     end
   }
 
   def self.current(episode = nil)
-    if !episode.nil?
+    if !episode.nil? && episode.kind_of?(Episode)
       joins(:episodes).where(episodes: { id: episode.id })
     else
       self.all
