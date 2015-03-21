@@ -68,12 +68,12 @@ Because of sunspot solr, it requires java. We have installed java-1_7_0-ibm.
 
 As our project involves somewhat complicated setup (MySQL and Shpinx search) even for development environment, we've created Vagrantfile to get you up and running.
 
-1. Install Virtualbox for your OS.
+1. Install Virtualbox (can be found in your OS package manager or [here](https://www.virtualbox.org/wiki/Downloads)).
 2. Download and install the [latest vagrant](https://www.vagrantup.com/downloads.html).
 3. Install vagrant-exec plugin: `vagrant plugin install vagrant-exec`.
 4. Start Vagrant box: `vagrant up`. It will set up and start an OpenSUSE 13.2 VirtualBox VM in the background. 
-VM will have a shared folder `/vagrant` with your code, and can always be shut down with `vagrant halt` and removed with `vagrant destroy`.
-5. Remote connection to the Vagrant box is available with `vagrant ssh`, one can run single-shot remote commands like `vagrant exec rake db:migrate` (will be run in the context of `/vagrant` folder; no need to additional state `bundle exec`, it is handled automatically).
-6. Install missing gems: `vagrant exec bundle`
-7. Migrate development database: `vagrant exec rake db:migrate`
-8. Launch the application: `vagrant exec rails s`. It should be running at http://localhost:3000, as usual.
+VM will have an autosynced folder `/vagrant` with your code, and can always be shut down with `vagrant halt` and removed with `vagrant destroy`.
+5. Remote connection to the Vagrant box is available with `vagrant ssh`, one can run single-shot remote commands like `vagrant exec rake db:migrate` (will be run in the context of `/vagrant` folder; no need to additionaly state `bundle exec`).
+6. Install missing gems: `vagrant exec bundle`.
+7. Migrate development database: `vagrant exec rake db:migrate`.
+8. Launch the application: `vagrant exec rails s`. It should be accessible at http://localhost:3000, as usual.
