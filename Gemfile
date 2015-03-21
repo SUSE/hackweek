@@ -19,7 +19,6 @@ end
 
 # as databases
 gem 'mysql2'
-gem 'sqlite3'
 # for stylesheets
 gem 'sass-rails',   '~> 5.0'
 # for .js.coffee assets

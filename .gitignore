@@ -51,3 +51,4 @@ nbproject
 *.ipr
 *.iws
 .idea/
+.vagrant/
