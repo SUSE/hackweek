@@ -4,33 +4,37 @@ describe 'Search result', search: true do
   it 'can be found by the exact string' do
     project = create(:project, title: 'Black')
     project2 = create(:project, title: 'White')
-    Sunspot.commit
-    search = Project.search { fulltext "#{project.title}"}
-    expect(search.results).to include(project)
-    expect(search.results).not_to include(project2)
+
+    # Honestly, manual indexing shouldn't be necessary.
+    # But it seems that everything happens a little bit too fast for deltas to pick up,
+    # so let's reindex everything manually. Just to be sure.
+    index
+
+    results = Project.search project.title
+    expect(results).to contain_exactly(project)
   end
 
   it 'can be found by string with a different case' do
     project = create(:project, title: 'Black')
-    Sunspot.commit
-    search = Project.search { fulltext 'bLacK'}
-    expect(search.results.first).to eq(project)
+    index
+    results = Project.search 'bLacK'
+    expect(results).to contain_exactly(project)
   end
 
   it 'can be found by substring' do
     project = create(:project, title: 'Supercalifragilisticexpialidocious')
-    Sunspot.commit
-    search = Project.search { fulltext 'ilistic'}
-    expect(search.results.first).to eq(project)
+    index
+    results = Project.search 'ilistic'
+    expect(results).to contain_exactly(project)
   end
 
   it 'can be found by stemming' do
     # stemming means that different forms of the verb are treated the as the same word.
     # For example, reading and read are considered the same word.
     project = create(:project, title: 'Read')
-    Sunspot.commit
-    search = Project.search { fulltext 'reading'}
-    expect(search.results.first).to eq(project)
+    index
+    results = Project.search 'reading'
+    expect(results).to contain_exactly(project)
   end
 
   it 'can be found using operators' do
@@ -39,20 +43,15 @@ describe 'Search result', search: true do
     linux = create(:project, title: 'Linux')
     opensuse = create(:project, title: 'openSUSE', description: 'A Linux distribution')
     hurd = create(:project, title: 'Hurd', description: 'A kernel replacing Linux')
-    Sunspot.commit
+    index
 
-    search = Project.search { fulltext 'linux'}
-    expect(search.total).to eq(3)
+    results = Project.search 'linux'
+    expect(results.length).to eq(3)
 
-    search = Project.search { fulltext 'linux -openSUSE -Hurd' }
-    expect(search.total).to eq(1)
-    expect(search.results.first).to eq(linux)
-    expect(search.results).not_to include(opensuse)
-    expect(search.results).not_to include(hurd)
+    results = Project.search 'linux -openSUSE -Hurd'
+    expect(results).to contain_exactly(linux)
 
-    search = Project.search { fulltext 'linux NOT openSUSE' }
-    expect(search.total).to eq(2)
-    expect(search.results).to include(linux)
-    expect(search.results).to include(hurd)
+    results = Project.search 'linux NOT openSUSE'
+    expect(results).to contain_exactly(linux, hurd)
   end
 end
