@@ -55,8 +55,7 @@ gem 'figaro'
 # for keyboard shortcuts
 gem 'mousetrap-rails'
 # as search engine
-gem 'sunspot_rails', "~> 2.1"
-gem 'sunspot_solr', "~> 2.1"
+gem 'thinking-sphinx'
 # https://github.com/sunspot/sunspot/issues/600
 gem 'activerecord-deprecated_finders', require: 'active_record/deprecated_finders'
 # for seeds
@@ -73,8 +72,6 @@ group :test do
   gem 'database_cleaner'
   # for measuring test coverage
   gem 'coveralls', :require => false
-  # for testing the search
-  gem 'sunspot_test'
   # as style hound
   gem 'rubocop'
   # as interactive debugger in error pages

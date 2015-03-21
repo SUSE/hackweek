@@ -18,13 +18,8 @@
 /config/application.yml
 /config/secrets.yml
 
-# Ignore solr
-solr/data
-solr/default/
-solr/development/
-solr/test/
-
-
+# Ignore sphinx db
+/db/sphinx/
 
 # Ignore the gallery files
 /public/gallery/*

@@ -37,9 +37,10 @@ bundle install
 ```shell
 rake db:setup
 ```
-* Run the search server
+* Create initial indixes and start the search daemon
 ```shell
-rake sunspot:solr:start
+rake ts: index
+rake ts:start
 ```
 * Run the rails server
 ```shell
