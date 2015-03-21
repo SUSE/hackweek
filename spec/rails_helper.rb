@@ -27,10 +27,8 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # examples within a transaction, remove the following line or assign false
-  # instead of true.
-  config.use_transactional_fixtures = true
+  # ThinkingSphinx uses DB directly, so transactions are useless there
+  config.use_transactional_fixtures = false
 
   # mix in different behaviours to your tests based on their file location,
   # for example enabling you to call `get` and `post` in specs under `spec/controllers`.
@@ -38,12 +36,25 @@ RSpec.configure do |config|
 
   # Setting up DB cleaning to maintain empty rows
   config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
+
+    # Ensure sphinx directories exist for the test environment
+    ThinkingSphinx::Test.init
+    # Configure and start Sphinx, and automatically
+    # stop Sphinx at the end of the test suite.
+    ThinkingSphinx::Test.start_with_autostop
   end
 
   config.around(:each) do |example|
+    if example.metadata[:search]
+      DatabaseCleaner.strategy = :truncation
+    else
+      DatabaseCleaner.strategy = :transaction
+    end
+
     DatabaseCleaner.cleaning do
+      # Index data when running a search spec.
+      index if example.metadata[:search]
       example.run
     end
   end
@@ -53,6 +64,7 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller
   config.include LoginMacros, type: :feature
   #config.include Flash, type: :feature
+  config.include SphinxHelpers, type: :feature
 
   # As we start from scratch in September 2014, let's forbid the old :should syntax
   config.expect_with :rspec do |c|
