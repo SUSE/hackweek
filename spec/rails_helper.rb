@@ -40,22 +40,23 @@ RSpec.configure do |config|
 
     # Ensure sphinx directories exist for the test environment
     ThinkingSphinx::Test.init
-    # Configure and start Sphinx, and automatically
-    # stop Sphinx at the end of the test suite.
-    ThinkingSphinx::Test.start_with_autostop
   end
 
   config.around(:each) do |example|
     if example.metadata[:search]
       DatabaseCleaner.strategy = :truncation
+      ThinkingSphinx::Test.start
     else
       DatabaseCleaner.strategy = :transaction
     end
 
     DatabaseCleaner.cleaning do
-      # Index data when running a search spec.
-      index if example.metadata[:search]
       example.run
+    end
+
+    if example.metadata[:search]
+      ThinkingSphinx::Test.stop
+      ThinkingSphinx::Test.clear
     end
   end
 
