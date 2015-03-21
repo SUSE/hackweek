@@ -37,27 +37,26 @@ RSpec.configure do |config|
   # Setting up DB cleaning to maintain empty rows
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
-
-    # Ensure sphinx directories exist for the test environment
-    ThinkingSphinx::Test.init
+    DatabaseCleaner.strategy = :truncation
   end
 
-  config.around(:each) do |example|
+  config.before(:each) do |example|
     if example.metadata[:search]
-      DatabaseCleaner.strategy = :truncation
+      # Ensure sphinx directories exist for the test environment
+      ThinkingSphinx::Test.init
       ThinkingSphinx::Test.start
-    else
-      DatabaseCleaner.strategy = :transaction
     end
 
-    DatabaseCleaner.cleaning do
-      example.run
-    end
+    DatabaseCleaner.start
+  end
 
+  config.after(:each) do |example|
     if example.metadata[:search]
       ThinkingSphinx::Test.stop
       ThinkingSphinx::Test.clear
     end
+
+    DatabaseCleaner.clean
   end
 
   # Include helpers and connect them to specific types of tests

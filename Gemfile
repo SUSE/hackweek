@@ -56,8 +56,6 @@ gem 'figaro'
 gem 'mousetrap-rails'
 # as search engine
 gem 'thinking-sphinx'
-# https://github.com/sunspot/sunspot/issues/600
-gem 'activerecord-deprecated_finders', require: 'active_record/deprecated_finders'
 # for seeds
 gem 'factory_girl_rails', :group => [:development, :test]
 gem 'faker', :group => [:development, :test]
