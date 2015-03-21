@@ -1,0 +1,9 @@
+development:
+  mysql41: 9312
+  morphology: stem_en
+test:
+  mysql41: 9313
+  morphology: stem_en
+production:
+  mysql41: 9312
+  morphology: stem_en

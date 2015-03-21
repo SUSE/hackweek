@@ -68,6 +68,7 @@ task :notify_errbit do
   queue "RAILS_ENV=#{rails_env} bundle exec rake hoptoad:deploy TO=#{rails_env} REVISION=#{revision} REPO=#{repository} USER=#{user}"
 end
 
+# TODO replace with appropriate Sphinx manipulations
 desc "Restart solr."
 task :solr_restart do
   queue "cd #{deploy_to!}/#{current_path!} && sudo -u wwwrun RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:force_restart"

@@ -1,3 +1,4 @@
+# TODO remove or replace me
 namespace :sunspot do
   namespace :solr do
     desc "Force restart the solr server"
