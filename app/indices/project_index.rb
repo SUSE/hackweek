@@ -1,8 +1,6 @@
-ThinkingSphinx::Index.define :project, with: :active_record do
+ThinkingSphinx::Index.define :project, with: :real_time do
   indexes title
   indexes description
 
   # TODO index comments here
-
-  has created_at, updated_at
 end
