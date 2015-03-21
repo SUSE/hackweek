@@ -1,9 +1,11 @@
-development:
-  mysql41: 9312
+defaults: &defaults
   morphology: stem_en
+  min_infix_len: 3
+  mysql41: 9312
+
+development:
+  <<: *defaults
 test:
   mysql41: 9313
-  morphology: stem_en
 production:
-  mysql41: 9312
-  morphology: stem_en
+  <<: *defaults
