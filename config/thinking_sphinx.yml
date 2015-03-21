@@ -1,5 +1,6 @@
 defaults: &defaults
   morphology: stem_en
+  enable_star: 1
   min_infix_len: 3
   mysql41: 9312
 
