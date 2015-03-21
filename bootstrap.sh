@@ -5,7 +5,7 @@ zypper addrepo -f 'http://download.opensuse.org/repositories/server:/search/open
 zypper --gpg-auto-import-keys refresh
 
 # Install required packages
-zypper install -y mysql mysql-devel sphinx ruby-devel rubygem-bundler
+zypper install -y mysql mysql-devel sphinx ruby-devel rubygem-bundler libxml2-devel libxslt-devel
 
 # Enable MySQL service — now and on startup
 chkconfig mysql on
