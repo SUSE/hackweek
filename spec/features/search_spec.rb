@@ -16,15 +16,14 @@ describe 'Search result', search: true do
 
   # OK, I give up. Wildcards seem not to work in test mode (but works perfectly in development). 
   # Test this manually, please
-  xit 'can be found by substring in wildcard-enabled mode' do
+  it 'can be found by substring in wildcard-enabled mode' do
     results = Project.search 'fragil', star: true
-    binding.pry
     expect(results).to contain_exactly(project)
   end
 
   # Stemming depends on the morphology engines bundled with sphinx. Current testing setup is
   # kinda weird here — skipping this test for now
-  xit 'can be found by stemming' do
+  it 'can be found by stemming' do
     # stemming means that different forms of the verb are treated the as the same word.
     # For example, reading and read are considered the same word.
     project = create(:project, title: 'Read')

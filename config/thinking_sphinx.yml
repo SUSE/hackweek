@@ -1,13 +1,13 @@
 defaults: &defaults
-  morphology: 
+  morphology:
     - lemmatize_en_all
-    - stem_en
   min_infix_len: 3
   mysql41: 9312
 
 development:
   <<: *defaults
 test:
+  <<: *defaults
   mysql41: 9313
 production:
   <<: *defaults
