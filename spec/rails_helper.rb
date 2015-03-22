@@ -40,6 +40,8 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :truncation
   end
 
+  # TODO Stub Sphinx realtime callbacks when not in :search mode
+
   config.before(:each) do |example|
     if example.metadata[:search]
       # Ensure sphinx directories exist for the test environment

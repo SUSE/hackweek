@@ -37,10 +37,9 @@ bundle install
 ```shell
 rake db:setup
 ```
-* Create initial indixes and start the search daemon
+* Create Sphinx configuration, start the search daemon and index existing DB contents
 ```shell
-rake ts: index
-rake ts:start
+rake ts:regenerate ts:index
 ```
 * Run the rails server
 ```shell
