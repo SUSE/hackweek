@@ -17,7 +17,7 @@ set :branch, 'master'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, ['config/database.yml', 'config/application.yml', 'config/secrets.yml', 'log', 'public/gallery', 'solr/data', 'solr/pids', 'public/system']
+set :shared_paths, ['config/database.yml', 'config/application.yml', 'config/secrets.yml', 'log', 'public/gallery', 'en.pak', 'sphinx/db', 'sphinx/pids', 'public/system']
 
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
@@ -40,8 +40,9 @@ task :setup => :environment do
   queue! %[touch "#{deploy_to}/shared/config/application.yml"]
   queue  %[echo "-----> Be sure to edit 'shared/config/application.yml'."]
 
-  queue! %[mkdir -p "#{deploy_to}/shared/solr"]
-  queue! %[chmod g+rx,u+rws "#{deploy_to}/shared/solr"]
+  queue! %[mkdir -p "#{deploy_to}/shared/sphinx/db"]
+  queue! %[mkdir -p "#{deploy_to}/shared/sphinx/pids"]
+  queue! %[wget 'http://sphinxsearch.com/files/dicts/en.pak' -O "#{deploy_to}/shared/en.pak"]
 end
 
 desc "Deploys the current version to the server."
@@ -56,7 +57,7 @@ task :deploy => :environment do
 
     to :launch do
       queue "/etc/init.d/apache2 restart"
-      invoke :solr_restart
+      invoke :sphinx_restart
     end
   end
 end
@@ -69,12 +70,12 @@ task :notify_errbit do
 end
 
 # TODO replace with appropriate Sphinx manipulations
-desc "Restart solr."
-task :solr_restart do
-  queue "cd #{deploy_to!}/#{current_path!} && sudo -u wwwrun RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:force_restart"
+desc "Restart Sphinx."
+task :sphinx_restart do
+  queue "cd #{deploy_to!}/#{current_path!} && sudo -u wwwrun RAILS_ENV=#{rails_env} bundle exec rake ts:regenerate"
 end
 
-desc "Reindex solr."
-task :solr_reindex do
-  queue "cd #{deploy_to!}/#{current_path!} && sudo -u wwwrun RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:reindex"
+desc "Reindex Sphinx data."
+task :sphinx_reindex do
+  queue "cd #{deploy_to!}/#{current_path!} && sudo -u wwwrun RAILS_ENV=#{rails_env} bundle exec rake ts:index"
 end
