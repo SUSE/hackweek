@@ -26,7 +26,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # as the front-end framework
 gem 'bootstrap-sass'
 # as vector icons
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 # as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # as JavaScript library
@@ -49,7 +49,7 @@ gem 'selectize-rails'
 # as state machine
 gem 'aasm'
 # as exception notifier
-gem 'hoptoad_notifier', "~> 2.3"
+gem 'hoptoad_notifier', '~> 2.3'
 # to set env variables
 gem 'figaro'
 # for keyboard shortcuts
@@ -63,7 +63,7 @@ gem 'faker', :group => [:development, :test]
 gem 'rspec-rails', :group => [:development, :test]
 gem 'capybara', :group => [:development, :test]
 # for file attachments
-gem "paperclip", "~> 4.1"
+gem 'paperclip', '~> 4.1'
 
 group :test do
   # for cleaning the test DB

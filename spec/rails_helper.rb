@@ -40,13 +40,17 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :truncation
   end
 
-  # TODO Stub Sphinx realtime callbacks when not in :search mode
+  # Search requires complicated setup (and also mostly tests external libraries and tools, not our code)
+  # So we're omitting it from default runs
+  config.filter_run_excluding search: true
 
   config.before(:each) do |example|
     if example.metadata[:search]
       # Ensure sphinx directories exist for the test environment
       ThinkingSphinx::Test.init
       ThinkingSphinx::Test.start
+    else
+      ThinkingSphinx::Configuration.instance.settings['real_time_callbacks'] = false
     end
 
     DatabaseCleaner.start
@@ -66,7 +70,7 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller
   config.include LoginMacros, type: :feature
   #config.include Flash, type: :feature
-  config.include SphinxHelpers, type: :feature
+  config.include SphinxHelpers, search: true
 
   # As we start from scratch in September 2014, let's forbid the old :should syntax
   config.expect_with :rspec do |c|
