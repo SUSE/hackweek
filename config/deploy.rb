@@ -17,7 +17,7 @@ set :branch, 'master'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, ['config/database.yml', 'config/application.yml', 'config/secrets.yml', 'log', 'public/gallery', 'en.pak', 'sphinx/db', 'sphinx/pids', 'public/system']
+set :shared_paths, ['config/database.yml', 'config/application.yml', 'config/secrets.yml', 'log', 'public/gallery', 'en.pak', 'sphinx', 'public/system']
 
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
@@ -42,6 +42,7 @@ task :setup => :environment do
 
   queue! %[mkdir -p "#{deploy_to}/shared/sphinx/db"]
   queue! %[mkdir -p "#{deploy_to}/shared/sphinx/pids"]
+  queue! %[mkdir -p "#{deploy_to}/shared/sphinx/binlog"]
   queue! %[wget 'http://sphinxsearch.com/files/dicts/en.pak' -O "#{deploy_to}/shared/en.pak"]
 end
 
