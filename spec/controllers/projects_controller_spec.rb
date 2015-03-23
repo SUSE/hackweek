@@ -302,7 +302,11 @@ describe ProjectsController do
 
       # We are creating our helpers eagerly, so they are in the DB at the request time
       let!(:episode) { create :episode }
-      let!(:old_projects) { (1..12).map { create :project, episodes: [episode], created_at: 1.year.ago } }
+      let!(:old_projects) do
+        Timecop.freeze (1.year.ago) do
+          (1..12).map { create :project, episodes: [episode] }
+        end
+      end
       let!(:new_projects) { (1..10).map { create :project, episodes: [episode] } }
 
       before :example do

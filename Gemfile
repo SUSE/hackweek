@@ -74,4 +74,7 @@ group :test do
   gem 'rubocop'
   # as interactive debugger in error pages
   gem 'web-console', '~> 2.0'
+
+  # Time travel in tests
+  gem 'timecop'
 end
