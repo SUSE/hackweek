@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# FIXME: 1.7.4 got yanked
+gem 'ruby-progressbar', '1.7.1'
+
 # as framework
 gem 'rails', '~> 4.2'
 
