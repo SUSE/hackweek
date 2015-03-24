@@ -15,7 +15,6 @@
 /tmp
 
 # Ignore the configuration files
-/config/database.yml
 /config/application.yml
 /config/secrets.yml
 
@@ -51,3 +50,4 @@ nbproject
 *.ipr
 *.iws
 .idea/
+.vagrant/
