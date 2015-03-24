@@ -28,6 +28,8 @@ class Project < ActiveRecord::Base
   after_create :create_initial_update
   after_create :assign_episode
 
+  after_save ThinkingSphinx::RealTime.callback_for(:project)
+
   aasm do
     state :idea, initial: true
     state :project
@@ -76,15 +78,6 @@ class Project < ActiveRecord::Base
   def active?
     self.idea? || self.project?
   end
-
-  # solr configuration
-  #searchable do
-  #  text :title
-  #  text :description
-  #  text :comments do
-  #    comments.map { |comment| comment.text }
-  #  end
-  #end
 
   def join! user
     if self.users.empty?

@@ -37,9 +37,9 @@ bundle install
 ```shell
 rake db:setup
 ```
-* Run the search server
+* Create Sphinx configuration, start the search daemon and index existing DB contents
 ```shell
-rake sunspot:solr:start
+rake ts:regenerate ts:index
 ```
 * Run the rails server
 ```shell
@@ -61,7 +61,7 @@ rspec spec
 * The source of the [old webpage](http://suse.github.io/hackweek/) is in the gh-pages branch.
 
 ## Requirements
-Because of sunspot solr, it requires java. We have installed java-1_7_0-ibm.
+Sphinx (searchd) should be installed. No need to configure and launch it separately, everything will be taken care of with `rake ts:regenerate`.
 
 
 # Development with Vagrant

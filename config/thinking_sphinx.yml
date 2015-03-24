@@ -1,0 +1,16 @@
+defaults: &defaults
+  morphology:
+    - lemmatize_en_all
+  min_infix_len: 3
+  mysql41: 9312
+  pid_file: sphinx/pids/searchd.pid
+  indices_location: sphinx/db
+  binlog_path: sphinx/binlog
+
+development:
+  <<: *defaults
+test:
+  <<: *defaults
+  mysql41: 9313
+production:
+  <<: *defaults

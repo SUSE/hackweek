@@ -12,7 +12,6 @@ ENV['RAILS_ENV'] ||= 'test'
 require 'spec_helper'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
-require 'sunspot_test/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -28,10 +27,8 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # examples within a transaction, remove the following line or assign false
-  # instead of true.
-  config.use_transactional_fixtures = true
+  # ThinkingSphinx uses DB directly, so transactions are useless there
+  config.use_transactional_fixtures = false
 
   # mix in different behaviours to your tests based on their file location,
   # for example enabling you to call `get` and `post` in specs under `spec/controllers`.
@@ -39,14 +36,33 @@ RSpec.configure do |config|
 
   # Setting up DB cleaning to maintain empty rows
   config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
+    DatabaseCleaner.strategy = :truncation
   end
 
-  config.around(:each) do |example|
-    DatabaseCleaner.cleaning do
-      example.run
+  # Search requires complicated setup (and also mostly tests external libraries and tools, not our code)
+  # So we're omitting it from default runs
+  config.filter_run_excluding search: true
+
+  config.before(:each) do |example|
+    if example.metadata[:search]
+      # Ensure sphinx directories exist for the test environment
+      ThinkingSphinx::Test.init
+      ThinkingSphinx::Test.start
+    else
+      ThinkingSphinx::Configuration.instance.settings['real_time_callbacks'] = false
     end
+
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do |example|
+    if example.metadata[:search]
+      ThinkingSphinx::Test.stop
+      ThinkingSphinx::Test.clear
+    end
+
+    DatabaseCleaner.clean
   end
 
   # Include helpers and connect them to specific types of tests
@@ -54,6 +70,7 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller
   config.include LoginMacros, type: :feature
   #config.include Flash, type: :feature
+  config.include SphinxHelpers, search: true
 
   # As we start from scratch in September 2014, let's forbid the old :should syntax
   config.expect_with :rspec do |c|

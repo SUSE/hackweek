@@ -18,3 +18,6 @@ mysql -e "GRANT ALL PRIVILEGES on hackweek_development.* to hackweek@localhost i
 # Setup hackweel_test database
 mysql -e "CREATE DATABASE IF NOT EXISTS hackweek_test DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;"
 mysql -e "GRANT ALL PRIVILEGES on hackweek_test.* to hackweek@localhost identified by 'S3cr3t';"
+
+# Download english morphology dictionary
+wget 'http://sphinxsearch.com/files/dicts/en.pak' -O /vagrant/en.pak

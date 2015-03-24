@@ -1,9 +1,11 @@
 class SearchController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [ :result ]
   def result
-    search_result = Project.search { fulltext params[:q] }
-    @projects = search_result.results
-    search_result = User.search { fulltext params[:q] }
-    @users = search_result.results
+    # First search in morphology mode, if fails — retry in wildcard mode
+    @projects = Project.search params[:q]
+    @projects = Project.search params[:q], star: true if @projects.empty?
+
+    @users = User.search params[:q]
+    @users = User.search params[:q], star: true if @users.empty?
   end
 end

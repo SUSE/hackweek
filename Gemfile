@@ -27,7 +27,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # as the front-end framework
 gem 'bootstrap-sass'
 # as vector icons
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 # as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # as JavaScript library
@@ -50,16 +50,13 @@ gem 'selectize-rails'
 # as state machine
 gem 'aasm'
 # as exception notifier
-gem 'hoptoad_notifier', "~> 2.3"
+gem 'hoptoad_notifier', '~> 2.3'
 # to set env variables
 gem 'figaro'
 # for keyboard shortcuts
 gem 'mousetrap-rails'
 # as search engine
-gem 'sunspot_rails', "~> 2.1"
-gem 'sunspot_solr', "~> 2.1"
-# https://github.com/sunspot/sunspot/issues/600
-gem 'activerecord-deprecated_finders', require: 'active_record/deprecated_finders'
+gem 'thinking-sphinx'
 # for seeds
 gem 'factory_girl_rails', :group => [:development, :test]
 gem 'faker', :group => [:development, :test]
@@ -67,17 +64,18 @@ gem 'faker', :group => [:development, :test]
 gem 'rspec-rails', :group => [:development, :test]
 gem 'capybara', :group => [:development, :test]
 # for file attachments
-gem "paperclip", "~> 4.1"
+gem 'paperclip', '~> 4.1'
 
 group :test do
   # for cleaning the test DB
   gem 'database_cleaner'
   # for measuring test coverage
   gem 'coveralls', :require => false
-  # for testing the search
-  gem 'sunspot_test'
   # as style hound
   gem 'rubocop'
   # as interactive debugger in error pages
   gem 'web-console', '~> 2.0'
+
+  # Time travel in tests
+  gem 'timecop'
 end
