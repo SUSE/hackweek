@@ -4,6 +4,9 @@ if ENV['TRAVIS']
   require 'coveralls'
   SimpleCov.formatter = Coveralls::SimpleCov::Formatter
   Coveralls.wear!('rails')
+
+  require "codeclimate-test-reporter"
+  CodeClimate::TestReporter.start
 else
   SimpleCov.start 'rails'
 end
