@@ -73,7 +73,7 @@ group :test do
   # for cleaning the test DB
   gem 'database_cleaner'
   # for measuring test coverage
-  gem 'coveralls', :require => false
+  gem 'coveralls', require: false
   # as style hound
   gem 'rubocop'
   # as interactive debugger in error pages
@@ -81,4 +81,7 @@ group :test do
 
   # Time travel in tests
   gem 'timecop'
+
+  # Used in Travis-CI reporting
+  gem "codeclimate-test-reporter", require: false
 end
