@@ -81,4 +81,13 @@ feature 'Project management' do
     project.reload
     expect(project.aasm_state).to eq('project')
   end
+
+  scenario 'User uses markdown preview button during editing', :js do
+    visit '/projects/new'
+    fill_in 'project_description', with: '_italic_ **bold**'
+    click_button 'Preview'
+
+    expect(page).to have_css('i', text: 'italic')
+    expect(page).to have_css('b', text: 'bold')
+  end
 end

@@ -81,4 +81,7 @@ group :test do
 
   # Time travel in tests
   gem 'timecop'
+
+  # Let's add real browser testing to our features (required to test AJAX)
+  gem 'poltergeist'
 end

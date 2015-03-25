@@ -1,4 +1,5 @@
 require 'simplecov'
+require 'capybara/poltergeist'
 
 if ENV['TRAVIS']
   require 'coveralls'
@@ -33,6 +34,8 @@ RSpec.configure do |config|
   # mix in different behaviours to your tests based on their file location,
   # for example enabling you to call `get` and `post` in specs under `spec/controllers`.
   config.infer_spec_type_from_file_location!
+
+  Capybara.javascript_driver = :poltergeist
 
   # Setting up DB cleaning to maintain empty rows
   config.before(:suite) do
