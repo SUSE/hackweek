@@ -1,5 +1,7 @@
 Hackweek::Application.routes.draw do
 
+  get 'markdown/preview'
+
   devise_for :users
 
   resources :users do

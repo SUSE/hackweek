@@ -34,15 +34,21 @@ footer {
 }
 
 .project-list-pills {
-  position: relative; 
+  position: relative;
   z-index: 1;
 }
 
 .project-list-item:before {
-    display:block; 
-    position: relative; 
-    content:""; 
-    height:70px; 
-    margin:-70px 0 0; 
+    display:block;
+    position: relative;
+    content:"";
+    height:70px;
+    margin:-70px 0 0;
     z-index: -1;
+}
+
+.markdown-preview {
+  z-index: 100;
+  position: absolute;
+  right: 15px;
 }

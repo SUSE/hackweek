@@ -85,7 +85,7 @@ feature 'Project management' do
   scenario 'User uses markdown preview button during editing', :js do
     visit '/projects/new'
     fill_in 'project_description', with: '_italic_ **bold**'
-    click_button 'Preview'
+    click_link 'Preview'
 
     expect(page).to have_css('i', text: 'italic')
     expect(page).to have_css('b', text: 'bold')

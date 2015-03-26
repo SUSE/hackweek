@@ -1,25 +1,27 @@
-= render :partial => 'comments/help'
-= form_for @project, :url => (@project.new_record? ? projects_path : project_path(@episode, @project)), html: { role: "form"} do |f| 
+= render partial: 'comments/help'
+= form_for @project, url: (@project.new_record? ? projects_path : project_path(@episode, @project)), html: { role: :form } do |f|
   - if @project.errors.any?
     #error_explanation
       %h2
-        = pluralize(@project.errors.count, "error")
+        = pluralize(@project.errors.count, 'error')
         prohibited this project from being saved:
-
       %ul
       - @project.errors.full_messages.each do |msg|
         %li
           = msg
-  .field
-    = f.text_field :title, :placeholder => "The projects title", :class => 'form-control input-lg', :required => "required"
-    
-  .field
-    = f.text_area :description, :rows => "20", :placeholder => "Add a detailed description of your idea. You can use markdown.", :class => 'form-control input-lg'
-  .field
+
+  .form-group
+    = f.text_field :title, placeholder: 'Project title', class: 'form-control input-lg', required: 'required'
+
+  .form-group
+    = link_to markdown_preview_path, remote: true, class: 'btn btn-default markdown-preview' do
+      = fa_icon :eye
+      Preview
+    = f.text_area :description, rows: 20, placeholder: 'Detailed description of your idea. You can use **markdown**.', class: 'form-control input-lg'
+
+  .form-group
     = f.label(:avatar)
     = f.file_field :avatar
-  .actions
-    %p
-      = f.submit :class => "btn btn-success pull-right"
+  = f.submit class: 'btn btn-success pull-right'
 
 
