@@ -1,9 +1,8 @@
 class MarkdownController < ApplicationController
+  respond_to :js
+
   def preview
-    respond_to do |format|
-      format.js do
-        render
-      end
-    end
+    @text = 'Hello!'
+    respond_with @text
   end
 end
