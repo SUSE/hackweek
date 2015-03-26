@@ -11,5 +11,10 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe MarkdownHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#render' do
+    it 'correctly renders simple tags' do
+      source = '**bold**'
+      expect(subject.render(source)).to eq "<p><strong>bold</strong></p>\n"
+    end
+  end
 end

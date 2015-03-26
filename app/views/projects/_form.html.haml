@@ -14,10 +14,10 @@
     = f.text_field :title, placeholder: 'Project title', class: 'form-control input-lg', required: 'required'
 
   .form-group
-    = link_to markdown_preview_path, remote: true, class: 'btn btn-default markdown-preview' do
+    %a.btn.btn-default.markdown-preview{ href: '#' }
       = fa_icon :eye
       Preview
-    = f.text_area :description, rows: 20, placeholder: 'Detailed description of your idea. You can use **markdown**.', class: 'form-control input-lg'
+    = f.text_area :description, rows: 20, placeholder: 'Detailed description of your idea. You can use **markdown**.', class: 'form-control input-lg markdown-preview-source'
 
   .form-group
     = f.label(:avatar)

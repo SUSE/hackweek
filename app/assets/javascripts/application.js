@@ -39,3 +39,11 @@ $(function() {
     var hash = window.location.hash;
     hash && $('ul.nav a[href="' + hash + '"]').tab('show');
 });
+
+$(function() {
+  $('.markdown-preview').click(
+    function() {
+      var text = $('.markdown-preview-source').val();
+      $.ajax('/markdown/preview.js?source=' + encodeURIComponent(text));
+    });
+});
