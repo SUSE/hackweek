@@ -26,11 +26,11 @@ $(function() {
   });
   // navigate to a tab when the history changes
   window.addEventListener("popstate", function(e) {
-    var activeTab = $('[href=' + location.hash + ']');
+    var activeTab = $('a[href="' + location.hash + '"]');
     if (activeTab.length) {
       activeTab.tab('show');
     } else {
-      $('.nav-tabs a[href=#<%= j @today %>]').tab('show');
+      $('.nav-tabs a').first().tab('show');
     }
   });
 });

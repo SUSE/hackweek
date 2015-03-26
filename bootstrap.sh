@@ -23,4 +23,4 @@ mysql -e "CREATE DATABASE IF NOT EXISTS hackweek_test DEFAULT CHARACTER SET utf8
 mysql -e "GRANT ALL PRIVILEGES on hackweek_test.* to hackweek@localhost identified by 'S3cr3t';"
 
 # Download english morphology dictionary
-wget -N 'http://sphinxsearch.com/files/dicts/en.pak' -O /vagrant/en.pak
+wget 'http://sphinxsearch.com/files/dicts/en.pak' -O /vagrant/en.pak
