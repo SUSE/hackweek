@@ -15,13 +15,13 @@
                 %li{role: 'presentation'}
                   = link_to 'Per Page:', '#', style: 'pointer-events: none; cursor: default;', class: 'text-muted'
                 %li{role: 'presentation', class: active_page_size(10, params[:page_size])}
-                  = link_to '10', :page_size => '10'
+                  = link_to '10', :page_size => '10', :episode => params[:episode]
                 %li{role: 'presentation', class: active_page_size(50, params[:page_size])}
-                  = link_to '50', :page_size => '50'
+                  = link_to '50', :page_size => '50', :episode => params[:episode]
                 %li{role: 'presentation', class: active_page_size(100, params[:page_size])}
-                  = link_to '100', :page_size => '100'
+                  = link_to '100', :page_size => '100', :episode => params[:episode]
                 %li{role: 'presentation', class: active_page_size(@projects.total_count, params[:page_size])}
-                  = link_to 'All', :page_size => @projects.total_count
+                  = link_to 'All', :page_size => @projects.total_count, :episode => params[:episode]
             .col-sm-6
               %ul.nav.nav-pills.pull-right
                 %li{role: "presentation"}
