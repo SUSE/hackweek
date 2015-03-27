@@ -33,6 +33,9 @@
                   %tr
                     %td{:class => "#{project.aasm_state}"}
                       = render :partial => "projects/list_item", :locals => {:project => project, :index => index }
+          .row
+            .col-md-12
+              = paginate @projects
       - else
         %h3
           No projects.

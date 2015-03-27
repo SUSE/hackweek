@@ -9,9 +9,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    @projects = Project.current(@episode).active
-    @popular = Project.current(@episode).liked.order("likes_count DESC").first(5)
-    @new= Project.current(@episode).active.order("created_at ASC").first(5)
+    @projects = Project.current(@episode).active.page params[:page]
   end
 
   # GET /projects/newest.rss
@@ -26,25 +24,25 @@ class ProjectsController < ApplicationController
 
   # GET /projects/popular
   def popular
-    @projects = Project.current(@episode).liked.order("likes_count DESC")
+    @projects = Project.current(@episode).liked.order("likes_count DESC").page params[:page]
     render 'index'
   end
 
   # GET /projects/archived
   def archived
-    @projects = Project.current(@episode).archived
+    @projects = Project.current(@episode).archived.page params[:page]
     render "index"
   end
 
   # GET /projects/biggest
   def biggest
-    @projects = Project.current(@episode).populated.order("memberships_count DESC")
+    @projects = Project.current(@episode).populated.order("memberships_count DESC").page params[:page]
     render 'index'
   end
 
   # GET /projects/finished
   def finished
-    @projects = Project.current(@episode).finished
+    @projects = Project.current(@episode).finished.page params[:page]
     render "index"
   end
 
@@ -204,5 +202,4 @@ class ProjectsController < ApplicationController
     def load_episode
       @episode = Episode.find(params[:episode_id]) if params[:episode_id]
     end
-
 end
