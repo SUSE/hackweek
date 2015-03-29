@@ -73,10 +73,10 @@ end
 # TODO replace with appropriate Sphinx manipulations
 desc "Restart Sphinx."
 task :sphinx_restart do
-  queue "cd #{deploy_to!}/#{current_path!} && sudo -u wwwrun RAILS_ENV=#{rails_env} bundle exec rake ts:regenerate"
+  queue "cd #{deploy_to!}/#{current_path!} && RAILS_ENV=#{rails_env} bundle exec rake ts:regenerate"
 end
 
 desc "Reindex Sphinx data."
 task :sphinx_reindex do
-  queue "cd #{deploy_to!}/#{current_path!} && sudo -u wwwrun RAILS_ENV=#{rails_env} bundle exec rake ts:index"
+  queue "cd #{deploy_to!}/#{current_path!} && RAILS_ENV=#{rails_env} bundle exec rake ts:index"
 end

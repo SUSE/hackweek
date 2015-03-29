@@ -1,17 +1,14 @@
 class ProjectsController < ApplicationController
-
   load_and_authorize_resource
-  skip_before_filter :authenticate_user!, :only => [ :index, :show, :archived, :finished, :newest, :popular, :biggest ]
-  skip_before_filter :store_location, :only => [:join, :leave, :like, :dislike, :add_keyword, :delete_keyword ]
-  skip_before_action :verify_authenticity_token, :only => [:add_keyword, :delete_keyword ]
-  skip_load_and_authorize_resource :only => :old_archived
+  skip_before_filter :authenticate_user!, only: [ :index, :show, :archived, :finished, :newest, :popular, :biggest ]
+  skip_before_filter :store_location, only: [:join, :leave, :like, :dislike, :add_keyword, :delete_keyword ]
+  skip_before_action :verify_authenticity_token, only: [:add_keyword, :delete_keyword ]
+  skip_load_and_authorize_resource only: :old_archived
   before_action :load_episode
 
   # GET /projects
   def index
-    @projects = Project.current(@episode).active
-    @popular = Project.current(@episode).liked.order("likes_count DESC").first(5)
-    @new= Project.current(@episode).active.order("created_at ASC").first(5)
+    @projects = Project.current(@episode).active.page(params[:page]).per(params[:page_size])
   end
 
   # GET /projects/newest.rss
@@ -26,26 +23,26 @@ class ProjectsController < ApplicationController
 
   # GET /projects/popular
   def popular
-    @projects = Project.current(@episode).liked.order("likes_count DESC")
+    @projects = Project.current(@episode).liked.order('likes_count DESC').page(params[:page]).per(params[:page_size])
     render 'index'
   end
 
   # GET /projects/archived
   def archived
-    @projects = Project.current(@episode).archived
-    render "index"
+    @projects = Project.current(@episode).archived.page(params[:page]).per(params[:page_size])
+    render 'index'
   end
 
   # GET /projects/biggest
   def biggest
-    @projects = Project.current(@episode).populated.order("memberships_count DESC")
+    @projects = Project.current(@episode).populated.order('memberships_count DESC').page(params[:page]).per(params[:page_size])
     render 'index'
   end
 
   # GET /projects/finished
   def finished
-    @projects = Project.current(@episode).finished
-    render "index"
+    @projects = Project.current(@episode).finished.page(params[:page]).per(params[:page_size])
+    render 'index'
   end
 
   # GET /projects/1
@@ -62,7 +59,7 @@ class ProjectsController < ApplicationController
       redirect_to @project
     rescue ActiveRecord::RecordNotFound
       flash[:notice] = "Can't find project with title #{params[:id]}"
-      redirect_to :action => :archived
+      redirect_to action: :archived
     end
   end
 
@@ -83,7 +80,7 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to project_path(@episode, @project), notice: 'Project was successfully created.'
     else
-      render action: "new"
+      render action: 'new'
     end
   end
 
@@ -92,7 +89,7 @@ class ProjectsController < ApplicationController
     if @project.update_attributes(project_params)
       redirect_to project_path(@episode, @project)
     else
-      render action: "edit"
+      render action: 'edit'
     end
   end
 
@@ -117,7 +114,7 @@ class ProjectsController < ApplicationController
   # PUT /projects/1/join
   def join
     # FIXME: This is a validation
-    if @project.aasm_state == "invention"
+    if @project.aasm_state == 'invention'
       redirect_to project, error: "You can't join this project as it's finished."
     end
 
@@ -128,7 +125,7 @@ class ProjectsController < ApplicationController
   # PUT /projects/1/leave
   def leave
     # FIXME: This is a validation
-    if @project.aasm_state == "invention"
+    if @project.aasm_state == 'invention'
       redirect_to @project, error: "You can't leave this project as it's finished."
     end
 
@@ -142,7 +139,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       format.html{ redirect_to project_path(@episode, @project), notice: "Thank you for your love #{current_user.name}!" }
-      format.js { render :partial => "like_toggle" }
+      format.js { render partial: 'like_toggle' }
     end
   end
 
@@ -152,7 +149,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       format.html{ redirect_to project_path(@episode, @project), notice: "Aaww Snap! You don't love me anymore?" }
-      format.js { render :partial => "like_toggle" }
+      format.js { render partial: 'like_toggle' }
     end
   end
 
@@ -204,5 +201,4 @@ class ProjectsController < ApplicationController
     def load_episode
       @episode = Episode.find(params[:episode_id]) if params[:episode_id]
     end
-
 end

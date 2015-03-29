@@ -60,6 +60,8 @@ gem 'figaro'
 gem 'mousetrap-rails'
 # as search engine
 gem 'thinking-sphinx'
+# for pagination
+gem 'kaminari'
 # for seeds
 gem 'factory_girl_rails', :group => [:development, :test]
 gem 'faker', :group => [:development, :test]
