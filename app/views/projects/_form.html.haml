@@ -15,16 +15,19 @@
   
   .panel.panel-default
     .panel-heading
-      %ul.nav.nav-tabs
-        %li.active{ role: :presentation }
-          %a.show-source{ href: '#' } Edit
-        %li{ role: :presentation }
-          %a.show-preview{ href: '#' } Preview
+      %ul.nav.nav-pills
+        %li.active#show-source{ role: :presentation }
+          %a{ href: '#' } Edit
+        %li#show-preview{ role: :presentation }
+          %a{ href: '#' } Preview
     .panel-body
-      .form-group.markdown-source
-        = f.text_area :description, rows: 20, placeholder: 'Detailed description of your idea. You can use **markdown**.', class: 'form-control input-lg'
-      .markdown-preview
-        = fa_icon 'spinner pulse 3x', class: 'text-center'
+      .tab-content
+        .tab-pane.form-group.markdown-source.active
+          = f.text_area :description, rows: 20, placeholder: 'Detailed description of your idea. You can use **markdown**.', class: 'form-control input-lg'
+        .tab-pane.markdown-preview
+          .loading-spinner
+            = fa_icon 'spinner pulse 3x'
+          #preview-contents.hidden
 
   .form-group
     = f.label(:avatar)

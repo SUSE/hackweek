@@ -41,21 +41,27 @@ $(function() {
 });
 
 $(function() {
-  $('.show-preview').click(
+  $('#show-preview').click(
     function() {
-      $('.markdown-source').hide();
-      $('.markdown-preview').show();
+      $('.markdown-source').removeClass('active');
+      $('.markdown-preview').addClass('active');
+
+      $('#show-source').removeClass('active');
+      $('#show-preview').addClass('active');
+
       // var text = $('.markdown-source').val();
       // $.ajax('/markdown/preview.js?source=' + encodeURIComponent(text));
     });
 });
 
-$(funsction() {
-  $('.show-source').click(
+$(function() {
+  $('#show-source').click(
     function () {
-      $('.markdown-preview').hide();
-      $('.markdown-source').show();
+      $('.markdown-preview').removeClass('active');
+      $('.markdown-source').addClass('active');
 
+      $('#show-preview').removeClass('active');
+      $('#show-source').addClass('active');
       // TODO Put spinner back into .markdown-preview here
     });
 });
