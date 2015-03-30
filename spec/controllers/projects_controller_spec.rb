@@ -360,6 +360,10 @@ describe ProjectsController do
         expect(xml.xpath('//item').count).to eq 10
         expect(xml.xpath('//item/title').first.text).to eq project.title
       end
+
+      it 'works for :all episodes' do
+        expect {get :newest, episode: :all, format: :rss}.not_to raise_error
+      end
     end
   end
 end
