@@ -43,7 +43,7 @@ $(function() {
 $(function() {
   $('#show-preview').click(
     function() {
-      var text = $('#markdown-source-text').val();
+      var text = $('.markdown-source-text').val();
       $.ajax('/markdown/preview.js?source=' + encodeURIComponent(text));
     });
 });

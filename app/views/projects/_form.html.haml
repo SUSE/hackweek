@@ -24,7 +24,7 @@
       .tab-content
         #markdown-source.tab-pane.active.fade.in{ role: 'tab-pane' }
           .form-group
-            = f.text_area :description, rows: 20, placeholder: 'Detailed description of your idea. You can use **markdown**.', class: 'form-control input-lg', id: 'markdown-source-text'
+            = f.text_area :description, rows: 20, placeholder: 'Detailed description of your idea. You can use **markdown**.', class: 'form-control input-lg markdown-source-text', id: 'project_description'
         #markdown-preview.tab-pane.fade{ role: 'tab-pane' }
           #loading-spinner
             = fa_icon 'spinner pulse 3x'
