@@ -41,9 +41,21 @@ $(function() {
 });
 
 $(function() {
-  $('.markdown-preview').click(
+  $('.show-preview').click(
     function() {
-      var text = $('.markdown-preview-source').val();
-      $.ajax('/markdown/preview.js?source=' + encodeURIComponent(text));
+      $('.markdown-source').hide();
+      $('.markdown-preview').show();
+      // var text = $('.markdown-source').val();
+      // $.ajax('/markdown/preview.js?source=' + encodeURIComponent(text));
+    });
+});
+
+$(funsction() {
+  $('.show-source').click(
+    function () {
+      $('.markdown-preview').hide();
+      $('.markdown-source').show();
+
+      // TODO Put spinner back into .markdown-preview here
     });
 });
