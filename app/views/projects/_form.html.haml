@@ -17,15 +17,16 @@
     .panel-heading
       %ul.nav.nav-pills
         %li.active#show-source{ role: :presentation }
-          %a{ href: '#' } Edit
+          %a{ href: '#markdown-source', role: :tab, data: { toggle: :tab } } Edit
         %li#show-preview{ role: :presentation }
-          %a{ href: '#' } Preview
+          %a{ href: '#markdown-preview', role: :tab, data: { toggle: :tab } } Preview
     .panel-body
       .tab-content
-        .tab-pane.form-group.markdown-source.active
-          = f.text_area :description, rows: 20, placeholder: 'Detailed description of your idea. You can use **markdown**.', class: 'form-control input-lg'
-        .tab-pane.markdown-preview
-          .loading-spinner
+        #markdown-source.tab-pane.active.fade.in{ role: 'tab-pane' }
+          .form-group
+            = f.text_area :description, rows: 20, placeholder: 'Detailed description of your idea. You can use **markdown**.', class: 'form-control input-lg', id: 'markdown-source-text'
+        #markdown-preview.tab-pane.fade{ role: 'tab-pane' }
+          #loading-spinner
             = fa_icon 'spinner pulse 3x'
           #preview-contents.hidden
 

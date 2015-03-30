@@ -43,25 +43,18 @@ $(function() {
 $(function() {
   $('#show-preview').click(
     function() {
-      $('.markdown-source').removeClass('active');
-      $('.markdown-preview').addClass('active');
-
-      $('#show-source').removeClass('active');
-      $('#show-preview').addClass('active');
-
-      // var text = $('.markdown-source').val();
-      // $.ajax('/markdown/preview.js?source=' + encodeURIComponent(text));
+      var text = $('#markdown-source-text').val();
+      $.ajax('/markdown/preview.js?source=' + encodeURIComponent(text));
     });
 });
 
 $(function() {
   $('#show-source').click(
-    function () {
-      $('.markdown-preview').removeClass('active');
-      $('.markdown-source').addClass('active');
-
-      $('#show-preview').removeClass('active');
-      $('#show-source').addClass('active');
-      // TODO Put spinner back into .markdown-preview here
-    });
+    setTimeout(
+      function () {
+        $('#preview-contents').addClass('hidden');
+        $('#loading-spinner').removeClass('hidden');
+      }, 200
+    )
+  );
 });
