@@ -14,6 +14,7 @@ gem 'spring-commands-rspec', group: [:development, :test]
 group :development, :test do
   gem 'better_errors'
 
+  gem 'rack-mini-profiler'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'hirb'
