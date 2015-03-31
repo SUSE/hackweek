@@ -1,25 +1,38 @@
-= render :partial => 'comments/help'
-= form_for @project, :url => (@project.new_record? ? projects_path : project_path(@episode, @project)), html: { role: "form"} do |f| 
+= render partial: 'comments/help'
+= form_for @project, url: (@project.new_record? ? projects_path : project_path(@episode, @project)), html: { role: :form } do |f|
   - if @project.errors.any?
     #error_explanation
       %h2
-        = pluralize(@project.errors.count, "error")
+        = pluralize(@project.errors.count, 'error')
         prohibited this project from being saved:
-
       %ul
       - @project.errors.full_messages.each do |msg|
         %li
           = msg
-  .field
-    = f.text_field :title, :placeholder => "The projects title", :class => 'form-control input-lg', :required => "required"
-    
-  .field
-    = f.text_area :description, :rows => "20", :placeholder => "Add a detailed description of your idea. You can use markdown.", :class => 'form-control input-lg'
-  .field
+
+  .form-group
+    = f.text_field :title, placeholder: 'Project title', class: 'form-control input-lg', required: 'required'
+  
+  .panel.panel-default
+    .panel-heading
+      %ul.nav.nav-pills
+        %li.active#show-source{ role: :presentation }
+          %a{ href: '#markdown-source', role: :tab, data: { toggle: :tab } } Edit
+        %li#show-preview{ role: :presentation }
+          %a{ href: '#markdown-preview', role: :tab, data: { toggle: :tab } } Preview
+    .panel-body
+      .tab-content
+        #markdown-source.tab-pane.active.fade.in{ role: 'tab-pane' }
+          .form-group
+            = f.text_area :description, rows: 20, placeholder: 'Detailed description of your idea. You can use **markdown**.', class: 'form-control input-lg markdown-source-text', id: 'project_description'
+        #markdown-preview.tab-pane.fade{ role: 'tab-pane' }
+          #loading-spinner
+            = fa_icon 'spinner pulse 3x'
+          #preview-contents.hidden
+
+  .form-group
     = f.label(:avatar)
     = f.file_field :avatar
-  .actions
-    %p
-      = f.submit :class => "btn btn-success pull-right"
+  = f.submit class: 'btn btn-success pull-right'
 
 

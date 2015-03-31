@@ -1,11 +1,14 @@
 #!/bin/bash
 
-# Add repository for Sphinx search
+# Add repository with Sphinx search engine
 zypper addrepo -f 'http://download.opensuse.org/repositories/server:/search/openSUSE_13.2/server:search.repo'
+# Add repository with latest PhantomJS headless browser
+zypper addrepo -f 'http://download.opensuse.org/repositories/OBS:/Server:/2.6/openSUSE_13.2/OBS:Server:2.6.repo'
 zypper --gpg-auto-import-keys refresh
 
 # Install required packages
-zypper install -y mysql mysql-devel sphinx ruby-devel rubygem-bundler libxml2-devel libxslt-devel sqlite3-devel nodejs
+zypper install -y mysql mysql-devel sphinx ruby-devel rubygem-bundler libxml2-devel libxslt-devel sqlite3-devel nodejs \
+                  phantomjs
 
 # Enable MySQL service — now and on startup
 chkconfig mysql on

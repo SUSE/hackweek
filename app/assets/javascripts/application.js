@@ -26,11 +26,11 @@ $(function() {
   });
   // navigate to a tab when the history changes
   window.addEventListener("popstate", function(e) {
-    var activeTab = $('[href=' + location.hash + ']');
+    var activeTab = $('a[href="' + location.hash + '"]');
     if (activeTab.length) {
       activeTab.tab('show');
     } else {
-      $('.nav-tabs a[href=#<%= j @today %>]').tab('show');
+      $('.nav-tabs a').first().tab('show');
     }
   });
 });
@@ -38,4 +38,23 @@ $(function() {
 $(function() {
     var hash = window.location.hash;
     hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+});
+
+$(function() {
+  $('#show-preview').click(
+    function() {
+      var text = $('.markdown-source-text').val();
+      $.ajax('/markdown/preview.js?source=' + encodeURIComponent(text));
+    });
+});
+
+$(function() {
+  $('#show-source').click(
+    setTimeout(
+      function () {
+        $('#preview-contents').addClass('hidden');
+        $('#loading-spinner').removeClass('hidden');
+      }, 200
+    )
+  );
 });

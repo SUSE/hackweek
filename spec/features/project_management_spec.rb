@@ -1,13 +1,18 @@
 require 'rails_helper'
 
 feature 'Project management' do
-  scenario 'User creates a new project' do
-    user = create(:user)
+
+  let(:user) {create :user}
+
+  before :each do
     sign_in user
+  end
+
+  scenario 'User creates a new project' do
     title = Faker::Lorem.sentence
     description = Faker::Lorem.paragraph
 
-    visit '/projects/new'
+    visit new_project_path
 
     fill_in 'project_title', with: title
     fill_in 'project_description', with: description
@@ -21,13 +26,12 @@ feature 'Project management' do
   end
 
   scenario 'User edits a project' do
-    user = create(:user)
     project = create(:idea, originator: user)
-    sign_in user
+
     title = Faker::Lorem.sentence
     description = Faker::Lorem.paragraph
 
-    visit "/projects/#{project.to_param}/edit"
+    visit edit_project_path(nil, project)
 
     fill_in 'project_title', with: title
     fill_in 'project_description', with: description
@@ -39,11 +43,9 @@ feature 'Project management' do
   end
 
   scenario 'User deletes a project' do
-    user = create(:user)
     project = create(:idea, originator: user)
-    sign_in user
 
-    visit "/projects/#{project.to_param}"
+    visit project_path(nil, project)
 
     expect {
       click_link "project#{project.to_param}-delete-link"
@@ -51,11 +53,9 @@ feature 'Project management' do
   end
 
   scenario 'User archives an idea' do
-    user = create(:user)
     project = create(:idea, originator: user)
-    sign_in user
 
-    visit "/projects/#{project.to_param}"
+    visit project_path(nil, project)
 
     expect {
       click_link "project#{project.to_param}-recess-link"
@@ -63,11 +63,9 @@ feature 'Project management' do
   end
 
   scenario 'User finishes a project' do
-    user = create(:user)
     project = create(:project, originator: user, users: [user])
-    sign_in user
 
-    visit "/projects/#{project.to_param}"
+    visit project_path(nil, project)
 
     expect {
       click_link "project#{project.to_param}-advance-link"
@@ -75,14 +73,21 @@ feature 'Project management' do
   end
 
   scenario 'User restarts a project' do
-    user = create(:user)
     project = create(:invention, originator: user, users: [user])
 
-    sign_in user
-    visit "/projects/#{project.to_param}"
+    visit project_path(nil, project)
     click_link "project#{project.to_param}-recess-link"
 
     project.reload
     expect(project.aasm_state).to eq('project')
+  end
+
+  scenario 'User uses markdown preview button during editing', :js do
+    visit '/projects/new'
+    fill_in 'project_description', with: '_italic_ **bold**'
+    click_link 'Preview'
+
+    expect(page).to have_css('em', text: 'italic')
+    expect(page).to have_css('strong', text: 'bold')
   end
 end

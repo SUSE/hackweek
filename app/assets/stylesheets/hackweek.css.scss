@@ -34,15 +34,20 @@ footer {
 }
 
 .project-list-pills {
-  position: relative; 
+  position: relative;
   z-index: 1;
 }
 
 .project-list-item:before {
-    display:block; 
-    position: relative; 
-    content:""; 
-    height:70px; 
-    margin:-70px 0 0; 
+    display:block;
+    position: relative;
+    content:"";
+    height:70px;
+    margin:-70px 0 0;
     z-index: -1;
+}
+
+#loading-spinner {
+  text-align: center;
+  vertical-align: bottom;
 }
