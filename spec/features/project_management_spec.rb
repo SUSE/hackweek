@@ -90,4 +90,15 @@ feature 'Project management' do
     expect(page).to have_css('em', text: 'italic')
     expect(page).to have_css('strong', text: 'bold')
   end
+
+  scenario 'User uses markdown preview button while writing a comment', :js do
+    project = create(:invention, originator: user, users: [user])
+
+    visit project_path(:all, project)
+    fill_in 'comment_text', with: '_italic_ **bold**'
+    click_link 'Preview'
+
+    expect(page).to have_css('em', text: 'italic')
+    expect(page).to have_css('strong', text: 'bold')
+  end
 end
