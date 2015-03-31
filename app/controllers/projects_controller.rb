@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    @projects = Project.current(@episode).active.page(params[:page]).per(params[:page_size])
+    @projects = Project.current(@episode).active.reverse_order.page(params[:page]).per(params[:page_size])
   end
 
   # GET /projects/newest.rss
