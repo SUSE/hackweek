@@ -10,7 +10,7 @@
       %ul.nav.navbar-nav.hidden-xs
         %li.dropdown
           = link_to(projects_path(@episode), {class: "navbar-brand"}) do
-            - if @episode == 'all'
+            - if @episode == :all
               = "All Hackweeks"
             - else
               = @episode.name if @episode
@@ -18,7 +18,7 @@
             %i.fa.fa-caret-square-o-down
           %ul.dropdown-menu{:role => "menu"}
             %li{:role => "presentation"}
-              = link_to(projects_path('all'), {title: "Projects for all hackweeks"}) do
+              = link_to(projects_path(:all), {title: "Projects for all hackweeks"}) do
                 All Hackweeks
             - Episode.all.reverse.each do |episode|
               %li{:role => "presentation"}

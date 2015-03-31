@@ -62,7 +62,7 @@ class ApplicationController < ActionController::Base
       @episode = Episode.active
     else
       if params[:episode] == 'all'
-        @episode = 'all'
+        @episode = :all
       else
         @episode = Episode.find_by(id: params[:episode])
       end
