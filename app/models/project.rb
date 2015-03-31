@@ -174,7 +174,7 @@ class Project < ActiveRecord::Base
     end
 
     def random_avatar
-      avatars = %w( space_alien space_raygun space_shuttle space_suit space_invader space_ship space_station )
+      avatars = %w( chisel drill hammer hand-file hand-plane pliers ruler saw screwdriver wrench )
       "avatars/#{avatars.sample}_:style.png"
     end
 end
