@@ -67,7 +67,6 @@ Hackweek::Application.routes.draw do
   get "howto", to: "application#howto"
   get "news", to: "announcements#index"
   
-  get 'user_root' => 'users#me'
   root 'projects#index'
 
 end

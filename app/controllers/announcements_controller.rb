@@ -1,12 +1,11 @@
 class AnnouncementsController < ApplicationController
-
   load_and_authorize_resource
-  skip_before_filter :authenticate_user!, :only => [ :index ]
-  skip_before_filter :store_location, :only => [ :enroll ]
+  skip_before_filter :authenticate_user!, only: [ :index ]
+  skip_before_filter :store_location, only: [ :enroll ]
 
   # GET /announcements
   def index
-    @announcements = Announcement.all.order("id DESC")
+    @announcements = Announcement.all.order('id DESC')
   end
 
   # GET /announcements/1
@@ -30,9 +29,9 @@ class AnnouncementsController < ApplicationController
     @announcement.originator = current_user
 
     if @announcement.save
-      redirect_to announcements_path, notice: "Announcement was successfully created."
+      redirect_to announcements_path, notice: 'Announcement was successfully created.'
     else
-      render action: "new"
+      render action: 'new'
     end
   end
 
@@ -41,9 +40,9 @@ class AnnouncementsController < ApplicationController
     @announcement = Announcement.find(params[:id])
 
     if @announcement.update_attributes(announcement_params)
-      redirect_to announcements_path, notice: "Announcement was successfully updated."
+      redirect_to announcements_path, notice: 'Announcement was successfully updated.'
     else
-      render action: "edit" 
+      render action: 'edit'
     end
   end
 
@@ -53,24 +52,23 @@ class AnnouncementsController < ApplicationController
     @announcement.destroy
 
     respond_to do |format|
-      format.html { redirect_to announcements_path, notice: "Announcement was successfully deleted." }
+      format.html { redirect_to announcements_path, notice: 'Announcement was successfully deleted.' }
       format.js { }
     end
   end
 
   # GET /annoucements/1/enroll
-  def enroll 
+  def enroll
     announcement = Announcement.find(params[:id])
     announcement.enroll! current_user
 
     respond_to do |format|
       format.html{ redirect_to :back }
-      format.js { render :partial => "announcement_toggle" }
+      format.js { render partial: 'announcement_toggle' }
     end
   end
 
   def announcement_params
     params.require(:announcement).permit(:title, :text)
   end
-
 end

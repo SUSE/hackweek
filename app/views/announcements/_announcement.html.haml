@@ -1,6 +1,6 @@
 .media
   %i.fa.fa-bullhorn.media-object.pull-left
-  = render :partial => "announcements/file_buttons", :locals => {:announcement => announcement }
+  = render partial: 'announcements/file_buttons', locals: { announcement: announcement }
   .media-body
     %h4.media-heading
       = announcement.title
@@ -11,7 +11,7 @@
         = announcement.originator.name
         - if can? :write, Announcement
           %span.label.label-info
-            = pluralize(announcement.users.length, "user")
+            = pluralize(announcement.users.length, 'user')
             read this
     %p
       = simple_format(announcement.text)

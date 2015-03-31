@@ -24,22 +24,32 @@ class ApplicationController < ActionController::Base
     render layout: 'application'
   end
 
-  def after_sign_out_path_for(*)
-    projects_path
+  # store last visited url unless it's the login/sign up path,
+  # doesn't start with our base url or is an ajax call.
+  def store_location
+    return unless request.get?
+    if (request.path != new_user_ichain_session_path &&
+        request.path != new_user_ichain_registration_path &&
+        !request.path.starts_with?(Devise.ichain_base_url) &&
+        !request.xhr?)
+      session[:return_to] = request.fullpath
+    end
   end
 
-  def store_location
-    if user_signed_in?
-      if !request.fullpath == new_user_ichain_session_path && request.get?
-        session['user_return_to'] = request.fullpath
-      end
-    end
+  # after sign in redirect to the stored location
+  def after_sign_in_path_for(_resource)
+    session[:return_to] || root_path
+  end
+
+  # after sign in redirect to projects
+  def after_sign_out_path_for(_resource)
+    projects_path
   end
 
   def load_news
     if user_signed_in?
       a = Announcement.last
-      if a and not a.users.include? current_user
+      if a && !a.users.include?(current_user)
         @news = a
       else
         @news = nil
