@@ -3,40 +3,40 @@
     .row
       .col-sm-4
         %h3
-          About Hack Week
-        %p{:style=>"text-align: justify;"}
-          Hack Week is the week where
+          Hack Week
+        %p{ style: 'text-align: justify;' }
+          is a week where
           %strong SUSE
-          engineers can experiment without limits. It's your opportunity to innovate, collaborate across teams, and learn.
-          Do what you want, but do it!
+          engineers can experiment without limits. It's the opportunity
+          to innovate, collaborate across teams, and learn. The only rule
+          is: Do what you want, but do it!
         %ul.nav.nav-pills
           %li
             = link_to(announcements_path) do
               %i.fa.fa-bullhorn
               News
           %li
-            = link_to(howto_path) do
+            = link_to(about_path) do
               %i.fa.fa-question
-              Help
-          %li
-            = link_to(awards_path) do
-              %i.fa.fa-certificate
-              Awards
+              About
           %li
             = link_to(gallery_path) do
               %i.fa.fa-picture-o
-              Pictures
+              Pics
+          %li
+            = link_to('https://github.com/SUSE/hackweek/blob/master/CREDITS.md') do
+              %i.fa.fa-heartbeat
+              Credits
       .col-sm-2.col-sm-offset-6.hidden-xs.text-center
         %h3 &nbsp;
-        = link_to "http://www.suse.com" do
-          = image_tag  "suse_logo_w-tag_black.png", :class => "img-responsive", :alt => "SUSE logo" , :title => "Enterprise Linux you can rely on"
+        = link_to 'http://www.suse.com' do
+          = image_tag 'suse_logo_w-tag_black.png', class: 'img-responsive', alt: 'SUSE logo', title: 'Enterprise Linux you can rely on'
     .row
       .col-sm-12.text-center
         %small
           &copy; 2013 SUSE.
           This tool is
-          = link_to "free software,", "http://www.gnu.org/philosophy/free-sw.html"
+          = link_to 'free software,', 'http://www.gnu.org/philosophy/free-sw.html'
           you can run, copy, distribute, study, change and improve it.
           The source code and the developers are on
-          = link_to "github.", "https://github.com/SUSE/hackweek"
-
+          = link_to 'github.', 'https://github.com/SUSE/hackweek'

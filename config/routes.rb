@@ -63,9 +63,9 @@ Hackweek::Application.routes.draw do
   get "gallery", to: "gallery#index"
   get "search", to: "search#result", as: "search"
 
-  get "awards", to: "application#awards"
   get "howto", to: "application#howto"
   get "news", to: "announcements#index"
+  get "about", to: "announcements#about"
   
   root 'projects#index'
 

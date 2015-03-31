@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
     render layout: 'application'
   end
 
-  def awards
+  def about
     render layout: 'application'
   end
 
