@@ -7,16 +7,13 @@ class ProjectsController < ApplicationController
   before_action :load_episode
 
   # GET /projects
+  # GET /projects.rss
   def index
-    @projects = Project.current(@episode).active.reverse_order.page(params[:page]).per(params[:page_size])
-  end
-
-  # GET /projects/newest.rss
-
-  def newest
-    @newest = Project.current(@episode).active.includes(:episode_project_associations).
-        order('episodes_projects.created_at DESC').references(:episodes_projects).first(10)
+    @projects = Project.current(@episode).active.includes(:episode_project_associations).
+        order('episodes_projects.created_at DESC').references(:episodes_projects).page(params[:page]).per(params[:page_size])
+    @newest = @projects.first(10)
     respond_to do |format|
+      format.html { render }
       format.rss { render :layout => false }
     end
   end

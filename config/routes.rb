@@ -22,7 +22,7 @@ Hackweek::Application.routes.draw do
       collection do
         get 'archived'
         get 'finished'
-        get 'newest'
+        get 'newest', to: 'projects#index'
         get 'popular'
         get 'biggest'
       end
