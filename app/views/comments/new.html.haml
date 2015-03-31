@@ -10,9 +10,4 @@
         - @comment.errors.full_messages.each do |msg|
           %li
             = msg
-    = render :partial => 'comments/help'
-    = form_for [@parent, @comment], html: {role: "form"} do |f|
-      %p
-        = f.text_area :text, :placeholder => "Your comment...", :class => 'form-control input-lg', :required => "required"
-      %p
-        = f.submit 'Add comment', :class=> 'btn btn-success pull-right'
+    = render partial: 'comments/form', locals: { comment: @comment, parent: @parent }
