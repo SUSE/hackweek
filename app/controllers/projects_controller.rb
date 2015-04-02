@@ -185,6 +185,11 @@ class ProjectsController < ApplicationController
     redirect_to project_path(nil, @project), notice: "Removed hackweek #{@episode.name}"
   end
 
+  # GET /projects/1/random
+  def random
+    render layout: 'zoomed'
+  end
+
   private
 
     def project_params

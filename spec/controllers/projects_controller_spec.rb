@@ -365,4 +365,12 @@ describe ProjectsController do
       end
     end
   end
+
+  describe 'GET /:episode/projects/random' do
+    it 'should render special zoomed template' do
+      get :random
+      expect(response).to render_template(layout: 'zoomed')
+    end
+  end
+
 end
