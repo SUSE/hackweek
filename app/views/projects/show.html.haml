@@ -106,14 +106,7 @@
       = render :partial => 'comments/comment', :collection => @project.comments
     %p
       - if current_user
-        = render :partial => 'comments/help'
-        = form_for [ @project, @new_comment ], url: project_comments_url(@project), html: {role: "form"} do |f|
-          %p
-            = f.text_area :text, :placeholder => "Your comment. You can use markdown.", :class => 'form-control input-lg', :required => "required"
-          %p
-            = button_tag(type: 'submit', class: "btn btn-success pull-right") do
-              %i.fa.fa-plus
-                Add Comment
+        = render partial: 'comments/form', locals: { comment: @new_comment, parent: @project }
 
 - content_for :script do
   :javascript
