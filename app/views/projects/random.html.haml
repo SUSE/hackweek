@@ -13,8 +13,8 @@
             by
             = link_to @project.originator.name, @project.originator
       .pull-right
-        %button.btn.btn-default#play-pause-button{ data: { running: false } }
-          =fa_icon :play
+        %button.btn.btn-default#play-pause-button{ data: { running: :true } }
+          =fa_icon :pause, id: 'play-pause-icon'
 .row
   .col-sm-8
     :markdown
@@ -43,4 +43,26 @@
 
 - content_for :script do
   :javascript
-    console.log('TODO: add periodic refresh here')
+    $(function() {
+      $('#play-pause-button').click(function() {
+        var button = $('#play-pause-button');
+        var icon = $('#play-pause-icon');
+        var running = Boolean(button.data("running"));
+        button.data("running", !running);
+
+        if (!running) {
+          icon.removeClass('fa-play');
+          icon.addClass('fa-pause');
+        } else {
+          icon.addClass('fa-play');
+          icon.removeClass('fa-pause');
+        }
+      });
+
+      window.setInterval(function() {
+        var running = Boolean($('#play-pause-button').data("running"));
+        if (running) {
+          location.reload();
+        }
+      }, 30000);
+    });
