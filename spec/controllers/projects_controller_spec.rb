@@ -371,6 +371,16 @@ describe ProjectsController do
       get :random
       expect(response).to render_template(layout: 'zoomed')
     end
+
+    it 'assigns random project on each request' do
+      project = create :project
+      9.times { create :project }
+
+      expect(Kernel).to receive(:rand).with(10).and_return(0)
+      get :random
+
+      expect(assigns(:project)).to eq project
+    end
   end
 
 end
