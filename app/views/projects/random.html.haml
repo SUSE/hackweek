@@ -1,1 +1,46 @@
-%h5 Hello!
+- content_for :title do
+  = @project.title
+
+.row
+  .col-md-12
+    .page-header.media
+      .pull-left
+        %h3
+          = @project.title
+          %br
+          %small
+            = render :partial => "projects/state_name", :locals => {:project =>  @project }
+            by
+            = link_to @project.originator.name, @project.originator
+      .pull-right
+        %button.btn.btn-default#play-pause-button{ data: { running: false } }
+          =fa_icon :play
+.row
+  .col-sm-8
+    :markdown
+      #{@project.description}
+  .col-sm-4
+    .row
+      .col-sm-12
+        %h5
+          - if @project.users.empty?
+            No
+          Hackers:
+        .well.well-sm#hackers
+          - @project.users.each do |user|
+            = link_to(user_path(user.id)) do
+              = image_tag user.gravatar_url(:size => "64"), alt: user.name, title: user.name, class: "img-thumbnail", id: "user#{user.id}-gravatar"
+          .clearfix
+
+    .row
+      .col-sm-12
+        %h5
+          Activity:
+        %ul
+        - @project.updates.last(5).each do |update|
+          %li
+            = render :partial => "updates/show", :locals => { :update => update }
+
+- content_for :script do
+  :javascript
+    console.log('TODO: add periodic refresh here')
