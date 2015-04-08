@@ -5,11 +5,11 @@
 
 %p{:style=>"margin-top: -10px"}
   %small
-    = render :partial => "projects/state_name", :locals => {:project => project }
+    = project.state_name
     by
     = link_to(user_path(project.originator.id)) do
       #{project.originator.name}
-      = render :partial => "projects/like_button", :locals => {:project => project }
+      = project.like_button
 :markdown
   #{truncate(project.description, length: 140)}
 - unless project.users.empty?
@@ -19,4 +19,6 @@
         = image_tag(user.gravatar_url(:size => "24"), :class => "img-thumbnail", :title => "#{user.name}", :alt => user.name)
 %span.help-block
   %small
-    = render :partial => "projects/info", :locals => {:project => project }
+    = project.updated_at
+    = project.kudos
+    = project.grab_it_link
