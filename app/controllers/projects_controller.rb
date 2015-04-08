@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.rss
   def index
-    @projects = Project.current(@episode).active.includes(:episode_project_associations).
+    @projects = Project.current(@episode).active.includes(:episode_project_associations, :originator, :users, :kudos).
         order('episodes_projects.created_at DESC').references(:episodes_projects).page(params[:page]).per(params[:page_size])
     @newest = @projects.first(10)
     respond_to do |format|
@@ -20,25 +20,25 @@ class ProjectsController < ApplicationController
 
   # GET /projects/popular
   def popular
-    @projects = Project.current(@episode).liked.order('likes_count DESC').page(params[:page]).per(params[:page_size])
+    @projects = Project.current(@episode).liked.includes(:originator, :users, :kudos).order('likes_count DESC').page(params[:page]).per(params[:page_size])
     render 'index'
   end
 
   # GET /projects/archived
   def archived
-    @projects = Project.current(@episode).archived.page(params[:page]).per(params[:page_size])
+    @projects = Project.current(@episode).archived.includes(:originator, :users, :kudos).page(params[:page]).per(params[:page_size])
     render 'index'
   end
 
   # GET /projects/biggest
   def biggest
-    @projects = Project.current(@episode).populated.order('memberships_count DESC').page(params[:page]).per(params[:page_size])
+    @projects = Project.current(@episode).populated.includes(:originator, :users, :kudos).order('memberships_count DESC').page(params[:page]).per(params[:page_size])
     render 'index'
   end
 
   # GET /projects/finished
   def finished
-    @projects = Project.current(@episode).finished.page(params[:page]).per(params[:page_size])
+    @projects = Project.current(@episode).finished.includes(:originator, :users, :kudos).page(params[:page]).per(params[:page_size])
     render 'index'
   end
 
