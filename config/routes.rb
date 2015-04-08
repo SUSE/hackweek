@@ -25,6 +25,7 @@ Hackweek::Application.routes.draw do
         get 'newest', to: 'projects#index'
         get 'popular'
         get 'biggest'
+        get 'random'
       end
       member do
         get 'like'
@@ -48,7 +49,7 @@ Hackweek::Application.routes.draw do
 
   resources :announcements do
     member do
-      get "enroll" 
+      get "enroll"
     end
   end
 
@@ -59,14 +60,14 @@ Hackweek::Application.routes.draw do
   end
 
   get "keyword/tokens"
-  post "api/import", to: "api#import" 
+  post "api/import", to: "api#import"
   get "gallery", to: "gallery#index"
   get "search", to: "search#result", as: "search"
 
   get "howto", to: "application#howto"
   get "news", to: "announcements#index"
   get "about", to: "announcements#about"
-  
+
   root 'projects#index'
 
 end

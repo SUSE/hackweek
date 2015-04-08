@@ -1,4 +1,5 @@
-= "#{time_ago_in_words update.created_at} ago:"
+%em
+  %small= "#{time_ago_in_words update.created_at} ago:"
 = link_to "#{update.author.name}", user_path(update.author)
-= " #{update.text}"
+%small= " #{update.text}"
 = link_to "#{update.project.title}", project_path(update.project)
