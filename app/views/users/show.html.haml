@@ -77,10 +77,10 @@
         %h4 Looking for projects around:
         - if @user.keywords.empty?
           %p Nothing at the moment
-        - else 
+        - else
           = render :partial => "keywords/show", :locals => {:keywords =>  @user.keywords }
-          -if can? :add_keyword, @user
-            = render :partial => "keywords/new", :locals => {:what => @user }
+        -if can? :add_keyword, @user
+          = render :partial => "keywords/new", :locals => {:what => @user }
     .row
       .col-sm-12
         %h4
