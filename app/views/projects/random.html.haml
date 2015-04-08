@@ -49,15 +49,9 @@
         var button = $('#play-pause-button');
         var icon = $('#play-pause-icon');
         var running = Boolean(button.data("running"));
-        button.data("running", !running);
 
-        if (!running) {
-          icon.removeClass('fa-play');
-          icon.addClass('fa-pause');
-        } else {
-          icon.addClass('fa-play');
-          icon.removeClass('fa-pause');
-        }
+        button.data("running", !running);
+        icon.toggleClass('fa-play fa-pause');
       });
 
       window.setInterval(function() {
