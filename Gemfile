@@ -49,6 +49,8 @@ gem 'cancancan'
 gem 'gravtastic'
 # for markdown rendering
 gem 'redcarpet'
+# for view presenters/decorators
+gem 'draper'
 # for token input
 gem 'selectize-rails'
 # as state machine
