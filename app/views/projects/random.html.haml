@@ -24,20 +24,21 @@
       .col-sm-12
         %h5
           - if @project.users.empty?
-            No
-          Hackers:
-        .well.well-sm#hackers
-          - @project.users.each do |user|
-            = link_to(user_path(user.id)) do
-              = image_tag user.gravatar_url(:size => "64"), alt: user.name, title: user.name, class: "img-thumbnail", id: "user#{user.id}-gravatar"
-          .clearfix
+            No hackers.
+          -else
+            Hackers:
+            .well.well-sm#hackers
+              - @project.users.each do |user|
+                = link_to user_path(user) do
+                  = image_tag user.gravatar_url(:size => "64"), alt: user.name, title: user.name, class: "img-thumbnail", id: "user#{user.id}-gravatar"
+              .clearfix
 
     .row
       .col-sm-12
         %h5
           Activity:
         %ul
-        - @project.updates.last(5).each do |update|
+        - @project.updates.last(5).reverse.each do |update|
           %li
             = render :partial => "updates/show", :locals => { :update => update }
 
