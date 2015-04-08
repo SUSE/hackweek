@@ -16,14 +16,6 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def howto
-    render layout: 'application'
-  end
-
-  def about
-    render layout: 'application'
-  end
-
   # store last visited url unless it's the login/sign up path,
   # doesn't start with our base url or is an ajax call.
   def store_location
