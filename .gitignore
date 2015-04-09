@@ -17,6 +17,7 @@
 # Ignore the configuration files
 /config/application.yml
 /config/secrets.yml
+/config/database.yml
 
 # Ignore sphinx search db
 /sphinx/db
