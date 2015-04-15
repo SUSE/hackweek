@@ -8,10 +8,10 @@ HoptoadNotifier.configure do |config|
     config.development_environments = "development test"
   end
 
-  config.ignore_only = %w{ 
-  Some::ExceptionName
+  config.ignore_only = %w{
+    ActiveRecord::RecordNotFound
   }
- 
+
   config.ignore_by_filter do |exception_data|
     ret=false
     if exception_data[:error_class] == "ActionController::RoutingError" 
