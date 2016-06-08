@@ -71,6 +71,8 @@ gem 'rspec-rails', :group => [:development, :test]
 gem 'capybara', :group => [:development, :test]
 # for file attachments
 gem 'paperclip', '~> 4.1'
+# as interactive debugger in error pages
+gem 'web-console', '~> 2.0', group: :development
 
 group :test do
   # for cleaning the test DB
@@ -79,9 +81,6 @@ group :test do
   gem 'coveralls', :require => false
   # as style hound
   gem 'rubocop'
-  # as interactive debugger in error pages
-  gem 'web-console', '~> 2.0'
-
   # Time travel in tests
   gem 'timecop'
 
