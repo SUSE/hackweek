@@ -8,7 +8,7 @@ zypper --gpg-auto-import-keys refresh
 
 # Install required packages
 zypper install -y mysql mysql-devel sphinx ruby-devel rubygem-bundler libxml2-devel libxslt-devel sqlite3-devel nodejs \
-                  phantomjs
+                  phantomjs gcc-c++ ImageMagick
 
 # Enable MySQL service — now and on startup
 chkconfig mysql on
@@ -24,3 +24,12 @@ mysql -e "GRANT ALL PRIVILEGES on hackweek_test.* to hackweek@localhost identifi
 
 # Download english morphology dictionary
 wget 'http://sphinxsearch.com/files/dicts/en.pak' -O /vagrant/en.pak
+
+# Configure the database if it isn't
+if [ ! -f /vagrant/config/database.yml ] && [ -f /vagrant/config/database.yml.vagrant ]; then
+  echo -e "\nSetting up your database from config/database.yml...\n"
+  cp config/database.yml.vagrant config/database.yml
+else
+  echo -e "\nnWARNING: You have already configured your database in config/database.yml." 
+  echo -e "WARNING: Please make sure this configuration works in this vagrant box!\n\n" 
+fi
