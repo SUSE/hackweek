@@ -7,6 +7,10 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
+      =link_to root_path, class: "navbar-brand" do
+        = image_tag 'hackweek-logo-dark.icon.png', style: 'height: 30px',
+                                           alt: 'Home',
+                                           title: 'Home'
       %ul.nav.navbar-nav.hidden-xs
         %li.dropdown
           = link_to(projects_path(@episode), {class: "navbar-brand"}) do
