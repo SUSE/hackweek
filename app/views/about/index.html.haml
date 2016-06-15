@@ -1,0 +1,41 @@
+.row{style: 'background-color: #484848'}
+  .col-md-12
+    %div{style: 'margin: 20px 0 20px 0' }
+      = link_to 'http://www.suse.com' do
+        = image_tag 'hackweek-logo-light', class: 'img-responsive img-center', alt: 'SUSE Hack Week Logo'
+.row
+  .col-md-12
+    .page-header
+      - if @episode
+        %h1
+          = @episode.name
+          %small
+            = "#{@episode.start_date.strftime("%A %d %B")} - #{@episode.end_date.strftime("%A %d %B %Y")}"
+      - else
+        %h1
+          Hack Week
+.row
+  .col-md-12
+    %p.lead
+      The time our engineers experiment, innovate &amp; learn interruption-free.
+      Across teams or alone, but always without limits! A SUSE tradition since
+      2007, Hack Week has brought together hundreds of hackers at the SUSE
+      engineering sites around the globe to collaborate on open source. What are
+      you going to hack on?
+.row
+  .col-md-8.col-md-offset-2
+    %p
+      .btn-group.btn-group-justified.btn-group-lg
+        = link_to new_project_path, class: 'btn btn-lg btn-info' do
+          Start
+          %span.hidden-xs
+            a Project
+        = link_to projects_path(@episode), class: 'btn btn-lg btn-success' do
+          Join
+          %span.hidden-xs
+            a Project
+.row
+  .col-md-12
+    %p.small.pull-right{style: 'margin-top: 20px'}
+      New here &amp; no idea what you're supposed to do?
+      = link_to 'Learn more...', about_path

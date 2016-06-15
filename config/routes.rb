@@ -69,6 +69,6 @@ Hackweek::Application.routes.draw do
 
   get "news", to: "announcements#index"
 
-  root 'projects#index'
+  root 'about#index'
 
 end
