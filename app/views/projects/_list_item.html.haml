@@ -3,7 +3,7 @@
     = image_tag(project.avatar.url(:thumb), width: '20')
     = project.title
 
-%p{:style=>"margin-top: -10px"}
+%p{:style=>"margin-top: 0px"}
   %small
     = render :partial => "projects/state_name", :locals => {:project => project }
     by
