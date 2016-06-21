@@ -10,20 +10,10 @@ body {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNjY2MiPjwvcmVjdD4KPC9zdmc+");
 }
 
-h4.project-list-item {
-  font-size: 24px;
-  font-weight: normal;
-}
-
 h4.project-list-item img {
   width: 26px;
   margin-right: 10px;
   max-height: 30px;
-}
-
-p {
-    margin: 15px 0 0 0;
-    font-size: 16px;
 }
 
 #content {
@@ -64,22 +54,12 @@ footer {
   display:block;
   position: relative;
   content:"";
-  /* height:70px;
-   margin:-70px 0 0;*/
   z-index: -1;
 }
 
 #loading-spinner {
   text-align: center;
   vertical-align: bottom;
-}
-
-.well {
-  margin-top: 5px;
-  margin-bottom: 15px;
-}
-small {
-font-size: 80%;
 }
 
 .help-block small {
@@ -109,29 +89,29 @@ table.project_table td {
 
 .project-style {
   h1 { 
-    font-size: 26px;
+    font-size: 1.4em;
     font-weight: normal;
     margin: 15px 0 5px 0;
   }
   h2 {
-    font-size: 24px;
+    font-size: 1.3em;
     @extend h1;
   }
   h3 {
-     font-size: 22px;
+     font-size: 1.2em;
      @extend h1;
   }
   h4 {
-    font-size: 20px;
+    font-size: 1.1em;
     @extend h1;
   }
   h5 {
-    font-size: 18px;
+    font-size: 1.0em;
     @extend h1;
   }
   h6 {
     @extend h1;
-    font-size: 18px;
+    font-size: 1.0em;
     color: #7b7a7a;
   }
   p {
@@ -148,7 +128,7 @@ table.project_table td {
   }
   
   h4.project-list-item {
-    font-size:26px;
+    font-size:1.5em;
   }
 }
 
