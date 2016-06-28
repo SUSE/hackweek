@@ -10,8 +10,14 @@ body {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNjY2MiPjwvcmVjdD4KPC9zdmc+");
 }
 
+h4.project-list-item img {
+  width: 26px;
+  margin-right: 10px;
+  max-height: 30px;
+}
+
 #content {
-  margin: 80px 0 60px;
+  margin: 110px 0 60px;
   padding: 20px 15px 20px;
   background: rgb(246, 246, 246); /* The Fallback */
   background-color:rgba(246,246,246,0.7);
@@ -45,15 +51,121 @@ footer {
 }
 
 .project-list-item:before {
-    display:block;
-    position: relative;
-    content:"";
-    height:70px;
-    margin:-70px 0 0;
-    z-index: -1;
+  display:block;
+  position: relative;
+  content:"";
+  z-index: -1;
 }
 
 #loading-spinner {
   text-align: center;
   vertical-align: bottom;
+}
+
+.help-block small {
+  font-size: 85%;
+}
+
+table.project_table td {
+  padding:10px 8px;
+}
+
+.pull-left {
+  .img-wrapper {
+    font-size: 28px;
+    font-weight: normal;
+      img {
+        margin-right: 10px;
+        max-height: 30px;
+      }
+      small {
+        font-size: 12px;
+        margin-top: 5px;
+        display: block;
+      }
+  }
+
+}
+
+.project-style {
+  h1 { 
+    font-size: 1.4em;
+    font-weight: normal;
+    margin: 15px 0 5px 0;
+  }
+  h2 {
+    font-size: 1.3em;
+    @extend h1;
+  }
+  h3 {
+     font-size: 1.2em;
+     @extend h1;
+  }
+  h4 {
+    font-size: 1.1em;
+    @extend h1;
+  }
+  h5 {
+    font-size: 1.0em;
+    @extend h1;
+  }
+  h6 {
+    @extend h1;
+    font-size: 1.0em;
+    color: #7b7a7a;
+  }
+  p {
+    margin: 5px 0 15px 0;
+    font-size: 14px;
+    
+    small {
+      font-size: 12px;
+    }
+  }
+  ul, ol {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  h4.project-list-item {
+    font-size:1.5em;
+  }
+}
+
+.label {
+  padding: .7em .7em .7em;
+  font-weight: normal;
+}
+
+textarea.form-control {
+  border-top: 0;
+  margin: -1px 0 0 0;
+  border-radius: 0 0 6px 6px;
+}
+
+.btn-xs {
+  padding: 3px 8px;
+}
+
+.divider {
+  margin-top: 25px;
+  border-top: 1px solid #ddd;
+  padding-top: 25px;
+}
+
+.form-control {
+  border: 1px solid #ddd;
+}
+
+.media-body {
+  p {
+    margin: 10px 0 0 0;
+  }
+}
+
+.media-heading {
+  small {
+    margin-top: 6px;
+    display: block;
+  }
 }
