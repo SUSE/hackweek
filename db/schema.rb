@@ -14,134 +14,134 @@
 ActiveRecord::Schema.define(version: 20150319172246) do
 
   create_table "announcements", force: :cascade do |t|
-    t.string   "title"
-    t.text     "text"
-    t.integer  "originator_id"
+    t.string   "title",         limit: 255
+    t.text     "text",          limit: 65535
+    t.integer  "originator_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "comments", force: :cascade do |t|
-    t.text     "text"
-    t.integer  "commentable_id"
-    t.string   "commentable_type"
-    t.integer  "commenter_id"
+    t.text     "text",             limit: 65535
+    t.integer  "commentable_id",   limit: 4
+    t.string   "commentable_type", limit: 255
+    t.integer  "commenter_id",     limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "enrollments", force: :cascade do |t|
-    t.integer  "announcement_id"
-    t.integer  "user_id"
+    t.integer  "announcement_id", limit: 4
+    t.integer  "user_id",         limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "episodes", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       limit: 255
     t.date     "start_date"
     t.date     "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "active",     default: false
+    t.boolean  "active",                 default: false
   end
 
   create_table "episodes_projects", force: :cascade do |t|
-    t.integer  "episode_id"
-    t.integer  "project_id"
+    t.integer  "episode_id", limit: 4
+    t.integer  "project_id", limit: 4
     t.datetime "created_at"
   end
 
-  add_index "episodes_projects", ["created_at"], name: "index_episodes_projects_on_created_at"
-  add_index "episodes_projects", ["episode_id", "project_id"], name: "index_episodes_projects_on_episode_id_and_project_id", unique: true
-  add_index "episodes_projects", ["project_id"], name: "index_episodes_projects_on_project_id"
+  add_index "episodes_projects", ["created_at"], name: "index_episodes_projects_on_created_at", using: :btree
+  add_index "episodes_projects", ["episode_id", "project_id"], name: "index_episodes_projects_on_episode_id_and_project_id", unique: true, using: :btree
+  add_index "episodes_projects", ["project_id"], name: "index_episodes_projects_on_project_id", using: :btree
 
   create_table "keywords", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer  "project_id"
-    t.integer  "user_id"
+    t.integer  "project_id", limit: 4
+    t.integer  "user_id",    limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "memberships", force: :cascade do |t|
-    t.integer  "project_id"
-    t.integer  "user_id"
+    t.integer  "project_id", limit: 4
+    t.integer  "user_id",    limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "project_interests", force: :cascade do |t|
-    t.integer  "project_id"
-    t.integer  "keyword_id"
+    t.integer  "project_id", limit: 4
+    t.integer  "keyword_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
+    t.string   "title",               limit: 255
+    t.text     "description",         limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "originator_id"
-    t.integer  "likes_count"
-    t.integer  "memberships_count"
-    t.string   "aasm_state"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
+    t.integer  "originator_id",       limit: 4
+    t.integer  "likes_count",         limit: 4
+    t.integer  "memberships_count",   limit: 4
+    t.string   "aasm_state",          limit: 255
+    t.string   "avatar_file_name",    limit: 255
+    t.string   "avatar_content_type", limit: 255
+    t.integer  "avatar_file_size",    limit: 4
     t.datetime "avatar_updated_at"
   end
 
   create_table "roles", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "roles_users", id: false, force: :cascade do |t|
-    t.integer "role_id"
-    t.integer "user_id"
+    t.integer "role_id", limit: 4
+    t.integer "user_id", limit: 4
   end
 
   create_table "updates", force: :cascade do |t|
-    t.text     "text"
-    t.integer  "author_id"
-    t.integer  "project_id"
+    t.text     "text",       limit: 65535
+    t.integer  "author_id",  limit: 4
+    t.integer  "project_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "user_interests", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "keyword_id"
+    t.integer  "user_id",    limit: 4
+    t.integer  "keyword_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "uid"
-    t.string   "name"
-    t.string   "email"
+    t.string   "uid",                    limit: 255
+    t.string   "name",                   limit: 255
+    t.string   "email",                  limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
