@@ -4,11 +4,6 @@
 .row
   .col-md-12
     .embed-responsive.embed-responsive-16by9
-      %object{ width: "100%", height: "100%" }
-        %param{ name: "flashvars", value: "offsite=true&lang=en-us&page_show_url=%2Fgroups%2Fhackweek%2Fpool%2Fshow%2F&page_show_back_url=%2Fgroups%2Fhackweek%2Fpool%2F&group_id=366038@N24&jump_to=&start_index=" }
-        %param{ name: "movie", value: "https://www.flickr.com/apps/slideshow/show.swf?v=1811922554" }
-        %param{ name: "allowFullScreen", value: "true" }
-        %embed{ type: "application/x-shockwave-flash", src: "https://www.flickr.com/apps/slideshow/show.swf?v=1811922554",
-                allowFullScreen: "true",
-                flashvars: "offsite=true&lang=en-us&page_show_url=%2Fgroups%2Fhackweek%2Fpool%2Fshow%2F&page_show_back_url=%2Fgroups%2Fhackweek%2Fpool%2F&group_id=366038@N24&jump_to=&start_index=",
-                width: "100%", height: "100%" }
+      %a{"data-flickr-embed"=>"true", "data-context"=>"true", href: "https://www.flickr.com/photos/104068895@N07/28144578805/in/pool-hackweek/", title: "P1010240"}
+        %img{src: "https://c1.staticflickr.com/8/7434/28144578805_03accc52c5_b.jpg", width: "100%", height: "768"}
+      %script{async: true, src: "//embedr.flickr.com/assets/client-code.js", charset: "utf-8"}
