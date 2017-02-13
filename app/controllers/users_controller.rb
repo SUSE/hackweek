@@ -20,17 +20,6 @@ class UsersController < ApplicationController
     redirect_to user_path(current_user)
   end
   
-  def edit
-  end
-
-  def update
-    if current_user.update_attributes(user_params)
-      redirect_to me_users_path, notice: 'User profile was successfully updated.'
-    else
-      render :action => "edit"
-    end
-  end
-
   def add_keyword
     keywords = keyword_params.split(',')
     keywords.each do |word|
