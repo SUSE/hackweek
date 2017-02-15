@@ -1,6 +1,8 @@
 language: ruby
 rvm:
   - 2.1.2
+services:
+  - mysql
 branches:
   only:
     - master
@@ -10,10 +12,13 @@ notifications:
     on_failure: change
 before_install:
   - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
-before_script: 
+  - mysql -e 'CREATE DATABASE hackweek_test;'
+before_script:
   - cp config/database.yml.example config/database.yml
   - cp config/application.yml.example config/application.yml
   - cp config/secrets.yml.example config/secrets.yml
-  - RAILS_ENV=test bundle exec rake db:migrate --trace  
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+env:
+  - TRAVIS=true
 script:
   - 'bundle exec rspec --color --format documentation'
