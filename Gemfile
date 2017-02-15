@@ -23,7 +23,6 @@ end
 
 # as databases
 gem 'mysql2'
-gem 'sqlite3' # Required for Travis-CI tests
 # for stylesheets
 gem 'sass-rails',   '~> 5.0'
 # for .js.coffee assets
