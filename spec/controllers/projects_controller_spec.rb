@@ -338,7 +338,7 @@ describe ProjectsController do
       it 'is updated when the project is added to an episode' do
         project = create :project, created_at: 1.year.ago
 
-        post :add_episode, id: project, episode_id: episode.id
+        post :add_episode, id: project.id, episode_id: episode.id
         get :index, episode_id: episode.id, format: :rss
 
         xml = Nokogiri::XML(response.body)
