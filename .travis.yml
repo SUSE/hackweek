@@ -18,7 +18,5 @@ before_script:
   - cp config/application.yml.example config/application.yml
   - cp config/secrets.yml.example config/secrets.yml
   - RAILS_ENV=test bundle exec rake db:migrate --trace
-env:
-  - TRAVIS=true
 script:
   - 'bundle exec rspec --color --format documentation'
