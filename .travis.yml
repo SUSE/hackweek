@@ -12,7 +12,7 @@ notifications:
     on_failure: change
 before_install:
   - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
-  - mysql -e 'CREATE DATABASE hackweek_test;'
+  - RAILS_ENV=test bundle exec rake db:create --trace
 before_script:
   - cp config/database.yml.example config/database.yml
   - cp config/application.yml.example config/application.yml
