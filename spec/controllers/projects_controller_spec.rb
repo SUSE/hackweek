@@ -138,14 +138,14 @@ describe ProjectsController do
   describe 'POST advance_project' do
     it 'advances the projects state' do
       project = create(:project)
-      post :advance, id: project
+      post :advance, id:project.id
       project.reload
       expect(project.aasm_state).to eq('invention')
     end
 
     it 'redirects to the project' do
       project = create(:project)
-      post :advance, id: project
+      post :advance, id:project.id
       expect(response).to redirect_to(project)
     end
   end
@@ -153,14 +153,14 @@ describe ProjectsController do
   describe 'POST recess_project' do
     it 'recesses the projects state' do
       project = create(:idea)
-      post :recess, id: project
+      post :recess, id:project.id
       project.reload
       expect(project.aasm_state).to eq('record')
     end
 
     it 'redirects to the project' do
       project = create(:idea)
-      post :recess, id: project
+      post :recess, id:project.id
       expect(response).to redirect_to(project)
     end
   end
@@ -169,13 +169,13 @@ describe ProjectsController do
     it 'ads an user to the project' do
       project = create(:idea)
       expect {
-          post :join, id: project
+          post :join, id:project.id
       }.to change(project.users, :count).by(1)
     end
 
     it 'redirects to the project' do
       project = create(:idea)
-      post :join, id: project
+      post :join, id:project.id
       expect(response).to redirect_to(project)
     end
   end
@@ -183,15 +183,15 @@ describe ProjectsController do
   describe 'GET leave_project' do
     it 'deletes an user from the project' do
       project = create(:idea)
-      post :join, id: project
+      post :join, id:project.id
       expect {
-          post :leave, id: project
+          post :leave, id:project.id
       }.to change(project.users, :count).by(-1)
     end
 
     it 'redirects to the project' do
       project = create(:project)
-      post :leave, id: project
+      post :leave, id:project.id
       expect(response).to redirect_to(project)
     end
   end
@@ -200,13 +200,13 @@ describe ProjectsController do
     it 'likes the projects' do
       project = create(:project)
       expect {
-          get :like, id: project
+          get :like, id:project.id
       }.to change(Like, :count).by(1)
     end
 
     it 'redirects to the project' do
       project = create(:project)
-      get :like, id: project
+      get :like, id:project.id
       expect(response).to redirect_to(project)
     end
   end
@@ -214,15 +214,15 @@ describe ProjectsController do
   describe 'POST dislike_project' do
     it 'dislikes the project' do
       project = create(:idea)
-      get :like, id: project
+      get :like, id:project.id
       expect {
-          get :dislike, id: project
+          get :dislike, id:project.id
       }.to change(Like, :count).by(-1)
     end
 
     it 'redirects to the project' do
       project = create(:idea)
-      post :dislike, id: project
+      post :dislike, id:project.id
       expect(response).to redirect_to(project)
     end
   end
@@ -231,13 +231,13 @@ describe ProjectsController do
     it 'ads a keyword to the project' do
       project = create(:idea)
       expect {
-          post :add_keyword, id: project, keyword: 'web'
+          post :add_keyword, id:project.id, keyword: 'web'
       }.to change(Keyword, :count).by(1)
     end
 
     it 'redirects to the project' do
       project = create(:idea)
-      post :add_keyword, id: project, keyword: 'web'
+      post :add_keyword, id:project.id, keyword: 'web'
       expect(response).to redirect_to(project)
     end
   end
@@ -245,15 +245,15 @@ describe ProjectsController do
   describe 'DELETE keyword_project' do
     it 'deletes a keyword from the project' do
       project = create(:idea)
-      post :add_keyword, id: project, keyword: 'web'
+      post :add_keyword, id:project.id, keyword: 'web'
       expect {
-          post :delete_keyword, id: project, keyword: 'web'
+          post :delete_keyword, id:project.id, keyword: 'web'
       }.to change(project.keywords, :count).by(-1)
     end
 
     it 'redirects to the project' do
       project = create(:idea)
-      post :delete_keyword, id: project, keyword: 'web'
+      post :delete_keyword, id:project.id, keyword: 'web'
       expect(response).to redirect_to(project)
     end
   end
@@ -263,14 +263,14 @@ describe ProjectsController do
       project = create(:idea)
       episode = create(:episode)
       expect {
-          post :add_episode, id: project, episode_id: episode.id
+          post :add_episode, id:project.id, episode_id: episode.id
       }.to change(project.episodes, :count).by(1)
     end
 
     it 'redirects to the project' do
       project = create(:idea)
       episode = create(:episode)
-      post :add_episode, id: project, episode_id: episode.id
+      post :add_episode, id:project.id, episode_id: episode.id
       expect(response).to redirect_to(project_url(episode, project))
     end
   end
@@ -279,17 +279,17 @@ describe ProjectsController do
     it 'deletes an episode from the project' do
       project = create(:idea)
       episode = create(:episode)
-      post :add_episode, id: project, episode_id: episode.id
+      post :add_episode, id:project.id, episode_id: episode.id
       expect {
-          post :delete_episode, id: project, episode_id: episode.id
+          post :delete_episode, id:project.id, episode_id: episode.id
       }.to change(project.episodes, :count).by(-1)
     end
 
     it 'redirects to the project' do
       project = create(:idea)
       episode = create(:episode)
-      post :add_episode, id: project, episode_id: episode.id
-      post :delete_episode, id: project, episode_id: episode.id
+      post :add_episode, id:project.id, episode_id: episode.id
+      post :delete_episode, id:project.id, episode_id: episode.id
       expect(response).to redirect_to(project)
     end
   end
@@ -328,7 +328,7 @@ describe ProjectsController do
         another_episode = create :episode
         the_only_project = create :project, episodes: [another_episode]
 
-        get :index, episode_id: another_episode, format: :rss
+        get :index, episode_id: another_episode.id, format: :rss
 
         xml = Nokogiri::XML(response.body)
         expect(xml.xpath('//item').count).to eq 1
@@ -338,7 +338,7 @@ describe ProjectsController do
       it 'is updated when the project is added to an episode' do
         project = create :project, created_at: 1.year.ago
 
-        post :add_episode, id: project, episode_id: episode.id
+        post :add_episode, id: project.id, episode_id: episode.id
         get :index, episode_id: episode.id, format: :rss
 
         xml = Nokogiri::XML(response.body)
