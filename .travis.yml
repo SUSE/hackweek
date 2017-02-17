@@ -13,10 +13,6 @@ notifications:
 before_install:
   - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
 before_script:
-  - cp config/database.yml.example config/database.yml
-  - cp config/application.yml.example config/application.yml
-  - cp config/secrets.yml.example config/secrets.yml
-  - RAILS_ENV=test bundle exec rake db:create --trace
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - RAILS_ENV=test bundle exec rake dev:bootstrap --trace
 script:
   - 'bundle exec rspec --color --format documentation'
