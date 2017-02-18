@@ -12,6 +12,7 @@ notifications:
     on_failure: change
 before_install:
   - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
+  - 'wget -nv http://sphinxsearch.com/files/dicts/en.pak'
 before_script:
   - RAILS_ENV=test bundle exec rake dev:bootstrap --trace
 script:
