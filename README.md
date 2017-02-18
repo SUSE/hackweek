@@ -4,7 +4,7 @@
 
 HackWeek
 --------
-A tool to nurture hack ideas into projects and then collaborate on them. It's used 
+A tool to nurture hack ideas into projects and then collaborate on them. It's used
 during [SUSEs hackweek](http://hackweek.suse.com), a week where SUSE engineers can
 experiment without limits and get their opportunity to innovate, collaborate across teams,
 and learn.
@@ -13,13 +13,16 @@ and learn.
 
 ## Features
 * Admins can add hackweeks
-* Users ceate ideas for a hackweek
+* Users create ideas for a hackweek
 * Users can like and comment on ideas
 * Users can join ideas turning them into projects
 * Users can supplement projects with files, links, agenda items and "needs"
 * Users can supplement themselves with "haves"
 * Ideas/Projects "needs" are matched to Users "haves"
 * Admins can rate project results
+
+## Requirements
+Sphinx (searchd) must be installed. No need to configure and launch it separately, everything will be taken care of with `rake ts:regenerate`.
 
 ## Hack it
 * [Fork this repository](https://help.github.com/articles/fork-a-repo)
@@ -51,7 +54,13 @@ rails server
 ```shell
 rspec spec
 ```
-* [Send pull requesst](https://help.github.com/articles/using-pull-requests)
+* [Send pull request](https://help.github.com/articles/using-pull-requests)
+
+To make this more convenient for you, we have a rake task that executes the above steps:
+
+`bundle exec rake dev:bootstrap`
+
+Also, consider developing using Vagrant, documented below.
 
 ## Resources
 * Design mockups of the rails app are in the design directory.
@@ -60,19 +69,15 @@ rspec spec
 * Data of past hackweeks is in the archive directory.
 * The source of the [old webpage](http://suse.github.io/hackweek/) is in the gh-pages branch.
 
-## Requirements
-Sphinx (searchd) should be installed. No need to configure and launch it separately, everything will be taken care of with `rake ts:regenerate`.
 
-
-# Development with Vagrant
+## Development with Vagrant
 
 As our project involves somewhat complicated setup (MySQL and Shpinx search) even for development environment, we've created Vagrantfile to get you up and running.
 
 1. Install Virtualbox (can be found in your OS package manager or [here](https://www.virtualbox.org/wiki/Downloads)).
 2. Download and install the [latest vagrant](https://www.vagrantup.com/downloads.html).
 3. Install vagrant-exec plugin: `vagrant plugin install vagrant-exec`.
-4. Start Vagrant box: `vagrant up`. It will set up and start an OpenSUSE 13.2 VirtualBox VM in the background. 
-VM will have an autosynced folder `/vagrant` with your code, and can always be shut down with `vagrant halt` and removed with `vagrant destroy`.
+4. Start Vagrant box: `vagrant up`. It will set up and start an OpenSUSE 13.2 VirtualBox VM in the background. VM will have an autosynced folder `/vagrant` with your code, and can always be shut down with `vagrant halt` and removed with `vagrant destroy`.
 5. Remote connection to the Vagrant box is available with `vagrant ssh`, one can run single-shot remote commands like `vagrant exec rake db:migrate` (will be run in the context of `/vagrant` folder; no need to additionaly state `bundle exec`).
 6. Install missing gems: `vagrant exec bundle`.
 7. Migrate development database: `vagrant exec rake db:migrate`.
