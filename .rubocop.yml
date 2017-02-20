@@ -24,10 +24,6 @@ Style/EmptyLines:
 Style/EmptyLinesAroundAccessModifier:
   Enabled: true
 
-# Do not insert empty line after class definition and before closing class
-Style/EmptyLinesAroundBody:
-  Enabled: true
-
 # Use hash literal {} instead of Hash.new
 Style/EmptyLiteral:
   Enabled: true
@@ -93,12 +89,8 @@ Style/AndOr:
   Enabled: true
 
 # avoid deep blocks nesting
-Style/BlockNesting:
+Metrics/BlockNesting:
   Max: 4
-
-# use do instead of {...} in multiline blocks
-Style/Blocks:
-  Enabled: true
 
 # avoid redundunt curly braces when it is obvious that hash is used
 Style/BracesAroundHashParameters:

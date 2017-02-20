@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Do not fiddle with my running services when boostrapping.
+# Exsepcially annoying in case of virtualbox updates...
+export YAST_IS_RUNNING="instsys"
+
 function zypper_with_opts {
   zypper --quiet --non-interactive $@
 }
