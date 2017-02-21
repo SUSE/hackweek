@@ -21,6 +21,7 @@
 /config/database.yml
 
 # Ignore sphinx search db
+/db/sphinx/
 /sphinx/db
 /sphinx/binlog
 /sphinx/pids/*.pid

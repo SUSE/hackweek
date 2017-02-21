@@ -44,7 +44,7 @@
           - if @user.projects.empty?
             %p no projects currently
           - else
-            = render :partial => "projects/list", :locals => {:projects => @user.projects }
+            = render :partial => "projects/list", :locals => {:projects => @user.projects.by_episode(@episode) }
       - else
         .tab-pane.active#recommended
           - if @user.recommended_projects.empty?
