@@ -161,6 +161,10 @@ class Project < ActiveRecord::Base
     Project.by_episode(episode).where('projects.id > ?', self.id).first
   end
 
+  def comment_texts
+    comments.collect(&:text).join(' ')
+  end
+
   private
 
     def create_initial_update
