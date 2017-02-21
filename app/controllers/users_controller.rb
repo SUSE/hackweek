@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
-  
-  load_and_authorize_resource
+
+  before_filter :find_user_by_id
+  before_filter :redirect_to_slug, only: [:show]
+  load_and_authorize_resource find_by: :name
+
   skip_before_filter :authenticate_user!, :only => [ :index, :show ]
   skip_before_action :verify_authenticity_token, :only => [:add_keyword, :delete_keyword ]
 
@@ -8,18 +11,13 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def show      
-      @user = User.find_by id: params[:id]
-      if not @user
-        flash["alert-warning"] = "User not found"
-        redirect_to projects_path
-      end
+  def show
   end
 
   def me
     redirect_to user_path(current_user)
   end
-  
+
   def add_keyword
     keywords = keyword_params.split(',')
     keywords.each do |word|
@@ -38,12 +36,20 @@ class UsersController < ApplicationController
     redirect_to :action => "me", notice: "Keyword '#{params[:keyword]}' removed."
   end
 
-  def user_params
-    params.require(:user).permit(:email, :name, :uid)
-  end
+  private
+    def user_params
+      params.require(:user).permit(:email, :name, :uid)
+    end
 
-  def keyword_params
-    params.require(:keyword)
-  end
+    def keyword_params
+      params.require(:keyword)
+    end
 
+    def find_user_by_id
+      @user = User.find_by(id: params[:id])
+    end
+
+    def redirect_to_slug
+      redirect_to @user if @user
+    end
 end

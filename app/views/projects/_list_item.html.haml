@@ -7,7 +7,7 @@
   %small
     = render :partial => "projects/state_name", :locals => {:project => project }
     by
-    = link_to(user_path(project.originator.id)) do
+    = link_to(user_path(project.originator)) do
       #{project.originator.name}
       = render :partial => "projects/like_button", :locals => {:project => project }
 :markdown

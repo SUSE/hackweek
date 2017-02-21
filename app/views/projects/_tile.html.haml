@@ -20,7 +20,7 @@
   .panel-footer
     %small
       an idea by
-      = link_to(user_path(project.originator.id)) do
+      = link_to(user_path(project.originator)) do
         #{project.originator.name},
       updated
       = "#{time_ago_in_words project.updated_at}"
