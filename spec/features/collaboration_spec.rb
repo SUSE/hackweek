@@ -6,7 +6,7 @@ feature 'Collaboration' do
     project = create(:idea)
     sign_in user
 
-    visit "/projects/#{project.to_param}"
+    visit project_path(nil, project)
 
     expect {
       click_link 'Join this project'
@@ -20,7 +20,7 @@ feature 'Collaboration' do
     project = create(:project, users: [user])
     sign_in user
 
-    visit "/projects/#{project.to_param}"
+    visit project_path(nil, project)
     click_link 'Leave this project'
 
     expect(page).not_to have_css("#user#{user.id}-gravatar")
@@ -31,12 +31,12 @@ feature 'Collaboration' do
     project = create(:idea)
     sign_in user
 
-    visit "/projects/#{project.to_param}"
+    visit project_path(nil, project)
 
     expect {
-      click_link "like-#{project.to_param}"
+      click_link "like-#{project.id}"
     }.to change(Project.liked, :count).by(1)
-    expect(page).not_to have_css("like-#{project.to_param}")
+    expect(page).not_to have_css("like-#{project.id}")
   end
 
   scenario 'User dislikes a project' do
@@ -44,12 +44,12 @@ feature 'Collaboration' do
     project = create(:idea)
     sign_in user
 
-    visit "/projects/#{project.to_param}"
-    click_link "like-#{project.to_param}"
+    visit project_path(nil, project)
+    click_link "like-#{project.id}"
 
     expect {
-      click_link "dislike-#{project.to_param}"
+      click_link "dislike-#{project.id}"
     }.to change(Project.liked, :count).by(-1)
-    expect(page).not_to have_css("dislike-#{project.to_param}")
+    expect(page).not_to have_css("dislike-#{project.id}")
   end
 end

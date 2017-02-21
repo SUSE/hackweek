@@ -253,7 +253,7 @@ describe ProjectsController do
 
     it 'redirects to the project' do
       project = create(:idea)
-      post :delete_keyword, id:project.id, keyword: 'web'
+      post :delete_keyword, id: project.id, keyword: 'web'
       expect(response).to redirect_to(project)
     end
   end

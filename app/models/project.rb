@@ -2,6 +2,7 @@ class Project < ActiveRecord::Base
   include AASM
 
   validates :title, presence: true
+  validates :url, uniqueness: true
   validates :description, presence: true
   validates :originator_id, presence: true
 
@@ -29,6 +30,7 @@ class Project < ActiveRecord::Base
   after_create :assign_episode
 
   after_save ThinkingSphinx::RealTime.callback_for(:project)
+  acts_as_url :title, blacklist: %w{new archived finished newest popular biggest random}
 
   aasm do
     state :idea, initial: true
@@ -163,6 +165,10 @@ class Project < ActiveRecord::Base
 
   def comment_texts
     comments.collect(&:text).join(' ')
+  end
+
+  def to_param
+    url
   end
 
   private

@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150319172246) do
+ActiveRecord::Schema.define(version: 20170221144704) do
 
   create_table "announcements", force: :cascade do |t|
     t.string   "title",         limit: 255
-    t.text     "text",          limit: 65535
+    t.text     "text",          limit: 16777215
     t.integer  "originator_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 20150319172246) do
     t.integer  "commentable_id",   limit: 4
     t.string   "commentable_type", limit: 255
     t.integer  "commenter_id",     limit: 4
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "enrollments", force: :cascade do |t|
@@ -57,37 +57,37 @@ ActiveRecord::Schema.define(version: 20150319172246) do
   add_index "episodes_projects", ["project_id"], name: "index_episodes_projects_on_project_id", using: :btree
 
   create_table "keywords", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.text     "name",       limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "likes", force: :cascade do |t|
     t.integer  "project_id", limit: 4
     t.integer  "user_id",    limit: 4
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "memberships", force: :cascade do |t|
     t.integer  "project_id", limit: 4
     t.integer  "user_id",    limit: 4
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "project_interests", force: :cascade do |t|
     t.integer  "project_id", limit: 4
     t.integer  "keyword_id", limit: 4
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string   "title",               limit: 255
+    t.text     "title",               limit: 65535
     t.text     "description",         limit: 65535
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.integer  "originator_id",       limit: 4
     t.integer  "likes_count",         limit: 4
     t.integer  "memberships_count",   limit: 4
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20150319172246) do
     t.string   "avatar_content_type", limit: 255
     t.integer  "avatar_file_size",    limit: 4
     t.datetime "avatar_updated_at"
+    t.string   "url",                 limit: 255
   end
 
   create_table "roles", force: :cascade do |t|
@@ -113,23 +114,23 @@ ActiveRecord::Schema.define(version: 20150319172246) do
     t.text     "text",       limit: 65535
     t.integer  "author_id",  limit: 4
     t.integer  "project_id", limit: 4
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "user_interests", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
     t.integer  "keyword_id", limit: 4
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "uid",                    limit: 255
     t.string   "name",                   limit: 255
     t.string   "email",                  limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
     t.string   "encrypted_password",     limit: 255, default: "", null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"

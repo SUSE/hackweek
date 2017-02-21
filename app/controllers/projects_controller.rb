@@ -1,5 +1,8 @@
 class ProjectsController < ApplicationController
-  load_and_authorize_resource
+
+  before_filter :find_project_by_id
+  before_filter :redirect_to_slug, only: [:show]
+  load_and_authorize_resource find_by: :url
   skip_before_filter :authenticate_user!, only: [ :index, :show, :archived, :finished, :newest, :popular, :biggest, :random ]
   skip_before_filter :store_location, only: [:join, :leave, :like, :dislike, :add_keyword, :delete_keyword ]
   skip_before_action :verify_authenticity_token, only: [:add_keyword, :delete_keyword ]
@@ -205,5 +208,13 @@ class ProjectsController < ApplicationController
 
     def load_episode
       @episode = Episode.find(params[:episode_id]) if params[:episode_id]
+    end
+
+    def find_project_by_id
+      @project = Project.find_by(id: params[:id])
+    end
+
+    def redirect_to_slug
+      redirect_to @project if @project
     end
 end
