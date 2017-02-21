@@ -51,7 +51,7 @@ namespace :dev do
   end
 
   desc 'bootstrap development environment'
-  task bootstrap: %w(copy_sample_configs bundle_install db:create db:migrate db:seed require_searchd ts:regenerate ts:index) do
+  task bootstrap: %w(copy_sample_configs bundle_install db:create db:setup db:seed require_searchd ts:regenerate ts:index) do
     puts "\n\nCongrats! You should be all set.".green
     puts "\nHappy Hacking!".green
   end
