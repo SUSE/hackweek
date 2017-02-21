@@ -57,17 +57,9 @@ mysqladmin -u root password 'hackweek'
 vecho "Download english morphology dictionary"
 wget -q 'http://sphinxsearch.com/files/dicts/en.pak' -O /vagrant/en.pak
 
-# Configure the database if it isn't
-if [ ! -f /vagrant/config/database.yml ] && [ -f /vagrant/config/database.yml.vagrant ]; then
-  vecho "Setting up your database from config/database.yml"
-  cp config/database.yml.vagrant config/database.yml
-else
-  vecho "WARNING: You have already configured your database in config/database.yml."
-  vecho "WARNING: Please make sure this configuration works in this vagrant box!"
-fi
+vecho "Setting up the Rails environment for 'hackweek'"
+su - vagrant -c 'cd /vagrant && bundle && rake dev:bootstrap'
 
 vecho "Your hackweek development box has been set up."
-vecho "Setup your database with\n\t\t vagrant exec rake db:setup"
-vecho "Setup your search daemon with\n\t\t vagrant exec rake ts:regenerate"
-vecho "and start the app with\n\t\t vagrant exec rails server -b 0.0.0.0"
+vecho "Start the app with\n\t\t vagrant exec rails server -b 0.0.0.0"
 vecho "Happy Hacking!\n\n"
