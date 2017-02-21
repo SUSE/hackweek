@@ -48,6 +48,8 @@ gem 'cancancan'
 gem 'gravtastic'
 # for markdown rendering
 gem 'redcarpet'
+# to sanitize HTML/CSS
+gem 'sanitize'
 # for token input
 gem 'selectize-rails'
 # as state machine

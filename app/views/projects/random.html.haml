@@ -17,8 +17,7 @@
           =fa_icon :pause, id: 'play-pause-icon'
 .row
   .col-sm-8
-    :markdown
-      #{@project.description}
+    = safe_markdown(@project.description)
   .col-sm-4
     .row
       .col-sm-12

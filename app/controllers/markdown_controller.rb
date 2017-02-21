@@ -4,7 +4,7 @@ class MarkdownController < ApplicationController
 
   def preview
     markdown_source = params[:source]
-    @rendered = MarkdownHelper.render markdown_source
+    @rendered = safe_markdown markdown_source
     respond_with @rendered
   end
 end
