@@ -10,8 +10,7 @@
     = link_to(user_path(project.originator.id)) do
       #{project.originator.name}
       = render :partial => "projects/like_button", :locals => {:project => project }
-:markdown
-  #{truncate(project.description, length: 140)}
+= safe_markdown(truncate(project.description, length: 140))
 - unless project.users.empty?
   .well.well-sm
     - project.users.each do |user|

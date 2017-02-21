@@ -27,8 +27,7 @@
             = render :partial => "projects/info", :locals => {:project => @project }
 .row
   .col-sm-8.project-style
-    :markdown
-      #{@project.description}
+    = safe_markdown(@project.description)
   .col-sm-4
     .row
       .col-sm-12
@@ -62,7 +61,7 @@
         %p
           - if @project.keywords.empty?
             Nothing? Add some keywords!
-          - else 
+          - else
             = render :partial => "keywords/show", :locals => {:keywords =>  @project.keywords }
           -if  @project.originator == current_user or @project.users.include? current_user
             = render :partial => "keywords/new", :locals => {:what => @project }
