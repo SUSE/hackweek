@@ -42,7 +42,7 @@
           Hackers:
         .well.well-sm#hackers
           - @project.users.each do |user|
-            = link_to(user_path(user.id)) do
+            = link_to(user_path(user)) do
               = image_tag user.gravatar_url(:size => "64"), alt: user.name, title: user.name, class: "img-thumbnail", id: "user#{user.id}-gravatar"
         - unless @project.aasm_state == "invention"
           %p.pull-right
@@ -62,7 +62,7 @@
         %p
           - if @project.keywords.empty?
             Nothing? Add some keywords!
-          - else 
+          - else
             = render :partial => "keywords/show", :locals => {:keywords =>  @project.keywords }
           -if  @project.originator == current_user or @project.users.include? current_user
             = render :partial => "keywords/new", :locals => {:what => @project }

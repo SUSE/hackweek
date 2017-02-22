@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
     return !!self.roles.find_by_name(role)
   end
 
+  def to_param
+    name
+  end
+
   def add_keyword! name
     name.downcase!
     name.gsub!(/\s/, '')

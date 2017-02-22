@@ -21,7 +21,6 @@ class Ability
   def initialize(user)
     user ||= User.new # guest user (not logged in)
     if user
-
       # Everyone can:
       can :read, :all
       can [:join, :leave, :like, :dislike, :create], Project
