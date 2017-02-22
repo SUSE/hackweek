@@ -62,6 +62,8 @@ gem 'mousetrap-rails'
 gem 'thinking-sphinx'
 # for pagination
 gem 'kaminari'
+# for slugs
+gem 'stringex'
 # for seeds
 gem 'factory_girl_rails', :group => [:development, :test]
 gem 'faker', :group => [:development, :test]
