@@ -2,7 +2,10 @@ class Project < ActiveRecord::Base
   include AASM
 
   validates :title, presence: true
+  validate  :title_contains_letters?
+
   validates :url, uniqueness: true
+
   validates :description, presence: true
   validates :originator_id, presence: true
 
@@ -171,7 +174,14 @@ class Project < ActiveRecord::Base
     url
   end
 
+  def self.numeric?(whatever)
+    Float(whatever) != nil rescue false
+  end
+
   private
+    def title_contains_letters?
+      errors.add(:title, "must contain letters") if Project.numeric?(title)
+    end
 
     def create_initial_update
       Update.create!(author: self.originator,

@@ -211,7 +211,7 @@ class ProjectsController < ApplicationController
     end
 
     def find_project_by_id
-      @project = Project.find_by(id: params[:id])
+      @project = Project.find_by(id: params[:id]) if Project.numeric?(params[:id])
     end
 
     def redirect_to_slug
