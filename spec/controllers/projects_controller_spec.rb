@@ -31,6 +31,13 @@ describe ProjectsController do
       expect(assigns(:previous_project)).to eq(previous_project)
       expect(assigns(:next_project)).to eq(next_project)
     end
+
+    it 'redirects numeric id to slug' do
+      project = create(:project)
+
+      get :show, id: project.id
+      expect(response).to redirect_to(project)
+    end
   end
 
   describe 'GET new' do
