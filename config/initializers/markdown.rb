@@ -1,1 +1,1 @@
-require_relative '../../lib/haml/filters/markdown'
+require 'haml/filters/markdown'
