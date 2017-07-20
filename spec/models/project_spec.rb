@@ -111,7 +111,7 @@ describe Project do
     end
   end
 
-  describe 'destroy' do
+  describe 'destroy', search: true do
     it 'deletes associated comments' do
       project = create :project, :with_comments
       project.destroy!

@@ -1,6 +1,4 @@
 defaults: &defaults
-  morphology:
-    - lemmatize_en_all
   min_infix_len: 3
   mysql41: 9312
   pid_file: sphinx/pids/searchd.pid
@@ -14,4 +12,6 @@ test:
   mysql41: 9313
 production:
   <<: *defaults
+  morphology:
+    - lemmatize_en_all
   configuration_file: "/srv/www/vhosts/suse.com/hackweek/shared/sphinx/config/production.sphinx.conf"

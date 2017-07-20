@@ -127,7 +127,7 @@ describe ProjectsController do
     end
   end
 
-  describe 'DELETE destroy' do
+  describe 'DELETE destroy', search: true do
     it 'destroys the requested project' do
       project = create(:project)
       expect {

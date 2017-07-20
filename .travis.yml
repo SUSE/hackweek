@@ -3,9 +3,6 @@ rvm:
   - 2.1.2
 services:
   - mysql
-branches:
-  only:
-    - master
 notifications:
   email:
     on_success: change
@@ -13,6 +10,8 @@ notifications:
 before_install:
   - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
   - 'wget -nv http://sphinxsearch.com/files/dicts/en.pak'
+  - 'sudo apt-get -qq update'
+  - 'sudo apt-get install sphinxsearch'
 before_script:
   - RAILS_ENV=test bundle exec rake dev:bootstrap --trace
 script:

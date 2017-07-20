@@ -42,7 +42,7 @@ feature 'Project management' do
     expect(page).to have_text(description)
   end
 
-  scenario 'User deletes a project' do
+  scenario 'User deletes a project', search: true do
     project = create(:idea, originator: user)
 
     visit project_path(nil, project)
