@@ -223,7 +223,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rainbow (2.0.0)
     rake (12.0.0)
-    redcarpet (3.3.4)
+    redcarpet (3.4.0)
     responders (2.2.0)
       railties (>= 4.2.0, < 5.1)
     rest-client (1.8.0)
