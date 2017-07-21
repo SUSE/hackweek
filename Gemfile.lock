@@ -55,8 +55,7 @@ GEM
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
     builder (3.2.3)
-    byebug (4.0.3)
-      columnize (= 0.9.0)
+    byebug (9.0.6)
     cancancan (1.10.1)
     capybara (2.4.4)
       mime-types (>= 1.16)
@@ -77,7 +76,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1)
-    columnize (0.9.0)
     concurrent-ruby (1.0.4)
     coveralls (0.7.11)
       multi_json (~> 1.10)
@@ -185,8 +183,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-byebug (3.1.0)
-      byebug (~> 4.0)
+    pry-byebug (3.4.2)
+      byebug (~> 9.0)
       pry (~> 0.10)
     pry-rails (0.3.6)
       pry (>= 0.10.4)
