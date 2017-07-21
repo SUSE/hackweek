@@ -1,8 +1,7 @@
 <%
   if ENV['TRAVIS']
-    username = "travis"
+    password = ''
   else
-    username = "root"
     password = "hackweek"
   end
 %>
@@ -10,7 +9,7 @@
 vagrant: &vagrant
   adapter: mysql2
   encoding: utf8
-  username: <%= username %>
+  username: root
   password: <%= password %>
 
 development:
