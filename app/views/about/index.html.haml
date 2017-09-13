@@ -3,7 +3,7 @@
     %div
       = image_tag 'hackweek-logo-light.png', class: 'img-responsive img-center', alt: 'SUSE Hack Week Logo'
 .row
-  .col-md-12
+  .col-md-7
     .page-header
       - if @episode
         %h1
@@ -13,20 +13,29 @@
       - else
         %div
           = image_tag 'hackweek-label.png', class: 'img-responsive', alt: 'Hack Week'
+    .row
+      .col-md-12
+        %p.lead
+          is the time SUSE engineers experiment, innovate &amp; learn interruption-free.
+          Across teams or alone and always without limits!
+
+        %p.lead
+          A SUSE tradition since 2007, Hack Week has brought together hundreds of hackers at SUSE
+          and on open source communities around the globe to collaborate on open source.
+
+        %p.lead
+          Hack Week 16 aka 0x10 is the upcoming! It is starting on Thursday, November 10th until November 16th 2017.
+
+        %p.lead
+          = link_to 'Learn more', about_path
+          about Hack Week.
+  .col-md-5
+    %div
+      = image_tag 'hw_0x10_with_text_new.png', class: 'img-responsive', alt: 'Hack Week 0x10'
 .row
   .col-md-12
     %p.lead
-      The time our engineers experiment, innovate &amp; learn interruption-free.
-      Across teams or alone, but always without limits! A SUSE tradition since
-      2007, Hack Week has brought together hundreds of hackers at the SUSE
-      engineering sites around the globe to collaborate on open source.
-  .col-md-12
-    .well.well-lg
-      .embed-responsive.embed-responsive-16by9#intro
-        %iframe.embed-responsive-item{src: "https://www.youtube-nocookie.com/embed/2U82mz0v-14", allowfullscreen: true }
-  .col-md-12
-    %p.lead
-      What are you going to hack on?
+      What are you going to hack on? Start by submitting your projects here!
 .row
   .col-md-8.col-md-offset-2
     %p
@@ -39,8 +48,3 @@
           Join
           %span.hidden-xs
             a Project
-.row
-  .col-md-12
-    %p.small.pull-right{style: 'margin-top: 20px'}
-      New here &amp; no idea what you're supposed to do?
-      = link_to 'Learn more...', about_path
