@@ -156,6 +156,9 @@ GEM
     middleware (0.1.0)
     mime-types (2.99.3)
     mimemagic (0.3.0)
+    mina (0.3.8)
+      open4 (~> 1.3.4)
+      rake
     mini_portile2 (2.1.0)
     minitest (5.10.3)
     mousetrap-rails (1.4.6)
@@ -164,6 +167,7 @@ GEM
     netrc (0.11.0)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
+    open4 (1.3.4)
     orm_adapter (0.5.0)
     paperclip (4.3.6)
       activemodel (>= 3.2.0)
@@ -341,6 +345,7 @@ DEPENDENCIES
   jquery-hotkeys-rails
   jquery-rails
   kaminari
+  mina (~> 0.3)
   mousetrap-rails
   mysql2
   paperclip (~> 4.1)

@@ -74,6 +74,8 @@ gem 'capybara', :group => [:development, :test]
 gem 'paperclip', '~> 4.1'
 # as interactive debugger in error pages
 gem 'web-console', '~> 2.0', group: :development
+# as deployer
+gem 'mina', '~> 0.3'
 
 group :test do
   # for cleaning the test DB
