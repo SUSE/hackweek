@@ -34,6 +34,13 @@
       = image_tag 'hw_0x10_with_text_new.png', class: 'img-responsive', alt: 'Hack Week 0x10'
 .row
   .col-md-12
+    .well.well-lg
+      %p.lead Welcome to Hackweek 0x10 from Ralf Flaxa, President of SUSE R&D:
+      .embed-responsive.embed-responsive-16by9#intro
+        %video{:width => 320, :height => 240, :controls => true}
+          %source{:src => "assets/Hackweek_16_Welcome_by_Ralf.mp4", :type => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"'}
+.row
+  .col-md-12
     %p.lead
       What are you going to hack on? Start by submitting your projects here!
 .row
