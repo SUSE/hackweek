@@ -1,1 +1,2 @@
-web: bundle exec unicorn -p $PORT -E $RACK_ENV
+web: bundle exec rails server
+search: bundle exec rake ts:rebuild NODETACH=true

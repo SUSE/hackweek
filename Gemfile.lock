@@ -110,6 +110,8 @@ GEM
       thor (~> 0.14)
     font-awesome-rails (4.7.0.2)
       railties (>= 3.2, < 5.2)
+    foreman (0.84.0)
+      thor (~> 0.19.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     gravtastic (3.2.6)
@@ -132,7 +134,8 @@ GEM
       ruby_parser (~> 3.5)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
-    i18n (0.8.6)
+    i18n (0.9.1)
+      concurrent-ruby (~> 1.0)
     innertube (1.1.0)
     joiner (0.3.4)
       activerecord (>= 4.1.0)
@@ -287,7 +290,7 @@ GEM
     stringex (2.7.1)
     term-ansicolor (1.3.0)
       tins (~> 1.0)
-    thinking-sphinx (3.3.0)
+    thinking-sphinx (3.4.2)
       activerecord (>= 3.1.0)
       builder (>= 2.1.2)
       innertube (>= 1.0.2)
@@ -299,7 +302,7 @@ GEM
     tilt (2.0.5)
     timecop (0.9.1)
     tins (1.3.5)
-    tzinfo (1.2.3)
+    tzinfo (1.2.4)
       thread_safe (~> 0.1)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
@@ -337,6 +340,7 @@ DEPENDENCIES
   faker
   figaro
   font-awesome-rails
+  foreman
   gravtastic
   haml-rails
   hirb
@@ -370,4 +374,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.14.4
+   1.16.0
