@@ -22,45 +22,43 @@ and learn.
 * Admins can rate project results
 
 ## Requirements
-Sphinx (searchd) must be installed. No need to configure and launch it separately, everything will be taken care of with `rake ts:regenerate`.
+Sphinx (searchd) must be installed. No need to configure and launch it
+separately, everything will be taken care of with `rake ts:regenerate`.
 
 ## Hack it
-* [Fork this repository](https://help.github.com/articles/fork-a-repo)
-* Configure the rails app
-```shell
-cp config/database.yml.example config/database.yml
-cp config/application.yml.example config/application.yml
-cp config/secrets.yml.example config/secrets.yml
-```
-* Install the ruby gem bundle
-```shell
-bundle install
-```
-* Create the database
-```shell
-rake db:setup
-```
-* Create Sphinx configuration, start the search daemon and index existing DB contents
-```shell
-rake ts:regenerate ts:index
-```
-* Run the rails server
-```shell
-rails server
-```
-* Open http://0.0.0.0:3000 in your browser
-* [Start hacking](http://railsforzombies.org/)
-* [Test your changes](https://www.relishapp.com/rspec/rspec-core/docs)
-```shell
-rspec spec
-```
-* [Send pull request](https://help.github.com/articles/using-pull-requests)
+As our project involves somewhat complicated setup (MySQL and Shpinx search)
+for a development environment, we have created Vagrantfile to get you up and
+running.
 
-To make this more convenient for you, we have a rake task that executes the above steps:
+1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [vagrant](https://www.vagrantup.com)
+2. Install vagrant-exec plugin:
+```shell
+vagrant plugin install vagrant-exec
+```
+3. Start our openSUSE 42.3 based virtual machine with vagrant 
+```shell
+vagrant up
+```
+4. Launch the application
+```shell
+vagrant exec foreman start
+```
+5. Access the appliaction as usual
+```shell
+xdg-open http://localhost:3000
+```
+6. [Start hacking](http://railsforzombies.org/)
+7. [Test your changes](https://www.relishapp.com/rspec/rspec-core/docs)
+```shell
+vagrant exec rspec
+```
+8. [Send pull request](https://help.github.com/articles/using-pull-requests)
+9. $UCCE$$
 
-`bundle exec rake dev:bootstrap`
-
-Also, consider developing using Vagrant, documented below.
+Remote connection to the virtual machine is available with `vagrant ssh`. You
+can run single-shot remote commands like `vagrant exec rake db:migrate`. If you
+are done hacking you can stop the virtual machine with `vagrant halt` and
+remove all traces of it with `vagrant destroy`.
 
 ## Resources
 * Design mockups of the rails app are in the design directory.
@@ -68,15 +66,3 @@ Also, consider developing using Vagrant, documented below.
 * There are some tools in the tool directory.
 * Data of past hackweeks is in the archive directory.
 * The source of the [old webpage](http://suse.github.io/hackweek/) is in the gh-pages branch.
-
-
-## Development with Vagrant
-
-As our project involves somewhat complicated setup (MySQL and Shpinx search) even for development environment, we've created Vagrantfile to get you up and running.
-
-1. Install Virtualbox (can be found in your OS package manager or [here](https://www.virtualbox.org/wiki/Downloads)).
-2. Download and install the [latest vagrant](https://www.vagrantup.com/downloads.html).
-3. Install vagrant-exec plugin: `vagrant plugin install vagrant-exec`.
-4. Start Vagrant box: `vagrant up`. It will set up and start an OpenSUSE 13.2 VirtualBox VM in the background. VM will have an autosynced folder `/vagrant` with your code, and can always be shut down with `vagrant halt` and removed with `vagrant destroy`.
-5. Remote connection to the Vagrant box is available with `vagrant ssh`, one can run single-shot remote commands like `vagrant exec rake db:migrate` (will be run in the context of `/vagrant` folder; no need to additionaly state `bundle exec`).
-6. Launch the application: `vagrant exec rails s`. It should be accessible at http://localhost:3000, as usual.

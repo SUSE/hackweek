@@ -19,6 +19,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'hirb'
   gem 'quiet_assets'
+  gem 'foreman', require: false
 end
 
 # as databases
