@@ -73,13 +73,9 @@ task :notify_errbit do
   queue "RAILS_ENV=#{rails_env} bundle exec rake hoptoad:deploy TO=#{rails_env} REVISION=#{revision} REPO=#{repository} USER=#{user}"
 end
 
-# TODO replace with appropriate Sphinx manipulations
 desc "Restart Sphinx."
 task :sphinx_restart do
-  queue "cd #{deploy_to!}/#{current_path!} && RAILS_ENV=#{rails_env} bundle exec rake ts:regenerate"
-end
-
-desc "Reindex Sphinx data."
-task :sphinx_reindex do
-  queue "cd #{deploy_to!}/#{current_path!} && RAILS_ENV=#{rails_env} bundle exec rake ts:index"
+  queue "sv down /etc/sv/searchd/"
+  queue "cd #{deploy_to!}/#{current_path!} && RAILS_ENV=#{rails_env} bundle exec rake ts:rebuild ts:stop"
+  queue "sv up /etc/sv/searchd/"
 end
