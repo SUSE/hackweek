@@ -12,28 +12,20 @@ function vecho {
   echo -e "$@..."
 }
 
-vecho "Remove repositories we dont need"
-zypper_with_opts rr systemsmanagement-chef
-zypper_with_opts rr systemsmanagement-puppet
-
 vecho "Add repositories for sphinx search engine"
-zypper_with_opts addrepo -f 'http://download.opensuse.org/repositories/server:/search/openSUSE_Leap_42.1/server:search.repo'
+zypper_with_opts addrepo -f 'http://download.opensuse.org/repositories/server:/search/openSUSE_Leap_42.3/server:search.repo'
 
 vecho "Add repositories for ruby"
-zypper_with_opts addrepo -f 'http://download.opensuse.org/repositories/devel:/languages:/ruby/openSUSE_Leap_42.1/devel:languages:ruby.repo'
+zypper_with_opts addrepo -f 'http://download.opensuse.org/repositories/devel:/languages:/ruby/openSUSE_Leap_42.3/devel:languages:ruby.repo'
 
 vecho "Refresh repositories"
 zypper_with_opts --gpg-auto-import-keys refresh
-
-vecho "Remove unwanted packages"
-zypper_with_opts rm -u ruby2.1-rubygem-chef-config ruby2.1-rubygem-chef-zero ruby2.1-rubygem-puppet ruby2.1-rubygem-rspec-core ruby2.1-rubygem-rspec-support
 
 vecho "Update the system from repositories"
 zypper_with_opts dup
 
 vecho "Install required packages"
-zypper_with_opts install ruby2.2 ruby2.2-devel mariadb sphinx libxml2-devel libxslt-devel sqlite3-devel nodejs gcc-c++ ImageMagick libmysqlclient-devel
-# phantomjs
+zypper_with_opts install ruby2.2 ruby2.2-devel mariadb sphinx libxml2-devel libxslt-devel sqlite3-devel nodejs gcc-c++ ImageMagick libmysqlclient-devel phantomjs
 
 vecho "Disable versioned gem binary names"
 echo 'install: --no-format-executable' >> /etc/gemrc
@@ -61,5 +53,5 @@ vecho "Setting up the Rails environment for 'hackweek'"
 su - vagrant -c 'cd /vagrant && bundle && rake dev:bootstrap'
 
 vecho "Your hackweek development box has been set up."
-vecho "Start the app with\n\t\t vagrant exec rails server -b 0.0.0.0"
+vecho "Start the app with\n\t\t vagrant exec foreman start"
 vecho "Happy Hacking!\n\n"
