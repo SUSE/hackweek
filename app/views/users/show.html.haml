@@ -14,11 +14,11 @@
   .col-sm-8
     %ul.nav.nav-tabs
       // When the user has an active project, show that. If not show opportunities
-      - if !@user.projects.empty?
+      - if !@user.projects.by_episode(@episode).empty?
         %li.active
           %a{:href=>"#projects", "data-toggle"=>"tab"}
             Works on
-            = "(#{@user.projects.length})"
+            = "(#{@user.projects.by_episode(@episode).length})"
       - else
         %li.active
           %a{:href=>"#recommended", "data-toggle"=>"tab"}
@@ -39,7 +39,7 @@
             Opportunities
             = "(#{@user.recommended_projects(@episode).length})" unless @user.recommended_projects(@episode).empty?
     .tab-content{:style=>"padding-top: 10px"}
-      - if !@user.projects.empty?
+      - if !@user.projects.by_episode(@episode).empty?
         .tab-pane.active#projects
           = render :partial => "projects/list", :locals => {:projects => @user.projects.by_episode(@episode) }
       - else
