@@ -41,10 +41,7 @@
     .tab-content{:style=>"padding-top: 10px"}
       - if !@user.projects.empty?
         .tab-pane.active#projects
-          - if @user.projects.empty?
-            %p no projects currently
-          - else
-            = render :partial => "projects/list", :locals => {:projects => @user.projects.by_episode(@episode) }
+          = render :partial => "projects/list", :locals => {:projects => @user.projects.by_episode(@episode) }
       - else
         .tab-pane.active#recommended
           - if @user.recommended_projects.empty?
