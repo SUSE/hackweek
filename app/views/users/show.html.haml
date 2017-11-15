@@ -18,7 +18,7 @@
         %li.active
           %a{:href=>"#projects", "data-toggle"=>"tab"}
             Works on
-            = "(#{@user.projects.length})" unless @user.projects.empty?
+            = "(#{@user.projects.length})"
       - else
         %li.active
           %a{:href=>"#recommended", "data-toggle"=>"tab"}
