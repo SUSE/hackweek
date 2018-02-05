@@ -1,0 +1,28 @@
+body {
+ background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNjY2MiPjwvcmVjdD4KPC9zdmc+");
+ color: #666;
+ text-align: center;
+ font-family: 'Roboto Mono', monospace;
+ padding: 4em auto 0 auto;
+}
+.dialog{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+.dialog a{
+  color:black;
+  font-weight: bold;
+}
+.dialog .err-code{
+  font-size: 7rem;
+}
+.err-code span{
+  position: relative;
+  right: 4.25rem;
+}
+h1 {
+ font-size: 100%;
+ line-height: 1.5em;
+}
