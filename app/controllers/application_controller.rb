@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
     session[:return_to] || root_path
   end
 
-  # after sign in redirect to projects
+  # after sign out redirect to projects
   def after_sign_out_path_for(_resource)
     projects_path
   end
