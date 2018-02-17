@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_filter :find_project_by_id
   before_filter :redirect_to_slug, only: [:show]
   load_and_authorize_resource find_by: :url
-  skip_before_filter :authenticate_user!, only: [ :index, :show, :archived, :finished, :newest, :popular, :biggest, :random ]
+  skip_before_filter :authenticate_user!, only: [ :index, :show, :archived, :finished, :newest, :popular, :biggest, :random, :member_location_change ]
   skip_before_filter :store_location, only: [:join, :leave, :like, :dislike, :add_keyword, :delete_keyword ]
   skip_before_action :verify_authenticity_token, only: [:add_keyword, :delete_keyword ]
   skip_load_and_authorize_resource only: :old_archived
@@ -45,11 +45,25 @@ class ProjectsController < ApplicationController
     render 'index'
   end
 
+  def member_location_change
+      @membership = Membership.find(params["membership_id"])
+      @membership.update_location(params["membership"]["location"])
+      @project = Project.find_by(url: params[:id])
+      redirect_to :back
+  end
+
   # GET /projects/1
   def show
     @previous_project = @project.previous(@episode)
     @next_project = @project.next(@episode)
     @new_comment = Comment.new
+    if current_user
+      @membership = Membership.find_by(user_id: current_user.id, project_id: @project.id)
+    end
+    respond_to do |format|
+      format.html { render }
+      format.js { render 'projects/show'}
+    end
   end
 
   # GET /archive/projects/:id

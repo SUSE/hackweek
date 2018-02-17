@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter :load_news
   before_filter :set_episode
 
+
   before_filter do
     resource = controller_name.singularize.to_sym
     method = "#{resource}_params"
@@ -33,7 +34,7 @@ class ApplicationController < ActionController::Base
     session[:return_to] || root_path
   end
 
-  # after sign in redirect to projects
+  # after sign out redirect to projects
   def after_sign_out_path_for(_resource)
     projects_path
   end

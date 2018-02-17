@@ -12,6 +12,9 @@
       = render :partial => "projects/like_button", :locals => {:project => project }
 :markdown
   #{truncate(project.description, length: 140)}
+-if @user
+  Location : #{Membership.find_by(user_id: @user.id, project_id: project.id).location}
+  %br
 - unless project.users.empty?
   .well.well-sm
     - project.users.each do |user|
