@@ -3,7 +3,7 @@
 
 .row
   .col-sm-12
-    - if @episodes.length > 0
+    - if @episodes.any?
       .row
         .col-sm-12
           %table.table#episodes_table
@@ -23,6 +23,8 @@
                   = "#{episode.start_date} - #{episode.end_date}"
                 %td
                   = render :partial => "episodes/file_buttons", :locals => {:episode => episode }
+    - else
+      No hackweeks yet.
     %p
       - if can? :write, Episode
         = link_to "New Hackweek", new_episode_path, :class => "btn btn-success pull-right"
