@@ -26,7 +26,7 @@ class EpisodesController < ApplicationController
     @episode = Episode.new(episode_params)
 
     if @episode.save
-      redirect_to episode_path(@episode), notice: 'Episode was successfully created.'
+      redirect_to episodes_path, notice: 'Episode was successfully created.'
     else
       render action: 'new'
     end
@@ -35,7 +35,7 @@ class EpisodesController < ApplicationController
   # PATCH/PUT /episodes/1
   def update
     if @episode.update(episode_params)
-      redirect_to episode_path(@episode), notice: 'Episode was successfully updated.'
+      redirect_to episodes_path, notice: 'Episode was successfully updated.'
     else
       render action: 'edit'
     end

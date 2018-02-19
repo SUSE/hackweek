@@ -50,9 +50,9 @@ describe EpisodesController do
         expect(assigns(:episode)).to be_persisted
       end
 
-      it 'redirects to the created episode' do
+      it 'redirects to the episodes list' do
         post :create, episode: attributes_for(:episode)
-        expect(response).to redirect_to(Episode.last)
+        expect(response).to redirect_to(episodes_url)
       end
     end
 
@@ -86,10 +86,10 @@ describe EpisodesController do
         expect(assigns(:episode)).to eq(episode)
       end
 
-      it 'redirects to the episode' do
+      it 'redirects to the episodes list' do
         episode = create(:episode)
         put :update, id: episode.to_param, episode: attributes_for(:episode)
-        expect(response).to redirect_to(episode)
+        expect(response).to redirect_to(episodes_url)
       end
     end
 
