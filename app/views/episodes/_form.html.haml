@@ -10,11 +10,14 @@
   .form-group
     = f.label :name
     = f.text_field :name, :placeholder => "Name", :required => "required", :class => "form-control input-lg"
-  .form-group
-    = f.label :start_date
-    = f.date_field :start_date, :placeholder => "yyyy-mm-dd", :required => "required", :class => "form-control input-lg", type: "date"
-  .form-group
-    = f.label :end_date
-    = f.date_field :end_date, :placeholder => "yyyy-mm-dd", :required => "required", :class => "form-control input-lg", type: "date"
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :start_date
+        = f.date_field :start_date, :placeholder => "yyyy-mm-dd", :required => "required", :class => "form-control input-lg", type: "date"
+    .col-sm-6
+      .form-group
+        = f.label :end_date
+        = f.date_field :end_date, :placeholder => "yyyy-mm-dd", :required => "required", :class => "form-control input-lg", type: "date"
   .actions
     = f.submit :class => "btn btn-success pull-right"
