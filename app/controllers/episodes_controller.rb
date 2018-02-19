@@ -50,7 +50,7 @@ class EpisodesController < ApplicationController
   # PUT /episodes/1/activate
   def activate
     @episode.active=true
-    redirect_to episodes_path, notice: "#{@episode.name} is now active"
+    redirect_to episodes_path, notice: "#{@episode.name} is now active."
   end
 
   private
