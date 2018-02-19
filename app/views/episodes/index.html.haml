@@ -15,7 +15,7 @@
               %tr{class: "#{episode.active}"}
                 %td
                   = link_to episode_path(episode) do
-                    = episode.name.titleize
+                    = episode.name
                   - if episode.active
                     %span.label.label-success
                       Active
