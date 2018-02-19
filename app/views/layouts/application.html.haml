@@ -27,7 +27,7 @@
         = yield
     = render :partial => "layouts/footer"
 
-    = render :partial => "layouts/scripts"
+    = render :partial => "layouts/scripts" if Rails.env.production?
     = yield :script
 
   .modal.fade#modal{ role: :dialog, aria_hidden: true }
