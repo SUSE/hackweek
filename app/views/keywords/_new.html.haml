@@ -6,44 +6,45 @@
         Save
   %span.help-block
     Separate keywords by comma.
+
 :javascript
-$(document).ready(function() {
-  $('#tokens').selectize({
-      delimiter: ',',
-      persist: false,
-      valueField: 'name',
-      labelField: 'name',
-      searchField: 'name',
-      options: [],
-      create: true,
-      render: {
-        option: function(item, escape) {
-          return '<p>' +
-          escape(item.name) + 
-          '</p>';
-          }
-        },
-      load: function(query, callback) {
-        console.log("load function");
-          if (!query.length) return callback();
-          $.ajax({
-              url: "#{keyword_tokens_path}.json",
-              type: 'GET',
-              dataType: 'json',
-              data: {
-                  q: query,
-              },
-              error: function(res) {
-                  console.log("error");
-                  console.log(res);
-                  callback();
-              },
-              success: function(res) {
-                  console.log("success");
-                  console.log(res);
-                  callback(res.keywords);
-              }
-          });
-      }
+  $(document).ready(function() {
+    $('#tokens').selectize({
+        delimiter: ',',
+        persist: false,
+        valueField: 'name',
+        labelField: 'name',
+        searchField: 'name',
+        options: [],
+        create: true,
+        render: {
+          option: function(item, escape) {
+            return '<p>' +
+            escape(item.name) +
+            '</p>';
+            }
+          },
+        load: function(query, callback) {
+          console.log("load function");
+            if (!query.length) return callback();
+            $.ajax({
+                url: "#{keyword_tokens_path}.json",
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    q: query,
+                },
+                error: function(res) {
+                    console.log("error");
+                    console.log(res);
+                    callback();
+                },
+                success: function(res) {
+                    console.log("success");
+                    console.log(res);
+                    callback(res.keywords);
+                }
+            });
+        }
+    });
   });
-});
