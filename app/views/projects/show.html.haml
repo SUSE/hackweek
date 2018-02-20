@@ -57,7 +57,7 @@
           .clearfix
     .row
       .col-sm-12
-        %h4.divider
+        %h4
           Looking for mad skills in:
         %p
           - if @project.keywords.empty?
@@ -68,7 +68,7 @@
             = render :partial => "keywords/new", :locals => {:what => @project }
     .row
       .col-sm-12
-        %h4.divider
+        %h4
           This project is part of:
         %p
           - unless @project.episodes.any?
@@ -90,7 +90,7 @@
         .clearfix
     .row
       .col-sm-12
-        %h4.divider
+        %h4
           Activity
           %span.pull-right
             = render :partial => "updates/show_all_modal", :locals => { :updates => @project.updates }

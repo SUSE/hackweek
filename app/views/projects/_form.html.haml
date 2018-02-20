@@ -1,8 +1,8 @@
 = render partial: 'comments/help'
 = form_for @project, url: (@project.new_record? ? projects_path : project_path(@episode, @project)), html: { role: :form } do |f|
   - if @project.errors.any?
-    #error_explanation
-      %h2
+    .alert.alert-warning
+      %strong
         = pluralize(@project.errors.count, 'error')
         prohibited this project from being saved:
       %ul
@@ -12,7 +12,7 @@
 
   .form-group
     = f.text_field :title, placeholder: 'Project title', class: 'form-control input-lg', required: 'required'
-  
+
   .panel.panel-default
     .panel-heading
       %ul.nav.nav-pills
@@ -34,5 +34,3 @@
     = f.label(:avatar)
     = f.file_field :avatar
   = f.submit class: 'btn btn-success pull-right'
-
-

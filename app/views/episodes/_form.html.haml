@@ -1,16 +1,23 @@
 = form_for @episode do |f|
   - if @episode.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@episode.errors.count, "error")} prohibited this episode from being saved:"
+    .alert.alert-warning
+      %strong
+        = pluralize(@episode.errors.count, "error")
+        prohibited this episode from being saved:
       %ul
         - @episode.errors.full_messages.each do |msg|
           %li= msg
-  .field
-    = f.text_field :name, :placeholder => "Name", :class => 'form-control input-lg'
-  .field
-    = f.date_field :start_date, :placeholder => "Start Date (YYYY-MM-DD)", :required => "required", :class => 'form-control input-lg'
-  .field
-    = f.date_field :end_date, :placeholder => "End Date (YYYY-MM-DD)", :required => "required", :class => 'form-control input-lg'
+  .form-group
+    = f.label :name
+    = f.text_field :name, :placeholder => "Name", :required => "required", :class => "form-control input-lg"
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :start_date
+        = f.date_field :start_date, :placeholder => "yyyy-mm-dd", :required => "required", :class => "form-control input-lg", type: "date"
+    .col-sm-6
+      .form-group
+        = f.label :end_date
+        = f.date_field :end_date, :placeholder => "yyyy-mm-dd", :required => "required", :class => "form-control input-lg", type: "date"
   .actions
-    %p
-      = f.submit :class => "btn btn-success pull-right"
+    = f.submit :class => "btn btn-success pull-right"

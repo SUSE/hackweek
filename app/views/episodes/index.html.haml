@@ -3,19 +3,19 @@
 
 .row
   .col-sm-12
-    - if @episodes.length > 0
+    - if @episodes.any?
       .row
         .col-sm-12
           %table.table#episodes_table
             %thead
               %th Name
               %th Date
-              %th Actions
+              %th
             - @episodes.each do |episode|
               %tr{class: "#{episode.active}"}
                 %td
                   = link_to episode_path(episode) do
-                    = episode.name.titleize
+                    = episode.name
                   - if episode.active
                     %span.label.label-success
                       Active
@@ -23,6 +23,8 @@
                   = "#{episode.start_date} - #{episode.end_date}"
                 %td
                   = render :partial => "episodes/file_buttons", :locals => {:episode => episode }
+    - else
+      No hackweeks yet.
     %p
       - if can? :write, Episode
         = link_to "New Hackweek", new_episode_path, :class => "btn btn-success pull-right"
