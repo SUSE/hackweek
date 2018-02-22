@@ -6,9 +6,10 @@
         Save
   %span.help-block
     Separate keywords by comma.
+
 :javascript
-$(document).ready(function() {
-  $('#tokens').selectize({
+  $(document).ready(function() {
+    $('#tokens').selectize({
       delimiter: ',',
       persist: false,
       valueField: 'name',
@@ -19,31 +20,31 @@ $(document).ready(function() {
       render: {
         option: function(item, escape) {
           return '<p>' +
-          escape(item.name) + 
+          escape(item.name) +
           '</p>';
-          }
-        },
+        }
+      },
       load: function(query, callback) {
         console.log("load function");
-          if (!query.length) return callback();
-          $.ajax({
-              url: "#{keyword_tokens_path}.json",
-              type: 'GET',
-              dataType: 'json',
-              data: {
-                  q: query,
-              },
-              error: function(res) {
-                  console.log("error");
-                  console.log(res);
-                  callback();
-              },
-              success: function(res) {
-                  console.log("success");
-                  console.log(res);
-                  callback(res.keywords);
-              }
-          });
+        if (!query.length) return callback();
+        $.ajax({
+          url: "#{keyword_tokens_path}.json",
+          type: 'GET',
+          dataType: 'json',
+          data: {
+            q: query,
+          },
+          error: function(res) {
+            console.log("error");
+            console.log(res);
+            callback();
+          },
+          success: function(res) {
+            console.log("success");
+            console.log(res);
+            callback(res.keywords);
+          }
+        });
       }
+    });
   });
-});
