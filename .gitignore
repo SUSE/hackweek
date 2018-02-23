@@ -57,4 +57,3 @@ nbproject
 *.iws
 .idea/
 .vagrant/
-db/schema.rb

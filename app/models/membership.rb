@@ -3,11 +3,8 @@ class Membership < ActiveRecord::Base
   belongs_to :user
 
   def update_location(location)
-    if location == "None"
-      self.location = ""
-    else
-      self.location = location
-    end  
+
+    self.location = location == "None" ? ' ' : location
     self.save
   end
 end

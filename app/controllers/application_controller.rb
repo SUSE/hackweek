@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   before_filter :load_news
   before_filter :set_episode
 
-
   before_filter do
     resource = controller_name.singularize.to_sym
     method = "#{resource}_params"

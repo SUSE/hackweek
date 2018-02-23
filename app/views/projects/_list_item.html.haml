@@ -14,7 +14,7 @@
   #{truncate(project.description, length: 140)}
 
 %p
-  -if @user and membership
+  -if @user && membership
     Location : #{membership.location}
 
 - unless project.users.empty?
