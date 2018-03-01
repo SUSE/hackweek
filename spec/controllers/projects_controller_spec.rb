@@ -389,5 +389,4 @@ describe ProjectsController do
       expect(assigns(:project)).to eq project
     end
   end
-
 end

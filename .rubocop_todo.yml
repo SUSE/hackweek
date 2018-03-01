@@ -57,18 +57,6 @@ Layout/EmptyLinesAroundAccessModifier:
     - 'app/controllers/users_controller.rb'
     - 'app/models/project.rb'
 
-# Offense count: 6
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-# SupportedStyles: empty_lines, no_empty_lines
-Layout/EmptyLinesAroundBlockBody:
-  Exclude:
-    - 'spec/controllers/markdown_controller_spec.rb'
-    - 'spec/controllers/projects_controller_spec.rb'
-    - 'spec/factories/comments.rb'
-    - 'spec/factories/episode_project_associations.rb'
-    - 'spec/features/project_management_spec.rb'
-
 # Offense count: 7
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
