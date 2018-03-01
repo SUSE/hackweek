@@ -10,6 +10,5 @@ FactoryGirl.define do
         3.times { comment.comments << create(:comment, commentable: comment) }
       end
     end
-
   end
 end

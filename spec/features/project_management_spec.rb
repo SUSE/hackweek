@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature 'Project management' do
-
   let(:user) {create :user}
 
   before :each do
