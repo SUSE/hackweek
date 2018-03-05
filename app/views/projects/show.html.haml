@@ -57,17 +57,6 @@
           .clearfix
     .row
       .col-sm-12
-        - if @project.users.include? current_user
-          %h4
-            Want to share your Location during Hackweek?
-          %p
-            = form_for @membership, url: location_change_project_path(@membership,@project,@episode), :html=>{:id=>"location_form"}  do |f|
-              %p
-                = f.select :location, [["Beijing", "Beijing"], ["Delhi", "Delhi"], ["None", "None"]]
-                &nbsp; &nbsp;
-                = f.submit "Update"
-    .row
-      .col-sm-12
         %h4
           Looking for mad skills in:
         %p

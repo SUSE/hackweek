@@ -4,4 +4,4 @@
     - projects.each_with_index do |project, index|
       %tr
         %td{:class => "#{project.aasm_state}"}
-          = render :partial => "projects/list_item", :locals => {:project => project, :index => index, :membership => Membership.find_by(user_id: @user.id, project_id: project.id) }
+          = render partial: "projects/list_item", locals: {project: project, index: index }

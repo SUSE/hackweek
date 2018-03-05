@@ -45,13 +45,6 @@ class ProjectsController < ApplicationController
     render 'index'
   end
 
-  def member_location_change
-    @membership = Membership.find(params["membership_id"])
-    @membership.update_location(params["membership"]["location"])
-    @project = Project.find_by(url: params[:id])
-    redirect_to :back
-  end
-
   # GET /projects/1
   def show
     @previous_project = @project.previous(@episode)

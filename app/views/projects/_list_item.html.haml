@@ -13,10 +13,6 @@
 :markdown
   #{truncate(project.description, length: 140)}
 
-%p
-  -if @user && membership
-    Location : #{membership.location}
-
 - unless project.users.empty?
   .well.well-sm
     - project.users.each do |user|

@@ -16,7 +16,6 @@ Hackweek::Application.routes.draw do
 
   # compat routes
   get 'archive/projects/:id', to: "projects#old_archived"
-  patch 'projects/:membership_id/:id', to: "projects#member_location_change", as: "location_change_project"
 
   scope '(:episode)' do
     resources :projects do
@@ -69,7 +68,8 @@ Hackweek::Application.routes.draw do
   get "howto", to: "about#show"
 
   get "news", to: "announcements#index"
-
+  get "users/:id/edit", to: "users#edit"
+  patch 'users/:id', to: 'users#update'
   root 'about#index'
 
 end
