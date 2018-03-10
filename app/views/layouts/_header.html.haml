@@ -83,9 +83,9 @@
       %form{:role=>"search", :method=>"get", :class=>"navbar-form navbar-right", :action=>"#{search_path}", "accept-charset"=>"UTF-8"}
         .form-group
         = search_field_tag(:q, nil, {:class => "form-control", :placeholder => "Search", :type => "search", :name => "q"})
-        - if @episode != :all && @episode 
-          = hidden_field_tag :episode, @episode.name
-        -else
+        - if @episode == :all 
           = hidden_field_tag :episode, @episode
+        -else
+          = hidden_field_tag :episode, @episode.id
         
 
