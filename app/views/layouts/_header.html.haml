@@ -85,7 +85,7 @@
         = search_field_tag(:q, nil, {:class => "form-control", :placeholder => "Search", :type => "search", :name => "q"})
         - if @episode == :all 
           = hidden_field_tag :episode, @episode
-        -else
+        -elsif @episode
           = hidden_field_tag :episode, @episode.id
         
 
