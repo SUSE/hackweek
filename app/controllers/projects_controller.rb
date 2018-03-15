@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:add_keyword, :delete_keyword ]
   skip_load_and_authorize_resource only: :old_archived
   before_action :load_episode
+  autocomplete :project, :title
 
   # GET /projects
   # GET /projects.rss
