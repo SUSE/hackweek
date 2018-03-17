@@ -1,30 +1,30 @@
 %ul.nav.nav-tabs
   - all_state = "active" if action_name == "index"
   %li{:class => all_state}
-    =link_to projects_path(@episode), :title => "All projects" do
+    =link_to projects_path(@episode), :title => "All projects", :remote => true do
       %span
         All
   - popular_state = "active" if action_name == "popular"
   %li{:class => popular_state}
-    =link_to popular_projects_path(@episode), :title => "Projects with many likes" do
+    =link_to popular_projects_path(@episode), :title => "Projects with many likes", :remote => true do
       %span.hidden-xs
         Popular
       %i.fa.fa-star.visible-xs
   - biggest_state = "active" if action_name == "biggest"
   %li{:class => biggest_state}
-    =link_to biggest_projects_path(@episode), :title => "Projects with many users" do
+    =link_to biggest_projects_path(@episode), :title => "Projects with many users", :remote => true do
       %span.hidden-xs
         Populous
       %i.fa.fa-user.visible-xs
   - finished_state = "active" if action_name == "finished"
   %li{:class => finished_state}
-    =link_to finished_projects_path(@episode), :title => "Projects that are done" do
+    =link_to finished_projects_path(@episode), :title => "Projects that are done", :remote => true do
       %span.hidden-xs
         Finished
       %i.fa.fa-check.visible-xs
   - archived_state = "active" if action_name == "archived"
   %li{:class => archived_state}
-    =link_to archived_projects_path(@episode), :title => "Projects that are dismissed" do
+    =link_to archived_projects_path(@episode), :title => "Projects that are dismissed", :remote => true do
       %span.hidden-xs
         Archived
       %i.fa.fa-archive.visible-xs

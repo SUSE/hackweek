@@ -1,97 +1,56 @@
-- content_for :title do
-  = action_name.humanize unless action_name === "index"
-  Projects
-  = "(#{@projects.length})"
-
-.row
-  .col-sm-12
-    = render :partial => "projects/tabs"
-    .tab-content{style: 'padding-top: 10px;'}
-      - if @projects.length > 0
-        .tab-pane.active
-          .row.project-list-pills{style: 'padding-bottom: 10px;'}
-            .col-sm-6
-              %ul.nav.nav-pills
-                %li{role: 'presentation'}
-                  = link_to 'Per Page:', '#', style: 'pointer-events: none; cursor: default;', class: 'text-muted'
-                %li{role: 'presentation', class: active_page_size(10, params[:page_size])}
-                  = link_to '10', :page_size => '10', :episode => params[:episode]
-                %li{role: 'presentation', class: active_page_size(50, params[:page_size])}
-                  = link_to '50', :page_size => '50', :episode => params[:episode]
-                %li{role: 'presentation', class: active_page_size(100, params[:page_size])}
-                  = link_to '100', :page_size => '100', :episode => params[:episode]
-                %li{role: 'presentation', class: active_page_size(@projects.total_count, params[:page_size])}
-                  = link_to 'All', :page_size => @projects.total_count, :episode => params[:episode]
-            .col-sm-6
-              %ul.nav.nav-pills.pull-right
-                %li{role: "presentation"}
-                  = link_to 'Type:', '#', style: 'pointer-events: none; cursor: default;', class: 'text-muted'
-                %li.active#all-pill
-                  %a{:href =>'#', :id=>'all', :title=> 'Show everything'}
-                    All
-                %li#ideas-pill
-                  %a{:href =>'#', :id=>'ideas', :title => 'Show only ideas nobody is working on'}
-                    %i.fa.fa-lightbulb-o
-                    Ideas
-                %li#projects-pill
-                  %a{:href =>'#', :id=>'projects', :title => 'Show only projects people are working on'}
-                    %i.fa.fa-puzzle-piece
-                    Projects
-          .row
-            .col-sm-12
-              %table.table.project-style#project_table
-                %thead
-                - @projects.each_with_index do |project, index|
-                  %tr
-                    %td{:class => "#{project.aasm_state}"}
-                      = render :partial => "projects/list_item", :locals => {:project => project, :index => index }
-          .row
-            .col-md-12
-              .text-center
-                = paginate @projects
-      - else
-        %h3
-          No projects.
-          - unless action_name == :finished or :archived
-            How about you
-            = link_to "add one!", new_project_path
-
+= render :partial => "projects/index"
 - content_for :script do
   :javascript
-    $( "#ideas" ).click(function() {
-      console.log ("show only ideas");
-      $( ".invention" ).hide();
-      $( ".record" ).hide();
-      $( ".project" ).hide();
-      $( ".idea" ).show();
-      $( "#ideas-pill").addClass( "active" );
-      $( "#all-pill, #projects-pill").removeClass( "active" );
-    });
-    $( "#projects" ).click(function() {
-      console.log ("show only projects");
-      $( ".invention" ).hide();
-      $( ".record" ).hide();
-      $( ".idea" ).hide();
-      $( ".project" ).show();
-      $( "#projects-pill").addClass( "active" );
-      $( "#all-pill, #ideas-pill").removeClass( "active" );
-    });
-    $( "#all" ).click(function() {
-      console.log ("show everything");
-      $( ".invention" ).show();
-      $( ".record" ).show();
-      $( ".idea" ).show();
-      $( ".project" ).show();
-      $( "#all-pill").addClass( "active" );
-      $( "#projects-pill, #ideas-pill").removeClass( "active" );
-    });
-    $("table").addTableFilter({
-    });
+    function projectPageCall(){
+      $( "#ideas" ).click(function() {
+        console.log ("show only ideas");
+        $( ".invention" ).hide();
+        $( ".record" ).hide();
+        $( ".project" ).hide();
+        $( ".idea" ).show();
+        $( "#ideas-pill").addClass( "active" );
+        $( "#all-pill, #projects-pill").removeClass( "active" );
+      });
+      $( "#projects" ).click(function() {
+        console.log ("show only projects");
+        $( ".invention" ).hide();
+        $( ".record" ).hide();
+        $( ".idea" ).hide();
+        $( ".project" ).show();
+        $( "#projects-pill").addClass( "active" );
+        $( "#all-pill, #ideas-pill").removeClass( "active" );
+      });
+      $( "#all" ).click(function() {
+        console.log ("show everything");
+        $( ".invention" ).show();
+        $( ".record" ).show();
+        $( ".idea" ).show();
+        $( ".project" ).show();
+        $( "#all-pill").addClass( "active" );
+        $( "#projects-pill, #ideas-pill").removeClass( "active" );
+      });
+      $("table").addTableFilter({
+      });
 
-    Mousetrap.bind('j', function() { ProjectNext(); });
-    Mousetrap.bind('k', function() { ProjectPrevious(); });
+      Mousetrap.bind('j', function() { ProjectNext(); });
+      Mousetrap.bind('k', function() { ProjectPrevious(); });
 
-    function ProjectPrevious() {  
+      function ProjectPrevious() {  
+          hash = window.location.hash
+          all = $("h4[id^='project-']").length
+          if (hash == "")
+            window.location.hash = "#project-0";
+          else
+            var blah = hash.split('-')
+          next = parseInt(blah[1])
+          if(next > 0)
+            next--
+          else
+            next = all - 1
+          window.location.hash = "#project-" + next;
+        }
+
+      function ProjectNext() {  
         hash = window.location.hash
         all = $("h4[id^='project-']").length
         if (hash == "")
@@ -99,24 +58,11 @@
         else
           var blah = hash.split('-')
         next = parseInt(blah[1])
-        if(next > 0)
-          next--
+        if(next == (all - 1))
+          next = 0
         else
-          next = all - 1
+          next++
         window.location.hash = "#project-" + next;
       }
-
-    function ProjectNext() {  
-      hash = window.location.hash
-      all = $("h4[id^='project-']").length
-      if (hash == "")
-        window.location.hash = "#project-0";
-      else
-        var blah = hash.split('-')
-      next = parseInt(blah[1])
-      if(next == (all - 1))
-        next = 0
-      else
-        next++
-      window.location.hash = "#project-" + next;
     }
+    projectPageCall();

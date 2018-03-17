@@ -18,6 +18,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html { render }
       format.rss { render :layout => false }
+      format.js
     end
   end
 
