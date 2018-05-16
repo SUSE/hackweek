@@ -30,10 +30,10 @@
     = render :partial => "layouts/scripts" if Rails.env.production?
     = yield :script
 
-  .modal.fade#modal{ role: :dialog, aria_hidden: true }
-    .modal-dialog
-      .modal-content
-        .modal-header#modal-header
-        .modal-body#modal-body
-        .modal-footer
-          %button.btn.btn-default{ type: :button, data:{ dismiss: :modal }} Close
+    .modal.fade#modal{ role: :dialog, aria_hidden: true }
+      .modal-dialog
+        .modal-content
+          .modal-header#modal-header
+          .modal-body#modal-body
+          .modal-footer
+            %button.btn.btn-default{ type: :button, data:{ dismiss: :modal }} Close
