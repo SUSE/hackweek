@@ -20,6 +20,8 @@
           %a{ href: '#markdown-source', role: :tab, data: { toggle: :tab } } Edit
         %li#show-preview{ role: :presentation }
           %a{ href: '#markdown-preview', role: :tab, data: { toggle: :tab } } Preview
+      .btnbar
+        = render 'shared/editor_buttons'
     .panel-body
       .tab-content
         #markdown-source.tab-pane.active.fade.in{ role: 'tab-pane' }
@@ -34,3 +36,6 @@
     = f.label(:avatar)
     = f.file_field :avatar
   = f.submit class: 'btn btn-success pull-right'
+
+  :javascript
+    $('textarea').atwho({at:"@", 'data':#{raw @username_array}});

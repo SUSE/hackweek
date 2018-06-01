@@ -92,3 +92,13 @@ $(function(){
   }
   $('textarea').atwho(emoji_config);
 });
+
+function textcover(txtarea, newtxt) {
+  $(txtarea).val(
+        $(txtarea).val().substring(0, txtarea.selectionStart)+
+        newtxt +
+        $(txtarea).val().substring(txtarea.selectionStart,txtarea.selectionEnd)+
+        newtxt +
+        $(txtarea).val().substring(txtarea.selectionEnd)
+   );  
+}
