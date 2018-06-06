@@ -44,6 +44,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'jquery-hotkeys-rails'
 gem 'jquery-cookie-rails'
+gem 'jquery-atwho-rails'
 # as templating language
 gem 'haml-rails'
 # as authentification framework

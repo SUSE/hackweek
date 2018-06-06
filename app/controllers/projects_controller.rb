@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:add_keyword, :delete_keyword ]
   skip_load_and_authorize_resource only: :old_archived
   before_action :load_episode
+  before_action :username_array, only: [:new, :edit, :show]
   autocomplete :project, :title
 
   # GET /projects
@@ -217,5 +218,9 @@ class ProjectsController < ApplicationController
 
     def redirect_to_slug
       redirect_to @project if @project
+    end
+
+    def username_array
+      @username_array = User.pluck(:name).compact.to_json
     end
 end

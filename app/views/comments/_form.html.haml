@@ -2,18 +2,22 @@
 
 = form_for [ parent, comment ], html: {role: "form"} do |f|
   %p
-    %ul.nav.nav-tabs
-      %li.active#show-source{ role: :presentation }
-        %a{ href: '#markdown-source', role: :tab, data: { toggle: :tab } } Edit
-      %li#show-preview{ role: :presentation }
-        %a{ href: '#markdown-preview', role: :tab, data: { toggle: :tab } } Preview
-    .tab-content
-      #markdown-source.tab-pane.active.fade.in{ role: 'tab-pane' }
-        = f.text_area :text, :placeholder => "Your comment. You can use markdown.", :class => 'form-control input-lg markdown-source-text', :required => "required"
-      #markdown-preview.tab-pane.fade{ role: 'tab-pane' }
-        #loading-spinner
-          = fa_icon 'spinner pulse 3x'
-        #preview-contents.hidden
+    .comment-form-heading
+      %ul.nav.nav-tabs
+        %li.active#show-source{ role: :presentation }
+          %a{ href: '#markdown-source', role: :tab, data: { toggle: :tab } } Edit
+        %li#show-preview{ role: :presentation }
+          %a{ href: '#markdown-preview', role: :tab, data: { toggle: :tab } } Preview
+      .btnbar
+        = render 'shared/editor_buttons'
+    .comment-form-body
+      .tab-content
+        #markdown-source.tab-pane.active.fade.in{ role: 'tab-pane' }
+          = f.text_area :text, :placeholder => "Your comment. You can use markdown.", :class => 'form-control input-lg markdown-source-text', :required => "required"
+        #markdown-preview.tab-pane.fade{ role: 'tab-pane' }
+          #loading-spinner
+            = fa_icon 'spinner pulse 3x'
+          #preview-contents.hidden
 
   %p
     = button_tag(type: 'submit', class: "btn btn-success pull-right") do

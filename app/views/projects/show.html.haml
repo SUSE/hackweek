@@ -28,7 +28,7 @@
 .row
   .col-sm-8.project-style
     :markdown
-      #{@project.description}
+      #{ emojify @project.description }
   .col-sm-4
     .row
       .col-sm-12
@@ -112,3 +112,4 @@
   :javascript
     Mousetrap.bind('j', function() { $('#previous_link').click(); });
     Mousetrap.bind('k', function() { $('#next_link').click(); })
+    $('textarea').atwho({at:"@", 'data':#{raw @username_array}});
