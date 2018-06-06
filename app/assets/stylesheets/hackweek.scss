@@ -173,3 +173,37 @@ textarea.form-control {
     display: block;
   }
 }
+
+#search-suggestion-container {
+    display: block;
+} 
+
+.ui-autocomplete {
+    position: absolute;
+    list-style-type: none;
+    max-height: 400px;
+    width: 220px;
+    background-color: white;
+    cursor: pointer;
+    padding: 0px;
+}
+
+.ui-autocomplete li {
+  font-size: 16px;
+}
+
+.ui-autocomplete li div{
+  margin: 0px;
+  padding: 10px 0px 10px 5px;
+}
+
+.ui-state-active{
+  background: #eff1f4;
+}
+
+.ui-helper-hidden-accessible{
+  position:fixed;
+  right: 5px;
+  bottom: 5px;
+  z-index: 1000;
+}

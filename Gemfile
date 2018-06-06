@@ -10,6 +10,12 @@ gem 'rails', '~> 4.2'
 gem 'spring', group: [:development, :test]
 gem 'spring-commands-rspec', group: [:development, :test]
 
+# gem package to include jQuery UI assets for the Rails asset pipeline
+gem 'jquery-ui-rails'
+
+# To use jQuery's autocomplete with Rails
+gem 'rails-jquery-autocomplete'
+
 # Misc tools for fancy development
 group :development, :test do
   gem 'better_errors'

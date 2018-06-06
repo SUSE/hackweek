@@ -20,6 +20,7 @@ Hackweek::Application.routes.draw do
   scope '(:episode)' do
     resources :projects do
       collection do
+        get 'autocomplete_project_title'
         get 'archived'
         get 'finished'
         get 'newest', to: 'projects#index'

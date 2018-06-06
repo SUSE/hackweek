@@ -9,6 +9,7 @@ class ProjectsController < ApplicationController
   skip_load_and_authorize_resource only: :old_archived
   before_action :load_episode
   before_action :username_array, only: [:new, :edit, :show]
+  autocomplete :project, :title
 
   # GET /projects
   # GET /projects.rss
