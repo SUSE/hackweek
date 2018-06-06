@@ -12,6 +12,7 @@
       = render :partial => "projects/like_button", :locals => {:project => project }
 :markdown
   #{truncate(project.description, length: 140)}
+
 - unless project.users.empty?
   .well.well-sm
     - project.users.each do |user|

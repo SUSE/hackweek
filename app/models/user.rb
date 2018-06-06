@@ -83,9 +83,7 @@ class User < ActiveRecord::Base
 
   def self.for_ichain_username(username, attributes)
     user = find_by(name: username)
-    if user
-      user.update_attributes(email: attributes[:email]) if user.email != attributes[:email]
-    else
+    if !user
       user = create(name: username, email: attributes[:email])
     end
     user

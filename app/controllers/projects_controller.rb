@@ -51,6 +51,13 @@ class ProjectsController < ApplicationController
     @previous_project = @project.previous(@episode)
     @next_project = @project.next(@episode)
     @new_comment = Comment.new
+    if current_user
+      @membership = Membership.find_by(user_id: current_user.id, project_id: @project.id)
+    end
+    respond_to do |format|
+      format.html { render }
+      format.js { render 'projects/show'}
+    end
   end
 
   # GET /archive/projects/:id
