@@ -41,7 +41,7 @@ GEM
     autoprefixer-rails (5.1.7.1)
       execjs
       json
-    bcrypt (3.1.11)
+    bcrypt (3.1.12)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -82,10 +82,10 @@ GEM
     crass (1.0.4)
     database_cleaner (1.4.1)
     debug_inspector (0.0.2)
-    devise (4.1.1)
+    devise (4.4.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
-      railties (>= 4.1.0, < 5.1)
+      railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
     devise_ichain_authenticatable (0.3.1)
@@ -240,8 +240,9 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     redcarpet (3.4.0)
-    responders (2.2.0)
-      railties (>= 4.2.0, < 5.1)
+    responders (2.4.0)
+      actionpack (>= 4.2.0, < 5.3)
+      railties (>= 4.2.0, < 5.3)
     rest-client (1.8.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
@@ -328,7 +329,7 @@ GEM
       unf_ext
     unf_ext (0.0.7.2)
     unicode-display_width (1.4.0)
-    warden (1.2.6)
+    warden (1.2.7)
       rack (>= 1.0)
     web-console (2.3.0)
       activemodel (>= 4.0)
