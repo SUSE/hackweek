@@ -120,8 +120,13 @@ class ProjectsController < ApplicationController
       redirect_to project, error: "You can't join this project as it's finished."
     end
 
-    @project.join! current_user
-    redirect_to project_path(@episode, @project), notice: "Welcome to the project #{current_user.name}!"
+    if @project.join! current_user
+      message = "Welcome to the project #{current_user.name}!"
+    else
+      message = 'You already joined this project'
+    end
+
+    redirect_to project_path(@episode, @project), notice: message
   end
 
   # PUT /projects/1/leave
