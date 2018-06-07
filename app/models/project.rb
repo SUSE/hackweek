@@ -114,6 +114,9 @@ class Project < ActiveRecord::Base
   end
 
   def like! user
+    if self.kudos.include? user
+      return
+    end
     self.kudos << user
     self.save!
 

@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.rss
   def index
-    @projects = Project.current(@episode).active.includes(:episode_project_associations, :originator, :users, :kudos).
+    @projects = Project.current(@episode).active.includes(:episode_project_associations, :originator, :users).
         order('episodes_projects.created_at DESC').references(:episodes_projects).page(params[:page]).per(params[:page_size])
     @newest = @projects.first(10)
     respond_to do |format|
