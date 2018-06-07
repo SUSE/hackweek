@@ -10,6 +10,12 @@ gem 'rails', '~> 4.2'
 gem 'spring', group: [:development, :test]
 gem 'spring-commands-rspec', group: [:development, :test]
 
+# gem package to include jQuery UI assets for the Rails asset pipeline
+gem 'jquery-ui-rails'
+
+# To use jQuery's autocomplete with Rails
+gem 'rails-jquery-autocomplete'
+
 # Misc tools for fancy development
 group :development, :test do
   gem 'better_errors'
@@ -38,6 +44,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'jquery-hotkeys-rails'
 gem 'jquery-cookie-rails'
+gem 'jquery-atwho-rails'
 # as templating language
 gem 'haml-rails'
 # as authentification framework

@@ -11,7 +11,7 @@
       = link_to 'Reply', new_comment_comment_path( comment )
     %p
       :markdown
-        #{comment.text}
+        #{ emojify comment.text }
     - if !comment.comments.empty?
       %ul.media-list
         = render :partial => 'comments/comment', :collection => comment.comments, object: comment

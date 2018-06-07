@@ -1,8 +1,10 @@
 require 'rails_helper'
 
 describe ProjectsController do
+  let(:admin) { create(:admin) }
+
   before :each do
-    sign_in create(:admin)
+    sign_in admin
   end
 
   describe 'GET index' do
@@ -173,17 +175,29 @@ describe ProjectsController do
   end
 
   describe 'POST join_project' do
+    let(:project) { create(:idea) }
+
     it 'ads an user to the project' do
-      project = create(:idea)
       expect {
           post :join, id:project.id
       }.to change(project.users, :count).by(1)
     end
 
     it 'redirects to the project' do
-      project = create(:idea)
       post :join, id:project.id
       expect(response).to redirect_to(project)
+    end
+
+    context 'when the user already joined' do
+      before do
+        project.join!(admin)
+      end
+
+      it 'does not add the user again' do
+        expect {
+            post :join, id:project.id
+        }.not_to change(project.users, :count)
+      end
     end
   end
 

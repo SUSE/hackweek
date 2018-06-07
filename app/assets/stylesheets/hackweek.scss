@@ -23,6 +23,16 @@ h4.project-list-item img {
   background-color:rgba(246,246,246,0.7);
 }
 
+img[alt="add-emoji"] { 
+  max-width: 20px; 
+  height: auto;
+}
+
+.comment-form-heading, .panel.panel-default > .panel-heading{
+  display: flex;
+  justify-content: space-between;
+}
+
 footer {
   position: absolute;
   bottom: 0;
@@ -188,4 +198,38 @@ textarea.form-control {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+#search-suggestion-container {
+    display: block;
+} 
+
+.ui-autocomplete {
+    position: absolute;
+    list-style-type: none;
+    max-height: 400px;
+    width: 220px;
+    background-color: white;
+    cursor: pointer;
+    padding: 0px;
+}
+
+.ui-autocomplete li {
+  font-size: 16px;
+}
+
+.ui-autocomplete li div{
+  margin: 0px;
+  padding: 10px 0px 10px 5px;
+}
+
+.ui-state-active{
+  background: #eff1f4;
+}
+
+.ui-helper-hidden-accessible{
+  position:fixed;
+  right: 5px;
+  bottom: 5px;
+  z-index: 1000;
 }

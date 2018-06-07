@@ -94,10 +94,12 @@ feature 'Project management' do
     project = create(:invention, originator: user, users: [user])
 
     visit project_path(:all, project)
-    fill_in 'comment_text', with: '_italic_ **bold**'
+    fill_in 'comment_text', with: '_italic_ **bold** :smile: @user'
     click_link 'Preview'
 
     expect(page).to have_css('em', text: 'italic')
     expect(page).to have_css('strong', text: 'bold')
+    expect(page).to have_css('a[href$="/users/user"]')
+    expect(page).to have_css('img[alt="add-emoji"]')
   end
 end

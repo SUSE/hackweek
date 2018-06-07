@@ -8,11 +8,13 @@ class ProjectsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:add_keyword, :delete_keyword ]
   skip_load_and_authorize_resource only: :old_archived
   before_action :load_episode
+  before_action :username_array, only: [:new, :edit, :show]
+  autocomplete :project, :title
 
   # GET /projects
   # GET /projects.rss
   def index
-    @projects = Project.current(@episode).active.includes(:episode_project_associations, :originator, :users, :kudos).
+    @projects = Project.current(@episode).active.includes(:episode_project_associations, :originator, :users).
         order('episodes_projects.created_at DESC').references(:episodes_projects).page(params[:page]).per(params[:page_size])
     @newest = @projects.first(10)
     respond_to do |format|
@@ -119,8 +121,13 @@ class ProjectsController < ApplicationController
       redirect_to project, error: "You can't join this project as it's finished."
     end
 
-    @project.join! current_user
-    redirect_to project_path(@episode, @project), notice: "Welcome to the project #{current_user.name}!"
+    if @project.join! current_user
+      message = "Welcome to the project #{current_user.name}!"
+    else
+      message = 'You already joined this project'
+    end
+
+    redirect_to project_path(@episode, @project), notice: message
   end
 
   # PUT /projects/1/leave
@@ -217,5 +224,9 @@ class ProjectsController < ApplicationController
 
     def redirect_to_slug
       redirect_to @project if @project
+    end
+
+    def username_array
+      @username_array = User.pluck(:name).compact.to_json
     end
 end
