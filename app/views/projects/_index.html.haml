@@ -1,0 +1,57 @@
+- content_for :title do
+  = action_name.humanize unless action_name === "index"
+  Projects
+  = "(#{@projects.length})"
+
+.row
+  .col-sm-12
+    = render :partial => "projects/tabs"
+    .tab-content{style: 'padding-top: 10px;'}
+      - if @projects.length > 0
+        .tab-pane.active
+          .row.project-list-pills{style: 'padding-bottom: 10px;'}
+            .col-sm-6
+              %ul.nav.nav-pills
+                %li{role: 'presentation'}
+                  = link_to 'Per Page:', '#', style: 'pointer-events: none; cursor: default;', class: 'text-muted'
+                %li{role: 'presentation', class: active_page_size(10, params[:page_size])}
+                  = link_to '10', :page_size => '10', :episode => params[:episode], :remote => true
+                %li{role: 'presentation', class: active_page_size(50, params[:page_size])}
+                  = link_to '50', :page_size => '50', :episode => params[:episode], :remote => true
+                %li{role: 'presentation', class: active_page_size(100, params[:page_size])}
+                  = link_to '100', :page_size => '100', :episode => params[:episode], :remote => true
+                %li{role: 'presentation', class: active_page_size(@projects.total_count, params[:page_size])}
+                  = link_to 'All', :page_size => @projects.total_count, :episode => params[:episode], :remote => true
+            .col-sm-6
+              %ul.nav.nav-pills.pull-right
+                %li{role: "presentation"}
+                  = link_to 'Type:', '#', style: 'pointer-events: none; cursor: default;', class: 'text-muted'
+                %li.active#all-pill
+                  %a{:href =>'#', :id=>'all', :title=> 'Show everything'}
+                    All
+                %li#ideas-pill
+                  %a{:href =>'#', :id=>'ideas', :title => 'Show only ideas nobody is working on'}
+                    %i.fa.fa-lightbulb-o
+                    Ideas
+                %li#projects-pill
+                  %a{:href =>'#', :id=>'projects', :title => 'Show only projects people are working on'}
+                    %i.fa.fa-puzzle-piece
+                    Projects
+          .row
+            .col-sm-12
+              %table.table.project-style#project_table
+                %thead
+                - @projects.each_with_index do |project, index|
+                  %tr
+                    %td{:class => "#{project.aasm_state}"}
+                      = render :partial => "projects/list_item", :locals => {:project => project, :index => index }
+          .row
+            .col-md-12
+              .text-center
+                = paginate @projects, :remote => true
+      - else
+        %h3
+          No projects.
+          - unless action_name == :finished or :archived
+            How about you
+            = link_to "add one!", new_project_path

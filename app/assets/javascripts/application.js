@@ -22,18 +22,31 @@
 //= require jquery-ui/widgets/autocomplete
 //= require autocomplete-rails
 
+// to store clicked link
+var clickedLink;
+
 $(function() {
   // add a hash to the URL when the user clicks on a tab
   $('a[data-toggle="tab"]').on('click', function(e) {
     history.pushState(null, null, $(this).attr('href'));
   });
-  // navigate to a tab when the history changes
+  
+  // when history changes
   window.addEventListener("popstate", function(e) {
-    var activeTab = $('a[href="' + location.hash + '"]');
-    if (activeTab.length) {
-      activeTab.tab('show');
-    } else {
-      $('.nav-tabs a').first().tab('show');
+    // when history changes and poped state is a state that come from ajax so reload the whole page
+    if (e.state != null){
+      if(e.state.hasOwnProperty('isAjax')){
+        location.reload();
+      }
+    }
+    // navigate to a tab when the history changes
+    else{
+      var activeTab = $('a[href="' + location.hash + '"]');
+      if (activeTab.length) {
+        activeTab.tab('show');
+      } else {
+        $('.nav-tabs a').first().tab('show');
+      }
     }
   });
 });
@@ -62,6 +75,24 @@ $(function() {
   );
 });
 
+// to add loader and opacity when ajax is start
+$( document ).ajaxStart(function() {
+  $("#content").css('opacity', '0.4');
+  $( "#loader" ).show();
+
+});
+
+// to stop loader and remove opacity when ajax is stop
+$( document ).ajaxStop(function() {
+  $("#content").css('opacity', '');
+  $( "#loader" ).hide();
+});
+
+// to get the link which will be used in ajax case for pushState
+$(document).on("click", "a", function(){
+  clickedLink = this.href;
+})
+  
 $(function(){
   var emojis = [
     "smile", "iphone", "girl", "smiley", "heart", "kiss", "copyright", "coffee",
@@ -104,3 +135,4 @@ function textcover(txtarea, newtxt) {
         $(txtarea).val().substring(txtarea.selectionEnd)
    );  
 }
+

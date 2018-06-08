@@ -19,6 +19,7 @@
   %body
     = render :partial => "layouts/header"
     .container
+      %div#loader
       #content
         - if flash
           = render partial: "layouts/alert", flash: flash
