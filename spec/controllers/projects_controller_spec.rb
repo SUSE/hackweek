@@ -37,6 +37,11 @@ describe ProjectsController do
       get :show, id: project.id
       expect(response).to redirect_to(project)
     end
+
+    it 'renders the 404 page for non existant projects' do
+      get :show, id: 10_000
+      expect(response).to have_http_status(:not_found)
+    end
   end
 
   describe 'GET new' do
