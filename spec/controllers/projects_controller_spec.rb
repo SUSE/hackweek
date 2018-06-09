@@ -314,10 +314,10 @@ describe ProjectsController do
       let!(:episode) { create :episode }
       let!(:old_projects) do
         Timecop.freeze(1.year.ago) do
-          (1..12).map { create :project, episodes: [episode] }
+          create_list(:project, 12, episodes: [episode])
         end
       end
-      let!(:new_projects) { (1..10).map { create :project, episodes: [episode] } }
+      let!(:new_projects) { create_list(:project, 10, episodes: [episode]) }
 
       before :example do
         get :index, format: :rss
