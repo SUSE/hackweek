@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe ProjectsController do
   let(:admin) { create(:admin) }
+  let(:project) { create(:project) }
 
   before :each do
     sign_in admin
@@ -9,7 +10,6 @@ describe ProjectsController do
 
   describe 'GET index' do
     it 'assigns all projects as @projects' do
-      project = create(:project)
       get :index, {}
       expect(assigns(:projects)).to eq([project])
     end
@@ -17,7 +17,6 @@ describe ProjectsController do
 
   describe 'GET show' do
     it 'assigns the requested project as @project' do
-      project = create(:project)
       get :show, id: project.to_param
       expect(assigns(:project)).to eq(project)
       expect(assigns(:previous_project)).to eq(nil)
@@ -35,10 +34,13 @@ describe ProjectsController do
     end
 
     it 'redirects numeric id to slug' do
-      project = create(:project)
-
       get :show, id: project.id
       expect(response).to redirect_to(project)
+    end
+
+    it 'renders the 404 page for non existant projects' do
+      get :show, id: 10_000
+      expect(response).to have_http_status(:not_found)
     end
   end
 
@@ -51,7 +53,6 @@ describe ProjectsController do
 
   describe 'GET edit' do
     it 'assigns the requested project as @project' do
-      project = create(:project)
       get :edit, id: project.to_param
       expect(assigns(:project)).to eq(project)
     end
@@ -95,20 +96,17 @@ describe ProjectsController do
       let(:new_attributes) { attributes_for(:project) }
 
       it 'updates the requested project' do
-        project = create(:project)
         put :update, id: project.to_param, project: attributes_for(:project, title: 'whatever')
         project.reload
         expect(project.title).to eq('whatever')
       end
 
       it 'assigns the requested project as @project' do
-        project = create(:project)
         put :update, id: project.to_param, project: attributes_for(:project)
         expect(assigns(:project)).to eq(project)
       end
 
       it 'redirects to the project' do
-        project = create(:project)
         put :update, id: project.to_param, project: attributes_for(:project)
         expect(response).to redirect_to(project)
       end
@@ -116,13 +114,11 @@ describe ProjectsController do
 
     describe 'with invalid params' do
       it 'assigns the project as @project' do
-        project = create(:project)
         put :update, id: project.to_param, project: attributes_for(:project, title: nil)
         expect(assigns(:project)).to eq(project)
       end
 
       it 're-renders the "edit" template' do
-        project = create(:project)
         put :update, id: project.to_param, project: attributes_for(:project, title: nil)
         expect(response).to render_template('edit')
       end
@@ -131,14 +127,12 @@ describe ProjectsController do
 
   describe 'DELETE destroy', search: true do
     it 'destroys the requested project' do
-      project = create(:project)
       expect {
         delete :destroy, id: project.to_param
       }.to change(Project, :count).by(-1)
     end
 
     it 'redirects to the projects list' do
-      project = create(:project)
       delete :destroy, id: project.to_param
       expect(response).to redirect_to(projects_url)
     end
@@ -146,14 +140,12 @@ describe ProjectsController do
 
   describe 'POST advance_project' do
     it 'advances the projects state' do
-      project = create(:project)
       post :advance, id:project.id
       project.reload
       expect(project.aasm_state).to eq('invention')
     end
 
     it 'redirects to the project' do
-      project = create(:project)
       post :advance, id:project.id
       expect(response).to redirect_to(project)
     end
@@ -219,14 +211,12 @@ describe ProjectsController do
 
   describe 'GET like_project' do
     it 'likes the projects' do
-      project = create(:project)
       expect {
           get :like, id:project.id
       }.to change(Like, :count).by(1)
     end
 
     it 'redirects to the project' do
-      project = create(:project)
       get :like, id:project.id
       expect(response).to redirect_to(project)
     end
@@ -324,10 +314,10 @@ describe ProjectsController do
       let!(:episode) { create :episode }
       let!(:old_projects) do
         Timecop.freeze(1.year.ago) do
-          (1..12).map { create :project, episodes: [episode] }
+          create_list(:project, 12, episodes: [episode])
         end
       end
-      let!(:new_projects) { (1..10).map { create :project, episodes: [episode] } }
+      let!(:new_projects) { create_list(:project, 10, episodes: [episode]) }
 
       before :example do
         get :index, format: :rss
@@ -394,13 +384,13 @@ describe ProjectsController do
     end
 
     it 'assigns random project on each request' do
-      project = create :project
+      first_project = create :project
       9.times { create :project }
 
-      expect(Kernel).to receive(:rand).with(10).and_return(0)
+      expect(Kernel).to receive(:rand).with(Project.count).and_return(0)
       get :random
 
-      expect(assigns(:project)).to eq project
+      expect(assigns(:project)).to eq first_project
     end
   end
 end
