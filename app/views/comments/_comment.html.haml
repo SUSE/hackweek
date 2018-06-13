@@ -8,7 +8,7 @@
       = link_to user_path(comment.commenter) do
         = comment.commenter.name
       |
-      = link_to 'Reply', new_comment_comment_path( comment )
+      = link_to('Reply', reply_modal_path(comment) ,class: 'reply_modal_trigger', remote: :true, data: { toggle: 'modal', target: '#replyModal', parent: "#{comment.id}" })
     %p
       :markdown
         #{ emojify comment.text }

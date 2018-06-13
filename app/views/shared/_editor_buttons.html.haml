@@ -1,10 +1,11 @@
-%a.btn.btn-default{onclick: "$('textarea').eq(0).val($('textarea').eq(0).val() + ' @').click();"}
+- @textarea = "$(this).closest('form').find('textarea')"
+%a.btn.btn-default{onclick: "#{@textarea}.val(#{@textarea}.val() + ' @').click();"}
   %i.fa.fa-at
-%a.btn.btn-default{onclick: "$('textarea').eq(0).val($('textarea').eq(0).val() + ' :').click();"}
+%a.btn.btn-default{onclick: "#{@textarea}.val(#{@textarea}.val() + ' :').click();"}
   %i.fa.fa-smile-o
-%a.btn.btn-default{onclick: "$('textarea').eq(0).val($('textarea').eq(0).val() + ' [text](link-here)').click();"}
+%a.btn.btn-default{onclick: "#{@textarea}.val(#{@textarea}.val() + ' [text](link-here)').click();"}
   %i.fa.fa-link
-%a.btn.btn-default{onclick: "textcover($('textarea')[0], '_')"}
+%a.btn.btn-default{onclick: "textcover(#{@textarea}[0], '_')"}
   %i.fa.fa-italic
-%a.btn.btn-default{onclick: "textcover($('textarea')[0], '**')"}
+%a.btn.btn-default{onclick: "textcover(#{@textarea}[0], '**')"}
   %i.fa.fa-bold

@@ -1,0 +1,2 @@
+$('#replyModalLabel').html('Reply to : <%= @comment.commenter.name %>');
+$('#parent_comment_content').html('<%= j raw @rendered.html_safe %>');

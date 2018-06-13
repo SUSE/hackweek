@@ -108,6 +108,8 @@
       - if current_user
         = render partial: 'comments/form', locals: { comment: @new_comment, parent: @project }
 
+= render partial: 'comments/reply_modal'
+
 - content_for :script do
   :javascript
     Mousetrap.bind('j', function() { $('#previous_link').click(); });

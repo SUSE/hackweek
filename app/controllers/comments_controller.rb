@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
-
-  before_filter :get_parent
+  include MarkdownHelper
+  before_filter :get_parent, except: :reply_modal
+  skip_before_filter :verify_authenticity_token, only: [:reply_modal]
 
   def new
     @comment = @parent.comments.build
@@ -19,6 +20,19 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:commentable_id, :commentable_type, :commenter_id, :text, :commenter)
+  end
+
+  def reply_modal
+    @comment = Comment.find(params[:id])
+    @content = @comment.text.to_str.gsub(/:([\w+-]+):/) do |match|
+                 %(![add-emoji](https://assets-cdn.github.com/images/icons/emoji/#{match.to_str.tr(':','')}.png))
+               end if @comment.text
+    @rendered = MarkdownHelper.render @content
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
   end
 
   protected

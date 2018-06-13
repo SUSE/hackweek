@@ -43,6 +43,8 @@ Hackweek::Application.routes.draw do
     end
   end
 
+  get '/reply/:id', to: "comments#reply_modal", as: 'reply_modal'
+
   resources :comments do
     resources :comments
   end
