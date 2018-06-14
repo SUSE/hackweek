@@ -102,4 +102,23 @@ feature 'Project management' do
     expect(page).to have_css('a[href$="/users/user"]')
     expect(page).to have_css('img[alt="add-emoji"]')
   end
+
+  scenario 'User wants to reply a comment', :js do
+    project = create(:idea, :with_comments, originator: user)
+    reply_text = Faker::Lorem.sentence
+
+    visit project_path(nil, project)
+    first_comment = project.comments.first
+    click_link 'Reply', match: :first
+
+    expect(page).to have_text first_comment.text
+    expect(page).to have_css("#replyModal.modal.in")
+
+    @modal = find '.modal.fade.in'
+    @modal.find("textarea[id$='comment_text']").set reply_text
+
+    expect {
+      @modal.find('button[name="button"]').click
+    }.to change(first_comment.comments, :count).by(1)
+  end
 end

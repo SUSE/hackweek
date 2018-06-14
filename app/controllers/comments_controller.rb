@@ -32,7 +32,6 @@ class CommentsController < ApplicationController
       format.html
       format.js
     end
-
   end
 
   protected

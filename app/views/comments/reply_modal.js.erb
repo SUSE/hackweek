@@ -1,2 +1,4 @@
+$('#replyModal form').attr('action', '/comments/<%= @comment.id %>/comments');
+$('input[name="authenticity_token"]').val('<%= form_authenticity_token %>');
 $('#replyModalLabel').html('Reply to : <%= @comment.commenter.name %>');
 $('#parent_comment_content').html('<%= j raw @rendered.html_safe %>');

@@ -61,15 +61,6 @@ $(function() {
   });
 });
 
-$(function() {
-  $('.reply_modal_trigger').click(
-    function() {
-      action_id = $(this).data('parent');
-      $('#replyModal form').attr('action', '/comments/'+ action_id +'/comments')
-    }
-  );
-});
-
 $(function(){
   var emojis = [
     "smile", "iphone", "girl", "smiley", "heart", "kiss", "copyright", "coffee",
