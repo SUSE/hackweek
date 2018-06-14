@@ -9,5 +9,5 @@
         %h4#parent_comment_content
           Loading ...
         %hr
-        .replyform
-          = render partial: 'comments/form', locals: { comment: @new_comment, parent: @project}
+        #replyform
+          = render partial: 'comments/form', locals: { comment: @new_comment, parent: @project, id: rand(36**10).to_s(36).upcase[0,5] }

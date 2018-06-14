@@ -1,4 +1,13 @@
-$('#preview-contents').html("<%=j raw @rendered %>");
-$('#loading-spinner').addClass('hidden');
-$('#preview-contents').removeClass('hidden');
+// ele = $('li[data-form-type="<%=params[:form_type]%>"]').closest('form');
+// console.log(ele.find('#preview-contents'));
+// ele.find('#preview-contents').html("<%=j raw @rendered %>");
+// ele.find('#loading-spinner').addClass('hidden');
+// ele.find('#preview-contents').removeClass('hidden');
+// $('input[name="authenticity_token"]').val('<%= form_authenticity_token %>');
+// form_markdown_element = $('<%= j params[:form_markdown_element]%>')[0];
+// console.log(form_markdown_element);
+// console.log($('#<%= params[:form_parent]%> .preview-contents'));
+$('#<%= params[:form_parent]%> .preview-contents').html("<%=j raw @rendered %>");
+$('#<%= params[:form_parent]%> .loading-spinner').addClass('hidden');
+$('#<%= params[:form_parent]%> .preview-contents').removeClass('hidden');
 $('input[name="authenticity_token"]').val('<%= form_authenticity_token %>');

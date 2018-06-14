@@ -99,14 +99,14 @@
           %li
             = render :partial => "updates/show", :locals => { :update => update }
 .row
-  .col-sm-12
+  .col-sm-12#comments_section
     %h4
       Comments
     %ul.media-list
       = render :partial => 'comments/comment', :collection => @project.comments
     %p
       - if current_user
-        = render partial: 'comments/form', locals: { comment: @new_comment, parent: @project }
+        = render partial: 'comments/form', locals: { comment: @new_comment, parent: @project, id: rand(36**10).to_s(36).upcase[0,5] }
 
 = render partial: 'comments/reply_modal'
 
