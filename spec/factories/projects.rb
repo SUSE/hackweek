@@ -1,5 +1,5 @@
 # This will guess the User class
-FactoryGirl.define do
+FactoryBot.define do
   factory :all_states, class: Project do
     sequence(:title) { Faker::Lorem.sentence }
     sequence(:description) { Faker::Lorem.paragraph }
