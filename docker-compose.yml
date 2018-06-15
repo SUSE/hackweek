@@ -1,0 +1,17 @@
+version: "2.1"
+services:
+  db:
+    image: openbuildservice/mariadb
+  hackweek:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    command: foreman start
+    volumes:
+      - .:/hackweek
+    ports:
+      - "3000:3000"
+    environment:
+      - CONTAINER=1
+    depends_on:
+      - db
