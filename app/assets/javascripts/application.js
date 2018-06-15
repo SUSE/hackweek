@@ -57,22 +57,23 @@ $(function() {
 });
 
 $(function() {
-  $('#show-preview').click(
+  $('form .show-preview').click(
     function() {
-      var text = $('.markdown-source-text').val();
-      $.ajax('/markdown/preview.js?source=' + encodeURIComponent(text));
+      var text = $(this).closest('form').find('textarea').val();
+      form_parent = $(this).closest('form').parent().attr('id');
+      $.ajax('/markdown/preview.js?source=' + encodeURIComponent(text) + '&form_parent=' + form_parent);
     });
 });
 
 $(function() {
-  $('#show-source').click(
+  $('form .show-source').click(function(){
     setTimeout(
       function () {
         $('#preview-contents').addClass('hidden');
         $('#loading-spinner').removeClass('hidden');
       }, 200
     )
-  );
+  });
 });
 
 // to add loader and opacity when ajax is start
@@ -133,6 +134,6 @@ function textcover(txtarea, newtxt) {
         $(txtarea).val().substring(txtarea.selectionStart,txtarea.selectionEnd)+
         newtxt +
         $(txtarea).val().substring(txtarea.selectionEnd)
-   );  
+   );
 }
 

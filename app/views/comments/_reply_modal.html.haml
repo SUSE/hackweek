@@ -1,0 +1,13 @@
+.modal.fade{id: "replyModal","aria-labelledby" => "replyModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog{role: "document"}
+    .modal-content
+      .modal-header
+        %button.close{'aria-label' => 'Close', 'data-dismiss' => 'modal', type: 'button'}
+          %span{'aria-hidden' => 'true'} ×
+        %h2#replyModalLabel.modal-title Reply to :
+      .modal-body
+        %h4#parent_comment_content
+          Loading ...
+        %hr
+        #replyform
+          = render partial: 'comments/form', locals: { comment: @new_comment, parent: @project, id: rand(36**10).to_s(36).upcase[0,5] }

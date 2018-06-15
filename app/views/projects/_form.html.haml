@@ -1,41 +1,42 @@
 = render partial: 'comments/help'
-= form_for @project, url: (@project.new_record? ? projects_path : project_path(@episode, @project)), html: { role: :form } do |f|
-  - if @project.errors.any?
-    .alert.alert-warning
-      %strong
-        = pluralize(@project.errors.count, 'error')
-        prohibited this project from being saved:
-      %ul
-      - @project.errors.full_messages.each do |msg|
-        %li
-          = msg
+#project_form
+  = form_for @project, url: (@project.new_record? ? projects_path : project_path(@episode, @project)), html: { role: :form } do |f|
+    - if @project.errors.any?
+      .alert.alert-warning
+        %strong
+          = pluralize(@project.errors.count, 'error')
+          prohibited this project from being saved:
+        %ul
+        - @project.errors.full_messages.each do |msg|
+          %li
+            = msg
 
-  .form-group
-    = f.text_field :title, placeholder: 'Project title', class: 'form-control input-lg', required: 'required'
+    .form-group
+      = f.text_field :title, placeholder: 'Project title', class: 'form-control input-lg', required: 'required'
 
-  .panel.panel-default
-    .panel-heading
-      %ul.nav.nav-pills
-        %li.active#show-source{ role: :presentation }
-          %a{ href: '#markdown-source', role: :tab, data: { toggle: :tab } } Edit
-        %li#show-preview{ role: :presentation }
-          %a{ href: '#markdown-preview', role: :tab, data: { toggle: :tab } } Preview
-      .btnbar
-        = render 'shared/editor_buttons'
-    .panel-body
-      .tab-content
-        #markdown-source.tab-pane.active.fade.in{ role: 'tab-pane' }
-          .form-group
-            = f.text_area :description, rows: 20, placeholder: 'Detailed description of your idea. You can use **markdown**.', class: 'form-control input-lg markdown-source-text', id: 'project_description'
-        #markdown-preview.tab-pane.fade{ role: 'tab-pane' }
-          #loading-spinner
-            = fa_icon 'spinner pulse 3x'
-          #preview-contents.hidden
+    .panel.panel-default
+      .panel-heading
+        %ul.nav.nav-pills
+          %li.active.show-source{ role: :presentation }
+            %a{ href: '#markdown-source', role: :tab, data: { toggle: :tab } } Edit
+          %li.show-preview{ role: :presentation }
+            %a{ href: '#markdown-preview', role: :tab, data: { toggle: :tab } } Preview
+        .btnbar
+          = render 'shared/editor_buttons'
+      .panel-body
+        .tab-content
+          #markdown-source.tab-pane.active.fade.in{ role: 'tab-pane' }
+            .form-group
+              = f.text_area :description, rows: 20, placeholder: 'Detailed description of your idea. You can use **markdown**.', class: 'form-control input-lg markdown-source-text', id: 'project_description'
+          #markdown-preview.tab-pane.fade{ role: 'tab-pane' }
+            .loading-spinner
+              = fa_icon 'spinner pulse 3x'
+            .preview-contents.hidden
 
-  .form-group
-    = f.label(:avatar)
-    = f.file_field :avatar
-  = f.submit class: 'btn btn-success pull-right'
+    .form-group
+      = f.label(:avatar)
+      = f.file_field :avatar
+    = f.submit class: 'btn btn-success pull-right'
 
   :javascript
     $('textarea').atwho({at:"@", 'data':#{raw @username_array}});
