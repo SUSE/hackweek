@@ -30,8 +30,9 @@ zypper_with_opts install ruby2.2 ruby2.2-devel mariadb sphinx libxml2-devel libx
 vecho "Disable versioned gem binary names"
 echo 'install: --no-format-executable' >> /etc/gemrc
 
+# FIXME: This is pinned because of https://github.com/bundler/bundler/issues/6535
 vecho "Install bundler"
-gem.ruby2.2 install bundler
+gem.ruby2.2 install bundler -v 1.16.1
 
 vecho "Setup ruby binaries"
 ln -sf /usr/bin/ruby.ruby2.2 /usr/local/bin/ruby
