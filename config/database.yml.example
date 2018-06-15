@@ -1,6 +1,9 @@
 <%
   if ENV['TRAVIS']
     password = ''
+  elsif ENV['CONTAINER']
+    password = 'opensuse'
+    host = 'db'
   else
     password = "hackweek"
   end
@@ -16,7 +19,9 @@ development:
   <<: *vagrant
   database: hackweek_development
   pool: 5
+  host: <%= host %>
 
 test:
   <<: *vagrant
   database: hackweek_test
+  host: <%= host %>

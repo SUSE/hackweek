@@ -19,6 +19,7 @@
 /config/application.yml
 /config/secrets.yml
 /config/database.yml
+docker-compose.override.yml
 
 # Ignore sphinx search db
 /db/sphinx/
