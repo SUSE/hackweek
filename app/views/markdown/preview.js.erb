@@ -2,3 +2,4 @@ $('#<%= params[:form_parent]%> .preview-contents').html("<%=j raw @rendered %>")
 $('#<%= params[:form_parent]%> .loading-spinner').addClass('hidden');
 $('#<%= params[:form_parent]%> .preview-contents').removeClass('hidden');
 $('input[name="authenticity_token"]').val('<%= form_authenticity_token %>');
+$('meta[name="csrf-token"]').attr('content', '<%=form_authenticity_token%>');
