@@ -170,7 +170,7 @@ GEM
     minitest (5.11.3)
     mousetrap-rails (1.4.6)
     multi_json (1.12.1)
-    mysql2 (0.4.10)
+    mysql2 (0.5.1)
     netrc (0.11.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
@@ -374,7 +374,7 @@ DEPENDENCIES
   kaminari
   mina (~> 0.3)
   mousetrap-rails
-  mysql2 (= 0.4.10)
+  mysql2 (= 0.5.1)
   paperclip (~> 5.2)
   poltergeist
   pry-byebug

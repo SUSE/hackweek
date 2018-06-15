@@ -29,7 +29,7 @@ group :development, :test do
 end
 
 # as databases
-gem 'mysql2', '0.4.10'
+gem 'mysql2', '0.5.1'
 # for stylesheets
 gem 'sass-rails',   '~> 5.0'
 # for .js.coffee assets
