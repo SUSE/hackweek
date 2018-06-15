@@ -3,7 +3,7 @@
     %div
       = image_tag 'hackweek-logo-light.png', class: 'img-responsive img-center', alt: 'SUSE Hack Week Logo'
 .row
-  .col-md-7
+  .col-md-12
     .page-header
       - if @episode
         %h1
@@ -13,37 +13,16 @@
       - else
         %div
           = image_tag 'hackweek-label.png', class: 'img-responsive', alt: 'Hack Week'
-    .row
-      .col-md-12
-        %p.lead
-          is the time SUSE engineers experiment, innovate &amp; learn interruption-free.
-          Across teams or alone and always without limits!
-
-        %p.lead
-          A SUSE tradition since 2007, Hack Week has brought together hundreds of hackers at SUSE
-          and on open source communities around the globe to collaborate on open source.
-
-        %p.lead
-          Hack Week 16 aka 0x10 is the upcoming! It is starting on Thursday, November 10th until November 16th 2017.
-
-        %p.lead
-          = link_to 'Learn more', about_path
-          about Hack Week.
-  .col-md-5
-    %div
-      = image_tag 'hw_0x10_with_text_new.png', class: 'img-responsive', alt: 'Hack Week 0x10'
-.row
-  .col-md-12
-    .well.well-lg
-      %p.lead Welcome to Hackweek 0x10 from Ralf Flaxa, President of SUSE R&D:
-      .embed-responsive.embed-responsive-16by9#intro
-        %video{:width => 320, :height => 240, :controls => true}
-          %source{:src => "#{video_path('Hackweek_16_Welcome_by_Ralf.mp4')}", :type => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"'}
-          %source{:src => "#{video_path('Hackweek_16_Welcome_by_Ralf.webm')}", :type => 'video/webm; codecs="vp8,vorbis"'}
 .row
   .col-md-12
     %p.lead
-      What are you going to hack on? Start by submitting your projects here!
+      Hack Week is the time SUSE engineers experiment, innovate &amp; learn interruption-free
+      for a whole week! Across teams or alone, but always without limits.
+    %p.lead
+      A SUSE tradition since 2007, Hack Week has brought together hundreds of hackers around
+      the globe to collaborate on open source.
+    %p.lead
+      What are you going to hack on?
 .row
   .col-md-8.col-md-offset-2
     %p
