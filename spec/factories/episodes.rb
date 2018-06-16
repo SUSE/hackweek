@@ -1,5 +1,5 @@
 # This will guess the User class
-FactoryGirl.define do
+FactoryBot.define do
   factory :episode do
     sequence(:name) { |n| "episode_#{n}" }
     start_date { 1.day.ago }

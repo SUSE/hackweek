@@ -47,24 +47,24 @@ describe Project do
 
   describe 'active?' do
     it 'returns true for ideas' do
-      expect(FactoryGirl.create(:idea).active?).to eq(true)
+      expect(FactoryBot.create(:idea).active?).to eq(true)
     end
 
     it 'it returns true for projects' do
-      expect(FactoryGirl.create(:project).active?).to eq(true)
+      expect(FactoryBot.create(:project).active?).to eq(true)
     end
 
     it 'returns false for anything that is not an idea or project' do
-      expect(FactoryGirl.create(:invention).active?).to eq(false)
-      expect(FactoryGirl.create(:record).active?).to eq(false)
+      expect(FactoryBot.create(:invention).active?).to eq(false)
+      expect(FactoryBot.create(:record).active?).to eq(false)
     end
   end
 
   describe 'join!' do
     before do
-      @project = FactoryGirl.create(:project)
-      @idea = FactoryGirl.create(:idea)
-      @user = FactoryGirl.create(:user)
+      @project = FactoryBot.create(:project)
+      @idea = FactoryBot.create(:idea)
+      @user = FactoryBot.create(:user)
       @project.join!(@user)
       @idea.join!(@user)
     end
@@ -92,7 +92,7 @@ describe Project do
 
   describe 'leave!' do
     before do
-      @project = FactoryGirl.create(:project)
+      @project = FactoryBot.create(:project)
       @user = @project.users.first
       @project.leave!(@user)
     end

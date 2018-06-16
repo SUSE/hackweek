@@ -73,7 +73,7 @@ gem 'kaminari'
 # for slugs
 gem 'stringex'
 # for seeds
-gem 'factory_girl_rails', :group => [:development, :test]
+gem 'factory_bot_rails', :group => [:development, :test]
 gem 'faker', :group => [:development, :test]
 # as test framework
 gem 'rspec-rails', :group => [:development, :test]
