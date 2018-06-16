@@ -1,7 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    aasm (4.1.0)
+    aasm (4.12.3)
+      concurrent-ruby (~> 1.0)
     actionmailer (4.2.10)
       actionpack (= 4.2.10)
       actionview (= 4.2.10)
