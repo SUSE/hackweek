@@ -21,6 +21,17 @@ describe UsersController do
     end
   end
 
+  describe 'POST update' do
+    it 'updates the user' do
+      patch :update, id: user.id, user: {
+        location: 'space', name: 'John Doe', email: 'john@space.org' }
+      expect(response).to redirect_to(user_path(user.reload))
+      expect(user.location).to eq('space')
+      expect(user.name).to eq('John Doe')
+      expect(user.email).to eq('john@space.org')
+    end
+  end
+
   describe 'POST add_keyword' do
     it 'ads a keyword to the user' do
       expect {
