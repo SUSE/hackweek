@@ -27,8 +27,34 @@ separately, everything will be taken care of with `rake ts:regenerate`.
 
 ## Hack it
 As our project involves somewhat complicated setup (MySQL and Shpinx search)
-for a development environment, we have created Vagrantfile to get you up and
-running.
+for a development environment, we have created docker and vagrant files to
+get you up and running.
+
+### Docker
+
+1. Since we mount the hackweek repository into our container we need to map
+   your local user id to the one of the container user. To do that copy the
+   docker-compose.override.yml file and enter your user id (id -u) as
+   *CONTAINER_USERID*.
+
+```bash
+cp docker-compose.override.yml.example docker-compose.override.yml
+vi docker-compose.override.yml
+```
+
+1. Set up the development environment:
+
+```bash
+docker-compose run --rm hackweek bundle exec rake dev:bootstrap
+```
+
+1. Start the development environment:
+
+```bash
+docker-compose up --build
+```
+
+### Vagrant
 
 1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [vagrant](https://www.vagrantup.com)
 2. Install vagrant-exec plugin:
