@@ -121,4 +121,15 @@ feature 'Project management' do
       @modal.find('button[name="button"]').click
     }.to change(first_comment.comments, :count).by(1)
   end
+
+  scenario 'more than one project having same tags' do
+    project = create(:project, originator: user)
+    project2 = create(:project, originator: user)
+    project.add_keyword! 'web', user
+    project2.add_keyword! 'web', user
+
+    visit project_path(nil, project)
+
+    expect(page).to have_css('h5',text: project2.title)
+  end
 end

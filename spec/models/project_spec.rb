@@ -118,4 +118,19 @@ describe Project do
       expect(Comment.count).to be 0
     end
   end
+
+  describe 'similar_projects' do
+    let(:project) { create(:project) }
+    let(:project2) { create(:project) }
+    let(:user) { create(:user) }
+
+    before do
+      project.add_keyword! 'web', user
+      project2.add_keyword! 'web', user
+    end
+
+    it 'provides array of projects having similar tags' do
+      expect(project.similar_projects).to include(project2)
+    end
+  end
 end
