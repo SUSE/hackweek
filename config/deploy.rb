@@ -11,7 +11,7 @@ set :user, 'root'
 # Path to deploy into
 set :deploy_to, '/srv/www/vhosts/suse.com/hackweek'
 # Git repo to clone from
-set :repository, 'https://github.com/SUSE/hackweek.git'
+set :repository, 'git://github.com/SUSE/hackweek.git'
 # Branch name to deploy
 set :branch, 'master'
 
