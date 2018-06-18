@@ -11,6 +11,14 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def edit
+  end
+
+  def update
+    current_user.update_attributes(params["user"])
+    redirect_to user_path(current_user)
+  end
+
   def show
   end
 
@@ -38,7 +46,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:email, :name, :uid)
+      params.require(:user).permit(:email, :name, :uid, :location)
     end
 
     def keyword_params

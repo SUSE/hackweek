@@ -48,6 +48,10 @@
                   %i.fa.fa-home
                   = current_user.name
               %li
+                = link_to(user_edit_path(current_user)) do
+                  %i.fa.fa-pencil-square-o
+                  Edit Profile
+              %li
                 = link_to(destroy_user_ichain_session_path, :method => :delete, :id => "logout-link") do
                   %i.fa.fa-power-off
                   Log out
@@ -85,4 +89,3 @@
         = search_field_tag(:q, nil, {:class => "form-control", :placeholder => "Search", :type => "search", :name => "q", "data-autocomplete" => "projects/autocomplete_project_title", "data-append-to" => "#search-suggestion-container"})
         %div#search-suggestion-container
 
-      

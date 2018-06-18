@@ -71,6 +71,8 @@ Hackweek::Application.routes.draw do
   get "howto", to: "about#show"
 
   get "news", to: "announcements#index"
+  get "users/:id/edit", to: "users#edit", as: "user_edit"
+  patch 'users/:id', to: 'users#update'
 
   root 'about#index'
 
