@@ -163,6 +163,12 @@ class Project < ActiveRecord::Base
                    project: self)
   end
 
+  def similar_projects
+    return [] if keywords.empty?
+
+    return similar = Project.current(@episode).active.select {|project| (project.keywords & keywords).any?}
+  end
+
   def previous(episode = nil)
     Project.by_episode(episode).where('projects.id < ?', self.id).last
   end

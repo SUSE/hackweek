@@ -1,0 +1,8 @@
+%h5
+  = link_to project.title, project_path(project)
+  by
+  = link_to project.originator.name, user_path(project.originator)
+%p
+  :markdown
+    #{truncate(project.description, length: 50)}
+%hr
