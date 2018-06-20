@@ -198,12 +198,12 @@ class ProjectsController < ApplicationController
 
   def follow
     current_user.project_followings << @project
-    redirect_to :back, notice: "You are now watching #{@project.title}"
+    redirect_to project_path(@episode, @project), notice: "You are now watching #{@project.title}"
   end
 
   def unfollow
     current_user.project_followings.delete @project
-    redirect_to :back, notice: "You stopped watching #{@project.title}"
+    redirect_to project_path(@episode, @project), notice: "You stopped watching #{@project.title}"
   end
 
   # GET /projects/random

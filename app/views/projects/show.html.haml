@@ -27,16 +27,7 @@
             = render :partial => "projects/info", :locals => {:project => @project }
   .col-md-3
     - if current_user
-      #watch_buttons.btn-group.col-md-12
-        - if current_user.project_followings.include? @project
-          = link_to unfollow_project_path(@episode, @project), class: 'btn btn-default watch_action' do
-            %i.fa.fa-eye-slash
-            Unwatch
-        - else
-          = link_to follow_project_path(@episode ,@project), class: 'btn btn-default watch_action' do
-            %i.fa.fa-eye
-            Watch
-        = link_to "#{@project.project_followers.count}", '#', class: 'btn btn-default'
+      = render partial: 'projects/project_watch', locals: {project: @project, episode: @episode}
 
 .row
   .col-sm-8.project-style

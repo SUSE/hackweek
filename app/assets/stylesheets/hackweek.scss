@@ -39,6 +39,33 @@ img[alt="add-emoji"] {
   justify-content: space-between;
 }
 
+#watchers-modal{
+  .modal-dialog{
+    min-width: 50%;
+    .modal-content{
+      min-height: 400px;
+      .modal-body{
+        display: flex;
+        flex-wrap: wrap;
+        a {
+          color: black;
+          .project_watcher_box{
+            display: flex;
+            align-items: center;
+            border: 1px solid #e9e9e9;
+            border-radius: 0.5rem;
+            padding: 10px;
+            margin: 1px;
+            h3{
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 #replyModal{
   h2{
     text-align: center;
