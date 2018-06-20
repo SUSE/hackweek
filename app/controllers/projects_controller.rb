@@ -196,6 +196,16 @@ class ProjectsController < ApplicationController
     redirect_to project_path(nil, @project), notice: "Removed hackweek #{@episode.name}"
   end
 
+  def follow
+    current_user.project_followings << @project
+    redirect_to :back, notice: "You are now watching #{@project.title}"
+  end
+
+  def unfollow
+    current_user.project_followings.delete @project
+    redirect_to :back, notice: "You stopped watching #{@project.title}"
+  end
+
   # GET /projects/random
   def random
     projects = Project.current(@episode).active

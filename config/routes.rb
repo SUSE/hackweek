@@ -31,6 +31,8 @@ Hackweek::Application.routes.draw do
       member do
         get 'like'
         get 'dislike'
+        get 'follow'
+        get 'unfollow'
         match 'join', via: :post
         match 'leave', via: :post
         post 'advance'

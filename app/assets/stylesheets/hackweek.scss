@@ -21,6 +21,12 @@ h4.project-list-item img {
   padding: 20px 15px 20px;
   background: rgb(246, 246, 246); /* The Fallback */
   background-color:rgba(246,246,246,0.7);
+  #watch_buttons{
+    .watch_action{
+      background-color: #eff3f6;
+      background-image: linear-gradient(-180deg, #fafbfc 0%, #eff3f6 90%);
+    }
+  }
 }
 
 img[alt="add-emoji"] {
@@ -211,7 +217,7 @@ textarea.form-control {
 
 #search-suggestion-container {
     display: block;
-} 
+}
 
 .ui-autocomplete {
     position: absolute;
