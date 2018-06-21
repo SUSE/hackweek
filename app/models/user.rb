@@ -21,6 +21,9 @@ class User < ActiveRecord::Base
   has_many :user_interests
   has_many :keywords, through: :user_interests
 
+  has_many :project_follows
+  has_many :project_followings, through: :project_follows, source: :project
+
   has_and_belongs_to_many :roles
 
   after_save ThinkingSphinx::RealTime.callback_for(:user)
