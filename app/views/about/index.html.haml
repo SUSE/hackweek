@@ -14,15 +14,21 @@
         %div
           = image_tag 'hackweek-label.png', class: 'img-responsive', alt: 'Hack Week'
 .row
-  .col-md-12
+  .col-md-7
     %p.lead
       Hack Week is the time SUSE engineers experiment, innovate &amp; learn interruption-free
       for a whole week! Across teams or alone, but always without limits.
     %p.lead
       A SUSE tradition since 2007, Hack Week has brought together hundreds of hackers around
-      the globe to collaborate on open source.
+      the globe to collaborate on open source. Learn more
+      = link_to about_path do
+        about Hack Week.
     %p.lead
       What are you going to hack on?
+  .col-md-5
+    %div
+    = image_tag 'hackweek_monsterhacks.png', class: 'img-responsive', alt: 'Hack Week 17'
+
 .row
   .col-md-8.col-md-offset-2
     %p
