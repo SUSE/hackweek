@@ -1,10 +1,10 @@
 #watch_buttons.btn-group.col-md-12
   - if current_user.project_followings.include? project
-    = link_to unfollow_project_path(episode, project), class: 'btn btn-default watch_action' do
+    = link_to destroy_project_project_follows_path(project_id: project.id), method: :delete, episode: episode, class: 'btn btn-default watch_action' do
       %i.fa.fa-eye-slash
       Unwatch
   - else
-    = link_to follow_project_path(episode ,project), class: 'btn btn-default watch_action' do
+    = link_to create_project_project_follows_path(project_id: project.id), method: :post, episode: episode, class: 'btn btn-default watch_action' do
       %i.fa.fa-eye
       Watch
   = link_to "#{project.project_followers.count}", '#', class: 'btn btn-default', data: { toggle: 'modal', target: '#watchers-modal' }

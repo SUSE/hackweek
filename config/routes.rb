@@ -31,8 +31,6 @@ Hackweek::Application.routes.draw do
       member do
         get 'like'
         get 'dislike'
-        get 'follow'
-        get 'unfollow'
         match 'join', via: :post
         match 'leave', via: :post
         post 'advance'
@@ -41,6 +39,12 @@ Hackweek::Application.routes.draw do
         delete 'episode', to: "projects#delete_episode"
         post 'keyword', to: "projects#add_keyword"
         delete 'keyword', to: "projects#delete_keyword", constraints: { keyword: /[^\/]+/ }
+      end
+      resource :project_follows, only: [] do
+        member do
+          post '/create', to: 'projects/project_follows#create'
+          delete '/destroy', to: 'projects/project_follows#destroy'
+        end
       end
       resources :comments
     end
