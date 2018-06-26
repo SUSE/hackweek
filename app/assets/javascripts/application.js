@@ -137,3 +137,7 @@ function textcover(txtarea, newtxt) {
    );
 }
 
+$(document).on('click', '.show-preview, .show-source', function (e) {
+  $(this).parent().next('.btnbar').toggle();
+})
+
