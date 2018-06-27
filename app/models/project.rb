@@ -26,6 +26,9 @@ class Project < ActiveRecord::Base
   has_many :episode_project_associations
   has_many :episodes, through: :episode_project_associations
 
+  has_many :project_follows
+  has_many :project_followers, through: :project_follows, source: :user
+
   has_attached_file :avatar, styles: { thumb: '64x64>' }, default_url: :random_avatar
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 

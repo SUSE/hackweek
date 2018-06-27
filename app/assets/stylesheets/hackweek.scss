@@ -21,6 +21,12 @@ h4.project-list-item img {
   padding: 20px 15px 20px;
   background: rgb(246, 246, 246); /* The Fallback */
   background-color:rgba(246,246,246,0.7);
+  #watch_buttons{
+    .watch_action{
+      background-color: #eff3f6;
+      background-image: linear-gradient(-180deg, #fafbfc 0%, #eff3f6 90%);
+    }
+  }
 }
 
 img[alt="add-emoji"] {
@@ -31,6 +37,33 @@ img[alt="add-emoji"] {
 .comment-form-heading, .panel.panel-default > .panel-heading{
   display: flex;
   justify-content: space-between;
+}
+
+#watchers-modal{
+  .modal-dialog{
+    min-width: 50%;
+    .modal-content{
+      min-height: 400px;
+      .modal-body{
+        display: flex;
+        flex-wrap: wrap;
+        a {
+          color: black;
+          .project_watcher_box{
+            display: flex;
+            align-items: center;
+            border: 1px solid #e9e9e9;
+            border-radius: 0.5rem;
+            padding: 10px;
+            margin: 1px;
+            h3{
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 #replyModal{

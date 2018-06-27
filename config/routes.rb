@@ -40,6 +40,12 @@ Hackweek::Application.routes.draw do
         post 'keyword', to: "projects#add_keyword"
         delete 'keyword', to: "projects#delete_keyword", constraints: { keyword: /[^\/]+/ }
       end
+      resource :project_follows, only: [] do
+        member do
+          post '/create', to: 'projects/project_follows#create'
+          delete '/destroy', to: 'projects/project_follows#destroy'
+        end
+      end
       resources :comments
     end
   end
