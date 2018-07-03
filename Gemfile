@@ -84,6 +84,8 @@ gem 'paperclip', '~> 5.2'
 gem 'web-console', '~> 2.0', group: :development
 # as deployer
 gem 'mina', '~> 0.3'
+# as the app server
+gem 'puma', '~> 3.11'
 
 group :test do
   # for cleaning the test DB
