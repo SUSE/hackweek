@@ -205,6 +205,7 @@ GEM
       pry (~> 0.10)
     pry-rails (0.3.6)
       pry (>= 0.10.4)
+    puma (3.11.4)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.10)
@@ -377,6 +378,7 @@ DEPENDENCIES
   poltergeist
   pry-byebug
   pry-rails
+  puma (~> 3.11)
   quiet_assets
   rack-mini-profiler
   rails (~> 4.2)
@@ -396,4 +398,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.16.1
+   1.16.2
