@@ -86,6 +86,8 @@ gem 'web-console', '~> 2.0', group: :development
 gem 'mina', '~> 0.3'
 # as the app server
 gem 'puma', '~> 3.11'
+# as the log formater
+gem 'lograge'
 
 group :test do
   # for cleaning the test DB

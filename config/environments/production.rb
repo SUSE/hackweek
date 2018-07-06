@@ -46,7 +46,7 @@ Hackweek::Application.configure do
   config.log_level = :info
 
   # Prepend all log lines with the following tags.
-  # config.log_tags = [ :subdomain, :uuid ]
+  config.log_tags = [ :uuid ]
 
   # Use a different logger for distributed setups.
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
@@ -77,4 +77,16 @@ Hackweek::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # Use lograge to show the logs in one line
+  config.lograge.enabled = true
+  config.lograge.custom_options = lambda do |event|
+    exceptions = ['controller', 'action', 'format', 'id']
+    {
+      params: event.payload[:params].except(*exceptions),
+      host:   event.payload[:headers].env['REMOTE_ADDR'],
+      time:   event.time,
+      user:   User.current.try(:login)
+    }
+  end
 end
