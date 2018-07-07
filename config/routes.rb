@@ -61,6 +61,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :notifications
+
   resources :episodes do
     member do
       get "activate"
