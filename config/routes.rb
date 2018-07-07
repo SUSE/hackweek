@@ -27,6 +27,7 @@ Hackweek::Application.routes.draw do
         get 'popular'
         get 'biggest'
         get 'random'
+        get "search", to: "search#result"
       end
       member do
         get 'like'
@@ -71,7 +72,6 @@ Hackweek::Application.routes.draw do
   get "keyword/tokens"
   post "api/import", to: "api#import"
   get "gallery", to: "gallery#index"
-  get "search", to: "search#result", as: "search"
 
   get "about", to: "about#show"
   get "howto", to: "about#show"
