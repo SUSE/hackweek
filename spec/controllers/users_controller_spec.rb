@@ -24,11 +24,9 @@ describe UsersController do
   describe 'POST update' do
     it 'updates the user' do
       patch :update, id: user.id, user: {
-        location: 'space', name: 'John Doe', email: 'john@space.org' }
+        location: 'space' }
       expect(response).to redirect_to(user_path(user.reload))
       expect(user.location).to eq('space')
-      expect(user.name).to eq('John Doe')
-      expect(user.email).to eq('john@space.org')
     end
   end
 
