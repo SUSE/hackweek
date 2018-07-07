@@ -84,7 +84,7 @@
             = link_to(new_user_ichain_session_path, :id => "login-link") do
               %i.fa.fa-signin
               Sign In
-      %form{:role=>"search", :method=>"get", :class=>"navbar-form navbar-right", :action=>"#{search_path}", "accept-charset"=>"UTF-8"}
+      %form{:role=>"search", :method=>"get", :class=>"navbar-form navbar-right", :action=>"#{search_projects_path(@episode)}", "accept-charset"=>"UTF-8"}
         .form-group
         = search_field_tag(:q, nil, {:class => "form-control", :placeholder => "Search", :type => "search", :name => "q", "data-autocomplete" => "projects/autocomplete_project_title", "data-append-to" => "#search-suggestion-container"})
         %div#search-suggestion-container

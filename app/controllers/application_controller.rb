@@ -72,6 +72,6 @@ class ApplicationController < ActionController::Base
         @episode = Episode.find_by(id: params[:episode])
       end
     end
-    logger.debug("\n\nEpisode: #{@episode}\n\n")
+    logger.debug("\n\nEpisode: #{@episode.to_param}\n\n")
   end
 end
