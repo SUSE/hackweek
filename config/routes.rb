@@ -29,8 +29,8 @@ Hackweek::Application.routes.draw do
       member do
         get 'like'
         get 'dislike'
-        match 'join', via: :post
-        match 'leave', via: :post
+        match 'join', via: :post, defaults: { format: 'js' }
+        match 'leave', via: :post, defaults: { format: 'js' }
         post 'advance'
         post 'recess'
         post 'episode', to: "projects#add_episode", defaults: { format: 'js' }
