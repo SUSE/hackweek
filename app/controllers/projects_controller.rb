@@ -6,7 +6,6 @@ class ProjectsController < ApplicationController
   skip_before_filter :authenticate_user!, only: [ :index, :show, :archived, :finished, :newest, :popular, :biggest, :random ]
   skip_before_filter :store_location, only: [:join, :leave, :like, :dislike, :add_keyword, :delete_keyword ]
   skip_before_action :verify_authenticity_token, only: [:add_keyword, :delete_keyword ]
-  skip_load_and_authorize_resource only: :old_archived
   before_action :load_episode
   before_action :username_array, only: [:new, :edit, :show]
   autocomplete :project, :title
@@ -54,17 +53,6 @@ class ProjectsController < ApplicationController
     @previous_project = @project.previous(@episode)
     @next_project = @project.next(@episode)
     @new_comment = Comment.new
-  end
-
-  # GET /archive/projects/:id
-  def old_archived
-    begin
-      @project = Project.find_by!(title: params[:id])
-      redirect_to @project
-    rescue ActiveRecord::RecordNotFound
-      flash[:notice] = "Can't find project with title #{params[:id]}"
-      redirect_to action: :archived
-    end
   end
 
   # GET /projects/new

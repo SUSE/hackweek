@@ -14,9 +14,6 @@ Hackweek::Application.routes.draw do
     end
   end
 
-  # compat routes
-  get 'archive/projects/:id', to: "projects#old_archived"
-
   scope '(:episode)' do
     resources :projects do
       collection do
