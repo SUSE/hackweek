@@ -1,0 +1,10 @@
+- if can? :add_episode, @project
+  .btn-group.pull-right
+    %button.btn.btn-success.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+      %i.fa.fa-plus
+      Add Hackweek
+      %span.caret
+    %ul.dropdown-menu{:role => "menu"}
+      - Episode.all.reverse.each do |episode|
+        %li{:role => "presentation"}
+          = link_to(truncate(episode.name, length: 50), episode_project_path(:episode_id => episode.id), method: :post, remote: true)

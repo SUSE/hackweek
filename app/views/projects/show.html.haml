@@ -37,13 +37,12 @@
     .row
       .col-sm-12
         .text-right
-          = render :partial => "projects/file_buttons", :locals => {:project =>  @project }
-    .row
+          #file_buttons
+            = render :partial => "file_buttons"
       .col-sm-12
         %h4
           - if @project.users.empty?
-            No
-          Hackers:
+            No Hackers:
         .well.well-sm#hackers
           = render partial: 'hackers'
         - unless @project.aasm_state == "invention"
@@ -67,26 +66,15 @@
           This project is part of:
         %p#episode_list
           = render partial: 'episode_list'
-        .btn-group.pull-right
-          %button.btn.btn-success.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
-            %i.fa.fa-plus
-            Add Hackweek
-            %span.caret
-          %ul.dropdown-menu{:role => "menu"}
-            - Episode.all.reverse.each do |episode|
-              %li{:role => "presentation"}
-                = link_to(truncate(episode.name, length: 50), episode_project_path(:episode_id => episode.id), method: :post, remote: true)
+        #episode_buttons
+          = render partial: 'episode_buttons'
         .clearfix
     .row
       .col-sm-12
         %h4
           Activity
-          %span.pull-right
-            = render :partial => "updates/show_all_modal", :locals => { :updates => @project.updates }
-        %ul
-        - @project.updates.reverse.first(5).each do |update|
-          %li
-            = render :partial => "updates/show", :locals => { :update => update }
+        #activity
+          = render partial: 'activity'
 %br
 .row
   .col-sm-8#comments_section
