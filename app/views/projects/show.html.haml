@@ -45,19 +45,10 @@
             No
           Hackers:
         .well.well-sm#hackers
-          - @project.users.each do |user|
-            = link_to(user_path(user)) do
-              = image_tag user.gravatar_url(:size => "64"), alt: user.name, title: user.name, class: "img-thumbnail", id: "user#{user.id}-gravatar"
+          = render partial: 'hackers'
         - unless @project.aasm_state == "invention"
-          %p.pull-right
-            - if @project.users.empty? or !@project.users.include? current_user
-              = link_to(join_project_path(@episode, @project), :method => :post, :class => "btn btn-success") do
-                %i.fa.fa-plus
-                Join this project
-            - if @project.users.include? current_user
-              = link_to(leave_project_path(@episode, @project), :method => :post, :class => "btn btn-warning") do
-                %i.fa.fa-minus
-                Leave this project
+          %p#membership_buttons.pull-right
+            = render partial: 'membership_buttons'
           .clearfix
     .row
       .col-sm-12

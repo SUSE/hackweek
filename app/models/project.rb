@@ -87,8 +87,22 @@ class Project < ActiveRecord::Base
     self.idea? || self.project?
   end
 
+  def joined(user)
+    return false if users.empty?
+    return false if !users.include? user
+    return true if users.include? user
+  end
+
   def join! user
-    return if self.users.include?(user)
+    if users.include?(user)
+      errors.add(:base, "You already joined this project.")
+      return false
+    end
+
+    if aasm_state == 'invention'
+      errors.add(:base, "You can't join this project as it's finished.")
+      return false
+    end
 
     if self.users.empty?
       self.advance!
@@ -106,6 +120,15 @@ class Project < ActiveRecord::Base
   end
 
   def leave! user
+    if !users.include?(user)
+      errors.add(:base, "You are not member of this project.")
+      return false
+    end
+
+    if aasm_state == 'invention'
+      errors.add(:base, "You can't leave this project as it's finished.")
+      return false
+    end
     self.users.delete(user)
 
     # If the last user has left...

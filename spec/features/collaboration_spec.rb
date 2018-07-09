@@ -1,21 +1,19 @@
 require 'rails_helper'
 
 feature 'Collaboration' do
-  scenario 'User joins a project' do
+  scenario 'User joins a project', :js do
     user = create(:user)
     project = create(:idea)
     sign_in user
 
     visit project_path(nil, project)
 
-    expect {
-      click_link 'Join this project'
-    }.to change(Project.populated, :count).by(1)
+    click_link 'Join this project'
     expect(page).to have_css("#user#{user.id}-gravatar")
-    expect(page).to have_text("Welcome to the project #{user.name}!")
+    expect(page).to have_text("Welcome to the project #{user.name}.")
   end
 
-  scenario 'User leaves a project' do
+  scenario 'User leaves a project', :js do
     user = create(:user)
     project = create(:project, users: [user])
     sign_in user
@@ -24,6 +22,7 @@ feature 'Collaboration' do
     click_link 'Leave this project'
 
     expect(page).not_to have_css("#user#{user.id}-gravatar")
+    expect(page).to have_text("Sorry to see you go #{user.name}.")
   end
 
   scenario 'User likes a project' do

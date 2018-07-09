@@ -6,7 +6,6 @@ class ProjectsController < ApplicationController
   skip_before_filter :authenticate_user!, only: [ :index, :show, :archived, :finished, :newest, :popular, :biggest, :random ]
   skip_before_filter :store_location, only: [:join, :leave, :like, :dislike, :add_keyword, :delete_keyword ]
   skip_before_action :verify_authenticity_token, only: [:add_keyword, :delete_keyword ]
-  skip_load_and_authorize_resource only: :old_archived
   before_action :load_episode
   before_action :username_array, only: [:new, :edit, :show]
   autocomplete :project, :title
@@ -54,17 +53,6 @@ class ProjectsController < ApplicationController
     @previous_project = @project.previous(@episode)
     @next_project = @project.next(@episode)
     @new_comment = Comment.new
-  end
-
-  # GET /archive/projects/:id
-  def old_archived
-    begin
-      @project = Project.find_by!(title: params[:id])
-      redirect_to @project
-    rescue ActiveRecord::RecordNotFound
-      flash[:notice] = "Can't find project with title #{params[:id]}"
-      redirect_to action: :archived
-    end
   end
 
   # GET /projects/new
@@ -117,29 +105,26 @@ class ProjectsController < ApplicationController
 
   # PUT /projects/1/join
   def join
-    # FIXME: This is a validation
-    if @project.aasm_state == 'invention'
-      redirect_to project, error: "You can't join this project as it's finished."
+    respond_to do |format|
+      if @project.join!(current_user)
+        format.js { flash['success'] = "Welcome to the project #{current_user.name}." }
+      else
+        format.js { flash['error'] = "#{@project.errors.full_messages.to_sentence}" }
+      end
     end
-
-    if @project.join! current_user
-      message = "Welcome to the project #{current_user.name}!"
-    else
-      message = 'You already joined this project'
-    end
-
-    redirect_to project_path(@episode, @project), notice: message
+    flash.discard
   end
 
   # PUT /projects/1/leave
   def leave
-    # FIXME: This is a validation
-    if @project.aasm_state == 'invention'
-      redirect_to @project, error: "You can't leave this project as it's finished."
+    respond_to do |format|
+      if @project.leave!(current_user)
+        format.js { flash['success'] = "Sorry to see you go #{current_user.name}." }
+      else
+        format.js { flash['error'] = "#{@project.errors.full_messages.to_sentence}" }
+      end
     end
-
-    @project.leave! current_user
-    redirect_to project_path(@episode, @project), notice: "Goodbye #{current_user.name}..."
+    flash.discard
   end
 
   # PUT /projects/1/like

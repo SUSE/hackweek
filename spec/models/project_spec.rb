@@ -133,4 +133,25 @@ describe Project do
       expect(project.similar_projects).to include(project2)
     end
   end
+
+  describe '.joined' do
+    let(:project) { create(:project) }
+    let(:user) { create(:user) }
+    let(:user2) { create(:user) }
+
+    it 'returns true if user is there' do
+      project.users = [user]
+      expect(project.joined(user)).to eq(true)
+    end
+
+    it 'returns false if user the project has no users' do
+      project.users = []
+      expect(project.joined(user)).to eq(false)
+    end
+
+    it 'returns false if user is not there' do
+      project.users = [user2]
+      expect(project.joined(user)).to eq(false)
+    end
+  end
 end
