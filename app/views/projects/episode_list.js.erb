@@ -1,0 +1,4 @@
+$('input[name="authenticity_token"]').val('<%= form_authenticity_token %>');
+$('meta[name="csrf-token"]').attr('content','<%= form_authenticity_token %>');
+$('#flash').html("<%= escape_javascript render partial: "layouts/alert", flash: flash %>");
+$('#episode_list').html("<%= escape_javascript render partial: 'episode_list' %>");

@@ -169,17 +169,16 @@ class ProjectsController < ApplicationController
 
   # PUT /projects/1/add_hackweek/1
   def add_episode
-    unless @project.episodes.include? @episode
-      @project.episodes << @episode
-    end
-
-    redirect_to project_path(@episode, @project), notice: "Added hackweek #{@episode.name}"
+    @project.episodes = @project.episodes | [@episode]
+    flash.now['success'] = "Added hackweek #{@episode.name}"
+    render 'episode_list'
   end
 
   # DELETE /projects/1/delete_hackweek/2
   def delete_episode
     @project.episodes.delete(@episode)
-    redirect_to project_path(nil, @project), notice: "Removed hackweek #{@episode.name}"
+    flash.now['success'] = "Removed hackweek #{@episode.name}"
+    render 'episode_list'
   end
 
   # GET /projects/random

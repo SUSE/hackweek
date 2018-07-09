@@ -33,8 +33,8 @@ Hackweek::Application.routes.draw do
         match 'leave', via: :post
         post 'advance'
         post 'recess'
-        post 'episode', to: "projects#add_episode"
-        delete 'episode', to: "projects#delete_episode"
+        post 'episode', to: "projects#add_episode", defaults: { format: 'js' }
+        delete 'episode', to: "projects#delete_episode", defaults: { format: 'js' }
         post 'keyword', to: "projects#add_keyword"
         delete 'keyword', to: "projects#delete_keyword", constraints: { keyword: /[^\/]+/ }
       end
