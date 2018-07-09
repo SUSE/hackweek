@@ -80,13 +80,17 @@ Hackweek::Application.configure do
 
   # Use lograge to show the logs in one line
   config.lograge.enabled = true
+  config.lograge.custom_payload do |controller|
+    {
+      user: controller.current_user.try(:name)
+    }
+  end
   config.lograge.custom_options = lambda do |event|
     exceptions = ['controller', 'action', 'format', 'id']
     {
       params: event.payload[:params].except(*exceptions),
-      host:   event.payload[:headers].env['REMOTE_ADDR'],
       time:   event.time,
-      user:   User.current.try(:login)
+      user: event.payload[:user]
     }
   end
 end
