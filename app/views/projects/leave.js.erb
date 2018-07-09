@@ -3,3 +3,4 @@ $('meta[name="csrf-token"]').attr('content','<%= form_authenticity_token %>');
 $('#flash').html("<%= escape_javascript render partial: "layouts/alert", flash: flash %>");
 $('#hackers').html("<%= escape_javascript render partial: 'hackers' %>");
 $('#membership_buttons').html("<%= escape_javascript render partial: 'membership_buttons' %>");
+preventDoubleClick();
