@@ -171,13 +171,8 @@ describe ProjectsController do
 
     it 'ads an user to the project' do
       expect {
-          post :join, id:project.id
+          post :join, id:project.id, format: 'js'
       }.to change(project.users, :count).by(1)
-    end
-
-    it 'redirects to the project' do
-      post :join, id:project.id
-      expect(response).to redirect_to(project)
     end
 
     context 'when the user already joined' do
@@ -187,7 +182,7 @@ describe ProjectsController do
 
       it 'does not add the user again' do
         expect {
-            post :join, id:project.id
+            post :join, id:project.id, format: 'js'
         }.not_to change(project.users, :count)
       end
     end
@@ -196,16 +191,10 @@ describe ProjectsController do
   describe 'GET leave_project' do
     it 'deletes an user from the project' do
       project = create(:idea)
-      post :join, id:project.id
+      project.join!(admin)
       expect {
-          post :leave, id:project.id
+          post :leave, id:project.id, format: 'js'
       }.to change(project.users, :count).by(-1)
-    end
-
-    it 'redirects to the project' do
-      project = create(:project)
-      post :leave, id:project.id
-      expect(response).to redirect_to(project)
     end
   end
 

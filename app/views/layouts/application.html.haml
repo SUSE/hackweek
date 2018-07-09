@@ -22,7 +22,8 @@
       %div#loader
       #content
         - if flash
-          = render partial: "layouts/alert", flash: flash
+          #flash
+            = render partial: "layouts/alert", flash: flash
         - if @news
           = render partial: "layouts/news"
         = yield

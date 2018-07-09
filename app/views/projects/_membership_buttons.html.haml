@@ -1,0 +1,8 @@
+- joined = @project.joined(current_user) ? 'hidden': ''
+= link_to(join_project_path(@episode, @project), :method => :post, :class => "btn btn-success #{joined}", remote: true) do
+  %i.fa.fa-plus
+  Join this project
+- joined = @project.joined(current_user) ? '': 'hidden'
+= link_to(leave_project_path(@episode, @project), :method => :post, :class => "btn btn-warning #{joined}", remote: true) do
+  %i.fa.fa-minus
+  Leave this project
