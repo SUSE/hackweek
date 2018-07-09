@@ -1,0 +1,56 @@
+- if @users.length > 0
+  .row{:style=> "padding-bottom: 10px;"}
+    .col-sm-6
+      #table_search
+    .col-sm-6
+      %ul.nav.nav-pills.pull-right
+        %li.active#all-pill
+          %a{:href =>"#", :id=>"all", :title=> "All Users"}
+            All
+        %li#free-pill
+          %a{:href =>"#", :id=>"free", :title => "Users not working on a project"}
+            Idle
+        %li#busy-pill
+          %a{:href =>"#", :id=>"busy", :title => "Users working on a project"}
+            Active
+  .row
+    .col-sm-12
+      %table.table#users_table
+        - @users.each do |user|
+          %tr
+            - user_class = "busy"
+            - if user.projects.empty?
+              - user_class = "free"
+            %td{:class => user_class }
+              = link_to user_path(user) do
+                = image_tag(user.gravatar_url(:size => "24"), :class => "img-thumbnail", :title => "#{user.name}", :alt => user.name)
+                = user.name
+- else
+  %h3
+    No users yet.
+
+:javascript
+  $( "#free" ).click(function() {
+    $( ".free" ).show();
+    $( ".busy" ).hide();
+    $( "#free-pill").addClass( "active" );
+    $( "#all-pill, #busy-pill").removeClass( "active" );
+  });
+
+  $( "#busy" ).click(function() {
+    $( ".free" ).hide();
+    $( ".busy" ).show();
+    $( "#busy-pill").addClass( "active" );
+    $( "#all-pill, #free-pill").removeClass( "active" );
+  });
+
+  $( "#all" ).click(function() {
+    console.log ("show everything");
+    $( ".free" ).show();
+    $( ".busy" ).show();
+    $( "#all-pill").addClass( "active" );
+    $( "#busy-pill, #free-pill").removeClass( "active" );
+  });
+
+  $("table").addTableFilter({
+  });

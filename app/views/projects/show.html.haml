@@ -9,7 +9,7 @@
     - if @next_project
       = button_to 'Next', project_path(@episode, @next_project), :id => "next_link", :method => :get, :class => "btn btn-default btn-xs pull-right", :title => "Try pressing 'k' on your keyboard.."
 .row
-  .col-md-9
+  .col-md-12
     .page-header.media
       .pull-left
         .img-wrapper
@@ -22,12 +22,9 @@
             = link_to user_path(@project.originator) do
               = @project.originator.name
             = render :partial => "projects/like_button", :locals => {:project =>  @project }
-        %span.help-block
-          %small
+        %span
+          #project_info.small
             = render :partial => "projects/info", :locals => {:project => @project }
-  .col-md-3
-    - if current_user
-      = render partial: 'projects/project_watch', locals: {project: @project, episode: @episode}
 
 .row
   .col-sm-8.project-style

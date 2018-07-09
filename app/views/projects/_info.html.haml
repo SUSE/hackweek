@@ -1,11 +1,15 @@
-Last updated
+Updated
 = "#{time_ago_in_words project.updated_at}"
 ago.
 - if project.kudos.length > 0
-  Captured
-  = pluralize(project.kudos.length, "hackers heart.", "hacker hearts.")
+  = pluralize(project.kudos.length, "hackers ♥️.", "hacker ♥️.")
 -else 
   No love.
+
+- if project.project_followers.any?
+  = link_to(project_followers_path(project)) do
+    = pluralize(project.project_followers.count, 'follower.', 'followers.')
+
 - if project.users.empty?
-  No hacker. How about you
-  = link_to 'grab it!', join_project_path(project.id), :method => :post
+  Has no hacker:
+  = link_to 'grab it!', join_project_path(project.id), method: :post, remote: true

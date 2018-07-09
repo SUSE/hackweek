@@ -1,4 +1,11 @@
 .btn-group
+  - if current_user
+    - hidden = current_user.project_followings.include?(@project) ? '' : 'hidden'
+    = link_to(project_followers_path(@project), method: :delete, class: "btn btn-default #{hidden}", title: 'Unfollow this project?', id: "unfollow-#{@project.id}", remote: true) do
+      %i.fa.fa-eye-slash
+    - hidden = current_user.project_followings.include?(@project) ? 'hidden' : ''
+    = link_to(project_followers_path(@project), method: :post, class: "btn btn-default #{hidden}", title: 'Follow this project?', id: "follow-#{@project.id}", remote: true) do
+      %i.fa.fa-eye
   - if can? :edit, @project
     = link_to(edit_project_path(@episode, @project), title: 'Edit this project?', class: "btn btn-default", id: "project#{@project.to_param}-edit-link") do
       %i.fa.fa-pencil

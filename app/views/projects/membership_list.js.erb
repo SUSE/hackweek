@@ -7,3 +7,4 @@ $('#file_buttons').html("<%= escape_javascript render partial: 'file_buttons' %>
 $('#episode_list').html("<%= escape_javascript render partial: 'episode_list' %>");
 $('#episode_buttons').html("<%= escape_javascript render partial: 'episode_buttons' %>");
 $('#activity').html("<%= escape_javascript render partial: 'activity' %>");
+$('#project_info').html("<%= escape_javascript render partial: 'info', locals: {:project => @project } %>");
