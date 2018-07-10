@@ -9,7 +9,7 @@
     - if @next_project
       = button_to 'Next', project_path(@episode, @next_project), :id => "next_link", :method => :get, :class => "btn btn-default btn-xs pull-right", :title => "Try pressing 'k' on your keyboard.."
 .row
-  .col-md-9
+  .col-md-12
     .page-header.media
       .pull-left
         .img-wrapper
@@ -22,12 +22,9 @@
             = link_to user_path(@project.originator) do
               = @project.originator.name
             = render :partial => "projects/like_button", :locals => {:project =>  @project }
-        %span.help-block
-          %small
+        %span
+          #project_info.small
             = render :partial => "projects/info", :locals => {:project => @project }
-  .col-md-3
-    - if current_user
-      = render partial: 'projects/project_watch', locals: {project: @project, episode: @episode}
 
 .row
   .col-sm-8.project-style
@@ -37,13 +34,12 @@
     .row
       .col-sm-12
         .text-right
-          = render :partial => "projects/file_buttons", :locals => {:project =>  @project }
-    .row
+          #file_buttons
+            = render :partial => "file_buttons"
       .col-sm-12
         %h4
           - if @project.users.empty?
-            No
-          Hackers:
+            No Hackers:
         .well.well-sm#hackers
           = render partial: 'hackers'
         - unless @project.aasm_state == "invention"
@@ -65,34 +61,17 @@
       .col-sm-12
         %h4
           This project is part of:
-        %p
-          - unless @project.episodes.any?
-            No hackweek. How about you add one...
-          - @project.episodes.each do |episode|
-            %span.label.label-primary{style: 'display: inline-block'}
-              = truncate(episode.name, length: 50)
-              = link_to(episode_project_path(:episode_id => episode.id), method: :delete) do
-                %i.fa.fa-times{:style=>"color: #fff"}
-        .btn-group.pull-right
-          %button.btn.btn-success.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
-            %i.fa.fa-plus
-            Add Hackweek
-            %span.caret
-          %ul.dropdown-menu{:role => "menu"}
-            - Episode.all.reverse.each do |episode|
-              %li{:role => "presentation"}
-                = link_to(truncate(episode.name, length: 50), episode_project_path(:episode_id => episode.id), method: :post)
+        %p#episode_list
+          = render partial: 'episode_list'
+        #episode_buttons
+          = render partial: 'episode_buttons'
         .clearfix
     .row
       .col-sm-12
         %h4
           Activity
-          %span.pull-right
-            = render :partial => "updates/show_all_modal", :locals => { :updates => @project.updates }
-        %ul
-        - @project.updates.reverse.first(5).each do |update|
-          %li
-            = render :partial => "updates/show", :locals => { :update => update }
+        #activity
+          = render partial: 'activity'
 %br
 .row
   .col-sm-8#comments_section

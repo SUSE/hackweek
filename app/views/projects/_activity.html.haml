@@ -1,0 +1,7 @@
+%p
+  %ul
+  - @project.updates.reverse.first(5).each do |update|
+    %li
+      = render :partial => "updates/show", :locals => { :update => update }
+%span.pull-right
+  = render :partial => "updates/show_all_modal", :locals => { :updates => @project.updates }

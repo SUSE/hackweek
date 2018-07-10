@@ -1,25 +1,19 @@
 class Projects::ProjectFollowsController < ApplicationController
-  before_action :get_project
-  before_action :get_episode
+  load_and_authorize_resource :project, find_by: :url
+
+  def index
+    @users = @project.project_followers
+  end
 
   def create
-    return redirect_to project_path(@episode, @project) if current_user.project_followings.include?(@project)
-    current_user.project_followings << @project
-    redirect_to project_path(@episode, @project), notice: "You are now watching #{@project.title}"
+    current_user.project_followings= current_user.project_followings | [@project]
+    flash.now[:notice] = "You are now watching #{@project.title}"
+    render 'follow_toggle'
   end
 
   def destroy
     current_user.project_followings.delete @project
-    redirect_to project_path(@episode, @project), notice: "You have stopped watching #{@project.title}"
-  end
-
-  private
-  
-  def get_project
-    @project = Project.find(params[:project_id])
-  end
-
-  def get_episode
-    @episode = Episode.find(params[:episode_id]) if params[:episode_id]
+    flash.now[:notice] =  "You have stopped watching #{@project.title}"
+    render 'follow_toggle'
   end
 end

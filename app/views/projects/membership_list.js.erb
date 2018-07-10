@@ -1,0 +1,10 @@
+$('input[name="authenticity_token"]').val('<%= form_authenticity_token %>');
+$('meta[name="csrf-token"]').attr('content','<%= form_authenticity_token %>');
+$('#flash').html("<%= escape_javascript render partial: "layouts/alert", flash: flash %>");
+$('#hackers').html("<%= escape_javascript render partial: 'hackers' %>");
+$('#membership_buttons').html("<%= escape_javascript render partial: 'membership_buttons' %>");
+$('#file_buttons').html("<%= escape_javascript render partial: 'file_buttons' %>");
+$('#episode_list').html("<%= escape_javascript render partial: 'episode_list' %>");
+$('#episode_buttons').html("<%= escape_javascript render partial: 'episode_buttons' %>");
+$('#activity').html("<%= escape_javascript render partial: 'activity' %>");
+$('#project_info').html("<%= escape_javascript render partial: 'info', locals: {:project => @project } %>");

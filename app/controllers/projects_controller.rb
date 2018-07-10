@@ -105,26 +105,22 @@ class ProjectsController < ApplicationController
 
   # PUT /projects/1/join
   def join
-    respond_to do |format|
-      if @project.join!(current_user)
-        format.js { flash['success'] = "Welcome to the project #{current_user.name}." }
-      else
-        format.js { flash['error'] = "#{@project.errors.full_messages.to_sentence}" }
-      end
+    if @project.join!(current_user)
+      flash.now['success'] = "Welcome to the project #{current_user.name}."
+    else
+      flash.now['error'] = "#{@project.errors.full_messages.to_sentence}"
     end
-    flash.discard
+    render 'membership_list'
   end
 
   # PUT /projects/1/leave
   def leave
-    respond_to do |format|
-      if @project.leave!(current_user)
-        format.js { flash['success'] = "Sorry to see you go #{current_user.name}." }
-      else
-        format.js { flash['error'] = "#{@project.errors.full_messages.to_sentence}" }
-      end
+    if @project.leave!(current_user)
+      flash.now['success'] = "Sorry to see you go #{current_user.name}."
+    else
+      flash.now['error'] = "#{@project.errors.full_messages.to_sentence}"
     end
-    flash.discard
+    render 'membership_list'
   end
 
   # PUT /projects/1/like
@@ -169,17 +165,16 @@ class ProjectsController < ApplicationController
 
   # PUT /projects/1/add_hackweek/1
   def add_episode
-    unless @project.episodes.include? @episode
-      @project.episodes << @episode
-    end
-
-    redirect_to project_path(@episode, @project), notice: "Added hackweek #{@episode.name}"
+    @project.episodes = @project.episodes | [@episode]
+    flash.now['success'] = "Added hackweek #{@episode.name}"
+    render 'episode_list'
   end
 
   # DELETE /projects/1/delete_hackweek/2
   def delete_episode
     @project.episodes.delete(@episode)
-    redirect_to project_path(nil, @project), notice: "Removed hackweek #{@episode.name}"
+    flash.now['success'] = "Removed hackweek #{@episode.name}"
+    render 'episode_list'
   end
 
   # GET /projects/random

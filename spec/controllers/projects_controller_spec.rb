@@ -262,16 +262,10 @@ describe ProjectsController do
     it 'ads an episode to the project' do
       project = create(:idea)
       episode = create(:episode)
-      expect {
-          post :add_episode, id:project.id, episode_id: episode.id
-      }.to change(project.episodes, :count).by(1)
-    end
 
-    it 'redirects to the project' do
-      project = create(:idea)
-      episode = create(:episode)
-      post :add_episode, id:project.id, episode_id: episode.id
-      expect(response).to redirect_to(project_url(episode, project))
+      expect {
+          post :add_episode, id:project.id, episode_id: episode.id, format: :js
+      }.to change(project.episodes, :count).by(1)
     end
   end
 
@@ -279,18 +273,11 @@ describe ProjectsController do
     it 'deletes an episode from the project' do
       project = create(:idea)
       episode = create(:episode)
-      post :add_episode, id:project.id, episode_id: episode.id
-      expect {
-          post :delete_episode, id:project.id, episode_id: episode.id
-      }.to change(project.episodes, :count).by(-1)
-    end
+      project.episodes = [episode]
 
-    it 'redirects to the project' do
-      project = create(:idea)
-      episode = create(:episode)
-      post :add_episode, id:project.id, episode_id: episode.id
-      post :delete_episode, id:project.id, episode_id: episode.id
-      expect(response).to redirect_to(project)
+      expect {
+          post :delete_episode, id:project.id, episode_id: episode.id, format: :js
+      }.to change(project.episodes, :count).by(-1)
     end
   end
 
@@ -337,8 +324,8 @@ describe ProjectsController do
 
       it 'is updated when the project is added to an episode' do
         project = create :project, created_at: 1.year.ago
+        project.episodes = [episode]
 
-        post :add_episode, id: project.id, episode_id: episode.id
         get :index, episode_id: episode.id, format: :rss
 
         xml = Nokogiri::XML(response.body)

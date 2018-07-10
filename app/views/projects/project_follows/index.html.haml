@@ -1,0 +1,7 @@
+- content_for :title do
+  = @project.title
+  Followers
+
+.row
+  .col-sm-12
+    = render partial: 'users/list'

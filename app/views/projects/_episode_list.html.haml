@@ -1,0 +1,10 @@
+- unless @project.episodes.any?
+  No hackweek.
+  - if can? :delete_episode, @project
+    How about you add one...
+- @project.episodes.each do |episode|
+  %span.label.label-primary{style: 'display: inline-block'}
+    = truncate(episode.name, length: 50)
+    - if can? :delete_episode, @project
+      = link_to(episode_project_path(:episode_id => episode.id), method: :delete, remote: true) do
+        %i.fa.fa-times{:style=>"color: #fff"}

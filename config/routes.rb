@@ -29,19 +29,20 @@ Hackweek::Application.routes.draw do
       member do
         get 'like'
         get 'dislike'
-        match 'join', via: :post
-        match 'leave', via: :post
+        match 'join', via: :post, defaults: { format: 'js' }
+        match 'leave', via: :post, defaults: { format: 'js' }
         post 'advance'
         post 'recess'
-        post 'episode', to: "projects#add_episode"
-        delete 'episode', to: "projects#delete_episode"
+        post 'episode', to: "projects#add_episode", defaults: { format: 'js' }
+        delete 'episode', to: "projects#delete_episode", defaults: { format: 'js' }
         post 'keyword', to: "projects#add_keyword"
         delete 'keyword', to: "projects#delete_keyword", constraints: { keyword: /[^\/]+/ }
       end
-      resource :project_follows, only: [] do
-        member do
-          post '/create', to: 'projects/project_follows#create'
-          delete '/destroy', to: 'projects/project_follows#destroy'
+      resources :followers, only: [] do
+        collection do
+          get '/', to: 'projects/project_follows#index'
+          post '/', to: 'projects/project_follows#create'
+          delete '/', to: 'projects/project_follows#destroy'
         end
       end
       resources :comments
