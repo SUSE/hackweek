@@ -18,7 +18,6 @@ gem 'rails-jquery-autocomplete'
 
 # Misc tools for fancy development
 group :development, :test do
-  gem 'rack-mini-profiler'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'hirb'
