@@ -1,4 +1,4 @@
-Hackweek::Application.routes.draw do
+Rails.application.routes.draw do
 
   get 'markdown/preview'
 
