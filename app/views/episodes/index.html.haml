@@ -9,6 +9,7 @@
           %table.table#episodes_table
             %thead
               %th Name
+              %th Number
               %th Date
               %th
             - @episodes.each do |episode|
@@ -19,6 +20,8 @@
                   - if episode.active
                     %span.label.label-success
                       Active
+                %td
+                  = episode.id
                 %td
                   = "#{episode.start_date} - #{episode.end_date}"
                 %td
