@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'ruby-progressbar', '1.8.1'
 
 # as framework
-gem 'rails', '~> 4.2'
+gem 'rails', '~> 5.2'
 
 # To speedup app startup
 gem 'spring', group: [:development, :test]
