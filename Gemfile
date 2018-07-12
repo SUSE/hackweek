@@ -41,7 +41,7 @@ gem 'uglifier', '>= 1.3.0'
 # as JavaScript library
 gem 'jquery-rails'
 gem 'jquery-hotkeys-rails'
-gem 'jquery-cookie-rails'
+gem 'js_cookie_rails'
 gem 'jquery-atwho-rails'
 # as templating language
 gem 'haml-rails'
