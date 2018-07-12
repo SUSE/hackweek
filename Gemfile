@@ -32,8 +32,6 @@ end
 gem 'mysql2', '0.4.10'
 # for stylesheets
 gem 'sass-rails',   '~> 5.0'
-# for .js.coffee assets
-gem 'coffee-rails', '~> 4.1.0'
 # as the front-end framework
 gem 'bootstrap-sass'
 # as vector icons

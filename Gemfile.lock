@@ -66,13 +66,6 @@ GEM
     climate_control (0.2.0)
     cliver (0.3.2)
     coderay (1.1.2)
-    coffee-rails (4.1.1)
-      coffee-script (>= 2.2.0)
-      railties (>= 4.0.0, < 5.1.x)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     coveralls (0.8.22)
       json (>= 1.8, < 3)
@@ -360,7 +353,6 @@ DEPENDENCIES
   bootstrap-sass
   cancancan
   capybara
-  coffee-rails (~> 4.1.0)
   coveralls
   database_cleaner
   devise
