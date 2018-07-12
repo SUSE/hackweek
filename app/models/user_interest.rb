@@ -1,4 +1,4 @@
-class UserInterest < ActiveRecord::Base
+class UserInterest < ApplicationRecord
   belongs_to :user
   belongs_to :keyword
 end

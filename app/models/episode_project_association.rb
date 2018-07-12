@@ -1,4 +1,4 @@
-class EpisodeProjectAssociation < ActiveRecord::Base
+class EpisodeProjectAssociation < ApplicationRecord
   self.table_name = 'episodes_projects'
 
   belongs_to :episode

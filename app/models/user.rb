@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   devise :ichain_authenticatable, :ichain_registerable
 
   validates :name, presence: true

@@ -1,4 +1,4 @@
-class Announcement < ActiveRecord::Base
+class Announcement < ApplicationRecord
   validates :title, presence: true
   validates :text, presence: true
   validates :originator_id, presence: true

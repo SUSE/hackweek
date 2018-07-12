@@ -1,4 +1,4 @@
-class Keyword < ActiveRecord::Base
+class Keyword < ApplicationRecord
   scope :find_keyword, lambda {
     |str| where('lower(name) like ?', "#{str.downcase}%")
   }
