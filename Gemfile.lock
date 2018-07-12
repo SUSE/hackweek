@@ -297,7 +297,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    selectize-rails (0.12.4.1)
+    selectize-rails (0.12.5)
     sexp_processor (4.10.1)
     simplecov (0.16.1)
       docile (~> 1.1)
