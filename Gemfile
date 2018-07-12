@@ -78,8 +78,6 @@ gem 'rspec-rails', :group => [:development, :test]
 gem 'capybara', :group => [:development, :test]
 # for file attachments
 gem 'paperclip', '~> 5.2'
-# as interactive debugger in error pages
-gem 'web-console', '~> 2.0', group: :development
 # as deployer
 gem 'mina', '~> 0.3'
 # as the app server
