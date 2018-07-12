@@ -18,10 +18,11 @@ gem 'rails-jquery-autocomplete'
 
 # Misc tools for fancy development
 group :development, :test do
-  gem 'pry-byebug'
+  # as our rails console
   gem 'pry-rails'
+  gem 'pry-byebug'
+  # to improve inspect output
   gem 'hirb'
-  gem 'foreman', require: false
 end
 
 # as databases

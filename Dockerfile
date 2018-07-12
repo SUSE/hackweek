@@ -41,6 +41,9 @@ RUN chown -R frontend /hackweek
 WORKDIR /hackweek
 USER frontend
 
+# Install gems we use outside of the bundle
+RUN sudo gem install foreman
+
 # Refresh our bundle
 RUN export NOKOGIRI_USE_SYSTEM_LIBRARIES=1; bundle install --jobs=3 --retry=3 || bundle install --jobs=3 --retry=3
 
