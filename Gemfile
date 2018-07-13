@@ -9,6 +9,7 @@ gem 'rails', '~> 5.2'
 # To speedup app startup
 gem 'spring', group: [:development, :test]
 gem 'spring-commands-rspec', group: [:development, :test]
+gem 'spring-watcher-listen', '~> 2.0.0', group: [:development, :test]
 
 # gem package to include jQuery UI assets for the Rails asset pipeline
 gem 'jquery-ui-rails'
@@ -81,6 +82,9 @@ gem 'mina', '~> 0.3'
 gem 'puma', '~> 3.11'
 # as the log formater
 gem 'lograge'
+# for speeding up application boot
+gem 'bootsnap', '>= 1.1.0', require: false
+gem 'listen', '>= 3.0.5', '< 3.2', :group => [:development, :test]
 
 group :test do
   # for cleaning the test DB
