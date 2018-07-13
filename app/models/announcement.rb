@@ -3,7 +3,7 @@ class Announcement < ApplicationRecord
   validates :text, presence: true
   validates :originator_id, presence: true
 
-  belongs_to :originator, class_name: User
+  belongs_to :originator, class_name: 'User'
   has_many :users, through: :enrollments
   has_many :enrollments
 

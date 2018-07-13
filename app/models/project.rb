@@ -9,7 +9,7 @@ class Project < ApplicationRecord
   validates :description, presence: true
   validates :originator_id, presence: true
 
-  belongs_to :originator, class_name: User
+  belongs_to :originator, class_name: 'User'
 
   has_many :users, through: :memberships
   has_many :kudos, through: :likes, source: :user
