@@ -10,3 +10,4 @@ HACKWEEK_DEVISE_SECRET_KEY: '12345'
 # Errbit (https://github.com/errbit/errbit) configuration
 # HACKWEEK_ERRBIT_API_KEY: '12345' 
 # HACKWEEK_ERRBIT_HOST: errbit.example.com
+# HACKWEEK_ERRBIT_PROJECT_ID: '56kskscb02dc71fa0932000007'

@@ -57,7 +57,8 @@ gem 'selectize-rails'
 # as state machine
 gem 'aasm'
 # as exception notifier
-gem 'hoptoad_notifier', '~> 2.3'
+gem 'airbrake'
+gem 'airbrake-ruby'
 # to set env variables
 gem 'figaro'
 # for keyboard shortcuts
