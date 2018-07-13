@@ -1,0 +1,16 @@
+.preview-contents {
+  background: #FFFFFF;
+  margin-top: -1px;
+  padding: 10px 16px;
+  min-height: 81px;
+  line-height: 24px;
+  border: 1px solid #DDDDDD;
+  border-top: 0;
+  box-shadow: rgba(0, 0, 0, 0.075) 0 1px 1px 0 inset;
+  border-radius: 0 0 6px 6px;
+
+  p {
+    font-size: 18px;
+    color: #555555;
+  }
+}
