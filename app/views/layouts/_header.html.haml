@@ -55,7 +55,7 @@
                 = link_to(destroy_user_ichain_session_path, :method => :delete, :id => "logout-link") do
                   %i.fa.fa-power-off
                   Log out
-              - if current_user.role? :organizer
+              - if current_user.role?(:organizer) || current_user.role?(:admin)
                 = render partial: 'layouts/admin_menu'
         %ul.nav.navbar-nav.navbar-right.visible-xs
           %li{role: "presentation", class: "divider"}
