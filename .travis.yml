@@ -1,18 +1,18 @@
 language: ruby
-rvm:
-  - 2.5.0
 services:
-  - mysql
+  - docker
 notifications:
   email:
     on_success: change
     on_failure: change
-before_install:
-  - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
-  - 'wget -nv http://sphinxsearch.com/files/dicts/en.pak'
-  - 'sudo apt-get -qq update'
-  - 'sudo apt-get install sphinxsearch'
+branches:
+  except:
+    # starting with depfu/
+    - /^depfu\/.*/
+install:
+  - true
 before_script:
-  - RAILS_ENV=test bundle exec rake dev:bootstrap --trace
+  - 'cat docker-compose.override.yml.example |sed "s/CONTAINER_USERID: 13042/CONTAINER_USERID: $(id -u)/" > docker-compose.override.yml'
+  - 'docker-compose run --rm hackweek bundle exec rake dev:bootstrap'
 script:
-  - 'bundle exec rspec --color --format documentation'
+  - 'docker-compose run --rm hackweek bundle exec rspec'
