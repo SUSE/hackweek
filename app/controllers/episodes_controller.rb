@@ -1,7 +1,7 @@
 class EpisodesController < ApplicationController
   load_and_authorize_resource
   before_action :set_episode, only: [:show, :edit, :update, :destroy]
-  skip_before_filter :authenticate_user!, :only => [ :index, :show]
+  skip_before_action :authenticate_user!, :only => [ :index, :show]
 
   # GET /episodes
   def index

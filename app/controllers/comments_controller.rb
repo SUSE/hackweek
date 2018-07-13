@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   include MarkdownHelper
-  before_filter :get_parent, except: :reply_modal
-  skip_before_filter :verify_authenticity_token, only: [:reply_modal]
+  before_action :get_parent, except: :reply_modal
+  skip_before_action :verify_authenticity_token, only: [:reply_modal]
 
   def new
     @comment = @parent.comments.build

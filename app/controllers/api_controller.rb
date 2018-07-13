@@ -1,6 +1,6 @@
 class ApiController < ApplicationController
 
-  skip_before_filter :authenticate_user! 
+  skip_before_action :authenticate_user!
   
   def import
     json = request.body.read

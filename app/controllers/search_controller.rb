@@ -1,5 +1,5 @@
 class SearchController < ApplicationController
-  skip_before_filter :authenticate_user!, :only => [ :result ]
+  skip_before_action :authenticate_user!, :only => [ :result ]
   def result
     # First search in morphology mode, if fails — retry in wildcard mode
     if @episode.to_param == 'all'
