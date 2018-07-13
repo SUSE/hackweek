@@ -7,9 +7,11 @@
       %ul
         - @episode.errors.full_messages.each do |msg|
           %li= msg
-  .form-group
-    = f.label :name
-    = f.text_field :name, :placeholder => "Name", :required => "required", :class => "form-control input-lg"
+  .row
+    .col-sm-12
+      .form-group
+        = f.label :name
+        = f.text_field :name, :placeholder => "Name", :required => "required", :class => "form-control input-lg"
   .row
     .col-sm-6
       .form-group
@@ -19,5 +21,10 @@
       .form-group
         = f.label :end_date
         = f.date_field :end_date, :placeholder => "yyyy-mm-dd", :required => "required", :class => "form-control input-lg", type: "date"
-  .actions
-    = f.submit :class => "btn btn-success pull-right"
+  .row
+    .col-md-12
+      .form-group
+        = f.label :description
+        = f.text_area :description, :placeholder => "Description. You can use markdown.", :class => "form-control input-lg"
+      .actions
+        = f.submit :class => "btn btn-success pull-right"

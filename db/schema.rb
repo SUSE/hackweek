@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180619192048) do
+ActiveRecord::Schema.define(version: 20180712105306) do
 
   create_table "announcements", force: :cascade do |t|
     t.string   "title",         limit: 255
@@ -38,12 +38,13 @@ ActiveRecord::Schema.define(version: 20180619192048) do
   end
 
   create_table "episodes", force: :cascade do |t|
-    t.string   "name",       limit: 255
+    t.string   "name",        limit: 255
     t.date     "start_date"
     t.date     "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "active",                 default: false
+    t.boolean  "active",                    default: false
+    t.text     "description", limit: 65535
   end
 
   create_table "episodes_projects", force: :cascade do |t|

@@ -1,9 +1,5 @@
 .row
   .col-md-12
-    %div
-      = image_tag 'hackweek-logo-light.png', class: 'img-responsive img-center', alt: 'SUSE Hack Week Logo'
-.row
-  .col-md-12
     .page-header
       - if @episode
         %h1
@@ -15,21 +11,25 @@
           = image_tag 'hackweek-label.png', class: 'img-responsive', alt: 'Hack Week'
 .row
   .col-md-7
-    %p.lead
-      Hack Week is the time SUSE engineers experiment, innovate &amp; learn interruption-free
-      for a whole week! Across teams or alone, but always without limits.
-    %p.lead
-      A SUSE tradition since 2007, Hack Week has brought together hundreds of hackers around
-      the globe to collaborate on open source. Learn more
-      = link_to about_path do
-        about Hack Week.
-    %p.lead
-      What are you going to hack on?
-      = image_tag 'monsterhacks_monsters_only.png', class: 'center-block', alt: 'Hack Week 17'
+    - if @episode.try(:description)
+      :markdown
+        #{ @episode.description }
+    - else
+      %p.lead
+        Hack Week is the time SUSE engineers experiment, innovate &amp; learn interruption-free
+        for a whole week! Across teams or alone, but always without limits.
+      %p.lead
+        A SUSE tradition since 2007, Hack Week has brought together hundreds of hackers around
+        the globe to collaborate on open source. Learn more
+        = link_to about_path do
+          about Hack Week.
+      %p.lead
+        What are you going to hack on?
   .col-md-5
     %div
-      .h3 Welcome Video from Ralf Flaxa
-      .p  President of Engineering at SUSE
+      .h3
+        Welcome from Ralf Flaxa
+        %small President of Engineering at SUSE
       .embed-responsive.embed-responsive-16by9#intro
         %video{width: 320, height: 240, controls: true}
           %source{src: "#{video_path('Hackweek_Welcome_by_Ralf.mp4')}", type: 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"'}
