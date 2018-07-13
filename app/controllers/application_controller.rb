@@ -17,6 +17,13 @@ class ApplicationController < ActionController::Base
     render file: Rails.root.join('public/404'), status: 404, layout: false
   end
 
+  rescue_from CanCan::AccessDenied do |exception|
+    respond_to do |format|
+      format.json { head :forbidden }
+      format.html { redirect_to main_app.root_url, alert: exception.message }
+    end
+  end
+
   protected
 
   # store last visited url unless it's the login/sign up path,
