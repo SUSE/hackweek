@@ -76,6 +76,7 @@ gem 'faker', :group => [:development, :test]
 # as test framework
 gem 'rspec-rails', :group => [:development, :test]
 gem 'capybara', :group => [:development, :test]
+gem 'rails-controller-testing', group: [:development, :test]
 # for file attachments
 gem 'paperclip', '~> 5.2'
 # as deployer
