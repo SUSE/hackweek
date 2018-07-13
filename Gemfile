@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # FIXME: 1.7.4 got yanked
 gem 'ruby-progressbar', '1.8.1'
@@ -45,7 +46,7 @@ gem 'jquery-atwho-rails'
 gem 'haml-rails'
 # as authentification framework
 gem 'devise'
-gem 'devise_ichain_authenticatable'
+gem 'devise_ichain_authenticatable', github: 'hennevogel/devise_ichain_authenticatable', branch: 'bugfix/rails_5_filter_names'
 # as authorization framework
 gem 'cancancan'
 # for user avatars
