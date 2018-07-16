@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   devise :ichain_authenticatable, :ichain_registerable
 
   validates :name, presence: true
@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :name
   validates_uniqueness_of :email
 
-  has_many :originated_projects, foreign_key: 'originator_id', class_name: Project
+  has_many :originated_projects, foreign_key: 'originator_id', class_name: 'Project'
   has_many :updates, foreign_key: 'author_id', dependent: :destroy
 
   has_many :memberships

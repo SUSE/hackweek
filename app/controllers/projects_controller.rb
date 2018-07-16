@@ -1,10 +1,10 @@
 class ProjectsController < ApplicationController
 
-  before_filter :find_project_by_id
-  before_filter :redirect_to_slug, only: [:show]
+  before_action :find_project_by_id
+  before_action :redirect_to_slug, only: [:show]
   load_and_authorize_resource find_by: :url
-  skip_before_filter :authenticate_user!, only: [ :index, :show, :archived, :finished, :newest, :popular, :biggest, :random ]
-  skip_before_filter :store_location, only: [:join, :leave, :like, :dislike, :add_keyword, :delete_keyword ]
+  skip_before_action :authenticate_user!, only: [ :index, :show, :archived, :finished, :newest, :popular, :biggest, :random ]
+  skip_before_action :store_location, only: [:join, :leave, :like, :dislike, :add_keyword, :delete_keyword ]
   skip_before_action :verify_authenticity_token, only: [:add_keyword, :delete_keyword ]
   before_action :load_episode
   before_action :username_array, only: [:new, :edit, :show]

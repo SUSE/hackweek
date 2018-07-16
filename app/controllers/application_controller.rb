@@ -1,12 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_filter :store_location
-  before_filter :authenticate_user!
-  before_filter :load_news
-  before_filter :set_episode
+  before_action :store_location
+  before_action :authenticate_user!
+  before_action :load_news
+  before_action :set_episode
 
-  before_filter do
+  before_action do
     resource = controller_name.singularize.to_sym
     method = "#{resource}_params"
     params[resource] &&= send(method) if respond_to?(method, true)

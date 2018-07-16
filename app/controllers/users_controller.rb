@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
 
-  before_filter :find_user_by_id
-  before_filter :redirect_to_slug, only: [:show]
+  before_action :find_user_by_id
+  before_action :redirect_to_slug, only: [:show]
   load_and_authorize_resource find_by: :name
 
-  skip_before_filter :authenticate_user!, :only => [ :index, :show ]
+  skip_before_action :authenticate_user!, :only => [ :index, :show ]
   skip_before_action :verify_authenticity_token, :only => [:add_keyword, :delete_keyword ]
 
   def index

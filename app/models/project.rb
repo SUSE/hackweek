@@ -1,4 +1,4 @@
-class Project < ActiveRecord::Base
+class Project < ApplicationRecord
   include AASM
 
   validates :title, presence: true
@@ -9,16 +9,17 @@ class Project < ActiveRecord::Base
   validates :description, presence: true
   validates :originator_id, presence: true
 
-  belongs_to :originator, class_name: User
+  belongs_to :originator, class_name: 'User'
 
+  has_many :memberships
   has_many :users, through: :memberships
+
+  has_many :likes
   has_many :kudos, through: :likes, source: :user
 
   has_many :project_interests
   has_many :keywords, through: :project_interests
 
-  has_many :memberships
-  has_many :likes
   has_many :updates, dependent: :destroy
 
   has_many :comments, as: :commentable, dependent: :destroy

@@ -1,4 +1,4 @@
-Hackweek::Application.routes.draw do
+Rails.application.routes.draw do
 
   get 'markdown/preview'
 
@@ -68,7 +68,6 @@ Hackweek::Application.routes.draw do
   end
 
   get "keyword/tokens"
-  post "api/import", to: "api#import"
   get "gallery", to: "gallery#index"
 
   get "about", to: "about#show"

@@ -18,7 +18,6 @@
 //= require bootstrap
 //= require selectize
 //= require jquery.table-filter.js
-//= require jquery.swipebox.js
 //= require jquery-ui/widgets/autocomplete
 //= require autocomplete-rails
 

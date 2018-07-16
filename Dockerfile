@@ -12,7 +12,7 @@ RUN echo 'solver.allowVendorChange = true' >> /etc/zypp/zypp.conf; \
 RUN zypper -n install --no-recommends --replacefiles \
   curl vim vim-data psmisc timezone ack glibc-locale sudo hostname \
   sphinx libxml2-devel libxslt-devel sqlite3-devel nodejs8 gcc-c++ \
-  ImageMagick libmysqld-devel phantomjs ruby-devel make;
+  ImageMagick libmysqld-devel phantomjs ruby-devel make git-core;
 
 # Add our user
 RUN useradd -m frontend
@@ -40,6 +40,9 @@ RUN chown -R frontend /hackweek
 
 WORKDIR /hackweek
 USER frontend
+
+# Install gems we use outside of the bundle
+RUN sudo gem install foreman
 
 # Refresh our bundle
 RUN export NOKOGIRI_USE_SYSTEM_LIBRARIES=1; bundle install --jobs=3 --retry=3 || bundle install --jobs=3 --retry=3

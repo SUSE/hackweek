@@ -1,8 +1,8 @@
-class Comment < ActiveRecord::Base
+class Comment < ApplicationRecord
   belongs_to :commentable, polymorphic: true
   has_many :comments, as: :commentable, dependent: :destroy
 
-  belongs_to :commenter, class_name: User
+  belongs_to :commenter, class_name: 'User'
 
   validates_presence_of :commenter_id, :text, :commentable_id
   after_save ThinkingSphinx::RealTime.callback_for(:project, [:project])

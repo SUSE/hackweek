@@ -8,7 +8,7 @@ describe EpisodesController do
   describe 'GET index' do
     it 'assigns all episodes as @episodes' do
       episode = create(:episode)
-      get :index, {}
+      get :index
       expect(assigns(:episodes)).to eq([episode])
     end
   end
@@ -16,14 +16,14 @@ describe EpisodesController do
   describe 'GET show' do
     it 'assigns the requested episode as @episode' do
       episode = create(:episode)
-      get :show, id: episode.to_param
+      get :show, params: { id: episode.to_param }
       expect(assigns(:episode)).to eq(episode)
     end
   end
 
   describe 'GET new' do
     it 'assigns a new episode as @episode' do
-      get :new, {}
+      get :new
       expect(assigns(:episode)).to be_a_new(Episode)
     end
   end
@@ -31,7 +31,7 @@ describe EpisodesController do
   describe 'GET edit' do
     it 'assigns the requested episode as @episode' do
       episode = create(:episode)
-      get :edit, id: episode.to_param
+      get :edit, params: { id: episode.to_param }
       expect(assigns(:episode)).to eq(episode)
     end
   end
@@ -40,30 +40,30 @@ describe EpisodesController do
     describe 'with valid params' do
       it 'creates a new Episode' do
         expect {
-          post :create, episode: attributes_for(:episode)
+          post :create, params: { episode: attributes_for(:episode) }
         }.to change(Episode, :count).by(1)
       end
 
       it 'assigns a newly created episode as @episode' do
-        post :create, episode: attributes_for(:episode)
+        post :create, params: { episode: attributes_for(:episode) }
         expect(assigns(:episode)).to be_a(Episode)
         expect(assigns(:episode)).to be_persisted
       end
 
       it 'redirects to the episodes list' do
-        post :create, episode: attributes_for(:episode)
+        post :create, params: { episode: attributes_for(:episode) }
         expect(response).to redirect_to(episodes_url)
       end
     end
 
     describe 'with invalid params' do
       it 'assigns a newly created but unsaved episode as @episode' do
-        post :create, episode: attributes_for(:episode, name: nil)
+        post :create, params: { episode: attributes_for(:episode, name: nil) }
         expect(assigns(:episode)).to be_a_new(Episode)
       end
 
       it 're-renders the "new" template' do
-         post :create, episode: attributes_for(:episode, name: nil)
+         post :create, params: { episode: attributes_for(:episode, name: nil) }
          expect(response).to render_template('new')
       end
     end
@@ -75,20 +75,20 @@ describe EpisodesController do
 
       it 'updates the requested episode' do
         episode = create(:episode)
-        put :update, id: episode.to_param, episode: attributes_for(:episode, name: 'whatever')
+        put :update, params: { id: episode.to_param, episode: attributes_for(:episode, name: 'whatever') }
         episode.reload
         expect(episode.name).to eq('whatever')
       end
 
       it 'assigns the requested episode as @episode' do
         episode = create(:episode)
-        put :update, id: episode.to_param, episode: attributes_for(:episode)
+        put :update, params: { id: episode.to_param, episode: attributes_for(:episode) }
         expect(assigns(:episode)).to eq(episode)
       end
 
       it 'redirects to the episodes list' do
         episode = create(:episode)
-        put :update, id: episode.to_param, episode: attributes_for(:episode)
+        put :update, params: { id: episode.to_param, episode: attributes_for(:episode) }
         expect(response).to redirect_to(episodes_url)
       end
     end
@@ -96,13 +96,13 @@ describe EpisodesController do
     describe 'with invalid params' do
       it 'assigns the episode as @episode' do
         episode = create(:episode)
-        put :update, id: episode.to_param, episode: attributes_for(:episode, name: nil)
+        put :update, params: { id: episode.to_param, episode: attributes_for(:episode, name: nil) }
         expect(assigns(:episode)).to eq(episode)
       end
 
       it 're-renders the "edit" template' do
         episode = create(:episode)
-        put :update, id: episode.to_param, episode: attributes_for(:episode, name: nil)
+        put :update, params: { id: episode.to_param, episode: attributes_for(:episode, name: nil) }
         expect(response).to render_template('edit')
       end
     end
@@ -112,13 +112,13 @@ describe EpisodesController do
     it 'destroys the requested episode' do
       episode = create(:episode)
       expect {
-        delete :destroy, id: episode.to_param
+        delete :destroy, params: { id: episode.to_param }
       }.to change(Episode, :count).by(-1)
     end
 
     it 'redirects to the episodes list' do
       episode = create(:episode)
-      delete :destroy, id: episode.to_param
+      delete :destroy, params: { id: episode.to_param }
       expect(response).to redirect_to(episodes_url)
     end
   end

@@ -1,4 +1,4 @@
-class Episode < ActiveRecord::Base
+class Episode < ApplicationRecord
 
   has_many :episode_project_associations
   has_many :projects, through: :episode_project_associations

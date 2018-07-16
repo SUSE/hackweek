@@ -9,19 +9,23 @@
   end
 %>
 
-vagrant: &vagrant
+default: &default
   adapter: mysql2
   encoding: utf8
   username: root
   password: <%= password %>
+  host: <%= host %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
 
 development:
-  <<: *vagrant
+  <<: *default
   database: hackweek_development
-  pool: 5
-  host: <%= host %>
 
 test:
-  <<: *vagrant
+  <<: *default
   database: hackweek_test
-  host: <%= host %>
+
+production:
+  <<: *default
+  database: hackweek_production

@@ -1,5 +1,5 @@
 class MarkdownController < ApplicationController
-  skip_before_filter :authenticate_user!, only: [:preview]
+  skip_before_action :authenticate_user!, only: [:preview]
   respond_to :js
 
   def preview
