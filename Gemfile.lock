@@ -245,7 +245,7 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
-    rails-jquery-autocomplete (1.0.3)
+    rails-jquery-autocomplete (1.0.4)
       rails (>= 3.2)
     railties (5.2.0)
       actionpack (= 5.2.0)
