@@ -189,10 +189,10 @@ class Project < ActiveRecord::Base
                    project: self)
   end
 
-  def similar_projects
+  def similar_projects_keywords
     return [] if keywords.empty?
 
-    return similar = Project.current(@episode).active.select {|project| (project.keywords & keywords).any?}
+    return similar_keys = keywords.select { |word| (word.projects.current(Episode.active) - [self]).any? }
   end
 
   def previous(episode = nil)

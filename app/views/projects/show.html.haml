@@ -84,8 +84,8 @@
   .col-sm-4
     .col-sm-11#similar_projects
       %h4 Similar Projects
-      - if @similar_projects.present?
-        = render :partial => 'similar_projects', collection: @similar_projects, as: :project
+      - if @similar_projects_keys.present?
+        = render partial: 'similar_projects'
       - else
         %p This project is one of its kind!
   .col-sm-12#comments_form_section

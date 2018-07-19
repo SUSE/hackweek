@@ -129,8 +129,13 @@ describe Project do
       project2.add_keyword! 'web', user
     end
 
-    it 'provides array of projects having similar tags' do
-      expect(project.similar_projects).to include(project2)
+    it 'gives an empty array when there is no common keyword' do
+      ProjectInterest.last.delete
+      expect(project.similar_projects_keywords).to eq([])
+    end
+
+    it 'provides array of common keywords in projects' do
+      expect(project.similar_projects_keywords).to include(Keyword.find_by_name('web'))
     end
   end
 
