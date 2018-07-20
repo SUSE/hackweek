@@ -1,10 +1,9 @@
 FactoryBot.define do
-  factory :notification do
+  factory :notification, class: Notification do
+    read_at nil
     recipient_id 1
-    actor_id 1
-    read_at "2018-07-02 12:46:32"
-    action "MyString"
-    notifiable_id 1
-    notifiable_type "MyString"
+    action 'string'
+    association :actor, factory: :user
+    association :notifiable, factory: :project
   end
 end
