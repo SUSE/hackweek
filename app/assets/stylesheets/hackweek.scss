@@ -51,6 +51,19 @@ body {
   }
 }
 
+.older-notifications{
+  p{
+    margin-top: 5px;
+    img{
+      margin-right: 1.5rem;
+    }
+  }
+  .notification_pagination{
+    display: flex;
+    justify-content: center;
+  }
+}
+
 h4.project-list-item img {
   width: 26px;
   margin-right: 10px;
