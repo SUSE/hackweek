@@ -7,7 +7,7 @@ RSpec.describe MarkdownController, type: :controller do
 
       get :preview, xhr: true, params: { source: source }
 
-      expect(response).to have_http_status(:success)
+      expect(response).to be_successful
       expect(assigns(:rendered)).to eq "<p><em>italic</em></p>\n"
     end
   end

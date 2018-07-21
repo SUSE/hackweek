@@ -1,11 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_filter :store_location
-  before_filter :authenticate_user!
-  before_filter :load_news
-  before_filter :set_episode
-  before_filter :load_notifications
+  before_action :store_location
+  before_action :authenticate_user!
+  before_action :load_news
+  before_action :set_episode
+  before_action :load_notifications
 
   before_action do
     resource = controller_name.singularize.to_sym
