@@ -70,6 +70,7 @@ class ProjectsController < ApplicationController
     @project.originator = current_user
 
     if @project.save
+      @project.project_followers << current_user
       redirect_to project_path(@episode, @project), notice: 'Project was successfully created.'
     else
       render action: 'new'
@@ -106,6 +107,8 @@ class ProjectsController < ApplicationController
   # PUT /projects/1/join
   def join
     if @project.join!(current_user)
+      @project.send_notification(current_user, "just joined #{@project.aasm_state}: #{@project.title}")
+      @project.project_followers << current_user unless @project.project_followers.include?(current_user)
       flash.now['success'] = "Welcome to the project #{current_user.name}."
     else
       flash.now['error'] = "#{@project.errors.full_messages.to_sentence}"
@@ -126,6 +129,7 @@ class ProjectsController < ApplicationController
   # PUT /projects/1/like
   def like
     @project.like! current_user
+    @project.send_notification(current_user, "just liked #{@project.aasm_state}: #{@project.title}")
 
     respond_to do |format|
       format.html{ redirect_to project_path(@episode, @project), notice: "Thank you for your love #{current_user.name}!" }
