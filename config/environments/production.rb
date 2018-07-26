@@ -107,4 +107,18 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.default_url_options = { host: ENV['HACKWEEK_URL'] }
+
+  config.action_mailer.delivery_method = ENV['HACKWEEK_DELIVERY_METHOD']
+
+  config.action_mailer.smtp_settings = {
+    address: ENV['HACKWEEK_MAIL_ADDRESS'],
+    port: 587,
+    domain: ENV['HACKWEEK_MAIL_DOMAIN'],
+    authentication: :plane,
+    enable_starttls_auto: true,
+    user_name: ENV['HACKWEEK_MAIL_ID'],
+    password: ENV['HACKWEEK_MAIL_PWD']
+  }
 end

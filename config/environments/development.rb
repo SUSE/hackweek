@@ -31,7 +31,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -61,4 +61,18 @@ Rails.application.configure do
 
   # Enable authentification test mode
   config.devise.ichain_test_mode = true
+
+  config.action_mailer.default_url_options = { host: ENV['HACKWEEK_URL'] }
+
+  config.action_mailer.delivery_method = ENV['HACKWEEK_DELIVERY_METHOD']
+
+  config.action_mailer.smtp_settings = {
+    address: ENV['HACKWEEK_MAIL_ADDRESS'],
+    port: 587,
+    domain: ENV['HACKWEEK_MAIL_DOMAIN'],
+    authentication: :plain,
+    enable_starttls_auto: true,
+    user_name: ENV['HACKWEEK_MAIL_ID'],
+    password: ENV['HACKWEEK_MAIL_PWD']
+  }
 end
