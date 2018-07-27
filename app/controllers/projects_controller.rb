@@ -49,7 +49,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
-    @similar_projects = (@project.similar_projects - [@project]).sample(5)
+    @similar_projects_keys = @project.similar_projects_keywords
     @previous_project = @project.previous(@episode)
     @next_project = @project.next(@episode)
     @new_comment = Comment.new

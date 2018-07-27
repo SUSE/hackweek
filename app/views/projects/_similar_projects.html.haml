@@ -1,8 +1,20 @@
-%h5
-  = link_to project.title, project_path(project)
-  by
-  = link_to project.originator.name, user_path(project.originator)
-%p
-  :markdown
-    #{truncate(project.description, length: 50)}
-%hr
+#accordion.panel-group{'aria-multiselectable': 'true', role: 'tablist'}
+  - @similar_projects_keys.each_with_index do |word, i|
+    .panel.panel-default
+      .panel-heading{role: 'tab', id: "heading_#{i}"}
+        %h4.panel-title
+          %a{'aria-controls': "collapse_#{i}", 'aria-expanded': 'true', 'data-parent': '#accordion', 'data-toggle': 'collapse', href: "#collapse_#{i}", role: 'button'}
+            = word.name
+            %i.fa.fa-caret-right
+      .panel-collapse.collapse{id: "collapse_#{i}", 'aria-labelledby': "heading_#{i}", role: 'tabpanel'}
+        .panel-body
+          - similar_projects = (word.projects.current(Episode.active)-[@project]).sample(5)
+          - similar_projects.each do |project|
+            %h5
+              = link_to(project.title, project_path(project))
+              by
+              = link_to(project.originator.name, user_path(project.originator))
+            %p
+              :markdown
+                #{truncate(project.description, length: 50)}
+            %hr
