@@ -1,10 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_action :store_location
-  before_action :authenticate_user!
-  before_action :load_news
-  before_action :set_episode
+  before_filter :store_location
+  before_filter :authenticate_user!
+  before_filter :load_news
+  before_filter :set_episode
+  before_filter :load_notifications
 
   before_action do
     resource = controller_name.singularize.to_sym
@@ -80,5 +81,9 @@ class ApplicationController < ActionController::Base
       end
     end
     logger.debug("\n\nEpisode: #{@episode.to_param}\n\n")
+  end
+
+  def load_notifications
+    @notifications = Notification.where(recipient: current_user).unread if user_signed_in?
   end
 end

@@ -29,7 +29,7 @@ $(function() {
   $('a[data-toggle="tab"]').on('click', function(e) {
     history.pushState(null, null, $(this).attr('href'));
   });
-  
+
   // when history changes
   window.addEventListener("popstate", function(e) {
     // when history changes and poped state is a state that come from ajax so reload the whole page
@@ -92,7 +92,7 @@ $( document ).ajaxStop(function() {
 $(document).on("click", "a", function(){
   clickedLink = this.href;
 })
-  
+
 $(function(){
   var emojis = [
     "smile", "iphone", "girl", "smiley", "heart", "kiss", "copyright", "coffee",
@@ -139,4 +139,3 @@ function textcover(txtarea, newtxt) {
 $(document).on('click', '.show-preview, .show-source', function (e) {
   $(this).parent().next('.btnbar').toggle();
 })
-

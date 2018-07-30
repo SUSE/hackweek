@@ -1,0 +1,21 @@
+%ul.navbar-notifications.nav.navbar-nav.navbar-right.hidden-xs
+  %li.dropdown
+    = link_to mark_as_read_notifications_path(), id: 'notification-dropdown-activator', method: :post, data: { 'toggle': 'dropdown', 'behavior': 'notifications' }, remote: true do
+      %i.fa.fa-bell-o
+      - if @notifications.any?
+        %span#notification-count.new.badge
+          = @notifications.length
+      %b.caret
+    %ul.dropdown-menu#notification-dropdown
+      -if @notifications.any?
+        - @notifications.each do |notification|
+          %li{ 'data-behavior':'notifications-link', style: 'white-space: pre-wrap' }
+            = link_to  "/projects/#{notification.notifiable.id}" do
+              = notification.actor.name
+              = notification.action
+        %li{ 'data-behavior':'notifications-link', style: 'white-space: pre-wrap' }
+          %a{ href: '#' } Older Notification
+      - else
+        %li.dropdown-item{ 'data-behavior': 'notifications-link' } No New Notifications
+        %li{ 'data-behavior': 'notifications-link' }
+          %a{ href: '#' } Older Notification
