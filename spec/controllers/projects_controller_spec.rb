@@ -288,11 +288,7 @@ describe ProjectsController do
 
       # We are creating our helpers eagerly, so they are in the DB at the request time
       let!(:episode) { create :episode }
-      let!(:old_projects) do
-        Timecop.freeze(1.year.ago) do
-          create_list(:project, 12, episodes: [episode])
-        end
-      end
+
       let!(:new_projects) { create_list(:project, 10, episodes: [episode]) }
 
       before :example do
@@ -322,9 +318,8 @@ describe ProjectsController do
         expect(xml.xpath('//item/title').map(&:text)).to contain_exactly(the_only_project.title)
       end
 
-      it 'is updated when the project is added to an episode' do
-        project = create :project, created_at: 1.year.ago
-        project.episodes = [episode]
+      it 'shows the project having lowest projecthits first' do
+        project = Project.current(@episode).order('projecthits ASC').first
 
         get :index, params: { episode_id: episode.id, format: :rss }
 
@@ -336,7 +331,7 @@ describe ProjectsController do
         Project.all.each do |project|
           project.episode_project_associations.update_all(created_at: nil)
         end
-
+        Project.last.destroy
         project = create :project, episodes: [episode]
         project.episode_project_associations.update_all(created_at: 1.year.ago)
 
@@ -344,7 +339,7 @@ describe ProjectsController do
 
         xml = Nokogiri::XML(response.body)
         expect(xml.xpath('//item').count).to eq 10
-        expect(xml.xpath('//item/title').first.text).to eq project.title
+        expect(xml.xpath('//item/title').last.text).to eq project.title
       end
 
       it 'works for :all episodes' do
