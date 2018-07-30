@@ -10,6 +10,60 @@ body {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNjY2MiPjwvcmVjdD4KPC9zdmc+");
 }
 
+.navbar-notifications{
+  #notification-count{
+    color: white;
+    background: #ec8686;
+  }
+  .dropdown-menu{
+    padding: 0;
+    width: 350px;
+    h5{
+      padding-left: 1em;
+    }
+    hr{
+      margin: 0;
+    }
+    #notification-dropdown{
+      padding: 0px;
+      li{
+        list-style: none;
+        padding: 1rem;
+        a{
+          display: flex;
+          justify-content: space-evenly;
+          padding: 10px 0;
+          img{
+            max-height: 30px;
+            width: auto;
+          }
+        }
+      }
+      li:last-child{
+        text-align: center;
+        background: #efeff0;
+        padding: 2rem;
+        a{
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.older-notifications{
+  p{
+    margin-top: 5px;
+    img{
+      margin-right: 1.5rem;
+    }
+  }
+  .notification_pagination{
+    display: flex;
+    justify-content: center;
+  }
+}
+
 h4.project-list-item img {
   width: 26px;
   margin-right: 10px;

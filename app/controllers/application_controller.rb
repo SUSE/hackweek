@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :load_news
   before_action :set_episode
+  before_action :load_notifications
 
   before_action do
     resource = controller_name.singularize.to_sym
@@ -80,5 +81,9 @@ class ApplicationController < ActionController::Base
       end
     end
     logger.debug("\n\nEpisode: #{@episode.to_param}\n\n")
+  end
+
+  def load_notifications
+    @notifications = Notification.where(recipient: current_user).unread if user_signed_in?
   end
 end

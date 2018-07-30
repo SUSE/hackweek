@@ -196,6 +196,14 @@ class Project < ApplicationRecord
     return similar_keys = keywords.select { |word| (word.projects.current(Episode.active) - [self]).any? }
   end
 
+  def send_notification(sender, message)
+    recipients = project_followers - [sender]
+    recipients.each do |recipient|
+      Notification.create(recipient: recipient, actor: sender, action: message, notifiable: self)
+    end
+  end
+
+
   def previous(episode = nil)
     Project.by_episode(episode).where('projects.id < ?', self.id).last
   end

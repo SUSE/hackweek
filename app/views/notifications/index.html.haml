@@ -1,0 +1,14 @@
+%h3 Your Notifications
+%hr
+%br
+
+.older-notifications
+  - @older_notifications.each do |notification|
+    = link_to project_path(notification.notifiable) do
+      %p
+        = image_tag notification.notifiable.avatar.url(:thumb), width: 40
+        #{notification.actor.name} #{notification.action}
+        %span.pull-right (#{ time_ago_in_words(notification.created_at) } ago)
+        %hr
+  .notification_pagination
+    = paginate @older_notifications

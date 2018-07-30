@@ -11,4 +11,12 @@ class Comment < ApplicationRecord
     return @project if defined?(@project)
     @project = commentable.is_a?(Project) ? commentable : commentable.project
   end
+
+  def send_notification(sender, message)
+    recipients = project.project_followers - [sender]
+
+    recipients.each do |recipient|
+      Notification.create(recipient: recipient, actor: sender, action: message, notifiable: project)
+    end
+  end
 end

@@ -300,7 +300,7 @@ describe ProjectsController do
       end
 
       it 'returns an RSS feed' do
-        expect(response).to be_success
+        expect(response).to be_successful
         expect(response).to render_template('projects/index')
         expect(response.content_type).to eq 'application/rss+xml'
       end

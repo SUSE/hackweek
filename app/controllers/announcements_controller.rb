@@ -1,7 +1,7 @@
 class AnnouncementsController < ApplicationController
   load_and_authorize_resource params_method: :announcement_params
-  skip_before_filter :authenticate_user!, only: [ :index ]
-  skip_before_filter :store_location, only: [ :enroll ]
+  skip_before_action :authenticate_user!, only: [ :index ]
+  skip_before_action :store_location, only: [ :enroll ]
 
   # GET /announcements
   def index

@@ -1,0 +1,3 @@
+$('#notification-count').hide();
+$('input[name="authenticity_token"]').val('<%= form_authenticity_token %>');
+$('meta[name="csrf-token"]').attr('content', '<%=form_authenticity_token%>');
