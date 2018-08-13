@@ -199,7 +199,8 @@ class Project < ApplicationRecord
   def send_notification(sender, message)
     recipients = project_followers - [sender]
     recipients.each do |recipient|
-      Notification.create(recipient: recipient, actor: sender, action: message, notifiable: self)
+      notification = Notification.create(recipient: recipient, actor: sender, action: message, notifiable: self)
+      NotificationMailer.notifier(recipient, notification).deliver!
     end
   end
 

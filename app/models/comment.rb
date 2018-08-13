@@ -17,6 +17,7 @@ class Comment < ApplicationRecord
 
     recipients.each do |recipient|
       Notification.create(recipient: recipient, actor: sender, action: message, notifiable: project)
+      NotificationMailer.notifier(recipient, notification).deliver!
     end
   end
 end
