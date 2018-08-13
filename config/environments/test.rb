@@ -46,4 +46,8 @@ Rails.application.configure do
 
   # Enable authentification test mode
   config.devise.ichain_test_mode = true
+
+  config.action_mailer.delivery_method = :test
+
+  config.action_mailer.default_url_options = { host: ENV['HACKWEEK_URL'] }
 end
