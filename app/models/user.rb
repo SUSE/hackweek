@@ -87,6 +87,7 @@ class User < ApplicationRecord
   end
 
   def self.for_ichain_username(username, attributes)
+    attributes = attributes.with_indifferent_access
     user = find_by(name: username)
     if user
       user.update_attributes(email: attributes[:email]) if user.email != attributes[:email]
