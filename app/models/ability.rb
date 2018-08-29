@@ -35,6 +35,7 @@ class Ability
       # Organizers can:
       if user.role? :organizer
         can :manage, Announcement
+        can :manage, Faq
       end
 
       # Admins can:

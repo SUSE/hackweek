@@ -73,6 +73,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :faqs, except: [:show]
+  get '/faq', to: redirect('/faqs')
+
   get "keyword/tokens"
   get "gallery", to: "gallery#index"
 

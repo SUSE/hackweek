@@ -1,0 +1,27 @@
+.row
+  .col-md-12
+    .page-header
+      %h1
+        Frequently Asked Questions
+  .col-md-12
+    - @faqs.each do |faq|
+      .row
+        .col-md-12
+          %h3
+            #{faq.question}
+            - if can? :create, faq
+              %small
+                = link_to(edit_faq_path(faq)) do
+                  %i.fa.fa-pencil
+                = link_to(faq, method: :delete, data: { confirm: 'Are you sure?' }) do
+                  %i.fa.fa-trash-o
+      .row
+        .col-md-12
+          :markdown
+            #{faq.answer}
+  - if can? :create, Faq.new
+    .col-md-12
+      %p.text-right
+        = link_to(new_faq_path, class: 'btn btn-primary') do
+          %i.fa.fa-plus
+          New FAQ
