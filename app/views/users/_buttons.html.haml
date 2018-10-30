@@ -5,9 +5,8 @@
   .btn.btn-default{:title=>"#{user.name} works on #{user.projects.length} projects"}
     = user.projects.length
     %i.fa.fa-puzzle-piece
-  / FIXME. Use real count
-  .btn.btn-default{:title=>"#{user.name} wrote #{user.projects.length} comments"}
-    0
+  .btn.btn-default{:title=>"#{user.name} wrote #{user.comments.length} comments"}
+    = user.comments.length
     %i.fa.fa-comments
   .btn.btn-default{:title=>"#{user.name} likes #{user.likes.length} projects"}
     = user.likes.length
