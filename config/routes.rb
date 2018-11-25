@@ -51,8 +51,8 @@ Rails.application.routes.draw do
 
   get '/reply/:id', to: "comments#reply_modal", as: 'reply_modal'
 
-  resources :comments do
-    resources :comments
+  resources :comments, only: [:new, :create] do
+    resources :comments, only: [:new, :create]
   end
 
   resources :announcements do
