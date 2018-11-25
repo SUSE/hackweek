@@ -56,7 +56,7 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     airbrake (7.3.5)
       airbrake-ruby (~> 2.10)
-    airbrake-ruby (2.11.0)
+    airbrake-ruby (2.12.0)
     arel (9.0.0)
     ast (2.4.0)
     autoprefixer-rails (8.6.5)
