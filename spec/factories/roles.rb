@@ -1,12 +1,12 @@
 FactoryBot.define do
   factory :role do
-    name 'rolename'
+    name { 'rolename' }
 
     factory :admin_role do
-      name 'admin'
+      name { 'admin' }
     end
     factory :organizer_role do
-      name 'admin'
+      name { 'admin' }
     end
   end
 end

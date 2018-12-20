@@ -4,24 +4,24 @@ FactoryBot.define do
     sequence(:title) { Faker::Lorem.sentence }
     sequence(:description) { Faker::Lorem.paragraph }
     
-    likes_count 0
-    memberships_count 0
-    aasm_state 'idea'
+    likes_count { 0 }
+    memberships_count { 0 }
+    aasm_state { 'idea' }
     association :originator, factory: :user
 
     factory :idea, class: Project do
-      aasm_state 'idea'
+      aasm_state { 'idea' }
     end
     factory :project, class: Project do
-      aasm_state 'project'
+      aasm_state { 'project' }
       after(:create) { |project| project.users << create(:user) }
     end
     factory :invention, class: Project do
-      aasm_state 'invention'
+      aasm_state { 'invention' }
       after(:create) { |project| project.users << create(:user) }
     end
     factory :record, class: Project do
-      aasm_state 'record'
+      aasm_state { 'record' }
     end
 
     trait :with_comments do
