@@ -3,6 +3,10 @@ rvm:
   - 2.5.0
 services:
   - mysql
+branches:
+  except:
+    # starting with depfu/
+    - /^depfu\/.*/
 notifications:
   email:
     on_success: change
