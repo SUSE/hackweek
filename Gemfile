@@ -97,6 +97,7 @@ group :test do
   gem 'coveralls', :require => false
   # as style hound
   gem 'rubocop'
+  gem 'rubocop-rspec'
   # Time travel in tests
   gem 'timecop'
 
