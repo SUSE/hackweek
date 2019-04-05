@@ -11,10 +11,7 @@
           = image_tag 'hackweek-label.png', class: 'img-responsive', alt: 'Hack Week'
 .row
   .col-md-7
-    - if @episode.try(:description)
-      :markdown
-        #{ @episode.description }
-    - else
+    - if @episode.description.empty?
       %p.lead
         Hack Week is the time SUSE engineers experiment, innovate &amp; learn interruption-free
         for a whole week! Across teams or alone, but always without limits.
@@ -25,6 +22,9 @@
           about Hack Week.
       %p.lead
         What are you going to hack on?
+    - else
+      :markdown
+        #{ @episode.description }
   .col-md-5
     %div
       .h3
