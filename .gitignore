@@ -19,6 +19,8 @@
 /config/application.yml
 /config/secrets.yml
 /config/database.yml
+/config/storage.yml
+/config/thinking_sphinx.yml
 docker-compose.override.yml
 
 # Ignore sphinx search db
