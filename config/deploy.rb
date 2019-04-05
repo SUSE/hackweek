@@ -7,9 +7,9 @@ set :domain, 'proxy-opensuse.suse.de'
 # SSH port number
 set :port, '2224'
 # Username in the server to SSH to
-set :user, 'root'
+set :user, 'hwrun'
 # Path to deploy into
-set :deploy_to, '/srv/www/vhosts/suse.com/hackweek'
+set :deploy_to, '/home/hwrun/hackweek'
 # Git repo to clone from
 set :repository, 'git://github.com/SUSE/hackweek.git'
 # Branch name to deploy
@@ -17,7 +17,7 @@ set :branch, 'master'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, ['config/database.yml', 'config/application.yml', 'config/secrets.yml', 'log', 'tmp', 'public/gallery', 'en.pak', 'sphinx', 'public/system']
+set :shared_paths, ['config/database.yml', 'config/application.yml', 'config/secrets.yml', 'config/storage.yml', 'config/thinking_sphinx.yml', 'config/production.sphinx.conf', 'log', 'tmp', 'public/gallery', 'en.pak', 'sphinx', 'public/system']
 
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
@@ -59,8 +59,8 @@ task :deploy => :environment do
     invoke :sphinx_restart
 
     to :launch do
-      queue "systemctl restart hackweek"
-      queue "systemctl restart apache2"
+      queue "sudo systemctl restart hackweek"
+      queue "sudo systemctl restart apache2"
     end
   end
 end
