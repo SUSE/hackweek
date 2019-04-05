@@ -14,4 +14,3 @@ production:
   <<: *defaults
   morphology:
     - lemmatize_en_all
-  configuration_file: "/srv/www/vhosts/suse.com/hackweek/shared/sphinx/config/production.sphinx.conf"
