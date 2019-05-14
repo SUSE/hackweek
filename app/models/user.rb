@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :updates, foreign_key: 'author_id', dependent: :destroy
 
   has_many :memberships
-  has_many :comments
+  has_many :comments, foreign_key: 'commenter_id'
   has_many :likes
   has_many :enrollments
 
