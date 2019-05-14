@@ -34,25 +34,20 @@ get you up and running.
 
 1. Since we mount the hackweek repository into our container we need to map
    your local user id to the one of the container user. To do that copy the
-
-```bash
-cp docker-compose.override.yml.example docker-compose.override.yml
-vi docker-compose.override.yml
-```
-
    `docker-compose.override.yml` file and enter your user id (`id -u`) as
    `CONTAINER_USERID`.
+   ```bash
+   cp docker-compose.override.yml.example docker-compose.override.yml
+   vi docker-compose.override.yml
+   ```
 1. Set up the development environment:
-
-```bash
-docker-compose run --rm hackweek bundle exec rake dev:bootstrap
-```
-
+   ```bash
+   docker-compose run --rm hackweek bundle exec rake dev:bootstrap
+   ```
 1. Start the development environment:
-
-```bash
-docker-compose up --build
-```
+   ```bash
+   docker-compose up --build
+   ```
 
 ### Vagrant
 
