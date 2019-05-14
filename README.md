@@ -52,29 +52,29 @@ get you up and running.
 ### Vagrant
 
 1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [vagrant](https://www.vagrantup.com)
-2. Install vagrant-exec plugin:
-```shell
-vagrant plugin install vagrant-exec
-```
-3. Start our openSUSE 42.3 based virtual machine with vagrant 
-```shell
-vagrant up
-```
-4. Launch the application
-```shell
-vagrant exec foreman start
-```
-5. Access the appliaction as usual
-```shell
-xdg-open http://localhost:3000
-```
-6. [Start hacking](http://railsforzombies.org/)
-7. [Test your changes](https://www.relishapp.com/rspec/rspec-core/docs)
-```shell
-vagrant exec rspec
-```
-8. [Send pull request](https://help.github.com/articles/using-pull-requests)
-9. $UCCE$$
+1. Install vagrant-exec plugin:
+   ```shell
+   vagrant plugin install vagrant-exec
+   ```
+1. Start our openSUSE 42.3 based virtual machine with vagrant:
+   ```shell
+   vagrant up
+   ```
+1. Launch the application:
+   ```shell
+   vagrant exec foreman start
+   ```
+1. Access the appliaction as usual:
+   ```shell
+   xdg-open http://localhost:3000
+   ```
+1. [Start hacking](http://railsforzombies.org/)
+1. [Test your changes](https://www.relishapp.com/rspec/rspec-core/docs)
+   ```shell
+   vagrant exec rspec
+   ```
+1. [Send pull request](https://help.github.com/articles/using-pull-requests)
+1. $UCCE$$
 
 Remote connection to the virtual machine is available with `vagrant ssh`. You
 can run single-shot remote commands like `vagrant exec rake db:migrate`. If you
