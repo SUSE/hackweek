@@ -24,7 +24,7 @@ module ApplicationHelper
 
   def emojify content
     content.to_str.gsub(/:([\w+-]+):/) do |match|
-      %(![add-emoji](https://assets-cdn.github.com/images/icons/emoji/#{match.to_str.tr(':','')}.png))      
+      %(![add-emoji](https://github.githubassets.com/images/icons/emoji/#{match.to_str.tr(':','')}.png))
     end.html_safe if content.present?
   end
 end

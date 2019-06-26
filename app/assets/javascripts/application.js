@@ -119,7 +119,7 @@ $(function(){
   var emoji_config = {
     at: ":",
     data: emojis,
-    displayTpl: "<li>${name} <img src='https://assets-cdn.github.com/images/icons/emoji/${key}.png'  height='20' width='20' /></li>",
+    displayTpl: "<li>${name} <img src='https://github.githubassets.com/images/icons/emoji/${key}.png'  height='20' width='20' /></li>",
     insertTpl: ':${key}:',
     delay: 400
   }
