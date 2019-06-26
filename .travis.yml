@@ -13,6 +13,7 @@ notifications:
     on_failure: change
 before_install:
   - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
+  - 'gem install bundler -v "$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1)"'
   - 'wget -nv http://sphinxsearch.com/files/dicts/en.pak'
   - 'sudo apt-get -qq update'
   - 'sudo apt-get install sphinxsearch'
