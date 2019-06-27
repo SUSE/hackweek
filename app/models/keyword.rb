@@ -1,4 +1,7 @@
 class Keyword < ApplicationRecord
+  validates :name, presence: true
+  validates :name, uniqueness: true
+
   scope :find_keyword, lambda {
     |str| where('lower(name) like ?', "#{str.downcase}%")
   }
