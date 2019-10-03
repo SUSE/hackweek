@@ -1,4 +1,4 @@
-FROM opensuse/leap:15.0
+FROM opensuse/leap:15.1
 ARG CONTAINER_USERID
 
 # Add needed repos
