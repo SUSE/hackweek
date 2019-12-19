@@ -26,14 +26,7 @@
       :markdown
         #{ @episode.description }
   .col-md-5
-    %div
-      .h3
-        Welcome from Ralf Flaxa
-        %small President of Engineering at SUSE
-      .embed-responsive.embed-responsive-16by9#intro
-        %video{width: 320, height: 240, controls: true}
-          %source{src: "#{video_path('Hackweek_Welcome_by_Ralf.mp4')}", type: 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"'}
-          %source{src: "#{video_path('Hackweek_Welcome_by_Ralf.webm')}", type: 'video/webm; codecs="vp8,vorbis"'}
+    = image_tag 'hackweek-logo-dark.png', class: 'img-responsive', alt: 'Hack Week'
 
 .row
   .col-md-8.col-md-offset-2
