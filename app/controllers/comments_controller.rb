@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
   def reply_modal
     @comment = Comment.find(params[:id])
     @content = @comment.text.to_str.gsub(/:([\w+-]+):/) do |match|
-                 %(![add-emoji](https://assets-cdn.github.com/images/icons/emoji/#{match.to_str.tr(':','')}.png))
+                 %(![add-emoji](https://github.githubassets.com/images/icons/emoji/#{match.to_str.tr(':','')}.png))
                end if @comment.text
     @rendered = MarkdownHelper.render @content
     respond_to do |format|
