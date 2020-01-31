@@ -6,8 +6,8 @@ class SearchController < ApplicationController
       @projects = Project.search params[:q]
       @projects = Project.search params[:q], star: true if @projects.empty?
     else
-      @projects = Project.search params[:q], conditions: { episode_id: params[:episode] }
-      @projects = Project.search params[:q], conditions: { episode_id: params[:episode] }, star: true if @projects.empty?
+      @projects = Project.search params[:q], with: { episode_ids: params[:episode].to_i }
+      @projects = Project.search params[:q], with: { episode_ids: params[:episode].to_i }, star: true if @projects.empty?
     end
 
     @users = User.search params[:q]
