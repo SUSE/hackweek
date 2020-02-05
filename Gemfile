@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # FIXME: 1.7.4 got yanked
-gem 'ruby-progressbar', '1.8.1'
+gem 'ruby-progressbar', '1.10.1'
 
 # as framework
 gem 'rails', '~> 5.2'
