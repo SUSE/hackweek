@@ -79,7 +79,7 @@ gem 'rspec-rails', :group => [:development, :test]
 gem 'capybara', :group => [:development, :test]
 gem 'rails-controller-testing', group: [:development, :test]
 # for file attachments
-gem 'paperclip', '~> 5.2'
+gem 'paperclip', '~> 6.1'
 # as deployer
 gem 'mina', '~> 0.3'
 # as the app server
