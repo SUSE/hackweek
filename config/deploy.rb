@@ -42,6 +42,7 @@ task :setup => :environment do
   queue! %[wget 'http://sphinxsearch.com/files/dicts/en.pak' -O "#{deploy_to}/shared/en.pak"]
   queue! %[zypper --non-interactive ar -f https://download.opensuse.org/repositories/openSUSE:/infrastructure:/hackweek/SLE_15/openSUSE:infrastructure:hackweek.repo]
   queue! %[zypper --non-interactive in hackweek-service]
+  queue! %[systemctl enable hackweek-sphinx]
   queue! %[systemctl enable hackweek]
   queue! %[systemctl enable searchd]
   queue! %[chown hwrun:hwrun -R "#{deploy_to}/shared"]
@@ -56,9 +57,9 @@ task :deploy => :environment do
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     invoke :chown
-    invoke :sphinx_restart
 
     to :launch do
+      queue "sudo systemctl restart hackweek-sphinx"
       queue "sudo systemctl restart hackweek"
       queue "sudo systemctl restart apache2"
     end
@@ -67,9 +68,4 @@ end
 
 task :chown do
   queue "cd #{deploy_to!}/#{current_path!} && chown hwrun:hwrun -R ."
-end
-
-desc "Restart Sphinx."
-task :sphinx_restart do
-  queue "cd #{deploy_to!}/#{current_path!} && RAILS_ENV=#{rails_env} bundle exec rake ts:rebuild"
 end
