@@ -28,7 +28,7 @@ group :development, :test do
 end
 
 # as databases
-gem 'mysql2', '0.5.2'
+gem 'mysql2'
 # for stylesheets
 gem 'sass-rails',   '~> 5.0'
 # as the front-end framework
