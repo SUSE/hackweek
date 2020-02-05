@@ -88,7 +88,7 @@ gem 'puma', '~> 3.11'
 gem 'lograge'
 # for speeding up application boot
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'listen', '>= 3.0.5', '< 3.2', :group => [:development, :test]
+gem 'listen', '>= 3.0.5', '<= 3.2.1', :group => [:development, :test]
 
 group :test do
   # for cleaning the test DB
