@@ -83,7 +83,7 @@ gem 'paperclip', '~> 5.2'
 # as deployer
 gem 'mina', '~> 0.3'
 # as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 4.3'
 # as the log formater
 gem 'lograge'
 # for speeding up application boot
