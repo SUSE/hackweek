@@ -290,7 +290,7 @@ GEM
       unicode-display_width (>= 1.4.0, < 1.7)
     rubocop-rspec (1.37.1)
       rubocop (>= 0.68.1)
-    ruby-progressbar (1.8.1)
+    ruby-progressbar (1.10.1)
     ruby_parser (3.13.1)
       sexp_processor (~> 4.9)
     sass (3.7.4)
@@ -404,7 +404,7 @@ DEPENDENCIES
   rspec-rails
   rubocop
   rubocop-rspec
-  ruby-progressbar (= 1.8.1)
+  ruby-progressbar (= 1.10.1)
   sass-rails (~> 5.0)
   selectize-rails
   spring
