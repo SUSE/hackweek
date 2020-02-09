@@ -28,6 +28,7 @@ class Ability
       # ...manage things they own
       can :manage, Project, originator_id: user.id
       can :manage, User, id: user.id
+      can :read, Update, author_id: user.id
       can [:edit, :update, :add_keyword, :delete_keyword, :advance, :recess, :add_episode, :delete_episode], Project do |project|
         project.users.include? user
       end

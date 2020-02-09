@@ -1,0 +1,7 @@
+$('#updates').append("<%= escape_javascript render partial: "updates/more", locals: { updates: @updates } %>");
+$('#load-more-link').attr('href', '<%= updates_path(page: @next_page) %>');
+$('#UpdatesModal').animate({scrollTop: $("#modal-bottom").offset().top}, 1000);
+<% if @last_page %>
+  $('#load-more-link').hide();
+<% end %>
+
