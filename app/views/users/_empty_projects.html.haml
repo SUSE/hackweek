@@ -1,0 +1,18 @@
+%p
+  - if action_name == 'show'
+    No project yet, join one!
+    - if @user == current_user
+      Check out your
+      = link_to opportunities_user_path(@user) do
+        opportunities.
+  - if action_name == "opportunities"
+    No project is matching your keywords yet, try adding some more on the right.
+  - if action_name == "originated"
+    No ideas yet.
+    - if @user == current_user
+      How about you
+      = link_to new_project_path do
+        create one?
+  - if action_name == "likes"
+    No likes yet, spread some
+    %i.fa.fa-heart

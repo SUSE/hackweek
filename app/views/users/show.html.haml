@@ -15,58 +15,13 @@
       .clearfix
 .row
   .col-sm-8
-    %ul.nav.nav-tabs
-      // When the user has an active project, show that. If not show opportunities
-      - if !@user.projects.by_episode(@episode).empty?
-        %li.active
-          %a{:href=>"#projects", "data-toggle"=>"tab"}
-            Works on
-            = "(#{@user.projects.by_episode(@episode).length})"
-      - else
-        %li.active
-          %a{:href=>"#recommended", "data-toggle"=>"tab"}
-            Opportunities
-            = "(#{@user.recommended_projects(@episode).length})" unless @user.recommended_projects(@episode).empty?
-      %li
-        %a{:href=>"#ideas", "data-toggle"=>"tab"}
-          Originated
-          = "(#{@user.originated_projects.length})" unless @user.originated_projects.empty?
-      %li
-        %a{:href=>"#likes", "data-toggle"=>"tab"}
-          Likes
-          = "(#{@user.favourites.length})" unless @user.favourites.empty?
-      // Append opportunities if the user has an active project
-      - unless @user.projects.empty?
-        %li
-          %a{:href=>"#recommended", "data-toggle"=>"tab"}
-            Opportunities
-            = "(#{@user.recommended_projects(@episode).length})" unless @user.recommended_projects(@episode).empty?
+    = render :partial => "users/tabs"
     .tab-content{:style=>"padding-top: 10px"}
-      - if !@user.projects.by_episode(@episode).empty?
-        .tab-pane.active#projects
-          = render :partial => "projects/list", :locals => {:projects => @user.projects.by_episode(@episode) }
-      - else
-        .tab-pane.active#recommended
-          - if @user.recommended_projects.empty?
-            %p no project is matching your keywords yet, try adding some more.
-          - else
-            = render :partial => "projects/list", :locals => {:projects => @user.recommended_projects }
-      .tab-pane#ideas
-        - if @user.originated_projects.empty?
-          %p no ideas yet
+      .tab-pane.active#projects
+        - if @projects.empty?
+          = render :partial => "empty_projects"
         - else
-          = render :partial => "projects/list", :locals => {:projects => @user.originated_projects }
-      .tab-pane#likes
-        - if @user.favourites.empty?
-          %p no projects yet
-        - else
-          = render :partial => "projects/list", :locals => {:projects => @user.favourites }
-      -unless @user.projects.empty?
-        .tab-pane#recommended
-          - if @user.recommended_projects.empty?
-            %p no project is matching your keywords yet, try adding some more.
-          - else
-            = render :partial => "projects/list", :locals => {:projects => @user.recommended_projects }
+          = render :partial => "projects/list", locals: { projects: @projects }
   .col-sm-4
     .row
       .col-sm-12

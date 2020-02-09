@@ -44,7 +44,7 @@
               %b.caret
             %ul.dropdown-menu
               %li
-                = link_to(me_users_path, :id => "me_users_path") do
+                = link_to(user_path(current_user), :id => "me_users_path") do
                   %i.fa.fa-home
                   = current_user.name
               %li
@@ -69,7 +69,7 @@
           %li{role: "presentation", class: "dropdown-header"}
             = current_user.name
           %li
-            = link_to(me_users_path) do
+            = link_to(user_path(current_user)) do
               %i.fa.fa-home
               Home
           %li

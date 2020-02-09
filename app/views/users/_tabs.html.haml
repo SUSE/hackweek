@@ -1,5 +1,23 @@
 %ul.nav.nav-tabs
-  - all_state = "active" if action_name == "index"
-  %li{:class => all_state}
-    =link_to projects_path, :title => "All projects" do
-      All
+  - works_state = "active" if action_name == "show"
+  %li{:class => works_state}
+    =link_to user_path(@user), :title => "Ideas #{@user.name} came up with" do
+      %span
+        Works on
+  - originated_state = "active" if action_name == "originated"
+  %li{:class => originated_state}
+    =link_to originated_user_path(@user), :title => "Ideas #{@user.name} came up with" do
+      %span
+        Originated
+  - likes_state = "active" if action_name == "likes"
+  %li{class: likes_state}
+    =link_to likes_user_path(@user), title: "Things #{@user.name} likes" do
+      %span.hidden-xs
+        Likes
+      %i.fa.fa-star.visible-xs
+  - opportunities_state = "active" if action_name == "opportunities"
+  %li{:class => opportunities_state}
+    =link_to opportunities_user_path(@user), title: "Things #{@user.name} could hack on" do
+      %span.hidden-xs
+        Opportunities
+      %i.fa.fa-user.visible-xs

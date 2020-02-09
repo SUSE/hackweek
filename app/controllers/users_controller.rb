@@ -3,9 +3,10 @@ class UsersController < ApplicationController
   before_action :find_user_by_id
   before_action :redirect_to_slug, only: [:show]
   load_and_authorize_resource find_by: :name
+  before_action :set_updates, except: :index
 
-  skip_before_action :authenticate_user!, :only => [ :index, :show ]
-  skip_before_action :verify_authenticity_token, :only => [:add_keyword, :delete_keyword ]
+  skip_before_action :authenticate_user!, only: [ :show, :originated, :likes, :opportunities ]
+  skip_before_action :verify_authenticity_token, only: [:add_keyword, :delete_keyword ]
 
   def index
     @users = User.all
@@ -20,12 +21,22 @@ class UsersController < ApplicationController
   end
 
   def show
-    @updates = current_user.updates.page(1)
-    @last_page = current_user.updates.page(1).last_page? || current_user.updates.empty?
+    @projects = @user.projects.by_episode(Episode.active)
   end
 
-  def me
-    redirect_to user_path(current_user)
+  def originated
+    @projects = @user.originated_projects
+    render :show
+  end
+
+  def likes
+    @projects = @user.favourites
+    render :show
+  end
+
+  def opportunities
+    @projects = @user.recommended_projects(@episode)
+    render :show
   end
 
   def add_keyword
@@ -34,7 +45,7 @@ class UsersController < ApplicationController
       logger.debug "Adding keyword \"#{word}\" from user #{@user.id}"
       current_user.add_keyword! word
     end
-    redirect_to :action => "me", notice: "Keyword '#{params[:keyword]}' added."
+    redirect_to @user, notice: "Keyword '#{params[:keyword]}' added."
   end
 
   def delete_keyword
@@ -43,7 +54,7 @@ class UsersController < ApplicationController
       logger.debug "Deleting keyword \"#{word}\" to user #{@user.id}"
       current_user.remove_keyword! word
     end
-    redirect_to :action => "me", notice: "Keyword '#{params[:keyword]}' removed."
+    redirect_to @user, notice: "Keyword '#{params[:keyword]}' removed."
   end
 
   private
@@ -57,6 +68,11 @@ class UsersController < ApplicationController
 
     def find_user_by_id
       @user = User.find_by(id: params[:id])
+    end
+
+    def set_updates
+      @updates = @user.updates.page(1)
+      @last_page = @user.updates.page(1).last_page? || @user.updates.empty?
     end
 
     def redirect_to_slug
