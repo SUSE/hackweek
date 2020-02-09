@@ -64,6 +64,8 @@ describe Project do
     before do
       @project = FactoryBot.create(:project)
       @idea = FactoryBot.create(:idea)
+      # We sort updates by updated_at, make sure it's different from the creation updates
+      sleep 1
       @user = FactoryBot.create(:user)
       @project.join!(@user)
       @idea.join!(@user)
@@ -78,21 +80,23 @@ describe Project do
     end
 
     it 'creates an Update object assigned to the user' do
-      expect(@project.updates.last.author).to eq(@user)
+      expect(@project.updates.first.author).to eq(@user)
     end
 
     context 'when project has no users (state == idea)' do
-      it { expect(@idea.updates.last.text).to eq('started') }
+      it { expect(@idea.updates.first.text).to eq('started') }
     end
 
     context 'when project has a user (state == project)' do
-      it { expect(@project.updates.last.text).to eq('joined') }
+      it { expect(@project.updates.first.text).to eq('joined') }
     end
   end
 
   describe 'leave!' do
     before do
       @project = FactoryBot.create(:project)
+      # We sort updates by updated_at, make sure it's different from the creation updates
+      sleep 1
       @user = @project.users.first
       @project.leave!(@user)
     end
@@ -102,8 +106,8 @@ describe Project do
     end
 
     it 'creates an Update for the user with text "left"' do
-      expect(@project.updates.last.author).to eq(@user)
-      expect(@project.updates.last.text).to eq('left')
+      expect(@project.updates.first.author).to eq(@user)
+      expect(@project.updates.first.text).to eq('left')
     end
 
     context 'when the removed user was the last one' do

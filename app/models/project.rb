@@ -21,7 +21,7 @@ class Project < ApplicationRecord
   has_many :project_interests
   has_many :keywords, through: :project_interests
 
-  has_many :updates, dependent: :destroy
+  has_many :updates, -> { order 'created_at DESC' }, dependent: :destroy
 
   has_many :comments, as: :commentable, dependent: :destroy
 
