@@ -14,7 +14,7 @@
   %li{:class => biggest_state}
     =link_to biggest_projects_path(@episode), :title => "Projects with many users", :remote => true do
       %span.hidden-xs
-        Populous
+        Crowded
       %i.fa.fa-user.visible-xs
   - finished_state = "active" if action_name == "finished"
   %li{:class => finished_state}
