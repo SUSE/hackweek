@@ -5,9 +5,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, only: [:index, :show]  do
-    collection do
-      get 'me'
-    end
     member do
       get 'originated'
       get 'likes'
