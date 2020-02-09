@@ -9,6 +9,9 @@ Rails.application.routes.draw do
       get 'me'
     end
     member do
+      get 'originated'
+      get 'likes'
+      get 'opportunities'
       post 'keyword', to: "users#add_keyword"
       delete 'keyword', to: "users#delete_keyword", constraints: { keyword: /[^\/]+/ }
     end
