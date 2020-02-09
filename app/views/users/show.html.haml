@@ -83,11 +83,4 @@
           = render :partial => "keywords/new", :locals => {:what => @user }
     .row
       .col-sm-12
-        %h4
-          Activity
-          %span.pull-right
-            = render :partial => "updates/show_all_modal", :locals => { :updates => @user.updates }
-        %ul
-        - @user.updates.reverse.first(5).each do |update|
-          %li
-            = render :partial => "updates/show", :locals => { :update => update }
+        = render partial: 'updates/activity'

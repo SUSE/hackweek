@@ -55,6 +55,8 @@ class ProjectsController < ApplicationController
     @previous_project = @project.previous(@episode)
     @next_project = @project.next(@episode)
     @new_comment = Comment.new
+    @updates = @project.updates.page(1)
+    @last_page = @project.updates.page(1).last_page? || @updates.empty?
     @project.update_attributes(projecthits: @project.impressionist_count(filter: :user_id) + @project.kudos.size)
   end
 

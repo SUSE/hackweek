@@ -20,6 +20,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @updates = current_user.updates.page(1)
+    @last_page = current_user.updates.page(1).last_page? || current_user.updates.empty?
   end
 
   def me

@@ -1,0 +1,18 @@
+%h4
+  Activity
+#activity
+  - if @updates.blank?
+    %i
+      No activity yet. Do something!
+  - else
+    %p
+      %ul
+      - @updates.each do |update|
+        %li
+          = render :partial => "updates/show", :locals => { :update => update }
+    %span.pull-right
+      = render :partial => "updates/show_all_modal", :locals => { :updates => @updates }
+- unless @last_page
+  %a{:href=>"#UpdatesModal", :role=>"button", :class=>"btn btn-default pull-right", "data-toggle"=>"modal"}
+    %i.fa.fa-info
+      All Activity

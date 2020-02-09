@@ -73,6 +73,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :updates, only: [:index]
+
   resources :faqs, except: [:show]
   get '/faq', to: redirect('/faqs')
 
