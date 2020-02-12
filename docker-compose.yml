@@ -1,7 +1,8 @@
 version: "2.1"
 services:
   db:
-    image: openbuildservice/mariadb
+    image: registry.opensuse.org/obs/server/unstable/container/leap151/containers/openbuildservice/mariadb
+    command: /usr/lib/mysql/mysql-systemd-helper start
   hackweek:
     build:
       dockerfile: Dockerfile
