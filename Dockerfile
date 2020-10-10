@@ -1,18 +1,17 @@
-FROM opensuse/leap:15.1
+FROM registry.opensuse.org/opensuse/leap:15.2 
 ARG CONTAINER_USERID
 
 # Add needed repos
 RUN echo 'solver.allowVendorChange = true' >> /etc/zypp/zypp.conf; \
-    zypper ar -f https://download.opensuse.org/repositories/server:/search/openSUSE_Leap_15.1/server:search.repo; \
-    zypper ar -f https://download.opensuse.org/repositories/devel:/tools/openSUSE_Leap_15.1/devel:tools.repo; \
+    zypper ar -f https://download.opensuse.org/repositories/openSUSE:/infrastructure:/hackweek/openSUSE_Leap_15.2/openSUSE:infrastructure:hackweek.repo; \
     zypper --gpg-auto-import-keys refresh
-
 
 # Install requirements
 RUN zypper -n install --no-recommends --replacefiles \
   curl vim vim-data psmisc timezone ack glibc-locale sudo hostname \
   sphinx libxml2-devel libxslt-devel sqlite3-devel nodejs8 gcc-c++ \
-  ImageMagick libmysqld-devel phantomjs ruby-devel make git-core;
+  ImageMagick libmysqld-devel ruby-devel make git-core; \
+  zypper -n clean --all
 
 # Add our user
 RUN useradd -m frontend
@@ -25,7 +24,6 @@ RUN echo 'frontend ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 # Disable versioned gem binary names
 RUN echo 'install: --no-format-executable' >> /etc/gemrc
-
 
 # We copy the Gemfiles into this intermediate build stage so it's checksum
 # changes and all the subsequent stages (a.k.a. the bundle install call below)
