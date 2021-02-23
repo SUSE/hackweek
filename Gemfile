@@ -56,6 +56,8 @@ gem 'aasm'
 # as exception notifier
 gem 'sentry-rails'
 gem 'sentry-ruby'
+# for observability
+gem 'honeycomb-beeline'
 # to set env variables
 gem 'figaro'
 # for keyboard shortcuts
