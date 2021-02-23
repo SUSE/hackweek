@@ -25,7 +25,7 @@ end
 # as databases
 gem 'mysql2'
 # for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 6.0'
 # as the front-end framework
 gem 'bootstrap-sass'
 # as vector icons
