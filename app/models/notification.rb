@@ -4,5 +4,5 @@ class Notification < ActiveRecord::Base
   belongs_to :notifiable, polymorphic: true
 
   scope :unread, -> { where(read_at: nil) }
-  scope :logged_in, -> (user) { where(recipient: user) }
+  scope :logged_in, ->(user) { where(recipient: user) }
 end

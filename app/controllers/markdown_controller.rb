@@ -3,9 +3,11 @@ class MarkdownController < ApplicationController
   respond_to :js
 
   def preview
-    markdown_source = params[:source].to_str.gsub(/(?<=^|\s):([\w+-]+):(?=\s|$)/) do |match|
-                        %(![add-emoji](https://github.githubassets.com/images/icons/emoji/#{match.to_str.tr(':','')}.png))
-                      end if params[:source]
+    if params[:source]
+      markdown_source = params[:source].to_str.gsub(/(?<=^|\s):([\w+-]+):(?=\s|$)/) do |match|
+        %(![add-emoji](https://github.githubassets.com/images/icons/emoji/#{match.to_str.tr(':', '')}.png))
+      end
+    end
     @rendered = MarkdownHelper.render markdown_source
     respond_with @rendered
   end

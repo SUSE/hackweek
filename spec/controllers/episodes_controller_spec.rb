@@ -39,9 +39,9 @@ describe EpisodesController do
   describe 'POST create' do
     describe 'with valid params' do
       it 'creates a new Episode' do
-        expect {
+        expect do
           post :create, params: { episode: attributes_for(:episode) }
-        }.to change(Episode, :count).by(1)
+        end.to change(Episode, :count).by(1)
       end
 
       it 'assigns a newly created episode as @episode' do
@@ -63,8 +63,8 @@ describe EpisodesController do
       end
 
       it 're-renders the "new" template' do
-         post :create, params: { episode: attributes_for(:episode, name: nil) }
-         expect(response).to render_template('new')
+        post :create, params: { episode: attributes_for(:episode, name: nil) }
+        expect(response).to render_template('new')
       end
     end
   end
@@ -111,9 +111,9 @@ describe EpisodesController do
   describe 'DELETE destroy' do
     it 'destroys the requested episode' do
       episode = create(:episode)
-      expect {
+      expect do
         delete :destroy, params: { id: episode.to_param }
-      }.to change(Episode, :count).by(-1)
+      end.to change(Episode, :count).by(-1)
     end
 
     it 'redirects to the episodes list' do

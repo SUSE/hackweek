@@ -41,12 +41,12 @@ Devise.setup do |config|
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
-  config.case_insensitive_keys = [ :email ]
+  config.case_insensitive_keys = [:email]
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or
   # modifying a user and when used to authenticate or find a user. Default is :email.
-  config.strip_whitespace_keys = [ :email ]
+  config.strip_whitespace_keys = [:email]
 
   # Tell if authentication through request.params is enabled. True by default.
   # It can be set to an array that will enable params authentication only for the
@@ -202,7 +202,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :ichain_*
   # You will always need to set this parameter.
-  config.ichain_base_url = "https://hackweek.suse.com"
+  config.ichain_base_url = 'https://hackweek.suse.com'
 
   # The header used by your iChain proxy to pass the username.
   # config.ichain_username_header = "HTTP_X_USERNAME"
@@ -218,7 +218,7 @@ Devise.setup do |config|
 
   # Activate the test mode, useful when no real iChain is present, like in
   # testing and development environments
-  # config.ichain_test_mode = true 
+  # config.ichain_test_mode = true
 
   # ==> Scopes configuration
   # Turn scoped views on. Before rendering "sessions/new", it will first check for

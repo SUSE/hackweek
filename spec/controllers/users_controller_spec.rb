@@ -24,7 +24,8 @@ describe UsersController do
   describe 'POST update' do
     it 'updates the user' do
       patch :update, params: { id: user.id, user: {
-        location: 'space' } }
+        location: 'space'
+      } }
       expect(response).to redirect_to(user_path(user.reload))
       expect(user.location).to eq('space')
     end
@@ -32,9 +33,9 @@ describe UsersController do
 
   describe 'POST add_keyword' do
     it 'ads a keyword to the user' do
-      expect {
-          post :add_keyword, params: { id: user.id, keyword: 'html' }
-      }.to change(Keyword, :count).by(1)
+      expect do
+        post :add_keyword, params: { id: user.id, keyword: 'html' }
+      end.to change(Keyword, :count).by(1)
     end
   end
 
@@ -42,9 +43,9 @@ describe UsersController do
     it 'deletes a keyword from the user' do
       post :add_keyword, params: { id: user.id, keyword: 'javascript' }
 
-      expect {
-          delete :delete_keyword, params: { id: user.id, keyword: 'javascript' }
-      }.to change(user.keywords, :count).by(-1)
+      expect do
+        delete :delete_keyword, params: { id: user.id, keyword: 'javascript' }
+      end.to change(user.keywords, :count).by(-1)
     end
   end
 end

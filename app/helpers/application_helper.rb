@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def bootstrap_class_for flash_type
+  def bootstrap_class_for(flash_type)
     case flash_type
     when 'success'
       'alert-success'
@@ -14,7 +14,7 @@ module ApplicationHelper
     end
   end
 
-  def active_page_size(page_size, param=nil)
+  def active_page_size(page_size, param = nil)
     if param.blank?
       'active' if page_size.to_i == 10
     else
@@ -22,9 +22,11 @@ module ApplicationHelper
     end
   end
 
-  def emojify content
-    content.to_str.gsub(/(?<=^|\s):([\w+-]+):(?=\s|$)/) do |match|
-      %(![add-emoji](https://github.githubassets.com/images/icons/emoji/#{match.to_str.tr(':','')}.png))
-    end.html_safe if content.present?
+  def emojify(content)
+    if content.present?
+      content.to_str.gsub(/(?<=^|\s):([\w+-]+):(?=\s|$)/) do |match|
+        %(![add-emoji](https://github.githubassets.com/images/icons/emoji/#{match.to_str.tr(':', '')}.png))
+      end.html_safe
+    end
   end
 end

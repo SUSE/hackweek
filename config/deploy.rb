@@ -27,29 +27,29 @@ end
 # Put any custom mkdir's in here for when `mina setup` is ran.
 # For Rails apps, we'll make some of the shared paths that are shared between
 # all releases.
-task :setup => :environment do
-  queue! %[mkdir -p "#{deploy_to}/shared/log"]
-  queue! %[mkdir -p "#{deploy_to}/shared/tmp"]
-  queue! %[mkdir -p "#{deploy_to}/shared/config"]
-  queue! %[mkdir -p "#{deploy_to}/shared/sphinx/config"]
+task setup: :environment do
+  queue! %(mkdir -p "#{deploy_to}/shared/log")
+  queue! %(mkdir -p "#{deploy_to}/shared/tmp")
+  queue! %(mkdir -p "#{deploy_to}/shared/config")
+  queue! %(mkdir -p "#{deploy_to}/shared/sphinx/config")
 
-  queue! %[touch "#{deploy_to}/shared/config/database.yml"]
-  queue  %[echo "-----> Be sure to edit 'shared/config/database.yml'."]
+  queue! %(touch "#{deploy_to}/shared/config/database.yml")
+  queue  %(echo "-----> Be sure to edit 'shared/config/database.yml'.")
 
-  queue! %[touch "#{deploy_to}/shared/config/application.yml"]
-  queue  %[echo "-----> Be sure to edit 'shared/config/application.yml'."]
+  queue! %(touch "#{deploy_to}/shared/config/application.yml")
+  queue  %(echo "-----> Be sure to edit 'shared/config/application.yml'.")
 
-  queue! %[wget 'http://sphinxsearch.com/files/dicts/en.pak' -O "#{deploy_to}/shared/en.pak"]
-  queue! %[zypper --non-interactive ar -f https://download.opensuse.org/repositories/openSUSE:/infrastructure:/hackweek/SLE_15/openSUSE:infrastructure:hackweek.repo]
-  queue! %[zypper --non-interactive in hackweek-service]
-  queue! %[systemctl enable hackweek-sphinx]
-  queue! %[systemctl enable hackweek]
-  queue! %[systemctl enable searchd]
-  queue! %[chown hwrun:hwrun -R "#{deploy_to}/shared"]
+  queue! %(wget 'http://sphinxsearch.com/files/dicts/en.pak' -O "#{deploy_to}/shared/en.pak")
+  queue! %(zypper --non-interactive ar -f https://download.opensuse.org/repositories/openSUSE:/infrastructure:/hackweek/SLE_15/openSUSE:infrastructure:hackweek.repo)
+  queue! %(zypper --non-interactive in hackweek-service)
+  queue! %(systemctl enable hackweek-sphinx)
+  queue! %(systemctl enable hackweek)
+  queue! %(systemctl enable searchd)
+  queue! %(chown hwrun:hwrun -R "#{deploy_to}/shared")
 end
 
-desc "Deploys the current version to the server."
-task :deploy => :environment do
+desc 'Deploys the current version to the server.'
+task deploy: :environment do
   deploy do
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
@@ -59,9 +59,9 @@ task :deploy => :environment do
     invoke :chown
 
     to :launch do
-      queue "sudo systemctl restart hackweek-sphinx"
-      queue "sudo systemctl restart hackweek"
-      queue "sudo systemctl restart apache2"
+      queue 'sudo systemctl restart hackweek-sphinx'
+      queue 'sudo systemctl restart hackweek'
+      queue 'sudo systemctl restart apache2'
     end
   end
 end

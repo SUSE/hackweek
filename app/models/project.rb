@@ -32,13 +32,13 @@ class Project < ApplicationRecord
   has_many :project_followers, through: :project_follows, source: :user
 
   has_attached_file :avatar, styles: { thumb: '64x64>' }, default_url: :random_avatar
-  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :avatar, content_type: %r{\Aimage/.*\Z}
 
   after_create :create_initial_update
   after_create :assign_episode
 
   after_save ThinkingSphinx::RealTime.callback_for(:project)
-  acts_as_url :title, blacklist: %w{new archived finished newest popular biggest random}
+  acts_as_url :title, blacklist: %w[new archived finished newest popular biggest random]
 
   aasm do
     state :idea, initial: true
@@ -68,16 +68,14 @@ class Project < ApplicationRecord
   scope :liked, -> { where('likes_count > 0') }
   scope :populated, -> { where('memberships_count > 0') }
   scope :by_episode, lambda { |episode|
-    if episode && episode.kind_of?(Episode)
-      joins(:episodes).where(episodes: { id: episode.id })
-    end
+    joins(:episodes).where(episodes: { id: episode.id }) if episode && episode.is_a?(Episode)
   }
 
   def self.current(episode = nil)
-    if !episode.nil? && episode.kind_of?(Episode)
+    if !episode.nil? && episode.is_a?(Episode)
       joins(:episodes).where(episodes: { id: episode.id })
     else
-      self.all
+      all
     end
   end
 
@@ -86,18 +84,18 @@ class Project < ApplicationRecord
   end
 
   def active?
-    self.idea? || self.project?
+    idea? || project?
   end
 
   def joined(user)
     return false if users.empty?
-    return false if !users.include? user
+    return false unless users.include? user
     return true if users.include? user
   end
 
-  def join! user
+  def join!(user)
     if users.include?(user)
-      errors.add(:base, "You already joined this project.")
+      errors.add(:base, 'You already joined this project.')
       return false
     end
 
@@ -106,24 +104,24 @@ class Project < ApplicationRecord
       return false
     end
 
-    if self.users.empty?
-      self.advance!
+    if users.empty?
+      advance!
       type = 'started'
     else
       type = 'joined'
     end
 
-    self.users << user
-    self.save!
+    users << user
+    save!
 
     Update.create!(author: user,
                    text: type,
                    project: self)
   end
 
-  def leave! user
-    if !users.include?(user)
-      errors.add(:base, "You are not member of this project.")
+  def leave!(user)
+    unless users.include?(user)
+      errors.add(:base, 'You are not member of this project.')
       return false
     end
 
@@ -131,46 +129,43 @@ class Project < ApplicationRecord
       errors.add(:base, "You can't leave this project as it's finished.")
       return false
     end
-    self.users.delete(user)
+    users.delete(user)
 
     # If the last user has left...
-    self.abandon! if self.users.empty?
+    abandon! if users.empty?
 
     Update.create!(author: user,
                    text: 'left',
                    project: self)
   end
 
-  def like! user
-    if self.kudos.include? user
-      return
-    end
-    self.kudos << user
-    self.save!
+  def like!(user)
+    return if kudos.include? user
+
+    kudos << user
+    save!
 
     Update.create!(author: user,
                    text: 'liked',
                    project: self)
   end
 
-  def dislike! user
-    self.kudos -= [ user ]
-    self.save!
+  def dislike!(user)
+    self.kudos -= [user]
+    save!
 
     Update.create!(author: user,
                    text: 'disliked',
                    project: self)
   end
 
-  def add_keyword! name, user
+  def add_keyword!(name, user)
     name.downcase!
     name.gsub!(/\s/, '')
     keyword = Keyword.find_by_name name
-    if !keyword
-      keyword = Keyword.create! name: name
-    end
-    if !self.keywords.include? keyword
-      self.keywords << keyword
+    keyword ||= Keyword.create! name: name
+    unless keywords.include? keyword
+      keywords << keyword
       save!
     end
 
@@ -179,10 +174,10 @@ class Project < ApplicationRecord
                    project: self)
   end
 
-  def remove_keyword! name, user
+  def remove_keyword!(name, user)
     keyword = Keyword.find_by_name name
-    if self.keywords.include? keyword
-      self.keywords.delete(keyword)
+    if keywords.include? keyword
+      keywords.delete(keyword)
       save!
     end
 
@@ -194,7 +189,7 @@ class Project < ApplicationRecord
   def similar_projects_keywords
     return [] if keywords.empty?
 
-    return similar_keys = keywords.select { |word| (word.projects.current(Episode.active) - [self]).any? }
+    similar_keys = keywords.select { |word| (word.projects.current(Episode.active) - [self]).any? }
   end
 
   def send_notification(sender, message)
@@ -204,13 +199,12 @@ class Project < ApplicationRecord
     end
   end
 
-
   def previous(episode = nil)
-    Project.by_episode(episode).where('projects.id < ?', self.id).last
+    Project.by_episode(episode).where('projects.id < ?', id).last
   end
 
   def next(episode = nil)
-    Project.by_episode(episode).where('projects.id > ?', self.id).first
+    Project.by_episode(episode).where('projects.id > ?', id).first
   end
 
   def comment_texts
@@ -222,26 +216,29 @@ class Project < ApplicationRecord
   end
 
   def self.numeric?(whatever)
-    Float(whatever) != nil rescue false
+    !Float(whatever).nil?
+  rescue StandardError
+    false
   end
 
   private
-    def title_contains_letters?
-      errors.add(:title, "must contain letters") if Project.numeric?(title)
-    end
 
-    def create_initial_update
-      Update.create!(author: self.originator,
-                     text: 'originated',
-                     project: self)
-    end
+  def title_contains_letters?
+    errors.add(:title, 'must contain letters') if Project.numeric?(title)
+  end
 
-    def assign_episode
-      self.episodes << Episode.active if Episode.active
-    end
+  def create_initial_update
+    Update.create!(author: originator,
+                   text: 'originated',
+                   project: self)
+  end
 
-    def random_avatar
-      avatars = %w( chisel drill hammer hand-file hand-plane pliers ruler saw screwdriver wrench )
-      "avatars/#{avatars.sample}_:style.png"
-    end
+  def assign_episode
+    episodes << Episode.active if Episode.active
+  end
+
+  def random_avatar
+    avatars = %w[chisel drill hammer hand-file hand-plane pliers ruler saw screwdriver wrench]
+    "avatars/#{avatars.sample}_:style.png"
+  end
 end

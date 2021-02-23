@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
-
   get 'markdown/preview'
 
   devise_for :users
 
-  resources :users, only: [:index, :show]  do
+  resources :users, only: %i[index show] do
     member do
       get 'originated'
       get 'likes'
       get 'opportunities'
-      post 'keyword', to: "users#add_keyword"
-      delete 'keyword', to: "users#delete_keyword", constraints: { keyword: /[^\/]+/ }
+      post 'keyword', to: 'users#add_keyword'
+      delete 'keyword', to: 'users#delete_keyword', constraints: { keyword: %r{[^/]+} }
     end
   end
 
@@ -24,7 +23,7 @@ Rails.application.routes.draw do
         get 'popular'
         get 'biggest'
         get 'random'
-        get "search", to: "search#result"
+        get 'search', to: 'search#result'
       end
       member do
         get 'like'
@@ -33,10 +32,10 @@ Rails.application.routes.draw do
         match 'leave', via: :post, defaults: { format: 'js' }
         post 'advance'
         post 'recess'
-        post 'episode', to: "projects#add_episode", defaults: { format: 'js' }
-        delete 'episode', to: "projects#delete_episode", defaults: { format: 'js' }
-        post 'keyword', to: "projects#add_keyword"
-        delete 'keyword', to: "projects#delete_keyword", constraints: { keyword: /[^\/]+/ }
+        post 'episode', to: 'projects#add_episode', defaults: { format: 'js' }
+        delete 'episode', to: 'projects#delete_episode', defaults: { format: 'js' }
+        post 'keyword', to: 'projects#add_keyword'
+        delete 'keyword', to: 'projects#delete_keyword', constraints: { keyword: %r{[^/]+} }
       end
       resources :followers, only: [] do
         collection do
@@ -49,15 +48,15 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/reply/:id', to: "comments#reply_modal", as: 'reply_modal'
+  get '/reply/:id', to: 'comments#reply_modal', as: 'reply_modal'
 
-  resources :comments, only: [:new, :create] do
-    resources :comments, only: [:new, :create]
+  resources :comments, only: %i[new create] do
+    resources :comments, only: %i[new create]
   end
 
   resources :announcements do
     member do
-      get "enroll"
+      get 'enroll'
     end
   end
 
@@ -69,7 +68,7 @@ Rails.application.routes.draw do
 
   resources :episodes do
     member do
-      get "activate"
+      get 'activate'
     end
   end
 
@@ -78,16 +77,15 @@ Rails.application.routes.draw do
   resources :faqs, except: [:show]
   get '/faq', to: redirect('/faqs')
 
-  get "keyword/tokens"
-  get "gallery", to: "gallery#index"
+  get 'keyword/tokens'
+  get 'gallery', to: 'gallery#index'
 
-  get "about", to: "about#show"
-  get "howto", to: "about#show"
+  get 'about', to: 'about#show'
+  get 'howto', to: 'about#show'
 
-  get "news", to: "announcements#index"
-  get "users/:id/edit", to: "users#edit", as: "user_edit"
+  get 'news', to: 'announcements#index'
+  get 'users/:id/edit', to: 'users#edit', as: 'user_edit'
   patch 'users/:id', to: 'users#update'
 
   root 'about#index'
-
 end

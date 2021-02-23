@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe NotificationsController do
-  let(:notification) {create :notification}
+  let(:notification) { create :notification }
 
   before :each do
     sign_in create :user
@@ -18,9 +18,9 @@ describe NotificationsController do
   describe 'POST mark_as_read' do
     it 'makes all the unread msges as read' do
       notification = create :notification
-      expect{
+      expect do
         post :mark_as_read, format: :js
-      }.to change(Notification.unread, :count).by(-1)
+      end.to change(Notification.unread, :count).by(-1)
     end
   end
 end

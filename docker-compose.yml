@@ -1,8 +1,9 @@
 version: "2.1"
 services:
   db:
-    image: registry.opensuse.org/obs/server/unstable/container/leap151/containers/openbuildservice/mariadb
-    command: /usr/lib/mysql/mysql-systemd-helper start
+    image: registry.opensuse.org/opensuse/mariadb:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
   hackweek:
     build:
       dockerfile: Dockerfile

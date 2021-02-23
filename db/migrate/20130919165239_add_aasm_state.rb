@@ -6,5 +6,4 @@ class AddAasmState < ActiveRecord::Migration
   def down
     remove_column :projects, :aasm_state
   end
-
 end

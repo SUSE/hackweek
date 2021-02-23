@@ -9,6 +9,7 @@ class Comment < ApplicationRecord
 
   def project
     return @project if defined?(@project)
+
     @project = commentable.is_a?(Project) ? commentable : commentable.project
   end
 

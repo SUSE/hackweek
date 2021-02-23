@@ -26,7 +26,7 @@ describe ProjectsController do
     it 'assigns next and previous project if they exist' do
       previous_project = create(:project)
       project = create(:project)
-      next_project =create(:project)
+      next_project = create(:project)
 
       get :show, params: { id: project.to_param }
       expect(assigns(:previous_project)).to eq(previous_project)
@@ -61,9 +61,9 @@ describe ProjectsController do
   describe 'POST create' do
     describe 'with valid params' do
       it 'creates a new Project' do
-        expect {
+        expect do
           post :create, params: { project: attributes_for(:project) }
-        }.to change(Project, :count).by(1)
+        end.to change(Project, :count).by(1)
       end
 
       it 'assigns a newly created project as @project' do
@@ -85,8 +85,8 @@ describe ProjectsController do
       end
 
       it 're-renders the "new" template' do
-         post :create, params: { project: attributes_for(:project, title: nil) }
-         expect(response).to render_template('new')
+        post :create, params: { project: attributes_for(:project, title: nil) }
+        expect(response).to render_template('new')
       end
     end
   end
@@ -127,9 +127,9 @@ describe ProjectsController do
 
   describe 'DELETE destroy', search: true do
     it 'destroys the requested project' do
-      expect {
+      expect do
         delete :destroy, params: { id: project.to_param }
-      }.to change(Project, :count).by(-1)
+      end.to change(Project, :count).by(-1)
     end
 
     it 'redirects to the projects list' do
@@ -140,13 +140,13 @@ describe ProjectsController do
 
   describe 'POST advance_project' do
     it 'advances the projects state' do
-      post :advance, params: { id:project.id }
+      post :advance, params: { id: project.id }
       project.reload
       expect(project.aasm_state).to eq('invention')
     end
 
     it 'redirects to the project' do
-      post :advance, params: { id:project.id }
+      post :advance, params: { id: project.id }
       expect(response).to redirect_to(project)
     end
   end
@@ -154,7 +154,7 @@ describe ProjectsController do
   describe 'POST recess_project' do
     it 'recesses the projects state' do
       project = create(:idea)
-      post :recess, params: { id:project.id }
+      post :recess, params: { id: project.id }
       project.reload
       expect(project.aasm_state).to eq('record')
     end
@@ -170,9 +170,9 @@ describe ProjectsController do
     let(:project) { create(:idea) }
 
     it 'ads an user to the project' do
-      expect {
-          post :join, params: { id:project.id, format: 'js' }
-      }.to change(project.users, :count).by(1)
+      expect do
+        post :join, params: { id: project.id, format: 'js' }
+      end.to change(project.users, :count).by(1)
     end
 
     context 'when the user already joined' do
@@ -181,9 +181,9 @@ describe ProjectsController do
       end
 
       it 'does not add the user again' do
-        expect {
-            post :join, params: { id: project.id, format: 'js' }
-        }.not_to change(project.users, :count)
+        expect do
+          post :join, params: { id: project.id, format: 'js' }
+        end.not_to change(project.users, :count)
       end
     end
   end
@@ -192,17 +192,17 @@ describe ProjectsController do
     it 'deletes an user from the project' do
       project = create(:idea)
       project.join!(admin)
-      expect {
-          post :leave, params: { id: project.id, format: 'js' }
-      }.to change(project.users, :count).by(-1)
+      expect do
+        post :leave, params: { id: project.id, format: 'js' }
+      end.to change(project.users, :count).by(-1)
     end
   end
 
   describe 'GET like_project' do
     it 'likes the projects' do
-      expect {
-          get :like, params: { id: project.id }
-      }.to change(Like, :count).by(1)
+      expect do
+        get :like, params: { id: project.id }
+      end.to change(Like, :count).by(1)
     end
 
     it 'redirects to the project' do
@@ -215,9 +215,9 @@ describe ProjectsController do
     it 'dislikes the project' do
       project = create(:idea)
       get :like, params: { id: project.id }
-      expect {
-          get :dislike, params: { id: project.id }
-      }.to change(Like, :count).by(-1)
+      expect do
+        get :dislike, params: { id: project.id }
+      end.to change(Like, :count).by(-1)
     end
 
     it 'redirects to the project' do
@@ -230,9 +230,9 @@ describe ProjectsController do
   describe 'POST keyword_project' do
     it 'ads a keyword to the project' do
       project = create(:idea)
-      expect {
-          post :add_keyword, params: { id: project.id, keyword: 'web' }
-      }.to change(Keyword, :count).by(1)
+      expect do
+        post :add_keyword, params: { id: project.id, keyword: 'web' }
+      end.to change(Keyword, :count).by(1)
     end
 
     it 'redirects to the project' do
@@ -246,9 +246,9 @@ describe ProjectsController do
     it 'deletes a keyword from the project' do
       project = create(:idea)
       post :add_keyword, params: { id: project.id, keyword: 'web' }
-      expect {
-          post :delete_keyword, params: { id: project.id, keyword: 'web' }
-      }.to change(project.keywords, :count).by(-1)
+      expect do
+        post :delete_keyword, params: { id: project.id, keyword: 'web' }
+      end.to change(project.keywords, :count).by(-1)
     end
 
     it 'redirects to the project' do
@@ -263,9 +263,9 @@ describe ProjectsController do
       project = create(:idea)
       episode = create(:episode)
 
-      expect {
-          post :add_episode, params: { id: project.id, episode_id: episode.id, format: :js }
-      }.to change(project.episodes, :count).by(1)
+      expect do
+        post :add_episode, params: { id: project.id, episode_id: episode.id, format: :js }
+      end.to change(project.episodes, :count).by(1)
     end
   end
 
@@ -275,9 +275,9 @@ describe ProjectsController do
       episode = create(:episode)
       project.episodes = [episode]
 
-      expect {
-          post :delete_episode, params: { id: project.id, episode_id: episode.id, format: :js }
-      }.to change(project.episodes, :count).by(-1)
+      expect do
+        post :delete_episode, params: { id: project.id, episode_id: episode.id, format: :js }
+      end.to change(project.episodes, :count).by(-1)
     end
   end
 
@@ -343,7 +343,7 @@ describe ProjectsController do
       end
 
       it 'works for :all episodes' do
-        expect { get :index, params: {  episode: :all, format: :rss } }.not_to raise_error
+        expect { get :index, params: { episode: :all, format: :rss } }.not_to raise_error
       end
     end
   end

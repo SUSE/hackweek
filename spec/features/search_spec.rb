@@ -14,7 +14,7 @@ describe 'Search result', search: true do
     expect(results).to contain_exactly(project)
   end
 
-  # OK, I give up. Wildcards seem not to work in test mode (but works perfectly in development). 
+  # OK, I give up. Wildcards seem not to work in test mode (but works perfectly in development).
   # Test this manually, please
   it 'can be found by substring in wildcard-enabled mode' do
     results = Project.search 'fragil', star: true
@@ -31,7 +31,7 @@ describe 'Search result', search: true do
     expect(results).to contain_exactly(project)
   end
 
-  # TODO Add tooltip with search operators to the corresponding view
+  # TODO: Add tooltip with search operators to the corresponding view
   it 'can be found using operators' do
     linux = create(:project, title: 'Linux')
     opensuse = create(:project, title: 'openSUSE', description: 'A Linux distribution with cool kernel')

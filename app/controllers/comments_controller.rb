@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
 
     if @comment.save
       @comment.send_notification(current_user, " commented on #{@comment.project.aasm_state}: #{@comment.project.title}")
-      redirect_to project_path(@comment.project), :notice => 'Thank you for your comment!'
+      redirect_to project_path(@comment.project), notice: 'Thank you for your comment!'
     else
       render :new
     end
@@ -25,9 +25,11 @@ class CommentsController < ApplicationController
 
   def reply_modal
     @comment = Comment.find(params[:id])
-    @content = @comment.text.to_str.gsub(/:([\w+-]+):/) do |match|
-                 %(![add-emoji](https://github.githubassets.com/images/icons/emoji/#{match.to_str.tr(':','')}.png))
-               end if @comment.text
+    if @comment.text
+      @content = @comment.text.to_str.gsub(/:([\w+-]+):/) do |match|
+        %(![add-emoji](https://github.githubassets.com/images/icons/emoji/#{match.to_str.tr(':', '')}.png))
+      end
+    end
     @rendered = MarkdownHelper.render @content
     respond_to do |format|
       format.html

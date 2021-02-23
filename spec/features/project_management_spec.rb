@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Project management' do
-  let(:user) {create :user}
+  let(:user) { create :user }
 
   before :each do
     sign_in user
@@ -16,9 +16,9 @@ feature 'Project management' do
     fill_in 'project_title', with: title
     fill_in 'project_description', with: description
 
-    expect {
+    expect do
       click_button 'Create Project'
-    }.to change(Project, :count).by(1)
+    end.to change(Project, :count).by(1)
     expect(page).to have_text("an idea by #{user.name}")
     expect(page).to have_text(title)
     expect(page).to have_text(description)
@@ -46,9 +46,9 @@ feature 'Project management' do
 
     visit project_path(nil, project)
 
-    expect {
+    expect do
       click_link "project#{project.to_param}-delete-link"
-    }.to change(Project, :count).by(-1)
+    end.to change(Project, :count).by(-1)
   end
 
   scenario 'User archives an idea' do
@@ -56,9 +56,9 @@ feature 'Project management' do
 
     visit project_path(nil, project)
 
-    expect {
+    expect do
       click_link "project#{project.to_param}-recess-link"
-    }.to change(Project.archived, :count).by(1)
+    end.to change(Project.archived, :count).by(1)
   end
 
   scenario 'User finishes a project' do
@@ -66,9 +66,9 @@ feature 'Project management' do
 
     visit project_path(nil, project)
 
-    expect {
+    expect do
       click_link "project#{project.to_param}-advance-link"
-    }.to change(Project.finished, :count).by(1)
+    end.to change(Project.finished, :count).by(1)
   end
 
   scenario 'User restarts a project' do
@@ -112,14 +112,14 @@ feature 'Project management' do
     click_link 'Reply', match: :first
 
     expect(page).to have_text first_comment.text
-    expect(page).to have_css("#replyModal.modal.in")
+    expect(page).to have_css('#replyModal.modal.in')
 
     @modal = find '.modal.fade.in'
     @modal.find("textarea[id$='comment_text']").set reply_text
 
-    expect {
+    expect do
       @modal.find('button[name="button"]').click
-    }.to change(first_comment.comments, :count).by(1)
+    end.to change(first_comment.comments, :count).by(1)
   end
 
   scenario 'more than one project having same tags' do
@@ -130,6 +130,6 @@ feature 'Project management' do
 
     visit project_path(nil, project)
 
-    expect(page).to have_css('h5',text: project2.title)
+    expect(page).to have_css('h5', text: project2.title)
   end
 end

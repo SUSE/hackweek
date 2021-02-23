@@ -3,7 +3,7 @@ FactoryBot.define do
   factory :all_states, class: Project do
     sequence(:title) { Faker::Lorem.sentence }
     sequence(:description) { Faker::Lorem.paragraph }
-    
+
     likes_count { 0 }
     memberships_count { 0 }
     aasm_state { 'idea' }

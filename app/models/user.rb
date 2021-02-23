@@ -34,48 +34,45 @@ class User < ApplicationRecord
   has_gravatar
 
   def role?(role)
-    return !!self.roles.find_by_name(role)
+    !!roles.find_by_name(role)
   end
 
   def to_param
     name
   end
 
-  def add_keyword! name
+  def add_keyword!(name)
     name.downcase!
     name.gsub!(/\s/, '')
     keyword = Keyword.find_by_name name
-    if !keyword
-      keyword = Keyword.create! name: name
-    end
-    if !self.keywords.include? keyword
-      self.keywords << keyword
+    keyword ||= Keyword.create! name: name
+    unless keywords.include? keyword
+      keywords << keyword
       save!
     end
   end
 
-  def remove_keyword! name
+  def remove_keyword!(name)
     keyword = Keyword.find_by_name name
-    if self.keywords.include? keyword
-      self.keywords.delete(keyword)
+    if keywords.include? keyword
+      keywords.delete(keyword)
       save!
     end
   end
 
   def recommended_projects(episode = nil)
-    if self.keywords.empty?
-      return []
-    end
+    return [] if keywords.empty?
 
     recommended = []
-    self.keywords.each do |word|
-      if episode
-        projects = word.projects.select { |p| p.episodes.include?(episode)  }
-      else
-        projects = word.projects
-      end
+    keywords.each do |word|
+      projects = if episode
+                   word.projects.select { |p| p.episodes.include?(episode) }
+                 else
+                   word.projects
+                 end
       projects.each do |p|
         next unless p.active?
+
         if episode
           recommended << p if p.episodes.include?(episode)
         else
