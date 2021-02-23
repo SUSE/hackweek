@@ -54,8 +54,8 @@ gem 'selectize-rails'
 # as state machine
 gem 'aasm'
 # as exception notifier
-gem 'airbrake'
-gem 'airbrake-ruby'
+gem 'sentry-rails'
+gem 'sentry-ruby'
 # to set env variables
 gem 'figaro'
 # for keyboard shortcuts
