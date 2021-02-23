@@ -19,8 +19,8 @@ jobs:
           bundler-cache: true
       - name: Prepare spec
         run: |
+          sudo systemctl start mysql.service
           wget -nv http://sphinxsearch.com/files/dicts/en.pak
-          sudo apt-get install sphinxsearch
           RAILS_ENV=test bundle exec rake dev:bootstrap --trace
       - name: Run tests
         run: bundle exec rake spec

@@ -1,11 +1,6 @@
 <%
-  if ENV['TRAVIS']
-    password = ''
-  elsif ENV['CONTAINER']
-    password = 'opensuse'
+  if ENV['CONTAINER']
     host = 'db'
-  else
-    password = "hackweek"
   end
 %>
 
@@ -13,7 +8,7 @@ default: &default
   adapter: mysql2
   encoding: utf8
   username: root
-  password: <%= password %>
+  password: root
   host: <%= host %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
