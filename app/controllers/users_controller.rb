@@ -1,22 +1,20 @@
 class UsersController < ApplicationController
-
   before_action :find_user_by_id
   before_action :redirect_to_slug, only: [:show]
   load_and_authorize_resource find_by: :name
   before_action :set_updates, except: :index
 
-  skip_before_action :authenticate_user!, only: [ :show, :originated, :likes, :opportunities ]
-  skip_before_action :verify_authenticity_token, only: [:add_keyword, :delete_keyword ]
+  skip_before_action :authenticate_user!, only: %i[show originated likes opportunities]
+  skip_before_action :verify_authenticity_token, only: %i[add_keyword delete_keyword]
 
   def index
     @users = User.all
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
-    current_user.update_attributes(params["user"])
+    current_user.update_attributes(params['user'])
     redirect_to user_path(current_user)
   end
 
@@ -58,24 +56,25 @@ class UsersController < ApplicationController
   end
 
   private
-    def user_params
-      params.require(:user).permit(:location)
-    end
 
-    def keyword_params
-      params.require(:keyword)
-    end
+  def user_params
+    params.require(:user).permit(:location)
+  end
 
-    def find_user_by_id
-      @user = User.find_by(id: params[:id])
-    end
+  def keyword_params
+    params.require(:keyword)
+  end
 
-    def set_updates
-      @updates = @user.updates.page(1)
-      @last_page = @user.updates.page(1).last_page? || @user.updates.empty?
-    end
+  def find_user_by_id
+    @user = User.find_by(id: params[:id])
+  end
 
-    def redirect_to_slug
-      redirect_to @user if @user
-    end
+  def set_updates
+    @updates = @user.updates.page(1)
+    @last_page = @user.updates.page(1).last_page? || @user.updates.empty?
+  end
+
+  def redirect_to_slug
+    redirect_to @user if @user
+  end
 end

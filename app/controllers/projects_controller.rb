@@ -1,25 +1,24 @@
 class ProjectsController < ApplicationController
-
   before_action :find_project_by_id
   before_action :redirect_to_slug, only: [:show]
   load_and_authorize_resource find_by: :url
-  skip_before_action :authenticate_user!, only: [ :index, :show, :archived, :finished, :newest, :popular, :biggest, :random ]
-  skip_before_action :store_location, only: [:join, :leave, :like, :dislike, :add_keyword, :delete_keyword ]
-  skip_before_action :verify_authenticity_token, only: [:add_keyword, :delete_keyword ]
+  skip_before_action :authenticate_user!, only: %i[index show archived finished newest popular biggest random]
+  skip_before_action :store_location, only: %i[join leave like dislike add_keyword delete_keyword]
+  skip_before_action :verify_authenticity_token, only: %i[add_keyword delete_keyword]
   before_action :load_episode
-  before_action :username_array, only: [:new, :edit, :show]
+  before_action :username_array, only: %i[new edit show]
   autocomplete :project, :title
   impressionist actions: [:show], unique: [:user_id]
 
   # GET /projects
   # GET /projects.rss
   def index
-    @projects = Project.current(@episode).active.includes(:episode_project_associations, :originator, :users).
-        order('projecthits ASC').references(:episodes_projects).page(params[:page]).per(params[:page_size])
+    @projects = Project.current(@episode).active.includes(:episode_project_associations, :originator, :users)
+                       .order('projecthits ASC').references(:episodes_projects).page(params[:page]).per(params[:page_size])
     @newest = @projects.first(10)
     respond_to do |format|
       format.html { render }
-      format.rss { render :layout => false }
+      format.rss { render layout: false }
       format.js
     end
   end
@@ -66,8 +65,7 @@ class ProjectsController < ApplicationController
   end
 
   # GET /projects/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /projects
   def create
@@ -116,7 +114,7 @@ class ProjectsController < ApplicationController
       @project.project_followers << current_user unless @project.project_followers.include?(current_user)
       flash.now['success'] = "Welcome to the project #{current_user.name}."
     else
-      flash.now['error'] = "#{@project.errors.full_messages.to_sentence}"
+      flash.now['error'] = @project.errors.full_messages.to_sentence.to_s
     end
     render 'membership_list'
   end
@@ -126,7 +124,7 @@ class ProjectsController < ApplicationController
     if @project.leave!(current_user)
       flash.now['success'] = "Sorry to see you go #{current_user.name}."
     else
-      flash.now['error'] = "#{@project.errors.full_messages.to_sentence}"
+      flash.now['error'] = @project.errors.full_messages.to_sentence.to_s
     end
     render 'membership_list'
   end
@@ -137,7 +135,7 @@ class ProjectsController < ApplicationController
     @project.send_notification(current_user, "just liked #{@project.aasm_state}: #{@project.title}")
 
     respond_to do |format|
-      format.html{ redirect_to project_path(@episode, @project), notice: "Thank you for your love #{current_user.name}!" }
+      format.html { redirect_to project_path(@episode, @project), notice: "Thank you for your love #{current_user.name}!" }
       format.js { render partial: 'like_toggle' }
     end
     @project.update_attributes(projecthits: @project.impressionist_count(filter: :user_id) + @project.kudos.size)
@@ -148,7 +146,7 @@ class ProjectsController < ApplicationController
     @project.dislike! current_user
 
     respond_to do |format|
-      format.html{ redirect_to project_path(@episode, @project), notice: "Aaww Snap! You don't love me anymore?" }
+      format.html { redirect_to project_path(@episode, @project), notice: "Aaww Snap! You don't love me anymore?" }
       format.js { render partial: 'like_toggle' }
     end
     @project.update_attributes(projecthits: @project.impressionist_count(filter: :user_id) + @project.kudos.size)
@@ -198,27 +196,27 @@ class ProjectsController < ApplicationController
 
   private
 
-    def project_params
-      params.require(:project).permit(:description, :title, :avatar)
-    end
+  def project_params
+    params.require(:project).permit(:description, :title, :avatar)
+  end
 
-    def keyword_params
-      params.require(:keyword)
-    end
+  def keyword_params
+    params.require(:keyword)
+  end
 
-    def load_episode
-      @episode = Episode.find(params[:episode_id]) if params[:episode_id]
-    end
+  def load_episode
+    @episode = Episode.find(params[:episode_id]) if params[:episode_id]
+  end
 
-    def find_project_by_id
-      @project = Project.find_by(id: params[:id]) if Project.numeric?(params[:id])
-    end
+  def find_project_by_id
+    @project = Project.find_by(id: params[:id]) if Project.numeric?(params[:id])
+  end
 
-    def redirect_to_slug
-      redirect_to @project if @project
-    end
+  def redirect_to_slug
+    redirect_to @project if @project
+  end
 
-    def username_array
-      @username_array = User.pluck(:name).compact.to_json
-    end
+  def username_array
+    @username_array = User.pluck(:name).compact.to_json
+  end
 end

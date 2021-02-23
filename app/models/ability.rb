@@ -23,8 +23,8 @@ class Ability
     if user
       # Everyone can:
       can :read, :all
-      can [:join, :leave, :like, :dislike, :create], Project
-      can [:originated, :likes, :opportunities], User
+      can %i[join leave like dislike create], Project
+      can %i[originated likes opportunities], User
       can [:enroll], Announcement
       # ...manage things they own
       can :manage, User, id: user.id
@@ -41,9 +41,7 @@ class Ability
       end
 
       # Admins can:
-      if user.role? :admin
-        can :manage, :all
-      end
+      can :manage, :all if user.role? :admin
 
     end
   end

@@ -11,7 +11,7 @@ end
 
 ENV['RAILS_ENV'] ||= 'test'
 require 'spec_helper'
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -73,7 +73,7 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::IntegrationHelpers, type: :feature
   config.include LoginMacros, type: :feature
-  #config.include Flash, type: :feature
+  # config.include Flash, type: :feature
   config.include SphinxHelpers, search: true
 
   # As we start from scratch in September 2014, let's forbid the old :should syntax

@@ -3,7 +3,7 @@ FactoryBot.define do
     association :commenter, factory: :user
     association :commentable, factory: :project
 
-    text { "Sample" }
+    text { 'Sample' }
 
     trait :with_nested_comments do
       after :create do |comment|

@@ -8,5 +8,4 @@ class AddProjectCounterCache < ActiveRecord::Migration
     remove_column :projects, :likes_count
     remove_column :projects, :memberships_count
   end
-
 end

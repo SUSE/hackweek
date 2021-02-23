@@ -31,10 +31,11 @@ class ApplicationController < ActionController::Base
   # doesn't start with our base url or is an ajax call.
   def store_location
     return unless request.get?
-    if (request.path != new_user_ichain_session_path &&
-        request.path != new_user_ichain_registration_path &&
-        !request.path.starts_with?(Devise.ichain_base_url) &&
-        !request.xhr?)
+
+    if request.path != new_user_ichain_session_path &&
+       request.path != new_user_ichain_registration_path &&
+       !request.path.starts_with?(Devise.ichain_base_url) &&
+       !request.xhr?
       session[:return_to] = request.fullpath
     end
   end
@@ -52,11 +53,7 @@ class ApplicationController < ActionController::Base
   def load_news
     if user_signed_in?
       a = Announcement.last
-      if a && !a.users.include?(current_user)
-        @news = a
-      else
-        @news = nil
-      end
+      @news = (a if a && !a.users.include?(current_user))
     end
   end
 
@@ -71,15 +68,15 @@ class ApplicationController < ActionController::Base
   end
 
   def set_episode
-    if params[:episode].blank?
-      @episode = Episode.active
-    else
-      if params[:episode] == 'all'
-        @episode = :all
-      else
-        @episode = Episode.find_by(id: params[:episode])
-      end
-    end
+    @episode = if params[:episode].blank?
+                 Episode.active
+               else
+                 if params[:episode] == 'all'
+                   :all
+                 else
+                   Episode.find_by(id: params[:episode])
+                 end
+               end
     logger.debug("\n\nEpisode: #{@episode.to_param}\n\n")
   end
 

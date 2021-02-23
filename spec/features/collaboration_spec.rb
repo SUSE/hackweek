@@ -32,9 +32,9 @@ feature 'Collaboration' do
 
     visit project_path(nil, project)
 
-    expect {
+    expect do
       click_link "like-#{project.id}"
-    }.to change(Project.liked, :count).by(1)
+    end.to change(Project.liked, :count).by(1)
     expect(page).not_to have_css("like-#{project.id}")
   end
 
@@ -46,9 +46,9 @@ feature 'Collaboration' do
     visit project_path(nil, project)
     click_link "like-#{project.id}"
 
-    expect {
+    expect do
       click_link "dislike-#{project.id}"
-    }.to change(Project.liked, :count).by(-1)
+    end.to change(Project.liked, :count).by(-1)
     expect(page).not_to have_css("dislike-#{project.id}")
   end
 
@@ -60,9 +60,9 @@ feature 'Collaboration' do
     visit project_path(nil, project)
     click_link "like-#{project.id}"
 
-    expect {
+    expect do
       find("#like-#{project.id}", visible: false).click
-    }.to change(Project.liked, :count).by(0)
+    end.to change(Project.liked, :count).by(0)
     expect(page).not_to have_css("like-#{project.id}")
   end
 end

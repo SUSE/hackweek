@@ -1,7 +1,6 @@
 class FaqsController < ApplicationController
   load_and_authorize_resource params_method: :faq_params
-  skip_before_action :authenticate_user!, only: [ :index ]
-
+  skip_before_action :authenticate_user!, only: [:index]
 
   # GET /faqs | /faq
   def index
@@ -14,8 +13,7 @@ class FaqsController < ApplicationController
   end
 
   # GET /faqs/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /faqs
   def create
@@ -44,13 +42,14 @@ class FaqsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_faq
-      @faq = Faq.find!(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def faq_params
-      params.require(:faq).permit(:question, :answer)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_faq
+    @faq = Faq.find!(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def faq_params
+    params.require(:faq).permit(:question, :answer)
+  end
 end

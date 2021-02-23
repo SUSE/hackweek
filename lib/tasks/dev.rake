@@ -16,11 +16,11 @@ end
 namespace :dev do
   file_task_names = []
 
-  %w(application database secrets).each do |example_base|
+  %w[application database secrets].each do |example_base|
     config_file = File.join('config', "#{example_base}.yml")
     config_example = File.join('config', "#{example_base}.yml.example")
     t = Rake::FileTask.define_task(config_file => config_example) do |task|
-      if File.exists?(task.name)
+      if File.exist?(task.name)
         puts ">>> Skipping #{task.prerequisites.first} -> #{task.name}, please examine and merge if needed."
       else
         cp task.prerequisites.first, task.name
@@ -42,16 +42,17 @@ namespace :dev do
     found = false
 
     ENV['PATH'].split(':').each do |path|
-      next unless File.exists?(path)
-      found = !Find.find(path).select {|f| f.match(/\bsearchd$/) && File.executable?(f)}.empty?
+      next unless File.exist?(path)
+
+      found = !Find.find(path).select { |f| f.match(/\bsearchd$/) && File.executable?(f) }.empty?
       break if found
     end
 
-    fail "Can't find searchd for Sphinx. Please install or add to PATH.".red unless found
+    raise "Can't find searchd for Sphinx. Please install or add to PATH.".red unless found
   end
 
   desc 'bootstrap development environment'
-  task bootstrap: %w(copy_sample_configs bundle_install db:create db:setup db:seed require_searchd ts:rebuild) do
+  task bootstrap: %w[copy_sample_configs bundle_install db:create db:setup db:seed require_searchd ts:rebuild] do
     puts "\n\nCongrats! You should be all set.".green
     puts "\nHappy Hacking!".green
   end

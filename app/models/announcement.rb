@@ -7,8 +7,8 @@ class Announcement < ApplicationRecord
   has_many :enrollments
   has_many :users, through: :enrollments
 
-  def enroll! user
-    self.users << user
-    self.save!
+  def enroll!(user)
+    users << user
+    save!
   end
 end

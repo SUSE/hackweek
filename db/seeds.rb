@@ -3,8 +3,8 @@
 # Episodes
 
 # Roles
-Role.create(:name => "organizer")
-admin_role = Role.create(:name => "admin")
+Role.create(name: 'organizer')
+admin_role = Role.create(name: 'admin')
 # Uncomment these lines to create an initial admin user
 # admin_user = User.create(:name => "admin", :email => "admin@example.org")
 # admin_user.roles = [admin_role]

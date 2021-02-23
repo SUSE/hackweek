@@ -16,8 +16,8 @@ gem 'rails-jquery-autocomplete'
 # Misc tools for fancy development
 group :development, :test do
   # as our rails console
-  gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'pry-rails'
   # to improve inspect output
   gem 'hirb'
 end
@@ -25,7 +25,7 @@ end
 # as databases
 gem 'mysql2'
 # for stylesheets
-gem 'sass-rails',   '~> 5.0'
+gem 'sass-rails', '~> 5.0'
 # as the front-end framework
 gem 'bootstrap-sass'
 # as vector icons
@@ -34,10 +34,10 @@ gem 'impressionist'
 # as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # as JavaScript library
-gem 'jquery-rails'
-gem 'jquery-hotkeys-rails'
-gem 'js_cookie_rails'
 gem 'jquery-atwho-rails'
+gem 'jquery-hotkeys-rails'
+gem 'jquery-rails'
+gem 'js_cookie_rails'
 # as templating language
 gem 'haml-rails'
 # as authentification framework
@@ -67,12 +67,12 @@ gem 'kaminari'
 # for slugs
 gem 'stringex'
 # for seeds
-gem 'factory_bot_rails', :group => [:development, :test]
-gem 'faker', :group => [:development, :test]
+gem 'factory_bot_rails', group: %i[development test]
+gem 'faker', group: %i[development test]
 # as test framework
-gem 'rspec-rails', :group => [:development, :test]
-gem 'capybara', :group => [:development, :test]
-gem 'rails-controller-testing', group: [:development, :test]
+gem 'capybara', group: %i[development test]
+gem 'rails-controller-testing', group: %i[development test]
+gem 'rspec-rails', group: %i[development test]
 # for file attachments
 gem 'paperclip', '~> 6.1'
 # as deployer
@@ -82,13 +82,13 @@ gem 'puma', '~> 4.3'
 # as the log formater
 gem 'lograge'
 # for listening to file modifications
-gem 'listen', '>= 3.0.5', '<= 3.2.1', :group => [:development, :test]
+gem 'listen', '>= 3.0.5', '<= 3.2.1', group: %i[development test]
 
 group :test do
   # for cleaning the test DB
   gem 'database_cleaner'
   # for measuring test coverage
-  gem 'coveralls', :require => false
+  gem 'coveralls', require: false
   # as style hound
   gem 'rubocop'
   gem 'rubocop-rspec'

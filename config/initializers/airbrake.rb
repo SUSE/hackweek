@@ -40,11 +40,11 @@ Airbrake.configure do |c|
   # unwanted environments such as :test.
   # NOTE: This option *does not* work if you don't set the 'environment' option.
   # https://github.com/airbrake/airbrake-ruby#ignore_environments
-  if c.host.blank? || c.project_key.blank? || c.project_id.blank?
-    c.ignore_environments = ['production', 'development', 'test']
-  else
-    c.ignore_environments = ['development', 'test']
-  end
+  c.ignore_environments = if c.host.blank? || c.project_key.blank? || c.project_id.blank?
+                            %w[production development test]
+                          else
+                            %w[development test]
+                          end
 
   # A list of parameters that should be filtered out of what is sent to
   # Airbrake. Integrated with Rails' filter_parameters.

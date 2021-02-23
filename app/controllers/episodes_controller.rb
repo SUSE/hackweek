@@ -1,16 +1,15 @@
 class EpisodesController < ApplicationController
   load_and_authorize_resource
-  before_action :set_episode, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authenticate_user!, :only => [ :index, :show]
+  before_action :set_episode, only: %i[show edit update destroy]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   # GET /episodes
   def index
-    @episodes = Episode.all.order("start_date DESC")
+    @episodes = Episode.all.order('start_date DESC')
   end
 
   # GET /episodes/1
-  def show
-  end
+  def show; end
 
   # GET /episodes/new
   def new
@@ -18,8 +17,7 @@ class EpisodesController < ApplicationController
   end
 
   # GET /episodes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /episodes
   def create
@@ -49,18 +47,19 @@ class EpisodesController < ApplicationController
 
   # PUT /episodes/1/activate
   def activate
-    @episode.active=true
+    @episode.active = true
     redirect_to episodes_path, notice: "#{@episode.name} is now active."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_episode
-      @episode = Episode.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def episode_params
-      params.require(:episode).permit(:name, :start_date, :end_date, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_episode
+    @episode = Episode.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def episode_params
+    params.require(:episode).permit(:name, :start_date, :end_date, :description)
+  end
 end

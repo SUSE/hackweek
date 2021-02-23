@@ -1,4 +1,4 @@
-RSpec.shared_examples "a markdown renderer" do
+RSpec.shared_examples 'a markdown renderer' do
   it 'correctly renders simple tags' do
     source = '**bold**'
     expect(subject.render(source)).to eq "<p><strong>bold</strong></p>\n"

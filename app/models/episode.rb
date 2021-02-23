@@ -1,5 +1,4 @@
 class Episode < ApplicationRecord
-
   has_many :episode_project_associations
   has_many :projects, through: :episode_project_associations
 
@@ -11,7 +10,7 @@ class Episode < ApplicationRecord
 
   def active=(state)
     if state == true
-      Episode.where('id != ? AND active = ?', self.id, true).each do |episode|
+      Episode.where('id != ? AND active = ?', id, true).each do |episode|
         episode.active = false
         episode.save
       end
