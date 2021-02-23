@@ -84,6 +84,9 @@ gem 'lograge'
 # for listening to file modifications
 gem 'listen', '>= 3.0.5', '<= 3.2.1', group: %i[development test]
 
+# FIXME: pin sprockets to version 3, until we upgrade.
+gem 'sprockets', '~> 3'
+
 group :test do
   # for cleaning the test DB
   gem 'database_cleaner'
