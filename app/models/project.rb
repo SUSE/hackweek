@@ -2,13 +2,9 @@ class Project < ApplicationRecord
   include AASM
   is_impressionable
 
-  validates :title, presence: true
+  validates :title, :description, :originator, presence: true
   validate  :title_contains_letters?
-
   validates :url, uniqueness: true
-
-  validates :description, presence: true
-  validates :originator_id, presence: true
 
   belongs_to :originator, class_name: 'User'
 
@@ -154,9 +150,7 @@ class Project < ApplicationRecord
     self.kudos -= [user]
     save!
 
-    Update.create!(author: user,
-                   text: 'disliked',
-                   project: self)
+    Update.create!(author: user, project: self, text: 'disliked')
   end
 
   def add_keyword!(name, user)
@@ -169,9 +163,8 @@ class Project < ApplicationRecord
       save!
     end
 
-    Update.create!(author: user,
-                   text: "added keyword \"#{name}\" to",
-                   project: self)
+    Update.create!(author: user, project: self,
+                   text: "added keyword \"#{name}\" to")
   end
 
   def remove_keyword!(name, user)
