@@ -25,7 +25,7 @@ end
 # as databases
 gem 'mysql2'
 # for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 6.0'
 # as the front-end framework
 gem 'bootstrap-sass'
 # as vector icons
@@ -83,6 +83,9 @@ gem 'puma', '~> 4.3'
 gem 'lograge'
 # for listening to file modifications
 gem 'listen', '>= 3.0.5', '<= 3.2.1', group: %i[development test]
+
+# FIXME: pin sprockets to version 3, until we upgrade.
+gem 'sprockets', '~> 3'
 
 group :test do
   # for cleaning the test DB
