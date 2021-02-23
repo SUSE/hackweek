@@ -221,6 +221,10 @@ class Project < ApplicationRecord
     false
   end
 
+  def self.description_template
+    File.open(Rails.root.join('config', 'new_project_template')).read
+  end
+
   private
 
   def title_contains_letters?
