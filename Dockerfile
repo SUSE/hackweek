@@ -1,5 +1,5 @@
 FROM registry.opensuse.org/opensuse/leap:15.2 
-ARG CONTAINER_USERID
+ARG CONTAINER_USERID=1000
 
 # Add needed repos
 RUN echo 'solver.allowVendorChange = true' >> /etc/zypp/zypp.conf; \

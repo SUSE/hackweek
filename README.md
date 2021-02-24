@@ -27,15 +27,14 @@ separately, everything will be taken care of with `rake ts:regenerate`.
 
 ## Hack it
 As our project involves somewhat complicated setup (MySQL and Shpinx search)
-for a development environment, we have created docker and vagrant files to
+for a development environment, we have created docker-compose setup to
 get you up and running.
 
-### Docker
-
 1. Since we mount the hackweek repository into our container we need to map
-   your local user id to the one of the container user. To do that copy the
-   `docker-compose.override.yml` file and enter your user id (`id -u`) as
-   `CONTAINER_USERID`.
+   your local user id to the one of the container user. Otherwise files created
+   inside the container might not be writeable. If your user id (`id -u`) is
+   something else than `1000` then copy the `docker-compose.override.yml` file
+   and set your user id number in the variable `CONTAINER_USERID`.
    ```bash
    cp docker-compose.override.yml.example docker-compose.override.yml
    vi docker-compose.override.yml
@@ -48,38 +47,20 @@ get you up and running.
    ```bash
    docker-compose up --build
    ```
-
-### Vagrant
-
-1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [vagrant](https://www.vagrantup.com)
-1. Install vagrant-exec plugin:
-   ```shell
-   vagrant plugin install vagrant-exec
-   ```
-1. Start our openSUSE 42.3 based virtual machine with vagrant:
-   ```shell
-   vagrant up
-   ```
-1. Launch the application:
-   ```shell
-   vagrant exec foreman start
-   ```
 1. Access the appliaction as usual:
    ```shell
-   xdg-open http://localhost:3000
+   xdg-open http://0.0.0.0:3000
    ```
 1. [Start hacking](http://railsforzombies.org/)
 1. [Test your changes](https://www.relishapp.com/rspec/rspec-core/docs)
    ```shell
-   vagrant exec rspec
+   docker-compose exec hackweek rspec
    ```
 1. [Send pull request](https://help.github.com/articles/using-pull-requests)
 1. $UCCE$$
 
-Remote connection to the virtual machine is available with `vagrant ssh`. You
-can run single-shot remote commands like `vagrant exec rake db:migrate`. If you
-are done hacking you can stop the virtual machine with `vagrant halt` and
-remove all traces of it with `vagrant destroy`.
+"Remote" connection to the container is available with `docker-compose exec hackweek /bin/bash`. You
+can run single-shot remote commands like `docker-compose exec hackweek rake db:migrate`.
 
 ## Resources
 * Design mockups of the rails app are in the design directory.
