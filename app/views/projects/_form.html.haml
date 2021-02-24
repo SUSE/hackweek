@@ -27,7 +27,7 @@
         .tab-content
           #markdown-source.tab-pane.active.fade.in{ role: 'tab-pane' }
             .form-group
-              = f.text_area :description, rows: 20, placeholder: Project.description_template,
+              = f.text_area :description, rows: 20, value: Project.description_template,
                             class: 'form-control input-lg markdown-source-text', id: 'project_description'
           #markdown-preview.tab-pane.fade{ role: 'tab-pane' }
             .loading-spinner
