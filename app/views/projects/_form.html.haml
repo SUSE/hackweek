@@ -1,4 +1,3 @@
-= render partial: 'comments/help'
 #project_form
   = form_for @project, url: (@project.new_record? ? projects_path : project_path(@episode, @project)), html: { role: :form } do |f|
     - if @project.errors.any?
@@ -23,18 +22,21 @@
             %a{ href: '#markdown-preview', role: :tab, data: { toggle: :tab } } Preview
         .btnbar
           = render 'shared/editor_buttons'
+
       .panel-body
         .tab-content
           #markdown-source.tab-pane.active.fade.in{ role: 'tab-pane' }
             .form-group
-              = f.text_area :description, rows: 20, placeholder: 'Detailed description of your idea. You can use **markdown**.', class: 'form-control input-lg markdown-source-text', id: 'project_description'
+              = f.text_area :description, rows: 20, id: 'project_description',
+                            class: 'form-control input-lg markdown-source-text'
           #markdown-preview.tab-pane.fade{ role: 'tab-pane' }
             .loading-spinner
               = fa_icon 'spinner pulse 3x'
             .preview-contents.hidden
+        = render partial: 'comments/help'
 
     .form-group
-      = f.label(:avatar)
+      = f.label('Project Logo (will be shown next to the title)')
       = f.file_field :avatar
     = f.submit class: 'btn btn-success pull-right'
 
