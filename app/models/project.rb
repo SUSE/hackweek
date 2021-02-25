@@ -2,9 +2,13 @@ class Project < ApplicationRecord
   include AASM
   is_impressionable
 
-  validates :title, :description, :originator, presence: true
+  validates :title, presence: true
   validate  :title_contains_letters?
+
   validates :url, uniqueness: true
+
+  validates :description, presence: true
+  validates :originator_id, presence: true
 
   belongs_to :originator, class_name: 'User'
 
@@ -150,7 +154,9 @@ class Project < ApplicationRecord
     self.kudos -= [user]
     save!
 
-    Update.create!(author: user, project: self, text: 'disliked')
+    Update.create!(author: user,
+                   text: 'disliked',
+                   project: self)
   end
 
   def add_keyword!(name, user)
@@ -163,8 +169,9 @@ class Project < ApplicationRecord
       save!
     end
 
-    Update.create!(author: user, project: self,
-                   text: "added keyword \"#{name}\" to")
+    Update.create!(author: user,
+                   text: "added keyword \"#{name}\" to",
+                   project: self)
   end
 
   def remove_keyword!(name, user)
@@ -212,10 +219,6 @@ class Project < ApplicationRecord
     !Float(whatever).nil?
   rescue StandardError
     false
-  end
-
-  def self.description_template
-    File.open(Rails.root.join('config', 'new_project_template.md')).read
   end
 
   private
