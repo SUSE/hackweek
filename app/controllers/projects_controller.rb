@@ -61,7 +61,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
-    @project = Project.new
+    @project = Project.new(description: Project.description_template)
   end
 
   # GET /projects/1/edit

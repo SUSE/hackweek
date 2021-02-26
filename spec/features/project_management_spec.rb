@@ -31,6 +31,7 @@ feature 'Project management' do
     description = Faker::Lorem.paragraph
 
     visit edit_project_path(nil, project)
+    expect(page).to have_text(project.description)
 
     fill_in 'project_title', with: title
     fill_in 'project_description', with: description
