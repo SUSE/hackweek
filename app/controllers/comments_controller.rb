@@ -12,7 +12,8 @@ class CommentsController < ApplicationController
     @comment.commenter = current_user
 
     if @comment.save
-      @comment.send_notification(current_user, " commented on #{@comment.project.aasm_state}: #{@comment.project.title}")
+      @comment.send_notification(current_user,
+                                 " commented on #{@comment.project.aasm_state}: #{@comment.project.title}")
       redirect_to project_path(@comment.project), notice: 'Thank you for your comment!'
     else
       render :new

@@ -17,8 +17,8 @@ module ApplicationHelper
   def active_page_size(page_size, param = nil)
     if param.blank?
       'active' if page_size.to_i == 10
-    else
-      'active' if page_size.to_i == param.to_i
+    elsif page_size.to_i == param.to_i
+      'active'
     end
   end
 
