@@ -435,7 +435,7 @@ DEPENDENCIES
   poltergeist
   pry-byebug
   pry-rails
-  puma (~> 5.2)
+  puma
   rails (~> 5.2)
   rails-controller-testing
   rails-jquery-autocomplete
