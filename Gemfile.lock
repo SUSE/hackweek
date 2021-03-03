@@ -326,7 +326,7 @@ GEM
     rubocop-rspec (2.2.0)
       rubocop (~> 1.0)
       rubocop-ast (>= 1.1.0)
-    ruby-progressbar (1.10.1)
+    ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.4)
     ruby_parser (3.13.1)
       sexp_processor (~> 4.9)
@@ -444,7 +444,7 @@ DEPENDENCIES
   rubocop
   rubocop-rails
   rubocop-rspec
-  ruby-progressbar (= 1.10.1)
+  ruby-progressbar (= 1.11.0)
   sass-rails (~> 6.0)
   selectize-rails
   sentry-rails
