@@ -31,19 +31,22 @@ class ProjectsController < ApplicationController
 
   # GET /projects/archived
   def archived
-    @projects = Project.current(@episode).archived.includes(:originator, :users, :kudos).page(params[:page]).per(params[:page_size])
+    @projects = Project.current(@episode).archived.includes(:originator, :users,
+                                                            :kudos).page(params[:page]).per(params[:page_size])
     render 'index'
   end
 
   # GET /projects/biggest
   def biggest
-    @projects = Project.current(@episode).populated.includes(:originator, :users, :kudos).order('memberships_count DESC').page(params[:page]).per(params[:page_size])
+    @projects = Project.current(@episode).populated.includes(:originator, :users,
+                                                             :kudos).order('memberships_count DESC').page(params[:page]).per(params[:page_size])
     render 'index'
   end
 
   # GET /projects/finished
   def finished
-    @projects = Project.current(@episode).finished.includes(:originator, :users, :kudos).page(params[:page]).per(params[:page_size])
+    @projects = Project.current(@episode).finished.includes(:originator, :users,
+                                                            :kudos).page(params[:page]).per(params[:page_size])
     render 'index'
   end
 
@@ -135,7 +138,9 @@ class ProjectsController < ApplicationController
     @project.send_notification(current_user, "just liked #{@project.aasm_state}: #{@project.title}")
 
     respond_to do |format|
-      format.html { redirect_to project_path(@episode, @project), notice: "Thank you for your love #{current_user.name}!" }
+      format.html do
+        redirect_to project_path(@episode, @project), notice: "Thank you for your love #{current_user.name}!"
+      end
       format.js { render partial: 'like_toggle' }
     end
     @project.update_attributes(projecthits: @project.impressionist_count(filter: :user_id) + @project.kudos.size)

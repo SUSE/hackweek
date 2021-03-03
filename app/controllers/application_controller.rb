@@ -70,12 +70,10 @@ class ApplicationController < ActionController::Base
   def set_episode
     @episode = if params[:episode].blank?
                  Episode.active
+               elsif params[:episode] == 'all'
+                 :all
                else
-                 if params[:episode] == 'all'
-                   :all
-                 else
-                   Episode.find_by(id: params[:episode])
-                 end
+                 Episode.find_by(id: params[:episode])
                end
     logger.debug("\n\nEpisode: #{@episode.to_param}\n\n")
   end
