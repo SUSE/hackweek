@@ -80,7 +80,7 @@ gem 'paperclip', '~> 6.1'
 # as deployer
 gem 'mina', '~> 0.3'
 # as the app server
-gem 'puma', '~> 4.3'
+gem 'puma', '~> 5.2'
 # as the log formater
 gem 'lograge'
 # for listening to file modifications
