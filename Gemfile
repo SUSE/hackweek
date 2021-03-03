@@ -84,7 +84,7 @@ gem 'puma'
 # as the log formater
 gem 'lograge'
 # for listening to file modifications
-gem 'listen', '>= 3.0.5', '<= 3.2.1', group: %i[development test]
+gem 'listen'
 
 # FIXME: pin sprockets to version 3, until we upgrade.
 gem 'sprockets', '~> 3'
