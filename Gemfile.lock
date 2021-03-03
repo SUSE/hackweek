@@ -426,7 +426,7 @@ DEPENDENCIES
   jquery-ui-rails
   js_cookie_rails
   kaminari
-  listen (>= 3.0.5, <= 3.4.1)
+  listen
   lograge
   mina (~> 0.3)
   mousetrap-rails
