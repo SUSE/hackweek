@@ -7,3 +7,4 @@ AllCops:
     - 'vendor/**/*'
     - 'design/**/*'
     - 'tools/**/*'
+    - 'db/schema.rb'
