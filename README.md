@@ -64,7 +64,6 @@ can run single-shot remote commands like `docker-compose exec hackweek rake db:m
 
 ## Resources
 * Design mockups of the Rails app are in the design directory.
-* The project list for HackWeek9 is in the [Wiki](http://github.com/SUSE/hackweek/wiki).
 * There are some tools in the tool directory.
 * Data of past hackweeks is in the archive directory.
 * The source of the [old webpage](http://suse.github.io/hackweek/) is in the gh-pages branch.
