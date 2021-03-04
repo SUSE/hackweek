@@ -5,7 +5,7 @@
 HackWeek
 --------
 A tool to nurture hack ideas into projects and then collaborate on them. It's used
-during [SUSE's hackweek](http://hackweek.suse.com), a week where SUSE engineers can
+during [SUSE's hackweek](https://hackweek.suse.com), a week where SUSE engineers can
 experiment without limits and get their opportunity to innovate, collaborate across teams,
 and learn.
 
@@ -51,7 +51,7 @@ get you up and running.
    ```shell
    xdg-open http://0.0.0.0:3000
    ```
-1. [Start hacking](http://railsforzombies.org/)
+1. [Start hacking](https://railsforzombies.org/)
 1. [Test your changes](https://www.relishapp.com/rspec/rspec-core/docs)
    ```shell
    docker-compose exec hackweek rspec
