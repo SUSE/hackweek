@@ -5,7 +5,7 @@
 HackWeek
 --------
 A tool to nurture hack ideas into projects and then collaborate on them. It's used
-during [SUSEs hackweek](http://hackweek.suse.com), a week where SUSE engineers can
+during [SUSE's hackweek](https://hackweek.suse.com), a week where SUSE engineers can
 experiment without limits and get their opportunity to innovate, collaborate across teams,
 and learn.
 
@@ -26,14 +26,14 @@ Sphinx (searchd) must be installed. No need to configure and launch it
 separately, everything will be taken care of with `rake ts:regenerate`.
 
 ## Hack it
-As our project involves somewhat complicated setup (MySQL and Shpinx search)
-for a development environment, we have created docker-compose setup to
+As our project involves somewhat complicated setup (MySQL and Sphinx search)
+for a development environment, we have created a Docker Compose setup to
 get you up and running.
 
-1. Since we mount the hackweek repository into our container we need to map
+1. Since we mount the hackweek repository into our container, we need to map
    your local user id to the one of the container user. Otherwise files created
    inside the container might not be writeable. If your user id (`id -u`) is
-   something else than `1000` then copy the `docker-compose.override.yml` file
+   something else than `1000`, then copy the `docker-compose.override.yml` file
    and set your user id number in the variable `CONTAINER_USERID`.
    ```bash
    cp docker-compose.override.yml.example docker-compose.override.yml
@@ -47,11 +47,11 @@ get you up and running.
    ```bash
    docker-compose up --build
    ```
-1. Access the appliaction as usual:
+1. Access the application as usual:
    ```shell
    xdg-open http://0.0.0.0:3000
    ```
-1. [Start hacking](http://railsforzombies.org/)
+1. [Start hacking](https://railsforzombies.org/)
 1. [Test your changes](https://www.relishapp.com/rspec/rspec-core/docs)
    ```shell
    docker-compose exec hackweek rspec
@@ -63,8 +63,6 @@ get you up and running.
 can run single-shot remote commands like `docker-compose exec hackweek rake db:migrate`.
 
 ## Resources
-* Design mockups of the rails app are in the design directory.
-* The project list for HackWeek9 is in the [Wiki](http://github.com/SUSE/hackweek/wiki).
+* Design mockups of the Rails app are in the design directory.
 * There are some tools in the tool directory.
 * Data of past hackweeks is in the archive directory.
-* The source of the [old webpage](http://suse.github.io/hackweek/) is in the gh-pages branch.
