@@ -25,9 +25,11 @@
               %i.fa.fa-heart
               Credit.
         %p.small{style: 'padding-top: 25px'}
-          &copy; 2017 SUSE.
+          &copy;
+          = Time.current.year
+          SUSE.
           This tool is
-          = link_to 'free software,', 'http://www.gnu.org/philosophy/free-sw.html'
+          = link_to('free software,', 'https://www.gnu.org/philosophy/free-sw.html')
           you can run, copy, distribute, study, change and improve it.
           The source code and the developers are on
-          = link_to 'github.', 'https://github.com/SUSE/hackweek'
+          = link_to('GitHub.', 'https://github.com/SUSE/hackweek')
