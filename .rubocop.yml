@@ -8,3 +8,8 @@ AllCops:
     - 'design/**/*'
     - 'tools/**/*'
     - 'db/schema.rb'
+
+Style/PercentLiteralDelimiters:
+  Exclude:
+    - 'config/deploy.rb'
+

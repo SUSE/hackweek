@@ -428,7 +428,7 @@ DEPENDENCIES
   kaminari
   listen
   lograge
-  mina (~> 0.3)
+  mina
   mousetrap-rails
   mysql2
   paperclip (~> 6.1)

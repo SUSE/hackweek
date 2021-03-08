@@ -78,7 +78,7 @@ gem 'rspec-rails', group: %i[development test]
 # for file attachments
 gem 'paperclip', '~> 6.1'
 # as deployer
-gem 'mina', '~> 0.3'
+gem 'mina'
 # as the app server
 gem 'puma'
 # as the log formater
