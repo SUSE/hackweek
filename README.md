@@ -22,10 +22,12 @@ and learn.
 * Admins can rate project results
 
 ## Requirements
-Sphinx (searchd) must be installed. No need to configure and launch it
-separately, everything will be taken care of with `rake ts:regenerate`.
+Sphinx (searchd) and MariaDB must be installed and running.
+No need to configure and launch Sphinx separately, everything will be taken care of with `rake ts:regenerate`.
 
 ## Hack it
+
+You can run the development environment with `foreman start -p 3000`.
 As our project involves somewhat complicated setup (MySQL and Sphinx search)
 for a development environment, we have created a Docker Compose setup to
 get you up and running.
