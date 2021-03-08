@@ -365,6 +365,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     stringex (2.8.5)
+    sync (0.5.0)
     temple (0.8.2)
     term-ansicolor (1.7.1)
       tins (~> 1.0)
@@ -381,7 +382,8 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.10)
     timecop (0.9.4)
-    tins (1.20.2)
+    tins (1.28.0)
+      sync
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
