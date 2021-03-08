@@ -5,7 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'ruby-progressbar', '1.11.0'
 
 # as framework
-gem 'rails', '~> 5.2'
+gem 'rails', '~> 6.1'
 
 # gem package to include jQuery UI assets for the Rails asset pipeline
 gem 'jquery-ui-rails'
