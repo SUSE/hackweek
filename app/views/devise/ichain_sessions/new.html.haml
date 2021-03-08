@@ -5,7 +5,9 @@
   .col-md-6.col-md-offset-3
     %h3 Sign In
     %p.text-muted
-      Using your SUSE/openSUSE credentials.
+      Using your SUSE/openSUSE credentials from the
+      #{link_to('IDP Portal', 'https://idp-portal.suse.com')}.
+
     = form_tag(@login_url, :method => :post, :enctype => 'application/x-www-form-urlencoded',:role => 'form') do
       = hidden_field_tag :url, @back_url
       = hidden_field_tag :context, @context
@@ -19,6 +21,6 @@
       .form-group
         = button_tag(type: 'submit', class: "btn btn-success pull-right") do
           = content_tag(:strong, 'Sign In')
-  
+
     - if devise_mapping.ichain_registerable?
       = link_to "Sign up", new_ichain_registration_path(resource_name)
