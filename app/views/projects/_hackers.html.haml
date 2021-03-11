@@ -1,3 +1,7 @@
-- @project.users.each do |user|
-  = link_to(user_path(user)) do
-    = image_tag user.gravatar_url(:size => "64"), alt: user.name, title: user.name, class: "img-thumbnail", id: "user#{user.id}-gravatar"
+- if @project.users.empty?
+  %h4 No Hackers yet
+- else
+  .well.well-sm
+    - @project.users.each do |user|
+      = link_to(user_path(user)) do
+        = image_tag user.gravatar_url(:size => "64"), alt: user.name, title: user.name, class: "img-thumbnail", id: "user#{user.id}-gravatar"

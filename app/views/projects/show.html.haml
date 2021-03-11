@@ -34,11 +34,7 @@
           #file_buttons
             = render :partial => "file_buttons"
       .col-sm-12
-        %h4
-          - if @project.users.empty?
-            No Hackers:
-        .well.well-sm#hackers
-          = render partial: 'hackers'
+        #hackers= render partial: 'hackers'
         - unless @project.aasm_state == "invention"
           %p#membership_buttons.pull-right
             = render partial: 'membership_buttons'
