@@ -119,6 +119,7 @@ class ProjectsController < ApplicationController
     else
       flash.now['error'] = @project.errors.full_messages.to_sentence.to_s
     end
+    @updates = @project.updates.page(1)
     render 'membership_list'
   end
 
@@ -129,6 +130,7 @@ class ProjectsController < ApplicationController
     else
       flash.now['error'] = @project.errors.full_messages.to_sentence.to_s
     end
+    @updates = @project.updates.page(1)
     render 'membership_list'
   end
 
