@@ -40,6 +40,9 @@ en.pak
 /public/gallery/.thumbnails/*
 /public/system/*
 
+# generated assets
+public/assets/*
+
 # Ignore the coverage files
 /coverage
 
@@ -60,3 +63,4 @@ nbproject
 *.iws
 .idea/
 .vagrant/
+node_modules/

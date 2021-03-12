@@ -1,42 +1,97 @@
-.row
-  .col-md-12
-    .page-header
-      - if @episode
-        %h1
-          = @episode.name
-          %small
-            = "#{@episode.start_date.strftime("%A %d %B")} - #{@episode.end_date.strftime("%A %d %B %Y")}"
-      - else
-        %div
-          = image_tag 'hackweek-label.png', class: 'img-responsive', alt: 'Hack Week'
-.row
-  .col-md-7
-    - if @episode.try(:description).blank?
-      %p.lead
-        Hack Week is the time SUSE engineers experiment, innovate &amp; learn interruption-free
-        for a whole week! Across teams or alone, but always without limits.
-      %p.lead
-        A SUSE tradition since 2007, Hack Week has brought together hundreds of hackers around
-        the globe to collaborate on open source. Learn more
-        = link_to about_path do
-          about Hack Week.
-      %p.lead
-        What are you going to hack on?
-    - else
-      :markdown
-        #{ @episode.description }
-  .col-md-5
-    = image_tag 'hackweek-logo-dark.png', class: 'img-responsive', alt: 'Hack Week'
+%h1
+  = "Hackweek #{@episode.name}"
+  %small= "(#{@episode.start_date.strftime("%A %d %B")} - #{@episode.end_date.strftime("%A %d %B %Y")})"
 
-.row
-  .col-md-8.col-md-offset-2
+.grid.hackweek-content
+
+  .hackweek-desc
     %p
-      .btn-group.btn-group-justified.btn-group-lg
-        = link_to new_project_path, class: 'btn btn-lg btn-info' do
-          Start
-          %span.hidden-xs
-            a Project
-        = link_to projects_path(@episode), class: 'btn btn-lg btn-success' do
-          Join
-          %span.hidden-xs
-            a Project
+      Hack Week is the time SUSE engineers experiment, innovate &amp; learn interruption-free
+      for a whole week! Across teams or alone, but always without limits.
+    %p
+      A SUSE tradition since 2007, Hack Week has brought together hundreds of hackers around
+      the globe to collaborate on open source. Learn more
+      = link_to about_path do
+        about Hack Week.
+    %p
+      Innovate
+    %p
+      Use this opportunity to work on any activity of your passion. You choose if you contribute to an existing free software project or if you explore strange new languages, seek out new tools and new communities, if you boldly go where no hacker has gone before! Just record your ideas, about what people could hack on in this tool.
+    %p
+      Remember: we are an open company, and work transparently on free software. Share your code on the platform of your choice, and reference it from your project. Then let the community and the rest of the world know about what you are doing. Blog, tweet, publish videos, shout it from the roof tops so people can pick up your project, copy, distribute, study, change and improve it!
+
+    %p
+      What are you going to hack on?
+
+    .btn-group.btn-group-justified.btn-group-lg
+      = link_to new_project_path, class: 'btn btn-lg btn-info' do
+        Start a Project
+      = link_to projects_path(@episode), class: 'btn btn-lg btn-success' do
+        Join a Project
+
+  .hackweek-activities
+    %pre
+      - Update.last(7).each do |update|
+        = link_to "#{update.author.name}", user_path(update.author)
+        = " #{update.text} "
+        = link_to "#{update.project.title}", project_path(update.project)
+        %small= "(#{time_ago_in_words update.created_at} ago)"
+
+
+%hr
+
+%section
+  %header
+    %h2 This Hackweek features the following themes
+
+  .grid.featured-themes
+
+    .terminal-card
+      %header Card Title
+      %div
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quas
+        ex vero enim in doloribus officiis ullam vel nam esse sapiente velit
+        incidunt. Eaque quod et, aut maiores excepturi sint.
+
+    .terminal-card
+      %header Card Title
+      %div
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quas
+        ex vero enim in doloribus officiis ullam vel nam esse sapiente velit
+        incidunt. Eaque quod et, aut maiores excepturi sint.
+
+    .terminal-card
+      %header Card Title
+      %div
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quas
+        ex vero enim in doloribus officiis ullam vel nam esse sapiente velit
+        incidunt. Eaque quod et, aut maiores excepturi sint.
+
+%hr
+
+%section
+  %header
+    %h2 Random selection of ongoing projects
+
+  .grid.random-projects
+
+    .terminal-card
+      %header Card Title
+      %div
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quas
+        ex vero enim in doloribus officiis ullam vel nam esse sapiente velit
+        incidunt. Eaque quod et, aut maiores excepturi sint.
+
+    .terminal-card
+      %header Card Title
+      %div
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quas
+        ex vero enim in doloribus officiis ullam vel nam esse sapiente velit
+        incidunt. Eaque quod et, aut maiores excepturi sint.
+
+    .terminal-card
+      %header Card Title
+      %div
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quas
+        ex vero enim in doloribus officiis ullam vel nam esse sapiente velit
+        incidunt. Eaque quod et, aut maiores excepturi sint.

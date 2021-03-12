@@ -1,308 +1,49 @@
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
-}
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 250px;
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNjY2MiPjwvcmVjdD4KPC9zdmc+");
-}
-
-.navbar-notifications{
-  #notification-count{
-    color: white;
-    background: #ec8686;
-  }
-  .dropdown-menu{
-    padding: 0;
-    width: 350px;
-    h5{
-      padding-left: 1em;
-    }
-    hr{
-      margin: 0;
-    }
-    #notification-dropdown{
-      padding: 0px;
-      li{
-        list-style: none;
-        padding: 1rem;
-        a{
-          display: flex;
-          justify-content: space-evenly;
-          padding: 10px 0;
-          img{
-            max-height: 30px;
-            width: auto;
-          }
-        }
-      }
-      li:last-child{
-        text-align: center;
-        background: #efeff0;
-        padding: 2rem;
-        a{
-          display: block;
-        }
-      }
-    }
-  }
+:root {
+  --global-font-size: 15px;
+  --global-line-height: 1.4em;
+  --global-space: 10px;
+  --font-stack: Menlo, Monaco, Lucida Console, Liberation Mono,
+    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
+    serif;
+  --mono-font-stack: Menlo, Monaco, Lucida Console, Liberation Mono,
+    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
+    serif;
+  --background-color: #222225;
+  --page-width: 60em;
+  --font-color: #e8e9ed;
+  --invert-font-color: #222225;
+  --secondary-color: #a3abba;
+  --tertiary-color: #a3abba;
+  --primary-color: #62c4ff;
+  --error-color: #ff3c74;
+  --progress-bar-background: #3f3f44;
+  --progress-bar-fill: #62c4ff;
+  --code-bg-color: #3f3f44;
+  --input-style: solid;
+  --display-h1-decoration: none;
 }
 
-.older-notifications{
-  p{
-    margin-top: 5px;
-    img{
-      margin-right: 1.5rem;
-    }
-  }
-  .notification_pagination{
-    display: flex;
-    justify-content: center;
-  }
+
+.hackweek-select {
+  margin: 10px;
+  width: 300px;
 }
 
-h4.project-list-item img {
-  width: 26px;
-  margin-right: 10px;
-  max-height: 30px;
+.grid {
+  display: grid;
+  grid-column-gap: 1.4em;
 }
 
-#content {
-  margin: 110px 0 60px;
-  padding: 20px 15px 20px;
-  background: rgb(246, 246, 246); /* The Fallback */
-  background-color:rgba(246,246,246,0.7);
+.hackweek-content {
+  grid-template-columns: 75% 25%;
+  background-image: asset-url("hackweek-logo-dark.png");
+  background-size: cover;
 }
 
-img[alt="add-emoji"] {
-  max-width: 20px;
-  height: auto;
+.featured-themes {
+  grid-template-columns: 33% 33% 33%;
 }
 
-.comment-form-heading, .panel.panel-default > .panel-heading{
-  display: flex;
-  justify-content: space-between;
-}
-
-#replyModal{
-  h2{
-    text-align: center;
-  }
-  p:last-child{
-    padding-bottom: 1.5rem;
-  }
-}
-
-#similar_projects{
-  border: 1px solid #e9e9e9;
-  border-radius: 1rem;
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNjY2MiPjwvcmVjdD4KPC9zdmc+");
-}
-
-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 250px;
-  background-color: #f5f5f5;
-  border-top: 1px solid #E5E5E5;
-  margin-top: 60px;
-}
-
-.img-center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.keyword {
-  margin-top: 4px;
-  margin-bottom: 4px;
-}
-
-.project-list-pills {
-  position: relative;
-  z-index: 1;
-}
-
-.project-list-item:before {
-  display:block;
-  position: relative;
-  content:"";
-  z-index: -1;
-}
-
-#loading-spinner {
-  text-align: center;
-  vertical-align: bottom;
-}
-
-.help-block small {
-  font-size: 85%;
-}
-
-table.project_table td {
-  padding:10px 8px;
-}
-
-.pull-left {
-  .img-wrapper {
-    font-size: 28px;
-    font-weight: normal;
-      img {
-        margin-right: 10px;
-        max-height: 30px;
-      }
-      small {
-        font-size: 12px;
-        margin-top: 5px;
-        display: block;
-      }
-  }
-
-}
-
-.project-style {
-  h1 {
-    font-size: 1.4em;
-    font-weight: normal;
-    margin: 15px 0 5px 0;
-  }
-  h2 {
-    font-size: 1.3em;
-    @extend h1;
-  }
-  h3 {
-     font-size: 1.2em;
-     @extend h1;
-  }
-  h4 {
-    font-size: 1.1em;
-    @extend h1;
-  }
-  h5 {
-    font-size: 1.0em;
-    @extend h1;
-  }
-  h6 {
-    @extend h1;
-    font-size: 1.0em;
-    color: #7b7a7a;
-  }
-  p {
-    margin: 5px 0 15px 0;
-    font-size: 14px;
-
-    small {
-      font-size: 12px;
-    }
-  }
-  ul, ol {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-
-  h4.project-list-item {
-    font-size:1.5em;
-  }
-}
-
-.label {
-  padding: .7em .7em .7em;
-  font-weight: normal;
-}
-
-textarea.form-control {
-  border-top: 0;
-  margin: -1px 0 0 0;
-  border-radius: 0 0 6px 6px;
-}
-
-.btn-xs {
-  padding: 3px 8px;
-}
-
-.form-control {
-  border: 1px solid #ddd;
-}
-
-.media-body {
-  p {
-    margin: 10px 0 0 0;
-  }
-}
-
-.media-heading {
-  small {
-    margin-top: 6px;
-    display: block;
-  }
-}
-
-#loader {
-  border: 7px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 7px solid #3498db;
-  width: 80px;
-  height: 80px;
-  -webkit-animation: spin 1.5s linear infinite; /* Safari */
-  animation: spin 1.5s linear infinite;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  z-index: 999;
-  display: none;
-}
-
-/* Safari */
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-#search-suggestion-container {
-    display: block;
-}
-
-.ui-autocomplete {
-    position: absolute;
-    list-style-type: none;
-    max-height: 400px;
-    width: 220px;
-    background-color: white;
-    cursor: pointer;
-    padding: 0px;
-}
-
-.ui-autocomplete li {
-  font-size: 16px;
-}
-
-.ui-autocomplete li div{
-  margin: 0px;
-  padding: 10px 0px 10px 5px;
-}
-
-.ui-state-active{
-  background: #eff1f4;
-}
-
-.ui-helper-hidden-accessible{
-  position:fixed;
-  right: 5px;
-  bottom: 5px;
-  z-index: 1000;
-}
-
-#file_buttons {
-  margin: 5px 0px;
+.random-projects {
+  grid-template-columns: 33% 33% 33%;
 }

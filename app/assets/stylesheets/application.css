@@ -9,12 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require strap-on.css.scss
+ *= require terminal.min.css
  *= require font-awesome
- *= require selectize
- *= require selectize.bootstrap3
- *= require swipebox.css.scss
- *= require hackweek.css.scss
- *= require jquery.atwho
- *= require comments.css.scss
+ *= require hackweek
  */

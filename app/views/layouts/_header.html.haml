@@ -1,92 +1,130 @@
-%header.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
-  / Brand and toggle get grouped for better mobile display
-  .container
-    .navbar-header
-      %button.navbar-toggle{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", :type => "button"}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      =link_to root_path, class: "navbar-brand" do
-        = image_tag 'hackweek-logo-dark.icon.png', style: 'height: 30px',
-                                           alt: 'Home',
-                                           title: 'Home'
-      %ul.nav.navbar-nav.hidden-xs
-        %li.dropdown
-          = link_to(projects_path(@episode), {class: "navbar-brand"}) do
-            - if @episode == :all
-              = "All Hackweeks"
-            - else
-              = @episode.name if @episode
-          = link_to('#', {class: "dropdown-toggle navbar-brand", "data-toggle"=>"dropdown"} ) do
-            %i.fa.fa-caret-square-o-down
-          %ul.dropdown-menu{:role => "menu"}
-            %li{:role => "presentation"}
-              = link_to(projects_path(:all), {title: "Projects for all hackweeks"}) do
-                All Hackweeks
-            - Episode.all.reverse.each do |episode|
-              %li{:role => "presentation"}
-                = link_to(projects_path(episode), {title: "Projects for #{episode.name}"}) do
-                  = episode.name
-    / Collect the nav links, forms, and other content for toggling
-    .collapse.navbar-collapse.navbar-ex1-collapse
-      - if user_signed_in?
-        %ul.nav.navbar-nav
-          %li
-            = link_to(new_project_path(@episode), {:id=>"new_project_path",:alt=>"Add Project", :title=>"Add Project"}) do
-              %i.fa.fa-plus
-              Create
-      - if user_signed_in?
-        %ul.nav.navbar-nav.navbar-right.hidden-xs
-          %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", :id => "user-dropdown"}
-              = image_tag(current_user.gravatar_url(:size => "22"), :title => "Yo #{current_user.name}!")
-              %b.caret
-            %ul.dropdown-menu
-              %li
-                = link_to(user_path(current_user), :id => "me_users_path") do
-                  %i.fa.fa-home
-                  = current_user.name
-              %li
-                = link_to(user_edit_path(current_user)) do
-                  %i.fa.fa-pencil-square-o
-                  Edit Profile
-              %li
-                = link_to(destroy_user_ichain_session_path, :method => :delete, :id => "logout-link") do
-                  %i.fa.fa-power-off
-                  Log out
-              - if current_user.role?(:organizer) || current_user.role?(:admin)
-                = render partial: 'layouts/admin_menu'
-        %ul.nav.navbar-nav.navbar-right.visible-xs
-          %li{role: "presentation", class: "divider"}
-          %li{role: "presentation", class: "dropdown-header"}
-            Hackweeks
-          - Episode.all.reverse.each do |episode|
-            %li
-              = link_to(projects_path(episode), {title: "Projects for #{episode}"}) do
-                = episode.name
-          %li{role: "presentation", class: "divider"}
-          %li{role: "presentation", class: "dropdown-header"}
-            = current_user.name
-          %li
-            = link_to(user_path(current_user)) do
-              %i.fa.fa-home
-              Home
-          %li
-            = link_to(destroy_user_ichain_session_path, :method => :delete, :id => "logout-link") do
-              %i.fa.fa-power-off
-              Log out
-          - if current_user.role? :organizer
-            = render partial: 'layouts/admin_menu'
-      - else
-        %ul.nav.navbar-nav.navbar-right
-          %li
-            = link_to(new_user_ichain_session_path, :id => "login-link") do
-              %i.fa.fa-signin
-              Sign In
-      %form{:role=>"search", :method=>"get", :class=>"navbar-form navbar-right", :action=>"#{search_projects_path(@episode)}", "accept-charset"=>"UTF-8"}
-        .form-group
-          = search_field_tag :q, nil, { class: 'form-control', placeholder: 'Search', type: 'search', name: 'q', 'data-autocomplete': 'projects/autocomplete_project_title', 'data-append-to': '#search-suggestion-container' }
-          %div#search-suggestion-container
-      - if user_signed_in?
-        = render partial: 'layouts/notification_tab'
+%header
+
+.terminal-nav
+
+  .terminal-logo
+    .logo
+      = image_tag 'hackweek-logo-dark.icon.png'
+
+  .hackweek-select
+    %label{for: "select"} Hackweek
+    %select
+      - Episode.all.reverse.each do |episode|
+        %option= episode.name
+
+  %nav.terminal-menu
+    %ul
+      %li= image_tag(current_user.gravatar_url(:size => "22"), :title => "Yo #{current_user.name}!")           
+
+
+-#       %ul.nav.navbar-nav.hidden-xs
+-#         %li.dropdown
+-#           = link_to(projects_path(@episode), {class: "navbar-brand"}) do
+-#             - if @episode == :all
+-#               = "All Hackweeks"
+-#             - else
+-#               = @episode.name if @episode
+-#           = link_to('#', {class: "dropdown-toggle navbar-brand", "data-toggle"=>"dropdown"} ) do
+-#             %i.fa.fa-caret-square-o-down
+-#           %ul.dropdown-menu{:role => "menu"}
+-#             %li{:role => "presentation"}
+-#               = link_to(projects_path(:all), {title: "Projects for all hackweeks"}) do
+-#                 All Hackweeks
+-#             - Episode.all.reverse.each do |episode|
+-#               %li{:role => "presentation"}
+-#                 = link_to(projects_path(episode), {title: "Projects for #{episode.name}"}) do
+-#                   = episode.name
+
+
+-# %header.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
+-#   / Brand and toggle get grouped for better mobile display
+-#   .container
+-#     .navbar-header
+-#       %button.navbar-toggle{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", :type => "button"}
+-#         %span.sr-only Toggle navigation
+-#         %span.icon-bar
+-#         %span.icon-bar
+-#         %span.icon-bar
+-#       =link_to root_path, class: "navbar-brand" do
+-#         = image_tag 'hackweek-logo-dark.icon.png', style: 'height: 30px',
+-#                                            alt: 'Home',
+-#                                            title: 'Home'
+-#       %ul.nav.navbar-nav.hidden-xs
+-#         %li.dropdown
+-#           = link_to(projects_path(@episode), {class: "navbar-brand"}) do
+-#             - if @episode == :all
+-#               = "All Hackweeks"
+-#             - else
+-#               = @episode.name if @episode
+-#           = link_to('#', {class: "dropdown-toggle navbar-brand", "data-toggle"=>"dropdown"} ) do
+-#             %i.fa.fa-caret-square-o-down
+-#           %ul.dropdown-menu{:role => "menu"}
+-#             %li{:role => "presentation"}
+-#               = link_to(projects_path(:all), {title: "Projects for all hackweeks"}) do
+-#                 All Hackweeks
+-#             - Episode.all.reverse.each do |episode|
+-#               %li{:role => "presentation"}
+-#                 = link_to(projects_path(episode), {title: "Projects for #{episode.name}"}) do
+-#                   = episode.name
+-#     / Collect the nav links, forms, and other content for toggling
+-#     .collapse.navbar-collapse.navbar-ex1-collapse
+-#       - if user_signed_in?
+-#         %ul.nav.navbar-nav
+-#           %li
+-#             = link_to(new_project_path(@episode), {:id=>"new_project_path",:alt=>"Add Project", :title=>"Add Project"}) do
+-#               %i.fa.fa-plus
+-#               Create
+-#       - if user_signed_in?
+-#         %ul.nav.navbar-nav.navbar-right.hidden-xs
+-#           %li.dropdown
+-#             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", :id => "user-dropdown"}
+-#               = image_tag(current_user.gravatar_url(:size => "22"), :title => "Yo #{current_user.name}!")
+-#               %b.caret
+-#             %ul.dropdown-menu
+-#               %li
+-#                 = link_to(user_path(current_user), :id => "me_users_path") do
+-#                   %i.fa.fa-home
+-#                   = current_user.name
+-#               %li
+-#                 = link_to(user_edit_path(current_user)) do
+-#                   %i.fa.fa-pencil-square-o
+-#                   Edit Profile
+-#               %li
+-#                 = link_to(destroy_user_ichain_session_path, :method => :delete, :id => "logout-link") do
+-#                   %i.fa.fa-power-off
+-#                   Log out
+-#               - if current_user.role?(:organizer) || current_user.role?(:admin)
+-#                 = render partial: 'layouts/admin_menu'
+-#         %ul.nav.navbar-nav.navbar-right.visible-xs
+-#           %li{role: "presentation", class: "divider"}
+-#           %li{role: "presentation", class: "dropdown-header"}
+-#             Hackweeks
+-#           - Episode.all.reverse.each do |episode|
+-#             %li
+-#               = link_to(projects_path(episode), {title: "Projects for #{episode}"}) do
+-#                 = episode.name
+-#           %li{role: "presentation", class: "divider"}
+-#           %li{role: "presentation", class: "dropdown-header"}
+-#             = current_user.name
+-#           %li
+-#             = link_to(user_path(current_user)) do
+-#               %i.fa.fa-home
+-#               Home
+-#           %li
+-#             = link_to(destroy_user_ichain_session_path, :method => :delete, :id => "logout-link") do
+-#               %i.fa.fa-power-off
+-#               Log out
+-#           - if current_user.role? :organizer
+-#             = render partial: 'layouts/admin_menu'
+-#       - else
+-#         %ul.nav.navbar-nav.navbar-right
+-#           %li
+-#             = link_to(new_user_ichain_session_path, :id => "login-link") do
+-#               %i.fa.fa-signin
+-#               Sign In
+-#       %form{:role=>"search", :method=>"get", :class=>"navbar-form navbar-right", :action=>"#{search_projects_path(@episode)}", "accept-charset"=>"UTF-8"}
+-#         .form-group
+-#           = search_field_tag :q, nil, { class: 'form-control', placeholder: 'Search', type: 'search', name: 'q', 'data-autocomplete': 'projects/autocomplete_project_title', 'data-append-to': '#search-suggestion-container' }
+-#           %div#search-suggestion-container
+-#       - if user_signed_in?
+-#         = render partial: 'layouts/notification_tab'

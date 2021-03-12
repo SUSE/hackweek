@@ -1,35 +1,35 @@
 %footer
-  .container
-    .row
-      .col-sm-12.text-center
-        %div.col-sm-12.text-center
-        %ul.nav.nav-pills.nav-justified
-          %li
-            = link_to(announcements_path) do
-              %i.fa.fa-bullhorn
-              News
-          %li
-            = link_to(about_path) do
-              %i.fa.fa-info
-              About
-          %li
-            = link_to(gallery_path) do
-              %i.fa.fa-picture-o
-              Pics
-          %li
-            = link_to(faqs_path) do
-              %i.fa.fa-question
-              FAQ
-          %li
-            = link_to('https://github.com/SUSE/hackweek/blob/master/CREDITS.md') do
-              %i.fa.fa-heart
-              Credit.
-        %p.small{style: 'padding-top: 25px'}
-          &copy;
-          = Time.current.year
-          SUSE.
-          This tool is
-          = link_to('free software,', 'https://www.gnu.org/philosophy/free-sw.html')
-          you can run, copy, distribute, study, change and improve it.
-          The source code and the developers are on
-          = link_to('GitHub.', 'https://github.com/SUSE/hackweek')
+
+.terminal-nav
+
+  %nav.terminal-menu
+    %ul
+      %li
+        = link_to(announcements_path) do
+          %i.fa.fa-bullhorn
+          News
+      %li
+        = link_to(about_path) do
+          %i.fa.fa-info
+          About
+      %li
+        = link_to(gallery_path) do
+          %i.fa.fa-picture-o
+          Pics
+      %li
+        = link_to(faqs_path) do
+          %i.fa.fa-question
+          FAQ
+      %li
+        = link_to('https://github.com/SUSE/hackweek/blob/master/CREDITS.md') do
+          %i.fa.fa-heart
+          Credit.
+    %p.small{style: 'padding-top: 25px'}
+      &copy;
+      = Time.current.year
+      SUSE.
+      This tool is
+      = link_to('free software,', 'https://www.gnu.org/philosophy/free-sw.html')
+      you can run, copy, distribute, study, change and improve it.
+      The source code and the developers are on
+      = link_to('GitHub.', 'https://github.com/SUSE/hackweek')
