@@ -14,4 +14,5 @@ class Keyword < ApplicationRecord
 
   scope :by_episode, lambda { |episode|
     joins(:keywords_projects).where(keywords_projects: { project: episode.projects.pluck(:id) }) if episode && episode.is_a?(Episode)
+  }
 end

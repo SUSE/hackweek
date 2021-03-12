@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_14_175543) do
+ActiveRecord::Schema.define(version: 2021_03_15_195817) do
 
   create_table "announcements", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
@@ -92,6 +92,11 @@ ActiveRecord::Schema.define(version: 2021_03_14_175543) do
     t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.bigint "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string "description"
   end
 
   create_table "keywords_projects", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

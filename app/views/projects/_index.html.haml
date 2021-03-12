@@ -6,9 +6,22 @@
 .row
   .col-sm-12
     - if @keyword
-      .page-header
-        %h1
-          Projects in the topic #{@keyword.name}
+      .row
+        .col-sm-2
+          - if @keyword.avatar_file_name
+            = image_tag(@keyword.avatar.url(:thumb), width: '150', class: 'img-responsive center-block')
+          - else
+            %img{src: "holder.js/150x150?text=#{@keyword.name}", class: 'center-block'}
+        .col-sm-10
+          %h1
+            Projects in the topic #{@keyword.name}
+            =link_to edit_keyword_path(@keyword.name) do
+              %i{title: 'Edit topic', class: 'fa fa-pencil fa-xs', style: "font-size: 1.5rem;"}
+            %br
+            %small
+              = @keyword.description
+      .row
+        %hr
     = render :partial => "projects/tabs" unless @keyword
     .tab-content{style: 'padding-top: 10px;'}
       - if @projects.length > 0

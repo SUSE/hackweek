@@ -20,6 +20,7 @@
 //= require jquery.table-filter.js
 //= require jquery-ui/widgets/autocomplete
 //= require autocomplete-rails
+//= require holder.js
 
 // to store clicked link
 var clickedLink;

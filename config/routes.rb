@@ -46,7 +46,7 @@ Rails.application.routes.draw do
       end
       resources :comments
     end
-    resources :keywords, only: [:show], param: :name
+    resources :keywords, only: [:show], param: :name, path: :topic
   end
 
   get '/reply/:id', to: 'comments#reply_modal', as: 'reply_modal'
