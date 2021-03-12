@@ -28,7 +28,7 @@
         console.log("load function");
         if (!query.length) return callback();
         $.ajax({
-          url: "#{keyword_tokens_path}.json",
+          url: "#{keywords_path}.json",
           type: 'GET',
           dataType: 'json',
           data: {

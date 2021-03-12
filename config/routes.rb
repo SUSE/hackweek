@@ -46,6 +46,7 @@ Rails.application.routes.draw do
       end
       resources :comments
     end
+    resources :keywords, only: [:show], param: :name
   end
 
   get '/reply/:id', to: 'comments#reply_modal', as: 'reply_modal'
@@ -73,11 +74,11 @@ Rails.application.routes.draw do
   end
 
   resources :updates, only: [:index]
+  resources :keywords, only: %i[index edit update], param: :name, path: :topic
 
   resources :faqs, except: [:show]
   get '/faq', to: redirect('/faqs')
 
-  get 'keyword/tokens'
   get 'gallery', to: 'gallery#index'
 
   get 'about', to: 'about#show'

@@ -40,3 +40,53 @@
           Join
           %span.hidden-xs
             a Project
+
+- if @episode
+  .row
+    .col-sm-12
+      %h2
+        Topics
+  .row
+    - @popular_keywords.sample(3).each do |keyword|
+      .col-sm-4
+        .well#topic-highlight
+          - if keyword.avatar_file_name
+            = image_tag(keyword.avatar.url(:thumb), width: '150', class: 'img-responsive center-block')
+          - else
+            %img{src: "holder.js/150x150?text=#{keyword.name}", class: 'center-block'}
+          = link_to keyword_path(@episode, keyword.name) do
+            %h2.text-center
+              = keyword.name
+          %p
+            = truncate(keyword.description, length: 100) if keyword.description
+  .row
+    .col-sm-9
+      %h2
+        All featured topics in this Hack Week
+      - @keywords.each do |keyword|
+        .media
+          .media-left
+            - if keyword.avatar_file_name
+              = image_tag(keyword.avatar.url(:thumb), width: '150')
+            - else
+              %img{src: "holder.js/150x150?text=#{keyword.name}"}
+          .media-body
+            %h4.media-heading
+              = link_to keyword_path(episode: @episode, name: keyword.name) do
+                = keyword.name
+            %p
+              -if keyword.description
+                = keyword.description
+              - else
+                Explore all the projects about
+                = keyword.name
+    .col-sm-3
+      %h2
+        Popular topics
+      %p
+        %ol
+          - @popular_keywords.each do |keyword|
+            %li
+              = link_to(keyword_path(episode: @episode, name: keyword.name)) do
+                = keyword.name
+

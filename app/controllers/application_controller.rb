@@ -57,11 +57,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def keyword_tokens
-    required_parameters :q
-    render json: Keyword.find_keyword(params[:q])
-  end
-
   def parameter_empty
     redirect_to(:back)
     flash['warn'] = 'Parameter missing...'

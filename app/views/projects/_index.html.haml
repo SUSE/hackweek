@@ -5,7 +5,11 @@
 
 .row
   .col-sm-12
-    = render :partial => "projects/tabs"
+    - if @keyword
+      .page-header
+        %h1
+          Projects in the topic #{@keyword.name}
+    = render :partial => "projects/tabs" unless @keyword
     .tab-content{style: 'padding-top: 10px;'}
       - if @projects.length > 0
         .tab-pane.active

@@ -1,4 +1,4 @@
-$("#content").html($("<%= escape_javascript(render 'index') %>"))
+$("#content").html($("<%= escape_javascript(render 'projects/index') %>"))
 projectPageCall();
 history.pushState({isAjax: true}, null, clickedLink);
 $('meta[name="csrf-token"]').attr('content','<%= form_authenticity_token %>');
