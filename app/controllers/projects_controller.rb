@@ -5,7 +5,8 @@ class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show archived finished newest popular biggest random]
   skip_before_action :store_location, only: %i[join leave like dislike add_keyword delete_keyword]
   skip_before_action :verify_authenticity_token, only: %i[add_keyword delete_keyword]
-  before_action :load_episode
+  skip_before_action :set_episode, only: %i[add_episode delete_episode]
+  before_action :load_episode_by_id, only: %i[add_episode delete_episode]
   before_action :username_array, only: %i[new edit show]
   autocomplete :project, :title
   impressionist actions: [:show], unique: [:user_id]
@@ -211,7 +212,7 @@ class ProjectsController < ApplicationController
     params.require(:keyword)
   end
 
-  def load_episode
+  def load_episode_by_id
     @episode = Episode.find(params[:episode_id]) if params[:episode_id]
   end
 

@@ -311,7 +311,7 @@ describe ProjectsController do
         another_episode = create :episode
         the_only_project = create :project, episodes: [another_episode]
 
-        get :index, params: { episode_id: another_episode.id, format: :rss }
+        get :index, params: { episode: another_episode.id, format: :rss }
 
         xml = Nokogiri::XML(response.body)
         expect(xml.xpath('//item').count).to eq 1
