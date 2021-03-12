@@ -1,4 +1,4 @@
-FROM registry.opensuse.org/opensuse/leap:15.2 
+FROM registry.opensuse.org/opensuse/leap:15.2
 ARG CONTAINER_USERID=1000
 
 # Add needed repos
@@ -10,7 +10,7 @@ RUN echo 'solver.allowVendorChange = true' >> /etc/zypp/zypp.conf; \
 RUN zypper -n install --no-recommends --replacefiles \
   curl vim vim-data psmisc timezone ack glibc-locale sudo hostname \
   sphinx libxml2-devel libxslt-devel sqlite3-devel nodejs8 gcc-c++ \
-  ImageMagick libmariadb-devel ruby-devel make git-core; \
+  ImageMagick libmariadb-devel ruby-devel make git-core mariadb-client; \
   zypper -n clean --all
 
 # Add our user
