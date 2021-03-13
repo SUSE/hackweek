@@ -134,7 +134,7 @@ describe Project do
     end
 
     it 'gives an empty array when there is no common keyword' do
-      ProjectInterest.last.delete
+      project2.remove_keyword!('web', user)
       expect(project.similar_projects_keywords).to eq([])
     end
 

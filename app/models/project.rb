@@ -8,21 +8,16 @@ class Project < ApplicationRecord
 
   belongs_to :originator, class_name: 'User'
 
-  has_many :memberships
-  has_many :users, through: :memberships
-
   has_many :likes
   has_many :kudos, through: :likes, source: :user
-
-  has_many :project_interests
-  has_many :keywords, through: :project_interests
 
   has_many :updates, -> { order 'created_at DESC' }, dependent: :destroy
 
   has_many :comments, as: :commentable, dependent: :destroy
 
-  has_many :episode_project_associations
-  has_many :episodes, through: :episode_project_associations
+  has_and_belongs_to_many :keywords
+  has_and_belongs_to_many :episodes
+  has_and_belongs_to_many :users
 
   has_many :project_follows
   has_many :project_followers, through: :project_follows, source: :user

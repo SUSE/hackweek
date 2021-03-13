@@ -327,21 +327,6 @@ describe ProjectsController do
         expect(xml.xpath('//item/title').first.text).to eq project.title
       end
 
-      it 'works when there are EpisodeProductAssociations without timestamp' do
-        Project.all.each do |project|
-          project.episode_project_associations.update_all(created_at: nil)
-        end
-        Project.last.destroy
-        project = create :project, episodes: [episode]
-        project.episode_project_associations.update_all(created_at: 1.year.ago)
-
-        get :index, params: { episode_id: episode.id, format: :rss }
-
-        xml = Nokogiri::XML(response.body)
-        expect(xml.xpath('//item').count).to eq 10
-        expect(xml.xpath('//item/title').last.text).to eq project.title
-      end
-
       it 'works for :all episodes' do
         expect { get :index, params: { episode: :all, format: :rss } }.not_to raise_error
       end

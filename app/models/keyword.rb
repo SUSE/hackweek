@@ -6,9 +6,6 @@ class Keyword < ApplicationRecord
     where('lower(name) like ?', "#{str.downcase}%")
   }
 
-  has_many :project_interests
-  has_many :projects, through: :project_interests
-
-  has_many :user_interests
-  has_many :users, through: :user_interests
+  has_and_belongs_to_many :projects
+  has_and_belongs_to_many :users
 end
