@@ -73,7 +73,7 @@ class ApplicationController < ActionController::Base
                elsif params[:episode] == 'all'
                  :all
                else
-                 Episode.find_by(id: params[:episode])
+                 Episode.find(params[:episode])
                end
     logger.debug("\n\nEpisode: #{@episode.to_param}\n\n")
   end
