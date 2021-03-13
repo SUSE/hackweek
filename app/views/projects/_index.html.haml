@@ -11,7 +11,7 @@
           - if @keyword.avatar_file_name
             = image_tag(@keyword.avatar.url(:thumb), width: '150', class: 'img-responsive center-block')
           - else
-            %img{src: "holder.js/150x150?text=#{@keyword.name}", class: 'center-block'}
+            %img{"data-src": "holder.js/150x150?text=#{@keyword.name}", class: 'center-block'}
         .col-sm-10
           %h1
             Projects in the topic #{@keyword.name}
