@@ -1,6 +1,5 @@
 class Episode < ApplicationRecord
-  has_many :episode_project_associations
-  has_many :projects, through: :episode_project_associations
+  has_and_belongs_to_many :projects
 
   validates :name, presence: true
 
