@@ -29,16 +29,6 @@ ActiveRecord::Schema.define(version: 2021_03_14_175543) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "crono_jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "job_id", null: false
-    t.text "log", limit: 4294967295
-    t.datetime "last_performed_at"
-    t.boolean "healthy"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["job_id"], name: "index_crono_jobs_on_job_id", unique: true
-  end
-
   create_table "enrollments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "announcement_id"
     t.integer "user_id"
