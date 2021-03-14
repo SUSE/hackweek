@@ -11,13 +11,15 @@ class Project < ApplicationRecord
   has_many :likes
   has_many :kudos, through: :likes, source: :user
 
+  has_many :memberships
+  has_many :users, through: :memberships
+
   has_many :updates, -> { order 'created_at DESC' }, dependent: :destroy
 
   has_many :comments, as: :commentable, dependent: :destroy
 
   has_and_belongs_to_many :keywords
   has_and_belongs_to_many :episodes
-  has_and_belongs_to_many :users
 
   has_many :project_follows
   has_many :project_followers, through: :project_follows, source: :user
