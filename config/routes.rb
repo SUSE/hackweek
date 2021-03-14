@@ -74,7 +74,11 @@ Rails.application.routes.draw do
   end
 
   resources :updates, only: [:index]
-  resources :keywords, only: %i[index edit update], param: :name, path: :topic
+  resources :keywords, only: %i[edit update], param: :name, path: :topic do
+    collection do
+      get 'search', to: 'search#keyword'
+    end
+  end
 
   resources :faqs, except: [:show]
   get '/faq', to: redirect('/faqs')

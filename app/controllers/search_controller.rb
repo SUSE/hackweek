@@ -16,4 +16,12 @@ class SearchController < ApplicationController
     @users = User.search search_query
     @users = User.search search_query, star: true if @users.empty?
   end
+
+  def keyword
+    respond_to do |format|
+      format.json do
+        render json: { keywords: Keyword.find_keyword(params[:q]) }
+      end
+    end
+  end
 end
