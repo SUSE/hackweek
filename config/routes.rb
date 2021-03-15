@@ -46,7 +46,7 @@ Rails.application.routes.draw do
       end
       resources :comments
     end
-    resources :keywords, only: [:show], param: :name, path: :topic
+    resources :keywords, only: %i[index show], param: :name, path: :topics
   end
 
   get '/reply/:id', to: 'comments#reply_modal', as: 'reply_modal'
@@ -74,7 +74,7 @@ Rails.application.routes.draw do
   end
 
   resources :updates, only: [:index]
-  resources :keywords, only: %i[edit update], param: :name, path: :topic do
+  resources :keywords, only: %i[edit update], param: :name, path: :topics do
     collection do
       get 'search', to: 'search#keyword'
     end
