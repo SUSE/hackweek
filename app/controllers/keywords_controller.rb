@@ -3,7 +3,7 @@ class KeywordsController < ApplicationController
   before_action :load_keyword, only: %i[show edit update]
 
   def index
-    @keywords = Keyword.by_episode(@episode).order(:name).distinct.page(params[:page]).per(params[:page_size])
+    @keywords = Keyword.find_keyword("%#{params[:query]}%").by_episode(@episode).order(:name).distinct.page(params[:page]).per(params[:page_size])
     @popular_keywords = Keyword.popular(@episode, 10)
   end
 

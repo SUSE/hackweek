@@ -1,14 +1,11 @@
 - if @episode
-  .row
-    .col-sm-12
-      %h2
-        Topics
+  - keyword_count = Keyword.by_episode(@episode).count
   .row
     .col-sm-9
       %h2
         All featured topics in this Hack Week
         %span.badge
-          = Keyword.by_episode(@episode).count
+          = keyword_count
       - @keywords.each do |keyword|
         .media
           .media-left
@@ -20,6 +17,8 @@
             %h4.media-heading
               = link_to keyword_path(episode: @episode, name: keyword.name) do
                 = keyword.name
+              %span.badge
+                = keyword.projects.by_episode(@episode).count
             %p
               -if keyword.description
                 = keyword.description
@@ -35,6 +34,13 @@
             %li
               = link_to(keyword_path(episode: @episode, name: keyword.name)) do
                 = keyword.name
+              %span.badge
+                = keyword.projects.by_episode(@episode).count
   .row
     .col-sm-12.text-center
       = paginate @keywords
+      %p
+        =link_to(keywords_path(@episode, page_size: keyword_count), class: 'btn btn-default') do
+          View All
+          = keyword_count
+          Keywords
