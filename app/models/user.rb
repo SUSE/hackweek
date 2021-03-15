@@ -31,7 +31,7 @@ class User < ApplicationRecord
   after_save ThinkingSphinx::RealTime.callback_for(:user)
 
   include Gravtastic
-  has_gravatar
+  has_gravatar default: 'retro'
 
   def role?(role)
     !!roles.find_by_name(role)
