@@ -276,3 +276,10 @@ textarea.form-control {
 #topic-highlight {
   min-height: 300px;
 }
+
+.md-preview {
+  h1, h2, h3, h4 {
+    font-size: 14px;
+    font-weight: bold;
+  }
+}

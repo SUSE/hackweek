@@ -75,9 +75,9 @@
           = link_to project_path(@episode, project) do
             = image_tag(project.avatar.url(:thumb), width: '20')
             = project.title
-        %p
+        .md-preview
           :markdown
-            #{mdpreview(project.description, lines: 1)}
+            #{mdpreview(project.description, lines: 2)}
 
   .row
     .col-sm-12
