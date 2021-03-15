@@ -3,7 +3,7 @@ class Keyword < ApplicationRecord
   validates :name, uniqueness: true
 
   scope :find_keyword, lambda { |str|
-    where('lower(name) like ?', "#{str.downcase}%")
+    where('lower(name) like ?', str.downcase) unless str.blank?
   }
 
   has_and_belongs_to_many :projects

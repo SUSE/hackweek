@@ -16,14 +16,12 @@ Rails.application.routes.draw do
   scope '(:episode)' do
     resources :projects do
       collection do
-        get 'autocomplete_project_title'
         get 'archived'
         get 'finished'
         get 'newest', to: 'projects#index'
         get 'popular'
         get 'biggest'
         get 'random'
-        get 'search', to: 'search#result'
       end
       member do
         get 'like'
@@ -47,6 +45,8 @@ Rails.application.routes.draw do
       resources :comments
     end
     resources :keywords, only: %i[index show], param: :name, path: :topics
+    get '/search/project', to: 'search#result', as: 'search_projects'
+    get '/search/keyword', to: 'search#keyword', as: 'search_keywords'
   end
 
   get '/reply/:id', to: 'comments#reply_modal', as: 'reply_modal'
@@ -74,13 +74,9 @@ Rails.application.routes.draw do
   end
 
   resources :updates, only: [:index]
-  resources :keywords, only: %i[edit update], param: :name, path: :topics do
-    collection do
-      get 'search', to: 'search#keyword'
-    end
-  end
-
+  resources :keywords, only: %i[edit update], param: :name, path: :topics
   resources :faqs, except: [:show]
+
   get '/faq', to: redirect('/faqs')
 
   get 'gallery', to: 'gallery#index'
