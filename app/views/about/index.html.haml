@@ -47,7 +47,7 @@
       %h2
         Topics
   .row
-    - @popular_keywords.sample(3).each do |keyword|
+    - @popular_keywords.each do |keyword|
       .col-sm-4
         .well#topic-highlight
           - if keyword.avatar_file_name
@@ -60,35 +60,27 @@
           %p
             = truncate(keyword.description, length: 100) if keyword.description
   .row
-    .col-sm-9
+    .col-sm-12
+      %p.text-right
+        = link_to keywords_path(@episode), class: 'btn btn-default' do
+          Browse all
+  .row
+    .col-sm-12
       %h2
-        All featured topics in this Hack Week
-        %span.badge
-          = Keyword.by_episode(@episode).count
-      - @keywords.each do |keyword|
-        .media
-          .media-left
-            - if keyword.avatar_file_name
-              = image_tag(keyword.avatar.url(:thumb), width: '150')
-            - else
-              %img{"data-src": "holder.js/150x150?text=#{keyword.name}"}
-          .media-body
-            %h4.media-heading
-              = link_to keyword_path(episode: @episode, name: keyword.name) do
-                = keyword.name
-            %p
-              -if keyword.description
-                = keyword.description
-              - else
-                Explore all the projects about
-                = keyword.name
-    .col-sm-3
-      %h2
-        Popular topics
-      %p
-        %ol
-          - @popular_keywords.each do |keyword|
-            %li
-              = link_to(keyword_path(episode: @episode, name: keyword.name)) do
-                = keyword.name
+        Popular Projects
+  .row
+    - @popular_projects.each do |project|
+      .col-sm-4
+        %h4
+          = link_to project_path(@episode, project) do
+            = image_tag(project.avatar.url(:thumb), width: '20')
+            = project.title
+        %p
+          :markdown
+            #{mdpreview(project.description, lines: 1)}
 
+  .row
+    .col-sm-12
+      %p.text-right
+        = link_to projects_path(@episode), class: 'btn btn-default' do
+          Browse all

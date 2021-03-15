@@ -4,11 +4,8 @@ class AboutController < ApplicationController
   def index
     return unless @episode
 
-    @keywords = Keyword.by_episode(@episode).order(:name).uniq.first(5)
-    @popular_keywords = Keyword.by_episode(@episode)
-                               .group(:name).count
-                               .sort_by { |_name, occurance| occurance }.reverse
-                               .first(10).map { |keyword| Keyword.find_by(name: keyword[0]) }
+    @popular_keywords = Keyword.popular(@episode, 10).sample(3)
+    @popular_projects = Project.current(@episode).order('projecthits DESC').first(6)
   end
 
   def show; end
