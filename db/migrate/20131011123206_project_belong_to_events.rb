@@ -1,4 +1,4 @@
-class ProjectBelongToEvents < ActiveRecord::Migration
+class ProjectBelongToEvents < ActiveRecord::Migration[4.2]
   def self.up
     create_table :events_projects, id: false do |t|
       t.references :event, :project

@@ -1,4 +1,4 @@
-class ModelForEpisodesProjectsAssociation < ActiveRecord::Migration
+class ModelForEpisodesProjectsAssociation < ActiveRecord::Migration[4.2]
   def change
     add_column :episodes_projects, :id, :primary_key
     add_column :episodes_projects, :created_at, :datetime
