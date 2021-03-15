@@ -1,4 +1,4 @@
-class AddAvatarColumnsToProjects < ActiveRecord::Migration
+class AddAvatarColumnsToProjects < ActiveRecord::Migration[4.2]
   def self.up
     add_attachment :projects, :avatar
   end

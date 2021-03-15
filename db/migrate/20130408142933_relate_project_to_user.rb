@@ -1,4 +1,4 @@
-class RelateProjectToUser < ActiveRecord::Migration
+class RelateProjectToUser < ActiveRecord::Migration[4.2]
   def up
     add_column :projects, :originator_id, :integer
     remove_column :projects, :name

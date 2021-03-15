@@ -1,4 +1,4 @@
-class CreateEnrollments < ActiveRecord::Migration
+class CreateEnrollments < ActiveRecord::Migration[4.2]
   def change
     create_table :enrollments do |t|
       t.integer :announcement_id

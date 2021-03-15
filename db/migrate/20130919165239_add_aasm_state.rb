@@ -1,4 +1,4 @@
-class AddAasmState < ActiveRecord::Migration
+class AddAasmState < ActiveRecord::Migration[4.2]
   def up
     add_column :projects, :aasm_state, :string
   end
