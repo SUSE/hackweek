@@ -10,8 +10,9 @@
     = link_to(user_path(project.originator)) do
       #{project.originator.name}
       = render :partial => "projects/like_button", :locals => {:project => project }
-:markdown
-  #{mdpreview(project.description, lines: 3)}
+.md-preview
+  :markdown
+    #{mdpreview(project.description, lines: 2)}
 - unless project.users.empty?
   .well.well-sm
     - project.users.each do |user|
