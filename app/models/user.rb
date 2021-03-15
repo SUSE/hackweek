@@ -9,6 +9,9 @@ class User < ApplicationRecord
   has_many :originated_projects, foreign_key: 'originator_id', class_name: 'Project'
   has_many :updates, -> { order 'created_at DESC' }, foreign_key: 'author_id', dependent: :destroy
 
+  has_many :memberships
+  has_many :projects, through: :memberships
+
   has_many :comments, foreign_key: 'commenter_id'
   has_many :likes
   has_many :enrollments
@@ -17,7 +20,6 @@ class User < ApplicationRecord
   has_many :favourites, through: :likes, source: :project
 
   has_and_belongs_to_many :keywords
-  has_and_belongs_to_many :projects
 
   has_many :project_follows
   has_many :project_followings, through: :project_follows, source: :project
