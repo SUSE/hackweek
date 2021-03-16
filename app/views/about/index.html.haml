@@ -40,3 +40,47 @@
           Join
           %span.hidden-xs
             a Project
+
+- if @episode
+  .row
+    .col-sm-12
+      %h2
+        Popular Topics
+  .row
+    - @popular_keywords.each do |keyword|
+      .col-sm-4
+        .well#topic-highlight
+          - if keyword.avatar_file_name
+            = image_tag(keyword.avatar.url(:thumb), width: '150', class: 'img-responsive center-block')
+          - else
+            %img{"data-src": "holder.js/150x150?text=#{keyword.name}", class: 'center-block'}
+          = link_to keyword_path(@episode, keyword.name) do
+            %h2.text-center
+              = keyword.name
+          %p
+            = truncate(keyword.description, length: 100) if keyword.description
+  .row
+    .col-sm-12
+      %p.text-right
+        = link_to keywords_path(@episode), class: 'btn btn-default' do
+          Browse all
+  .row
+    .col-sm-12
+      %h2
+        Popular Projects
+  .row
+    - @popular_projects.each do |project|
+      .col-sm-4
+        %h4
+          = link_to project_path(@episode, project) do
+            = image_tag(project.avatar.url(:thumb), width: '20')
+            = project.title
+        .md-preview
+          :markdown
+            #{mdpreview(project.description, lines: 2)}
+
+  .row
+    .col-sm-12
+      %p.text-right
+        = link_to projects_path(@episode), class: 'btn btn-default' do
+          Browse all

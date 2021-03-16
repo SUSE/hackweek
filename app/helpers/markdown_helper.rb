@@ -4,6 +4,6 @@ module MarkdownHelper
   end
 
   def mdpreview(markdown_source, lines: 3)
-    markdown_source.lines.reject { |l| l =~ /\[comment\]/ }.select { |l| l =~ /\S/ }[0..lines].join
+    markdown_source.lines.reject { |l| l =~ /\[comment\]/ }.select { |l| l =~ /\S/ }[0..lines - 1].join
   end
 end

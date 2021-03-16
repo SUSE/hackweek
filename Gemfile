@@ -7,12 +7,6 @@ gem 'ruby-progressbar', '1.11.0'
 # as framework
 gem 'rails', '~> 5.2'
 
-# gem package to include jQuery UI assets for the Rails asset pipeline
-gem 'jquery-ui-rails'
-
-# To use jQuery's autocomplete with Rails
-gem 'rails-jquery-autocomplete'
-
 # Misc tools for fancy development
 group :development, :test do
   # as our rails console

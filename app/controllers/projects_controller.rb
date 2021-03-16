@@ -8,7 +8,6 @@ class ProjectsController < ApplicationController
   skip_before_action :set_episode, only: %i[add_episode delete_episode]
   before_action :load_episode_by_id, only: %i[add_episode delete_episode]
   before_action :username_array, only: %i[new edit show]
-  autocomplete :project, :title
   impressionist actions: [:show], unique: [:user_id]
 
   # GET /projects

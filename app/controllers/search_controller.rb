@@ -2,7 +2,7 @@ class SearchController < ApplicationController
   skip_before_action :authenticate_user!, only: [:result]
   def result
     # First search in morphology mode, if fails — retry in wildcard mode
-    search_query = ThinkingSphinx::Query.escape(params[:q])
+    search_query = ThinkingSphinx::Query.escape(params[:query])
     if @episode.to_param == 'all'
       @projects = Project.search search_query
       @projects = Project.search search_query, star: true if @projects.empty?
@@ -15,5 +15,13 @@ class SearchController < ApplicationController
 
     @users = User.search search_query
     @users = User.search search_query, star: true if @users.empty?
+  end
+
+  def keyword
+    respond_to do |format|
+      format.json do
+        render json: { keywords: Keyword.find_keyword("#{params[:query]}%") }
+      end
+    end
   end
 end

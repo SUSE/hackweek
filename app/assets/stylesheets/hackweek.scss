@@ -269,40 +269,17 @@ textarea.form-control {
   100% { transform: rotate(360deg); }
 }
 
-#search-suggestion-container {
-    display: block;
-}
-
-.ui-autocomplete {
-    position: absolute;
-    list-style-type: none;
-    max-height: 400px;
-    width: 220px;
-    background-color: white;
-    cursor: pointer;
-    padding: 0px;
-}
-
-.ui-autocomplete li {
-  font-size: 16px;
-}
-
-.ui-autocomplete li div{
-  margin: 0px;
-  padding: 10px 0px 10px 5px;
-}
-
-.ui-state-active{
-  background: #eff1f4;
-}
-
-.ui-helper-hidden-accessible{
-  position:fixed;
-  right: 5px;
-  bottom: 5px;
-  z-index: 1000;
-}
-
 #file_buttons {
   margin: 5px 0px;
+}
+
+#topic-highlight {
+  min-height: 300px;
+}
+
+.md-preview {
+  h1, h2, h3, h4 {
+    font-size: 14px;
+    font-weight: bold;
+  }
 }
