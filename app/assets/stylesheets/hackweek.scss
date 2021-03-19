@@ -126,6 +126,12 @@ footer {
   margin-bottom: 4px;
 }
 
+.keyword {
+  a, a:hover, a:active {
+    color: #fff;
+  }
+}
+
 .project-list-pills {
   position: relative;
   z-index: 1;
