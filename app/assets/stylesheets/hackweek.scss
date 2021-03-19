@@ -18,6 +18,8 @@ body {
   .dropdown-menu{
     padding: 0;
     width: 350px;
+    max-height: 80vh;
+    overflow-y: auto;
     h5{
       padding-left: 1em;
     }
