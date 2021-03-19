@@ -1,6 +1,6 @@
 - keywords.each do |word|
   %span.badge.keyword
-    = word.name
+    = link_to word.name, keyword_path(@episode, word.name)
     - if current_user
       - if @project and can? :delete_keyword, @project
         = link_to(keyword_project_path(keyword: word.name), :method => :delete, :id => "remove-#{word.id}") do
