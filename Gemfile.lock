@@ -370,7 +370,7 @@ GEM
     unicode-display_width (2.0.0)
     warden (1.2.9)
       rack (>= 2.0.9)
-    websocket-driver (0.7.3)
+    websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     xpath (3.2.0)
