@@ -317,8 +317,8 @@ GEM
       rubocop-ast (>= 1.1.0)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
-    ruby_parser (3.15.1)
-      sexp_processor (~> 4.9)
+    ruby_parser (3.17.0)
+      sexp_processor (~> 4.15, >= 4.15.1)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -340,7 +340,7 @@ GEM
     sentry-ruby-core (4.6.4)
       concurrent-ruby
       faraday
-    sexp_processor (4.15.2)
+    sexp_processor (4.15.3)
     simplecov (0.16.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
