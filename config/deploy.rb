@@ -21,6 +21,11 @@ set :shared_files, fetch(:shared_files, []).push('config/database.yml',
                                                  'config/production.sphinx.conf',
                                                  'en.pak')
 
+task :'bundle:config' do
+  comment 'Configuring bundle'
+  command 'bundle config build.nokogiri --use-system-libraries'
+end
+
 desc 'Deploys the current version to the server.'
 task :deploy do
   deploy do
@@ -28,6 +33,7 @@ task :deploy do
     # instance of your project.
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
+    invoke :'bundle:config'
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
