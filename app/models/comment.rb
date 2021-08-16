@@ -5,7 +5,7 @@ class Comment < ApplicationRecord
   belongs_to :commenter, class_name: 'User'
 
   validates_presence_of :commenter_id, :text, :commentable_id
-  after_save ThinkingSphinx::RealTime.callback_for(:project, [:project])
+  ThinkingSphinx::Callbacks.append(self, behaviours: [:real_time])
 
   def project
     return @project if defined?(@project)

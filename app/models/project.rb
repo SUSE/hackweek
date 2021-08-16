@@ -30,7 +30,7 @@ class Project < ApplicationRecord
   after_create :create_initial_update
   after_create :assign_episode
 
-  after_save ThinkingSphinx::RealTime.callback_for(:project)
+  ThinkingSphinx::Callbacks.append(self, behaviours: [:real_time])
   acts_as_url :title, blacklist: %w[new archived finished newest popular biggest random]
 
   aasm do
