@@ -146,7 +146,7 @@ GEM
       ruby_parser (~> 3.5)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
-    impressionist (1.6.1)
+    impressionist (2.0.0)
       nokogiri (~> 1)
     innertube (1.1.0)
     joiner (0.4.2)
