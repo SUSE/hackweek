@@ -339,7 +339,7 @@ GEM
     sentry-ruby-core (4.7.3)
       concurrent-ruby
       faraday
-    sexp_processor (4.15.3)
+    sexp_processor (4.16.0)
     simplecov (0.16.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
