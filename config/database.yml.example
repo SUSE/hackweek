@@ -1,16 +1,10 @@
-<%
-  if ENV['CONTAINER']
-    host = 'db'
-  end
-%>
-
 default: &default
   adapter: mysql2
   encoding: utf8
   username: root
   password: root
-  host: <%= host %>
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV.fetch("HACKWEEK_DB_HOST", nil) %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
   timeout: 5000
 
 development:
