@@ -19,7 +19,7 @@
             - else
               = @episode.name if @episode
           = link_to('#', {class: "dropdown-toggle navbar-brand", "data-toggle"=>"dropdown"} ) do
-            %i.fa.fa-caret-square-o-down
+            %i.fas.fa-caret-down
           %ul.dropdown-menu{:role => "menu"}
             %li{:role => "presentation"}
               = link_to(projects_path(:all), {title: "Projects for all hackweeks"}) do
@@ -34,7 +34,7 @@
         %ul.nav.navbar-nav
           %li
             = link_to(new_project_path(@episode), {:id=>"new_project_path",:alt=>"Add Project", :title=>"Add Project"}) do
-              %i.fa.fa-plus
+              %i.fas.fa-plus
               Create
       - if user_signed_in?
         %ul.nav.navbar-nav.navbar-right.hidden-xs
@@ -45,15 +45,15 @@
             %ul.dropdown-menu
               %li
                 = link_to(user_path(current_user), :id => "me_users_path") do
-                  %i.fa.fa-home
+                  %i.fas.fa-home
                   = current_user.name
               %li
                 = link_to(user_edit_path(current_user)) do
-                  %i.fa.fa-pencil-square-o
+                  %i.fas.fa-pen-square
                   Edit Profile
               %li
                 = link_to(destroy_user_ichain_session_path, :method => :delete, :id => "logout-link") do
-                  %i.fa.fa-power-off
+                  %i.fas.fa-power-off
                   Log out
               - if current_user.role?(:organizer) || current_user.role?(:admin)
                 = render partial: 'layouts/admin_menu'
@@ -70,11 +70,11 @@
             = current_user.name
           %li
             = link_to(user_path(current_user)) do
-              %i.fa.fa-home
+              %i.fas.fa-home
               Home
           %li
             = link_to(destroy_user_ichain_session_path, :method => :delete, :id => "logout-link") do
-              %i.fa.fa-power-off
+              %i.fas.fa-power-off
               Log out
           - if current_user.role? :organizer
             = render partial: 'layouts/admin_menu'
@@ -82,7 +82,7 @@
         %ul.nav.navbar-nav.navbar-right
           %li
             = link_to(new_user_ichain_session_path, :id => "login-link") do
-              %i.fa.fa-signin
+              %i.fas.fa-sign-in-alt
               Sign In
       %form{:role=>"search", :method=>"get", :class=>"navbar-form navbar-right", :action=>"#{search_projects_path(@episode)}", "accept-charset"=>"UTF-8"}
         .form-group

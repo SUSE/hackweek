@@ -16,10 +16,10 @@
           = f.text_area :text, :placeholder => "Your comment. You can use markdown.", :class => 'form-control input-lg markdown-source-text', :required => "required"
         .tab-pane.fade{ role: 'tab-pane', id: "markdown-preview#{id}" }
           .loading-spinner
-            = fa_icon 'spinner pulse 3x'
+            = icon('fas', 'spinner pulse 3x')
           .preview-contents.hidden
 
   %p
     = button_tag(type: 'submit', class: "btn btn-success pull-right") do
-      %i.fa.fa-plus
+      %i.fas.fa-plus
       Add Comment

@@ -9,28 +9,28 @@
     =link_to popular_projects_path(@episode), :title => "Projects with many likes", :remote => true do
       %span.hidden-xs
         Popular
-      %i.fa.fa-star.visible-xs
+      %i.fas.fa-star.visible-xs
   - biggest_state = "active" if action_name == "biggest"
   %li{:class => biggest_state}
     =link_to biggest_projects_path(@episode), :title => "Projects with many users", :remote => true do
       %span.hidden-xs
         Crowded
-      %i.fa.fa-user.visible-xs
+      %i.fas.fa-user.visible-xs
   - finished_state = "active" if action_name == "finished"
   %li{:class => finished_state}
     =link_to finished_projects_path(@episode), :title => "Projects that are done", :remote => true do
       %span.hidden-xs
         Finished
-      %i.fa.fa-check.visible-xs
+      %i.fas.fa-check.visible-xs
   - archived_state = "active" if action_name == "archived"
   %li{:class => archived_state}
     =link_to archived_projects_path(@episode), :title => "Projects that are dismissed", :remote => true do
       %span.hidden-xs
         Archived
-      %i.fa.fa-archive.visible-xs
+      %i.fas.fa-archive.visible-xs
 
   %li.pull-right
     =link_to projects_path(@episode, @project, format: :rss), title: 'New projects feed' do
-      %i.fa.fa-rss
+      %i.fas.fa-rss
       %span
         RSS

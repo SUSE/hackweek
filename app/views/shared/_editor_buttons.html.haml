@@ -1,11 +1,11 @@
 - @textarea = "$(this).closest('form').find('textarea')"
 %a.btn.btn-default{onclick: "#{@textarea}.val(#{@textarea}.val() + ' @').click();"}
-  %i.fa.fa-at
+  %i.fas.fa-at
 %a.btn.btn-default{onclick: "#{@textarea}.val(#{@textarea}.val() + ' :').click();"}
-  %i.fa.fa-smile-o
+  %i.fas.fa-smile
 %a.btn.btn-default{onclick: "#{@textarea}.val(#{@textarea}.val() + ' [text](link-here)').click();"}
-  %i.fa.fa-link
+  %i.fas.fa-link
 %a.btn.btn-default{onclick: "textcover(#{@textarea}[0], '_')"}
-  %i.fa.fa-italic
+  %i.fas.fa-italic
 %a.btn.btn-default{onclick: "textcover(#{@textarea}[0], '**')"}
-  %i.fa.fa-bold
+  %i.fas.fa-bold
