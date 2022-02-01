@@ -332,21 +332,4 @@ describe ProjectsController do
       end
     end
   end
-
-  describe 'GET /:episode/projects/random' do
-    it 'should render special zoomed template' do
-      get :random
-      expect(response).to render_template(layout: 'zoomed')
-    end
-
-    it 'assigns random project on each request' do
-      first_project = create :project
-      9.times { create :project }
-
-      expect(Kernel).to receive(:rand).with(Project.count).and_return(0)
-      get :random
-
-      expect(assigns(:project)).to eq first_project
-    end
-  end
 end

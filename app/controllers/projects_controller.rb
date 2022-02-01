@@ -193,14 +193,6 @@ class ProjectsController < ApplicationController
     render 'episode_list'
   end
 
-  # GET /projects/random
-  def random
-    projects = Project.current(@episode).active
-    # I can do this with a single query, but that won't be testable or database-agnostic
-    @project = projects.offset(Kernel.rand(projects.size)).first
-    render layout: 'zoomed'
-  end
-
   private
 
   def project_params
