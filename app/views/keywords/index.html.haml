@@ -9,8 +9,8 @@
       - @keywords.each do |keyword|
         .media
           .media-left
-            - if keyword.avatar_file_name
-              = image_tag(keyword.avatar.url(:thumb), width: '150')
+            - if keyword.avatar.attached?
+              = image_tag(url_for(keyword.avatar), width: '150')
             - else
               %img{"data-src": "holder.js/150x150?text=#{keyword.name}"}
           .media-body

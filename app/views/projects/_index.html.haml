@@ -8,8 +8,8 @@
     - if @keyword
       .row
         .col-sm-2
-          - if @keyword.avatar_file_name
-            = image_tag(@keyword.avatar.url(:thumb), width: '150', class: 'img-responsive center-block')
+          - if @keyword.avatar.attached?
+            = image_tag(url_for(@keyword.avatar), width: '150', class: 'img-responsive center-block')
           - else
             %img{"data-src": "holder.js/150x150?text=#{@keyword.name}", class: 'center-block'}
         .col-sm-10

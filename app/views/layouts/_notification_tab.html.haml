@@ -19,7 +19,8 @@
           - @notifications.each do |notification|
             %li{ 'data-behavior':'notifications-link' }
               = link_to project_path(notification.notifiable) do
-                = image_tag notification.notifiable.avatar.url(:thumb)
+                - if notification.notifiable.avatar.attached?
+                  = image_tag url_for(notification.notifiable.avatar)
                 %p
                   #{notification.actor.name} #{notification.action}
             %hr
