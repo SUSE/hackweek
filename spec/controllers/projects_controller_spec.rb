@@ -37,11 +37,6 @@ describe ProjectsController do
       get :show, params: { id: project.id }
       expect(response).to redirect_to(project)
     end
-
-    it 'renders the 404 page for non existant projects' do
-      get :show, params: { id: 10_000 }
-      expect(response).to have_http_status(:not_found)
-    end
   end
 
   describe 'GET new' do
@@ -298,7 +293,7 @@ describe ProjectsController do
       it 'returns an RSS feed' do
         expect(response).to be_successful
         expect(response).to render_template('projects/index')
-        expect(response.content_type).to eq 'application/rss+xml'
+        expect(response.content_type).to include('application/rss+xml')
       end
 
       it 'returns 10 last items' do

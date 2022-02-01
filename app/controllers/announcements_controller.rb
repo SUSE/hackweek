@@ -30,7 +30,7 @@ class AnnouncementsController < ApplicationController
 
   # PUT /announcements/1
   def update
-    if @announcement.update_attributes(announcement_params)
+    if @announcement.update(announcement_params)
       redirect_to announcements_path, notice: 'Announcement was successfully updated.'
     else
       render action: 'edit'

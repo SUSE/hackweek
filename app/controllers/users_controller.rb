@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def edit; end
 
   def update
-    current_user.update_attributes(params['user'])
+    current_user.update(params['user'])
     redirect_to user_path(current_user)
   end
 

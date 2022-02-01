@@ -9,7 +9,7 @@ describe NotificationsController do
 
   describe 'GET index' do
     it 'assigns all notification as @notifications' do
-      get :index, {}
+      get :index
 
       expect(assigns(:older_notifications)).to eq([notification])
     end

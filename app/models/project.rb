@@ -215,7 +215,7 @@ class Project < ApplicationRecord
   end
 
   def self.description_template
-    File.open(Rails.root.join('config', 'new_project_template.md')).read
+    File.read(Rails.root.join('config', 'new_project_template.md'))
   end
 
   private

@@ -59,7 +59,7 @@ class ProjectsController < ApplicationController
     @new_comment = Comment.new
     @updates = @project.updates.page(1)
     @last_page = @project.updates.page(1).last_page? || @updates.empty?
-    @project.update_attributes(projecthits: @project.impressionist_count(filter: :user_id) + @project.kudos.size)
+    @project.update_attribute('projecthits', @project.impressionist_count(filter: :user_id) + @project.kudos.size)
   end
 
   # GET /projects/new
@@ -85,7 +85,7 @@ class ProjectsController < ApplicationController
 
   # PUT /projects/1
   def update
-    if @project.update_attributes(project_params)
+    if @project.update(project_params)
       redirect_to project_path(@episode, @project)
     else
       render action: 'edit'
@@ -145,7 +145,7 @@ class ProjectsController < ApplicationController
       end
       format.js { render partial: 'like_toggle' }
     end
-    @project.update_attributes(projecthits: @project.impressionist_count(filter: :user_id) + @project.kudos.size)
+    @project.update_attribute('projecthits', @project.impressionist_count(filter: :user_id) + @project.kudos.size)
   end
 
   # PUT /projects/1/dislike
@@ -156,7 +156,7 @@ class ProjectsController < ApplicationController
       format.html { redirect_to project_path(@episode, @project), notice: "Aaww Snap! You don't love me anymore?" }
       format.js { render partial: 'like_toggle' }
     end
-    @project.update_attributes(projecthits: @project.impressionist_count(filter: :user_id) + @project.kudos.size)
+    @project.update_attribute('projecthits', @project.impressionist_count(filter: :user_id) + @project.kudos.size)
   end
 
   # PUT /projects/1/add_keyword
