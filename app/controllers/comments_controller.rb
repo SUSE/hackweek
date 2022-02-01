@@ -3,10 +3,6 @@ class CommentsController < ApplicationController
   before_action :get_parent, except: :reply_modal
   skip_before_action :verify_authenticity_token, only: [:reply_modal]
 
-  def new
-    @comment = @parent.comments.build
-  end
-
   def create
     @comment = @parent.comments.build(comment_params)
     @comment.commenter = current_user

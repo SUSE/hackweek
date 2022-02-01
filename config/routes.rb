@@ -42,17 +42,21 @@ Rails.application.routes.draw do
           delete '/', to: 'projects/project_follows#destroy'
         end
       end
-      resources :comments
     end
     resources :keywords, only: %i[index show], param: :name, path: :topics
     get '/search/project', to: 'search#result', as: 'search_projects'
     get '/search/keyword', to: 'search#keyword', as: 'search_keywords'
   end
 
-  get '/reply/:id', to: 'comments#reply_modal', as: 'reply_modal'
+  resources :projects, only: [] do
+    resources :comments, only: :create
+  end
 
-  resources :comments, only: %i[new create] do
-    resources :comments, only: %i[new create]
+  resources :comments, only: [] do
+    resources :comments, only: :create
+    collection do
+      get '/reply/:id', to: 'comments#reply_modal', as: 'reply_modal'
+    end
   end
 
   resources :announcements do
