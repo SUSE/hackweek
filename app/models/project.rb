@@ -1,6 +1,5 @@
 class Project < ApplicationRecord
   include AASM
-  is_impressionable
 
   validates :title, :description, :originator, presence: true
   validate  :title_contains_letters?

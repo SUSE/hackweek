@@ -313,15 +313,6 @@ describe ProjectsController do
         expect(xml.xpath('//item/title').map(&:text)).to contain_exactly(the_only_project.title)
       end
 
-      it 'shows the project having lowest projecthits first' do
-        project = Project.current(@episode).order('projecthits ASC').first
-
-        get :index, params: { episode_id: episode.id, format: :rss }
-
-        xml = Nokogiri::XML(response.body)
-        expect(xml.xpath('//item/title').first.text).to eq project.title
-      end
-
       it 'works for :all episodes' do
         expect { get :index, params: { episode: :all, format: :rss } }.not_to raise_error
       end

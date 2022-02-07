@@ -40,7 +40,6 @@ gem 'sass-rails'
 gem 'bootstrap-sass'
 # as vector icons
 gem 'font-awesome-sass'
-gem 'impressionist'
 # as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # as JavaScript library

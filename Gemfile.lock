@@ -175,8 +175,6 @@ GEM
       ruby_parser (~> 3.5)
     i18n (1.9.1)
       concurrent-ruby (~> 1.0)
-    impressionist (2.0.0)
-      nokogiri (~> 1)
     innertube (1.1.0)
     io-wait (0.2.1)
     joiner (0.6.0)
@@ -454,7 +452,6 @@ DEPENDENCIES
   gravtastic
   haml-rails
   hirb
-  impressionist
   jquery-atwho-rails
   jquery-hotkeys-rails
   jquery-rails
