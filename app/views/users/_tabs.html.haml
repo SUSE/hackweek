@@ -14,10 +14,10 @@
     =link_to likes_user_path(@user), title: "Things #{@user.name} likes" do
       %span.hidden-xs
         Likes
-      %i.fa.fa-star.visible-xs
+      %i.fas.fa-star.visible-xs
   - opportunities_state = "active" if action_name == "opportunities"
   %li{:class => opportunities_state}
     =link_to opportunities_user_path(@user), title: "Things #{@user.name} could hack on" do
       %span.hidden-xs
         Opportunities
-      %i.fa.fa-user.visible-xs
+      %i.fas.fa-user.visible-xs

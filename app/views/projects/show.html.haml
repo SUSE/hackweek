@@ -10,7 +10,8 @@
     .page-header.media
       .pull-left
         .img-wrapper
-          = image_tag @project.avatar.url(:thumb), width: '32'
+          - if @project.avatar.attached?
+            = image_tag url_for(@project.avatar), width: '32'
           = @project.title
           %br
           %small

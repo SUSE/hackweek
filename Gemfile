@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-# FIXME: 1.7.4 got yanked
-gem 'ruby-progressbar', '1.11.0'
-
 # as framework
-gem 'rails', '~> 5.2'
+gem 'rails', '~> 7.0.1'
+# as asset pipeline
+gem 'sprockets-rails'
+# as the app server
+gem 'puma'
 
-# Misc tools for fancy development
 group :development, :test do
   # as our rails console
   gem 'pry-byebug'
@@ -16,15 +16,30 @@ group :development, :test do
   gem 'hirb'
 end
 
+group :test do
+  # for cleaning the test DB
+  gem 'database_cleaner'
+  # for measuring test coverage
+  gem 'coveralls', require: false
+  # as style hound
+  gem 'rubocop'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec'
+  # Time travel in tests
+  gem 'timecop'
+
+  # Let's add real browser testing to our features (required to test AJAX)
+  gem 'poltergeist'
+end
+
 # as databases
 gem 'mysql2'
 # for stylesheets
-gem 'sass-rails', '~> 6.0'
+gem 'sass-rails'
 # as the front-end framework
 gem 'bootstrap-sass'
 # as vector icons
-gem 'font-awesome-rails'
-gem 'impressionist'
+gem 'font-awesome-sass'
 # as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # as JavaScript library
@@ -71,28 +86,7 @@ gem 'rspec-rails', group: %i[development test]
 gem 'paperclip', '~> 6.1'
 # as deployer
 gem 'mina'
-# as the app server
-gem 'puma'
 # as the log formater
 gem 'lograge'
 # for listening to file modifications
 gem 'listen'
-
-# FIXME: pin sprockets to version 3, until we upgrade.
-gem 'sprockets', '~> 3'
-
-group :test do
-  # for cleaning the test DB
-  gem 'database_cleaner'
-  # for measuring test coverage
-  gem 'coveralls', require: false
-  # as style hound
-  gem 'rubocop'
-  gem 'rubocop-rails'
-  gem 'rubocop-rspec'
-  # Time travel in tests
-  gem 'timecop'
-
-  # Let's add real browser testing to our features (required to test AJAX)
-  gem 'poltergeist'
-end

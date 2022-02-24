@@ -14,9 +14,6 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from ActionController::ParameterMissing, with: :parameter_empty
-  rescue_from ActiveRecord::RecordNotFound do
-    render file: Rails.root.join('public/404'), status: 404, layout: false
-  end
 
   rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|

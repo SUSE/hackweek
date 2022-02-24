@@ -1,13 +1,13 @@
 .btn-group
   .btn.btn-default{:title=>"#{user.name} had #{user.originated_projects.length} ideas"}
     = user.originated_projects.length
-    %i.fa.fa-lightbulb-o
+    %i.fas.lightbulb-o
   .btn.btn-default{:title=>"#{user.name} works on #{user.projects.length} projects"}
     = user.projects.length
-    %i.fa.fa-puzzle-piece
+    %i.fas.fa-puzzle-piece
   .btn.btn-default{:title=>"#{user.name} wrote #{user.comments.length} comments"}
     = user.comments.length
-    %i.fa.fa-comments
+    %i.fas.fa-comments
   .btn.btn-default{:title=>"#{user.name} likes #{user.likes.length} projects"}
     = user.likes.length
-    %i.fa.fa-heart
+    %i.fas.fa-heart

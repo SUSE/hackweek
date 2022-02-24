@@ -23,7 +23,7 @@ describe Episode do
         FactoryBot.create(:episode),
         FactoryBot.create(:episode)
       ]
-      activated_episodes.each { |e| e.update_attributes!(active: true) }
+      activated_episodes.each { |e| e.update!(active: true) }
 
       episode = FactoryBot.create(:episode)
       episode.active = true

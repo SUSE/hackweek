@@ -87,7 +87,7 @@ class User < ApplicationRecord
     attributes = attributes.with_indifferent_access
     user = find_by(name: username)
     if user
-      user.update_attributes(email: attributes[:email]) if user.email != attributes[:email]
+      user.update_attribute('email', attributes[:email]) if user.email != attributes[:email]
     else
       user = create(name: username, email: attributes[:email])
     end

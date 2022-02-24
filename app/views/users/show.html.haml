@@ -12,11 +12,11 @@
   .col-sm-12
     - if @user.location
       %p
-        %i{class: 'fa fa-home', title: 'Location'}
+        %i{class: 'fas fa-home', title: 'Location'}
         = @user.location
     - unless @user.hide_email?
       %p
-        %i{class: 'fa fa-envelope', title: 'Email'}
+        %i{class: 'fas fa-envelope', title: 'Email'}
         = mail_to @user.email
 .row
   .col-sm-8

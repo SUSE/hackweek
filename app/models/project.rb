@@ -1,6 +1,5 @@
 class Project < ApplicationRecord
   include AASM
-  is_impressionable
 
   validates :title, :description, :originator, presence: true
   validate  :title_contains_letters?
@@ -24,8 +23,8 @@ class Project < ApplicationRecord
   has_many :project_follows
   has_many :project_followers, through: :project_follows, source: :user
 
-  has_attached_file :avatar, styles: { thumb: '64x64>' }, default_url: :random_avatar
-  validates_attachment_content_type :avatar, content_type: %r{\Aimage/.*\Z}
+  # has_attached_file :avatar
+  has_one_attached :avatar
 
   after_create :create_initial_update
   after_create :assign_episode
@@ -215,7 +214,7 @@ class Project < ApplicationRecord
   end
 
   def self.description_template
-    File.open(Rails.root.join('config', 'new_project_template.md')).read
+    File.read(Rails.root.join('config', 'new_project_template.md'))
   end
 
   private

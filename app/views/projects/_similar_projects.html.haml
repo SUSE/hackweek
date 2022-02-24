@@ -5,7 +5,7 @@
         %h4.panel-title
           %a{'aria-controls': "collapse_#{i}", 'aria-expanded': 'true', 'data-parent': '#accordion', 'data-toggle': 'collapse', href: "#collapse_#{i}", role: 'button'}
             = word.name
-            %i.fa.fa-caret-right
+            %i.fas.fa-caret-right
       .panel-collapse.collapse{id: "collapse_#{i}", 'aria-labelledby': "heading_#{i}", role: 'tabpanel'}
         .panel-body
           - similar_projects = (word.projects.current(Episode.active)-[@project]).sample(5)

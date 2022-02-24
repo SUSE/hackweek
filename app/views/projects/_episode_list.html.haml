@@ -7,4 +7,4 @@
     = truncate(episode.name, length: 50)
     - if can? :delete_episode, @project
       = link_to(episode_project_path(:episode_id => episode.id), method: :delete, remote: true) do
-        %i.fa.fa-times{:style=>"color: #fff"}
+        %i.fas.fa-times{:style=>"color: #fff"}

@@ -18,6 +18,8 @@
 # Ignore the configuration files
 /config/application.yml
 /config/secrets.yml
+/config/master.key
+/config/*.enc
 /config/database.yml
 /config/storage.yml
 /config/thinking_sphinx.yml
@@ -39,6 +41,7 @@ en.pak
 /public/gallery/*
 /public/gallery/.thumbnails/*
 /public/system/*
+/storage/*
 
 # Ignore the coverage files
 /coverage

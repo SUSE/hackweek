@@ -37,11 +37,6 @@ describe ProjectsController do
       get :show, params: { id: project.id }
       expect(response).to redirect_to(project)
     end
-
-    it 'renders the 404 page for non existant projects' do
-      get :show, params: { id: 10_000 }
-      expect(response).to have_http_status(:not_found)
-    end
   end
 
   describe 'GET new' do
@@ -298,7 +293,7 @@ describe ProjectsController do
       it 'returns an RSS feed' do
         expect(response).to be_successful
         expect(response).to render_template('projects/index')
-        expect(response.content_type).to eq 'application/rss+xml'
+        expect(response.content_type).to include('application/rss+xml')
       end
 
       it 'returns 10 last items' do
@@ -318,35 +313,9 @@ describe ProjectsController do
         expect(xml.xpath('//item/title').map(&:text)).to contain_exactly(the_only_project.title)
       end
 
-      it 'shows the project having lowest projecthits first' do
-        project = Project.current(@episode).order('projecthits ASC').first
-
-        get :index, params: { episode_id: episode.id, format: :rss }
-
-        xml = Nokogiri::XML(response.body)
-        expect(xml.xpath('//item/title').first.text).to eq project.title
-      end
-
       it 'works for :all episodes' do
         expect { get :index, params: { episode: :all, format: :rss } }.not_to raise_error
       end
-    end
-  end
-
-  describe 'GET /:episode/projects/random' do
-    it 'should render special zoomed template' do
-      get :random
-      expect(response).to render_template(layout: 'zoomed')
-    end
-
-    it 'assigns random project on each request' do
-      first_project = create :project
-      9.times { create :project }
-
-      expect(Kernel).to receive(:rand).with(Project.count).and_return(0)
-      get :random
-
-      expect(assigns(:project)).to eq first_project
     end
   end
 end

@@ -12,9 +12,9 @@
             - if can? :create, faq
               %small
                 = link_to(edit_faq_path(faq)) do
-                  %i.fa.fa-pencil
+                  %i.fas.fa-pencil-alt
                 = link_to(faq, method: :delete, data: { confirm: 'Are you sure?' }) do
-                  %i.fa.fa-trash-o
+                  %i.fas.fa-trash
       .row
         .col-md-12
           :markdown
@@ -23,5 +23,5 @@
     .col-md-12
       %p.text-right
         = link_to(new_faq_path, class: 'btn btn-primary') do
-          %i.fa.fa-plus
+          %i.fas.fa-plus
           New FAQ

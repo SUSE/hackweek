@@ -8,13 +8,12 @@ class ProjectsController < ApplicationController
   skip_before_action :set_episode, only: %i[add_episode delete_episode]
   before_action :load_episode_by_id, only: %i[add_episode delete_episode]
   before_action :username_array, only: %i[new edit show]
-  impressionist actions: [:show], unique: [:user_id]
 
   # GET /projects
   # GET /projects.rss
   def index
-    @projects = Project.current(@episode).active.includes(:originator, :users)
-                       .order('projecthits ASC').references(:episodes_projects).page(params[:page]).per(params[:page_size])
+    @projects = Project.current(@episode).active.order(:created_at).includes(:originator, :users)
+                       .references(:episodes_projects).page(params[:page]).per(params[:page_size])
     @newest = @projects.first(10)
     respond_to do |format|
       format.html { render }
@@ -25,7 +24,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/popular
   def popular
-    @projects = Project.current(@episode).order('projecthits DESC').page(params[:page]).per(params[:page_size])
+    @projects = Project.current(@episode).liked.includes(:originator, :users, :kudos).order('likes_count DESC').page(params[:page]).per(params[:page_size])
     render 'index'
   end
 
@@ -52,14 +51,12 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
-    impressionist(@project)
     @similar_projects_keys = @project.similar_projects_keywords
     @previous_project = @project.previous(@episode)
     @next_project = @project.next(@episode)
     @new_comment = Comment.new
     @updates = @project.updates.page(1)
     @last_page = @project.updates.page(1).last_page? || @updates.empty?
-    @project.update_attributes(projecthits: @project.impressionist_count(filter: :user_id) + @project.kudos.size)
   end
 
   # GET /projects/new
@@ -85,7 +82,7 @@ class ProjectsController < ApplicationController
 
   # PUT /projects/1
   def update
-    if @project.update_attributes(project_params)
+    if @project.update(project_params)
       redirect_to project_path(@episode, @project)
     else
       render action: 'edit'
@@ -145,7 +142,6 @@ class ProjectsController < ApplicationController
       end
       format.js { render partial: 'like_toggle' }
     end
-    @project.update_attributes(projecthits: @project.impressionist_count(filter: :user_id) + @project.kudos.size)
   end
 
   # PUT /projects/1/dislike
@@ -156,7 +152,6 @@ class ProjectsController < ApplicationController
       format.html { redirect_to project_path(@episode, @project), notice: "Aaww Snap! You don't love me anymore?" }
       format.js { render partial: 'like_toggle' }
     end
-    @project.update_attributes(projecthits: @project.impressionist_count(filter: :user_id) + @project.kudos.size)
   end
 
   # PUT /projects/1/add_keyword
@@ -191,14 +186,6 @@ class ProjectsController < ApplicationController
     @project.episodes.delete(@episode)
     flash.now['success'] = "Removed hackweek #{@episode.name}"
     render 'episode_list'
-  end
-
-  # GET /projects/random
-  def random
-    projects = Project.current(@episode).active
-    # I can do this with a single query, but that won't be testable or database-agnostic
-    @project = projects.offset(Kernel.rand(projects.size)).first
-    render layout: 'zoomed'
   end
 
   private
