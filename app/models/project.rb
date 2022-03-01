@@ -23,8 +23,8 @@ class Project < ApplicationRecord
   has_many :project_follows
   has_many :project_followers, through: :project_follows, source: :user
 
-  # has_attached_file :avatar
-  has_one_attached :avatar
+  has_attached_file :avatar
+  # has_one_attached :avatar
 
   after_create :create_initial_update
   after_create :assign_episode
