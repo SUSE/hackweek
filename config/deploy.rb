@@ -24,6 +24,7 @@ set :shared_files, fetch(:shared_files, []).push('config/database.yml',
 task :'bundle:config' do
   comment 'Configuring bundle'
   command 'bundle config build.nokogiri --use-system-libraries'
+  command 'bundle config set --local path "vendor/bundle"'
 end
 
 desc 'Deploys the current version to the server.'
