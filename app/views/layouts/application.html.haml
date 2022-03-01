@@ -11,7 +11,7 @@
     = favicon_link_tag 'favicon.gif'
     = stylesheet_link_tag "application", :media => "all"
     %meta{:property => "og:site_name", :content => "SUSE Hack Week"}
-    %meta{:property => "og:image", :content => "#{ image_url('hackweek-logo-light.png', host: 'https://hackweek.suse.com') }" }
+    %meta{:property => "og:image", :content => "#{ image_url('hackweek-logo-light.png', host: 'https://hackweek.opensuse.org') }" }
     - if @project
       %meta{ :property => "og:description", :content => "A SUSE #{@episode.try(:name)} Project" }
       %meta{:property => "og:title", :content => "#{ @project.title }"}

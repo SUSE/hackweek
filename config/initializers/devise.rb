@@ -202,7 +202,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :ichain_*
   # You will always need to set this parameter.
-  config.ichain_base_url = 'https://hackweek.suse.com'
+  config.ichain_base_url = 'https://hackweek.opensuse.org'
 
   # The header used by your iChain proxy to pass the username.
   # config.ichain_username_header = "HTTP_X_USERNAME"
