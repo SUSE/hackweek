@@ -10,8 +10,7 @@ class Keyword < ApplicationRecord
   has_and_belongs_to_many :projects
   has_and_belongs_to_many :users
 
-  has_attached_file :avatar
-  # has_one_attached :avatar
+  has_one_attached :avatar
 
   scope :by_episode, lambda { |episode|
     joins(:keywords_projects).where(keywords_projects: { project: episode.projects.pluck(:id) }) if episode && episode.is_a?(Episode)
