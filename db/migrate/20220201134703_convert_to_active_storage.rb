@@ -5,7 +5,7 @@ class ConvertToActiveStorage < ActiveRecord::Migration[7.0]
     models = [Project, Keyword]
     transaction do
       models.each do |model|
-        model.find_each.each do |instance|
+        model.find_each do |instance|
           next if instance.send('avatar_file_name').blank?
 	  puts "converting #{instance.class.name} with id #{instance.id}"
           blob = ActiveStorage::Blob.create(key: SecureRandom.uuid,
