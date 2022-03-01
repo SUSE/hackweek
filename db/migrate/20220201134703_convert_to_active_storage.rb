@@ -7,7 +7,7 @@ class ConvertToActiveStorage < ActiveRecord::Migration[7.0]
       models.each do |model|
         model.find_each do |instance|
           next if instance.send('avatar_file_name').blank?
-	  puts "converting #{instance.class.name} with id #{instance.id}"
+	  puts "converting #{instance.class.name} with id #{instance.id}. path: #{instance.avatar.path}"
           blob = ActiveStorage::Blob.create(key: SecureRandom.uuid,
                                             filename: instance.send('avatar_file_name'),
                                             content_type: instance.send('avatar_content_type'),
