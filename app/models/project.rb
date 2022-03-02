@@ -62,7 +62,7 @@ class Project < ApplicationRecord
     joins(:episodes).where(episodes: { id: episode.id }) if episode && episode.is_a?(Episode)
   }
   scope :by_keyword, lambda { |keyword|
-    joins(:projects_keywords).where(keywords_projects: { keyword_id: keyword })
+    joins(:keywords_projects).where(keywords_projects: { keyword_id: keyword })
   }
 
   def self.current(episode = nil)
