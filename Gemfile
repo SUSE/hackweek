@@ -82,8 +82,6 @@ gem 'faker', group: %i[development test]
 gem 'capybara', group: %i[development test]
 gem 'rails-controller-testing', group: %i[development test]
 gem 'rspec-rails', group: %i[development test]
-# for file attachments
-gem 'paperclip', '~> 6.1'
 # as deployer
 gem 'mina'
 # as the log formater
