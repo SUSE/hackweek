@@ -6,7 +6,7 @@ set :domain, 'dale.infra.opensuse.org'
 set :port, '22'
 set :user, 'hackweek'
 set :deploy_to, '/home/hackweek/hackweek'
-set :repository, 'git://github.com/SUSE/hackweek.git'
+set :repository, 'https://github.com/SUSE/hackweek.git'
 set :branch, 'master'
 
 # Shared dirs and files will be symlinked into the app-folder by the 'deploy:link_shared_paths' step.
