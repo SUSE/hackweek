@@ -22,9 +22,19 @@
         = f.label :end_date
         = f.date_field :end_date, :placeholder => "yyyy-mm-dd", :required => "required", :class => "form-control input-lg", type: "date"
   .row
+    .col-sm-7
+      .form-group
+        = f.label :avatar
+        = f.file_field :avatar
+    .col-sm-5
+      - unless @episode.avatar.blank?
+        = image_tag(url_for(@episode.avatar), class: 'img-responsive', alt: 'Hack Week')
+  .row
     .col-md-12
       .form-group
         = f.label :description
         = f.text_area :description, :placeholder => "Description. You can use markdown.", :class => "form-control input-lg"
+  .row
+    .col-md-12
       .actions
         = f.submit :class => "btn btn-success pull-right"

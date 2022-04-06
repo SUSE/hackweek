@@ -23,11 +23,14 @@
       %p.lead
         What are you going to hack on?
     - else
-      :markdown
-        #{ @episode.description }
+      .lead
+        :markdown
+          #{ @episode.description }
   .col-md-5
-    = image_tag 'hackweek-logo-dark.png', class: 'img-responsive', alt: 'Hack Week'
-
+    - if @episode.try(:avatar).blank?
+      = image_tag 'hackweek-logo-dark.png', class: 'img-responsive', alt: 'Hack Week'
+    - else
+      = image_tag(url_for(@episode.avatar), class: 'img-responsive', alt: 'Hack Week')
 .row
   .col-md-8.col-md-offset-2
     %p
