@@ -17,7 +17,6 @@
 //= require jquery-hotkeys
 //= require bootstrap
 //= require selectize
-//= require jquery.table-filter.js
 //= require holder.js
 
 // to store clicked link
