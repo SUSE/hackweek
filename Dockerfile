@@ -42,10 +42,13 @@ RUN gem.ruby3.1 install bundler -v "$(grep -A 1 "BUNDLED WITH" /hackweek/Gemfile
 RUN ln -sf /usr/bin/ruby.ruby3.1 /home/frontend/bin/ruby; \
     ln -sf /usr/bin/gem.ruby3.1 /home/frontend/bin/gem; \
     ln -sf /usr/bin/bundle.ruby3.1 /home/frontend/bin/bundle; \
-    ln -sf /usr/bin/rake.ruby3.1 /home/frontend/bin/rake
+    ln -sf /usr/bin/rake.ruby3.1 /home/frontend/bin/rake; \
+    sudo update-alternatives --set rake  /usr/bin/rake.ruby.ruby3.1
 
 WORKDIR /hackweek
 USER frontend
+
+ENV PATH /home/frontend/bin:$PATH
 
 # Refresh our bundle
 RUN export NOKOGIRI_USE_SYSTEM_LIBRARIES=1; bundle install --jobs=3 --retry=3
