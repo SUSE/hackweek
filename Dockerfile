@@ -48,7 +48,10 @@ RUN ln -sf /usr/bin/ruby.ruby3.1 /home/frontend/bin/ruby; \
 WORKDIR /hackweek
 USER hackweek
 
-ENV PATH /home/frontend/bin:$PATH
+# Setup shell history
+ADD --chown=hackweek:users .irbrc /home/hackweek/.irbrc
+RUN ln -sf /hackweek/tmp/.bash_history /home/hackweek/.bash_history; \
+    ln -sf /hackweek/tmp/.irb_history /home/hackweek/.irb_history;
 
 # Configure our bundle
 RUN bundle config build.ffi --enable-system-libffi; \
