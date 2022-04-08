@@ -83,8 +83,6 @@ Rails.application.routes.draw do
 
   get '/faq', to: redirect('/faqs')
 
-  get 'gallery', to: 'gallery#index'
-
   get 'about', to: 'about#show'
   get 'howto', to: 'about#show'
 
