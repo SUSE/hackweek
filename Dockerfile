@@ -10,7 +10,7 @@ RUN echo 'solver.allowVendorChange = true' >> /etc/zypp/zypp.conf; \
 # Install requirements
 RUN zypper -n install --no-recommends --replacefiles \
   curl vim vim-data psmisc timezone ack glibc-locale sudo hostname \
-  sphinx libxml2-devel libxslt-devel sqlite3-devel nodejs8 gcc-c++ \
+  sphinx libxml2-devel libxslt-devel libffi-devel sqlite3-devel nodejs8 gcc-c++ \
   ImageMagick libmariadb-devel ruby3.1-devel make git-core mariadb-client; \
   zypper -n clean --all
 
@@ -50,9 +50,11 @@ USER hackweek
 
 ENV PATH /home/frontend/bin:$PATH
 
-# Refresh our bundle
-RUN export NOKOGIRI_USE_SYSTEM_LIBRARIES=1; bundle install --jobs=3 --retry=3
+# Configure our bundle
+RUN bundle config build.ffi --enable-system-libffi; \
+    bundle config build.nokogiri --use-system-libraries; \
+    bundle config build.sassc --disable-march-tune-native;
 
-# Run our command
-CMD ["/bin/bash", "-l"]
+# Install our bundle
+RUN bundle install --jobs=3 --retry=3
 
