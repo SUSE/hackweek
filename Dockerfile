@@ -15,13 +15,13 @@ RUN zypper -n install --no-recommends --replacefiles \
   zypper -n clean --all
 
 # Add our user
-RUN useradd -m frontend
+RUN useradd -m hackweek
 
 # Configure our user
-RUN usermod -u $CONTAINER_USERID frontend
+RUN usermod -u $CONTAINER_USERID hackweek
 
 # Setup sudo
-RUN echo 'frontend ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+RUN echo 'hackweek ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 # Disable versioned gem binary names
 RUN echo 'install: --no-format-executable' >> /etc/gemrc
@@ -32,7 +32,7 @@ RUN echo 'install: --no-format-executable' >> /etc/gemrc
 # docker would use it's cache for this and the following stages.
 ADD Gemfile /hackweek/Gemfile
 ADD Gemfile.lock /hackweek/Gemfile.lock
-RUN chown -R frontend /hackweek
+RUN chown -R hackweek /hackweek
 
 # Install bundler
 RUN gem.ruby3.1 install bundler -v "$(grep -A 1 "BUNDLED WITH" /hackweek/Gemfile.lock | tail -n 1)"; \
@@ -46,7 +46,7 @@ RUN ln -sf /usr/bin/ruby.ruby3.1 /home/frontend/bin/ruby; \
     sudo update-alternatives --set rake  /usr/bin/rake.ruby.ruby3.1
 
 WORKDIR /hackweek
-USER frontend
+USER hackweek
 
 ENV PATH /home/frontend/bin:$PATH
 
