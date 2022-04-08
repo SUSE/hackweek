@@ -10,18 +10,18 @@ RUN echo 'solver.allowVendorChange = true' >> /etc/zypp/zypp.conf; \
 # Install requirements
 RUN zypper -n install --no-recommends --replacefiles \
   curl vim vim-data psmisc timezone ack glibc-locale sudo hostname \
-  sphinx libxml2-devel libxslt-devel sqlite3-devel nodejs8 gcc-c++ \
+  sphinx libxml2-devel libxslt-devel libffi-devel sqlite3-devel nodejs8 gcc-c++ \
   ImageMagick libmariadb-devel ruby3.1-devel make git-core mariadb-client; \
   zypper -n clean --all
 
 # Add our user
-RUN useradd -m frontend
+RUN useradd -m hackweek
 
 # Configure our user
-RUN usermod -u $CONTAINER_USERID frontend
+RUN usermod -u $CONTAINER_USERID hackweek
 
 # Setup sudo
-RUN echo 'frontend ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+RUN echo 'hackweek ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 # Disable versioned gem binary names
 RUN echo 'install: --no-format-executable' >> /etc/gemrc
@@ -32,24 +32,34 @@ RUN echo 'install: --no-format-executable' >> /etc/gemrc
 # docker would use it's cache for this and the following stages.
 ADD Gemfile /hackweek/Gemfile
 ADD Gemfile.lock /hackweek/Gemfile.lock
-RUN chown -R frontend /hackweek
+RUN chown -R hackweek /hackweek
 
 # Install bundler
 RUN gem.ruby3.1 install bundler -v "$(grep -A 1 "BUNDLED WITH" /hackweek/Gemfile.lock | tail -n 1)"; \
     gem.ruby3.1 install foreman
 
 # Setup Ruby 3.1 as default
-RUN ln -sf /usr/bin/ruby.ruby3.1 /home/frontend/bin/ruby; \
-    ln -sf /usr/bin/gem.ruby3.1 /home/frontend/bin/gem; \
-    ln -sf /usr/bin/bundle.ruby3.1 /home/frontend/bin/bundle; \
-    ln -sf /usr/bin/rake.ruby3.1 /home/frontend/bin/rake
+RUN ln -sf /usr/bin/ruby.ruby3.1 /home/hackweek/bin/ruby; \
+    ln -sf /usr/bin/gem.ruby3.1 /home/hackweek/bin/gem; \
+    ln -sf /usr/bin/bundle.ruby3.1 /home/hackweek/bin/bundle; \
+    ln -sf /usr/bin/rake.ruby3.1 /home/hackweek/bin/rake;
+ENV PATH /home/hackweek/bin:$PATH
 
 WORKDIR /hackweek
-USER frontend
+USER hackweek
 
-# Refresh our bundle
-RUN export NOKOGIRI_USE_SYSTEM_LIBRARIES=1; bundle install --jobs=3 --retry=3
+# Setup shell history
+ADD --chown=hackweek:users .irbrc /home/hackweek/.irbrc
+RUN ln -sf /hackweek/tmp/.bash_history /home/hackweek/.bash_history; \
+    ln -sf /hackweek/tmp/.irb_history /home/hackweek/.irb_history;
+
+# Configure our bundle
+RUN bundle config build.ffi --enable-system-libffi; \
+    bundle config build.nokogiri --use-system-libraries; \
+    bundle config build.sassc --disable-march-tune-native;
+
+# Install our bundle
+RUN bundle install --jobs=3 --retry=3
 
 # Run our command
-CMD ["/bin/bash", "-l"]
-
+CMD ["foreman", "start", "-f", "Procfile"]
