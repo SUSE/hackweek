@@ -54,6 +54,8 @@ gem 'devise'
 gem 'devise_ichain_authenticatable'
 # as authorization framework
 gem 'cancancan'
+# for spam detection
+gem 'rakismet'
 # for user avatars
 gem 'gravtastic'
 # for markdown rendering

@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   include MarkdownHelper
   before_action :get_parent, except: :reply_modal
+  before_action :validate_spam, only: %i[create update]
   skip_before_action :verify_authenticity_token, only: [:reply_modal]
 
   def create
@@ -35,6 +36,12 @@ class CommentsController < ApplicationController
   end
 
   protected
+
+  def validate_spam
+    return unless Rails.env.production?
+
+    redirect_back_or_to @comment.project, alert: 'spam deteced' and return if @comment.spam?
+  end
 
   def get_parent
     @parent = Project.find_by(url: params[:project_id]) if params[:project_id]
