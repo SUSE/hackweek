@@ -1,14 +1,14 @@
 class CommentsController < ApplicationController
   include MarkdownHelper
   before_action :get_parent, except: :reply_modal
-  before_action :validate_spam, only: %i[create update]
   skip_before_action :verify_authenticity_token, only: [:reply_modal]
 
   def create
     @comment = @parent.comments.build(comment_params)
     @comment.commenter = current_user
 
-    if @comment.save
+    if ham? && @comment.valid?
+      @comment.save!
       @comment.send_notification(current_user,
                                  " commented on #{@comment.project.aasm_state}: #{@comment.project.title}")
       redirect_to project_path(@comment.project), notice: 'Thank you for your comment!'
@@ -37,10 +37,13 @@ class CommentsController < ApplicationController
 
   protected
 
-  def validate_spam
-    return unless Rails.env.production?
+  def ham?
+    return true unless Rails.env.production?
 
-    redirect_back_or_to @comment.project, alert: 'spam deteced' and return if @comment.spam?
+    spam = @comment.spam?
+    @comment.errors.add(:base, message: 'spam') if spam
+
+    !spam
   end
 
   def get_parent
