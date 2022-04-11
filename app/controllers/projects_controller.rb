@@ -198,6 +198,7 @@ class ProjectsController < ApplicationController
 
     spam = @project.spam?
     @project.errors.add(:base, message: 'spam') if spam
+    logger.info "Blocked spam project from #{current_user.name}" if spam
 
     !spam
   end
