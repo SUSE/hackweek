@@ -8,7 +8,6 @@ class ProjectsController < ApplicationController
   skip_before_action :set_episode, only: %i[add_episode delete_episode]
   before_action :load_episode_by_id, only: %i[add_episode delete_episode]
   before_action :username_array, only: %i[new edit show]
-  before_action :validate_spam, only: %i[create update]
 
   # GET /projects
   # GET /projects.rss
@@ -73,7 +72,8 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.originator = current_user
 
-    if @project.save
+    if ham? && @project.valid?
+      @project.save!
       @project.project_followers << current_user
       redirect_to project_path(@episode, @project), notice: 'Project was successfully created.'
     else
@@ -83,7 +83,9 @@ class ProjectsController < ApplicationController
 
   # PUT /projects/1
   def update
-    if @project.update(project_params)
+    @project.assign_attributes(project_params)
+    if ham? && @project.valid?
+      @project.save!
       redirect_to project_path(@episode, @project)
     else
       render action: 'edit'
@@ -191,13 +193,13 @@ class ProjectsController < ApplicationController
 
   private
 
-  def validate_spam
-    return unless Rails.env.production?
+  def ham?
+    return true unless Rails.env.production?
 
-    return unless @project.spam?
+    spam = @project.spam?
+    @project.errors.add(:base, message: 'spam') if spam
 
-    @project.errors.add(:base, message: 'spam')
-    render :new and return
+    !spam
   end
 
   def project_params
