@@ -42,6 +42,7 @@ class CommentsController < ApplicationController
 
     spam = @comment.spam?
     @comment.errors.add(:base, message: 'spam') if spam
+    logger.info "Blocked spam comment from #{current_user.name}" if spam
 
     !spam
   end
