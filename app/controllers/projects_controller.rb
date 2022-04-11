@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
   skip_before_action :set_episode, only: %i[add_episode delete_episode]
   before_action :load_episode_by_id, only: %i[add_episode delete_episode]
   before_action :username_array, only: %i[new edit show]
+  before_action :validate_spam, only: %i[create update]
 
   # GET /projects
   # GET /projects.rss
@@ -189,6 +190,13 @@ class ProjectsController < ApplicationController
   end
 
   private
+
+  def validate_spam
+    return unless @project.spam?
+
+    @project.errors.add(:base, message: 'spam')
+    render :new and return
+  end
 
   def project_params
     params.require(:project).permit(:description, :title, :avatar)
