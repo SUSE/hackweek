@@ -35,7 +35,8 @@ task :deploy do
 
     on :launch do
       in_path(fetch(:current_path)) do
-        command %{bundle exec pumactl restart -e production}
+        command %{sudo systemctl restart hackweek}
+        command %{sudo systemctl restart hackweek-sphinx}
       end
     end
   end
