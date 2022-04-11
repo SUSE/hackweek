@@ -192,6 +192,8 @@ class ProjectsController < ApplicationController
   private
 
   def validate_spam
+    return unless Rails.env.production?
+
     return unless @project.spam?
 
     @project.errors.add(:base, message: 'spam')

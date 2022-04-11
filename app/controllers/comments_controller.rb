@@ -38,6 +38,8 @@ class CommentsController < ApplicationController
   protected
 
   def validate_spam
+    return unless Rails.env.production?
+
     redirect_back_or_to @comment.project, alert: 'spam deteced' and return if @comment.spam?
   end
 
