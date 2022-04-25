@@ -2,13 +2,13 @@
   %li.dropdown
     - if @notifications.any?
       = link_to mark_as_read_notifications_path(), id: 'notification-dropdown-activator', method: :post, data: { 'toggle': 'dropdown', 'behavior': 'notifications' }, remote: true do
-        %i.fas.fa-bell-o
+        %i.fa.fa-bell
         %span#notification-count.new.badge
           = @notifications.length
         %b.caret
     - else
       %a.dropdown-toggle.nav-link{ 'data-toggle': 'dropdown', href: '#', id: 'notification-dropdown-activator', 'data-behavior': 'notifications' }
-        %i.fas.fa-bell-o
+        %i.fa.fa-bell
         %span#notification-count.new.badge
         %b.caret
     .dropdown-menu
