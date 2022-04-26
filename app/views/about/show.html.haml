@@ -19,9 +19,12 @@
     %h3 Innovate
     %p
       Use this opportunity to work on any activity of your passion. You decide
-      whether you contribute to an existing free software project or explore
-      strange new languages. You choose whether you seek out new tools and new
-      communities, or boldly go where no hacker has gone before! Just
+      whether you contribute to
+      = link_to projects_path(@episode) do
+        an existing Hack Week project
+      or explore strange new languages. You choose whether you seek out new
+      tools and new communities, or boldly go where no hacker has gone before!
+      Just
       = link_to 'record your ideas,', new_project_path
       about what people could hack on in this tool.
     %p
