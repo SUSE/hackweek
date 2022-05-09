@@ -13,3 +13,6 @@ Style/PercentLiteralDelimiters:
   Exclude:
     - 'config/deploy.rb'
 
+Style/HashSyntax:
+  EnforcedShorthandSyntax: either
+
