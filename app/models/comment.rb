@@ -1,13 +1,17 @@
 class Comment < ApplicationRecord
   include Rails.application.routes.url_helpers
   include Rakismet::Model
+  include AkismetValidation
 
   belongs_to :commentable, polymorphic: true
   has_many :comments, as: :commentable, dependent: :destroy
 
   belongs_to :commenter, class_name: 'User'
+  alias_attribute :originator, :commenter
 
   validates_presence_of :commenter_id, :text, :commentable_id
+  validate :akismet_spam
+
   ThinkingSphinx::Callbacks.append(self, behaviours: [:real_time])
 
   def project

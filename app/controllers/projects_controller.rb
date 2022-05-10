@@ -72,11 +72,11 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.originator = current_user
 
-    if ham? && @project.valid?
-      @project.save!
+    if @project.save
       @project.project_followers << current_user
       redirect_to project_path(@episode, @project), notice: 'Project was successfully created.'
     else
+      logger.info "Blocked spam project from #{current_user.name}" if @project.errors.of_kind?(:base, 'is spam')
       render action: 'new'
     end
   end
@@ -84,10 +84,11 @@ class ProjectsController < ApplicationController
   # PUT /projects/1
   def update
     @project.assign_attributes(project_params)
-    if ham? && @project.valid?
-      @project.save!
+
+    if @project.save
       redirect_to project_path(@episode, @project)
     else
+      logger.info "Blocked spam project from #{current_user.name}" if @project.errors.of_kind?(:base, 'is spam')
       render action: 'edit'
     end
   end
@@ -192,16 +193,6 @@ class ProjectsController < ApplicationController
   end
 
   private
-
-  def ham?
-    return true unless Rails.env.production?
-
-    spam = @project.spam?
-    @project.errors.add(:base, message: 'spam') if spam
-    logger.info "Blocked spam project from #{current_user.name}" if spam
-
-    !spam
-  end
 
   def project_params
     params.require(:project).permit(:description, :title, :avatar)

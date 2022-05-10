@@ -7,12 +7,12 @@ class CommentsController < ApplicationController
     @comment = @parent.comments.build(comment_params)
     @comment.commenter = current_user
 
-    if ham? && @comment.valid?
-      @comment.save!
+    if @comment.save
       @comment.send_notification(current_user,
                                  " commented on #{@comment.project.aasm_state}: #{@comment.project.title}")
       redirect_to project_path(@comment.project), notice: 'Thank you for your comment!'
     else
+      logger.info "Blocked spam project from #{current_user.name}" if @comment.errors.of_kind?(:base, 'is spam')
       redirect_to project_path(@comment.project), alert: "Could not comment: #{@comment.errors.full_messages.to_sentence}"
     end
   end
@@ -36,16 +36,6 @@ class CommentsController < ApplicationController
   end
 
   protected
-
-  def ham?
-    return true unless Rails.env.production?
-
-    spam = @comment.spam?
-    @comment.errors.add(:base, message: 'spam') if spam
-    logger.info "Blocked spam comment from #{current_user.name}" if spam
-
-    !spam
-  end
 
   def get_parent
     @parent = Project.find_by(url: params[:project_id]) if params[:project_id]
