@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
                                  " commented on #{@comment.project.aasm_state}: #{@comment.project.title}")
       redirect_to project_path(@comment.project), notice: 'Thank you for your comment!'
     else
-      logger.info "Blocked spam project from #{current_user.name}" if @comment.errors.of_kind?(:base, 'is spam')
+      logger.info "Blocked spam comment from #{current_user.name}" if @comment.errors.of_kind?(:base, 'is spam')
       redirect_to project_path(@comment.project), alert: "Could not comment: #{@comment.errors.full_messages.to_sentence}"
     end
   end
