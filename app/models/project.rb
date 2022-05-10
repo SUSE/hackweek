@@ -2,10 +2,12 @@ class Project < ApplicationRecord
   include AASM
   include Rails.application.routes.url_helpers
   include Rakismet::Model
+  include AkismetValidation
 
   validates :title, :description, :originator, presence: true
   validate  :title_contains_letters?
   validates :url, uniqueness: true
+  validate :akismet_spam
 
   belongs_to :originator, class_name: 'User'
 
