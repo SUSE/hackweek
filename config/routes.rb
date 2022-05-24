@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :users, only: %i[index show] do
+  resources :users, constraints: { id: %r{[^/]*} }, only: %i[index show] do
     member do
       get 'originated'
       get 'likes'
