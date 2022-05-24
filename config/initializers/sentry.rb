@@ -1,5 +1,5 @@
 Sentry.init do |config|
-  config.dsn = ENV['HACKWEEK_SENTRY_DSN']
+  config.dsn = ENV.fetch('HACKWEEK_SENTRY_DSN', nil)
   config.breadcrumbs_logger = [:active_support_logger]
 
   # To activate performance monitoring, set one of these options.
