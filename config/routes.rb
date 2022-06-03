@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :users, constraints: { id: %r{[^/]*} }, only: %i[index show] do
+  resources :users, constraints: { id: %r{[^/]*} }, only: %i[index show edit update] do
     member do
       get 'originated'
       get 'likes'
@@ -48,6 +48,8 @@ Rails.application.routes.draw do
     get '/search/keyword', to: 'search#keyword', as: 'search_keywords'
   end
 
+  resources :keywords, only: %i[edit update], param: :name, path: :topics
+
   resources :projects, only: [] do
     resources :comments, only: :create
   end
@@ -65,6 +67,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'news', to: 'announcements#index'
+
   resources :notifications do
     collection do
       post :mark_as_read
@@ -78,17 +82,12 @@ Rails.application.routes.draw do
   end
 
   resources :updates, only: [:index]
-  resources :keywords, only: %i[edit update], param: :name, path: :topics
   resources :faqs, except: [:show]
 
   get '/faq', to: redirect('/faqs')
 
   get 'about', to: 'about#show'
   get 'howto', to: 'about#show'
-
-  get 'news', to: 'announcements#index'
-  get 'users/:id/edit', to: 'users#edit', as: 'user_edit'
-  patch 'users/:id', to: 'users#update'
 
   root 'about#index'
 end
