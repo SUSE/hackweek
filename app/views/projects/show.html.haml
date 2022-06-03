@@ -49,7 +49,7 @@
             Nothing? Add some keywords!
           - else
             = render :partial => "keywords/show", :locals => {:keywords =>  @project.keywords }
-          -if  @project.originator == current_user or @project.users.include? current_user
+          - if can? :add_keyword, @project
             = render :partial => "keywords/new", :locals => {:what => @project }
     .row
       .col-sm-12
