@@ -48,7 +48,7 @@
                   %i.fas.fa-home
                   = current_user.name
               %li
-                = link_to(user_edit_path(current_user)) do
+                = link_to(edit_user_path(current_user)) do
                   %i.fas.fa-pen-square
                   Edit Profile
               %li
