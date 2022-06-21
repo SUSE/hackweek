@@ -198,7 +198,7 @@ GEM
       rake
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
-    minitest (5.15.0)
+    minitest (5.16.1)
     mousetrap-rails (1.4.6)
     mysql2 (0.5.4)
     net-imap (0.2.3)
