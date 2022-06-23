@@ -11,12 +11,12 @@
     = favicon_link_tag 'favicon.gif'
     = stylesheet_link_tag "application", :media => "all"
     %meta{:property => "og:site_name", :content => "SUSE Hack Week"}
-    %meta{:property => "og:image", :content => "#{ image_url('hackweek-logo-light.png', host: 'https://hackweek.opensuse.org') }" }
+    %meta{:property => "og:image", :content => "#{ image_url('hackweek-label-small.png', host: 'https://hackweek.opensuse.org') }" }
     - if @project
       %meta{ :property => "og:description", :content => "A SUSE #{@episode.try(:name)} Project" }
       %meta{:property => "og:title", :content => "#{ @project.title }"}
     -else
-      %meta{:property => "og:description", :content => "Hack Week is the week where SUSE engineers can experiment without limits. This is the opportunity to innovate, collaborate across teams, and learn."}
+      %meta{:property => "og:description", :content => "Hack Week is the time SUSE employees and openSUSE community members experiment, innovate & learn interruption-free for a whole week."}
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body

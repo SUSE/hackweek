@@ -5,7 +5,7 @@
 HackWeek
 --------
 A tool to nurture hack ideas into projects and then collaborate on them. It's used
-during [SUSE's hackweek](https://hackweek.opensuse.org), a week where SUSE engineers can
+during [SUSE's hackweek](https://hackweek.opensuse.org), a week where SUSE employees can
 experiment without limits and get their opportunity to innovate, collaborate across teams,
 and learn.
 
