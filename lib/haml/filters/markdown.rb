@@ -2,7 +2,12 @@ module Haml::Filters
   remove_filter('Markdown') # remove the existing Markdown filter
 
   module Markdown
+    require 'rouge/plugins/redcarpet'
     include Haml::Filters::Base
+
+    class RougeRender < Redcarpet::Render::HTML
+      include Rouge::Plugins::Redcarpet
+    end
 
     def render(text)
       # replace @user with a link to user
@@ -14,9 +19,12 @@ module Haml::Filters
         "#{Regexp.last_match(1)}[hw##{Regexp.last_match(2)}](#{Rails.application.routes.url_helpers(only_path: true).project_path(Regexp.last_match(2))})#{Regexp.last_match(3)}"
       end
 
-      Redcarpet::Markdown.new(
-        Redcarpet::Render::HTML.new(escape_html: true)
-      ).render(text)
+      renderer_options = { escape_html: true,
+                           safe_links_only: true }
+      markdown_options = { fenced_code_blocks: true,
+                           disable_indented_code_blocks: true,
+                           autolink: true }
+      Redcarpet::Markdown.new(RougeRender.new(renderer_options), markdown_options).render(text)
     end
   end
 end

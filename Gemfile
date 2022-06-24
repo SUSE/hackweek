@@ -60,6 +60,8 @@ gem 'rakismet'
 gem 'gravtastic'
 # for markdown rendering
 gem 'redcarpet'
+# for code block syntax highlighting
+gem 'rouge'
 # for token input
 gem 'selectize-rails'
 # as state machine
