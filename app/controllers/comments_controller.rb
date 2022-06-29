@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   include MarkdownHelper
   before_action :get_parent, except: :reply_modal
+  load_and_authorize_resource
   skip_before_action :verify_authenticity_token, only: [:reply_modal]
 
   def create
@@ -17,22 +18,18 @@ class CommentsController < ApplicationController
     end
   end
 
-  def comment_params
-    params.require(:comment).permit(:commentable_id, :commentable_type, :commenter_id, :text, :commenter)
-  end
-
-  def reply_modal
-    @comment = Comment.find(params[:id])
-    if @comment.text
-      @content = @comment.text.to_str.gsub(/:([\w+-]+):/) do |match|
-        %(![add-emoji](https://github.githubassets.com/images/icons/emoji/#{match.to_str.tr(':', '')}.png))
+  def update
+    respond_to do |format|
+      if @comment.update(comment_params)
+        format.html { redirect_to project_path(@comment.project), notice: 'Comment was successfully updated.' }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
       end
     end
-    @rendered = MarkdownHelper.render @content
-    respond_to do |format|
-      format.html
-      format.js
-    end
+  end
+
+  def comment_params
+    params.require(:comment).permit(:commentable_id, :commentable_type, :commenter_id, :text, :commenter)
   end
 
   protected

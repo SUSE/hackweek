@@ -30,6 +30,7 @@ class Ability
       can :manage, User, id: user.id
       can :read, Update, author_id: user.id
       can :manage, Project, originator_id: user.id
+      can :manage, Comment, commenter_id: user.id
       can [:edit, :update, :add_keyword, :delete_keyword, :advance, :recess, :add_episode, :delete_episode],
           Project do |project|
         project.users.include? user
@@ -43,7 +44,6 @@ class Ability
 
       # Admins can:
       can :manage, :all if user.role? :admin
-
     end
   end
 end
