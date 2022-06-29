@@ -25,11 +25,10 @@ group :test do
   gem 'rubocop'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
-  # Time travel in tests
+  # for time travel in tests
   gem 'timecop'
-
-  # Let's add real browser testing to our features (required to test AJAX)
-  gem 'poltergeist'
+  # for feature tests
+  gem 'webdrivers'
 end
 
 # as databases

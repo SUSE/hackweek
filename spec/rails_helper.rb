@@ -1,5 +1,5 @@
 require 'simplecov'
-require 'capybara/poltergeist'
+require 'webdrivers'
 
 if ENV['TRAVIS']
   require 'coveralls'
@@ -35,12 +35,22 @@ RSpec.configure do |config|
   # for example enabling you to call `get` and `post` in specs under `spec/controllers`.
   config.infer_spec_type_from_file_location!
 
-  Capybara.javascript_driver = :poltergeist
+  Capybara.register_driver :chrome_headless do |app|
+    options = ::Selenium::WebDriver::Chrome::Options.new
+    options.args << '--window-size=1920x1080'
+    options.args << '--headless'
+    options.args << '--no-sandbox'
+    options.args << '--disable-gpu'
+    Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+  end
+
+  Capybara.javascript_driver = :chrome_headless
 
   # Setting up DB cleaning to maintain empty rows
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
     DatabaseCleaner.strategy = :truncation
+    FileUtils.rm_rf(File.join(Capybara.save_path, '.'), secure: true)
   end
 
   # Search requires complicated setup (and also mostly tests external libraries and tools, not our code)
@@ -66,6 +76,17 @@ RSpec.configure do |config|
     end
 
     DatabaseCleaner.clean
+  end
+
+  # Automatically save the page a test fails
+  config.after(:each, type: :feature) do
+    if RSpec.current_example.exception.present?
+      example_filename = RSpec.current_example.full_description
+      example_filename = example_filename.gsub(/[^0-9A-Za-z_]/, '_')
+      example_filename = File.expand_path(example_filename, Capybara.save_path)
+      save_page("#{example_filename}.html")
+      save_screenshot("#{example_filename}.png")
+    end
   end
 
   # Include helpers and connect them to specific types of tests

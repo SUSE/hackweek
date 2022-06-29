@@ -89,7 +89,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    cliver (0.3.2)
+    childprocess (4.1.0)
     coderay (1.1.3)
     concurrent-ruby (1.1.10)
     coveralls (0.8.23)
@@ -224,10 +224,6 @@ GEM
     parallel (1.22.1)
     parser (3.1.2.0)
       ast (~> 2.4.1)
-    poltergeist (1.18.1)
-      capybara (>= 2.1, < 4)
-      cliver (~> 0.3.1)
-      websocket-driver (>= 0.2.0)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -326,6 +322,7 @@ GEM
     ruby-progressbar (1.11.0)
     ruby_parser (3.19.1)
       sexp_processor (~> 4.16)
+    rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -337,6 +334,11 @@ GEM
       sprockets-rails
       tilt
     selectize-rails (0.12.6)
+    selenium-webdriver (4.3.0)
+      childprocess (>= 0.5, < 5.0)
+      rexml (~> 3.2, >= 3.2.5)
+      rubyzip (>= 1.2.2, < 3.0)
+      websocket (~> 1.0)
     sentry-rails (5.3.0)
       railties (>= 5.0)
       sentry-ruby-core (~> 5.3.0)
@@ -384,6 +386,11 @@ GEM
     unicode-display_width (2.1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
+    webdrivers (5.0.0)
+      nokogiri (~> 1.6)
+      rubyzip (>= 1.3.0)
+      selenium-webdriver (~> 4.0)
+    websocket (1.2.9)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -420,7 +427,6 @@ DEPENDENCIES
   mina
   mousetrap-rails
   mysql2
-  poltergeist
   pry-byebug
   pry-rails
   puma
@@ -442,6 +448,7 @@ DEPENDENCIES
   thinking-sphinx
   timecop
   uglifier (>= 1.3.0)
+  webdrivers
 
 BUNDLED WITH
    2.3.3
