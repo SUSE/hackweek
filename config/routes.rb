@@ -51,11 +51,11 @@ Rails.application.routes.draw do
   resources :keywords, only: %i[edit update], param: :name, path: :topics
 
   resources :projects, only: [] do
-    resources :comments, only: :create
+    resources :comments, only: %i[create update]
   end
 
   resources :comments, only: [] do
-    resources :comments, only: :create
+    resources :comments, only: %i[create update]
     collection do
       get '/reply/:id', to: 'comments#reply_modal', as: 'reply_modal'
     end

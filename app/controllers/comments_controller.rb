@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   include MarkdownHelper
   before_action :get_parent, except: :reply_modal
+  load_and_authorize_resource
   skip_before_action :verify_authenticity_token, only: [:reply_modal]
 
   def create
@@ -14,6 +15,16 @@ class CommentsController < ApplicationController
     else
       logger.info "Blocked spam comment from #{current_user.name}" if @comment.errors.of_kind?(:base, 'is spam')
       redirect_to project_path(@comment.project), alert: "Could not comment: #{@comment.errors.full_messages.to_sentence}"
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @comment.update(comment_params)
+        format.html { redirect_to project_path(@comment.project), notice: 'Comment was successfully updated.' }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
     end
   end
 

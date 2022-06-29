@@ -9,9 +9,24 @@
         = comment.commenter.name
       |
       = link_to('Reply', reply_modal_comments_path(comment) ,class: 'reply_modal_trigger', remote: :true, data: { toggle: 'modal', target: '#replyModal' })
+      |
+      / Button trigger modal
+      %a{ 'data-target' => '#editComment', 'data-toggle' => 'modal', type: 'button' }
+        Edit
     %p
       :markdown
         #{ emojify comment.text }
     - if !comment.comments.empty?
       %ul.media-list
         = render :partial => 'comments/comment', :collection => comment.comments, object: comment
+
+.modal#editComment.fade{role: "dialog", tabindex: "-1"}
+  .modal-dialog{role: "document"}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", type: "button"}
+          %span{"aria-hidden" => "true"} ×
+        %h4.modal-title Edit Comment
+      .modal-body#update_comment_modal
+        = render partial: 'comments/form', locals: { comment: comment, parent: comment.commentable, id: rand(36**10).to_s(36).upcase[0,5] }
+      .modal-footer
