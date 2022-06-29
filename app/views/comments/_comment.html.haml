@@ -1,4 +1,4 @@
-%li.media
+%li{class: 'media', id: dom_id(comment)}
   = link_to user_path(comment.commenter), :class => 'pull-left' do
     = image_tag(comment.commenter.gravatar_url(:size => "40"), class: "media-object img-rounded", alt: comment.commenter.name, title: comment.commenter.name)
   .media-body
@@ -8,11 +8,12 @@
       = link_to user_path(comment.commenter) do
         = comment.commenter.name
       |
-      = link_to('Reply', reply_modal_comments_path(comment) ,class: 'reply_modal_trigger', remote: :true, data: { toggle: 'modal', target: '#replyModal' })
-      |
-      / Button trigger modal
-      %a{ 'data-target' => '#editComment', 'data-toggle' => 'modal', type: 'button' }
-        Edit
+      %a{ 'href' => 'javascript:void(0)', 'data-target' => "#replyComment#{dom_id(comment)}", 'data-toggle' => 'modal' }
+        Reply
+      - if can? :update, comment
+        |
+        %a{ 'href' => 'javascript:void(0)', 'data-target' => "#editComment#{dom_id(comment)}", 'data-toggle' => 'modal', type: 'button' }
+          Edit
     %p
       :markdown
         #{ emojify comment.text }
@@ -20,13 +21,33 @@
       %ul.media-list
         = render :partial => 'comments/comment', :collection => comment.comments, object: comment
 
-.modal#editComment.fade{role: "dialog", tabindex: "-1"}
+.modal.fade{ id: "editComment#{dom_id(comment)}", role: "dialog", tabindex: "-1"}
   .modal-dialog{role: "document"}
     .modal-content
       .modal-header
-        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", type: "button"}
+        %button.close{"data-dismiss" => "modal", type: "button"}
           %span{"aria-hidden" => "true"} ×
-        %h4.modal-title Edit Comment
-      .modal-body#update_comment_modal
+        %h4.modal-title
+        Edit Comment
+        = comment.id
+      .modal-body
         = render partial: 'comments/form', locals: { comment: comment, parent: comment.commentable, id: rand(36**10).to_s(36).upcase[0,5] }
+      .modal-footer
+
+.modal.fade{ id: "replyComment#{dom_id(comment)}", role: "dialog", tabindex: "-1"}
+  .modal-dialog{role: "document"}
+    .modal-content
+      .modal-header
+        %button.close{'data-dismiss' => 'modal', type: 'button'}
+          %span{'aria-hidden' => 'true'} ×
+        %h4.modal-title
+          Reply to
+          = comment.commenter.name
+      .modal-body
+        %p
+          :markdown
+            #{ emojify comment.text }
+        %hr
+        #replyform
+          = render partial: 'comments/form', locals: { comment: @new_comment, parent: comment, id: rand(36**10).to_s(36).upcase[0,5] }
       .modal-footer

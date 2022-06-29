@@ -32,20 +32,6 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:commentable_id, :commentable_type, :commenter_id, :text, :commenter)
   end
 
-  def reply_modal
-    @comment = Comment.find(params[:id])
-    if @comment.text
-      @content = @comment.text.to_str.gsub(/:([\w+-]+):/) do |match|
-        %(![add-emoji](https://github.githubassets.com/images/icons/emoji/#{match.to_str.tr(':', '')}.png))
-      end
-    end
-    @rendered = MarkdownHelper.render @content
-    respond_to do |format|
-      format.html
-      format.js
-    end
-  end
-
   protected
 
   def get_parent
