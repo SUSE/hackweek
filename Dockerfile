@@ -11,7 +11,8 @@ RUN echo 'solver.allowVendorChange = true' >> /etc/zypp/zypp.conf; \
 RUN zypper -n install --no-recommends --replacefiles \
   curl vim vim-data psmisc timezone ack glibc-locale sudo hostname \
   sphinx libxml2-devel libxslt-devel libffi-devel sqlite3-devel nodejs8 gcc-c++ \
-  ImageMagick libmariadb-devel ruby3.1-devel make git-core mariadb-client; \
+  ImageMagick libmariadb-devel ruby3.1-devel make git-core mariadb-client \
+  chromium xorg-x11-fonts; \
   zypper -n clean --all
 
 # Add our user
