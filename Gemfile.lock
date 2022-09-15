@@ -184,7 +184,7 @@ GEM
       activesupport (>= 4)
       railties (>= 4)
       request_store (~> 1.0)
-    loofah (2.18.0)
+    loofah (2.19.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -345,9 +345,6 @@ GEM
       sentry-ruby (~> 5.4.2)
     sentry-ruby (5.4.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-    sentry-ruby-core (5.4.2)
-      concurrent-ruby
-      sentry-ruby (= 5.4.2)
     sexp_processor (4.16.1)
     simplecov (0.16.1)
       docile (~> 1.1)
