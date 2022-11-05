@@ -335,7 +335,7 @@ GEM
       sprockets-rails
       tilt
     selectize-rails (0.12.6)
-    selenium-webdriver (4.3.0)
+    selenium-webdriver (4.6.1)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -345,9 +345,6 @@ GEM
       sentry-ruby (~> 5.4.2)
     sentry-ruby (5.4.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-    sentry-ruby-core (5.4.2)
-      concurrent-ruby
-      sentry-ruby (= 5.4.2)
     sexp_processor (4.16.1)
     simplecov (0.16.1)
       docile (~> 1.1)
