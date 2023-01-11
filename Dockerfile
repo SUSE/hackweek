@@ -1,10 +1,10 @@
-FROM registry.opensuse.org/opensuse/leap:15.3
+FROM registry.opensuse.org/opensuse/leap:15.4
 ARG CONTAINER_USERID=1000
 
 # Add needed repos
 RUN echo 'solver.allowVendorChange = true' >> /etc/zypp/zypp.conf; \
-    zypper ar -f https://download.opensuse.org/repositories/openSUSE:/infrastructure:/dale/15.3/openSUSE:infrastructure:dale.repo; \
-    zypper ar -f https://download.opensuse.org/repositories/devel:/languages:/ruby/openSUSE_Leap_15.3/devel:languages:ruby.repo; \
+    zypper ar -f https://download.opensuse.org/repositories/openSUSE:/infrastructure:/dale/15.4/openSUSE:infrastructure:dale.repo; \
+    zypper ar -f https://download.opensuse.org/repositories/devel:/languages:/ruby/15.4/devel:languages:ruby.repo; \
     zypper --gpg-auto-import-keys refresh
 
 # Install requirements
