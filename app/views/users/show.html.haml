@@ -14,7 +14,7 @@
       %p
         %i{class: 'fas fa-home', title: 'Location'}
         = @user.location
-    - unless @user.hide_email?
+    - if current_user && !@user.hide_email?
       %p
         %i{class: 'fas fa-envelope', title: 'Email'}
         = mail_to @user.email
