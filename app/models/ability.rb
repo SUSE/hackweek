@@ -22,7 +22,11 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user
       # Everyone can:
-      can :read, :all
+      can :read, Project
+      can :read, Keyword
+      can :read, User
+      can :read, Announcement
+      can :read, Faq
       can %i[join leave like dislike create], Project
       can %i[originated likes opportunities], User
       can [:enroll], Announcement

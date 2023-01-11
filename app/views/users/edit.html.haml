@@ -1,18 +1,20 @@
 - content_for :title do
   Edit
-  = current_user.name
+  = @user.name
 
 .row
   .col-md-12
-    %h2 Edit user information
-    = form_for(current_user, html: { class: 'form-horizontal' }) do |f|
-      - if current_user.errors.any?
+    %h2
+      Edit
+      = @user.name
+    = form_for(@user, html: { class: 'form-horizontal' }) do |f|
+      - if @user.errors.any?
         #error_explanation
           %h2
-            = pluralize(current_user.errors.count, "error")
-            prohibited this project from being saved:
+            = pluralize(@user.errors.count, "error")
+            prohibited this user from being saved:
           %ul
-          - current_user.errors.full_messages.each do |msg|
+          - @user.errors.full_messages.each do |msg|
             %li
               = msg
       .form-group

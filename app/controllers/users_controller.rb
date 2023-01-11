@@ -8,14 +8,18 @@ class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, only: %i[add_keyword delete_keyword]
 
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per(params[:page_size])
+    respond_to do |format|
+      format.html { render }
+      format.js
+    end
   end
 
   def edit; end
 
   def update
-    current_user.update(params['user'])
-    redirect_to user_path(current_user)
+    @user.update(params['user'])
+    redirect_to user_path(@user)
   end
 
   def show
