@@ -1,30 +1,20 @@
 - if @users.length > 0
-  .row{:style=> "padding-bottom: 10px;"}
-    .col-sm-6
-      #table_search
-    .col-sm-6
-      %ul.nav.nav-pills.pull-right
-        %li.active#all-pill
-          %a{:href =>"#", :id=>"all", :title=> "All Users"}
-            All
-        %li#free-pill
-          %a{:href =>"#", :id=>"free", :title => "Users not working on a project"}
-            Idle
-        %li#busy-pill
-          %a{:href =>"#", :id=>"busy", :title => "Users working on a project"}
-            Active
   .row
     .col-sm-12
       %table.table#users_table
         - @users.each do |user|
           %tr
-            - user_class = "busy"
-            - if user.projects.empty?
-              - user_class = "free"
-            %td{:class => user_class }
+            %td
               = link_to user_path(user) do
                 = image_tag(user.gravatar_url(:size => "24"), :class => "img-thumbnail", :title => "#{user.name}", :alt => user.name)
                 = user.name
+              - if current_user.role? :admin
+                = link_to edit_user_path(user) do
+                  %i{class: 'fas fa-pencil-alt', title: 'Edit'}
+  .row
+    .col-md-12
+      .text-center
+        = paginate @users, :remote => true
 - else
   %h3
     No users yet.
