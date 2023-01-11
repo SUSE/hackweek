@@ -320,7 +320,7 @@ GEM
     rubocop-rspec (2.12.1)
       rubocop (~> 1.31)
     ruby-progressbar (1.11.0)
-    ruby_parser (3.19.1)
+    ruby_parser (3.19.2)
       sexp_processor (~> 4.16)
     rubyzip (2.3.2)
     sass-rails (6.0.0)
