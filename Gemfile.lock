@@ -359,7 +359,7 @@ GEM
     temple (0.9.1)
     term-ansicolor (1.7.1)
       tins (~> 1.0)
-    thinking-sphinx (5.4.0)
+    thinking-sphinx (5.5.1)
       activerecord (>= 4.2.0)
       builder (>= 2.1.2)
       innertube (>= 1.0.2)
