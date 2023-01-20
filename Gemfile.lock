@@ -130,7 +130,7 @@ GEM
       thor (>= 0.14.0, < 2)
     font-awesome-sass (5.15.1)
       sassc (>= 1.11)
-    globalid (1.0.0)
+    globalid (1.0.1)
       activesupport (>= 5.0)
     gravtastic (3.2.6)
     haml (5.2.2)
