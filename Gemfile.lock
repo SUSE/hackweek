@@ -356,7 +356,7 @@ GEM
       sprockets (>= 3.0.0)
     stringex (2.8.5)
     sync (0.5.0)
-    temple (0.9.1)
+    temple (0.10.0)
     term-ansicolor (1.7.1)
       tins (~> 1.0)
     thinking-sphinx (5.5.1)
