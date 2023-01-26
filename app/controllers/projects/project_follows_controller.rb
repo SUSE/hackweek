@@ -2,7 +2,7 @@ class Projects::ProjectFollowsController < ApplicationController
   load_and_authorize_resource :project, find_by: :url
 
   def index
-    @users = @project.project_followers
+    @users = @project.project_followers.page(params[:page]).per(params[:page_size])
   end
 
   def create
