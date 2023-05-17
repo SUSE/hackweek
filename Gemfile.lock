@@ -347,7 +347,7 @@ GEM
       sentry-ruby (~> 5.9.0)
     sentry-ruby (5.9.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-    sexp_processor (4.16.1)
+    sexp_processor (4.17.0)
     simplecov (0.16.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
