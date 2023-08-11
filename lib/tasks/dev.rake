@@ -44,7 +44,7 @@ namespace :dev do
     ENV['PATH'].split(':').each do |path|
       next unless File.exist?(path)
 
-      found = !Find.find(path).select { |f| f.match(/\bsearchd$/) && File.executable?(f) }.empty?
+      found = Find.find(path).any? { |f| f.match(/\bsearchd$/) && File.executable?(f) }
       break if found
     end
 
