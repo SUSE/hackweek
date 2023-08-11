@@ -3,7 +3,7 @@ FactoryBot.define do
     read_at { nil }
     recipient_id { 1 }
     action { 'string' }
-    association :actor, factory: :user
-    association :notifiable, factory: :project
+    actor factory: %i[user]
+    notifiable factory: %i[project]
   end
 end

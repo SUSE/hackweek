@@ -7,7 +7,7 @@ FactoryBot.define do
     likes_count { 0 }
     memberships_count { 0 }
     aasm_state { 'idea' }
-    association :originator, factory: :user
+    originator factory: %i[user]
 
     factory :idea, class: Project do
       aasm_state { 'idea' }

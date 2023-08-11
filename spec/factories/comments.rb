@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :comment do
-    association :commenter, factory: :user
-    association :commentable, factory: :project
+    commenter factory: %i[user]
+    commentable factory: %i[project]
 
     text { 'Sample' }
 
