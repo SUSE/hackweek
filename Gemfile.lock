@@ -200,7 +200,7 @@ GEM
     mina (1.2.4)
       open4 (~> 1.3.4)
       rake
-    mini_mime (1.1.2)
+    mini_mime (1.1.5)
     mini_portile2 (2.8.4)
     minitest (5.18.1)
     mousetrap-rails (1.4.6)
