@@ -88,7 +88,8 @@ class Project < ApplicationRecord
   def joined(user)
     return false if users.empty?
     return false unless users.include? user
-    return true if users.include? user
+
+    true if users.include? user
   end
 
   def join!(user)
