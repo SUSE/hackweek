@@ -131,7 +131,7 @@ GEM
       thor (>= 0.14.0, < 2)
     font-awesome-sass (5.15.1)
       sassc (>= 1.11)
-    globalid (1.2.0)
+    globalid (1.2.1)
       activesupport (>= 6.1)
     gravtastic (3.2.6)
     haml (5.2.2)
@@ -202,7 +202,7 @@ GEM
       rake
     mini_mime (1.1.5)
     mini_portile2 (2.8.4)
-    minitest (5.19.0)
+    minitest (5.20.0)
     mousetrap-rails (1.4.6)
     mysql2 (0.5.5)
     net-imap (0.3.7)
