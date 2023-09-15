@@ -380,7 +380,7 @@ GEM
       middleware (>= 0.1.0)
       riddle (~> 2.3)
     thor (1.2.2)
-    tilt (2.2.0)
+    tilt (2.3.0)
     timecop (0.9.8)
     timeout (0.4.0)
     tins (1.32.1)
