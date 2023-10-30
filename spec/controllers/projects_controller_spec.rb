@@ -120,7 +120,7 @@ describe ProjectsController do
     end
   end
 
-  describe 'DELETE destroy', search: true do
+  describe 'DELETE destroy', :search do
     it 'destroys the requested project' do
       expect do
         delete :destroy, params: { id: project.to_param }

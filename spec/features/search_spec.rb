@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Search result', search: true do
+describe 'Search result', :search do
   let!(:project) { create :project, title: 'SuperFragility' }
   let!(:other_project) { create :project }
 
