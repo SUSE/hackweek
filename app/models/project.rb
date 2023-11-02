@@ -1,13 +1,10 @@
 class Project < ApplicationRecord
   include AASM
   include Rails.application.routes.url_helpers
-  include Rakismet::Model
-  include AkismetValidation
 
   validates :title, :description, :originator, presence: true
   validate  :title_contains_letters?
   validates :url, uniqueness: true
-  validate :akismet_spam
 
   belongs_to :originator, class_name: 'User'
 
@@ -219,27 +216,6 @@ class Project < ApplicationRecord
 
   def self.description_template
     File.read(Rails.root.join('config', 'new_project_template.md'))
-  end
-
-  ## used by rakismet
-  # name submitted with the comment, used by rakismet
-  def author
-    originator.try(:name)
-  end
-
-  # email submitted with the comment, used by rakismet
-  def author_email
-    originator.try(:email)
-  end
-
-  # the content submitted, used by rakismet
-  alias_attribute :content, :description
-
-  # the permanent URL for the entry the comment belongs to
-  def permalink
-    return unless persisted?
-
-    project_url(Episode.active, self, host: Rails.application.config.rakismet.url)
   end
 
   private
