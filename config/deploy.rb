@@ -2,7 +2,7 @@ require 'mina/rails'
 require 'mina/git'
 
 set :application_name, 'hackweek'
-set :domain, 'dale.infra.opensuse.org'
+set :domain, 'hackweek'
 set :port, '22'
 set :user, 'hackweek'
 set :deploy_to, '/home/hackweek/hackweek'
