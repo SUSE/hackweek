@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.table-filter
 //= require jquery.atwho
 //= require mousetrap
 //= require jquery-hotkeys
