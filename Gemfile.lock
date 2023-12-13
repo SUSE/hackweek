@@ -203,7 +203,7 @@ GEM
     minitest (5.20.0)
     mousetrap-rails (1.4.6)
     mysql2 (0.5.5)
-    net-imap (0.4.6)
+    net-imap (0.4.8)
       date
       net-protocol
     net-pop (0.1.2)
