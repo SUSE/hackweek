@@ -21,7 +21,7 @@ feature 'Collaboration' do
     visit project_path(nil, project)
     click_on 'Leave this project'
 
-    expect(page).not_to have_css("#user#{user.id}-gravatar")
+    expect(page).to have_no_css("#user#{user.id}-gravatar")
     expect(page).to have_text("Sorry to see you go #{user.name}.")
   end
 
@@ -35,7 +35,7 @@ feature 'Collaboration' do
     expect do
       click_on "like-#{project.id}"
     end.to change(Project.liked, :count).by(1)
-    expect(page).not_to have_css("like-#{project.id}")
+    expect(page).to have_no_css("like-#{project.id}")
   end
 
   scenario 'User dislikes a project' do
@@ -49,7 +49,7 @@ feature 'Collaboration' do
     expect do
       click_on "dislike-#{project.id}"
     end.to change(Project.liked, :count).by(-1)
-    expect(page).not_to have_css("dislike-#{project.id}")
+    expect(page).to have_no_css("dislike-#{project.id}")
   end
 
   scenario 'User likes a project multiple times' do
@@ -63,6 +63,6 @@ feature 'Collaboration' do
     expect do
       find("#like-#{project.id}", visible: false).click
     end.to change(Project.liked, :count).by(0)
-    expect(page).not_to have_css("like-#{project.id}")
+    expect(page).to have_no_css("like-#{project.id}")
   end
 end
