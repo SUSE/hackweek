@@ -17,7 +17,7 @@ feature 'Project management' do
     fill_in 'project_description', with: description
 
     expect do
-      click_button 'Create Project'
+      click_on 'Create Project'
     end.to change(Project, :count).by(1)
     expect(page).to have_text("an idea by #{user.name}")
     expect(page).to have_text(title)
@@ -35,7 +35,7 @@ feature 'Project management' do
 
     fill_in 'project_title', with: title
     fill_in 'project_description', with: description
-    click_button 'Update Project'
+    click_on 'Update Project'
 
     expect(page).to have_text("an idea by #{user.name}")
     expect(page).to have_text(title)
@@ -48,7 +48,7 @@ feature 'Project management' do
     visit project_path(nil, project)
 
     expect do
-      click_link "project#{project.to_param}-delete-link"
+      click_on "project#{project.to_param}-delete-link"
     end.to change(Project, :count).by(-1)
   end
 
@@ -58,7 +58,7 @@ feature 'Project management' do
     visit project_path(nil, project)
 
     expect do
-      click_link "project#{project.to_param}-recess-link"
+      click_on "project#{project.to_param}-recess-link"
     end.to change(Project.archived, :count).by(1)
   end
 
@@ -68,7 +68,7 @@ feature 'Project management' do
     visit project_path(nil, project)
 
     expect do
-      click_link "project#{project.to_param}-advance-link"
+      click_on "project#{project.to_param}-advance-link"
     end.to change(Project.finished, :count).by(1)
   end
 
@@ -76,7 +76,7 @@ feature 'Project management' do
     project = create(:invention, originator: user, users: [user])
 
     visit project_path(nil, project)
-    click_link "project#{project.to_param}-recess-link"
+    click_on "project#{project.to_param}-recess-link"
 
     project.reload
     expect(project.aasm_state).to eq('project')
@@ -85,7 +85,7 @@ feature 'Project management' do
   scenario 'User uses markdown preview button during editing', :js do
     visit '/projects/new'
     fill_in 'project_description', with: '_italic_ **bold**'
-    click_link 'Preview'
+    click_on 'Preview'
 
     expect(page).to have_css('em', text: 'italic')
     expect(page).to have_css('strong', text: 'bold')
