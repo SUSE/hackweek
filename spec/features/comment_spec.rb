@@ -12,7 +12,7 @@ feature 'Comment' do
 
     visit project_path(:all, project)
     fill_in 'comment_text', with: '_italic_ **bold** :smile: @user'
-    click_link 'Preview'
+    click_on 'Preview'
 
     expect(page).to have_css('em', text: 'italic')
     expect(page).to have_css('strong', text: 'bold')
@@ -31,7 +31,7 @@ feature 'Comment' do
 
     expect do
       within('#comments_form_section') do
-        click_button 'Create Comment'
+        click_on 'Create Comment'
       end
     end.to change(project.comments, :count).by(1)
     expect(page).to have_text comment_text
@@ -45,7 +45,7 @@ feature 'Comment' do
     visit project_path(nil, project)
 
     within("li#comment_#{first_comment.id}") do
-      click_link 'Reply'
+      click_on 'Reply'
     end
 
     within("#replyCommentcomment_#{first_comment.id}") do
@@ -54,7 +54,7 @@ feature 'Comment' do
 
     expect do
       within("#replyCommentcomment_#{first_comment.id}") do
-        click_button 'Create Comment'
+        click_on 'Create Comment'
       end
     end.to change(first_comment.comments, :count).by(1)
   end
@@ -67,12 +67,12 @@ feature 'Comment' do
     visit project_path(nil, project)
 
     within("li#comment_#{comment.id}") do
-      click_link 'Edit'
+      click_on 'Edit'
     end
 
     within("#editCommentcomment_#{comment.id}") do
       fill_in 'comment_text', with: update_text
-      click_button 'Update Comment'
+      click_on 'Update Comment'
     end
 
     within("li#comment_#{comment.id}") do
