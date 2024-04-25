@@ -20,10 +20,10 @@ module Haml
         end
 
         renderer_options = { escape_html: true,
-                            safe_links_only: true }
+                             safe_links_only: true }
         markdown_options = { fenced_code_blocks: true,
-                            disable_indented_code_blocks: true,
-                            autolink: true }
+                             disable_indented_code_blocks: true,
+                             autolink: true }
         Redcarpet::Markdown.new(RougeRender.new(renderer_options), markdown_options).render(text)
       end
     end
