@@ -1,8 +1,9 @@
 require 'rouge/plugins/redcarpet'
 
 module Haml
-  class Filters
-    class Markdown < Base
+  module Filters
+    module Markdown
+      include Haml::Filters::Base
       # remove_filter('Markdown') # remove the existing Markdown filter
 
       class RougeRender < Redcarpet::Render::HTML
