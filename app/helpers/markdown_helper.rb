@@ -1,6 +1,6 @@
 module MarkdownHelper
   def self.render(markdown_source)
-    Haml::Filters::Markdown.render markdown_source
+    Haml::Filters::Markdown.new.render markdown_source
   end
 
   def mdpreview(markdown_source, lines: 3)

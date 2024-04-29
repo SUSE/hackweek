@@ -10,7 +10,7 @@ module Haml
         include Rouge::Plugins::Redcarpet
       end
 
-      def self.render(text)
+      def render(text)
         # replace @user with a link to user
         text.gsub!(/([^\w]|^)@([-\w]+)([^\w]|$)/) do
           "#{Regexp.last_match(1)}[@#{Regexp.last_match(2)}](#{::Rails.application.routes.url_helpers(only_path: true).user_path(Regexp.last_match(2))})#{Regexp.last_match(3)}"
@@ -26,10 +26,6 @@ module Haml
                              disable_indented_code_blocks: true,
                              autolink: true }
         Redcarpet::Markdown.new(RougeRender.new(renderer_options), markdown_options).render(text)
-      end
-
-      def render(text)
-        self.class.render(text)
       end
 
       def compile(node)
