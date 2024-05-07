@@ -1,12 +1,12 @@
+require 'redcarpet'
 require 'rouge/plugins/redcarpet'
 
 module Haml
-  module Filters
-    module Markdown
-      include Haml::Filters::Base
+  class Filters
+    class Markdown < TiltBase
       # remove_filter('Markdown') # remove the existing Markdown filter
 
-      class RougeRender < Redcarpet::Render::HTML
+      class RougeRender < ::Redcarpet::Render::HTML
         include Rouge::Plugins::Redcarpet
       end
 
@@ -26,6 +26,10 @@ module Haml
                              disable_indented_code_blocks: true,
                              autolink: true }
         Redcarpet::Markdown.new(RougeRender.new(renderer_options), markdown_options).render(text)
+      end
+
+      def compile(node)
+        compile_with_tilt(node, 'markdown')
       end
     end
   end
