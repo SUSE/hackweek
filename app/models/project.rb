@@ -193,7 +193,7 @@ class Project < ApplicationRecord
   end
 
   def previous(episode = nil)
-    Project.by_episode(episode).where('projects.id < ?', id).last
+    Project.by_episode(episode).where(projects: { id: ...id }).last
   end
 
   def next(episode = nil)
