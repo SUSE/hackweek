@@ -194,7 +194,7 @@ GEM
     mina (1.2.5)
       rake
     mini_mime (1.1.5)
-    mini_portile2 (2.8.6)
+    mini_portile2 (2.8.7)
     minitest (5.23.1)
     mousetrap-rails (1.4.6)
     mysql2 (0.5.6)
