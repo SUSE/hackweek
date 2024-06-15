@@ -278,7 +278,7 @@ GEM
     rexml (3.3.0)
       strscan
     riddle (2.4.3)
-    rouge (4.2.1)
+    rouge (4.3.0)
     rspec-core (3.13.0)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.0)
