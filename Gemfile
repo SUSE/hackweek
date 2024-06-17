@@ -23,6 +23,8 @@ group :test do
   gem 'coveralls', require: false
   # as style hound
   gem 'rubocop'
+  gem 'rubocop-capybara'
+  gem 'rubocop-factory_bot'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
   # for time travel in tests
