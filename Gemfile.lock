@@ -370,7 +370,7 @@ GEM
     term-ansicolor (1.10.2)
       mize
       tins (~> 1.0)
-    thinking-sphinx (5.5.1)
+    thinking-sphinx (5.6.0)
       activerecord (>= 4.2.0)
       builder (>= 2.1.2)
       innertube (>= 1.0.2)
