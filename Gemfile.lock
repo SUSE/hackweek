@@ -325,7 +325,7 @@ GEM
     rubocop-rspec (3.0.2)
       rubocop (~> 1.61)
     ruby-progressbar (1.13.0)
-    ruby_parser (3.21.0)
+    ruby_parser (3.21.1)
       racc (~> 1.5)
       sexp_processor (~> 4.16)
     rubyzip (2.3.2)
@@ -350,7 +350,7 @@ GEM
     sentry-ruby (5.18.1)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
-    sexp_processor (4.17.1)
+    sexp_processor (4.17.2)
     simplecov (0.16.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
