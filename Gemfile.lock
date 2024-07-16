@@ -360,8 +360,8 @@ GEM
     strscan (3.1.0)
     sync (0.5.0)
     temple (0.10.3)
-    term-ansicolor (1.10.2)
-      mize
+    term-ansicolor (1.10.4)
+      mize (~> 0.5)
       tins (~> 1.0)
     thinking-sphinx (5.6.0)
       activerecord (>= 4.2.0)
