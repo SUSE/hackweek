@@ -54,7 +54,7 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create update]
   end
 
-  resources :comments, only: [] do
+  resources :comments, only: %i[index destroy] do
     resources :comments, only: %i[create update]
     collection do
       get '/reply/:id', to: 'comments#reply_modal', as: 'reply_modal'
