@@ -1,8 +1,13 @@
 class CommentsController < ApplicationController
   include MarkdownHelper
-  before_action :get_parent, except: :reply_modal
-  load_and_authorize_resource
+  before_action :get_parent, only: %i[create update]
+  load_and_authorize_resource except: :index
+  authorize_resource only: :index
   skip_before_action :verify_authenticity_token, only: [:reply_modal]
+
+  def index
+    @comments = Comment.accessible_by(current_ability).order('id DESC').page(params[:page])
+  end
 
   def create
     @comment = @parent.comments.build(comment_params)
@@ -25,6 +30,14 @@ class CommentsController < ApplicationController
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def destroy
+    @comment.destroy
+
+    respond_to do |format|
+      format.html { redirect_to comments_path, notice: 'Comment was successfully deleted.' }
     end
   end
 

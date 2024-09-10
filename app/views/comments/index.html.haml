@@ -1,0 +1,43 @@
+- content_for :title do
+  Comments
+
+.row
+  .col-sm-12
+    - if @comments.any?
+      .row
+        .col-sm-12
+          %table.table.table-hover
+            %thead
+              %th Date
+              %th User
+              %th Comment
+              %th Project
+              %th Actions
+            - @comments.each do |comment|
+              %tr
+                %td
+                  = comment.updated_at
+                %td
+                  - if comment.commenter
+                    = link_to user_path(comment.commenter) do
+                      = comment.commenter.name
+                  - else
+                    Deleted User
+                %td
+                  = comment.text
+                %td
+                  - if comment.commentable
+                    = link_to project_path(comment.commentable) do
+                      = comment.project.title
+                  - else
+                    Deleted Project/Comment
+                %td
+                  .btn-group
+                    = link_to comment_path(comment), method: :delete, data: { confirm: 'Are you sure you want to delete this comment?' }, class: 'btn btn-danger' do
+                      Delete Comment
+          .row
+            .col-sm-12
+              .text-center
+                = paginate @comments
+    - else
+      No comments yet.
