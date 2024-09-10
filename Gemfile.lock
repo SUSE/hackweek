@@ -268,6 +268,7 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
+    rb_sys (0.9.102)
     redcarpet (3.6.0)
     regexp_parser (2.9.2)
     request_store (1.7.0)
@@ -322,6 +323,9 @@ GEM
       rubocop (~> 1.61)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
+    rucaptcha (3.2.3)
+      railties (>= 3.2)
+      rb_sys (>= 0.9.86)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -436,6 +440,7 @@ DEPENDENCIES
   rubocop-factory_bot
   rubocop-rails
   rubocop-rspec
+  rucaptcha
   sass-rails
   selectize-rails
   sentry-rails

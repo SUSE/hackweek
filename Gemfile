@@ -91,3 +91,5 @@ gem 'mina'
 gem 'lograge'
 # for listening to file modifications
 gem 'listen'
+# capcha
+gem 'rucaptcha'
