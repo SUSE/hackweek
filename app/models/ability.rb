@@ -30,12 +30,12 @@ class Ability
       can %i[join leave like dislike create], Project
       can %i[originated likes opportunities], User
       can [:enroll], Announcement
-      # ...manage things they own
-      can :manage, User, id: user.id
+      # ...change things they own
+      can %i[update add_keyword delete_keyword], User, id: user.id
       can :read, Update, author_id: user.id
       can :manage, Project, originator_id: user.id
-      can :manage, Comment, commenter_id: user.id
-      can [:edit, :update, :add_keyword, :delete_keyword, :advance, :recess, :add_episode, :delete_episode],
+      can %i[create update], Comment, commenter_id: user.id
+      can %i[update add_keyword delete_keyword advance recess add_episode delete_episode],
           Project do |project|
         project.users.include? user
       end
