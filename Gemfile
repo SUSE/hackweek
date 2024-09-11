@@ -50,7 +50,7 @@ gem 'jquery-rails'
 gem 'js_cookie_rails'
 # as templating language
 gem 'haml-rails'
-# as authentification framework
+# as authentication framework
 gem 'devise'
 gem 'devise_ichain_authenticatable'
 # as authorization framework
@@ -87,7 +87,7 @@ gem 'rails-controller-testing', group: %i[development test]
 gem 'rspec-rails', group: %i[development test]
 # as deployer
 gem 'mina'
-# as the log formater
+# as the log formatter
 gem 'lograge'
 # for listening to file modifications
 gem 'listen'

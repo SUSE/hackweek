@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     @comment = @parent.comments.build(comment_params)
     @comment.commenter = current_user
 
-    if @comment.save
+    if verify_rucaptcha? && @comment.save
       @comment.send_notification(current_user,
                                  " commented on #{@comment.project.aasm_state}: #{@comment.project.title}")
       redirect_to project_path(@comment.project), notice: 'Thank you for your comment!'
