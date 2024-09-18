@@ -277,7 +277,7 @@ GEM
       railties (>= 5.2)
     rexml (3.3.7)
     riddle (2.4.3)
-    rouge (4.3.0)
+    rouge (4.4.0)
     rspec-core (3.13.1)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.3)
