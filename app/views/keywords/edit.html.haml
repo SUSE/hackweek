@@ -15,7 +15,7 @@
 
     .form-group
       = f.label('Description (maximum 255 characters)')
-      = f.text_area :description, maxlength: "255", rows: 5, id: 'keyword_description', class: 'form-control input-lg markdown-source-text'
+      = f.text_area :description, maxlength: "255", rows: 5, id: 'keyword_description', class: 'form-control input-lg'
     .form-group
       = f.label('Keyword Logo (Will be resized to 150x150 Pixels)')
       = f.file_field :avatar

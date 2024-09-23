@@ -1,4 +1,4 @@
-$('#<%= params[:form_parent]%> .preview-contents').html("<%=j raw @rendered %>");
+$('#<%= params[:form_parent]%> .preview-contents').html("<%= escape_javascript(render partial: 'preview', locals: { markdown_source: @markdown_source }) %>");
 $('#<%= params[:form_parent]%> .loading-spinner').addClass('hidden');
 $('#<%= params[:form_parent]%> .preview-contents').removeClass('hidden');
 $('input[name="authenticity_token"]').val('<%= form_authenticity_token %>');

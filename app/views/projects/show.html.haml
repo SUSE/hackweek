@@ -27,7 +27,7 @@
 .row
   .col-sm-8.project-style
     :markdown
-      #{ emojify @project.description }
+      #{ enrich_markdown(markdown: @project.description) }
   .col-sm-4
     .row
       .col-sm-12
