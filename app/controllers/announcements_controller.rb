@@ -53,7 +53,7 @@ class AnnouncementsController < ApplicationController
     announcement.enroll! current_user
 
     respond_to do |format|
-      format.html { redirect_to :back }
+      format.html { redirect_back_or_to root_path }
       format.js { render partial: 'announcement_toggle' }
     end
   end
