@@ -19,5 +19,7 @@
             = icon('fas', 'spinner pulse 3x')
           .preview-contents.hidden
     %p
+      = rucaptcha_input_tag(class: 'form-control', placeholder: 'Input Captcha', required: 'required')
+      = rucaptcha_image_tag(alt: 'Captcha')
       = f.submit(class: "btn btn-success pull-right")
       &nbsp;
