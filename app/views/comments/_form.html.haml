@@ -13,7 +13,7 @@
     .comment-form-body
       .tab-content
         .tab-pane.active.fade.in{ role: 'tab-pane', id: "markdown-source#{id}" }
-          = f.text_area :text, :placeholder => "Your comment. You can use markdown.", :class => 'form-control input-lg markdown-source-text', :required => "required"
+          = f.text_area :text, :placeholder => "Your comment. You can use markdown.", :class => 'form-control input-lg', :required => "required"
         .tab-pane.fade{ role: 'tab-pane', id: "markdown-preview#{id}" }
           .loading-spinner
             = icon('fas', 'spinner pulse 3x')

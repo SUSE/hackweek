@@ -16,7 +16,7 @@
           Edit
     %p
       :markdown
-        #{ emojify comment.text }
+        #{ enrich_markdown(markdown: comment.text) }
     - if !comment.comments.empty?
       %ul.media-list
         = render :partial => 'comments/comment', :collection => comment.comments, object: comment
@@ -46,7 +46,7 @@
       .modal-body
         %p
           :markdown
-            #{ emojify comment.text }
+            #{ enrich_markdown(markdown: comment.text) }
         %hr
         #replyform
           = render partial: 'comments/form', locals: { comment: @new_comment, parent: comment, id: rand(36**10).to_s(36).upcase[0,5] }

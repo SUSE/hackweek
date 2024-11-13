@@ -1,9 +1,22 @@
 module MarkdownHelper
-  def self.render(markdown_source)
-    Haml::Filters::Markdown.new.render markdown_source
+  def mdpreview(markdown_source, lines: 3)
+    markdown_source.lines[0..lines - 1].join
   end
 
-  def mdpreview(markdown_source, lines: 3)
-    markdown_source.lines.grep_v(/\[comment\]/).grep(/\S/)[0..lines - 1].join
+  def enrich_markdown(markdown:)
+    # replace :smiley: with a link to github.com emojis
+    markdown.gsub!(/(?<=^|\s):([\w+-]+):(?=\s|$)/) do |match|
+      %(![add-emoji](https://github.githubassets.com/images/icons/emoji/#{match.to_str.tr(':', '')}.png))
+    end
+    # replace @hans with a link to the user with the login hans
+    markdown.gsub!(/([^\w]|^)@([-\w]+)([^\w]|$)/) do
+      "#{Regexp.last_match(1)}[@#{Regexp.last_match(2)}](#{::Rails.application.routes.url_helpers(only_path: true).user_path(Regexp.last_match(2))})#{Regexp.last_match(3)}"
+    end
+    # replace hw#my-project with a link to the project with the slug my-project
+    markdown.gsub!(/([^\w]|^)hw#([-\w]+)([^\w]|$)/) do
+      "#{Regexp.last_match(1)}[hw##{Regexp.last_match(2)}](#{::Rails.application.routes.url_helpers(only_path: true).project_path(Regexp.last_match(2))})#{Regexp.last_match(3)}"
+    end
+
+    markdown
   end
 end
