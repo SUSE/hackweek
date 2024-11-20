@@ -13,7 +13,7 @@
       = render :partial => "projects/like_button", :locals => {:project => project }
 .md-preview
   :markdown
-    #{mdpreview(project.description, lines: 2)}
+    #{enrich_markdown(markdown: project.description, lines: 2)}
 - unless project.users.empty?
   .well.well-sm
     - project.users.each do |user|

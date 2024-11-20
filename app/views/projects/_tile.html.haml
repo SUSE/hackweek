@@ -6,7 +6,7 @@
         = render :partial => "projects/like_button", :locals => {:project => project }
   .panel-body
     :markdown
-      #{truncate(project.description, length: 140)}
+      #{enrich_markdown(markdown: project.description, lines: 140)}
     .user-list{:style=>"padding-top: 10px;"}
       - if project.users.empty?
         .alert.alert-warning

@@ -16,5 +16,5 @@
               = link_to(project.originator.name, user_path(project.originator))
             %p
               :markdown
-                #{truncate(project.description, length: 50)}
+                #{enrich_markdown(markdown: project.description, lines: 50)}
             %hr
