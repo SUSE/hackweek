@@ -81,7 +81,7 @@
             = project.title
         .md-preview
           :markdown
-            #{mdpreview(project.description, lines: 2)}
+            #{enrich_markdown(markdown: project.description, lines: 2)}
 
   .row
     .col-sm-12
