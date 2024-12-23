@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.current(@episode).active.order(created_at: :desc).includes(:originator, :users)
                        .references(:episodes_projects).page(params[:page]).per(params[:page_size])
-    @newest = @projects.first(10)
+    @newest = @projects.includes(%i[avatar_attachment kudos project_followers]).first(10)
     respond_to do |format|
       format.html { render }
       format.rss { render layout: false }
