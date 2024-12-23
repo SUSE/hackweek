@@ -55,7 +55,7 @@ class ProjectsController < ApplicationController
     @previous_project = @project.previous(@episode)
     @next_project = @project.next(@episode)
     @new_comment = Comment.new
-    @updates = @project.updates.page(1)
+    @updates = @project.updates.includes([:author]).page(1)
     @last_page = @project.updates.page(1).last_page? || @updates.empty?
   end
 
