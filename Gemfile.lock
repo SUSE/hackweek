@@ -369,7 +369,7 @@ GEM
     tilt (2.4.0)
     timecop (0.9.10)
     timeout (0.4.3)
-    tins (1.37.0)
+    tins (1.37.1)
       bigdecimal
       sync
     tzinfo (2.0.6)
