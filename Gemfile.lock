@@ -128,7 +128,7 @@ GEM
     ffi (1.17.0)
     figaro (1.2.0)
       thor (>= 0.14.0, < 2)
-    font-awesome-sass (6.5.2)
+    font-awesome-sass (6.7.2)
       sassc (~> 2.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
