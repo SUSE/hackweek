@@ -144,7 +144,7 @@ GEM
       haml (>= 4.0.6)
       railties (>= 5.1)
     hirb (0.7.3)
-    i18n (1.14.6)
+    i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     innertube (1.1.0)
     joiner (0.6.0)
