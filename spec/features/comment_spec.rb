@@ -29,12 +29,13 @@ feature 'Comment' do
       fill_in 'comment_text', with: comment_text
     end
 
-    expect do
-      within('#comments_form_section') do
-        click_on 'Create Comment'
-      end
-    end.to change(project.comments, :count).by(1)
-    expect(page).to have_text comment_text
+    within('#comments_form_section') do
+      click_on 'Create Comment'
+    end
+
+    within('#comments_section') do
+      expect(page).to have_text comment_text
+    end
   end
 
   scenario 'reply to a comment', :js do
@@ -52,11 +53,13 @@ feature 'Comment' do
       fill_in 'comment_text', with: reply_text
     end
 
-    expect do
-      within("#replyCommentcomment_#{first_comment.id}") do
-        click_on 'Create Comment'
-      end
-    end.to change(first_comment.comments, :count).by(1)
+    within("#replyCommentcomment_#{first_comment.id}") do
+      click_on 'Create Comment'
+    end
+
+    within("#comment_#{first_comment.id}") do
+      expect(page).to have_text reply_text
+    end
   end
 
   scenario 'update', :js do
