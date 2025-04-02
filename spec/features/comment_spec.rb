@@ -2,14 +2,15 @@ require 'rails_helper'
 
 feature 'Comment' do
   let(:user) { create :user }
+  let(:project) { create(:idea, originator: user) }
+  let(:project_with_comments) { create(:idea, :with_comments, originator: user) }
+  let(:comment_text) { Faker::Lorem.sentence }
 
   before :each do
     sign_in user
   end
 
   scenario 'markdown preview', :js do
-    project = create(:invention, originator: user, users: [user])
-
     visit project_path(:all, project)
     fill_in 'comment_text', with: '_italic_ **bold** :smile: @user'
     click_on 'Preview'
@@ -21,10 +22,8 @@ feature 'Comment' do
   end
 
   scenario 'create', :js do
-    project = create(:idea, originator: user)
-    comment_text = Faker::Lorem.sentence
-
     visit project_path(nil, project)
+
     within('#comments_form_section') do
       fill_in 'comment_text', with: comment_text
     end
@@ -39,33 +38,27 @@ feature 'Comment' do
   end
 
   scenario 'reply to a comment', :js do
-    project = create(:idea, :with_comments, originator: user)
-    reply_text = 'You are wrong on the internet!'
-    first_comment = project.comments.first
+    visit project_path(nil, project_with_comments)
 
-    visit project_path(nil, project)
-
-    within("li#comment_#{first_comment.id}") do
+    within("#comment_#{project_with_comments.comments.first.id}") do
       click_on 'Reply'
     end
 
-    within("#replyCommentcomment_#{first_comment.id}") do
-      fill_in 'comment_text', with: reply_text
+    within("#replyCommentcomment_#{project_with_comments.comments.first.id}") do
+      fill_in 'comment_text', with: 'You are wrong on the internet!'
     end
 
-    within("#replyCommentcomment_#{first_comment.id}") do
+    within("#replyCommentcomment_#{project_with_comments.comments.first.id}") do
       click_on 'Create Comment'
     end
 
-    within("#comment_#{first_comment.id}") do
-      expect(page).to have_text reply_text
+    within("#comment_#{project_with_comments.comments.first.id}") do
+      expect(page).to have_text 'You are wrong on the internet!'
     end
   end
 
   scenario 'update', :js do
-    project = create(:idea, originator: user)
     comment = create(:comment, commenter: user, commentable: project)
-    update_text = Faker::Lorem.sentence
 
     visit project_path(nil, project)
 
@@ -74,12 +67,12 @@ feature 'Comment' do
     end
 
     within("#editCommentcomment_#{comment.id}") do
-      fill_in 'comment_text', with: update_text
+      fill_in 'comment_text', with: comment_text
       click_on 'Update Comment'
     end
 
     within("li#comment_#{comment.id}") do
-      expect(page).to have_text update_text
+      expect(page).to have_text comment_text
     end
   end
 end
