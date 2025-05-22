@@ -91,3 +91,11 @@ gem 'mina'
 gem 'lograge'
 # for listening to file modifications
 gem 'listen'
+# explicit dependencies required by rspec
+gem 'benchmark'
+gem 'drb'
+gem 'irb'
+gem 'logger'
+gem 'mutex_m'
+gem 'ostruct'
+gem 'reline'
