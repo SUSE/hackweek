@@ -75,6 +75,7 @@ GEM
       execjs (~> 2)
     base64 (0.2.0)
     bcrypt (3.1.20)
+    benchmark (0.4.0)
     bigdecimal (3.1.9)
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
@@ -117,6 +118,8 @@ GEM
       devise (>= 2.2)
     diff-lcs (1.5.1)
     docile (1.4.1)
+    drb (2.2.3)
+    erb (5.0.1)
     erubi (1.13.1)
     execjs (2.10.0)
     factory_bot (6.5.0)
@@ -147,6 +150,11 @@ GEM
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     innertube (1.1.0)
+    io-console (0.8.0)
+    irb (1.15.2)
+      pp (>= 0.6.0)
+      rdoc (>= 4.0.0)
+      reline (>= 0.4.2)
     joiner (0.6.0)
       activerecord (>= 6.1.0)
     jquery-atwho-rails (1.5.4)
@@ -176,6 +184,7 @@ GEM
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    logger (1.7.0)
     lograge (0.14.0)
       actionpack (>= 4)
       activesupport (>= 4)
@@ -199,6 +208,7 @@ GEM
     mini_portile2 (2.8.8)
     minitest (5.25.4)
     mousetrap-rails (1.4.6)
+    mutex_m (0.3.0)
     mysql2 (0.5.6)
     net-imap (0.5.7)
       date
@@ -214,10 +224,14 @@ GEM
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    ostruct (0.6.1)
     parallel (1.27.0)
     parser (3.3.8.0)
       ast (~> 2.4.1)
       racc
+    pp (0.6.2)
+      prettyprint
+    prettyprint (0.2.0)
     prism (1.4.0)
     pry (0.15.2)
       coderay (~> 1.1)
@@ -227,6 +241,9 @@ GEM
       pry (>= 0.13, < 0.16)
     pry-rails (0.3.11)
       pry (>= 0.13.0)
+    psych (5.2.6)
+      date
+      stringio
     public_suffix (6.0.1)
     puma (6.6.0)
       nio4r (~> 2.0)
@@ -271,8 +288,13 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
+    rdoc (6.14.0)
+      erb
+      psych (>= 4.0.0)
     redcarpet (3.6.1)
     regexp_parser (2.10.0)
+    reline (0.6.1)
+      io-console (~> 0.5)
     request_store (1.7.0)
       rack (>= 1.4)
     responders (3.1.1)
@@ -363,6 +385,7 @@ GEM
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
     stringex (2.8.6)
+    stringio (3.1.7)
     sync (0.5.0)
     temple (0.10.3)
     term-ansicolor (1.11.2)
@@ -408,6 +431,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm
+  benchmark
   bootstrap-sass
   cancancan
   capybara
@@ -415,6 +439,7 @@ DEPENDENCIES
   database_cleaner
   devise
   devise_ichain_authenticatable
+  drb
   factory_bot_rails
   faker
   figaro
@@ -422,22 +447,27 @@ DEPENDENCIES
   gravtastic
   haml-rails
   hirb
+  irb
   jquery-atwho-rails
   jquery-hotkeys-rails
   jquery-rails
   js_cookie_rails
   kaminari
   listen
+  logger
   lograge
   mina
   mousetrap-rails
+  mutex_m
   mysql2
+  ostruct
   pry-byebug
   pry-rails
   puma
   rails (~> 7.0.1)
   rails-controller-testing
   redcarpet
+  reline
   rouge
   rspec-rails
   rubocop
