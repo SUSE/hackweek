@@ -82,7 +82,7 @@ class Project < ApplicationRecord
     idea? || project?
   end
 
-  def joined(user)
+  def joined?(user)
     return false if users.empty?
     return false unless users.include? user
 
