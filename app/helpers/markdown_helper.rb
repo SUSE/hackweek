@@ -1,7 +1,7 @@
 module MarkdownHelper
   def enrich_markdown(markdown:, lines: nil)
     # build an excerpt
-    markdown = markdown.lines[0..lines - 1].join if lines
+    markdown = markdown.lines[0..(lines - 1)].join if lines
 
     # replace :smiley: with a link to github.com emojis
     markdown.gsub!(/(?<=^|\s):([\w+-]+):(?=\s|$)/) do |match|
