@@ -15,7 +15,6 @@ set :branch, 'master'
 set :shared_dirs, fetch(:shared_dirs, []).push('public/system', 'public/img', 'sphinx', 'storage', '.bundle', 'tmp/pids')
 set :shared_files, fetch(:shared_files, []).push('config/database.yml',
                                                  'config/application.yml',
-                                                 'config/secrets.yml',
                                                  'config/storage.yml',
                                                  'config/thinking_sphinx.yml',
                                                  'config/production.sphinx.conf',
