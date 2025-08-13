@@ -5,7 +5,6 @@ class Comment < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
 
   belongs_to :commenter, class_name: 'User'
-  alias_attribute :originator, :commenter
 
   validates_presence_of :commenter_id, :text, :commentable_id
 
