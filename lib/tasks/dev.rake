@@ -16,7 +16,7 @@ end
 namespace :dev do
   file_task_names = []
 
-  %w[application database secrets storage].each do |example_base|
+  %w[application database storage].each do |example_base|
     config_file = File.join('config', "#{example_base}.yml")
     config_example = File.join('config', "#{example_base}.yml.example")
     t = Rake::FileTask.define_task(config_file => config_example) do |task|
