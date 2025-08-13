@@ -6,9 +6,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # as framework
 if next?
-  gem 'rails', '~> 7.2'
+  gem 'rails', '~> 8.0'
 else
-  gem 'rails', '~> 7.0.1'
+  gem 'rails', '~> 7.2'
 end
 # as asset pipeline
 gem 'sprockets-rails'
