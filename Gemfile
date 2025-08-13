@@ -84,6 +84,8 @@ gem 'pry-byebug', group: %i[development test]
 gem 'pry-rails', group: %i[development test]
 # to improve inspect output
 gem 'hirb', group: %i[development test]
+# for feature tests
+gem 'webdrivers', group: %i[development test]
 
 # for cleaning the test DB
 gem 'database_cleaner', group: :test
@@ -97,5 +99,3 @@ gem 'rubocop-rails', group: :test
 gem 'rubocop-rspec', group: :test
 # for time travel in tests
 gem 'timecop', group: :test
-# for feature tests
-gem 'webdrivers', group: :test
