@@ -1,8 +1,15 @@
+def next?
+  File.basename(__FILE__) == 'Gemfile.next'
+end
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # as framework
-gem 'rails', '~> 7.0.1'
+if next?
+  gem 'rails', '~> 7.2'
+else
+  gem 'rails', '~> 7.0.1'
+end
 # as asset pipeline
 gem 'sprockets-rails'
 # as the app server
@@ -63,6 +70,8 @@ gem 'listen'
 gem 'drb'
 gem 'mutex_m'
 
+# for testing next rails versions
+gem 'next_rails', group: %i[development test]
 # for seeds
 gem 'factory_bot_rails', group: %i[development test]
 gem 'faker', group: %i[development test]

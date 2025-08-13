@@ -1,0 +1,31 @@
+name: Next Rails Spec
+
+on:
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  next-spec:
+    if: contains(github.head_ref, 'next-rails')
+    runs-on: ubuntu-latest
+    name: next-spec
+    env:
+      RAILS_ENV: test
+    steps:
+      - uses: actions/checkout@v2
+      - name: Sets env vars for next-rails
+        run: |
+          echo "BUNDLE_GEMFILE=Gemfile.next" >> $GITHUB_ENV
+          echo "BUNDLE_CACHE_PATH=vendor/cache.next" >> $GITHUB_ENV
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Prepare spec
+        run: |
+          sudo systemctl start mysql.service
+          wget -nv http://sphinxsearch.com/files/dicts/en.pak
+          bundle exec rake dev:bootstrap --trace
+          bundle exec bin/rake webdrivers:chromedriver:update
+      - name: Run tests
+        run: bundle exec rspec --color --format documentation
