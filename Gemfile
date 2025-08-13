@@ -8,31 +8,6 @@ gem 'sprockets-rails'
 # as the app server
 gem 'puma'
 
-group :development, :test do
-  # as our rails console
-  gem 'pry-byebug'
-  gem 'pry-rails'
-  # to improve inspect output
-  gem 'hirb'
-end
-
-group :test do
-  # for cleaning the test DB
-  gem 'database_cleaner'
-  # for measuring test coverage
-  gem 'coveralls', require: false
-  # as style hound
-  gem 'rubocop'
-  gem 'rubocop-capybara'
-  gem 'rubocop-factory_bot'
-  gem 'rubocop-rails'
-  gem 'rubocop-rspec'
-  # for time travel in tests
-  gem 'timecop'
-  # for feature tests
-  gem 'webdrivers'
-end
-
 # as databases
 gem 'mysql2'
 # for stylesheets
@@ -78,13 +53,6 @@ gem 'thinking-sphinx'
 gem 'kaminari'
 # for slugs
 gem 'stringex'
-# for seeds
-gem 'factory_bot_rails', group: %i[development test]
-gem 'faker', group: %i[development test]
-# as test framework
-gem 'capybara', group: %i[development test]
-gem 'rails-controller-testing', group: %i[development test]
-gem 'rspec-rails', group: %i[development test]
 # as deployer
 gem 'mina'
 # as the log formater
@@ -99,3 +67,31 @@ gem 'logger'
 gem 'mutex_m'
 gem 'ostruct'
 gem 'reline'
+
+# for seeds
+gem 'factory_bot_rails', group: %i[development test]
+gem 'faker', group: %i[development test]
+# as test framework
+gem 'capybara', group: %i[development test]
+gem 'rails-controller-testing', group: %i[development test]
+gem 'rspec-rails', group: %i[development test]
+# as our rails console
+gem 'pry-byebug', group: %i[development test]
+gem 'pry-rails', group: %i[development test]
+# to improve inspect output
+gem 'hirb', group: %i[development test]
+
+# for cleaning the test DB
+gem 'database_cleaner', group: :test
+# for measuring test coverage
+gem 'coveralls', require: false, group: :test
+# as style hound
+gem 'rubocop', group: :test
+gem 'rubocop-capybara', group: :test
+gem 'rubocop-factory_bot', group: :test
+gem 'rubocop-rails', group: :test
+gem 'rubocop-rspec', group: :test
+# for time travel in tests
+gem 'timecop', group: :test
+# for feature tests
+gem 'webdrivers', group: :test
