@@ -59,14 +59,9 @@ gem 'mina'
 gem 'lograge'
 # for listening to file modifications
 gem 'listen'
-# explicit dependencies required by rspec
-gem 'benchmark'
+# FIXME: activesupport-7.0.8.7 expects those to be in the standard library, which they aren't anymore since 3.4.0
 gem 'drb'
-gem 'irb'
-gem 'logger'
 gem 'mutex_m'
-gem 'ostruct'
-gem 'reline'
 
 # for seeds
 gem 'factory_bot_rails', group: %i[development test]
