@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   include MarkdownHelper
+
   before_action :get_parent, only: %i[create update]
   load_and_authorize_resource except: :index
   authorize_resource only: :index
