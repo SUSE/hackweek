@@ -31,6 +31,7 @@ class User < ApplicationRecord
   ThinkingSphinx::Callbacks.append(self, behaviours: [:real_time])
 
   include Gravtastic
+
   has_gravatar default: 'retro'
 
   def role?(role)
