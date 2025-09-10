@@ -5,7 +5,7 @@ class AnnouncementsController < ApplicationController
 
   # GET /announcements
   def index
-    @announcements = Announcement.order('id DESC')
+    @announcements = Announcement.order(id: :desc)
   end
 
   # GET /announcements/1

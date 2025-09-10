@@ -5,7 +5,7 @@ class EpisodesController < ApplicationController
 
   # GET /episodes
   def index
-    @episodes = Episode.order('start_date DESC')
+    @episodes = Episode.order(start_date: :desc)
   end
 
   # GET /episodes/1
