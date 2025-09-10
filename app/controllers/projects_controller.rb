@@ -24,7 +24,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/popular
   def popular
-    @projects = Project.current(@episode).liked.includes(:originator, :users, :kudos).order('likes_count DESC').page(params[:page]).per(params[:page_size])
+    @projects = Project.current(@episode).liked.includes(:originator, :users, :kudos).order(likes_count: :desc).page(params[:page]).per(params[:page_size])
     render 'index'
   end
 
@@ -38,7 +38,7 @@ class ProjectsController < ApplicationController
   # GET /projects/biggest
   def biggest
     @projects = Project.current(@episode).populated.includes(:originator, :users,
-                                                             :kudos).order('memberships_count DESC').page(params[:page]).per(params[:page_size])
+                                                             :kudos).order(memberships_count: :desc).page(params[:page]).per(params[:page_size])
     render 'index'
   end
 

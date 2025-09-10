@@ -5,7 +5,7 @@ class AboutController < ApplicationController
     return unless @episode
 
     @popular_keywords = Keyword.popular(@episode, 10).sample(3)
-    @popular_projects = Project.current(@episode).liked.includes(:originator, :users, :kudos).order('likes_count DESC').first(6)
+    @popular_projects = Project.current(@episode).liked.includes(:originator, :users, :kudos).order(likes_count: :desc).first(6)
   end
 
   def show; end

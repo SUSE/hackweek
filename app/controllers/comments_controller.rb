@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:reply_modal]
 
   def index
-    @comments = Comment.accessible_by(current_ability).order('id DESC').page(params[:page])
+    @comments = Comment.accessible_by(current_ability).order(id: :desc).page(params[:page])
   end
 
   def create

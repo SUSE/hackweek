@@ -14,7 +14,7 @@ class Project < ApplicationRecord
   has_many :memberships
   has_many :users, through: :memberships
 
-  has_many :updates, -> { order 'created_at DESC' }, dependent: :destroy
+  has_many :updates, -> { order created_at: :desc }, dependent: :destroy
 
   has_many :comments, as: :commentable, dependent: :destroy
 
