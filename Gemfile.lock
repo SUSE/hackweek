@@ -314,7 +314,7 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.4.0)
+    rexml (3.4.4)
     riddle (2.4.3)
     rouge (4.6.0)
     rspec-core (3.13.5)
