@@ -75,4 +75,34 @@ feature 'Comment' do
       expect(page).to have_text comment_text
     end
   end
+
+  scenario 'project originator can delete comments on their project', :js do
+    other_user = create(:user)
+    comment = create(:comment, commenter: other_user, commentable: project)
+
+    visit project_path(nil, project)
+
+    within("li#comment_#{comment.id}") do
+      click_on 'Delete'
+    end
+
+    page.driver.browser.switch_to.alert.accept
+
+    expect(page).to have_current_path(project_path(nil, project), ignore_query: true)
+    expect(page).to have_text 'Comment was successfully deleted'
+    expect(page).to have_no_css("li#comment_#{comment.id}")
+    expect(Comment.exists?(comment.id)).to be false
+  end
+
+  scenario 'non-originator cannot delete comments on others projects', :js do
+    other_user = create(:user)
+    other_project = create(:idea, originator: other_user)
+    comment = create(:comment, commenter: other_user, commentable: other_project)
+
+    visit project_path(nil, other_project)
+
+    within("li#comment_#{comment.id}") do
+      expect(page).to have_no_link 'Delete'
+    end
+  end
 end
