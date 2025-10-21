@@ -83,7 +83,9 @@ Metrics/AbcSize:
 # Configuration parameters: CountComments, CountAsOne, AllowedMethods, AllowedPatterns, inherit_mode.
 # AllowedMethods: refine
 Metrics/BlockLength:
-  Max: 77
+  Max: 35
+  Exclude:
+    - 'config/routes.rb'
 
 # Offense count: 2
 # Configuration parameters: CountComments, CountAsOne.

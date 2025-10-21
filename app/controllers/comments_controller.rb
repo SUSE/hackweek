@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:reply_modal]
 
   def index
-    @comments = Comment.accessible_by(current_ability).order(id: :desc).page(params[:page])
+    @comments = Comment.accessible_by(current_ability).where(ham: false).order(id: :desc).page(params[:page])
   end
 
   def create
@@ -39,6 +39,13 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to comments_path, notice: 'Comment was successfully deleted.' }
+    end
+  end
+
+  def mark_as_ham
+    @comment.update(ham: true)
+    respond_to do |format|
+      format.html { redirect_to comments_path, notice: 'Comment was successfully marked as ham.' }
     end
   end
 
