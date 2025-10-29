@@ -55,6 +55,10 @@ Rails.application.routes.draw do
   end
 
   resources :comments, only: %i[index destroy] do
+    member do
+      patch 'mark_as_ham'
+    end
+
     resources :comments, only: %i[create update]
     collection do
       get '/reply/:id', to: 'comments#reply_modal', as: 'reply_modal'

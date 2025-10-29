@@ -27,17 +27,19 @@
                   = comment.text
                 %td
                   - if comment.commentable
-                    = link_to project_path(comment.commentable) do
+                    = link_to project_path('all', comment.project) do
                       = comment.project.title
                   - else
                     Deleted Project/Comment
                 %td
                   .btn-group
                     = link_to comment_path(comment), method: :delete, data: { confirm: 'Are you sure you want to delete this comment?' }, class: 'btn btn-danger' do
-                      Delete Comment
+                      Spam
+                    = link_to mark_as_ham_comment_path(comment), method: :patch, class: 'btn btn-success' do
+                      Ham
           .row
             .col-sm-12
               .text-center
                 = paginate @comments
     - else
-      No comments yet.
+      No comments to moderate
