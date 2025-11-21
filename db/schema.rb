@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_01_134703) do
+ActiveRecord::Schema[7.2].define(version: 2025_10_21_103843) do
 
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2022_02_01_134703) do
     t.integer "commenter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "ham"
   end
 
   create_table "enrollments", id: :integer, charset: "latin1", options: "ENGINE=InnoDB ROW_FORMAT=DYNAMIC", force: :cascade do |t|
