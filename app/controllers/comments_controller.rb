@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
       if @comment.update(comment_params)
         format.html { redirect_to project_path(@comment.project), notice: 'Comment was successfully updated.' }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { render :edit, status: :unprocessable_content }
       end
     end
   end
