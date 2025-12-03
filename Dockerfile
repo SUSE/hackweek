@@ -15,9 +15,19 @@ RUN chown -R hackweek /hackweek
 WORKDIR /hackweek
 USER hackweek
 
-# Install our bundle & process manager
-RUN bundle install --jobs=3 --retry=3; \
-    gem install foreman
+# Setup environment for our user
+RUN ln -sf /hackweek/tmp/.bash_history /home/hackweek/.bash_history; \
+    ln -sf /hackweek/tmp/.irb_history /home/hackweek/.irb_history;
+
+# Setup Ruby 3.4 environment for our user
+RUN ln -sf /usr/bin/ruby.ruby3.4 /home/hackweek/bin/ruby; \
+    ln -sf /usr/bin/gem.ruby3.4 /home/hackweek/bin/gem; \
+    ln -sf /usr/bin/bundle.ruby3.4 /home/hackweek/bin/bundle; \
+    ln -sf /usr/bin/rake.ruby3.4 /home/hackweek/bin/rake;
+
+# Install our process manager
+RUN /home/hackweek/bin/gem install foreman; \
+    ln -sf /home/hackweek/.local/share/gem/ruby/3.4.0/bin/foreman /home/hackweek/bin/foreman;
 
 # Run our command
-CMD ["foreman", "start", "-f", "Procfile"]
+CMD ["/home/hackweek/bin/foreman", "start", "-p", "3000"]
