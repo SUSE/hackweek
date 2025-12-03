@@ -7,7 +7,6 @@ services:
     build:
       dockerfile: Dockerfile
       context: .
-    command: foreman start -p 3000
     volumes:
       - .:/hackweek:z
     ports:
