@@ -16,6 +16,7 @@ jobs:
       - name: Prepare spec
         run: |
           wget -nv http://sphinxsearch.com/files/dicts/en.pak
+          sudo chown -R 1000:1000 .
           docker compose run --rm hackweek bundle exec rake dev:bootstrap --trace
       - name: Run tests
         run: docker compose run --rm hackweek bundle exec rspec --color --format documentation
