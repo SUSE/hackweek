@@ -55,4 +55,27 @@ describe 'Ability' do
     it { is_expected.to be_able_to(:manage, Announcement.new) }
     it { is_expected.to be_able_to(:manage, Faq.new) }
   end
+
+  context 'when user is project originator' do
+    let(:user) { create(:user) }
+    let(:other_user) { create(:user) }
+    let(:own_project) { create(:project, originator: user) }
+    let(:foreign_project) { create(:project, originator: other_user) }
+
+    context 'when on own project' do
+      let(:own_comment_on_own_project) { create(:comment, commenter: user, commentable: own_project) }
+      let(:comment_on_own_project) { create(:comment, commenter: other_user, commentable: own_project) }
+
+      it { is_expected.to be_able_to(:destroy, own_comment_on_own_project) }
+      it { is_expected.to be_able_to(:destroy, comment_on_own_project) }
+    end
+
+    context 'when on foreign project' do
+      let(:own_comment_on_foreign_project) { create(:comment, commenter: user, commentable: foreign_project) }
+      let(:comment_on_foreign_project) { create(:comment, commenter: other_user, commentable: foreign_project) }
+
+      it { is_expected.not_to be_able_to(:destroy, own_comment_on_foreign_project) }
+      it { is_expected.not_to be_able_to(:destroy, comment_on_foreign_project) }
+    end
+  end
 end
