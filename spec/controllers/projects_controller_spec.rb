@@ -318,4 +318,40 @@ describe ProjectsController do
       end
     end
   end
+
+  describe 'with multiple episodes' do
+    let!(:old_episode) { create(:episode, start_date: 2.months.ago, end_date: 1.month.ago) }
+    let!(:active_episode) { create(:active_episode, start_date: 1.day.ago, end_date: 7.days.from_now, active: true) }
+
+    describe 'GET new' do
+      it 'allows creating a project for the active episode' do
+        get :new, params: { episode: active_episode.to_param }
+        expect(response).to be_successful
+        expect(assigns(:project)).to be_a_new(Project)
+      end
+
+      it 'prevents creating a project for an inactive episode' do
+        get :new, params: { episode: old_episode.to_param }
+        expect(response).to redirect_to(projects_path(old_episode))
+        expect(flash[:alert]).to eq('You can only create projects for an active episode.')
+      end
+    end
+
+    describe 'POST create' do
+      it 'allows creating a project for the active episode' do
+        expect do
+          post :create, params: { episode: active_episode.to_param, project: attributes_for(:project) }
+        end.to change(Project, :count).by(1)
+        expect(response).to redirect_to(project_path(active_episode, Project.last))
+      end
+
+      it 'prevents creating a project for an inactive episode' do
+        expect do
+          post :create, params: { episode: old_episode.to_param, project: attributes_for(:project) }
+        end.not_to change(Project, :count)
+        expect(response).to redirect_to(projects_path(old_episode))
+        expect(flash[:alert]).to eq('You can only create projects for an active episode.')
+      end
+    end
+  end
 end

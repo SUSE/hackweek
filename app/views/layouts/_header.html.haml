@@ -33,7 +33,7 @@
       - if user_signed_in?
         %ul.nav.navbar-nav
           %li
-            = link_to(new_project_path(@episode), {:id=>"new_project_path",:alt=>"Add Project", :title=>"Add Project"}) do
+            = link_to(new_project_path(Episode.active), {:id=>"new_project_path",:alt=>"Add Project", :title=>"Add Project"}) do
               %i.fas.fa-plus
               Create
       - if user_signed_in?

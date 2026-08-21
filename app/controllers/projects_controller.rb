@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
   skip_before_action :set_episode, only: %i[add_episode delete_episode]
   before_action :load_episode_by_id, only: %i[add_episode delete_episode]
   before_action :username_array, only: %i[new edit show]
+  before_action :ensure_active_episode, only: %i[new create]
 
   # GET /projects
   # GET /projects.rss
@@ -216,5 +217,11 @@ class ProjectsController < ApplicationController
 
   def username_array
     @username_array = User.pluck(:name).compact.to_json
+  end
+
+  def ensure_active_episode
+    return unless Episode.any? && (@episode == :all || !@episode&.active?)
+
+    redirect_to projects_path(@episode), alert: 'You can only create projects for an active episode.'
   end
 end

@@ -20,7 +20,8 @@ RUN ln -sf /hackweek/tmp/.bash_history /home/hackweek/.bash_history; \
     ln -sf /hackweek/tmp/.irb_history /home/hackweek/.irb_history;
 
 # Setup Ruby 3.4 environment for our user
-RUN ln -sf /usr/bin/ruby.ruby3.4 /home/hackweek/bin/ruby; \
+RUN install -d -m 0755 /home/hackweek/bin; \
+    ln -sf /usr/bin/ruby.ruby3.4 /home/hackweek/bin/ruby; \
     ln -sf /usr/bin/gem.ruby3.4 /home/hackweek/bin/gem; \
     ln -sf /usr/bin/bundle.ruby3.4 /home/hackweek/bin/bundle; \
     ln -sf /usr/bin/rake.ruby3.4 /home/hackweek/bin/rake;

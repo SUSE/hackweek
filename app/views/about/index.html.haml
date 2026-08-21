@@ -35,7 +35,7 @@
   .col-md-8.col-md-offset-2
     %p
       .btn-group.btn-group-justified.btn-group-lg
-        = link_to new_project_path, class: 'btn btn-lg btn-info' do
+        = link_to new_project_path(Episode.active), class: 'btn btn-lg btn-info' do
           Start
           %span.hidden-xs
             a Project
