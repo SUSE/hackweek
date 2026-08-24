@@ -175,4 +175,20 @@ describe Project do
       expect(Notification.where(recipient: user).count).to eq(1)
     end
   end
+
+  describe 'emoji support' do
+    it 'saves and retrieves project descriptions with emoji characters' do
+      emoji_description = 'Project with emojis 😱🎉👍 and more text'
+      project = create(:project, description: emoji_description)
+      project.reload
+      expect(project.description).to eq(emoji_description)
+    end
+
+    it 'saves and retrieves project titles with emoji characters' do
+      emoji_title = 'My Awesome Project 🚀'
+      project = create(:project, title: emoji_title)
+      project.reload
+      expect(project.title).to eq(emoji_title)
+    end
+  end
 end
