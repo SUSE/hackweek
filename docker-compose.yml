@@ -11,6 +11,7 @@ services:
       - .:/hackweek:z
     ports:
       - "3000:3000"
+    shm_size: '256m'
     environment:
       - CONTAINER=1
     depends_on:
