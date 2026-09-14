@@ -8,18 +8,22 @@ FactoryBot.define do
     memberships_count { 0 }
     aasm_state { 'idea' }
     originator factory: %i[user]
+    episodes { [create(:active_episode)] }
 
     factory :idea, class: Project do
       aasm_state { 'idea' }
     end
+
     factory :project, class: Project do
       aasm_state { 'project' }
       after(:create) { |project| project.users << create(:user) }
     end
+
     factory :invention, class: Project do
       aasm_state { 'invention' }
       after(:create) { |project| project.users << create(:user) }
     end
+
     factory :record, class: Project do
       aasm_state { 'record' }
     end

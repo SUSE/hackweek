@@ -3,16 +3,13 @@ require 'rails_helper'
 feature 'Project management' do
   let(:user) { create :user }
 
-  before :each do
-    sign_in user
-  end
-
   scenario 'User creates a new project' do
+    create(:active_episode)
     title = Faker::Lorem.sentence
     description = Faker::Lorem.paragraph
 
+    sign_in user
     visit new_project_path
-
     fill_in 'project_title', with: title
     fill_in 'project_description', with: description
 
@@ -26,10 +23,10 @@ feature 'Project management' do
 
   scenario 'User edits a project' do
     project = create(:idea, originator: user)
-
     title = Faker::Lorem.sentence
     description = Faker::Lorem.paragraph
 
+    sign_in user
     visit edit_project_path(nil, project)
     expect(page).to have_text(project.description)
 
@@ -45,6 +42,7 @@ feature 'Project management' do
   scenario 'User deletes a project', :search do
     project = create(:idea, originator: user)
 
+    sign_in user
     visit project_path(nil, project)
 
     expect do
@@ -55,6 +53,7 @@ feature 'Project management' do
   scenario 'User archives an idea' do
     project = create(:idea, originator: user)
 
+    sign_in user
     visit project_path(nil, project)
 
     expect do
@@ -65,6 +64,7 @@ feature 'Project management' do
   scenario 'User finishes a project' do
     project = create(:project, originator: user, users: [user])
 
+    sign_in user
     visit project_path(nil, project)
 
     expect do
@@ -75,6 +75,7 @@ feature 'Project management' do
   scenario 'User restarts a project' do
     project = create(:invention, originator: user, users: [user])
 
+    sign_in user
     visit project_path(nil, project)
     click_on "project#{project.to_param}-recess-link"
 
@@ -83,6 +84,7 @@ feature 'Project management' do
   end
 
   scenario 'User uses markdown preview button during editing', :js do
+    sign_in user
     visit '/projects/new'
     fill_in 'project_description', with: '_italic_ **bold**'
     click_on 'Preview'
@@ -97,6 +99,7 @@ feature 'Project management' do
     project.add_keyword! 'web', user
     project2.add_keyword! 'web', user
 
+    sign_in user
     visit project_path(nil, project)
 
     expect(page).to have_css('h5', text: project2.title)

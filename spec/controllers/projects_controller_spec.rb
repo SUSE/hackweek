@@ -25,8 +25,8 @@ describe ProjectsController do
 
     it 'assigns next and previous project if they exist' do
       previous_project = create(:project)
-      project = create(:project)
-      next_project = create(:project)
+      project = create(:project, episodes: previous_project.episodes)
+      next_project = create(:project, episodes: previous_project.episodes)
 
       get :show, params: { id: project.to_param }
       expect(assigns(:previous_project)).to eq(previous_project)
@@ -35,7 +35,7 @@ describe ProjectsController do
 
     it 'redirects numeric id to slug' do
       get :show, params: { id: project.id }
-      expect(response).to redirect_to(project)
+      expect(response).to redirect_to(project_path(project))
     end
   end
 
@@ -69,7 +69,7 @@ describe ProjectsController do
 
       it 'redirects to the created project' do
         post :create, params: { project: attributes_for(:project) }
-        expect(response).to redirect_to(Project.last)
+        expect(response).to redirect_to(project_path(Episode.active, Project.last))
       end
     end
 
@@ -103,7 +103,7 @@ describe ProjectsController do
 
       it 'redirects to the project' do
         put :update, params: { id: project.to_param, project: attributes_for(:project) }
-        expect(response).to redirect_to(project)
+        expect(response).to redirect_to(project_path(Episode.active, project))
       end
     end
 
@@ -142,7 +142,7 @@ describe ProjectsController do
 
     it 'redirects to the project' do
       post :advance, params: { id: project.id }
-      expect(response).to redirect_to(project)
+      expect(response).to redirect_to(project_path(Episode.active, project))
     end
   end
 
@@ -157,7 +157,7 @@ describe ProjectsController do
     it 'redirects to the project' do
       project = create(:idea)
       post :recess, params: { id: project.id }
-      expect(response).to redirect_to(project)
+      expect(response).to redirect_to(project_path(Episode.active, project))
     end
   end
 
@@ -202,7 +202,7 @@ describe ProjectsController do
 
     it 'redirects to the project' do
       get :like, params: { id: project.id }
-      expect(response).to redirect_to(project)
+      expect(response).to redirect_to(project_path(Episode.active, project))
     end
   end
 
@@ -218,7 +218,7 @@ describe ProjectsController do
     it 'redirects to the project' do
       project = create(:idea)
       post :dislike, params: { id: project.id }
-      expect(response).to redirect_to(project)
+      expect(response).to redirect_to(project_path(Episode.active, project))
     end
   end
 
@@ -233,7 +233,7 @@ describe ProjectsController do
     it 'redirects to the project' do
       project = create(:idea)
       post :add_keyword, params: { id: project.id, keyword: 'web' }
-      expect(response).to redirect_to(project)
+      expect(response).to redirect_to(project_path(Episode.active, project))
     end
   end
 
@@ -249,7 +249,7 @@ describe ProjectsController do
     it 'redirects to the project' do
       project = create(:idea)
       post :delete_keyword, params: { id: project.id, keyword: 'web' }
-      expect(response).to redirect_to(project)
+      expect(response).to redirect_to(project_path(Episode.active, project))
     end
   end
 
@@ -282,8 +282,7 @@ describe ProjectsController do
       render_views
 
       # We are creating our helpers eagerly, so they are in the DB at the request time
-      let!(:episode) { create :episode }
-
+      let!(:episode) { create :active_episode }
       let!(:new_projects) { create_list(:project, 10, episodes: [episode]) }
 
       before :example do
@@ -303,8 +302,8 @@ describe ProjectsController do
       end
 
       it 'is scoped to an episode' do
-        another_episode = create :episode
-        the_only_project = create :project, episodes: [another_episode]
+        another_episode = create(:active_episode)
+        the_only_project = create(:project, episodes: [another_episode])
 
         get :index, params: { episode: another_episode.id, format: :rss }
 

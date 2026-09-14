@@ -5,6 +5,7 @@ class Project < ApplicationRecord
   validates :title, :description, :originator, presence: true
   validate  :title_contains_letters?
   validates :url, uniqueness: true
+  validate :must_have_active_episode
 
   belongs_to :originator, class_name: 'User'
 
@@ -26,8 +27,8 @@ class Project < ApplicationRecord
 
   has_one_attached :avatar
 
+  before_validation :assign_episode
   after_create :create_initial_update
-  after_create :assign_episode
 
   ThinkingSphinx::Callbacks.append(self, behaviours: [:real_time])
   acts_as_url :title, blacklist: %w[new archived finished newest popular biggest random]
@@ -220,6 +221,14 @@ class Project < ApplicationRecord
 
   private
 
+  def must_have_active_episode
+    return if episodes.any? do |episode|
+                episode.active == true
+              end
+
+    errors.add(:hackweek, 'must be active')
+  end
+
   def title_contains_letters?
     errors.add(:title, 'must contain letters') if Project.numeric?(title)
   end
@@ -231,7 +240,10 @@ class Project < ApplicationRecord
   end
 
   def assign_episode
-    episodes << Episode.active if Episode.active
+    return unless Episode.active
+    return if episodes.include?(Episode.active)
+
+    episodes << Episode.active
   end
 
   def random_avatar
