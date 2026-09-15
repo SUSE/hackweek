@@ -18,6 +18,8 @@ class Project < ApplicationRecord
 
   has_many :comments, as: :commentable, dependent: :destroy
 
+  has_many :notifications, as: :notifiable, dependent: :destroy
+
   has_and_belongs_to_many :keywords
   has_and_belongs_to_many :episodes
 
