@@ -99,13 +99,13 @@ class ProjectsController < ApplicationController
 
   # PUT /projects/1/advance
   def advance
-    @project.advance!
+    @project.advance!(current_user)
     redirect_to project_path(@episode, @project)
   end
 
   # PUT /projects/1/recess
   def recess
-    @project.recess!
+    @project.recess!(current_user)
     redirect_to project_path(@episode, @project)
   end
 
