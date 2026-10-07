@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
   skip_before_action :set_episode, only: %i[add_episode delete_episode]
   before_action :load_episode_by_id, only: %i[add_episode delete_episode]
   before_action :username_array, only: %i[new edit show]
+  before_action :set_updates, only: %i[show add_episode delete_episode join leave]
 
   # GET /projects
   # GET /projects.rss
@@ -55,7 +56,6 @@ class ProjectsController < ApplicationController
     @previous_project = @project.previous(@episode)
     @next_project = @project.next(@episode)
     @new_comment = Comment.new
-    @updates = @project.updates.includes([:author]).page(1)
     @last_page = @project.updates.page(1).last_page? || @updates.empty?
   end
 
@@ -118,7 +118,6 @@ class ProjectsController < ApplicationController
     else
       flash.now['error'] = @project.errors.full_messages.to_sentence.to_s
     end
-    @updates = @project.updates.page(1)
     render 'membership_list'
   end
 
@@ -129,7 +128,6 @@ class ProjectsController < ApplicationController
     else
       flash.now['error'] = @project.errors.full_messages.to_sentence.to_s
     end
-    @updates = @project.updates.page(1)
     render 'membership_list'
   end
 
@@ -178,19 +176,31 @@ class ProjectsController < ApplicationController
 
   # PUT /projects/1/add_hackweek/1
   def add_episode
-    @project.episodes = @project.episodes | [@episode]
-    flash.now['success'] = "Added hackweek #{@episode.name}"
-    render 'episode_list'
+    if @project.episodes << @episode
+      Update.create!(author: current_user, project: @project, text: "Added hackweek #{@episode.name} to")
+      flash.now['success'] = "Added hackweek #{@episode.name}"
+      render 'episode_list'
+    else
+      flash.now['error'] = "Failed to add hackweek #{@episode.name}"
+    end
   end
 
   # DELETE /projects/1/delete_hackweek/2
   def delete_episode
-    @project.episodes.delete(@episode)
-    flash.now['success'] = "Removed hackweek #{@episode.name}"
-    render 'episode_list'
+    if @project.episodes.delete(@episode)
+      Update.create!(author: current_user, project: @project, text: "Removed hackweek #{@episode.name} to")
+      flash.now['success'] = "Removed hackweek #{@episode.name}"
+      render 'episode_list'
+    else
+      flash.now['error'] = "Failed to remove hackweek #{@episode.name}"
+    end
   end
 
   private
+
+  def set_updates
+    @updates = @project.updates.includes([:author]).page(1)
+  end
 
   def project_params
     params.require(:project).permit(:description, :title, :avatar)
