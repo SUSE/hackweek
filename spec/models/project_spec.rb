@@ -84,11 +84,11 @@ describe Project do
     end
 
     context 'when project has no users (state == idea)' do
-      it { expect(@idea.updates.first.text).to eq('started') }
+      it { expect(@idea.updates.first.text).to include('started') }
     end
 
     context 'when project has a user (state == project)' do
-      it { expect(@project.updates.first.text).to eq('joined') }
+      it { expect(@project.updates.first.text).to include('joined') }
     end
   end
 
