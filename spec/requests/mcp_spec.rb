@@ -55,8 +55,9 @@ RSpec.describe 'MCP endpoint', type: :request do
                params: { name: 'server_info', arguments: {} } })
 
     expect(response).to have_http_status(:ok)
-    expect(tool_text).to include(user.name).and include(user.email)
-    expect(tool_text).to include('Active episode:')
+    payload = response_payload
+    expect(payload).to include('user' => user.name, 'email' => user.email)
+    expect(payload).to include('admin', 'organizer', 'episode', 'tools')
   end
 
   it 'reports the active episode title' do
@@ -64,7 +65,7 @@ RSpec.describe 'MCP endpoint', type: :request do
     allow(Episode).to receive(:active).and_return(episode)
     text = ServerInfoTool.call(server_context: { user: User.new }).content.first[:text]
 
-    expect(text).to include('Hackweek 99')
+    expect(JSON.parse(text)).to include('episode' => 'Hackweek 99')
   end
 
   it 'answers guests without leaking any email' do
