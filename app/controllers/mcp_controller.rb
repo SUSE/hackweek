@@ -1,18 +1,8 @@
-require_relative '../mcp/server_info_tool'
-require_relative '../mcp/list_projects_tool'
-require_relative '../mcp/get_project_tool'
-require_relative '../mcp/search_projects_tool'
-require_relative '../mcp/list_episodes_tool'
-require_relative '../mcp/my_projects_tool'
-require_relative '../mcp/create_update_tool'
-require_relative '../mcp/join_project_tool'
-require_relative '../mcp/mcp_auth'
-
 # JSON-RPC endpoint for the Model Context Protocol (Streamable HTTP, stateless).
 class McpController < ApplicationController
   skip_before_action :store_location, :load_news, :set_episode, :load_notifications
   skip_before_action :authenticate_user!
-  skip_forgery_protection only: [:create]
+  skip_forgery_protection only: [:create], if: -> { bearer_token.present? }
 
   TOOLS = [ServerInfoTool, ListProjectsTool, GetProjectTool, SearchProjectsTool,
            ListEpisodesTool, MyProjectsTool, CreateUpdateTool, JoinProjectTool].freeze
@@ -55,7 +45,10 @@ class McpController < ApplicationController
   def write_denied?
     return false if user_signed_in?
     return false unless params[:method] == 'tools/call'
-    return false unless WRITE_TOOLS.include?(params.dig(:params, :name))
+
+    inner = params[:params]
+    return false unless inner.is_a?(Hash) || inner.is_a?(ActionController::Parameters)
+    return false unless WRITE_TOOLS.include?(inner[:name])
 
     McpAuth.token_scope(bearer_token) != 'write'
   end
