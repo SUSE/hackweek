@@ -37,10 +37,13 @@ describe ListProjectsTool do
     expect(payload.pluck('id')).to contain_exactly(elsewhere.id)
   end
 
-  it 'denies uniformly for an unknown episode' do
+  it 'returns an error for an unknown episode' do
     create(:idea)
 
-    expect(call_tool(described_class, { episode: 999_999 }, user)).to be_denied
+    response = call_tool(described_class, { episode: 999_999 }, user)
+
+    expect(response.error?).to be(true)
+    expect(response).not_to be_denied
   end
 
   it 'caps the number of returned projects' do

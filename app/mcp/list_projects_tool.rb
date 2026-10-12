@@ -23,9 +23,11 @@ class ListProjectsTool < MCP::Tool
   def self.call(server_context:, episode: nil, limit: DEFAULT_LIMIT)
     ability = Ability.new(user_from(server_context))
     projects = scope_to_episode(Project.includes(:originator).order(:id), episode)
-    return denied_response if projects.nil?
+    return error_response('Unknown episode.') if projects.nil?
 
-    visible = projects.limit(clamp_limit(limit)).select { |project| ability.can?(:read, project) }
+    clamped = clamp_limit(limit)
+    candidates = projects.limit(clamped * 5)
+    visible = candidates.select { |project| ability.can?(:read, project) }.first(clamped)
     text_response(JSON.generate(visible.map { |project| serialize(project) }))
   end
 
@@ -38,7 +40,7 @@ class ListProjectsTool < MCP::Tool
 
     def scope_to_episode(projects, episode)
       return scope_to_active(projects) if episode.nil? || episode.to_s.strip.empty?
-      return projects if episode.to_s == 'all'
+      return projects if episode.to_s.strip.casecmp?('all')
 
       found = Episode.find_by(id: episode)
       return nil if found.nil?
@@ -48,12 +50,12 @@ class ListProjectsTool < MCP::Tool
 
     def scope_to_active(projects)
       active = Episode.active
-      active ? projects.by_episode(active) : projects
+      active ? projects.by_episode(active) : Project.none
     end
 
     def clamp_limit(limit)
-      clamped = limit.to_i
-      return DEFAULT_LIMIT if clamped <= 0
+      clamped = Integer(limit, exception: false)
+      return DEFAULT_LIMIT if clamped.nil? || clamped <= 0
       return MAX_LIMIT if clamped > MAX_LIMIT
 
       clamped
@@ -72,6 +74,10 @@ class ListProjectsTool < MCP::Tool
 
     def text_response(text)
       MCP::Tool::Response.new([{ type: 'text', text: text }])
+    end
+
+    def error_response(text)
+      MCP::Tool::Response.new([{ type: 'text', text: text }], error: true)
     end
 
     def denied_response

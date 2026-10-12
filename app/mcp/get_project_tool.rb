@@ -3,7 +3,7 @@ class GetProjectTool < MCP::Tool
   description 'Show a hackweek project with members, keywords and readable updates.'
   input_schema(
     properties: {
-      id: { type: 'string', description: 'Project url slug (see the url field of list_projects).' }
+      id: { type: %w[string integer], description: 'Project url slug (see the url field of list_projects) or id.' }
     },
     required: ['id']
   )
@@ -30,7 +30,7 @@ class GetProjectTool < MCP::Tool
 
     def find_project(ref)
       scoped = Project.includes(:originator, :users, :keywords)
-      scoped.find_by(url: ref.to_s) || (Project.numeric?(ref) ? scoped.find_by(id: ref) : nil)
+      scoped.find_by(url: ref.to_s) || (ref.to_s.match?(/\A\d+\z/) ? scoped.find_by(id: ref) : nil)
     end
 
     def serialize(project, ability)
@@ -48,8 +48,8 @@ class GetProjectTool < MCP::Tool
     end
 
     def readable_updates(project, ability)
-      updates = project.updates.order(created_at: :desc).limit(RECENT_UPDATE_LIMIT)
-      updates.select { |update| ability.can?(:read, update) }.map do |update|
+      updates = project.updates.includes(:author).order(created_at: :desc).limit(RECENT_UPDATE_LIMIT * 3)
+      updates.select { |update| ability.can?(:read, update) }.first(RECENT_UPDATE_LIMIT).map do |update|
         { author: update.author&.name, text: update.text }
       end
     end

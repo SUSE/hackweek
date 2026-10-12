@@ -10,8 +10,10 @@ class MyProjectsTool < MCP::Tool
     user = user_from(server_context)
     return denied_response if guest?(user)
 
-    originated = user.originated_projects.order(:id)
-    membered = user.projects.where.not(id: originated.select(:id)).order(:id)
+    ability = Ability.new(user)
+    originated = user.originated_projects.order(:id).limit(100).select { |project| ability.can?(:read, project) }
+    membered = user.projects.distinct.where.not(id: user.originated_projects.unscope(:order).select(:id))
+                   .order(:id).limit(100).select { |project| ability.can?(:read, project) }
     entries = originated.map { |project| serialize(project, 'originator') } +
               membered.map { |project| serialize(project, 'member') }
     text_response(JSON.generate(entries))

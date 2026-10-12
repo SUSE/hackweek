@@ -4,15 +4,26 @@ class ListEpisodesTool < MCP::Tool
   input_schema(properties: {}, required: [])
   annotations(read_only_hint: true)
 
+  DENIED_MESSAGE = 'Not accessible through this server'.freeze
+
   def self.call(server_context:)
-    # Public listing; the context is accepted for a uniform tool interface.
-    _context = server_context
+    ability = Ability.new(user_from(server_context))
+    return denied_response unless ability.can?(:read, Episode)
+
     entries = Episode.order(:start_date, :id).map { |episode| serialize(episode) }
     MCP::Tool::Response.new([{ type: 'text', text: JSON.generate(entries) }])
   end
 
   class << self
     private
+
+    def user_from(server_context)
+      server_context[:user]
+    end
+
+    def denied_response
+      MCP::Tool::Response.new([{ type: 'text', text: DENIED_MESSAGE }], error: true)
+    end
 
     def serialize(episode)
       {

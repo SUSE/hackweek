@@ -27,6 +27,7 @@ class Ability
       can :read, User
       can :read, Announcement
       can :read, Faq
+      can :read, Episode
       can %i[join leave like dislike create], Project
       can %i[originated likes opportunities], User
       can [:enroll], Announcement

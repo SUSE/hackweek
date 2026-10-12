@@ -15,7 +15,9 @@ class SearchProjectsTool < MCP::Tool
   # available in the test env; the models already maintain real-time indices.
   def self.call(query:, server_context:)
     ability = Ability.new(user_from(server_context))
-    matches = search(query.to_s).select { |project| ability.can?(:read, project) }
+    return text_response(JSON.generate([])) unless query.is_a?(String)
+
+    matches = search(query).select { |project| ability.can?(:read, project) }.first(RESULT_LIMIT)
     text_response(JSON.generate(matches.map { |project| serialize(project) }))
   end
 
@@ -27,14 +29,14 @@ class SearchProjectsTool < MCP::Tool
     end
 
     def search(query)
-      term = query.strip
+      term = query.strip.truncate(200)
       return Project.none if term.empty?
 
       pattern = "%#{ActiveRecord::Base.sanitize_sql_like(term.downcase)}%"
       conditions = ['LOWER(projects.title) LIKE :pattern',
                     'LOWER(projects.description) LIKE :pattern',
                     'LOWER(keywords.name) LIKE :pattern'].join(' OR ')
-      Project.left_joins(:keywords).where(conditions, pattern: pattern).distinct.order(:id).limit(RESULT_LIMIT)
+      Project.left_joins(:keywords).where(conditions, pattern: pattern).distinct.order(:id).limit(100)
     end
 
     def serialize(project)
