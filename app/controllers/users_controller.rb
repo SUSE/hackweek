@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show originated likes opportunities]
   skip_before_action :verify_authenticity_token, only: %i[add_keyword delete_keyword]
   skip_before_action :set_updates, only: %i[tokens create_token revoke_token]
+  skip_authorize_resource only: %i[tokens create_token revoke_token]
 
   def index
     @users = User.all.page(params[:page]).per(params[:page_size])

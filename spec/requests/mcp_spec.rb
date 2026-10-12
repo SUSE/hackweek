@@ -269,4 +269,19 @@ RSpec.describe 'MCP endpoint', type: :request do
       expect(File.read(log_path, mode: 'r:UTF-8')).not_to include(write_raw) if File.exist?(log_path)
     end
   end
+
+  it 'returns a JSON-RPC error for missing id, not 500' do
+    mcp_post({ jsonrpc: '2.0', id: 99, method: 'tools/call',
+               params: { name: 'get_project', arguments: {} } })
+
+    expect(response).to have_http_status(:ok)
+    expect(result_body['isError']).to be(true)
+  end
+
+  it 'returns a JSON-RPC error for array params, not 500' do
+    mcp_post({ jsonrpc: '2.0', id: 100, method: 'tools/call', params: [] })
+
+    expect(response).to have_http_status(:ok)
+    expect(response.parsed_body['error']).to be_present
+  end
 end
