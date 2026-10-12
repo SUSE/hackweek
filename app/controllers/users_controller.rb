@@ -87,7 +87,7 @@ class UsersController < ApplicationController
   def revoke_token
     @user = current_user
     token = ApiToken.find_by(id: params[:token_id], user_id: @user.id)
-    return redirect_back_or_to tokens_user_path(@user), alert: 'Token not found.' if token.nil?
+    return redirect_back_or_to tokens_user_path(@user), alert: 'Token not found.' if token.nil? # rubocop:disable Rails/I18nLocaleTexts
 
     token.revoke!
     redirect_back_or_to tokens_user_path(@user), notice: "Token '#{token.name}' revoked."

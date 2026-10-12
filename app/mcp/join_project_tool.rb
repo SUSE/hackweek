@@ -18,7 +18,7 @@ class JoinProjectTool < MCP::Tool
 
     ability = Ability.new(user)
     project = find_project(project_id)
-    return denied_response if project.nil? || !ability.can?(:read, project) || !ability.can?(:join, project)
+    return denied_response unless joinable?(ability, project)
     return text_response("Already a member of project '#{project.title}'.") if project.users.exists?(user.id)
 
     begin
@@ -34,6 +34,10 @@ class JoinProjectTool < MCP::Tool
 
   class << self
     private
+
+    def joinable?(ability, project)
+      !project.nil? && ability.can?(:read, project) && ability.can?(:join, project)
+    end
 
     def user_from(server_context)
       server_context[:user] # Hash and MCP::ServerContext both answer #[]

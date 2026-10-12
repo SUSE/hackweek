@@ -3,7 +3,8 @@ module McpSpecHelpers
 
   def call_tool(tool, args, user, scope: nil)
     delivered = JSON.parse(JSON.generate(args), symbolize_names: true)
-    effective = scope.nil? ? (user.respond_to?(:persisted?) && user.persisted? ? 'write' : nil) : scope
+    effective = scope
+    effective = 'write' if effective.nil? && user.respond_to?(:persisted?) && user.persisted?
     tool.call(**delivered, server_context: { user: user, scope: effective })
   end
 
