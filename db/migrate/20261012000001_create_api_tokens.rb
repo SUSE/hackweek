@@ -4,7 +4,7 @@ class CreateApiTokens < ActiveRecord::Migration[7.2]
       t.references :user, null: false, foreign_key: true, type: :integer
       t.string :name, null: false
       t.string :scope, null: false, default: 'read'
-      t.string :token_digest, null: false
+      t.string :token_digest, null: false, limit: 64
       t.datetime :last_used_at
       t.datetime :revoked_at
 

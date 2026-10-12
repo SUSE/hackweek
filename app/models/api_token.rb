@@ -5,7 +5,7 @@ class ApiToken < ApplicationRecord
 
   SCOPES = %w[read write].freeze
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 255 }
   validates :scope, presence: true, inclusion: { in: SCOPES }
   validates :token_digest, presence: true, uniqueness: true
 
@@ -22,8 +22,8 @@ class ApiToken < ApplicationRecord
     return nil if raw.blank?
 
     expected = digest(raw)
-    candidate = find_by(token_digest: expected)
-    return nil if candidate.nil? || candidate.revoked?
+    candidate = where(token_digest: expected, revoked_at: nil).first
+    return nil if candidate.nil?
     return nil unless ActiveSupport::SecurityUtils.secure_compare(candidate.token_digest, expected)
 
     candidate
@@ -34,6 +34,8 @@ class ApiToken < ApplicationRecord
   end
 
   def revoke!
+    return if revoked?
+
     update!(revoked_at: Time.current)
   end
 
@@ -44,7 +46,7 @@ class ApiToken < ApplicationRecord
   private
 
   def mint_secret
-    return if token_digest.present?
+    return if @raw_token.present?
 
     @raw_token = SecureRandom.hex(32)
     self.token_digest = self.class.digest(@raw_token)

@@ -52,7 +52,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_10_12_000001) do
     t.integer "user_id", null: false
     t.string "name", null: false
     t.string "scope", default: "read", null: false
-    t.string "token_digest", null: false
+    t.string "token_digest", limit: 64, null: false
     t.datetime "last_used_at"
     t.datetime "revoked_at"
     t.datetime "created_at", null: false
