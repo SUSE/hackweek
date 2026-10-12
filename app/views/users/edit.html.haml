@@ -30,3 +30,11 @@
       .form-group
         .col-sm-offset-2.col-sm-10
           = f.submit :class => "btn btn-default"
+
+- if can? :tokens, @user
+  %hr
+  .row
+    .col-md-12
+      %h3 API tokens
+      %p.text-muted Tokens let MCP clients act as you. Secrets are shown once at mint time.
+      = render partial: 'tokens', locals: { user: @user, api_tokens: @api_tokens }

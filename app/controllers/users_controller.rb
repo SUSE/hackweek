@@ -15,7 +15,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @api_tokens = owner_tokens
+  end
 
   def update
     @user.update(params['user'])
@@ -59,7 +61,32 @@ class UsersController < ApplicationController
     redirect_to @user, notice: "Keyword '#{params[:keyword]}' removed."
   end
 
+  def tokens
+    @api_tokens = owner_tokens
+  end
+
+  def create_token
+    @token = ApiToken.new(user: @user, name: params[:name], scope: params[:scope])
+    @api_tokens = owner_tokens
+    if @token.save
+      @raw_token = @token.raw_token
+      render :tokens
+    else
+      render :tokens, status: :unprocessable_content
+    end
+  end
+
+  def revoke_token
+    token = ApiToken.find_by!(id: params[:token_id], user_id: @user.id)
+    token.revoke!
+    redirect_back_or_to tokens_user_path(@user), notice: "Token '#{token.name}' revoked."
+  end
+
   private
+
+  def owner_tokens
+    ApiToken.where(user: @user).order(created_at: :desc)
+  end
 
   def user_params
     params.require(:user).permit(:location, :hide_email)

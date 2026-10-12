@@ -10,6 +10,9 @@ Rails.application.routes.draw do
       get 'opportunities'
       post 'keyword', to: 'users#add_keyword'
       delete 'keyword', to: 'users#delete_keyword', constraints: { keyword: %r{[^/]+} }
+      get 'tokens', to: 'users#tokens'
+      post 'tokens', to: 'users#create_token'
+      delete 'tokens', to: 'users#revoke_token'
     end
   end
 
