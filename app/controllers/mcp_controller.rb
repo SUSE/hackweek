@@ -1,4 +1,11 @@
 require_relative '../mcp/server_info_tool'
+require_relative '../mcp/list_projects_tool'
+require_relative '../mcp/get_project_tool'
+require_relative '../mcp/search_projects_tool'
+require_relative '../mcp/list_episodes_tool'
+require_relative '../mcp/my_projects_tool'
+require_relative '../mcp/create_update_tool'
+require_relative '../mcp/join_project_tool'
 require_relative '../mcp/mcp_auth'
 
 # JSON-RPC endpoint for the Model Context Protocol (Streamable HTTP, stateless).
@@ -7,13 +14,19 @@ class McpController < ApplicationController
   skip_before_action :authenticate_user!
   skip_forgery_protection only: [:create]
 
+  TOOLS = [ServerInfoTool, ListProjectsTool, GetProjectTool, SearchProjectsTool,
+           ListEpisodesTool, MyProjectsTool, CreateUpdateTool, JoinProjectTool].freeze
+  WRITE_TOOLS = %w[create_update join_project].freeze
+  DENIED_MESSAGE = 'Not accessible through this server'.freeze
+
   def create
     return head :unsupported_media_type unless request.media_type == 'application/json'
+    return render_write_denied if write_denied?
 
     server = MCP::Server.new(
       name: 'hackweek',
       version: '1.0.0',
-      tools: [ServerInfoTool],
+      tools: TOOLS,
       server_context: { user: mcp_user }
     )
     transport_options = { stateless: true, serve_subscriptions_listen: false }
@@ -35,6 +48,24 @@ class McpController < ApplicationController
     token = bearer_token
     authed = McpAuth.authenticate_bearer(token) if token
     authed || User.new
+  end
+
+  # Write tools need a write-scoped token; the session carries full agency.
+  # Denied here so read-scoped callers get the same uniform denial as guests.
+  def write_denied?
+    return false if user_signed_in?
+    return false unless params[:method] == 'tools/call'
+    return false unless WRITE_TOOLS.include?(params.dig(:params, :name))
+
+    McpAuth.token_scope(bearer_token) != 'write'
+  end
+
+  def render_write_denied
+    render json: {
+      jsonrpc: '2.0',
+      id: params[:id],
+      result: { content: [{ type: 'text', text: DENIED_MESSAGE }], isError: true }
+    }
   end
 
   def bearer_token
