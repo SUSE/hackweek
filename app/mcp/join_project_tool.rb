@@ -14,6 +14,7 @@ class JoinProjectTool < MCP::Tool
   def self.call(project_id:, server_context:)
     user = user_from(server_context)
     return denied_response if guest?(user)
+    return denied_response unless server_context[:scope] == 'write'
 
     project = find_project(project_id)
     return denied_response if project.nil?

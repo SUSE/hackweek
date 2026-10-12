@@ -1,9 +1,10 @@
 module McpSpecHelpers
   DENIED_MESSAGE = 'Not accessible through this server'.freeze
 
-  def call_tool(tool, args, user)
+  def call_tool(tool, args, user, scope: nil)
     delivered = JSON.parse(JSON.generate(args), symbolize_names: true)
-    tool.call(**delivered, server_context: { user: user })
+    effective = scope.nil? ? (user.respond_to?(:persisted?) && user.persisted? ? 'write' : nil) : scope
+    tool.call(**delivered, server_context: { user: user, scope: effective })
   end
 
   def response_text(response)

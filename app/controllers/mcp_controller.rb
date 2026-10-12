@@ -17,7 +17,7 @@ class McpController < ApplicationController
       name: 'hackweek',
       version: '1.0.0',
       tools: TOOLS,
-      server_context: { user: mcp_user }
+      server_context: { user: mcp_user, scope: mcp_scope }
     )
     transport_options = { stateless: true, serve_subscriptions_listen: false }
     # DNS-rebinding protection only allows loopback Hosts by default, which
@@ -38,6 +38,13 @@ class McpController < ApplicationController
     token = bearer_token
     authed = McpAuth.authenticate_bearer(token) if token
     authed || User.new
+  end
+
+  # Session carries full agency; tokens carry their own scope; guests have none.
+  def mcp_scope
+    return 'write' if user_signed_in?
+
+    McpAuth.token_scope(bearer_token)
   end
 
   # Write tools need a write-scoped token; the session carries full agency.
