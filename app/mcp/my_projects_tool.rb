@@ -21,7 +21,7 @@ class MyProjectsTool < MCP::Tool
     private
 
     def user_from(server_context)
-      server_context.is_a?(Hash) ? server_context[:user] || server_context['user'] : nil
+      server_context[:user] # Hash and MCP::ServerContext both answer #[]
     end
 
     def guest?(user)
