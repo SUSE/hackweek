@@ -16,14 +16,19 @@ class JoinProjectTool < MCP::Tool
     return denied_response if guest?(user)
     return denied_response unless server_context[:scope] == 'write'
 
+    ability = Ability.new(user)
     project = find_project(project_id)
-    return denied_response if project.nil?
-    return text_response("Already a member of project '#{project.title}'.") if project.users.include?(user)
+    return denied_response if project.nil? || !ability.can?(:read, project) || !ability.can?(:join, project)
+    return text_response("Already a member of project '#{project.title}'.") if project.users.exists?(user.id)
 
-    if project.join!(user)
-      text_response("Joined project '#{project.title}'.")
-    else
-      error_response(project.errors.full_messages.to_sentence.presence || 'Could not join project.')
+    begin
+      if project.join!(user)
+        text_response("Joined project '#{project.title}'.")
+      else
+        error_response(project.errors.full_messages.to_sentence.presence || 'Could not join project.')
+      end
+    rescue ActiveRecord::RecordInvalid, ActiveRecord::RecordNotUnique, AASM::InvalidTransition => e
+      error_response("Could not join project: #{e.message}")
     end
   end
 
@@ -39,7 +44,7 @@ class JoinProjectTool < MCP::Tool
     end
 
     def find_project(ref)
-      Project.find_by(url: ref.to_s) || (Project.numeric?(ref) ? Project.find_by(id: ref) : nil)
+      Project.find_by(url: ref.to_s) || (ref.to_s.match?(/\A\d+\z/) ? Project.find_by(id: ref) : nil)
     end
 
     def text_response(text)

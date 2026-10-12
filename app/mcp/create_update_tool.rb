@@ -17,10 +17,14 @@ class CreateUpdateTool < MCP::Tool
     return denied_response if guest?(user)
     return denied_response unless server_context[:scope] == 'write'
 
+    ability = Ability.new(user)
     project = find_project(project_id)
-    return denied_response if project.nil? || !member_or_originator?(project, user)
+    return denied_response if project.nil? || !member_or_originator?(project, user, ability)
 
-    update = Update.create!(author: user, project: project, text: text)
+    cleaned = text.to_s.strip
+    return error_response('Update text must not be blank.') if cleaned.empty?
+
+    update = Update.create!(author: user, project: project, text: cleaned)
     text_response("Created update #{update.id} on project '#{project.title}'.")
   rescue ActiveRecord::RecordInvalid => e
     error_response("Could not create update: #{e.record.errors.full_messages.to_sentence}.")
@@ -41,8 +45,10 @@ class CreateUpdateTool < MCP::Tool
       Project.find_by(url: ref.to_s) || (Project.numeric?(ref) ? Project.find_by(id: ref) : nil)
     end
 
-    def member_or_originator?(project, user)
-      project.originator_id == user.id || project.users.include?(user)
+    def member_or_originator?(project, user, ability = nil)
+      return true if ability&.can?(:manage, project)
+
+      project.originator_id == user.id || project.memberships.exists?(user_id: user.id)
     end
 
     def text_response(text)
