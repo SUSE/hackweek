@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_10_21_103843) do
+ActiveRecord::Schema[7.2].define(version: 2026_10_12_000001) do
 
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -46,6 +46,19 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_21_103843) do
     t.integer "originator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "api_tokens", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "name", null: false
+    t.string "scope", default: "read", null: false
+    t.string "token_digest", null: false
+    t.datetime "last_used_at"
+    t.datetime "revoked_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["token_digest"], name: "index_api_tokens_on_token_digest", unique: true
+    t.index ["user_id"], name: "index_api_tokens_on_user_id"
   end
 
   create_table "comments", id: :integer, charset: "utf8", collation: "utf8_bin", options: "ENGINE=InnoDB ROW_FORMAT=DYNAMIC", force: :cascade do |t|
@@ -233,4 +246,5 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_21_103843) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "api_tokens", "users"
 end
