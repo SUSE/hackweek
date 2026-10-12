@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   skip_before_action :authenticate_user!, only: %i[show originated likes opportunities]
   skip_before_action :verify_authenticity_token, only: %i[add_keyword delete_keyword]
+  skip_before_action :set_updates, only: %i[tokens create_token revoke_token]
 
   def index
     @users = User.all.page(params[:page]).per(params[:page_size])
@@ -62,12 +63,18 @@ class UsersController < ApplicationController
   end
 
   def tokens
+    @user = current_user
     @api_tokens = owner_tokens
   end
 
   def create_token
-    @token = ApiToken.new(user: @user, name: params[:name], scope: params[:scope])
+    @user = current_user
+    @token = ApiToken.new(user: @user, name: params[:name], scope: params[:scope].presence || 'read')
     @api_tokens = owner_tokens
+    if @user.api_tokens.count >= 50
+      @token.errors.add(:base, 'Token limit reached (maximum 50 per user)')
+      return render :tokens, status: :unprocessable_content
+    end
     if @token.save
       @raw_token = @token.raw_token
       render :tokens
@@ -77,7 +84,10 @@ class UsersController < ApplicationController
   end
 
   def revoke_token
-    token = ApiToken.find_by!(id: params[:token_id], user_id: @user.id)
+    @user = current_user
+    token = ApiToken.find_by(id: params[:token_id], user_id: @user.id)
+    return redirect_back_or_to tokens_user_path(@user), alert: 'Token not found.' if token.nil?
+
     token.revoke!
     redirect_back_or_to tokens_user_path(@user), notice: "Token '#{token.name}' revoked."
   end
@@ -85,7 +95,7 @@ class UsersController < ApplicationController
   private
 
   def owner_tokens
-    ApiToken.where(user: @user).order(created_at: :desc)
+    ApiToken.where(user: @user).order(created_at: :desc).limit(100)
   end
 
   def user_params

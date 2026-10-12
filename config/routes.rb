@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       delete 'keyword', to: 'users#delete_keyword', constraints: { keyword: %r{[^/]+} }
       get 'tokens', to: 'users#tokens'
       post 'tokens', to: 'users#create_token'
-      delete 'tokens', to: 'users#revoke_token'
+      delete 'tokens/:token_id', to: 'users#revoke_token'
     end
   end
 
