@@ -42,7 +42,7 @@ class CreateUpdateTool < MCP::Tool
     end
 
     def find_project(ref)
-      Project.find_by(url: ref.to_s) || (Project.numeric?(ref) ? Project.find_by(id: ref) : nil)
+      Project.find_by(url: ref.to_s) || (ref.to_s.match?(/\A\d+\z/) ? Project.find_by(id: ref) : nil)
     end
 
     def member_or_originator?(project, user, ability = nil)

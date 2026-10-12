@@ -27,6 +27,10 @@ describe GetProjectTool do
     expect(call_tool(described_class, { id: 'no-such-project' }, user)).to be_denied
   end
 
+  it 'denies float-like ids instead of truncating' do
+    expect(call_tool(described_class, { id: '1.5' }, user)).to be_denied
+  end
+
   it 'hides updates authored by other users' do
     other = create(:user)
     Update.create!(author: other, project: project, text: 'theirs')

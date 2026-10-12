@@ -39,6 +39,10 @@ describe CreateUpdateTool do
     expect(call_tool(described_class, { project_id: 999_999, text: 'hi' }, user)).to be_denied
   end
 
+  it 'denies float-like ids instead of truncating' do
+    expect(call_tool(described_class, { project_id: '1.5', text: 'hi' }, user)).to be_denied
+  end
+
   it 'returns an error response on validation failure' do
     project_id = project.id
     invalid = Update.new

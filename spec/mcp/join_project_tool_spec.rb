@@ -32,6 +32,10 @@ describe JoinProjectTool do
     expect(call_tool(described_class, { project_id: 999_999 }, user)).to be_denied
   end
 
+  it 'denies float-like ids instead of truncating' do
+    expect(call_tool(described_class, { project_id: '1.5' }, user)).to be_denied
+  end
+
   it 'returns an error response for finished projects' do
     finished = create(:invention)
 
