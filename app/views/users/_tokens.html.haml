@@ -4,17 +4,19 @@
       %th Name
       %th Scope
       %th Last used
+      %th Expires
       %th Created
       %th
   %tbody
     - if api_tokens.empty?
       %tr
-        %td{ colspan: 5 } No API tokens yet.
+        %td{ colspan: 6 } No API tokens yet.
     - api_tokens.each do |token|
       %tr
         %td= token.name
         %td= token.scope
         %td= token.last_used_at ? l(token.last_used_at, format: :short) : 'never'
+        %td= token.expires_at ? l(token.expires_at, format: :short) : 'never'
         %td= l(token.created_at, format: :short)
         %td
           - if token.revoked?
