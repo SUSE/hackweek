@@ -54,6 +54,16 @@ describe CreateUpdateTool do
     expect(call_tool(described_class, { project_id: '1.5', text: 'hi' }, user)).to be_denied
   end
 
+  it 'returns an error response for overlong text' do
+    project_id = project.id
+    response = nil
+    expect do
+      response = call_tool(described_class, { project_id: project_id, text: 'x' * 10_001 }, user)
+    end.not_to change(Update, :count)
+
+    expect(response.error?).to be(true)
+  end
+
   it 'returns an error response on validation failure' do
     project_id = project.id
     invalid = Update.new
