@@ -23,6 +23,10 @@ RSpec.describe 'MCP endpoint', type: :request do
     result_body['content'].map { |block| block['text'] }.join
   end
 
+  def denied_result?
+    result_body['isError'] == true && tool_text == 'Not accessible through this server'
+  end
+
   def response_payload
     JSON.parse(tool_text)
   end
@@ -207,14 +211,15 @@ RSpec.describe 'MCP endpoint', type: :request do
       expect(read_token.reload.last_used_at).to be > fresh_stamp
     end
 
-    it 'lists the five wired read tools' do
+    it 'lists all eight wired tools' do
       mcp_post({ jsonrpc: '2.0', id: 5, method: 'tools/list', params: {} },
                bearer_headers(read_raw))
 
       expect(response).to have_http_status(:ok)
       names = result_body['tools'].pluck('name')
       expect(names).to contain_exactly('server_info', 'list_projects', 'get_project',
-                                       'search_projects', 'list_episodes')
+                                       'search_projects', 'list_episodes', 'my_projects',
+                                       'create_update', 'join_project')
       expect_no_token_leak(read_raw)
     end
 
@@ -267,6 +272,82 @@ RSpec.describe 'MCP endpoint', type: :request do
       expect_no_token_leak(read_raw)
     end
 
+    it "returns the token owner's projects, proving the real user is carried" do
+      originated = create(:idea, originator: user)
+      create(:idea)
+
+      tool_call('my_projects', {}, read_raw)
+
+      expect(response).to have_http_status(:ok)
+      by_id = response_payload.index_by { |entry| entry['id'] }
+      expect(by_id.keys).to contain_exactly(originated.id)
+      expect(by_id[originated.id]).to include('title' => originated.title, 'role' => 'originator')
+      expect_no_token_leak(read_raw)
+    end
+
+    it 'creates an update with a write token' do
+      project = create(:idea, originator: user)
+
+      expect do
+        tool_call('create_update', { project_id: project.id, text: 'bearer progress' }, write_raw)
+      end.to change(Update, :count).by(1)
+
+      expect(response).to have_http_status(:ok)
+      expect(tool_text).to include("project '#{project.title}'")
+      expect_no_token_leak(write_raw)
+    end
+
+    it 'joins a project with a write token' do
+      project = create(:idea)
+
+      tool_call('join_project', { project_id: project.id }, write_raw)
+
+      expect(response).to have_http_status(:ok)
+      expect(project.reload.users).to include(user)
+      expect_no_token_leak(write_raw)
+    end
+
+    it 'denies write tools to read-scoped tokens exactly like guests' do
+      project = create(:idea, originator: user)
+      payload = { jsonrpc: '2.0', id: 42, method: 'tools/call',
+                  params: { name: 'create_update',
+                            arguments: { project_id: project.id, text: 'hijack' } } }
+
+      mcp_post(payload)
+      guest_result = result_body
+
+      mcp_post(payload, bearer_headers(read_raw))
+
+      expect(response).to have_http_status(:ok)
+      expect(denied_result?).to be(true)
+      expect(result_body).to eq(guest_result)
+      expect_no_token_leak(read_raw)
+    end
+
+    it 'creates no update for read-scoped write calls' do
+      project = create(:idea, originator: user)
+      payload = { jsonrpc: '2.0', id: 43, method: 'tools/call',
+                  params: { name: 'create_update',
+                            arguments: { project_id: project.id, text: 'hijack' } } }
+
+      expect do
+        mcp_post(payload, bearer_headers(read_raw))
+      end.not_to change(Update, :count)
+
+      expect(denied_result?).to be(true)
+    end
+
+    it 'denies joining projects to read-scoped tokens' do
+      project = create(:idea)
+
+      tool_call('join_project', { project_id: project.id }, read_raw)
+
+      expect(response).to have_http_status(:ok)
+      expect(denied_result?).to be(true)
+      expect(project.reload.users).not_to include(user)
+      expect_no_token_leak(read_raw)
+    end
+
     it 'treats revoked tokens as guests' do
       raw = read_raw
       read_token.revoke!
@@ -301,7 +382,8 @@ RSpec.describe 'MCP endpoint', type: :request do
     end
 
     it 'keeps token material out of responses and logs' do
-      tool_call('list_projects', { episode: 'all' }, write_raw)
+      project = create(:idea, originator: user)
+      tool_call('create_update', { project_id: project.id, text: 'quiet' }, write_raw)
 
       expect(response).to have_http_status(:ok)
       expect_no_token_leak(write_raw)
