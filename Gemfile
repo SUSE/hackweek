@@ -54,6 +54,8 @@ gem 'sentry-ruby'
 gem 'figaro'
 # for keyboard shortcuts
 gem 'mousetrap-rails'
+# to throttle abusive clients
+gem 'rack-attack'
 # as search engine
 gem 'thinking-sphinx'
 # for pagination
