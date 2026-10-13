@@ -40,6 +40,20 @@ RSpec.describe 'MCP endpoint', type: :request do
     expect(result_body['serverInfo']['name']).to eq('hackweek')
   end
 
+  it 'trusts the request host outside the test env' do
+    Rails.application.config.hosts << 'hackweek.opensuse.org'
+    allow(Rails).to receive(:env).and_return(ActiveSupport::StringInquirer.new('production'))
+    host! 'hackweek.opensuse.org'
+    mcp_post({ jsonrpc: '2.0', id: 1, method: 'initialize',
+               params: { protocolVersion: '2025-03-26', capabilities: {},
+                         clientInfo: { name: 'spec', version: '0.1' } } })
+
+    expect(response).to have_http_status(:ok)
+    expect(result_body['serverInfo']['name']).to eq('hackweek')
+  ensure
+    Rails.application.config.hosts.delete('hackweek.opensuse.org')
+  end
+
   it 'lists tools including server_info' do
     mcp_post({ jsonrpc: '2.0', id: 2, method: 'tools/list', params: {} })
 

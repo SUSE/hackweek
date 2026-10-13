@@ -20,9 +20,10 @@ class McpController < ApplicationController
       server_context: { user: mcp_user, scope: mcp_scope }
     )
     transport_options = { stateless: true, serve_subscriptions_listen: false }
-    # DNS-rebinding protection only allows loopback Hosts by default, which
-    # rejects the test suite's dummy host; widen it in test env only.
-    transport_options[:allowed_hosts] = [request.host] if Rails.env.test?
+    # DNS-rebinding protection only allows loopback Hosts by default; Rails'
+    # own HostAuthorization already rejected unknown hosts before this
+    # controller, so trusting the surviving request host is safe in all envs.
+    transport_options[:allowed_hosts] = [request.host]
     transport = MCP::Server::Transports::StreamableHTTPTransport.new(server, **transport_options)
     status, headers, body = transport.handle_request(request)
 
