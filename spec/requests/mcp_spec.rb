@@ -175,6 +175,31 @@ RSpec.describe 'MCP endpoint', type: :request do
       end
     end
 
+    it 'throttles last_used_at writes to one per minute' do
+      tool_call('server_info', {}, read_raw)
+      expect(read_token.reload.last_used_at).to be_present
+
+      # A call within the throttle window leaves last_used_at and
+      # updated_at alone.
+      read_token.update_column(:last_used_at, 30.seconds.ago)
+      read_token.update_column(:updated_at, 1.hour.ago)
+      fresh_stamp = read_token.reload.last_used_at
+      old_updated = read_token.updated_at
+
+      tool_call('server_info', {}, read_raw)
+
+      expect(response).to have_http_status(:ok)
+      expect(read_token.reload.last_used_at).to eq(fresh_stamp)
+      expect(read_token.reload.updated_at).to eq(old_updated)
+
+      # A stale stamp refreshes.
+      read_token.update_column(:last_used_at, 2.minutes.ago)
+
+      tool_call('server_info', {}, read_raw)
+
+      expect(read_token.reload.last_used_at).to be > fresh_stamp
+    end
+
     it 'lists all eight wired tools' do
       mcp_post({ jsonrpc: '2.0', id: 5, method: 'tools/list', params: {} },
                bearer_headers(read_raw))
