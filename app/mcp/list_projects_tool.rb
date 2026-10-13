@@ -26,8 +26,9 @@ class ListProjectsTool < MCP::Tool
     return error_response('Unknown episode.') if projects.nil?
 
     clamped = clamp_limit(limit)
-    candidates = projects.limit(clamped * 5)
-    visible = candidates.select { |project| ability.can?(:read, project) }.first(clamped)
+    # Reads are currently unconditional, so SQL-limit to the asked size; the
+    # Ruby select stays as a guard so future per-project rules filter here.
+    visible = projects.limit(clamped).select { |project| ability.can?(:read, project) }
     text_response(JSON.generate(visible.map { |project| serialize(project) }))
   end
 

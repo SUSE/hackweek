@@ -46,6 +46,19 @@ describe ListProjectsTool do
     expect(response).not_to be_denied
   end
 
+  it 'filters through the ability guard when rules deny a project' do
+    first = create(:idea)
+    second = create(:idea)
+    guarded = Ability.new(user)
+    allow(guarded).to receive(:can?).and_call_original
+    allow(guarded).to receive(:can?).with(:read, second).and_return(false)
+    allow(Ability).to receive(:new).and_return(guarded)
+
+    payload = response_payload(call_tool(described_class, { episode: 'all' }, user))
+
+    expect(payload.pluck('id')).to contain_exactly(first.id)
+  end
+
   it 'caps the number of returned projects' do
     create_list(:idea, 3)
 
