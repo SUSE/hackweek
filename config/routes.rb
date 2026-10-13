@@ -93,5 +93,7 @@ Rails.application.routes.draw do
   get 'about', to: 'about#show'
   get 'howto', to: 'about#show'
 
+  post '/mcp', to: 'mcp#create'
+
   root 'about#index'
 end
