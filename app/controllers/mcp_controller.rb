@@ -6,7 +6,7 @@ class McpController < ApplicationController
   rescue_from ActionController::InvalidAuthenticityToken, with: :mcp_forgery_denial
 
   TOOLS = [ServerInfoTool, ListProjectsTool, GetProjectTool, SearchProjectsTool,
-           ListEpisodesTool].freeze
+           ListEpisodesTool, MyProjectsTool, CreateUpdateTool, JoinProjectTool].freeze
 
   def create
     return head :unsupported_media_type unless request.media_type == 'application/json'
