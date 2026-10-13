@@ -115,6 +115,66 @@ RSpec.describe 'MCP endpoint', type: :request do
       expect(response.body).not_to include(ApiToken.digest(raw))
     end
 
+    it 'authenticates the bearer only once per request' do
+      expect(ApiToken).to receive(:authenticate).once.and_call_original
+
+      tool_call('server_info', {}, read_raw)
+
+      expect(response).to have_http_status(:ok)
+    end
+
+    it 'ignores the session when a bearer is present, treating junk as guest' do
+      other = create(:user)
+      sign_in other
+      mcp_post({ jsonrpc: '2.0', id: 101, method: 'tools/call',
+                 params: { name: 'server_info', arguments: {} } },
+               bearer_headers('junk-secret'))
+
+      expect(response).to have_http_status(:ok)
+      expect(tool_text).to include('guest')
+      expect(tool_text).not_to include(other.email)
+    end
+
+    it 'acts as the token owner when session and bearer disagree' do
+      other = create(:user)
+      sign_in other
+
+      tool_call('server_info', {}, read_raw)
+
+      expect(response).to have_http_status(:ok)
+      expect(tool_text).to include(user.email)
+      expect(tool_text).not_to include(other.email)
+    end
+
+    context 'with forgery protection enabled' do
+      around do |example|
+        previous = ActionController::Base.allow_forgery_protection
+        ActionController::Base.allow_forgery_protection = true
+        example.run
+        ActionController::Base.allow_forgery_protection = previous
+      end
+
+      it 'skips forgery protection for a real bearer' do
+        tool_call('server_info', {}, read_raw)
+
+        expect(response).to have_http_status(:ok)
+        expect(tool_text).to include(user.email)
+      end
+
+      it 'nulls the session for a junk bearer, denying as guest' do
+        other = create(:user)
+        sign_in other
+        payload = { jsonrpc: '2.0', id: 103, method: 'tools/call',
+                    params: { name: 'server_info', arguments: {} } }
+
+        mcp_post(payload, bearer_headers('junk-secret'))
+
+        expect(response).to have_http_status(:ok)
+        expect(tool_text).to include('guest')
+        expect(tool_text).not_to include(other.email)
+      end
+    end
+
     it 'lists all eight wired tools' do
       mcp_post({ jsonrpc: '2.0', id: 5, method: 'tools/list', params: {} },
                bearer_headers(read_raw))

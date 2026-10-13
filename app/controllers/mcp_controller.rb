@@ -2,7 +2,7 @@
 class McpController < ApplicationController
   skip_before_action :store_location, :load_news, :set_episode, :load_notifications
   skip_before_action :authenticate_user!
-  skip_forgery_protection only: [:create], if: -> { bearer_token.present? }
+  skip_forgery_protection only: [:create], if: -> { mcp_bearer_authenticated? }
 
   TOOLS = [ServerInfoTool, ListProjectsTool, GetProjectTool, SearchProjectsTool,
            ListEpisodesTool, MyProjectsTool, CreateUpdateTool, JoinProjectTool].freeze
@@ -33,19 +33,22 @@ class McpController < ApplicationController
   private
 
   # Devise session or Bearer token, falling back to a guest (unpersisted) user.
+  # A present Bearer header owns the request: the session is ignored, so a
+  # junk secret degrades to guest even with a valid cookie.
   def mcp_user
-    return current_user if user_signed_in?
+    return mcp_auth_token.user if mcp_auth_token
+    return current_user if bearer_token.nil? && user_signed_in?
 
-    token = bearer_token
-    authed = McpAuth.authenticate_bearer(token) if token
-    authed || User.new
+    User.new
   end
 
-  # Session carries full agency; tokens carry their own scope; guests have none.
+  # Tokens carry their own scope; the session carries full agency; guests none.
+  # Mirrors mcp_user so both derive from the single memoized authentication.
   def mcp_scope
-    return 'write' if user_signed_in?
+    return mcp_auth_token.scope if mcp_auth_token
+    return 'write' if bearer_token.nil? && user_signed_in?
 
-    McpAuth.token_scope(bearer_token)
+    nil
   end
 
   # Write tools need a write-scoped token; the session carries full agency.
@@ -72,5 +75,20 @@ class McpController < ApplicationController
   def bearer_token
     match = request.headers['Authorization'].to_s.match(/\ABearer\s+(.+)\z/i)
     match && match[1]
+  end
+
+  # Skips forgery protection only for requests carrying a real token; a
+  # junk Bearer still faces the session CSRF check.
+  def mcp_bearer_authenticated?
+    mcp_auth_token.present?
+  end
+
+  # Single memoized authentication per request (nil-safe: a junk secret
+  # authenticates once, then stays nil for the user, scope and write checks).
+  def mcp_auth_token
+    return @mcp_auth_token if defined?(@mcp_auth_token)
+
+    raw = bearer_token
+    @mcp_auth_token = raw ? McpAuth.authenticate_token(raw) : nil
   end
 end
