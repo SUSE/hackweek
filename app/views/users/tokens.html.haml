@@ -1,0 +1,24 @@
+- content_for :title do
+  API tokens
+  = @user.name
+
+.row
+  .col-md-12
+    %h2
+      API tokens for
+      = @user.name
+    - if @raw_token
+      .alert.alert-warning
+        %p
+          %strong Copy your new token now, it will not be shown again:
+        %code= @raw_token
+    - if @token && @token.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(@token.errors.count, "error")
+          prohibited this token from being saved:
+        %ul
+        - @token.errors.full_messages.each do |msg|
+          %li
+            = msg
+    = render partial: 'tokens', locals: { user: @user, api_tokens: @api_tokens }
