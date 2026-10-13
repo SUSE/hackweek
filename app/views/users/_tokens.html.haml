@@ -1,0 +1,37 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %th Name
+      %th Scope
+      %th Last used
+      %th Created
+      %th
+  %tbody
+    - if api_tokens.empty?
+      %tr
+        %td{ colspan: 5 } No API tokens yet.
+    - api_tokens.each do |token|
+      %tr
+        %td= token.name
+        %td= token.scope
+        %td= token.last_used_at ? l(token.last_used_at, format: :short) : 'never'
+        %td= l(token.created_at, format: :short)
+        %td
+          - if token.revoked?
+            %span.text-muted revoked
+          - else
+            = button_to 'Revoke', tokens_user_path(user, token_id: token.id), method: :delete, class: 'btn btn-danger btn-xs', data: { confirm: 'Revoke this token?' }
+
+%h4 Mint a new token
+= form_tag tokens_user_path(user), method: :post, class: 'form-horizontal' do
+  .form-group
+    = label_tag :name, 'Name', class: 'col-sm-2 control-label'
+    .col-sm-10
+      = text_field_tag :name, nil, placeholder: 'e.g. my MCP client', class: 'form-control', required: true
+  .form-group
+    = label_tag :scope, 'Scope', class: 'col-sm-2 control-label'
+    .col-sm-10
+      = select_tag :scope, options_for_select([['Read-only', 'read'], ['Read + write', 'write']]), class: 'form-control'
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = submit_tag 'Mint token', class: 'btn btn-default'
