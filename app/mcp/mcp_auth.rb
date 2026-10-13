@@ -30,6 +30,6 @@ module McpAuth
     stamp = api_token.last_used_at
     return if stamp.present? && stamp > TOUCH_INTERVAL.ago
 
-    api_token.update_column(:last_used_at, Time.current)
+    api_token.update_column(:last_used_at, Time.current) # rubocop:disable Rails/SkipsModelValidations
   end
 end

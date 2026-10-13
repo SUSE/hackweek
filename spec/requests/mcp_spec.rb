@@ -123,11 +123,12 @@ RSpec.describe 'MCP endpoint', type: :request do
     end
 
     it 'authenticates the bearer only once per request' do
-      expect(ApiToken).to receive(:authenticate).once.and_call_original
+      allow(ApiToken).to receive(:authenticate).and_call_original
 
       tool_call('server_info', {}, read_raw)
 
       expect(response).to have_http_status(:ok)
+      expect(ApiToken).to have_received(:authenticate).once
     end
 
     it 'ignores the session when a bearer is present, treating junk as guest' do
@@ -182,14 +183,10 @@ RSpec.describe 'MCP endpoint', type: :request do
       end
     end
 
-    it 'throttles last_used_at writes to one per minute' do
+    it 'leaves last_used_at alone within a minute' do
       tool_call('server_info', {}, read_raw)
-      expect(read_token.reload.last_used_at).to be_present
-
-      # A call within the throttle window leaves last_used_at and
-      # updated_at alone.
-      read_token.update_column(:last_used_at, 30.seconds.ago)
-      read_token.update_column(:updated_at, 1.hour.ago)
+      read_token.update_column(:last_used_at, 30.seconds.ago) # rubocop:disable Rails/SkipsModelValidations
+      read_token.update_column(:updated_at, 1.hour.ago) # rubocop:disable Rails/SkipsModelValidations
       fresh_stamp = read_token.reload.last_used_at
       old_updated = read_token.updated_at
 
@@ -198,12 +195,16 @@ RSpec.describe 'MCP endpoint', type: :request do
       expect(response).to have_http_status(:ok)
       expect(read_token.reload.last_used_at).to eq(fresh_stamp)
       expect(read_token.reload.updated_at).to eq(old_updated)
+    end
 
-      # A stale stamp refreshes.
-      read_token.update_column(:last_used_at, 2.minutes.ago)
+    it 'refreshes a stale last_used_at' do
+      tool_call('server_info', {}, read_raw)
+      fresh_stamp = read_token.reload.last_used_at
+      read_token.update_column(:last_used_at, 2.minutes.ago) # rubocop:disable Rails/SkipsModelValidations
 
       tool_call('server_info', {}, read_raw)
 
+      expect(response).to have_http_status(:ok)
       expect(read_token.reload.last_used_at).to be > fresh_stamp
     end
 
