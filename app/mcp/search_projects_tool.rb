@@ -17,7 +17,9 @@ class SearchProjectsTool < MCP::Tool
     ability = Ability.new(user_from(server_context))
     return text_response(JSON.generate([])) unless query.is_a?(String)
 
-    matches = search(query).select { |project| ability.can?(:read, project) }.first(RESULT_LIMIT)
+    # Reads are currently unconditional, so SQL-limit to the result size; the
+    # Ruby select stays as a guard so future per-project rules filter here.
+    matches = search(query).limit(RESULT_LIMIT).select { |project| ability.can?(:read, project) }
     text_response(JSON.generate(matches.map { |project| serialize(project) }))
   end
 
@@ -32,11 +34,13 @@ class SearchProjectsTool < MCP::Tool
       term = query.strip.truncate(200)
       return Project.none if term.empty?
 
+      # LIKE search capped at 200 chars; the site search is equally public,
+      # so no extra throttling here.
       pattern = "%#{ActiveRecord::Base.sanitize_sql_like(term.downcase)}%"
       conditions = ['LOWER(projects.title) LIKE :pattern',
                     'LOWER(projects.description) LIKE :pattern',
                     'LOWER(keywords.name) LIKE :pattern'].join(' OR ')
-      Project.left_joins(:keywords).where(conditions, pattern: pattern).distinct.order(:id).limit(100)
+      Project.left_joins(:keywords).where(conditions, pattern: pattern).distinct.order(:id)
     end
 
     def serialize(project)

@@ -42,4 +42,18 @@ describe SearchProjectsTool do
     expect(response.error?).to be(false)
     expect(response_payload(response).length).to eq(3)
   end
+
+  it 'filters through the ability guard when rules deny a project' do
+    denied_title = "Denied #{rand(1_000_000)}"
+    kept = create(:idea, title: denied_title)
+    allowed = create(:idea, title: "#{denied_title} allowed")
+    guarded = Ability.new(user)
+    allow(guarded).to receive(:can?).and_call_original
+    allow(guarded).to receive(:can?).with(:read, allowed).and_return(false)
+    allow(Ability).to receive(:new).and_return(guarded)
+
+    payload = response_payload(call_tool(described_class, { query: denied_title }, user))
+
+    expect(payload.pluck('id')).to contain_exactly(kept.id)
+  end
 end
