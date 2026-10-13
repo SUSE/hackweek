@@ -3,7 +3,5 @@
 = link_to "#{update.author.name}", user_path(update.author)
 %small
   = " #{update.text}"
-  - if @project
-    this project.
-  - else
+  - if !@project
     = link_to "#{update.project.title}", project_path(update.project)

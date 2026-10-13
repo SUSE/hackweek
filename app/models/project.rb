@@ -40,17 +40,17 @@ class Project < ApplicationRecord
     state :invention
     state :record
 
-    event :advance do
+    event :advance, after: proc { |*args| create_advance_update(*args) } do
       transitions from: [:idea], to: :project
       transitions from: [:project], to: :invention
       transitions from: [:record], to: :idea
     end
-    event :recess do
+    event :recess, after: proc { |*args| create_recess_update(*args) } do
       transitions from: [:project], to: :idea
       transitions from: [:idea], to: :record
       transitions from: [:invention], to: :project
     end
-    event :abandon do
+    event :abandon, after: proc { |*args| create_abandon_update(*args) } do
       transitions from: [:project], to: :idea
       transitions from: [:invention], to: :invention
     end
@@ -103,10 +103,10 @@ class Project < ApplicationRecord
     end
 
     if users.empty?
-      advance!
-      type = 'started'
+      advance!(user)
+      type = 'started this project'
     else
-      type = 'joined'
+      type = 'joined this project'
     end
 
     users << user
@@ -130,7 +130,7 @@ class Project < ApplicationRecord
     users.delete(user)
 
     # If the last user has left...
-    abandon! if users.empty?
+    abandon!(user) if users.empty?
 
     Update.create!(author: user,
                    text: 'left',
@@ -222,14 +222,24 @@ class Project < ApplicationRecord
 
   private
 
+  def create_advance_update(author)
+    Update.create!(author: author, text: "advanced this project from #{aasm.from_state} to #{aasm.to_state}", project: self)
+  end
+
+  def create_recess_update(author)
+    Update.create!(author: author, text: "recessed this project from #{aasm.from_state} to #{aasm.to_state}", project: self)
+  end
+
+  def create_abandon_update(author)
+    Update.create!(author: author, text: "abandoned this project and turned it into #{aasm.to_state}", project: self)
+  end
+
   def title_contains_letters?
     errors.add(:title, 'must contain letters') if Project.numeric?(title)
   end
 
   def create_initial_update
-    Update.create!(author: originator,
-                   text: 'originated',
-                   project: self)
+    Update.create!(author: originator, text: 'originated this project', project: self)
   end
 
   def assign_episode
