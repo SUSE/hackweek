@@ -112,4 +112,22 @@ RSpec.describe 'MCP endpoint', type: :request do
     expect(response).to have_http_status(:ok)
     expect(response.parsed_body['error']).to be_present
   end
+
+  it 'throttles abusive /mcp traffic' do
+    store = Rack::Attack.cache.store
+    Rack::Attack.cache.store = ActiveSupport::Cache::MemoryStore.new
+    Rack::Attack.throttle('mcp/ip-spec', limit: 3, period: 1.minute) { |req| req.ip if req.path == '/mcp' }
+    payload = { jsonrpc: '2.0', id: 200, method: 'initialize',
+                params: { protocolVersion: '2025-03-26', capabilities: {},
+                          clientInfo: { name: 'spec', version: '0.1' } } }
+
+    3.times { mcp_post(payload) }
+    expect(response).to have_http_status(:ok)
+    mcp_post(payload)
+
+    expect(response).to have_http_status(:too_many_requests)
+  ensure
+    Rack::Attack.throttles.delete('mcp/ip-spec')
+    Rack::Attack.cache.store = store
+  end
 end
