@@ -14,16 +14,6 @@ module McpAuth
     api_token
   end
 
-  # Returns the token-owning user, nil for missing/unknown/revoked secrets.
-  def self.authenticate_bearer(token)
-    authenticate_token(token)&.user
-  end
-
-  # Effective scope of the presented secret, nil when unauthenticated.
-  def self.token_scope(token)
-    authenticate_token(token)&.scope
-  end
-
   # Refresh last_used_at at most once per TOUCH_INTERVAL, bypassing
   # validations, callbacks and updated_at churn.
   def self.touch_last_used(api_token)
