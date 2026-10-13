@@ -92,6 +92,13 @@ RSpec.describe 'MCP endpoint', type: :request do
     expect(tool_text).not_to include('@')
   end
 
+  it 'acks JSON-RPC notifications with a bare 202' do
+    mcp_post({ jsonrpc: '2.0', method: 'notifications/initialized', params: {} })
+
+    expect(response).to have_http_status(:accepted)
+    expect(response.body).to be_empty
+  end
+
   it 'rejects non-JSON posts with 415' do
     post '/mcp', params: 'hello', headers: { 'CONTENT_TYPE' => 'text/plain' }
 

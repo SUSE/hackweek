@@ -27,6 +27,10 @@ class McpController < ApplicationController
     transport = MCP::Server::Transports::StreamableHTTPTransport.new(server, **transport_options)
     status, headers, body = transport.handle_request(request)
 
+    # JSON-RPC notifications ack with 202 and no body; rendering
+    # body.first (nil) would answer `null` instead.
+    return head status if body.empty?
+
     render(json: body.first, status:, headers:)
   end
 
