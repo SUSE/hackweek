@@ -20,6 +20,17 @@ describe CreateUpdateTool do
     expect(response.error?).to be(false)
   end
 
+  it 'denies admins who neither originate nor belong' do
+    admin = create(:admin)
+    denied_id = project.id
+    response = nil
+    expect do
+      response = call_tool(described_class, { project_id: denied_id, text: 'hijack' }, admin)
+    end.not_to change(Update, :count)
+
+    expect(response).to be_denied
+  end
+
   it 'denies uniformly for other users' do
     stranger = create(:user)
     denied_id = project.id

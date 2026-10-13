@@ -17,9 +17,8 @@ class CreateUpdateTool < MCP::Tool
     return denied_response if guest?(user)
     return denied_response unless server_context[:scope] == 'write'
 
-    ability = Ability.new(user)
     project = find_project(project_id)
-    return denied_response if project.nil? || !member_or_originator?(project, user, ability)
+    return denied_response if project.nil? || !member_or_originator?(project, user)
 
     cleaned = text.to_s.strip
     return error_response('Update text must not be blank.') if cleaned.empty?
@@ -45,9 +44,9 @@ class CreateUpdateTool < MCP::Tool
       Project.find_by(url: ref.to_s) || (ref.to_s.match?(/\A\d+\z/) ? Project.find_by(id: ref) : nil)
     end
 
-    def member_or_originator?(project, user, ability = nil)
-      return true if ability&.can?(:manage, project)
-
+    # Only originators and members may post; admins join first like
+    # everyone else.
+    def member_or_originator?(project, user)
       project.originator_id == user.id || project.memberships.exists?(user_id: user.id)
     end
 
