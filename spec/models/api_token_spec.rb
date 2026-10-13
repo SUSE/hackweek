@@ -57,6 +57,22 @@ describe ApiToken do
     expect(described_class.authenticate(raw)).to be_nil
   end
 
+  it 'defaults new tokens to expire in a year' do
+    token = described_class.create!(user: user, name: 'spec')
+
+    expect(token.expires_at).to be_within(1.minute).of(1.year.from_now)
+    expect(token.expired?).to be(false)
+  end
+
+  it 'rejects expired tokens' do
+    token = described_class.create!(user: user, name: 'spec')
+    raw = token.raw_token
+    token.update_column(:expires_at, 1.hour.ago) # rubocop:disable Rails/SkipsModelValidations
+
+    expect(token.reload.expired?).to be(true)
+    expect(described_class.authenticate(raw)).to be_nil
+  end
+
   it 'compares digests in constant time' do
     token = described_class.create!(user: user, name: 'spec')
     raw = token.raw_token

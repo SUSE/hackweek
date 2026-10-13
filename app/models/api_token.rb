@@ -17,12 +17,14 @@ class ApiToken < ApplicationRecord
     Digest::SHA256.hexdigest(raw.to_s)
   end
 
-  # Returns the live record for a presented secret, nil when unknown/revoked.
+  # Returns the live record for a presented secret, nil when
+  # unknown/revoked/expired.
   def self.authenticate(raw)
     return nil if raw.blank?
 
     expected = digest(raw)
-    candidate = where(token_digest: expected, revoked_at: nil).first
+    candidate = where(token_digest: expected, revoked_at: nil)
+                .where('expires_at IS NULL OR expires_at > ?', Time.current).first
     return nil if candidate.nil?
     return nil unless ActiveSupport::SecurityUtils.secure_compare(candidate.token_digest, expected)
 
@@ -31,6 +33,10 @@ class ApiToken < ApplicationRecord
 
   def revoked?
     revoked_at.present?
+  end
+
+  def expired?
+    expires_at.present? && expires_at <= Time.current
   end
 
   def revoke!
@@ -50,5 +56,6 @@ class ApiToken < ApplicationRecord
 
     @raw_token = SecureRandom.hex(32)
     self.token_digest = self.class.digest(@raw_token)
+    self.expires_at ||= 1.year.from_now
   end
 end
