@@ -46,8 +46,6 @@ class McpController < ApplicationController
     render(json: body.first, status:, headers:)
   end
 
-  private
-
   # Devise session or Bearer token, falling back to a guest (unpersisted) user.
   # A present Bearer header owns the request: the session is ignored, so a
   # junk secret degrades to guest even with a valid cookie.
