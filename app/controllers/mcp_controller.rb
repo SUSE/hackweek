@@ -3,6 +3,7 @@ class McpController < ApplicationController
   skip_before_action :store_location, :load_news, :set_episode, :load_notifications
   skip_before_action :authenticate_user!
   skip_forgery_protection only: [:create], if: -> { mcp_bearer_authenticated? }
+  rescue_from ActionController::InvalidAuthenticityToken, with: :mcp_forgery_denial
 
   TOOLS = [ServerInfoTool, ListProjectsTool, GetProjectTool, SearchProjectsTool,
            ListEpisodesTool].freeze
@@ -10,11 +11,25 @@ class McpController < ApplicationController
   def create
     return head :unsupported_media_type unless request.media_type == 'application/json'
 
+    dispatch_mcp(mcp_user, mcp_scope)
+  end
+
+  private
+
+  # A forged cookie POST must answer exactly like an unauthenticated guest
+  # instead of an HTML error page, or the status would fingerprint sessions.
+  def mcp_forgery_denial
+    return head :unsupported_media_type unless request.media_type == 'application/json'
+
+    dispatch_mcp(User.new, nil)
+  end
+
+  def dispatch_mcp(user, scope)
     server = MCP::Server.new(
       name: 'hackweek',
       version: '1.0.0',
       tools: TOOLS,
-      server_context: { user: mcp_user, scope: mcp_scope }
+      server_context: { user: user, scope: scope }
     )
     transport_options = { stateless: true, serve_subscriptions_listen: false }
     # DNS-rebinding protection only allows loopback Hosts by default; Rails'

@@ -152,10 +152,10 @@ RSpec.describe 'MCP endpoint', type: :request do
 
     context 'with forgery protection enabled' do
       around do |example|
-        previous = ActionController::Base.allow_forgery_protection
-        ActionController::Base.allow_forgery_protection = true
+        previous = ApplicationController.allow_forgery_protection
+        ApplicationController.allow_forgery_protection = true
         example.run
-        ActionController::Base.allow_forgery_protection = previous
+        ApplicationController.allow_forgery_protection = previous
       end
 
       it 'skips forgery protection for a real bearer' do
@@ -165,16 +165,19 @@ RSpec.describe 'MCP endpoint', type: :request do
         expect(tool_text).to include(user.email)
       end
 
-      it 'nulls the session for a junk bearer, denying as guest' do
+      it 'answers junk bearer plus session exactly like a guest' do
         other = create(:user)
-        sign_in other
         payload = { jsonrpc: '2.0', id: 103, method: 'tools/call',
                     params: { name: 'server_info', arguments: {} } }
 
+        mcp_post(payload)
+        guest_result = result_body
+
+        sign_in other
         mcp_post(payload, bearer_headers('junk-secret'))
 
         expect(response).to have_http_status(:ok)
-        expect(tool_text).to include('guest')
+        expect(result_body).to eq(guest_result)
         expect(tool_text).not_to include(other.email)
       end
     end
@@ -283,6 +286,18 @@ RSpec.describe 'MCP endpoint', type: :request do
       expect(response).to have_http_status(:ok)
       expect(tool_text).to include('guest')
       expect(tool_text).not_to include('@')
+    end
+
+    it 'treats expired tokens as guests' do
+      raw = read_raw
+      read_token.update_column(:expires_at, 1.hour.ago) # rubocop:disable Rails/SkipsModelValidations
+
+      tool_call('server_info', {}, raw)
+
+      expect(response).to have_http_status(:ok)
+      expect(tool_text).to include('guest')
+      expect(tool_text).not_to include('@')
+      expect_no_token_leak(raw)
     end
 
     it 'keeps token material out of responses and logs' do
