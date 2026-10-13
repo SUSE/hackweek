@@ -78,6 +78,8 @@ class UsersController < ApplicationController
     end
     if @token.save
       @raw_token = @token.raw_token
+      # The raw secret renders once; never let caches store it.
+      response.headers['Cache-Control'] = 'no-store'
       render :tokens
     else
       render :tokens, status: :unprocessable_content

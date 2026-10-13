@@ -74,6 +74,13 @@ describe UsersController do
         expect(ApiToken.last.user).to eq(user)
       end
 
+      it 'serves the minted secret with Cache-Control no-store' do
+        post :create_token, params: { id: user.id, name: 'x', scope: 'read' }
+
+        expect(response.headers['Cache-Control']).to eq('no-store')
+        expect(assigns(:raw_token)).to be_present
+      end
+
       it 'rejects invalid scope with 422' do
         post :create_token, params: { id: user.id, name: 'x', scope: 'admin' }
 
