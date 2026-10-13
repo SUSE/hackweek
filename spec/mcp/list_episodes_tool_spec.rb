@@ -22,4 +22,12 @@ describe ListEpisodesTool do
     expect(response.error?).to be(false)
     expect(response_payload(response).length).to eq(1)
   end
+
+  it 'caps the listing at 100 episodes' do
+    105.times { |i| create(:episode, name: "bulk-#{i}") }
+
+    payload = response_payload(call_tool(described_class, {}, create(:user)))
+
+    expect(payload.length).to eq(100)
+  end
 end

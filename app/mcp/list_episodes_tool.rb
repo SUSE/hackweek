@@ -10,7 +10,7 @@ class ListEpisodesTool < MCP::Tool
     ability = Ability.new(user_from(server_context))
     return denied_response unless ability.can?(:read, Episode)
 
-    entries = Episode.order(:start_date, :id).map { |episode| serialize(episode) }
+    entries = Episode.order(:start_date, :id).limit(100).map { |episode| serialize(episode) }
     MCP::Tool::Response.new([{ type: 'text', text: JSON.generate(entries) }])
   end
 
