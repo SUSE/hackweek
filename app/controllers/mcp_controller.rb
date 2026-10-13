@@ -6,12 +6,9 @@ class McpController < ApplicationController
 
   TOOLS = [ServerInfoTool, ListProjectsTool, GetProjectTool, SearchProjectsTool,
            ListEpisodesTool, MyProjectsTool, CreateUpdateTool, JoinProjectTool].freeze
-  WRITE_TOOLS = %w[create_update join_project].freeze
-  DENIED_MESSAGE = 'Not accessible through this server'.freeze
 
   def create
     return head :unsupported_media_type unless request.media_type == 'application/json'
-    return render_write_denied if write_denied?
 
     server = MCP::Server.new(
       name: 'hackweek',
@@ -55,27 +52,8 @@ class McpController < ApplicationController
     nil
   end
 
-  # Write tools need a write-scoped token; the session carries full agency.
-  # Denied here so read-scoped callers get the same uniform denial as guests.
-  def write_denied?
-    return false if user_signed_in?
-    return false unless params[:method] == 'tools/call'
-
-    inner = params[:params]
-    return false unless inner.is_a?(Hash) || inner.is_a?(ActionController::Parameters)
-    return false unless WRITE_TOOLS.include?(inner[:name])
-
-    McpAuth.token_scope(bearer_token) != 'write'
-  end
-
-  def render_write_denied
-    render json: {
-      jsonrpc: '2.0',
-      id: params[:id],
-      result: { content: [{ type: 'text', text: DENIED_MESSAGE }], isError: true }
-    }
-  end
-
+  # Write tools enforce the write scope themselves with the same uniform
+  # denial, so no controller pre-check is needed here.
   def bearer_token
     match = request.headers['Authorization'].to_s.match(/\ABearer\s+(.+)\z/i)
     match && match[1]
