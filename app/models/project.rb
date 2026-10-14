@@ -165,8 +165,7 @@ class Project < ApplicationRecord
       save!
     end
 
-    Update.create!(author: user, project: self,
-                   text: "added keyword \"#{name}\" to")
+    Update.create!(author: user, project: self, text: "added keyword \"#{name}\" to")
   end
 
   def remove_keyword!(name, user)
@@ -176,9 +175,7 @@ class Project < ApplicationRecord
       save!
     end
 
-    Update.create!(author: user,
-                   text: "removed keyword #{name} from",
-                   project: self)
+    Update.create!(author: user, project: self, text: "removed keyword #{name} from")
   end
 
   def similar_projects_keywords
