@@ -27,11 +27,13 @@ class Ability
       can :read, User
       can :read, Announcement
       can :read, Faq
+      can :read, Episode
       can %i[join leave like dislike create], Project
       can %i[originated likes opportunities], User
       can [:enroll], Announcement
       # ...change things they own
       can %i[update add_keyword delete_keyword], User, id: user.id
+      can %i[tokens create_token revoke_token], User, id: user.id
       can :read, Update, author_id: user.id
       can :manage, Project, originator_id: user.id
       can %i[create update], Comment, commenter_id: user.id
