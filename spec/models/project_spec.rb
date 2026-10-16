@@ -175,4 +175,30 @@ describe Project do
       expect(Notification.where(recipient: user).count).to eq(1)
     end
   end
+
+  describe 'title_contains_letters?' do
+    let(:project) { build :project }
+
+    it 'is valid if it contains letters' do
+      expect(project.valid?).to be true
+    end
+
+    it 'is invalid if just contains numbers' do
+      project.title = 1
+      expect(project.valid?).to be false
+      expect(project.errors[:title]).to eq ['must contain letters, not only numbers.']
+    end
+
+    it 'is invalid if it just contains emoji' do
+      project.title = '😭'
+      expect(project.valid?).to be false
+      expect(project.errors[:title]).to eq ['must contain letters, not only emoji']
+    end
+
+    it 'is valid if it just contains numbers and emoji' do
+      project.title = '😭 123'
+      expect(project.valid?).to be false
+      expect(project.errors[:title]).to eq ['must contain letters, not only numbers.']
+    end
+  end
 end

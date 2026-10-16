@@ -232,7 +232,12 @@ class Project < ApplicationRecord
   end
 
   def title_contains_letters?
-    errors.add(:title, 'must contain letters') if Project.numeric?(title)
+    non_emoji_title = title.gsub(Unicode::Emoji::REGEX, '').strip
+    if Project.numeric?(non_emoji_title)
+      errors.add(:title, 'must contain letters, not only numbers.')
+    elsif non_emoji_title.empty?
+      errors.add(:title, 'must contain letters, not only emoji')
+    end
   end
 
   def create_initial_update

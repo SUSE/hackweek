@@ -66,6 +66,9 @@ gem 'mina'
 gem 'lograge'
 # for listening to file modifications
 gem 'listen'
+# for unicode/emoji validations
+gem 'unicode-emoji'
+
 # FIXME: activesupport-7.0.8.7 expects those to be in the standard library, which they aren't anymore since 3.4.0
 gem 'drb'
 gem 'mutex_m'
