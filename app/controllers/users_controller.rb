@@ -6,6 +6,8 @@ class UsersController < ApplicationController
 
   skip_before_action :authenticate_user!, only: %i[show originated likes opportunities]
   skip_before_action :verify_authenticity_token, only: %i[add_keyword delete_keyword]
+  skip_before_action :set_updates, only: %i[tokens create_token revoke_token]
+  skip_authorize_resource only: %i[tokens create_token revoke_token]
 
   def index
     @users = User.all.page(params[:page]).per(params[:page_size])
@@ -15,7 +17,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @api_tokens = owner_tokens
+  end
 
   def update
     @user.update(params['user'])
@@ -59,7 +63,43 @@ class UsersController < ApplicationController
     redirect_to @user, notice: "Keyword '#{params[:keyword]}' removed."
   end
 
+  def tokens
+    @user = current_user
+    @api_tokens = owner_tokens
+  end
+
+  def create_token
+    @user = current_user
+    @token = ApiToken.new(user: @user, name: params[:name], scope: params[:scope].presence || 'read')
+    @api_tokens = owner_tokens
+    if @user.api_tokens.count >= 50
+      @token.errors.add(:base, 'Token limit reached (maximum 50 per user)')
+      return render :tokens, status: :unprocessable_content
+    end
+    if @token.save
+      @raw_token = @token.raw_token
+      # The raw secret renders once; never let caches store it.
+      response.headers['Cache-Control'] = 'no-store'
+      render :tokens
+    else
+      render :tokens, status: :unprocessable_content
+    end
+  end
+
+  def revoke_token
+    @user = current_user
+    token = ApiToken.find_by(id: params[:token_id], user_id: @user.id)
+    return redirect_back_or_to tokens_user_path(@user), alert: 'Token not found.' if token.nil? # rubocop:disable Rails/I18nLocaleTexts
+
+    token.revoke!
+    redirect_back_or_to tokens_user_path(@user), notice: "Token '#{token.name}' revoked."
+  end
+
   private
+
+  def owner_tokens
+    ApiToken.where(user: @user).order(created_at: :desc).limit(100)
+  end
 
   def user_params
     params.require(:user).permit(:location, :hide_email)
