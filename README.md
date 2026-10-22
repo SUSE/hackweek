@@ -64,6 +64,15 @@ get you up and running.
 "Remote" connection to the container is available with `docker-compose exec hackweek /bin/bash`. You
 can run single-shot remote commands like `docker-compose exec hackweek rake db:migrate`.
 
+## MCP
+The app exposes a [Model Context Protocol](https://modelcontextprotocol.io/) endpoint at
+`POST /mcp` (Streamable HTTP, stateless): project/episode search and reads, plus posting
+project updates and joining projects — every call authorized as the calling user.
+
+1. Log in, open your profile settings and mint an API token (read or write scope).
+2. Point any MCP client at `https://hackweek.opensuse.org/mcp` with header
+   `Authorization: Bearer <token>`.
+
 ## Resources
 * Design mockups of the Rails app are in the design directory.
 * There are some tools in the tool directory.
