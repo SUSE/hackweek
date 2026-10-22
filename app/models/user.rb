@@ -26,6 +26,8 @@ class User < ApplicationRecord
 
   has_many :notifications, foreign_key: :recipient_id
 
+  has_many :api_tokens, dependent: :destroy
+
   has_and_belongs_to_many :roles
 
   ThinkingSphinx::Callbacks.append(self, behaviours: [:real_time])
