@@ -21,6 +21,7 @@ jobs:
       - name: Prepare spec
         run: |
           sudo systemctl start mysql.service
+          sudo apt install -y sphinxsearch
           wget -nv http://sphinxsearch.com/files/dicts/en.pak
           bundle exec rake dev:bootstrap --trace
           bundle exec bin/rake webdrivers:chromedriver:update
