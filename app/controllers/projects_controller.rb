@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_action :find_project_by_id
   before_action :redirect_to_slug, only: [:show]
   load_and_authorize_resource find_by: :url
-  skip_before_action :authenticate_user!, only: %i[index show archived finished newest popular biggest random]
+  skip_before_action :authenticate_user!, only: %i[index show archived finished popular biggest]
   skip_before_action :store_location, only: %i[join leave like dislike add_keyword delete_keyword]
   skip_before_action :verify_authenticity_token, only: %i[add_keyword delete_keyword]
   skip_before_action :set_episode, only: %i[add_episode delete_episode]
