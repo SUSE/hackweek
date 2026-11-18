@@ -100,5 +100,6 @@ gem 'rubocop-capybara', group: :test
 gem 'rubocop-factory_bot', group: :test
 gem 'rubocop-rails', group: :test
 gem 'rubocop-rspec', group: :test
+gem 'rubocop-rspec_rails', group: :test
 # for time travel in tests
 gem 'timecop', group: :test

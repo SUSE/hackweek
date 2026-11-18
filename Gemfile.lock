@@ -380,6 +380,10 @@ GEM
       lint_roller (~> 1.1)
       regexp_parser (>= 2.0)
       rubocop (~> 1.86, >= 1.86.2)
+    rubocop-rspec_rails (2.33.0)
+      lint_roller (~> 1.1)
+      rubocop (~> 1.89)
+      rubocop-rspec (~> 3.5)
     ruby-progressbar (1.13.0)
     rubyzip (2.4.1)
     sass-rails (6.0.0)
@@ -505,6 +509,7 @@ DEPENDENCIES
   rubocop-factory_bot
   rubocop-rails
   rubocop-rspec
+  rubocop-rspec_rails
   sass-rails
   selectize-rails
   sentry-rails

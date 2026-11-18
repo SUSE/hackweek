@@ -2,6 +2,7 @@ inherit_from: .rubocop_todo.yml
 plugins:
   - rubocop-rails
   - rubocop-rspec
+  - rubocop-rspec_rails
   - rubocop-capybara
   - rubocop-factory_bot
 
@@ -13,6 +14,7 @@ AllCops:
     - 'design/**/*'
     - 'tools/**/*'
     - 'db/schema.rb'
+    - 'bin/**/*'
 
 Style/PercentLiteralDelimiters:
   Exclude:
@@ -21,3 +23,6 @@ Style/PercentLiteralDelimiters:
 Style/HashSyntax:
   EnforcedShorthandSyntax: either
 
+Style/StringLiterals:
+  Exclude:
+    - 'config/**/*'
