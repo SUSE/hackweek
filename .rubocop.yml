@@ -31,3 +31,6 @@ Layout/SpaceInsideArrayLiteralBrackets:
   Exclude:
     - 'config/**/*'
 
+Metrics/ClassLength:
+  Max: 250
+
