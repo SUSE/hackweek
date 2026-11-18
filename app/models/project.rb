@@ -232,6 +232,8 @@ class Project < ApplicationRecord
   end
 
   def title_contains_letters?
+    return false if title.blank?
+
     non_emoji_title = title.gsub(Unicode::Emoji::REGEX, '').strip
     if Project.numeric?(non_emoji_title)
       errors.add(:title, 'must contain letters, not only numbers.')

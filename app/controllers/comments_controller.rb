@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
   before_action :get_parent, only: %i[create update]
   load_and_authorize_resource except: :index
   authorize_resource only: :index
-  skip_before_action :verify_authenticity_token, only: [:reply_modal]
 
   def index
     @comments = Comment.accessible_by(current_ability).where(ham: false).order(id: :desc).page(params[:page])
