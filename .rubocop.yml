@@ -26,3 +26,8 @@ Style/HashSyntax:
 Style/StringLiterals:
   Exclude:
     - 'config/**/*'
+
+Layout/SpaceInsideArrayLiteralBrackets:
+  Exclude:
+    - 'config/**/*'
+
