@@ -35,6 +35,9 @@ class Ability
       can :read, Update, author_id: user.id
       can :manage, Project, originator_id: user.id
       can %i[create update], Comment, commenter_id: user.id
+      can :destroy, Comment do |comment|
+        comment.project.originator_id == user.id
+      end
       can %i[update add_keyword delete_keyword advance recess add_episode delete_episode],
           Project do |project|
         project.users.include? user
